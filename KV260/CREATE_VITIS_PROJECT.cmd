@@ -1,0 +1,1 @@
+call vitis\auto_create_vitis\build_vitis.bat

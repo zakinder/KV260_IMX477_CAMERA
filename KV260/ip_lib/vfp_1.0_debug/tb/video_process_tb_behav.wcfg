@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="video_process_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constants_package" />
+            <top_module name="fixed_float_types" />
+            <top_module name="fixed_pkg" />
+            <top_module name="float_pkg" />
+            <top_module name="ports_package" />
+            <top_module name="tb_pkg" />
+            <top_module name="vfp_pkg" />
+            <top_module name="video_process_tb" />
+            <top_module name="vpf_records" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="149.870000 us"></ZoomStartTime>
+      <ZoomEndTime time="198.990001 us"></ZoomEndTime>
+      <Cursor1Time time="166.510000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="421"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="25" />
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_aclk" type="logic">
+      <obj_property name="ElementShortName">s_axis_aclk</obj_property>
+      <obj_property name="ObjectShortName">s_axis_aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_aresetn" type="logic">
+      <obj_property name="ElementShortName">s_axis_aresetn</obj_property>
+      <obj_property name="ObjectShortName">s_axis_aresetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tdata" type="array">
+      <obj_property name="ElementShortName">s_axis_tdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tdata[23:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tstrb" type="array">
+      <obj_property name="ElementShortName">s_axis_tstrb[2:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tstrb[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tkeep" type="array">
+      <obj_property name="ElementShortName">s_axis_tkeep[2:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tkeep[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tlast" type="logic">
+      <obj_property name="ElementShortName">s_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tuser" type="logic">
+      <obj_property name="ElementShortName">s_axis_tuser</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tuser</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tvalid" type="logic">
+      <obj_property name="ElementShortName">s_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/s_axis_tready" type="logic">
+      <obj_property name="ElementShortName">s_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_tready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/oCord_x" type="array">
+      <obj_property name="ElementShortName">oCord_x[15:0]</obj_property>
+      <obj_property name="ObjectShortName">oCord_x[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/oCord_y" type="array">
+      <obj_property name="ElementShortName">oCord_y[15:0]</obj_property>
+      <obj_property name="ObjectShortName">oCord_y[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/oRgb" type="array">
+      <obj_property name="ElementShortName">oRgb</obj_property>
+      <obj_property name="ObjectShortName">oRgb</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/VIDEO_STATES" type="other">
+      <obj_property name="ElementShortName">VIDEO_STATES</obj_property>
+      <obj_property name="ObjectShortName">VIDEO_STATES</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/VIDEO_OUT_STATES" type="other">
+      <obj_property name="ElementShortName">VIDEO_OUT_STATES</obj_property>
+      <obj_property name="ObjectShortName">VIDEO_OUT_STATES</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/Xcont" type="other">
+      <obj_property name="ElementShortName">Xcont</obj_property>
+      <obj_property name="ObjectShortName">Xcont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/Ycont" type="other">
+      <obj_property name="ElementShortName">Ycont</obj_property>
+      <obj_property name="ObjectShortName">Ycont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/XrCont" type="other">
+      <obj_property name="ElementShortName">XrCont</obj_property>
+      <obj_property name="ObjectShortName">XrCont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/X1Cont" type="other">
+      <obj_property name="ElementShortName">X1Cont</obj_property>
+      <obj_property name="ObjectShortName">X1Cont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/YrCont" type="other">
+      <obj_property name="ElementShortName">YrCont</obj_property>
+      <obj_property name="ObjectShortName">YrCont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/Y1Cont" type="other">
+      <obj_property name="ElementShortName">Y1Cont</obj_property>
+      <obj_property name="ObjectShortName">Y1Cont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/Y2Cont" type="other">
+      <obj_property name="ElementShortName">Y2Cont</obj_property>
+      <obj_property name="ObjectShortName">Y2Cont</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/vdata" type="array">
+      <obj_property name="ElementShortName">vdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">vdata[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/rowbuffer" type="array">
+      <obj_property name="ElementShortName">rowbuffer[0:127][23:0]</obj_property>
+      <obj_property name="ObjectShortName">rowbuffer[0:127][23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/FRAME_WIDTH" type="other">
+      <obj_property name="ElementShortName">FRAME_WIDTH</obj_property>
+      <obj_property name="ObjectShortName">FRAME_WIDTH</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/VFP_AXI_STREAM_INST/FRAME_HEIGHT" type="other">
+      <obj_property name="ElementShortName">FRAME_HEIGHT</obj_property>
+      <obj_property name="ObjectShortName">FRAME_HEIGHT</obj_property>
+   </wvobject>
+</wave_config>

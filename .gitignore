@@ -1,0 +1,15 @@
+KV260/vivado/*
+KV260/workspace/*
+KV260/v_log/*
+KV260/vitis/.metadata/*
+KV260/vitis/.Xil/*
+KV260/vitis/kv260_video_wrapper/*
+KV260/vitis/mipi_system/*
+KV260/vitis/RemoteSystemsTempFiles/*
+KV260/vitis/.analytics
+KV260/vitis/IDE.log
+KV260/vitis/mipi/_ide/*
+KV260/vitis/mipi/Debug/*
+KV260/vitis/mipi/.cproject
+KV260/vitis/mipi/.project
+KV260/vitis/mipi/mipi.prj

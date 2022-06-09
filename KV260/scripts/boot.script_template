@@ -1,0 +1,55 @@
+# This is a boot script for U-Boot
+# Generate boot.scr:
+# mkimage -c none -A arm -T script -d boot.script boot.scr
+#
+# Generate boot.script (for modifications in boot.scr):
+# dd if=boot.scr of=boot.script bs=72 skip=1
+#
+################
+imageub_addr=0x10000000
+# 
+imageub_flash_addr=0x200000
+imageub_flash_size=0xD90000
+
+echo [TE_BOOT-01] Trenz Boot-file version 1.0 (development);
+echo [TE_BOOT-10] Found boot.scr in device: ${target}
+echo [TE_BOOT-11] Chosen Bootmode is ${modeboot} from boot_targets=${boot_targets};
+echo [TE_BOOT-11] Use RAM Address ${imageub_addr} for linux image;
+
+
+for boot_target in ${boot_targets};
+do
+
+	#echo [TE_BOOT-11] currently trying to load from ${target};
+	#echo [TE_BOOT-12] boot_target = ${boot_target};
+	#echo [TE_BOOT-13] devtype = ${devtype}; 
+	#echo [TE_BOOT-14] devnum = ${devnum}; 
+	#echo [TE_BOOT-15] distro_bootpart = ${distro_bootpart}; 
+	#echo [TE_BOOT-16] boot_prefixes = ${boot_prefixes}; 
+	#echo [TE_BOOT-17] source =  ${prefix}${script};
+	
+	# Boot target is mmc0 or usb0: image.ub on mmc0 or usb0
+	if test "${boot_target}" = "${devtype}0"; then
+		if test -e ${devtype} 0:${distro_bootpart} /image.ub; then
+			echo [TE_BOOT-20] boot_target is ${boot_target}. Found image.ub on ${devtype}0:${distro_bootpart} ;
+			fatload ${devtype} 0:${distro_bootpart} ${imageub_addr} image.ub;
+			bootm ${imageub_addr};
+		fi
+	fi
+	# Boot target is mmc1 or usb1: image.ub on mmc1 or usb1
+	if test "${boot_target}" = "${devtype}1"; then
+		if test -e ${devtype} 1:${distro_bootpart} /image.ub; then
+			echo [TE_BOOT-21] boot_target is ${boot_target}. Found image.ub on ${devtype}1:${distro_bootpart};
+			fatload ${devtype} 1:${distro_bootpart} ${imageub_addr} image.ub;
+			bootm ${imageub_addr};
+		fi
+	fi
+	# Boot target is qspi: image.ub on qspi; image.ub is included in BOOT.bin
+	if test "${boot_target}" = "qspi"; then
+		echo [TE_BOOT-30] Try to use image.ub from ${boot_target}, load image.ub from qspi-flash address ${imageub_flash_addr}; 
+		echo [TE_BOOT-30] max. image.ub size is ${imageub_flash_size} ;
+		sf probe 0 0 0;
+		sf read ${imageub_addr} ${imageub_flash_addr} ${imageub_flash_size};
+		bootm ${imageub_addr};
+	fi
+done

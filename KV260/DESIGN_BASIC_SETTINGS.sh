@@ -1,0 +1,10 @@
+export XILDIR=/tools/Xilinx
+export VIVADO_VERSION=2020.2
+export PARTNUMBER=LAST_ID
+export SWAPP=NA
+export PROGRAM_ROOT_FOLDER_FILE=0
+export USE_XILINX_BOARD_STORE=0
+export DO_NOT_CLOSE_SHELL=0
+export ZIP_PATH=`which zip`
+export ENABLE_SDSOC=0
+export XILINXGIT_DEVICETREE=/home/xilinx_git/device-tree-xlnx
