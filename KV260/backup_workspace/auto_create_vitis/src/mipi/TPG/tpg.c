@@ -22,10 +22,10 @@ int tpg_init(int en_input) {
 	XV_tpg_Set_passthruStartY(&tpg, 0);
 	XV_tpg_Set_passthruEndX(&tpg, VIDEO_COLUMNS);
 	XV_tpg_Set_passthruEndY(&tpg, VIDEO_ROWS);
-	xil_printf("Test pattern generator configured for passthrough video\r\n");
+	//xil_printf("Test pattern generator configured for passthrough video\r\n");
 	XV_tpg_Set_enableInput(&tpg, en_input);
 	XV_tpg_EnableAutoRestart(&tpg);
 	XV_tpg_Start(&tpg);
-	xil_printf("Test pattern generator initialized\r\n");
+	//xil_printf("Test pattern generator initialized\r\n");
 	return XST_SUCCESS;
 }

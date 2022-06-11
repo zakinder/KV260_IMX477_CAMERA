@@ -82,7 +82,7 @@ void menu_calls(ON_OFF) {
                 printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
                 current_state = kernal;break;
             }
-            else if (k_number == 4 ||  k_number == 20 || k_number == 36 || k_number == 40 || k_number == 44 || k_number == 48 || k_number == 52 || k_number == 56 || k_number == 60 || k_number == 64 || k_number == 68 || k_number == 72)
+            else if (k_number == 4 ||  k_number == 20 || k_number == 36 || k_number == 40 || k_number == 44 || k_number == 48 || k_number == 52 || k_number == 56 || k_number == 60 || k_number == 64 || k_number == 68 || k_number == 72 || k_number == 76)
             {
                 printf("Enter K Number Value\n");
                 menu_print_prompt();

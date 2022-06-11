@@ -82,7 +82,7 @@ void menu_calls(ON_OFF) {
                 printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
                 current_state = kernal;break;
             }
-            else if (k_number == 4 ||  k_number == 20 || k_number == 36 || k_number == 40 || k_number == 44 || k_number == 48 || k_number == 52 || k_number == 56 || k_number == 60 || k_number == 64 || k_number == 68 || k_number == 72)
+            else if (k_number == 4 ||  k_number == 20 || k_number == 36 || k_number == 40 || k_number == 44 || k_number == 48 || k_number == 52 || k_number == 56 || k_number == 60 || k_number == 64 || k_number == 68 || k_number == 72 || k_number == 76)
             {
                 printf("Enter K Number Value\n");
                 menu_print_prompt();
@@ -127,11 +127,36 @@ void menu_calls(ON_OFF) {
             	current_state = kernal;break;
             }
         case imxwrite:
-        	tpg_init(0);
-        	current_state = mainmenu;break;
+            printf("Enter imx477 Register Address.\n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	printf("Enter imx477 Register Data for the Register.\n");
+                menu_print_prompt();
+                k_number_value = uart_prompt_io();
+                write_imx477_reg(k_number,k_number_value);
+            	current_state = imxwrite;break;
+            }
         case imxread:
-        	tpg_init(1);
-        	current_state = mainmenu;break;
+            printf("Enter imx477 Register Address \n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	read_imx477_reg(k_number);
+            	current_state = imxread;break;
+            }
         case quit:
             menu_calls_enable = FALSE;
             break;

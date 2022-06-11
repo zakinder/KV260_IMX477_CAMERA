@@ -39,5 +39,23 @@ int init_camera()
 }
 
 
-
-
+void read_imx477_reg(u16 addr)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX477 Camera\n\r");
+    Status = imx477_read_register(&iic_cam,addr);
+  	if (Status != XST_SUCCESS) {
+  		print("IMX477 Camera Sensor Not connected\n\r");
+  	}
+}
+void write_imx477_reg(u16 addr,u8 data)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX477 Camera\n\r");
+    Status = imx477_write_read_register(&iic_cam,addr,data);
+  	if (Status != XST_SUCCESS) {
+  		print("IMX477 Camera Sensor Not connected\n\r");
+  	}
+}

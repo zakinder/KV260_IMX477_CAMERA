@@ -81,7 +81,7 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 {
 	XAxiVdma Vdma;
 	XAxiVdma_Config *Config;
-	XAxiVdma_DmaSetup WriteCfg;
+	XAxiVdma_DmaSetup vdmaDMA;
 	int Status;
 	Config = XAxiVdma_LookupConfig(DeviceID);
 	if (NULL == Config) {
@@ -93,30 +93,54 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 		xil_printf("XAxiVdma_CfgInitialize failure\r\n");
 		return XST_FAILURE;
 	}
-	WriteCfg.EnableCircularBuf = 0;
-	WriteCfg.EnableFrameCounter = 0;
-	WriteCfg.FixedFrameStoreAddr = 0;
-	WriteCfg.EnableSync = 1;
-	WriteCfg.PointNum = 1;
-	WriteCfg.FrameDelay = 0;
-	WriteCfg.VertSizeInput = VertSizeInput;
-	WriteCfg.HoriSizeInput = HoriSizeInput;
-	WriteCfg.Stride = Stride;
-	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_WRITE, &WriteCfg);
+	vdmaDMA.EnableCircularBuf       = 1;
+	vdmaDMA.EnableFrameCounter      = 0;
+	vdmaDMA.FixedFrameStoreAddr     = 0;
+	vdmaDMA.EnableSync              = 0;
+	vdmaDMA.PointNum                = 0;
+	vdmaDMA.FrameDelay              = 0;
+	vdmaDMA.VertSizeInput           = VertSizeInput;
+	vdmaDMA.HoriSizeInput           = HoriSizeInput;
+	vdmaDMA.Stride                  = Stride;
+	vdmaDMA.FrameStoreStartAddr[0]  = FrameStoreStartAddr;
+	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_WRITE, &vdmaDMA);
 	if (Status != XST_SUCCESS) {
-			xdbg_printf(XDBG_DEBUG_ERROR,
-				"Read channel config failed %d\r\n", Status);
+			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel config failed %d\r\n", Status);
 			return XST_FAILURE;
 	}
-	WriteCfg.FrameStoreStartAddr[0] = FrameStoreStartAddr;
-	Status = XAxiVdma_DmaSetBufferAddr(&Vdma, XAXIVDMA_WRITE, WriteCfg.FrameStoreStartAddr);
+	Status = XAxiVdma_DmaSetBufferAddr(&Vdma, XAXIVDMA_WRITE, vdmaDMA.FrameStoreStartAddr);
 	if (Status != XST_SUCCESS) {
 			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel set buffer address failed %d\r\n", Status);
 			return XST_FAILURE;
 	}
-	Status = vdma_write_start(&Vdma);
+	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_READ, &(vdmaDMA));
 	if (Status != XST_SUCCESS) {
-		   xil_printf("error starting VDMA..!");
+		xdbg_printf(XDBG_DEBUG_ERROR,"Read channel config failed %d\r\n", Status);
+			return XST_FAILURE;
+	}
+	Status = XAxiVdma_DmaSetBufferAddr(&Vdma, XAXIVDMA_READ,vdmaDMA.FrameStoreStartAddr);
+	if (Status != XST_SUCCESS) {
+			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel set buffer address failed %d\r\n", Status);
+			return XST_FAILURE;
+	}
+	Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_WRITE);
+	if (Status != XST_SUCCESS) {
+		   xil_printf("Error Starting XAXIVDMA_WRITE..!");
+		   return Status;
+	}
+	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_WRITE);
+	if (Status != XST_SUCCESS) {
+		   xil_printf("Error Starting XAXIVDMA_WRITE..!");
+		   return Status;
+	}
+	Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_READ);
+	if (Status != XST_SUCCESS) {
+		   xil_printf("Error Starting XAxiVdma_DmaStart..!");
+		   return Status;
+	}
+	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_READ);
+	if (Status != XST_SUCCESS) {
+		   xil_printf("Error Starting XAxiVdma_StartParking..!");
 		   return Status;
 	}
 	return XST_SUCCESS;
