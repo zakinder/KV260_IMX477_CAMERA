@@ -76,6 +76,17 @@ type ty9sn is record
     k8               : signed(21 downto 0);
     k9               : signed(21 downto 0);
 end record;
+type ty_9sn is record
+    k1               : signed(23 downto 0);
+    k2               : signed(23 downto 0);
+    k3               : signed(23 downto 0);
+    k4               : signed(23 downto 0);
+    k5               : signed(23 downto 0);
+    k6               : signed(23 downto 0);
+    k7               : signed(23 downto 0);
+    k8               : signed(23 downto 0);
+    k9               : signed(23 downto 0);
+end record;
 type ty2sn is record
     k1               : signed(19 downto 0);
     k2               : signed(19 downto 0);
@@ -97,6 +108,17 @@ type ty1sn is record
     k7               : signed(14 downto 0);
     k8               : signed(14 downto 0);
     k9               : signed(14 downto 0);
+end record;
+type ty_1sn is record
+    k1               : signed(16 downto 0);
+    k2               : signed(16 downto 0);
+    k3               : signed(16 downto 0);
+    k4               : signed(16 downto 0);
+    k5               : signed(16 downto 0);
+    k6               : signed(16 downto 0);
+    k7               : signed(16 downto 0);
+    k8               : signed(16 downto 0);
+    k9               : signed(16 downto 0);
 end record;
 type ccKernel is record
     ccSf             : ty1sf;
@@ -612,6 +634,11 @@ type rgbToSf12Record is record
     green            : sfixed(11 downto 0);
     blue             : sfixed(11 downto 0);
 end record;
+type rgb_SnSumRecord is record
+    red              : signed(16 downto 0);
+    green            : signed(16 downto 0);
+    blue             : signed(16 downto 0);
+end record;
 type rgbSnSumRecord is record
     red              : signed(ADD_RESULT_WIDTH-1 downto 0);
     green            : signed(ADD_RESULT_WIDTH-1 downto 0);
@@ -626,6 +653,11 @@ type rgb_Sn_Sum_Tr_Record is record
     red              : signed(13 downto 0);
     green            : signed(13 downto 0);
     blue             : signed(13 downto 0);
+end record;
+type rgb_SnSumTrRecord is record
+    red              : signed(23 downto 0);
+    green            : signed(23 downto 0);
+    blue             : signed(23 downto 0);
 end record;
 type rgbSnSumTrRecord is record
     red              : signed(14 downto 0);
@@ -643,14 +675,41 @@ type ty46sf_6 is record
     k8               : sfixed(34 downto -6);
     k9               : sfixed(34 downto -6);
 end record;
+
+type ty_integer is record
+    n1               : integer;
+    n2               : integer;
+    n3               : integer;
+    k1               : integer;
+    k2               : integer;
+    k3               : integer;
+    k4               : integer;
+    k5               : integer;
+    k6               : integer;
+    k7               : integer;
+    k8               : integer;
+    k9               : integer;
+end record;
+
+type rgbTointegerRecord is record
+    red              : integer;
+    green            : integer;
+    blue             : integer;
+end record;
+type rgbSnSum_Tr_Record is record
+    red              : signed(9 downto 0);
+    green            : signed(9 downto 0);
+    blue             : signed(9 downto 0);
+end record;
 type ccRgbRecord is record
-    rgbToSf          : rgbToSfRecord;
-    ccSf             : ty7sf;
-    ccProdSf         : ty8sf;
-    ccProdToSn       : ty9sn;
-    ccProdTrSn       : ty1sn;
-    rgbSnSum         : rgbSnSumRecord;
-    rgbSnSumTr       : rgbSnSumTrRecord;
+    rgbToSf          : rgbTointegerRecord;
+    ccSf             : ty_integer;
+    ccProdSf         : ty_integer;
+    rgbSnSum         : rgbTointegerRecord;
+    ccProdToSn       : ty_9sn;
+    ccProdTrSn       : ty_1sn;
+    rgbSnSumTr       : rgb_SnSumTrRecord;
+    rgb_Tr           : rgbSnSum_Tr_Record;
 end record;
 type cc_rgb_record is record
     rgbToSf          : rgbToSfRecord;

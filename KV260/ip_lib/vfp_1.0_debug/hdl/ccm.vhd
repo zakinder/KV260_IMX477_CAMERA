@@ -7,7 +7,8 @@
 -- Description:
 -- This file instantiation
 --
--------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -38,13 +39,13 @@ begin
 i_k_config_number <= k_config_number;
 rgbToSf_P: process (clk,rst_l)begin
     if rst_l = '0' then
-        ccRgb.rgbToSf.red    <= (others => '0');
-        ccRgb.rgbToSf.green  <= (others => '0');
-        ccRgb.rgbToSf.blue   <= (others => '0');
+        ccRgb.rgbToSf.red    <= 0;
+        ccRgb.rgbToSf.green  <= 0;
+        ccRgb.rgbToSf.blue   <= 0;
     elsif rising_edge(clk) then
-        ccRgb.rgbToSf.red    <= to_sfixed('0' & iRgb.red,ccRgb.rgbToSf.red);
-        ccRgb.rgbToSf.green  <= to_sfixed('0' & iRgb.green,ccRgb.rgbToSf.green);
-        ccRgb.rgbToSf.blue   <= to_sfixed('0' & iRgb.blue,ccRgb.rgbToSf.blue);
+        ccRgb.rgbToSf.red    <= to_integer(unsigned(iRgb.red));
+        ccRgb.rgbToSf.green  <= to_integer(unsigned(iRgb.green));
+        ccRgb.rgbToSf.blue   <= to_integer(unsigned(iRgb.blue));
     end if;
 end process rgbToSf_P;
 process (clk)begin
@@ -117,1072 +118,54 @@ process (clk)begin
     end if;
 end process;
 
+
 ccSfConfig_P: process (clk,rst_l)begin
     if rst_l = '0' then
-        ccRgb.ccSf.k1           <= to_sfixed(1.500,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k3           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(1.500,15,-3);  
-        ccRgb.ccSf.k6           <= to_sfixed(-0.250,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0.250,15,-3); 
-        ccRgb.ccSf.k9           <= to_sfixed(1.500,15,-3);  
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0;
+        ccRgb.ccSf.k5           <= 1000;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 1000;
     elsif rising_edge(clk) then
-    if(i_k_config_number = 0) then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.k1           <= to_sfixed(1000.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k4           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(1000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k7           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(1000.000,15,-3);
-    elsif(i_k_config_number = 1)then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.k1           <= to_sfixed(to_integer(unsigned(coefficients_in.k1(15 downto 0))),15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(to_integer(signed(coefficients_in.k2(15 downto 0))),15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(to_integer(signed(coefficients_in.k3(15 downto 0))),15,-3);
-        ccRgb.ccSf.k4           <= to_sfixed(to_integer(signed(coefficients_in.k4(15 downto 0))),15,-3);
-        ccRgb.ccSf.k5           <= to_sfixed(to_integer(unsigned(coefficients_in.k5(15 downto 0))),15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(to_integer(signed(coefficients_in.k6(15 downto 0))),15,-3);
-        ccRgb.ccSf.k7           <= to_sfixed(to_integer(signed(coefficients_in.k7(15 downto 0))),15,-3);
-        ccRgb.ccSf.k8           <= to_sfixed(to_integer(signed(coefficients_in.k8(15 downto 0))),15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(to_integer(unsigned(coefficients_in.k9(15 downto 0))),15,-3);
-    elsif(i_k_config_number = 2)then
-    oRgb.valid <= rgbSyncValid(6);
-
-        ccRgb.ccSf.k1           <= to_sfixed(2000.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(-500.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-500.000,15,-3);
-        
-        ccRgb.ccSf.k4           <= to_sfixed(-500.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(3000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-500.000,15,-3);
-        
-        ccRgb.ccSf.k7           <= to_sfixed(-500.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-500.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(2000.000,15,-3);
-    elsif(i_k_config_number = 3)then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.k1           <= to_sfixed(2000.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(-125.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-350.000,15,-3);
-        ccRgb.ccSf.k4           <= to_sfixed(-350.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(2000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-125.000,15,-3);
-        ccRgb.ccSf.k7           <= to_sfixed(-500.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-500.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(2000.000,15,-3);
-    elsif(i_k_config_number = 4)then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.n1           <= 1250;
-        ccRgb.ccSf.n2           <= -850;
-        ccRgb.ccSf.n3           <= -400;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    elsif(i_k_config_number = 5)then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.n1           <= 2500;
-        ccRgb.ccSf.n2           <= -1000;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    elsif(i_k_config_number = 6)then
-    oRgb.valid <= rgbSyncValid(6);
-        -- Contrast = 202,0,0 Exposer = 4
-        ccRgb.ccSf.k1           <= to_sfixed(3000.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(-1000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-1000.000,15,-3);
-        ccRgb.ccSf.k4           <= to_sfixed(-1500.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(3000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-0500.000,15,-3);
-        ccRgb.ccSf.k7           <= to_sfixed(-0500.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-1500.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(3000.000,15,-3);
-    elsif(i_k_config_number = 7)then
-    oRgb.valid <= rgbSyncValid(6);
-      -- Contrast = 230,0,0 Exposer = 6
-        ccRgb.ccSf.k1           <= to_sfixed(2700.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(-1000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-1000.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-1200.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(2700.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-1000.000,15,-3);
-        ccRgb.ccSf.k7           <= to_sfixed(-1000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-1200.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(2700.000,15,-3);
-    elsif(i_k_config_number = 8)then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.n1           <= 4900;
-        ccRgb.ccSf.n2           <= -3400;
-        ccRgb.ccSf.n3           <= -1600;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    elsif(i_k_config_number = 9) then
-    oRgb.valid <= rgbSyncValid(6);
-        ccRgb.ccSf.k1           <= to_sfixed(1.500,15,-3);  
-        ccRgb.ccSf.k2           <= to_sfixed(-0.250,15,-3); 
-        ccRgb.ccSf.k3           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(1.500,15,-3);  
-        ccRgb.ccSf.k6           <= to_sfixed(-0.250,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(-0.250,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0.125,15,-3); 
-        ccRgb.ccSf.k9           <= to_sfixed(1.500,15,-3);  
-    elsif(i_k_config_number = 10)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_XYZ_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0412.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0357.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0180.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(0212.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(0715.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0072.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0019.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(0119.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(0950.000,15,-3);
-    elsif(i_k_config_number = 11)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_LMS_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0400.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0707.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-0080.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0228.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(1150.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0061.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(0918.000,15,-3); 
-    elsif(i_k_config_number = 12)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- YPBPR_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0213.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0715.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0072.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0115.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-0385.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0500.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0500.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0454.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(-0046.000,15,-3); 
-    elsif(i_k_config_number = 13)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_YUV_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0299.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0587.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0114.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0147.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-0289.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0436.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0615.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0515.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(-0100.000,15,-3);
-    elsif(i_k_config_number = 14)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_YIQ_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0299.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0587.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0114.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(0595.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-0274.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-0321.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0211.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0522.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(-0311.000,15,-3);
-    elsif(i_k_config_number = 15)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_YDRDB_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0299.000,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(0587.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0114.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(-0450.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-0883.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(1333.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(-1333.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-1160.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(0217.000,15,-3);
-    elsif(i_k_config_number = 16)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_HED_FRAME
-        ----------------------------------------------------
-        
-        ccRgb.ccSf.k1           <= to_sfixed(1880.000,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(-0070.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(-0600.000,15,-3); 
-        
-        ccRgb.ccSf.k4           <= to_sfixed(-1020.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-1130.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(-0480.000,15,-3);
-        
-        ccRgb.ccSf.k7           <= to_sfixed(-0550.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(-0130.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(1570.000,15,-3);
-        
-    elsif(i_k_config_number = 17)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_IPT_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0400.000,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(0400.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0200.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(4455.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(-4851.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(3960.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(8056.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(3572.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(-1162.000,15,-3);
-        
-    elsif(i_k_config_number = 18)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_IPT_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(0100.000,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(0100.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(0100.000,15,-3);
-        
-    elsif(i_k_config_number = 19)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_IPT_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(1000.000,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(1000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(0000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(0000.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(1000.000,15,-3);
-    elsif(i_k_config_number = 20)then
-    oRgb.valid <= rgbSyncValid(6);
-        ----------------------------------------------------
-        -- F_IPT_FRAME
-        ----------------------------------------------------
-        ccRgb.ccSf.k1           <= to_sfixed(10000.000,15,-3);
-        ccRgb.ccSf.k2           <= to_sfixed(00000.000,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(00000.000,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(00000.000,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(10000.000,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(00000.000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(00000.000,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(00000.000,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(10000.000,15,-3);
-    elsif(i_k_config_number = 101)then
-        --DARK_CCM CCC1 -------------------
-        ccRgb.ccSf.n1           <= 950;
-        ccRgb.ccSf.n2           <= -450;
-        ccRgb.ccSf.n3           <= -250;
-        --DARK_CCM CCC1 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 102)then
-        --LIGHT_CCM CCC1 ------------------
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= -50;
-        ccRgb.ccSf.n3           <= -100;
-        --LIGHT_CCM CCC1 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 103)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= 700;
-        ccRgb.ccSf.n3           <= 700;
-        --balance_ccm CCC1 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 104)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 820;
-        ccRgb.ccSf.n2           <= -180;
-        ccRgb.ccSf.n3           <= -100;
-        --dark_ccm CCC2 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 105)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1600;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -600;
-        --light_ccm CCC2 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 106)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= 800;
-        ccRgb.ccSf.n3           <= 750;
-        --balance_ccm CCC2 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 107)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 925;
-        ccRgb.ccSf.n2           <= -425;
-        ccRgb.ccSf.n3           <= -200;
-        --dark_ccm CCC3 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 108)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= -400;
-        ccRgb.ccSf.n3           <= -600;
-        --light_ccm CCC3 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 109)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 3200;
-        ccRgb.ccSf.n2           <= 2400;
-        ccRgb.ccSf.n3           <= 1600;
-        --balance_ccm CCC3 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(3200,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(1200,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(800,15,-3);
-        ccRgb.ccSf.k4           <= to_sfixed(1600,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(2800,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(2000,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(1400,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(1800,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(3200,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 110)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1840;
-        ccRgb.ccSf.n2           <= -850;
-        ccRgb.ccSf.n3           <= -400;
-        --dark_ccm CCC4 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 111)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= -570;
-        ccRgb.ccSf.n3           <= -430;
-        --light_ccm CCC4 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 112)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 2400;
-        ccRgb.ccSf.n2           <= 950;
-        ccRgb.ccSf.n3           <= 800;
-        --balance_ccm CCC4 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(3400,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(950,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(800,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 113)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1600;
-        ccRgb.ccSf.n2           <= -800;
-        ccRgb.ccSf.n3           <= -400;
-        --dark_ccm CCC5 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 114)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1600;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -300;
-        --light_ccm CCC5 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 115)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 950;
-        ccRgb.ccSf.n2           <= 650;
-        ccRgb.ccSf.n3           <= 550;
-        --balance_ccm CCC5 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 116)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1850;
-        ccRgb.ccSf.n2           <= -850;
-        ccRgb.ccSf.n3           <= -400;
-        --dark_ccm CCC6 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 117)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1700;
-        ccRgb.ccSf.n2           <= -600;
-        ccRgb.ccSf.n3           <= -200;
-        --light_ccm CCC6 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 118)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 550;
-        ccRgb.ccSf.n2           <= 375;
-        ccRgb.ccSf.n3           <= 350;
-        --balance_ccm CCC6 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 119)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1500;
-        ccRgb.ccSf.n2           <= -650;
-        ccRgb.ccSf.n3           <= -650;
-        --dark_ccm CCC7 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 120)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1000;
-        ccRgb.ccSf.n2           <= -125;
-        ccRgb.ccSf.n3           <= -125;
-        --light_ccm CCC7 ------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 121)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1800;
-        ccRgb.ccSf.n2           <= 1400;
-        ccRgb.ccSf.n3           <= 1400;
-        --balance_ccm CCC7 ----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 122)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1650;
-        ccRgb.ccSf.n2           <= -850;
-        ccRgb.ccSf.n3           <= -400;
-        --dark_ccm CCC8 -------------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 123)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 1800;
-        ccRgb.ccSf.n2           <= -200;
-        ccRgb.ccSf.n3           <= -600;
-        -- light_ccm CCC8 -----------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 124)then
-        -----------------------------------
-        ccRgb.ccSf.n1           <= 800;
-        ccRgb.ccSf.n2           <= 350;
-        ccRgb.ccSf.n3           <= 550;
-        -- balance_ccm CCC8 ---------------
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 201)then
-        --dark_ccm CCC1
-        ccRgb.ccSf.n1           <= 1000;
-        ccRgb.ccSf.n2           <= -400;
-        ccRgb.ccSf.n3           <= -350;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 202)then
-        --light_ccm CCC1
-        ccRgb.ccSf.n1           <= 3500;
-        ccRgb.ccSf.n2           <= -750;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 203)then
-        --balance_ccm CCC1
-        ccRgb.ccSf.n1           <= 1000;
-        ccRgb.ccSf.n2           <= 450;
-        ccRgb.ccSf.n3           <= 500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 204)then
-        --dark_ccm CCC2
-        ccRgb.ccSf.n1           <= 1300;
-        ccRgb.ccSf.n2           <= -600;
-        ccRgb.ccSf.n3           <= -550;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 205)then
-        --light_ccm CCC2
-        ccRgb.ccSf.n1           <= 3000;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 206)then
-        --balance_ccm CCC2
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= 500;
-        ccRgb.ccSf.n3           <= 700;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 207)then
-        --dark_ccm CCC3
-        ccRgb.ccSf.n1           <= 1200;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -450;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 208)then
-        --light_ccm CCC3
-        ccRgb.ccSf.n1           <= 3000;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 209)then
-        --balance_ccm CCC3
-        ccRgb.ccSf.n1           <= 900;
-        ccRgb.ccSf.n2           <= 450;
-        ccRgb.ccSf.n3           <= 650;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 210)then
-        --dark_ccm CCC4
-        ccRgb.ccSf.n1           <= 1100;
-        ccRgb.ccSf.n2           <= -100;
-        ccRgb.ccSf.n3           <= -100;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 211)then
-        --light_ccm CCC4
-        ccRgb.ccSf.n1           <= 2000;
-        ccRgb.ccSf.n2           <= -850;
-        ccRgb.ccSf.n3           <= -850;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 212)then
-        --balance_ccm CCC4
-        ccRgb.ccSf.n1           <= 900;
-        ccRgb.ccSf.n2           <= 650;
-        ccRgb.ccSf.n3           <= 600;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 213)then
-        --dark_ccm CCC5
-        ccRgb.ccSf.n1           <= 1000;
-        ccRgb.ccSf.n2           <= -400;
-        ccRgb.ccSf.n3           <= -350;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 214)then
-        --light_ccm CCC5
-        ccRgb.ccSf.n1           <= 3000;
-        ccRgb.ccSf.n2           <= -500;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 215)then
-        --balance_ccm CCC5
-        ccRgb.ccSf.n1           <= 900;
-        ccRgb.ccSf.n2           <= 400;
-        ccRgb.ccSf.n3           <= 450;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 216)then
-        --dark_ccm CCC6
-        ccRgb.ccSf.n1           <= 900;
-        ccRgb.ccSf.n2           <= -400;
-        ccRgb.ccSf.n3           <= -350;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 217)then
-        --light_ccm CCC6
-        ccRgb.ccSf.n1           <= 4000;
-        ccRgb.ccSf.n2           <= -1000;
-        ccRgb.ccSf.n3           <= -1500;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 218)then
-        --balance_ccm CCC6
-        ccRgb.ccSf.n1           <= 1100;
-        ccRgb.ccSf.n2           <= 700;
-        ccRgb.ccSf.n3           <= 800;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 219)then
-        --dark_ccm CCC7
-        ccRgb.ccSf.n1           <= 1000;
-        ccRgb.ccSf.n2           <= -100;
-        ccRgb.ccSf.n3           <= -100;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 220)then
-        --light_ccm CCC7
-        ccRgb.ccSf.n1           <= 2000;
-        ccRgb.ccSf.n2           <= -750;
-        ccRgb.ccSf.n3           <= -1000;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 221)then
-        --balance_ccm CCC7
-        ccRgb.ccSf.n1           <= 1250;
-        ccRgb.ccSf.n2           <= 700;
-        ccRgb.ccSf.n3           <= 800;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 222)then
-        --dark_ccm CCC8
-        ccRgb.ccSf.n1           <= 500;
-        ccRgb.ccSf.n2           <= 200;
-        ccRgb.ccSf.n3           <= 100;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 223)then
-        --light_ccm CCC8
-        ccRgb.ccSf.n1           <= 2600;
-        ccRgb.ccSf.n2           <= -1200;
-        ccRgb.ccSf.n3           <= -1200;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 224)then
-        --balance_ccm CCC8
-        ccRgb.ccSf.n1           <= 2500;
-        ccRgb.ccSf.n2           <= 1400;
-        ccRgb.ccSf.n3           <= 1600;
-        ccRgb.ccSf.k1           <= to_sfixed(ccRgb.ccSf.n1,15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(ccRgb.ccSf.n2,15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(ccRgb.ccSf.n3,15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(ccRgb.ccSf.n2,15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(ccRgb.ccSf.n3,15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(ccRgb.ccSf.n1,15,-3);
-    oRgb.valid <= rgbSyncValid(6);
-    elsif(i_k_config_number = 300)then
-        ccRgb.ccSf.k1           <= to_sfixed(coefficients_in.k1(15 downto 0),15,-3); 
-        ccRgb.ccSf.k2           <= to_sfixed(coefficients_in.k2(15 downto 0),15,-3);
-        ccRgb.ccSf.k3           <= to_sfixed(coefficients_in.k3(15 downto 0),15,-3); 
-        ccRgb.ccSf.k4           <= to_sfixed(coefficients_in.k4(15 downto 0),15,-3); 
-        ccRgb.ccSf.k5           <= to_sfixed(coefficients_in.k5(15 downto 0),15,-3);
-        ccRgb.ccSf.k6           <= to_sfixed(coefficients_in.k6(15 downto 0),15,-3); 
-        ccRgb.ccSf.k7           <= to_sfixed(coefficients_in.k7(15 downto 0),15,-3); 
-        ccRgb.ccSf.k8           <= to_sfixed(coefficients_in.k8(15 downto 0),15,-3);
-        ccRgb.ccSf.k9           <= to_sfixed(coefficients_in.k9(15 downto 0),15,-3);
-    oRgb.valid <= rgbSyncValid(6);
+    if(i_k_config_number = 0)then
+        oRgb.valid              <= rgbSyncValid(6);
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0;
+        ccRgb.ccSf.k5           <= 1000;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 1000;
+     else
+        oRgb.valid              <= rgbSyncValid(6);
+        ccRgb.ccSf.k1           <= to_integer(unsigned(coefficients_in.k1(15 downto 0)));
+        ccRgb.ccSf.k2           <= to_integer(signed(coefficients_in.k2(15 downto 0)));
+        ccRgb.ccSf.k3           <= to_integer(signed(coefficients_in.k3(15 downto 0)));
+        ccRgb.ccSf.k4           <= to_integer(signed(coefficients_in.k4(15 downto 0)));
+        ccRgb.ccSf.k5           <= to_integer(unsigned(coefficients_in.k5(15 downto 0)));
+        ccRgb.ccSf.k6           <= to_integer(signed(coefficients_in.k6(15 downto 0)));
+        ccRgb.ccSf.k7           <= to_integer(signed(coefficients_in.k7(15 downto 0)));
+        ccRgb.ccSf.k8           <= to_integer(signed(coefficients_in.k8(15 downto 0)));
+        ccRgb.ccSf.k9           <= to_integer(unsigned(coefficients_in.k9(15 downto 0)));
+     end if;
     end if;
-    end if;
-end process ccSfConfig_P;
+end process;
 
-
-
-coefficients_out.k1 <= x"0000" & std_logic_vector(ccRgb.ccSf.k1(15 downto 0));
-coefficients_out.k2 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k2(15 downto 0));
-coefficients_out.k3 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k3(15 downto 0));
-coefficients_out.k4 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k4(15 downto 0));
-coefficients_out.k5 <= x"0000" & std_logic_vector(ccRgb.ccSf.k5(15 downto 0));
-coefficients_out.k6 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k6(15 downto 0));
-coefficients_out.k7 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k7(15 downto 0));
-coefficients_out.k8 <= x"FFFF" & std_logic_vector(ccRgb.ccSf.k8(15 downto 0));
-coefficients_out.k9 <= x"0000" & std_logic_vector(ccRgb.ccSf.k9(15 downto 0));
+--coefficients_out.k1 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k1(15 downto 0), 15));
+--coefficients_out.k2 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k2(15 downto 0), 15));
+--coefficients_out.k3 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k3(15 downto 0), 15));
+--coefficients_out.k4 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k4(15 downto 0), 15));
+--coefficients_out.k5 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k5(15 downto 0), 15));
+--coefficients_out.k6 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k6(15 downto 0), 15));
+--coefficients_out.k7 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k7(15 downto 0), 15));
+--coefficients_out.k8 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k8(15 downto 0), 15));
+--coefficients_out.k9 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k9(15 downto 0), 15));
 
 
 
@@ -1199,70 +182,89 @@ ccProdSf_P: process (clk)begin
         ccRgb.ccProdSf.k9       <= ccRgb.ccSf.k9  * ccRgb.rgbToSf.blue;
     end if;
 end process ccProdSf_P;
-ccProdToSn_P: process (clk)begin
+
+
+process (clk)begin
     if rising_edge(clk) then
-        ccRgb.ccProdToSn.k1     <= to_signed(ccRgb.ccProdSf.k1(21 downto 0), 22);
-        ccRgb.ccProdToSn.k2     <= to_signed(ccRgb.ccProdSf.k2(21 downto 0), 22);
-        ccRgb.ccProdToSn.k3     <= to_signed(ccRgb.ccProdSf.k3(21 downto 0), 22);
-        ccRgb.ccProdToSn.k4     <= to_signed(ccRgb.ccProdSf.k4(21 downto 0), 22);
-        ccRgb.ccProdToSn.k5     <= to_signed(ccRgb.ccProdSf.k5(21 downto 0), 22);
-        ccRgb.ccProdToSn.k6     <= to_signed(ccRgb.ccProdSf.k6(21 downto 0), 22);
-        ccRgb.ccProdToSn.k7     <= to_signed(ccRgb.ccProdSf.k7(21 downto 0), 22);
-        ccRgb.ccProdToSn.k8     <= to_signed(ccRgb.ccProdSf.k8(21 downto 0), 22);
-        ccRgb.ccProdToSn.k9     <= to_signed(ccRgb.ccProdSf.k9(21 downto 0), 22);
-    end if;
-end process ccProdToSn_P;
-process (clk,rst_l)begin
-    if rising_edge(clk) then
-      ccRgb.ccProdTrSn.k1        <= ccRgb.ccProdToSn.k1(21 downto 7);
-      ccRgb.ccProdTrSn.k2        <= ccRgb.ccProdToSn.k2(21 downto 7);
-      ccRgb.ccProdTrSn.k3        <= ccRgb.ccProdToSn.k3(21 downto 7);
-      ccRgb.ccProdTrSn.k4        <= ccRgb.ccProdToSn.k4(21 downto 7);
-      ccRgb.ccProdTrSn.k5        <= ccRgb.ccProdToSn.k5(21 downto 7);
-      ccRgb.ccProdTrSn.k6        <= ccRgb.ccProdToSn.k6(21 downto 7);
-      ccRgb.ccProdTrSn.k7        <= ccRgb.ccProdToSn.k7(21 downto 7);
-      ccRgb.ccProdTrSn.k8        <= ccRgb.ccProdToSn.k8(21 downto 7);
-      ccRgb.ccProdTrSn.k9        <= ccRgb.ccProdToSn.k9(21 downto 7);
-      ccRgb.rgbSnSum.red      <= resize(ccRgb.ccProdTrSn.k1, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k2, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k3, ADD_RESULT_WIDTH) + ROUND;
-      ccRgb.rgbSnSum.green    <= resize(ccRgb.ccProdTrSn.k4, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k5, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k6, ADD_RESULT_WIDTH) + ROUND;
-      ccRgb.rgbSnSum.blue     <= resize(ccRgb.ccProdTrSn.k7, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k8, ADD_RESULT_WIDTH) +
-                                 resize(ccRgb.ccProdTrSn.k9, ADD_RESULT_WIDTH) + ROUND;
-      ccRgb.rgbSnSumTr.red    <= ccRgb.rgbSnSum.red(ccRgb.rgbSnSum.red'left downto FRAC_BITS_TO_KEEP);
-      ccRgb.rgbSnSumTr.green  <= ccRgb.rgbSnSum.green(ccRgb.rgbSnSum.green'left downto FRAC_BITS_TO_KEEP);
-      ccRgb.rgbSnSumTr.blue   <= ccRgb.rgbSnSum.blue(ccRgb.rgbSnSum.blue'left downto FRAC_BITS_TO_KEEP);
+      ccRgb.rgbSnSum.red      <= ccRgb.ccProdSf.k1 + ccRgb.ccProdSf.k2 + ccRgb.ccProdSf.k3;
+      ccRgb.rgbSnSum.green    <= ccRgb.ccProdSf.k4 + ccRgb.ccProdSf.k5 + ccRgb.ccProdSf.k6;
+      ccRgb.rgbSnSum.blue     <= ccRgb.ccProdSf.k7 + ccRgb.ccProdSf.k8 + ccRgb.ccProdSf.k9;
     end if;
 end process;
+
+
+
+ccProdToSnP: process (clk)begin
+    if rising_edge(clk) then
+        ccRgb.rgbSnSumTr.red        <= to_signed(ccRgb.rgbSnSum.red, 24);
+        ccRgb.rgbSnSumTr.green      <= to_signed(ccRgb.rgbSnSum.green, 24);
+        ccRgb.rgbSnSumTr.blue       <= to_signed(ccRgb.rgbSnSum.blue, 24);
+    end if;
+end process ccProdToSnP;
+
+ccProdToSn_P: process (clk)begin
+    if rising_edge(clk) then
+        ccRgb.rgb_Tr.red        <= resize(ccRgb.rgbSnSumTr.red(19 downto 10), 10);
+        ccRgb.rgb_Tr.green      <= resize(ccRgb.rgbSnSumTr.green(19 downto 10), 10);
+        ccRgb.rgb_Tr.blue       <= resize(ccRgb.rgbSnSumTr.blue(19 downto 10), 10);
+    end if;
+end process ccProdToSn_P;
+
+
 rgbSnSumTr_P : process (clk, rst_l)
   begin
     if rising_edge(clk) then
-      if ccRgb.rgbSnSumTr.red(ROUND_RESULT_WIDTH-1) = '1' then
+      if ccRgb.rgbSnSumTr.red(23) = '1' then
         rgb_ccm.red <= (others => '0');
-      elsif unsigned(ccRgb.rgbSnSumTr.red(ROUND_RESULT_WIDTH-2 downto i_data_width)) /= 0 then
+      elsif unsigned(ccRgb.rgbSnSumTr.red(22 downto 20)) /= 0 then
         rgb_ccm.red <= (others => '1');
       else
-        rgb_ccm.red <= std_logic_vector(ccRgb.rgbSnSumTr.red(i_data_width-1 downto 0));
+        rgb_ccm.red <= std_logic_vector(ccRgb.rgbSnSumTr.red(19 downto 10));
       end if;
-      if ccRgb.rgbSnSumTr.green(ROUND_RESULT_WIDTH-1) = '1' then
+      if ccRgb.rgbSnSumTr.green(23) = '1' then
         rgb_ccm.green <= (others => '0');
-      elsif unsigned(ccRgb.rgbSnSumTr.green(ROUND_RESULT_WIDTH-2 downto i_data_width)) /= 0 then
+      elsif unsigned(ccRgb.rgbSnSumTr.green(22 downto 20)) /= 0 then
         rgb_ccm.green <= (others => '1');
       else
-        rgb_ccm.green <= std_logic_vector(ccRgb.rgbSnSumTr.green(i_data_width-1 downto 0));
+        rgb_ccm.green <= std_logic_vector(ccRgb.rgbSnSumTr.green(19 downto 10));
       end if;
-      if ccRgb.rgbSnSumTr.blue(ROUND_RESULT_WIDTH-1) = '1' then
+      if ccRgb.rgbSnSumTr.blue(23) = '1' then
         rgb_ccm.blue <= (others => '0');
-      elsif unsigned(ccRgb.rgbSnSumTr.blue(ROUND_RESULT_WIDTH-2 downto i_data_width)) /= 0 then
+      elsif unsigned(ccRgb.rgbSnSumTr.blue(22 downto 20)) /= 0 then
         rgb_ccm.blue <= (others => '1');
       else
-        rgb_ccm.blue <= std_logic_vector(ccRgb.rgbSnSumTr.blue(i_data_width-1 downto 0));
+        rgb_ccm.blue <= std_logic_vector(ccRgb.rgbSnSumTr.blue(19 downto 10));
       end if;
     end if;
 end process rgbSnSumTr_P;
+
+
+--process (clk,rst_l)begin
+--    if rising_edge(clk) then
+--      ccRgb.ccProdTrSn.k1        <= ccRgb.ccProdToSn.k1(23 downto 7);
+--      ccRgb.ccProdTrSn.k2        <= ccRgb.ccProdToSn.k2(23 downto 7);
+--      ccRgb.ccProdTrSn.k3        <= ccRgb.ccProdToSn.k3(23 downto 7);
+--      ccRgb.ccProdTrSn.k4        <= ccRgb.ccProdToSn.k4(23 downto 7);
+--      ccRgb.ccProdTrSn.k5        <= ccRgb.ccProdToSn.k5(23 downto 7);
+--      ccRgb.ccProdTrSn.k6        <= ccRgb.ccProdToSn.k6(23 downto 7);
+--      ccRgb.ccProdTrSn.k7        <= ccRgb.ccProdToSn.k7(23 downto 7);
+--      ccRgb.ccProdTrSn.k8        <= ccRgb.ccProdToSn.k8(23 downto 7);
+--      ccRgb.ccProdTrSn.k9        <= ccRgb.ccProdToSn.k9(23 downto 7);
+--      ccRgb.rgbSnSum.red      <= resize(ccRgb.ccProdTrSn.k1, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k2, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k3, 17);
+--      ccRgb.rgbSnSum.green    <= resize(ccRgb.ccProdTrSn.k4, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k5, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k6, 17);
+--      ccRgb.rgbSnSum.blue     <= resize(ccRgb.ccProdTrSn.k7, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k8, 17) +
+--                                 resize(ccRgb.ccProdTrSn.k9, 17);
+--      ccRgb.rgbSnSumTr.red    <= ccRgb.rgbSnSum.red(ccRgb.rgbSnSum.red'left downto FRAC_BITS_TO_KEEP-3);
+--      ccRgb.rgbSnSumTr.green  <= ccRgb.rgbSnSum.green(ccRgb.rgbSnSum.green'left downto FRAC_BITS_TO_KEEP-3);
+--      ccRgb.rgbSnSumTr.blue   <= ccRgb.rgbSnSum.blue(ccRgb.rgbSnSum.blue'left downto FRAC_BITS_TO_KEEP-3);
+--    end if;
+--end process;
+
 process (clk,rst_l)begin
     if rising_edge(clk) then
         oRgb.red   <= rgb_ccm.red;

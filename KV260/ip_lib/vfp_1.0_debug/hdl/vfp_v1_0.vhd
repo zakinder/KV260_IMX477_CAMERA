@@ -252,58 +252,58 @@ end process;
 
 
 
+--
+--recolor_space_2_inst: pixel_localization_9x9_window
+--generic map(
+--    img_width                   => FRAME_WIDTH,
+--    i_data_width                => FRAME_PIXEL_DEPTH)
+--port map(
+--    clk                         => ivideo_aclk,
+--    reset                       => ivideo_aresetn,
+--    txCord                      => txCord,
+--    neighboring_pixel_threshold => config_number_17,
+--    iRgb                        => rgb_to_ccm,
+--    oRgb                        => ccc3);
+--
+--
+--rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
+--generic map (
+--    contrast_val      => to_sfixed(1.15,15,-3),
+--    exposer_val       => 0)
+--port map (                  
+--    clk               => ivideo_aclk,
+--    rst_l             => ivideo_aresetn,
+--    iRgb              => rgb_to_ccm,
+--    oRgb              => ccc1);
+--    
+--rgb_range_1_inst: rgb_range
+--generic map (
+--    i_data_width       => i_data_width)
+--port map (                  
+--    clk                => ivideo_aclk,
+--    reset              => ivideo_aresetn,
+--    iRgb               => rgb_to_ccm,
+--    oRgb               => ccc2);
 
-recolor_space_2_inst: pixel_localization_9x9_window
-generic map(
-    img_width                   => FRAME_WIDTH,
-    i_data_width                => FRAME_PIXEL_DEPTH)
-port map(
-    clk                         => ivideo_aclk,
-    reset                       => ivideo_aresetn,
-    txCord                      => txCord,
-    neighboring_pixel_threshold => config_number_17,
-    iRgb                        => rgb_to_ccm,
-    oRgb                        => ccc3);
-
-
-rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
-generic map (
-    contrast_val      => to_sfixed(1.15,15,-3),
-    exposer_val       => 0)
-port map (                  
-    clk               => ivideo_aclk,
-    rst_l             => ivideo_aresetn,
-    iRgb              => rgb_to_ccm,
-    oRgb              => ccc1);
-    
-rgb_range_1_inst: rgb_range
-generic map (
-    i_data_width       => i_data_width)
-port map (                  
-    clk                => ivideo_aclk,
-    reset              => ivideo_aresetn,
-    iRgb               => rgb_to_ccm,
-    oRgb               => ccc2);
-
-
-dark_ccm_inst  : ccm
-port map(
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_1,
-    coefficients_in       => coefficients_in_1,
-    coefficients_out      => coefficients_out_1,
-    iRgb                  => ccc1,
-    oRgb                  => ccm2);
-light_ccm_inst  : ccm
-port map(
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_2,
-    coefficients_in       => coefficients_in_2,
-    coefficients_out      => coefficients_out_2,
-    iRgb                  => ccm2,
-    oRgb                  => ccm3);
+--
+--dark_ccm_inst  : ccm
+--port map(
+--    clk                   => ivideo_aclk,
+--    rst_l                 => ivideo_aresetn,
+--    k_config_number       => k_config_number_1,
+--    coefficients_in       => coefficients_in_1,
+--    coefficients_out      => coefficients_out_1,
+--    iRgb                  => rgb_to_ccm,
+--    oRgb                  => ccm2);
+--light_ccm_inst  : ccm
+--port map(
+--    clk                   => ivideo_aclk,
+--    rst_l                 => ivideo_aresetn,
+--    k_config_number       => k_config_number_2,
+--    coefficients_in       => coefficients_in_2,
+--    coefficients_out      => coefficients_out_2,
+--    iRgb                  => ccm2,
+--    oRgb                  => ccm3);
 balance_ccm_inst  : ccm
 port map(
     clk                   => ivideo_aclk,
@@ -311,46 +311,46 @@ port map(
     k_config_number       => k_config_number_3,
     coefficients_in       => coefficients_in_3,
     coefficients_out      => coefficients_out_3,
-    iRgb                  => ccm3,
+    iRgb                  => rgb_to_ccm,
     oRgb                  => ccm4);
 
 
 
-process (ivideo_aclk)begin
-    if rising_edge(ivideo_aclk) then
-    if(config_number_15 = 0) then
-        rgb_fr_ccm           <= rgb_to_ccm;
-    elsif(config_number_15 = 1)then
-        rgb_fr_ccm           <= ccm2;
-    elsif(config_number_15 = 2)then
-        rgb_fr_ccm           <= ccm3;
-    elsif(config_number_15 = 3)then
-        rgb_fr_ccm           <= ccm4;
-    elsif(config_number_15 = 4)then
-        rgb_fr_ccm           <= ccc1;
-    elsif(config_number_15 = 5)then
-        rgb_fr_ccm           <= ccc2;
-    elsif(config_number_15 = 6)then
-        rgb_fr_ccm           <= ccc3;
-    else
-        rgb_fr_ccm           <= rgb_to_ccm;
-    end if;
-    end if;
-end process;
+--process (ivideo_aclk)begin
+--    if rising_edge(ivideo_aclk) then
+--    if(config_number_15 = 0) then
+--        rgb_fr_ccm           <= rgb_to_ccm;
+--    elsif(config_number_15 = 1)then
+--        rgb_fr_ccm           <= ccm2;
+--    elsif(config_number_15 = 2)then
+--        rgb_fr_ccm           <= ccm3;
+--    elsif(config_number_15 = 3)then
+--        rgb_fr_ccm           <= ccm4;
+--    elsif(config_number_15 = 4)then
+--        rgb_fr_ccm           <= ccc1;
+--    elsif(config_number_15 = 5)then
+--        rgb_fr_ccm           <= ccc2;
+--    elsif(config_number_15 = 6)then
+--        rgb_fr_ccm           <= ccc3;
+--    else
+--        rgb_fr_ccm           <= rgb_to_ccm;
+--    end if;
+--    end if;
+--end process;
 
 
 
    ovideo_tstrb           <= ivideo_tstrb;
    ovideo_tkeep           <= ivideo_tkeep;
-   ovideo_tdata           <= "00" & ccm2.red & ccm2.green & ccm2.blue;
-   ovideo_tvalid          <= ccm2.valid;
-   ovideo_tuser           <= ccm2.sof;
-   ovideo_tlast           <= ccm2.eol;
-   rgb_fr_plw_red         <= ccm2.red;
-   rgb_fr_plw_gre         <= ccm2.green;
-   rgb_fr_plw_blu         <= ccm2.blue;
-   rgb_fr_plw_sof         <= ccm2.sof;
-   rgb_fr_plw_eol         <= ccm2.eol;
-   rgb_fr_plw_eof         <= ccm2.eof;
-   rgb_fr_plw_val         <= ccm2.valid;
+   ovideo_tdata           <= "00" & ccm4.red & ccm4.green & ccm4.blue;
+   ovideo_tvalid          <= ccm4.valid;
+   ovideo_tuser           <= ccm4.sof;
+   ovideo_tlast           <= ccm4.eol;
+   rgb_fr_plw_red         <= ccm4.red;
+   rgb_fr_plw_gre         <= ccm4.green;
+   rgb_fr_plw_blu         <= ccm4.blue;
+   rgb_fr_plw_sof         <= ccm4.sof;
+   rgb_fr_plw_eol         <= ccm4.eol;
+   rgb_fr_plw_eof         <= ccm4.eof;
+   rgb_fr_plw_val         <= ccm4.valid;
 end arch_imp;
