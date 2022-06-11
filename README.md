@@ -1,2 +1,2 @@
-# KRIA_KV260_IMX219_CAMERA
-KRIA KV260 IMX219 CAMERA
+# IMX219 and IMX417 Cameras using Raspberry Pi interface on the Kria KV260 Development Board.
+
