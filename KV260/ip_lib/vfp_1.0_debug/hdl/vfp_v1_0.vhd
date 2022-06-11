@@ -9,7 +9,7 @@ use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
         -- System Revision
-        revision_number           : std_logic_vector(31 downto 0) := x"06062022";
+        revision_number           : std_logic_vector(31 downto 0) := x"06112022";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
@@ -160,18 +160,16 @@ port map (
     s_axis_tlast                    => ivideo_tlast,
     s_axis_tuser                    => ivideo_tuser,
     s_axis_tvalid                   => ivideo_tvalid,
+    config_number_19                => config_number_19,
     oCord_x                         => cord_x,
     oCord_y                         => cord_y,
     oRgb                            => rgb_to_ccm);
-    
-    
-    rgb_fr_plw_xcnt <= std_logic_vector(to_unsigned(rgb_to_ccm.xcnt, 16));
-    rgb_fr_plw_ycnt <= std_logic_vector(to_unsigned(rgb_to_ccm.ycnt, 16));
-    txCord.x <= cord_x;
-    txCord.y <= cord_y;
-    crd_x    <= cord_x;
-    crd_y    <= cord_y;
-    
+    rgb_fr_plw_xcnt     <= std_logic_vector(to_unsigned(rgb_to_ccm.xcnt, 16));
+    rgb_fr_plw_ycnt     <= std_logic_vector(to_unsigned(rgb_to_ccm.ycnt, 16));
+    txCord.x            <= cord_x;
+    txCord.y            <= cord_y;
+    crd_x               <= cord_x;
+    crd_y               <= cord_y;
     k_config_number_1   <= to_integer((unsigned(wr_regs.cfigReg11)));
     k_config_number_2   <= to_integer((unsigned(wr_regs.cfigReg12)));
     k_config_number_3   <= to_integer((unsigned(wr_regs.cfigReg13)));
@@ -181,9 +179,6 @@ port map (
     config_number_17    <= to_integer((unsigned(wr_regs.cfigReg17)));
     config_number_18    <= to_integer((unsigned(wr_regs.cfigReg18)));
     config_number_19    <= to_integer((unsigned(wr_regs.cfigReg19)));
-    
-    
-    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
     if(config_number_16 = 0) then
@@ -246,12 +241,6 @@ process (ivideo_aclk)begin
     end if;
     end if;
 end process;
-
-
-
-
-
-
 --
 --recolor_space_2_inst: pixel_localization_9x9_window
 --generic map(
@@ -284,7 +273,6 @@ end process;
 --    reset              => ivideo_aresetn,
 --    iRgb               => rgb_to_ccm,
 --    oRgb               => ccc2);
-
 --
 --dark_ccm_inst  : ccm
 --port map(
@@ -308,14 +296,11 @@ balance_ccm_inst  : ccm
 port map(
     clk                   => ivideo_aclk,
     rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_3,
-    coefficients_in       => coefficients_in_3,
-    coefficients_out      => coefficients_out_3,
+    k_config_number       => k_config_number_1,
+    coefficients_in       => coefficients_in_1,
+    coefficients_out      => coefficients_out_1,
     iRgb                  => rgb_to_ccm,
     oRgb                  => ccm4);
-
-
-
 --process (ivideo_aclk)begin
 --    if rising_edge(ivideo_aclk) then
 --    if(config_number_15 = 0) then
@@ -337,9 +322,6 @@ port map(
 --    end if;
 --    end if;
 --end process;
-
-
-
    ovideo_tstrb           <= ivideo_tstrb;
    ovideo_tkeep           <= ivideo_tkeep;
    ovideo_tdata           <= "00" & ccm4.red & ccm4.green & ccm4.blue;

@@ -28,6 +28,7 @@ entity vfp_axi_stream is
     s_axis_tlast                    : in std_logic;
     s_axis_tuser                    : in std_logic;
     s_axis_tvalid                   : in std_logic;
+    config_number_19                : in integer;
     oCord_x                         : out std_logic_vector(15 downto 0);
     oCord_y                         : out std_logic_vector(15 downto 0);
     oRgb                            : out channel);
@@ -160,12 +161,35 @@ process (s_axis_aclk) begin
     end if;
 end process;
 
-   oRgb.red         <= vdata(29 downto 20);
-   oRgb.green       <= vdata(19 downto 10);
-   oRgb.blue        <= vdata(9 downto 0);
    oRgb.ycnt        <= Y2Cont;
    oRgb.xcnt        <= X1Cont;
    
-   
+process(config_number_19,vdata)begin
+    if(config_number_19=0)then
+       oRgb.red         <= vdata(9 downto 0);
+       oRgb.green       <= vdata(29 downto 20);
+       oRgb.blue        <= vdata(19 downto 10);
+    elsif(config_number_19=1) then
+       oRgb.red         <= vdata(9 downto 0);
+       oRgb.green       <= vdata(19 downto 10);
+       oRgb.blue        <= vdata(29 downto 20);
+    elsif(config_number_19=2)then
+       oRgb.red         <= vdata(29 downto 20);
+       oRgb.green       <= vdata(9 downto 0);
+       oRgb.blue        <= vdata(19 downto 10);
+    elsif(config_number_19=3)then
+       oRgb.red         <= vdata(19 downto 10);
+       oRgb.green       <= vdata(9 downto 0);
+       oRgb.blue        <= vdata(29 downto 20);
+    elsif(config_number_19=4)then
+       oRgb.red         <= vdata(29 downto 20);
+       oRgb.green       <= vdata(19 downto 10);
+       oRgb.blue        <= vdata(9 downto 0);
+    else
+       oRgb.red         <= vdata(19 downto 10);
+       oRgb.green       <= vdata(29 downto 20);
+       oRgb.blue        <= vdata(9 downto 0);
+    end if;
+end process;
    
 end arch_imp;

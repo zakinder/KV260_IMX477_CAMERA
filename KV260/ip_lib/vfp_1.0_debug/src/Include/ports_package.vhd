@@ -478,6 +478,7 @@ component vfp_axi_stream is
     s_axis_tlast                    : in std_logic;
     s_axis_tuser                    : in std_logic;
     s_axis_tvalid                   : in std_logic;
+    config_number_19                : in integer;
     oCord_x                         : out std_logic_vector(15 downto 0);
     oCord_y                         : out std_logic_vector(15 downto 0);
     oRgb                            : out channel);

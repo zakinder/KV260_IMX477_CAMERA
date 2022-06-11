@@ -8,7 +8,6 @@
 -- This file instantiation
 --
 ---------------------------------------------------------------------------------
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -109,15 +108,14 @@ process (clk)begin
     end if;
 end process;
 
-
 process (clk)begin
     if rising_edge(clk) then
-        oRgb.eol <= rgbSyncEol(6);
-        oRgb.sof <= rgbSyncSof(6);
-        oRgb.eof <= rgbSyncEof(6);
+        oRgb.eol     <= rgbSyncEol(6);
+        oRgb.sof     <= rgbSyncSof(6);
+        oRgb.eof     <= rgbSyncEof(6);
+        oRgb.valid   <= rgbSyncValid(6);
     end if;
 end process;
-
 
 ccSfConfig_P: process (clk,rst_l)begin
     if rst_l = '0' then
@@ -132,18 +130,201 @@ ccSfConfig_P: process (clk,rst_l)begin
         ccRgb.ccSf.k9           <= 1000;
     elsif rising_edge(clk) then
     if(i_k_config_number = 0)then
-        oRgb.valid              <= rgbSyncValid(6);
-        ccRgb.ccSf.k1           <= 1000;
-        ccRgb.ccSf.k2           <= 0;
-        ccRgb.ccSf.k3           <= 0;
-        ccRgb.ccSf.k4           <= 0;
-        ccRgb.ccSf.k5           <= 1000;
-        ccRgb.ccSf.k6           <= 0;
-        ccRgb.ccSf.k7           <= 0;
-        ccRgb.ccSf.k8           <= 0;
-        ccRgb.ccSf.k9           <= 1000;
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= 0;
+        ccRgb.ccSf.n3           <= 0;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 1) then
+        ccRgb.ccSf.n1           <= 4000;
+        ccRgb.ccSf.n2           <= 0;
+        ccRgb.ccSf.n3           <= 0;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 2) then
+        ccRgb.ccSf.n1           <= 5000;
+        ccRgb.ccSf.n2           <= 0;
+        ccRgb.ccSf.n3           <= 0;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 3) then
+        ccRgb.ccSf.n1           <= 6000;
+        ccRgb.ccSf.n2           <= 0;
+        ccRgb.ccSf.n3           <= 0;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 4) then
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= -1000;
+        ccRgb.ccSf.n3           <= -1000;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 5) then
+        ccRgb.ccSf.n1           <= 4000;
+        ccRgb.ccSf.n2           <= -1500;
+        ccRgb.ccSf.n3           <= -1500;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 6) then
+        ccRgb.ccSf.n1           <= 5000;
+        ccRgb.ccSf.n2           <= -2000;
+        ccRgb.ccSf.n3           <= -2000;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 7) then
+        ccRgb.ccSf.n1           <= 4000;
+        ccRgb.ccSf.n2           <= -1000;
+        ccRgb.ccSf.n3           <= -1000;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 8) then
+        ccRgb.ccSf.n1           <= 5000;
+        ccRgb.ccSf.n2           <= -1500;
+        ccRgb.ccSf.n3           <= -1500;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 9) then
+        ccRgb.ccSf.n1           <= 6000;
+        ccRgb.ccSf.n2           <= -2000;
+        ccRgb.ccSf.n3           <= -2000;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 10) then
+        ccRgb.ccSf.n1           <= 6000;
+        ccRgb.ccSf.n2           <= -2000;
+        ccRgb.ccSf.n3           <= -2000;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= ccRgb.ccSf.n2; 
+        ccRgb.ccSf.k8           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 11) then
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= -500;
+        ccRgb.ccSf.n3           <= -500;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= -1000; 
+        ccRgb.ccSf.k8           <= -1000;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 12) then
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= -750;
+        ccRgb.ccSf.n3           <= -750;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= -1000; 
+        ccRgb.ccSf.k8           <= -1000;
+        ccRgb.ccSf.k9           <= ccRgb.ccSf.n1;
+     elsif(i_k_config_number = 13) then
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= -750;
+        ccRgb.ccSf.n3           <= -750;
+        ccRgb.ccSf.k1           <= ccRgb.ccSf.n1; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= -1000; 
+        ccRgb.ccSf.k8           <= -1000;
+        ccRgb.ccSf.k9           <= 2000;
+     elsif(i_k_config_number = 14) then
+        ccRgb.ccSf.n1           <= 3000;
+        ccRgb.ccSf.n2           <= -750;
+        ccRgb.ccSf.n3           <= -750;
+        ccRgb.ccSf.k1           <= 2500; 
+        ccRgb.ccSf.k2           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k3           <= ccRgb.ccSf.n3;
+        ccRgb.ccSf.k4           <= ccRgb.ccSf.n3; 
+        ccRgb.ccSf.k5           <= ccRgb.ccSf.n1;
+        ccRgb.ccSf.k6           <= ccRgb.ccSf.n2;
+        ccRgb.ccSf.k7           <= -1000; 
+        ccRgb.ccSf.k8           <= -1000;
+        ccRgb.ccSf.k9           <= 2000;
      else
-        oRgb.valid              <= rgbSyncValid(6);
         ccRgb.ccSf.k1           <= to_integer(unsigned(coefficients_in.k1(15 downto 0)));
         ccRgb.ccSf.k2           <= to_integer(signed(coefficients_in.k2(15 downto 0)));
         ccRgb.ccSf.k3           <= to_integer(signed(coefficients_in.k3(15 downto 0)));
@@ -156,19 +337,19 @@ ccSfConfig_P: process (clk,rst_l)begin
      end if;
     end if;
 end process;
-
---coefficients_out.k1 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k1(15 downto 0), 15));
---coefficients_out.k2 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k2(15 downto 0), 15));
---coefficients_out.k3 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k3(15 downto 0), 15));
---coefficients_out.k4 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k4(15 downto 0), 15));
---coefficients_out.k5 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k5(15 downto 0), 15));
---coefficients_out.k6 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k6(15 downto 0), 15));
---coefficients_out.k7 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k7(15 downto 0), 15));
---coefficients_out.k8 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k8(15 downto 0), 15));
---coefficients_out.k9 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k9(15 downto 0), 15));
-
-
-
+process (clk)begin
+    if rising_edge(clk) then
+        coefficients_out.k1 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k1,16));
+        coefficients_out.k2 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k2,16));
+        coefficients_out.k3 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k3,16));
+        coefficients_out.k4 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k4,16));
+        coefficients_out.k5 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k5,16));
+        coefficients_out.k6 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k6,16));
+        coefficients_out.k7 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k7,16));
+        coefficients_out.k8 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k8,16));
+        coefficients_out.k9 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k9,16));
+    end if;
+end process;
 ccProdSf_P: process (clk)begin
     if rising_edge(clk) then
         ccRgb.ccProdSf.k1       <= ccRgb.ccSf.k1  * ccRgb.rgbToSf.red;
@@ -182,8 +363,6 @@ ccProdSf_P: process (clk)begin
         ccRgb.ccProdSf.k9       <= ccRgb.ccSf.k9  * ccRgb.rgbToSf.blue;
     end if;
 end process ccProdSf_P;
-
-
 process (clk)begin
     if rising_edge(clk) then
       ccRgb.rgbSnSum.red      <= ccRgb.ccProdSf.k1 + ccRgb.ccProdSf.k2 + ccRgb.ccProdSf.k3;
@@ -191,9 +370,6 @@ process (clk)begin
       ccRgb.rgbSnSum.blue     <= ccRgb.ccProdSf.k7 + ccRgb.ccProdSf.k8 + ccRgb.ccProdSf.k9;
     end if;
 end process;
-
-
-
 ccProdToSnP: process (clk)begin
     if rising_edge(clk) then
         ccRgb.rgbSnSumTr.red        <= to_signed(ccRgb.rgbSnSum.red, 24);
@@ -201,7 +377,6 @@ ccProdToSnP: process (clk)begin
         ccRgb.rgbSnSumTr.blue       <= to_signed(ccRgb.rgbSnSum.blue, 24);
     end if;
 end process ccProdToSnP;
-
 ccProdToSn_P: process (clk)begin
     if rising_edge(clk) then
         ccRgb.rgb_Tr.red        <= resize(ccRgb.rgbSnSumTr.red(19 downto 10), 10);
@@ -209,9 +384,7 @@ ccProdToSn_P: process (clk)begin
         ccRgb.rgb_Tr.blue       <= resize(ccRgb.rgbSnSumTr.blue(19 downto 10), 10);
     end if;
 end process ccProdToSn_P;
-
-
-rgbSnSumTr_P : process (clk, rst_l)
+rgbSnSumTr_P : process (clk)
   begin
     if rising_edge(clk) then
       if ccRgb.rgbSnSumTr.red(23) = '1' then
@@ -237,35 +410,7 @@ rgbSnSumTr_P : process (clk, rst_l)
       end if;
     end if;
 end process rgbSnSumTr_P;
-
-
---process (clk,rst_l)begin
---    if rising_edge(clk) then
---      ccRgb.ccProdTrSn.k1        <= ccRgb.ccProdToSn.k1(23 downto 7);
---      ccRgb.ccProdTrSn.k2        <= ccRgb.ccProdToSn.k2(23 downto 7);
---      ccRgb.ccProdTrSn.k3        <= ccRgb.ccProdToSn.k3(23 downto 7);
---      ccRgb.ccProdTrSn.k4        <= ccRgb.ccProdToSn.k4(23 downto 7);
---      ccRgb.ccProdTrSn.k5        <= ccRgb.ccProdToSn.k5(23 downto 7);
---      ccRgb.ccProdTrSn.k6        <= ccRgb.ccProdToSn.k6(23 downto 7);
---      ccRgb.ccProdTrSn.k7        <= ccRgb.ccProdToSn.k7(23 downto 7);
---      ccRgb.ccProdTrSn.k8        <= ccRgb.ccProdToSn.k8(23 downto 7);
---      ccRgb.ccProdTrSn.k9        <= ccRgb.ccProdToSn.k9(23 downto 7);
---      ccRgb.rgbSnSum.red      <= resize(ccRgb.ccProdTrSn.k1, 17) +
---                                 resize(ccRgb.ccProdTrSn.k2, 17) +
---                                 resize(ccRgb.ccProdTrSn.k3, 17);
---      ccRgb.rgbSnSum.green    <= resize(ccRgb.ccProdTrSn.k4, 17) +
---                                 resize(ccRgb.ccProdTrSn.k5, 17) +
---                                 resize(ccRgb.ccProdTrSn.k6, 17);
---      ccRgb.rgbSnSum.blue     <= resize(ccRgb.ccProdTrSn.k7, 17) +
---                                 resize(ccRgb.ccProdTrSn.k8, 17) +
---                                 resize(ccRgb.ccProdTrSn.k9, 17);
---      ccRgb.rgbSnSumTr.red    <= ccRgb.rgbSnSum.red(ccRgb.rgbSnSum.red'left downto FRAC_BITS_TO_KEEP-3);
---      ccRgb.rgbSnSumTr.green  <= ccRgb.rgbSnSum.green(ccRgb.rgbSnSum.green'left downto FRAC_BITS_TO_KEEP-3);
---      ccRgb.rgbSnSumTr.blue   <= ccRgb.rgbSnSum.blue(ccRgb.rgbSnSum.blue'left downto FRAC_BITS_TO_KEEP-3);
---    end if;
---end process;
-
-process (clk,rst_l)begin
+process (clk)begin
     if rising_edge(clk) then
         oRgb.red   <= rgb_ccm.red;
         oRgb.green <= rgb_ccm.green;
