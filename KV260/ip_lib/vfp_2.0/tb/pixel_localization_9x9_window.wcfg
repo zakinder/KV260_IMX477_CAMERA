@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="video_process_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constants_package" />
+            <top_module name="fixed_float_types" />
+            <top_module name="fixed_pkg" />
+            <top_module name="float_pkg" />
+            <top_module name="ports_package" />
+            <top_module name="tb_pkg" />
+            <top_module name="vfp_pkg" />
+            <top_module name="video_process_tb" />
+            <top_module name="vpf_records" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="10,530.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="15,526.001 ns"></ZoomEndTime>
+      <Cursor1Time time="11,920.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="381"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rst_l" type="logic">
+      <obj_property name="ElementShortName">rst_l</obj_property>
+      <obj_property name="ObjectShortName">rst_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/iRgb" type="array">
+      <obj_property name="ElementShortName">iRgb</obj_property>
+      <obj_property name="ObjectShortName">iRgb</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/kls" type="array">
+      <obj_property name="ElementShortName">kls</obj_property>
+      <obj_property name="ObjectShortName">kls</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/oRgb" type="array">
+      <obj_property name="ElementShortName">oRgb</obj_property>
+      <obj_property name="ObjectShortName">oRgb</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncValid" type="array">
+      <obj_property name="ElementShortName">rgbSyncValid[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgbSyncValid[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncEol" type="array">
+      <obj_property name="ElementShortName">rgbSyncEol[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgbSyncEol[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncSof" type="array">
+      <obj_property name="ElementShortName">rgbSyncSof[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgbSyncSof[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncEof" type="array">
+      <obj_property name="ElementShortName">rgbSyncEof[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgbSyncEof[31:0]</obj_property>
+   </wvobject>
+</wave_config>
