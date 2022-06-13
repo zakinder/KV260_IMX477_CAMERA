@@ -242,7 +242,6 @@ process (ivideo_aclk)begin
     end if;
     end if;
 end process;
-
 recolor_space_2_inst: pixel_localization_9x9_window
 generic map(
     img_width                   => FRAME_WIDTH,
@@ -254,7 +253,6 @@ port map(
     neighboring_pixel_threshold => config_number_17,
     iRgb                        => rgb_to_ccm,
     oRgb                        => ccc6);
-
 rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
 generic map (
     contrast_val          => to_sfixed(1.15,15,-3),
@@ -264,28 +262,24 @@ port map (
     rst_l                 => ivideo_aresetn,
     iRgb                  => rgb_to_ccm,
     oRgb                  => ccc1);
-
 rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.20,15,-3),
+    contrast_val          => to_sfixed(1.17,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
     rst_l                 => ivideo_aresetn,
-    iRgb                  => rgb_to_ccm,
+    iRgb                  => ccc2,
     oRgb                  => ccc7);
-    
 rgb_contrast_brightness_3_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.25,15,-3),
+    contrast_val          => to_sfixed(1.18,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
     rst_l                 => ivideo_aresetn,
-    iRgb                  => rgb_to_ccm,
+    iRgb                  => ccc2,
     oRgb                  => ccc8);
-    
-    
 dark_ccm_inst  : ccm
 port map(
     clk                   => ivideo_aclk,

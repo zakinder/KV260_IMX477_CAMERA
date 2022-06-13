@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Fri Jun 10 00:44:03 2022
+| Date         : Sun Jun 12 21:11:23 2022
 | Host         : ASUS running 64-bit major release  (build 9200)
 | Command      : report_ip_status
 ------------------------------------------------------------------------------------
@@ -47,27 +47,27 @@ Project IP Instances
 |                                      |            |                     |           | Logic Analyzer)    | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 12)     |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_mipi_csi2_rx_subsyst_0_0 | Up-to-date | No changes required |  *(8)     | MIPI CSI-2 Rx      | 5.1     | 5.1 (Rev. 5)  | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_ila_1_1                  | Up-to-date | No changes required |  *(8)     | ILA (Integrated    | 6.2     | 6.2 (Rev. 12) | Included   | xck26-sfvc784-2LV-c  |
+|                                      |            |                     |           | Logic Analyzer)    | (Rev.   |               |            |                      |
+|                                      |            |                     |           |                    | 12)     |               |            |                      |
++--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
+| kv260_video_mipi_csi2_rx_subsyst_0_0 | Up-to-date | No changes required |  *(9)     | MIPI CSI-2 Rx      | 5.1     | 5.1 (Rev. 5)  | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           | Subsystem          | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 5)      |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_ps8_0_axi_periph_0       | Up-to-date | No changes required |  *(9)     | AXI Interconnect   | 2.1     | 2.1 (Rev. 27) | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_ps8_0_axi_periph_0       | Up-to-date | No changes required |  *(10)    | AXI Interconnect   | 2.1     | 2.1 (Rev. 27) | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           |                    | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 27)     |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_rst_ps8_0_249M_0         | Up-to-date | No changes required |  *(10)    | Processor System   | 5.0     | 5.0 (Rev. 13) | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_rst_ps8_0_249M_0         | Up-to-date | No changes required |  *(11)    | Processor System   | 5.0     | 5.0 (Rev. 13) | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           | Reset              | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 13)     |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_v_axi4s_vid_out_0_0      | Up-to-date | No changes required |  *(11)    | AXI4-Stream to     | 4.0     | 4.0 (Rev. 14) | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_v_axi4s_vid_out_0_0      | Up-to-date | No changes required |  *(12)    | AXI4-Stream to     | 4.0     | 4.0 (Rev. 14) | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           | Video Out          | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 14)     |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_v_demosaic_0_0           | Up-to-date | No changes required |  *(12)    | Sensor Demosaic    | 1.1     | 1.1 (Rev. 5)  | Included   | xck26-sfvc784-2LV-c  |
-|                                      |            |                     |           |                    | (Rev.   |               |            |                      |
-|                                      |            |                     |           |                    | 5)      |               |            |                      |
-+--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_v_gamma_lut_0_0          | Up-to-date | No changes required |  *(13)    | Gamma LUT          | 1.1     | 1.1 (Rev. 5)  | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_v_demosaic_0_0           | Up-to-date | No changes required |  *(13)    | Sensor Demosaic    | 1.1     | 1.1 (Rev. 5)  | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           |                    | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 5)      |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
@@ -79,9 +79,9 @@ Project IP Instances
 |                                      |            |                     |           | Generator          | (Rev.   |               |            |                      |
 |                                      |            |                     |           |                    | 1)      |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
-| kv260_video_vfp_0_0                  | Up-to-date | No changes required | Change    | vfp_v1.0           | 1.0     | 1.0 (Rev. 46) | Included   | xck26-sfvc784-2LV-c  |
+| kv260_video_vfp_0_0                  | Up-to-date | No changes required | Change    | vfp_v2.0           | 2.0     | 2.0 (Rev. 3)  | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     | Log not   |                    | (Rev.   |               |            |                      |
-|                                      |            |                     | available |                    | 46)     |               |            |                      |
+|                                      |            |                     | available |                    | 3)      |               |            |                      |
 +--------------------------------------+------------+---------------------+-----------+--------------------+---------+---------------+------------+----------------------+
 | kv260_video_xlconcat_0_0             | Up-to-date | No changes required |  *(16)    | Concat             | 2.1     | 2.1 (Rev. 4)  | Included   | xck26-sfvc784-2LV-c  |
 |                                      |            |                     |           |                    | (Rev.   |               |            |                      |
@@ -245,12 +245,12 @@ Project IP Instances
 *(5) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/clk_wiz_v6_0/doc/clk_wiz_v6_0_changelog.txt
 *(6) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/ila_v6_2/doc/ila_v6_2_changelog.txt
 *(7) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/ila_v6_2/doc/ila_v6_2_changelog.txt
-*(8) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/mipi_csi2_rx_subsystem_v5_1/doc/mipi_csi2_rx_subsystem_v5_1_changelog.txt
-*(9) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/axi_interconnect_v2_1/doc/axi_interconnect_v2_1_changelog.txt
-*(10) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/proc_sys_reset_v5_0/doc/proc_sys_reset_v5_0_changelog.txt
-*(11) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_axi4s_vid_out_v4_0/doc/v_axi4s_vid_out_v4_0_changelog.txt
-*(12) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_demosaic_v1_1/doc/v_demosaic_v1_1_changelog.txt
-*(13) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_gamma_lut_v1_1/doc/v_gamma_lut_v1_1_changelog.txt
+*(8) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/ila_v6_2/doc/ila_v6_2_changelog.txt
+*(9) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/mipi_csi2_rx_subsystem_v5_1/doc/mipi_csi2_rx_subsystem_v5_1_changelog.txt
+*(10) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/axi_interconnect_v2_1/doc/axi_interconnect_v2_1_changelog.txt
+*(11) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/proc_sys_reset_v5_0/doc/proc_sys_reset_v5_0_changelog.txt
+*(12) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_axi4s_vid_out_v4_0/doc/v_axi4s_vid_out_v4_0_changelog.txt
+*(13) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_demosaic_v1_1/doc/v_demosaic_v1_1_changelog.txt
 *(14) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_tc_v6_2/doc/v_tc_v6_2_changelog.txt
 *(15) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/v_tpg_v8_2/doc/v_tpg_v8_2_changelog.txt
 *(16) c:/Xilinx/Vivado/2022.1/data/ip/xilinx/xlconcat_v2_1/doc/xlconcat_v2_1_changelog.txt

@@ -1168,30 +1168,31 @@ process (clk) begin
         sum.red.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.red.k10*1 + pix_9x9.red.k11*1 + pix_9x9.red.k12*1 + pix_9x9.red.k13*1 + pix_9x9.red.k14*1 + pix_9x9.red.k15*1 + pix_9x9.red.k16*1 + pix_9x9.red.k17*1 + pix_9x9.red.k18*1) / 9;
         sum.red.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.red.k19*1 + pix_9x9.red.k20*1 + pix_9x9.red.k21*1 + pix_9x9.red.k22*1 + pix_9x9.red.k23*1 + pix_9x9.red.k24*1 + pix_9x9.red.k25*1 + pix_9x9.red.k26*1 + pix_9x9.red.k27*1) / 9;
         sum.red.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.red.k28*1 + pix_9x9.red.k29*1 + pix_9x9.red.k30*1 + pix_9x9.red.k31*1 + pix_9x9.red.k32*1 + pix_9x9.red.k33*1 + pix_9x9.red.k34*1 + pix_9x9.red.k35*1 + pix_9x9.red.k36*1) / 9;
-        sum.red.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.red.k37*2 + pix_9x9.red.k38*3 + pix_9x9.red.k39*22 + pix_9x9.red.k40*97 + pix_9x9.red.k41*159 + pix_9x9.red.k42*97 + pix_9x9.red.k43*22 + pix_9x9.red.k44*3 + pix_9x9.red.k45*2) / 407;
+        sum.red.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.red.k37*1 + pix_9x9.red.k38*1 + pix_9x9.red.k39*1 + pix_9x9.red.k40*1 + pix_9x9.red.k41*1 + pix_9x9.red.k42*1 + pix_9x9.red.k43*1 + pix_9x9.red.k44*1 + pix_9x9.red.k45*1) / 9;
         sum.red.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.red.k46*1 + pix_9x9.red.k47*1 + pix_9x9.red.k48*1 + pix_9x9.red.k49*1 + pix_9x9.red.k50*1 + pix_9x9.red.k51*1 + pix_9x9.red.k52*1 + pix_9x9.red.k53*1 + pix_9x9.red.k54*1) / 9;
         sum.red.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.red.k55*1 + pix_9x9.red.k56*1 + pix_9x9.red.k57*1 + pix_9x9.red.k58*1 + pix_9x9.red.k59*1 + pix_9x9.red.k60*1 + pix_9x9.red.k61*1 + pix_9x9.red.k62*1 + pix_9x9.red.k63*1) / 9;
         sum.red.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.red.k64*1 + pix_9x9.red.k65*1 + pix_9x9.red.k66*1 + pix_9x9.red.k67*1 + pix_9x9.red.k68*1 + pix_9x9.red.k69*1 + pix_9x9.red.k70*1 + pix_9x9.red.k71*1 + pix_9x9.red.k72*1) / 9;
         sum.red.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.red.k73*1 + pix_9x9.red.k74*1 + pix_9x9.red.k75*1 + pix_9x9.red.k76*1 + pix_9x9.red.k77*1 + pix_9x9.red.k78*1 + pix_9x9.red.k79*1 + pix_9x9.red.k80*1 + pix_9x9.red.k81*1) / 9;
-        if(crd_s40.y=0)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09);
-        elsif(crd_s40.y=1)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18) /2;
-        elsif(crd_s40.y=2)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27) /3;
-        elsif(crd_s40.y=3)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36) /4;
-        elsif(crd_s40.y=4)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45) /5;
-        elsif(crd_s40.y=5)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54) /6;
-        elsif(crd_s40.y=6)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63) /7;
-        elsif(crd_s40.y=7)then
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72) /8;
-        else
+        
+        --if(crd_s40.y=0)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09);
+        --elsif(crd_s40.y=1)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18) /2;
+        --elsif(crd_s40.y=2)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27) /3;
+        --elsif(crd_s40.y=3)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36) /4;
+        --elsif(crd_s40.y=4)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45) /5;
+        --elsif(crd_s40.y=5)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54) /6;
+        --elsif(crd_s40.y=6)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63) /7;
+        --elsif(crd_s40.y=7)then
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72) /8;
+        --else
             sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72 + sum.red.pixels_73_74_75_76_77_78_79_80_81) /9;
-        end if;
+        --end if;
     end if;
 end process;
 process (clk) begin
@@ -1212,30 +1213,30 @@ process (clk) begin
         sum.green.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.green.k10*1 + pix_9x9.green.k11*1 + pix_9x9.green.k12*1 + pix_9x9.green.k13*1 + pix_9x9.green.k14*1 + pix_9x9.green.k15*1 + pix_9x9.green.k16*1 + pix_9x9.green.k17*1 + pix_9x9.green.k18*1) / 9;
         sum.green.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.green.k19*1 + pix_9x9.green.k20*1 + pix_9x9.green.k21*1 + pix_9x9.green.k22*1 + pix_9x9.green.k23*1 + pix_9x9.green.k24*1 + pix_9x9.green.k25*1 + pix_9x9.green.k26*1 + pix_9x9.green.k27*1) / 9;
         sum.green.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.green.k28*1 + pix_9x9.green.k29*1 + pix_9x9.green.k30*1 + pix_9x9.green.k31*1 + pix_9x9.green.k32*1 + pix_9x9.green.k33*1 + pix_9x9.green.k34*1 + pix_9x9.green.k35*1 + pix_9x9.green.k36*1) / 9;
-        sum.green.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.green.k37*2 + pix_9x9.green.k38*3 + pix_9x9.green.k39*22 + pix_9x9.green.k40*97 + pix_9x9.green.k41*159 + pix_9x9.green.k42*97 + pix_9x9.green.k43*22 + pix_9x9.green.k44*3 + pix_9x9.green.k45*2) / 407;
+        sum.green.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.green.k37*1 + pix_9x9.green.k38*1 + pix_9x9.green.k39*1 + pix_9x9.green.k40*1 + pix_9x9.green.k41*1 + pix_9x9.green.k42*1 + pix_9x9.green.k43*1 + pix_9x9.green.k44*1 + pix_9x9.green.k45*1) / 9;
         sum.green.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.green.k46*1 + pix_9x9.green.k47*1 + pix_9x9.green.k48*1 + pix_9x9.green.k49*1 + pix_9x9.green.k50*1 + pix_9x9.green.k51*1 + pix_9x9.green.k52*1 + pix_9x9.green.k53*1 + pix_9x9.green.k54*1) / 9;
         sum.green.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.green.k55*1 + pix_9x9.green.k56*1 + pix_9x9.green.k57*1 + pix_9x9.green.k58*1 + pix_9x9.green.k59*1 + pix_9x9.green.k60*1 + pix_9x9.green.k61*1 + pix_9x9.green.k62*1 + pix_9x9.green.k63*1) / 9;
         sum.green.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.green.k64*1 + pix_9x9.green.k65*1 + pix_9x9.green.k66*1 + pix_9x9.green.k67*1 + pix_9x9.green.k68*1 + pix_9x9.green.k69*1 + pix_9x9.green.k70*1 + pix_9x9.green.k71*1 + pix_9x9.green.k72*1) / 9;
         sum.green.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.green.k73*1 + pix_9x9.green.k74*1 + pix_9x9.green.k75*1 + pix_9x9.green.k76*1 + pix_9x9.green.k77*1 + pix_9x9.green.k78*1 + pix_9x9.green.k79*1 + pix_9x9.green.k80*1 + pix_9x9.green.k81*1) / 9;
-        if(crd_s40.y=0)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09);
-        elsif(crd_s40.y=1)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18) /2;
-        elsif(crd_s40.y=2)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27) /3;
-        elsif(crd_s40.y=3)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36) /4;
-        elsif(crd_s40.y=4)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45) /5;
-        elsif(crd_s40.y=5)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54) /6;
-        elsif(crd_s40.y=6)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63) /7;
-        elsif(crd_s40.y=7)then
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72) /8;
-        else
+        --if(crd_s40.y=0)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09);
+        --elsif(crd_s40.y=1)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18) /2;
+        --elsif(crd_s40.y=2)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27) /3;
+        --elsif(crd_s40.y=3)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36) /4;
+        --elsif(crd_s40.y=4)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45) /5;
+        --elsif(crd_s40.y=5)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54) /6;
+        --elsif(crd_s40.y=6)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63) /7;
+        --elsif(crd_s40.y=7)then
+        --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72) /8;
+        --else
             sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72 + sum.green.pixels_73_74_75_76_77_78_79_80_81) /9;
-       end if;
+       --end if;
     end if;
 end process;
 process (clk) begin
@@ -1256,30 +1257,30 @@ process (clk) begin
         sum.blue.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.blue.k10*1 + pix_9x9.blue.k11*1 + pix_9x9.blue.k12*1 + pix_9x9.blue.k13*1 + pix_9x9.blue.k14*1 + pix_9x9.blue.k15*1 + pix_9x9.blue.k16*1 + pix_9x9.blue.k17*1 + pix_9x9.blue.k18*1) / 9;
         sum.blue.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.blue.k19*1 + pix_9x9.blue.k20*1 + pix_9x9.blue.k21*1 + pix_9x9.blue.k22*1 + pix_9x9.blue.k23*1 + pix_9x9.blue.k24*1 + pix_9x9.blue.k25*1 + pix_9x9.blue.k26*1 + pix_9x9.blue.k27*1) / 9;
         sum.blue.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.blue.k28*1 + pix_9x9.blue.k29*1 + pix_9x9.blue.k30*1 + pix_9x9.blue.k31*1 + pix_9x9.blue.k32*1 + pix_9x9.blue.k33*1 + pix_9x9.blue.k34*1 + pix_9x9.blue.k35*1 + pix_9x9.blue.k36*1) / 9;
-        sum.blue.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.blue.k37*2 + pix_9x9.blue.k38*3 + pix_9x9.blue.k39*22 + pix_9x9.blue.k40*97 + pix_9x9.blue.k41*159 + pix_9x9.blue.k42*97 + pix_9x9.blue.k43*22 + pix_9x9.blue.k44*3 + pix_9x9.blue.k45*2) / 407;
+        sum.blue.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.blue.k37*1 + pix_9x9.blue.k38*1 + pix_9x9.blue.k39*1 + pix_9x9.blue.k40*1 + pix_9x9.blue.k41*1 + pix_9x9.blue.k42*1 + pix_9x9.blue.k43*1 + pix_9x9.blue.k44*1 + pix_9x9.blue.k45*1) / 9;
         sum.blue.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.blue.k46*1 + pix_9x9.blue.k47*1 + pix_9x9.blue.k48*1 + pix_9x9.blue.k49*1 + pix_9x9.blue.k50*1 + pix_9x9.blue.k51*1 + pix_9x9.blue.k52*1 + pix_9x9.blue.k53*1 + pix_9x9.blue.k54*1) / 9;
         sum.blue.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.blue.k55*1 + pix_9x9.blue.k56*1 + pix_9x9.blue.k57*1 + pix_9x9.blue.k58*1 + pix_9x9.blue.k59*1 + pix_9x9.blue.k60*1 + pix_9x9.blue.k61*1 + pix_9x9.blue.k62*1 + pix_9x9.blue.k63*1) / 9;
         sum.blue.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.blue.k64*1 + pix_9x9.blue.k65*1 + pix_9x9.blue.k66*1 + pix_9x9.blue.k67*1 + pix_9x9.blue.k68*1 + pix_9x9.blue.k69*1 + pix_9x9.blue.k70*1 + pix_9x9.blue.k71*1 + pix_9x9.blue.k72*1) / 9;
         sum.blue.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.blue.k73*1 + pix_9x9.blue.k74*1 + pix_9x9.blue.k75*1 + pix_9x9.blue.k76*1 + pix_9x9.blue.k77*1 + pix_9x9.blue.k78*1 + pix_9x9.blue.k79*1 + pix_9x9.blue.k80*1 + pix_9x9.blue.k81*1) / 9;
-        if(crd_s40.y=0)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09);
-        elsif(crd_s40.y=1)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18) /2;
-        elsif(crd_s40.y=2)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27) /3;
-        elsif(crd_s40.y=3)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36) /4;
-        elsif(crd_s40.y=4)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45) /5;
-        elsif(crd_s40.y=5)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54) /6;
-        elsif(crd_s40.y=6)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63) /7;
-        elsif(crd_s40.y=7)then
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72) /8;
-        else
+        --if(crd_s40.y=0)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09);
+        --elsif(crd_s40.y=1)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18) /2;
+        --elsif(crd_s40.y=2)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27) /3;
+        --elsif(crd_s40.y=3)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36) /4;
+        --elsif(crd_s40.y=4)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45) /5;
+        --elsif(crd_s40.y=5)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54) /6;
+        --elsif(crd_s40.y=6)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63) /7;
+        --elsif(crd_s40.y=7)then
+        --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72) /8;
+        --else
             sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72 + sum.blue.pixels_73_74_75_76_77_78_79_80_81) /9;
-        end if;
+        --end if;
     end if;
 end process;
 process (clk) begin

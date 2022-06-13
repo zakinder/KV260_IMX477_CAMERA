@@ -132,14 +132,14 @@ end process KUPDATE;
     end if;
   end process PA_X;
   U_DATA : process(o1Data)begin
-    if(o1Data(11) = '1')then
+    if(o1Data(13) = '1')then
         o2Data <= (others => '0');
     else
         o2Data <= o1Data;
     end if;
   end process U_DATA;
   O_DATA : process(o2Data)begin
-    if(o2Data(8) = '1')then
+    if(o2Data(10) = '1')then
         DataO <= (others => '1');
     else
         DataO <= std_logic_vector(o2Data(9 downto 0));

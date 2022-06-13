@@ -2,4 +2,4 @@
 Short Dir           ,Group       ,Article Numbers (Typ, Path, Update Time)                                        
 --------------------,------------,--------------------------------------------------------------------------------,,
 kv260_som           ,ARTICLE_LIST,KriaKV260|                                                                      ,,
-kv260_som           ,FILE_LIST   ,HW      ,./hardware/kv260_som                    ,2022_06_10:00_43_14   
+kv260_som           ,FILE_LIST   ,HW      ,./hardware/kv260_som                    ,2022_06_12:21_10_36   

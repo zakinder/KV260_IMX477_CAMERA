@@ -67,9 +67,9 @@ architecture arch of blur_filter is
     signal rgbSyncSof                                : std_logic_vector(31 downto 0)  := x"00000000";
     signal rgbSyncEof                                : std_logic_vector(31 downto 0)  := x"00000000";
 begin
-    oRgb.red   <= blurRgb.red(iMSB downto iLSB);
-    oRgb.green <= blurRgb.green(iMSB downto iLSB);
-    oRgb.blue  <= blurRgb.blue(iMSB downto iLSB);
+    oRgb.red   <= blurRgb.red(10 downto 1);
+    oRgb.green <= blurRgb.green(10 downto 1);
+    oRgb.blue  <= blurRgb.blue(10 downto 1);
     oRgb.valid <= rgbSyncValid(9);
     oRgb.eol   <= rgbSyncEol(9);
     oRgb.sof   <= rgbSyncSof(9);

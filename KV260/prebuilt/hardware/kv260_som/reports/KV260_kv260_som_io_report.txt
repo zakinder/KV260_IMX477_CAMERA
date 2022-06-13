@@ -1,16 +1,16 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date                      : Fri Jun 10 00:44:03 2022
+| Date                      : Sun Jun 12 21:11:23 2022
 | Host                      : ASUS running 64-bit major release  (build 9200)
-| Command                   : report_io -force -file R:/TEST/KRIA_KV260_IMX477_CAMERA/KV260/vivado/KV260.runs/impl_1/KV260_kv260_som_io_report.txt -format text
+| Command                   : report_io -force -file R:/KV260/vivado/KV260.runs/impl_1/KV260_kv260_som_io_report.txt -format text
 | Design                    : kv260_video_wrapper
 | Device                    : xck26
 | Speed File                : -2LV
 | Package                   : sfvc784
 | Package Version           : PRODUCTION 1.2 10/30/2017
 | Package Pin Delay Version : PRODUCTION 1.0 4/14/2017
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 
 IO Information
 
