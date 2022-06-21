@@ -374,13 +374,13 @@ proc create_hier_cell_V_DMA { parentCell nameHier } {
    CONFIG.c_include_s2mm {1} \
    CONFIG.c_include_s2mm_dre {1} \
    CONFIG.c_m_axis_mm2s_tdata_width {32} \
-   CONFIG.c_mm2s_genlock_mode {1} \
+   CONFIG.c_mm2s_genlock_mode {3} \
    CONFIG.c_mm2s_linebuffer_depth {4096} \
-   CONFIG.c_mm2s_max_burst_length {8} \
+   CONFIG.c_mm2s_max_burst_length {32} \
    CONFIG.c_num_fstores {3} \
-   CONFIG.c_s2mm_genlock_mode {0} \
+   CONFIG.c_s2mm_genlock_mode {2} \
    CONFIG.c_s2mm_linebuffer_depth {4096} \
-   CONFIG.c_s2mm_max_burst_length {8} \
+   CONFIG.c_s2mm_max_burst_length {32} \
  ] $axi_vdma_0
 
   # Create interface connections
@@ -1376,7 +1376,6 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
   create_bd_pin -dir I -type rst aresetn
   create_bd_pin -dir I -type clk dphy_clk_200M
   create_bd_pin -dir O -type intr interrupt
-  create_bd_pin -dir O -type intr interrupt1
 
   # Create instance: ila_0, and set properties
   set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
@@ -1461,8 +1460,6 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
    CONFIG.FRAME_WIDTH {1920} \
    CONFIG.revision_number {0x03072020} \
  ] $vfp_0
-
-  set_property SELECTED_SIM_MODEL rtl  $vfp_0
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn2 [get_bd_intf_pins s_axi_CTRL2] [get_bd_intf_pins v_tpg_0/s_axi_CTRL]
@@ -1639,7 +1636,6 @@ proc create_hier_cell_PS_VIDEO { parentCell nameHier } {
   connect_bd_net -net v_axi4s_vid_out_0_vid_hsync [get_bd_pins TO_PS/dp_live_video_in_hsync] [get_bd_pins VIDEO_PIPELINE/vid_hsync]
   connect_bd_net -net v_axi4s_vid_out_0_vid_vsync [get_bd_pins TO_PS/dp_live_video_in_vsync] [get_bd_pins VIDEO_PIPELINE/vid_vsync]
   connect_bd_net -net v_demosaic_0_interrupt [get_bd_pins INTERRUPTS/In0] [get_bd_pins RX_VIDEO/interrupt]
-  connect_bd_net -net v_gamma_lut_0_interrupt [get_bd_pins INTERRUPTS/In1] [get_bd_pins RX_VIDEO/interrupt1]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins INTERRUPTS/dout] [get_bd_pins TO_PS/intr]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins rpi_enb] [get_bd_pins VIDEO_PIPELINE/rpi_enb]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins RX_VIDEO/aclk] [get_bd_pins TO_PS/pl_clk0] [get_bd_pins VIDEO_PIPELINE/s_axi_aclk] [get_bd_pins V_DMA/aclk]

@@ -387,14 +387,14 @@ type ty2snRz is record
     k9               : signed(19 downto 0);
 end record;
 type k_3by3 is record
-    row_1    : std_logic_vector(31 downto 0);
-    row_2    : std_logic_vector(31 downto 0);
-    row_3    : std_logic_vector(31 downto 0);
-    row_4    : std_logic_vector(31 downto 0);
-    row_5    : std_logic_vector(31 downto 0);
-    row_6    : std_logic_vector(31 downto 0);
-    row_7    : std_logic_vector(31 downto 0);
-    row_8    : std_logic_vector(31 downto 0);
+    row_1    : std_logic_vector(29 downto 0);
+    row_2    : std_logic_vector(29 downto 0);
+    row_3    : std_logic_vector(29 downto 0);
+    row_4    : std_logic_vector(29 downto 0);
+    row_5    : std_logic_vector(29 downto 0);
+    row_6    : std_logic_vector(29 downto 0);
+    row_7    : std_logic_vector(29 downto 0);
+    row_8    : std_logic_vector(29 downto 0);
 end record;
 type k_9by9 is record
     pixel_1    : std_logic_vector(29 downto 0);
@@ -928,11 +928,52 @@ type rgb_pixel_sum is record
   pixels_19_20_21_22_23_24_25_26_27                : natural;
   pixels_28_29_30_31_32_33_34_35_36                : natural;
   pixels_37_38_39_40_41_42_43_44_45                : natural;
-  pixels_37_38_39_40_41_42_43_44_45_x41            : natural;
   pixels_46_47_48_49_50_51_52_53_54                : natural;
   pixels_55_56_57_58_59_60_61_62_63                : natural;
   pixels_64_65_66_67_68_69_70_71_72                : natural;
   pixels_73_74_75_76_77_78_79_80_81                : natural;
+  
+  
+  pixels_01_02_03                                  : natural;
+  pixels_04_05_06                                  : natural;
+  pixels_07_08_09                                  : natural;
+  pixels_10_11_12                                  : natural;
+  pixels_13_14_15                                  : natural;
+  pixels_16_17_18                                  : natural;
+  pixels_19_20_21                                  : natural;
+  pixels_22_23_24                                  : natural;
+  pixels_25_26_27                                  : natural;
+  pixels_28_29_30                                  : natural;
+  pixels_31_32_33                                  : natural;
+  pixels_34_35_36                                  : natural;
+  pixels_37_38_39                                  : natural;
+  pixels_40_41_42                                  : natural;
+  pixels_43_44_45                                  : natural;
+  pixels_46_47_48                                  : natural;
+  pixels_49_50_51                                  : natural;
+  pixels_52_53_54                                  : natural;
+  pixels_55_56_57                                  : natural;
+  pixels_58_59_60                                  : natural;
+  pixels_61_62_63                                  : natural;
+  pixels_64_65_66                                  : natural;
+  pixels_67_68_69                                  : natural;
+  pixels_70_71_72                                  : natural;
+  pixels_73_74_75                                  : natural;
+  pixels_76_77_78                                  : natural;
+  pixels_79_80_81                                  : natural;
+  
+  pixels_01_TO_27                                  : natural;
+  pixels_28_TO_54                                  : natural;
+  pixels_55_TO_81                                  : natural;
+
+  
+  
+  
+  
+  
+  pixels_37_38_39_40_41_42_43_44_45_x41            : natural;
+  
+  
   pixels_01_to_81_x41                              : natural;
   pixels_01_to_81                                  : natural;
   pixels_01_02_03_3x3                              : natural;
@@ -1716,10 +1757,10 @@ type unsig_pixel_mac is record
     mac     : unsigned (i_data_width+3 downto 0);
 end record;
 type unsig_pixel_4by4mac is record
-    m1      : unsigned (16 downto 0);
-    m2      : unsigned (16 downto 0);
-    m3      : unsigned (16 downto 0);
-    m4      : unsigned (16 downto 0);
+    m1      : unsigned (20 downto 0);
+    m2      : unsigned (20 downto 0);
+    m3      : unsigned (20 downto 0);
+    m4      : unsigned (20 downto 0);
     mac     : unsigned (i_data_width+5 downto 0);
 end record;
 type fcolors is record

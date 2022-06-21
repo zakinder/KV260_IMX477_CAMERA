@@ -84,6 +84,7 @@
 #define quit                    0x1EBAA
 #define menucall                0x47B89810
 #define kernal                  0xB49AAE
+#define kernal12                0x0468C6C04
 #define quit_current_state      0x71
 #define cmds_quit               0x95BA400A
 #define cmds_space              0x20
@@ -96,5 +97,6 @@
 #define imx477c4                0x045CCC8F6
 #define imx477c5                0x045CCC8F7
 #define imx477c6                0x045CCC8F8
+#define readpixels              0x25738CEF
 /*****************************************************************************************************************/
 #endif // __SYSTEM_CONFIG_DEFINES_H__

@@ -101,9 +101,9 @@ Run_Config RunCfg;
 int run_dppsu(u8* Frame)
 {
 	int Status;
-
-	//Xil_DCacheDisable();
-	//Xil_ICacheDisable();
+//
+//	Xil_DCacheEnable();
+//	Xil_ICacheEnable();
 
 	xil_printf("DPDMA Generic Video Example Test \r\n");
 	Status = DpdmaVideoExample(&RunCfg,&Frame);
@@ -113,7 +113,7 @@ int run_dppsu(u8* Frame)
 	}
 
 	xil_printf("Successfully ran DPDMA Video Example Test\r\n");
-	//menu_calls(TRUE);
+
     return XST_SUCCESS;
 }
 
@@ -146,7 +146,7 @@ int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame)
 	//printf  ("Generating Overlay:@ Address %x 1ST PIXEL VALUE %i\n",adrSof,(unsigned)(Xil_In8(adrSof) & 0xff));
 	SetupInterrupts(RunCfgPtr);
 	xil_printf("Generating Overlay.....\n\r");
-	GraphicsOverlay(Frame, RunCfgPtr);
+	//GraphicsOverlay(Frame, RunCfgPtr);
 
 	/* Populate the FrameBuffer structure with the frame attributes */
 	FrameBuffer.Address = (INTPTR)Frame;

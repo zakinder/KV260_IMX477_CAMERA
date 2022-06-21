@@ -185,7 +185,7 @@ process (clk,rst_l) begin
 end process;
 end generate TPDATAWIDTH1_ENABLED;
 
-TPDATAWIDTH3_ENABLED: if (tpDataWidth = 24) generate
+TPDATAWIDTH3_ENABLED: if (tpDataWidth = 30) generate
 begin
 process (iRgb) begin
     --if (iRgb.valid = hi) then

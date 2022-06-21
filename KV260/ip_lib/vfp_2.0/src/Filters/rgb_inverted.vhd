@@ -34,7 +34,7 @@ architecture behavioral of rgb_inverted is
     signal uFs1Rgb       : rgbToUfRecord;
     signal uFs2Rgb       : rgbToUf1Record;
     signal uFs3Rgb       : rgbToUfRecord;
-    signal rgbMaxVal     : ufixed(7 downto 0) :=(others => '0');
+    signal rgbMaxVal     : ufixed(9 downto 0) :=(others => '0');
 begin
 
 rgbMaxVal <= to_ufixed (255.0,rgbMaxVal);

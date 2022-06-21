@@ -116,8 +116,8 @@ package constants_package is
     constant conf_data_width                    : integer := 32;
     constant conf_addr_width                    : integer := 8;
     -------------------------------------------------------------------------
-    constant blurMsb                            : integer := 9;
-    constant blurLsb                            : integer := 0;
+    constant blurMsb                            : integer := 13;
+    constant blurLsb                            : integer := 4;
     constant rgb_msb                            : integer := 12;
     constant rgb_lsb                            : integer := 5;
     constant XYCOORD                            : integer := 16;

@@ -1072,6 +1072,18 @@ port (
     clk                         : in  std_logic;
     reset                       : in  std_logic;
     iRgb                        : in channel;
+    config_number_31            : in integer;
+    config_number_32            : in integer;
+    config_number_33            : in integer;
+    config_number_34            : in integer;
+    config_number_35            : in integer;
+    config_number_36            : in integer;
+    config_number_37            : in integer;
+    config_number_38            : in integer;
+    config_number_39            : in integer;
+    config_number_40            : in integer;
+    config_number_41            : in integer;
+    config_number_42            : in integer;
     oHsl                        : out channel);
 end component hsl_c;
 component rgb_ycbcr is

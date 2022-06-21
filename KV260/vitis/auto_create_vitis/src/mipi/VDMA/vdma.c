@@ -1,11 +1,26 @@
-#include "xil_printf.h"
 #include "vdma.h"
+#include <stdio.h>
+#include <sys/_stdint.h>
+#include <sys/unistd.h>
+#include <xaxivdma_hw.h>
+#include <xbasic_types.h>
+#include <xdebug.h>
+#include <xil_printf.h>
+#include <xstatus.h>
+#include <xtime_l.h>
+#include "../config.h"
+const int res = 1920 * 1080;
+uint32_t bayer[1920 * 1080 * 4];
+uint32_t to8(Xuint32 data){
+	data &= 0x3FFFFFFF;
+	return (uint32_t)(data);
+}
+
 u32 vdma_version(XAxiVdma *Vdma) {
 	return XAxiVdma_GetVersion(Vdma);
 }
 int vdma_read_start(XAxiVdma *Vdma) {
 	int Status;
-	// MM2S Startup
 	Status = XAxiVdma_DmaStart(Vdma, XAXIVDMA_READ);
 	if (Status != XST_SUCCESS)
 	{
@@ -34,15 +49,15 @@ int vdma_read_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short 
 		xil_printf("XAxiVdma_CfgInitialize failure\r\n");
 		return XST_FAILURE;
 	}
-	ReadCfg.EnableCircularBuf = 1;
-	ReadCfg.EnableFrameCounter = 0;
+	ReadCfg.EnableCircularBuf   = 1;
+	ReadCfg.EnableFrameCounter  = 0;
 	ReadCfg.FixedFrameStoreAddr = 0;
-	ReadCfg.EnableSync = 1;
-	ReadCfg.PointNum = 1;
-	ReadCfg.FrameDelay = 0;
-	ReadCfg.VertSizeInput = VertSizeInput;
-	ReadCfg.HoriSizeInput = HoriSizeInput;
-	ReadCfg.Stride = Stride;
+	ReadCfg.EnableSync          = 1;
+	ReadCfg.PointNum            = 1;
+	ReadCfg.FrameDelay          = 0;
+	ReadCfg.VertSizeInput       = VertSizeInput;
+	ReadCfg.HoriSizeInput       = HoriSizeInput;
+	ReadCfg.Stride              = Stride;
 	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_READ, &ReadCfg);
 	if (Status != XST_SUCCESS) {
 			xdbg_printf(XDBG_DEBUG_ERROR,
@@ -77,8 +92,9 @@ int vdma_write_stop(XAxiVdma *Vdma) {
 	XAxiVdma_DmaStop(Vdma, XAXIVDMA_WRITE);
 	return XST_SUCCESS;
 }
-int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short Stride,unsigned int FrameStoreStartAddr)
+int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short Stride,unsigned int FrameStoreStartAddr1,unsigned int FrameStoreStartAddr2,unsigned int FrameStoreStartAddr3)
 {
+    
 	XAxiVdma Vdma;
 	XAxiVdma_Config *Config;
 	XAxiVdma_DmaSetup vdmaDMA;
@@ -95,14 +111,20 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 	}
 	vdmaDMA.EnableCircularBuf       = 1;
 	vdmaDMA.EnableFrameCounter      = 0;
-	vdmaDMA.FixedFrameStoreAddr     = 0;
-	vdmaDMA.EnableSync              = 0;
-	vdmaDMA.PointNum                = 0;
+	vdmaDMA.FixedFrameStoreAddr     = 1;
+	vdmaDMA.EnableSync              = 1;
+	vdmaDMA.PointNum                = 1;
 	vdmaDMA.FrameDelay              = 0;
 	vdmaDMA.VertSizeInput           = VertSizeInput;
 	vdmaDMA.HoriSizeInput           = HoriSizeInput;
 	vdmaDMA.Stride                  = Stride;
-	vdmaDMA.FrameStoreStartAddr[0]  = FrameStoreStartAddr;
+	vdmaDMA.FrameStoreStartAddr[0]  = FrameStoreStartAddr1;
+	vdmaDMA.FrameStoreStartAddr[1]  = FrameStoreStartAddr2;
+	vdmaDMA.FrameStoreStartAddr[2]  = FrameStoreStartAddr3;
+	xil_printf("FrameStoreStartAddr1 = %X\n\r", FrameStoreStartAddr1);
+	xil_printf("FrameStoreStartAddr2 = %X\n\r", FrameStoreStartAddr2);
+	xil_printf("FrameStoreStartAddr3 = %X\n\r", FrameStoreStartAddr3);
+    
 	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_WRITE, &vdmaDMA);
 	if (Status != XST_SUCCESS) {
 			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel config failed %d\r\n", Status);
@@ -138,10 +160,54 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 		   xil_printf("Error Starting XAxiVdma_DmaStart..!");
 		   return Status;
 	}
-	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_READ);
+	Status = XAxiVdma_StartParking(&Vdma, 1, XAXIVDMA_READ);
 	if (Status != XST_SUCCESS) {
 		   xil_printf("Error Starting XAxiVdma_StartParking..!");
 		   return Status;
 	}
+    sleep(4);
+    fetch_rgb_data();
 	return XST_SUCCESS;
+}
+
+void fetch_rgb_data() {
+	Xuint32 parkptr, vdma_S2MM_DMACR, vdma_MM2S_DMACR;
+	int i, j;
+	xil_printf("Entering main SW processing loop\r\n");
+	// Grab the DMA parkptr, and update it to ensure that when parked, the S2MM side is on frame 0, and the MM2S side on frame 1
+	parkptr = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_PARKPTR_OFFSET);
+	parkptr &= ~XAXIVDMA_PARKPTR_READREF_MASK;
+	parkptr &= ~XAXIVDMA_PARKPTR_WRTREF_MASK;
+	parkptr |= 0x1;
+	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_PARKPTR_OFFSET, parkptr);
+	// Grab the DMA Control Registers, and clear circular park mode.
+	vdma_MM2S_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
+	vdma_S2MM_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR & ~XAXIVDMA_CR_TAIL_EN_MASK);
+	// Pointers to the S2MM memory frame and M2SS memory frame
+	volatile Xuint32 *pS2MM_Mem = (Xuint32 *)XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_S2MM_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET);
+	volatile Xuint32 *pMM2S_Mem = (Xuint32 *)XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+4);
+	volatile Xuint32 *pMM2S2Mem = (Xuint32 *)XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_MM2S_ADDR_OFFSET+XAXIVDMA_START_ADDR_OFFSET+8);
+	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
+	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
+	uint32_t red = 0, green = 0, blue = 0;
+	for (j = 0; j < 1000; j++) {
+            for (i = 0; i < res; i++) {
+                blue              = (pS2MM_Mem[i] & 0x3ff00000)>>20;
+                red               = (pS2MM_Mem[i] & 0x000ffc00)>>10;
+                green             = (pS2MM_Mem[i] & 0x000003ff);
+                uint32_t Cb       = (uint32_t)((((((int)red) * 1) + (((int)green) * 0) + (((int)blue) * 0)) / 1));
+                uint32_t Cr       = (uint32_t)((((((int)red) * 0) + (((int)green) * 1) + (((int)blue) * 0)) / 1));
+                uint32_t Y1       = (uint32_t)((((((int)red) * 0) + (((int)green) * 0) + (((int)blue) * 1)) / 1));
+                uint32_t final1   = (((Cb) << 20) | ((Cr) << 10) | ((Y1)));
+                pMM2S_Mem[i]      = final1;
+            }
+	}
+	//Grab the DMA Control Registers, and re-enable circular park mode.
+	vdma_MM2S_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+	vdma_S2MM_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
+	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
+	return;
 }

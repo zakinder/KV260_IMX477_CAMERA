@@ -87,7 +87,7 @@ architecture arch_imp of vfp_v1_0 is
     signal coefficients_out_2 : coefficient_values;
     signal coefficients_in_3  : coefficient_values;
     signal coefficients_out_3 : coefficient_values;
-    signal iAls               :  coefficient;
+    signal iAls               : coefficient;
     signal txCord             : coord;
     signal k_config_number_1  : integer := 0;
     signal k_config_number_2  : integer := 0;
@@ -95,9 +95,21 @@ architecture arch_imp of vfp_v1_0 is
     signal config_number_14   : integer := 0;
     signal config_number_15   : integer := 0;
     signal config_number_16   : integer := 0;
-    signal config_number_17   : integer := 0;
+    signal config_number_17   : integer := 15;
     signal config_number_18   : integer := 0;
     signal config_number_19   : integer := 0;
+    signal config_number_31   : integer := 0;
+    signal config_number_32   : integer := 0;
+    signal config_number_33   : integer := 0;
+    signal config_number_34   : integer := 0;
+    signal config_number_35   : integer := 0;
+    signal config_number_36   : integer := 0;
+    signal config_number_37   : integer := 0;
+    signal config_number_38   : integer := 0;
+    signal config_number_39   : integer := 0;
+    signal config_number_40   : integer := 0;
+    signal config_number_41   : integer := 0;
+    signal config_number_42   : integer := 0;
     signal ccc1                : channel;
     signal ccc2                : channel;
     signal ccc3                : channel;
@@ -180,6 +192,39 @@ port map (
     config_number_17                <= to_integer((unsigned(wr_regs.cfigReg17)));
     config_number_18                <= to_integer((unsigned(wr_regs.cfigReg18)));
     config_number_19                <= to_integer((unsigned(wr_regs.cfigReg19)));
+    iAls.k1                         <= wr_regs.cfigReg21;
+    iAls.k2                         <= wr_regs.cfigReg22;
+    iAls.k3                         <= wr_regs.cfigReg23;
+    iAls.k4                         <= wr_regs.cfigReg24;
+    iAls.k5                         <= wr_regs.cfigReg25;
+    iAls.k6                         <= wr_regs.cfigReg26;
+    iAls.k7                         <= wr_regs.cfigReg27;
+    iAls.k8                         <= wr_regs.cfigReg28;
+    iAls.k9                         <= wr_regs.cfigReg29;
+    iAls.config                     <= to_integer((unsigned(wr_regs.cfigReg30)));
+    
+    
+    
+    config_number_31                <= to_integer((unsigned(wr_regs.cfigReg31)));
+    config_number_32                <= to_integer((unsigned(wr_regs.cfigReg32)));
+    config_number_33                <= to_integer((unsigned(wr_regs.cfigReg33)));
+    config_number_34                <= to_integer((unsigned(wr_regs.cfigReg34)));
+    config_number_35                <= to_integer((unsigned(wr_regs.cfigReg35)));
+    config_number_36                <= to_integer((unsigned(wr_regs.cfigReg36)));
+    config_number_37                <= to_integer((unsigned(wr_regs.cfigReg37)));
+    config_number_38                <= to_integer((unsigned(wr_regs.cfigReg38)));
+    config_number_39                <= to_integer((unsigned(wr_regs.cfigReg39)));
+    config_number_40                <= to_integer((unsigned(wr_regs.cfigReg40)));
+    config_number_41                <= to_integer((unsigned(wr_regs.cfigReg41)));
+    config_number_42                <= to_integer((unsigned(wr_regs.cfigReg42)));
+    
+    
+    
+    
+    
+    
+    
+    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
     if(config_number_16 = 0) then
@@ -242,44 +287,17 @@ process (ivideo_aclk)begin
     end if;
     end if;
 end process;
-recolor_space_2_inst: pixel_localization_9x9_window
-generic map(
-    img_width                   => FRAME_WIDTH,
-    i_data_width                => FRAME_PIXEL_DEPTH)
-port map(
-    clk                         => ivideo_aclk,
-    reset                       => ivideo_aresetn,
-    txCord                      => txCord,
-    neighboring_pixel_threshold => config_number_17,
-    iRgb                        => rgb_to_ccm,
-    oRgb                        => ccc6);
+
+
 rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.15,15,-3),
+    contrast_val          => to_sfixed(1.05,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
     rst_l                 => ivideo_aresetn,
     iRgb                  => rgb_to_ccm,
     oRgb                  => ccc1);
-rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
-generic map (
-    contrast_val          => to_sfixed(1.17,15,-3),
-    exposer_val           => 0)
-port map (                  
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    iRgb                  => ccc2,
-    oRgb                  => ccc7);
-rgb_contrast_brightness_3_inst: rgb_contrast_brightness_level_1
-generic map (
-    contrast_val          => to_sfixed(1.18,15,-3),
-    exposer_val           => 0)
-port map (                  
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    iRgb                  => ccc2,
-    oRgb                  => ccc8);
 dark_ccm_inst  : ccm
 port map(
     clk                   => ivideo_aclk,
@@ -307,14 +325,43 @@ port map(
     coefficients_out      => coefficients_out_3,
     iRgb                  => ccc3,
     oRgb                  => ccc4);
-    
+
+recolor_space_2_inst: pixel_localization_9x9_window
+generic map(
+    img_width                   => FRAME_WIDTH,
+    i_data_width                => FRAME_PIXEL_DEPTH)
+port map(
+    clk                         => ivideo_aclk,
+    reset                       => ivideo_aresetn,
+    txCord                      => txCord,
+    neighboring_pixel_threshold => config_number_17,
+    iRgb                        => ccc2,
+    oRgb                        => ccc6);
+rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
+generic map (
+    contrast_val          => to_sfixed(1.10,15,-3),
+    exposer_val           => 0)
+port map (                  
+    clk                   => ivideo_aclk,
+    rst_l                 => ivideo_aresetn,
+    iRgb                  => ccc2,
+    oRgb                  => ccc7);
+rgb_contrast_brightness_3_inst: rgb_contrast_brightness_level_1
+generic map (
+    contrast_val          => to_sfixed(1.20,15,-3),
+    exposer_val           => 0)
+port map (                  
+    clk                   => ivideo_aclk,
+    rst_l                 => ivideo_aresetn,
+    iRgb                  => ccc2,
+    oRgb                  => ccc8);
 rgb_range_1_inst: rgb_range
 generic map (
     i_data_width       => FRAME_PIXEL_DEPTH)
 port map (                  
     clk                => ivideo_aclk,
     reset              => ivideo_aresetn,
-    iRgb               => rgb_to_ccm,
+    iRgb               => ccc2,
     oRgb               => ccc5);
 l_blu_inst  : blur_filter
 generic map(
@@ -341,6 +388,40 @@ port map(
     iRgb                => ccc2,
     kls                 => iAls,
     oRgb                => ccm2);
+filter_blur_1_inst  : blur_filter_4by4
+generic map(
+    iMSB                => blurMsb,
+    iLSB                => blurLsb,
+    i_data_width        => FRAME_PIXEL_DEPTH,
+    img_width           => FRAME_WIDTH,
+    adwrWidth           => 16,
+    addrWidth           => 12)
+port map(
+    clk                 => ivideo_aclk,
+    rst_l               => ivideo_aresetn,
+    iRgb                => ccc2,
+    oRgb                => ccm3);
+    
+hsl_inst: hsl_c
+generic map(
+    i_data_width       => FRAME_PIXEL_DEPTH)
+port map(
+    clk                => ivideo_aclk,
+    reset              => ivideo_aresetn,
+    iRgb               => ccc2,
+    config_number_31   => config_number_31,
+    config_number_32   => config_number_32,
+    config_number_33   => config_number_33,
+    config_number_34   => config_number_34,
+    config_number_35   => config_number_35,
+    config_number_36   => config_number_36,
+    config_number_37   => config_number_37,
+    config_number_38   => config_number_38,
+    config_number_39   => config_number_39,
+    config_number_40   => config_number_40,
+    config_number_41   => config_number_41,
+    config_number_42   => config_number_42,
+    oHsl               => ccm4);
     
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
@@ -366,6 +447,10 @@ process (ivideo_aclk)begin
         rgb_fr_ccm           <= ccm1;
     elsif(config_number_15 = 10)then
         rgb_fr_ccm           <= ccm2;
+    elsif(config_number_15 = 11)then
+        rgb_fr_ccm           <= ccm3;
+    elsif(config_number_15 = 12)then
+        rgb_fr_ccm           <= ccm4;
     else
         rgb_fr_ccm           <= rgb_to_ccm;
     end if;

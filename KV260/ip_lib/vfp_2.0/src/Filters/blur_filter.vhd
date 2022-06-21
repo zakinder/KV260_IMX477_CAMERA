@@ -61,20 +61,18 @@ architecture arch of blur_filter is
     signal valid11rgb       : std_logic := '0';
     signal valid12rgb       : std_logic := '0';
     signal valid13rgb       : std_logic := '0';
-    
     signal rgbSyncValid                              : std_logic_vector(31 downto 0)  := x"00000000";
     signal rgbSyncEol                                : std_logic_vector(31 downto 0)  := x"00000000";
     signal rgbSyncSof                                : std_logic_vector(31 downto 0)  := x"00000000";
     signal rgbSyncEof                                : std_logic_vector(31 downto 0)  := x"00000000";
 begin
-    oRgb.red   <= blurRgb.red(10 downto 1);
-    oRgb.green <= blurRgb.green(10 downto 1);
-    oRgb.blue  <= blurRgb.blue(10 downto 1);
+    oRgb.red   <= blurRgb.red(13 downto 4);
+    oRgb.green <= blurRgb.green(13 downto 4);
+    oRgb.blue  <= blurRgb.blue(13 downto 4);
     oRgb.valid <= rgbSyncValid(9);
     oRgb.eol   <= rgbSyncEol(9);
     oRgb.sof   <= rgbSyncSof(9);
     oRgb.eof   <= rgbSyncEof(9);
-    
 tapValidAdressP: process(clk)begin
     if rising_edge(clk) then
         if (iRgb.valid = '1') then
@@ -163,7 +161,6 @@ tapSignedP : process (clk) begin
         vTapRgb3      <= dTapRgb3;
     end if;
 end process tapSignedP;
-
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncValid(0)  <= iRgb.valid;
@@ -308,6 +305,4 @@ process (clk) begin
         rgbSyncEof(31) <= rgbSyncEof(30);
     end if;
 end process;
-
-
 end architecture;

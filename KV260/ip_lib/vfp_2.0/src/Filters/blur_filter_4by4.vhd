@@ -32,10 +32,10 @@ end entity;
 architecture arch of blur_filter_4by4 is
     signal blurRgb                 : blurchannel;
     signal blur_rgb                : channel;
-    signal v1TapRGB0x              : std_logic_vector(23 downto 0) := (others => '0');
-    signal v1TapRGB1x              : std_logic_vector(23 downto 0) := (others => '0');
-    signal v1TapRGB2x              : std_logic_vector(23 downto 0) := (others => '0');
-    signal v1TapRGB3x              : std_logic_vector(23 downto 0) := (others => '0'); 
+    signal v1TapRGB0x              : std_logic_vector(29 downto 0) := (others => '0');
+    signal v1TapRGB1x              : std_logic_vector(29 downto 0) := (others => '0');
+    signal v1TapRGB2x              : std_logic_vector(29 downto 0) := (others => '0');
+    signal v1TapRGB3x              : std_logic_vector(29 downto 0) := (others => '0'); 
     signal tpValid                 : std_logic;
     signal tpd1                    : k_3by3;
     signal tpd2                    : k_3by3;
@@ -88,7 +88,7 @@ begin
 RGBInst: rgb_4taps
 generic map(
     img_width       => img_width,
-    tpDataWidth     => 24)
+    tpDataWidth     => 30)
 port map(
     clk             => clk,
     rst_l           => rst_l,
@@ -134,66 +134,66 @@ process (clk) begin
             tpd2.row_4    <= tpd1.row_4;
             tpd3.row_4    <= tpd2.row_4;
             tpd4.row_4    <= tpd3.row_4;
-            syn1KernalData_red.k1  <= tpd4.row_1(23 downto 16);
-            syn1KernalData_red.k2  <= tpd3.row_1(23 downto 16);
-            syn1KernalData_red.k3  <= tpd2.row_1(23 downto 16);
-            syn1KernalData_red.k4  <= tpd1.row_1(23 downto 16);
-            syn1KernalData_red.k5  <= tpd4.row_2(23 downto 16);
-            syn1KernalData_red.k6  <= tpd3.row_2(23 downto 16);
-            syn1KernalData_red.k7  <= tpd2.row_2(23 downto 16);
-            syn1KernalData_red.k8  <= tpd1.row_2(23 downto 16);
-            syn1KernalData_red.k9  <= tpd4.row_3(23 downto 16);
-            syn1KernalData_red.k10 <= tpd3.row_3(23 downto 16);
-            syn1KernalData_red.k11 <= tpd2.row_3(23 downto 16);
-            syn1KernalData_red.k12 <= tpd1.row_3(23 downto 16);
-            syn1KernalData_red.k13 <= tpd4.row_4(23 downto 16);
-            syn1KernalData_red.k14 <= tpd3.row_4(23 downto 16);
-            syn1KernalData_red.k15 <= tpd2.row_4(23 downto 16);
-            syn1KernalData_red.k16 <= tpd1.row_4(23 downto 16);
+            syn1KernalData_red.k1  <= tpd4.row_1(29 downto 20);
+            syn1KernalData_red.k2  <= tpd3.row_1(29 downto 20);
+            syn1KernalData_red.k3  <= tpd2.row_1(29 downto 20);
+            syn1KernalData_red.k4  <= tpd1.row_1(29 downto 20);
+            syn1KernalData_red.k5  <= tpd4.row_2(29 downto 20);
+            syn1KernalData_red.k6  <= tpd3.row_2(29 downto 20);
+            syn1KernalData_red.k7  <= tpd2.row_2(29 downto 20);
+            syn1KernalData_red.k8  <= tpd1.row_2(29 downto 20);
+            syn1KernalData_red.k9  <= tpd4.row_3(29 downto 20);
+            syn1KernalData_red.k10 <= tpd3.row_3(29 downto 20);
+            syn1KernalData_red.k11 <= tpd2.row_3(29 downto 20);
+            syn1KernalData_red.k12 <= tpd1.row_3(29 downto 20);
+            syn1KernalData_red.k13 <= tpd4.row_4(29 downto 20);
+            syn1KernalData_red.k14 <= tpd3.row_4(29 downto 20);
+            syn1KernalData_red.k15 <= tpd2.row_4(29 downto 20);
+            syn1KernalData_red.k16 <= tpd1.row_4(29 downto 20);
             syn2KernalData_red     <= syn1KernalData_red;
             syn3KernalData_red     <= syn2KernalData_red;
             syn4KernalData_red     <= syn3KernalData_red;
             syn5KernalData_red     <= syn4KernalData_red;
             synaKernalData_red     <= syn5KernalData_red;
             synbKernalData_red     <= synaKernalData_red;
-            syn1KernalData_gre.k1  <= tpd4.row_1(15 downto 8);
-            syn1KernalData_gre.k2  <= tpd3.row_1(15 downto 8);
-            syn1KernalData_gre.k3  <= tpd2.row_1(15 downto 8);
-            syn1KernalData_gre.k4  <= tpd1.row_1(15 downto 8);
-            syn1KernalData_gre.k5  <= tpd4.row_2(15 downto 8);
-            syn1KernalData_gre.k6  <= tpd3.row_2(15 downto 8);
-            syn1KernalData_gre.k7  <= tpd2.row_2(15 downto 8);
-            syn1KernalData_gre.k8  <= tpd1.row_2(15 downto 8);
-            syn1KernalData_gre.k9  <= tpd4.row_3(15 downto 8);
-            syn1KernalData_gre.k10 <= tpd3.row_3(15 downto 8);
-            syn1KernalData_gre.k11 <= tpd2.row_3(15 downto 8);
-            syn1KernalData_gre.k12 <= tpd1.row_3(15 downto 8);
-            syn1KernalData_gre.k13 <= tpd4.row_4(15 downto 8);
-            syn1KernalData_gre.k14 <= tpd3.row_4(15 downto 8);
-            syn1KernalData_gre.k15 <= tpd2.row_4(15 downto 8);
-            syn1KernalData_gre.k16 <= tpd1.row_4(15 downto 8);
+            syn1KernalData_gre.k1  <= tpd4.row_1(19 downto 10);
+            syn1KernalData_gre.k2  <= tpd3.row_1(19 downto 10);
+            syn1KernalData_gre.k3  <= tpd2.row_1(19 downto 10);
+            syn1KernalData_gre.k4  <= tpd1.row_1(19 downto 10);
+            syn1KernalData_gre.k5  <= tpd4.row_2(19 downto 10);
+            syn1KernalData_gre.k6  <= tpd3.row_2(19 downto 10);
+            syn1KernalData_gre.k7  <= tpd2.row_2(19 downto 10);
+            syn1KernalData_gre.k8  <= tpd1.row_2(19 downto 10);
+            syn1KernalData_gre.k9  <= tpd4.row_3(19 downto 10);
+            syn1KernalData_gre.k10 <= tpd3.row_3(19 downto 10);
+            syn1KernalData_gre.k11 <= tpd2.row_3(19 downto 10);
+            syn1KernalData_gre.k12 <= tpd1.row_3(19 downto 10);
+            syn1KernalData_gre.k13 <= tpd4.row_4(19 downto 10);
+            syn1KernalData_gre.k14 <= tpd3.row_4(19 downto 10);
+            syn1KernalData_gre.k15 <= tpd2.row_4(19 downto 10);
+            syn1KernalData_gre.k16 <= tpd1.row_4(19 downto 10);
             syn2KernalData_gre     <= syn1KernalData_gre;
             syn3KernalData_gre     <= syn2KernalData_gre;
             syn4KernalData_gre     <= syn3KernalData_gre;
             syn5KernalData_gre     <= syn4KernalData_gre;
             synaKernalData_gre     <= syn5KernalData_gre;
             synbKernalData_gre     <= synaKernalData_gre;
-            syn1KernalData_blu.k1  <= tpd4.row_1(7 downto 0);
-            syn1KernalData_blu.k2  <= tpd3.row_1(7 downto 0);
-            syn1KernalData_blu.k3  <= tpd2.row_1(7 downto 0);
-            syn1KernalData_blu.k4  <= tpd1.row_1(7 downto 0);
-            syn1KernalData_blu.k5  <= tpd4.row_2(7 downto 0);
-            syn1KernalData_blu.k6  <= tpd3.row_2(7 downto 0);
-            syn1KernalData_blu.k7  <= tpd2.row_2(7 downto 0);
-            syn1KernalData_blu.k8  <= tpd1.row_2(7 downto 0);
-            syn1KernalData_blu.k9  <= tpd4.row_3(7 downto 0);
-            syn1KernalData_blu.k10 <= tpd3.row_3(7 downto 0);
-            syn1KernalData_blu.k11 <= tpd2.row_3(7 downto 0);
-            syn1KernalData_blu.k12 <= tpd1.row_3(7 downto 0);
-            syn1KernalData_blu.k13 <= tpd4.row_4(7 downto 0);
-            syn1KernalData_blu.k14 <= tpd3.row_4(7 downto 0);
-            syn1KernalData_blu.k15 <= tpd2.row_4(7 downto 0);
-            syn1KernalData_blu.k16 <= tpd1.row_4(7 downto 0);
+            syn1KernalData_blu.k1  <= tpd4.row_1(9 downto 0);
+            syn1KernalData_blu.k2  <= tpd3.row_1(9 downto 0);
+            syn1KernalData_blu.k3  <= tpd2.row_1(9 downto 0);
+            syn1KernalData_blu.k4  <= tpd1.row_1(9 downto 0);
+            syn1KernalData_blu.k5  <= tpd4.row_2(9 downto 0);
+            syn1KernalData_blu.k6  <= tpd3.row_2(9 downto 0);
+            syn1KernalData_blu.k7  <= tpd2.row_2(9 downto 0);
+            syn1KernalData_blu.k8  <= tpd1.row_2(9 downto 0);
+            syn1KernalData_blu.k9  <= tpd4.row_3(9 downto 0);
+            syn1KernalData_blu.k10 <= tpd3.row_3(9 downto 0);
+            syn1KernalData_blu.k11 <= tpd2.row_3(9 downto 0);
+            syn1KernalData_blu.k12 <= tpd1.row_3(9 downto 0);
+            syn1KernalData_blu.k13 <= tpd4.row_4(9 downto 0);
+            syn1KernalData_blu.k14 <= tpd3.row_4(9 downto 0);
+            syn1KernalData_blu.k15 <= tpd2.row_4(9 downto 0);
+            syn1KernalData_blu.k16 <= tpd1.row_4(9 downto 0);
             syn2KernalData_blu     <= syn1KernalData_blu;
             syn3KernalData_blu     <= syn2KernalData_blu;
             syn4KernalData_blu     <= syn3KernalData_blu;
@@ -463,6 +463,9 @@ blurRgb.blue <= std_logic_vector(pa_data_blu(i_data_width+5 downto 2));
     blur_rgb.green <= blurRgb.green(iMSB downto iLSB);
     blur_rgb.blue  <= blurRgb.blue(iMSB downto iLSB);
     blur_rgb.valid <= iRgb.valid;
+    blur_rgb.eol   <= iRgb.eol;
+    blur_rgb.sof   <= iRgb.sof;
+    blur_rgb.eof   <= iRgb.eof;
 blur_valid_inst: d_valid
 generic map (
     pixelDelay   => 11)

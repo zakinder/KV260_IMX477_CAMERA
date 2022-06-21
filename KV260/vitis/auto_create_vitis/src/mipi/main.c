@@ -18,10 +18,18 @@ u32 *pFrames[DISPLAY_NUM_FRAMES];
 int main()
 {
     video = VMODE_1920x1080;
-    init_platform();
+    per_write_reg(REG1,5000);
+    per_write_reg(REG2,0);
+    per_write_reg(REG3,0);
+    per_write_reg(REG4,0);
+    per_write_reg(REG5,5000);
+    per_write_reg(REG6,0);
+    per_write_reg(REG7,0);
+    per_write_reg(REG8,0);
+    per_write_reg(REG9,2500);
     per_write_reg(REG16,0);
     per_write_reg(REG11,15);
-    per_write_reg(REG15,3);
+    per_write_reg(REG15,2);
     per_write_reg(REG19,4);
     init_camera();
     mipi_init();
@@ -29,9 +37,13 @@ int main()
     print("Camera Configuration Complete\n\r");
     tpg_init(1);
     vtc_init(video);
-    pFrames[0] = frameBuf[0];
-    vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,DEMO_STRIDE,VIDEO_ROWS,DEMO_STRIDE,(unsigned int)pFrames[0]);
-    run_dppsu((unsigned int)pFrames[0]);
+	int i ;
+	for (i = 0; i < DISPLAY_NUM_FRAMES; i++)
+	{
+		pFrames[i] = frameBuf[i];
+	}
+    run_dppsu((unsigned int)pFrames[1]);
+    vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,DEMO_STRIDE,VIDEO_ROWS,DEMO_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
     print("Entire Video Pipeline Activated\r\n");
      while(1){
          menu_calls(TRUE);

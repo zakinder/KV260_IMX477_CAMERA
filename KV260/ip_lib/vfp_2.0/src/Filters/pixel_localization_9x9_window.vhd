@@ -292,7 +292,6 @@ process (clk) begin
         rgbSyncEof(31) <= rgbSyncEof(30);
     end if;
 end process;
-
 process (clk) begin
     if rising_edge(clk) then
             row1.pixel_1    <= v_tap_0x;
@@ -1152,28 +1151,66 @@ process (clk) begin
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        sum.red.pixels_01_02_03_3x3                <= (pix_9x9.red.k1  + pix_9x9.red.k2*2  + pix_9x9.red.k3) / 4;
-        sum.red.pixels_10_11_12_3x3                <= (pix_9x9.red.k10*2 + pix_9x9.red.k11*4 + pix_9x9.red.k12*2) / 8;
-        sum.red.pixels_19_20_21_3x3                <= (pix_9x9.red.k19 + pix_9x9.red.k20*2 + pix_9x9.red.k21) / 4;
-        sum.red.pixels_01                          <= (pix_9x9.red.k5);
-        sum.red.pixels_01_02                       <= (pix_9x9.red.k1*2  + pix_9x9.red.k2) / 3;
-        if(crd_s40.y=0)then
-            sum.red.pixels_01_to_21_3x3                <= (sum.red.pixels_01_02_03_3x3);
-        elsif(crd_s40.y=1)then
-            sum.red.pixels_01_to_21_3x3                <= (sum.red.pixels_01_02_03_3x3 + sum.red.pixels_10_11_12_3x3) / 2;
-        else
-            sum.red.pixels_01_to_21_3x3                <= (sum.red.pixels_01_02_03_3x3 + sum.red.pixels_10_11_12_3x3 + sum.red.pixels_19_20_21_3x3) / 3;
-        end if;
-        sum.red.pixels_01_02_03_04_05_06_07_08_09  <= (pix_9x9.red.k1 *1 + pix_9x9.red.k2 *1 + pix_9x9.red.k3 *1 + pix_9x9.red.k4 *1 + pix_9x9.red.k5 *1 + pix_9x9.red.k6 *1 + pix_9x9.red.k7 *1 + pix_9x9.red.k8 *1 + pix_9x9.red.k9 *1) / 9;
-        sum.red.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.red.k10*1 + pix_9x9.red.k11*1 + pix_9x9.red.k12*1 + pix_9x9.red.k13*1 + pix_9x9.red.k14*1 + pix_9x9.red.k15*1 + pix_9x9.red.k16*1 + pix_9x9.red.k17*1 + pix_9x9.red.k18*1) / 9;
-        sum.red.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.red.k19*1 + pix_9x9.red.k20*1 + pix_9x9.red.k21*1 + pix_9x9.red.k22*1 + pix_9x9.red.k23*1 + pix_9x9.red.k24*1 + pix_9x9.red.k25*1 + pix_9x9.red.k26*1 + pix_9x9.red.k27*1) / 9;
-        sum.red.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.red.k28*1 + pix_9x9.red.k29*1 + pix_9x9.red.k30*1 + pix_9x9.red.k31*1 + pix_9x9.red.k32*1 + pix_9x9.red.k33*1 + pix_9x9.red.k34*1 + pix_9x9.red.k35*1 + pix_9x9.red.k36*1) / 9;
-        sum.red.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.red.k37*1 + pix_9x9.red.k38*1 + pix_9x9.red.k39*1 + pix_9x9.red.k40*1 + pix_9x9.red.k41*1 + pix_9x9.red.k42*1 + pix_9x9.red.k43*1 + pix_9x9.red.k44*1 + pix_9x9.red.k45*1) / 9;
-        sum.red.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.red.k46*1 + pix_9x9.red.k47*1 + pix_9x9.red.k48*1 + pix_9x9.red.k49*1 + pix_9x9.red.k50*1 + pix_9x9.red.k51*1 + pix_9x9.red.k52*1 + pix_9x9.red.k53*1 + pix_9x9.red.k54*1) / 9;
-        sum.red.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.red.k55*1 + pix_9x9.red.k56*1 + pix_9x9.red.k57*1 + pix_9x9.red.k58*1 + pix_9x9.red.k59*1 + pix_9x9.red.k60*1 + pix_9x9.red.k61*1 + pix_9x9.red.k62*1 + pix_9x9.red.k63*1) / 9;
-        sum.red.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.red.k64*1 + pix_9x9.red.k65*1 + pix_9x9.red.k66*1 + pix_9x9.red.k67*1 + pix_9x9.red.k68*1 + pix_9x9.red.k69*1 + pix_9x9.red.k70*1 + pix_9x9.red.k71*1 + pix_9x9.red.k72*1) / 9;
-        sum.red.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.red.k73*1 + pix_9x9.red.k74*1 + pix_9x9.red.k75*1 + pix_9x9.red.k76*1 + pix_9x9.red.k77*1 + pix_9x9.red.k78*1 + pix_9x9.red.k79*1 + pix_9x9.red.k80*1 + pix_9x9.red.k81*1) / 9;
-        
+        --sum.red.pixels_01_02_03_3x3                <= (pix_9x9.red.k1  + pix_9x9.red.k2*2  + pix_9x9.red.k3) / 4;
+        --sum.red.pixels_10_11_12_3x3                <= (pix_9x9.red.k10*2 + pix_9x9.red.k11*4 + pix_9x9.red.k12*2) / 8;
+        --sum.red.pixels_19_20_21_3x3                <= (pix_9x9.red.k19 + pix_9x9.red.k20*2 + pix_9x9.red.k21) / 4;
+        --sum.red.pixels_01                          <= (pix_9x9.red.k5);
+        --sum.red.pixels_01_02                       <= (pix_9x9.red.k1*2  + pix_9x9.red.k2) / 3;
+        ----if(crd_s40.y=0)then
+        ----    sum.red.pixels_01_to_21_3x3                <= (sum.red.pixels_01_02_03_3x3);
+        ----elsif(crd_s40.y=1)then
+        ----    sum.red.pixels_01_to_21_3x3                <= (sum.red.pixels_01_02_03_3x3 + sum.red.pixels_10_11_12_3x3) / 2;
+       ----else
+        --    sum.red.pixels_01_to_21_3x3                  <= (sum.red.pixels_01_02_03_3x3 + sum.red.pixels_10_11_12_3x3 + sum.red.pixels_19_20_21_3x3) / 3;
+        ----end if;
+        sum.red.pixels_01_02_03                    <= (rgb_9x9.red.k1  + rgb_9x9.red.k2   + rgb_9x9.red.k3)  / 3;
+        sum.red.pixels_04_05_06                    <= (rgb_9x9.red.k4  + rgb_9x9.red.k5   + rgb_9x9.red.k6)  / 3;
+        sum.red.pixels_07_08_09                    <= (rgb_9x9.red.k7  + rgb_9x9.red.k8   + rgb_9x9.red.k9)  / 3;
+        sum.red.pixels_10_11_12                    <= (rgb_9x9.red.k10 + rgb_9x9.red.k11  + rgb_9x9.red.k12) / 3;
+        sum.red.pixels_13_14_15                    <= (rgb_9x9.red.k13 + rgb_9x9.red.k14  + rgb_9x9.red.k15) / 3;
+        sum.red.pixels_16_17_18                    <= (rgb_9x9.red.k16 + rgb_9x9.red.k17  + rgb_9x9.red.k18) / 3;
+        sum.red.pixels_19_20_21                    <= (rgb_9x9.red.k19 + rgb_9x9.red.k20  + rgb_9x9.red.k21) / 3;
+        sum.red.pixels_22_23_24                    <= (rgb_9x9.red.k22 + rgb_9x9.red.k23  + rgb_9x9.red.k24) / 3;
+        sum.red.pixels_25_26_27                    <= (rgb_9x9.red.k25 + rgb_9x9.red.k26  + rgb_9x9.red.k27) / 3;
+        sum.red.pixels_28_29_30                    <= (rgb_9x9.red.k28 + rgb_9x9.red.k29  + rgb_9x9.red.k30) / 3;
+        sum.red.pixels_31_32_33                    <= (rgb_9x9.red.k31 + rgb_9x9.red.k32  + rgb_9x9.red.k33) / 3;
+        sum.red.pixels_34_35_36                    <= (rgb_9x9.red.k34 + rgb_9x9.red.k35  + rgb_9x9.red.k36) / 3;
+        sum.red.pixels_37_38_39                    <= (rgb_9x9.red.k37 + rgb_9x9.red.k38  + rgb_9x9.red.k39) / 3;
+        sum.red.pixels_40_41_42                    <= (rgb_9x9.red.k40 + rgb_9x9.red.k41  + rgb_9x9.red.k42) / 3;
+        sum.red.pixels_43_44_45                    <= (rgb_9x9.red.k43 + rgb_9x9.red.k44  + rgb_9x9.red.k45) / 3;
+        sum.red.pixels_46_47_48                    <= (rgb_9x9.red.k46 + rgb_9x9.red.k47  + rgb_9x9.red.k48) / 3;
+        sum.red.pixels_49_50_51                    <= (rgb_9x9.red.k49 + rgb_9x9.red.k50  + rgb_9x9.red.k51) / 3;
+        sum.red.pixels_52_53_54                    <= (rgb_9x9.red.k52 + rgb_9x9.red.k53  + rgb_9x9.red.k54) / 3;
+        sum.red.pixels_55_56_57                    <= (rgb_9x9.red.k55 + rgb_9x9.red.k56  + rgb_9x9.red.k57) / 3;
+        sum.red.pixels_58_59_60                    <= (rgb_9x9.red.k58 + rgb_9x9.red.k59  + rgb_9x9.red.k60) / 3;
+        sum.red.pixels_61_62_63                    <= (rgb_9x9.red.k61 + rgb_9x9.red.k62  + rgb_9x9.red.k63) / 3;
+        sum.red.pixels_64_65_66                    <= (rgb_9x9.red.k64 + rgb_9x9.red.k65  + rgb_9x9.red.k66) / 3;
+        sum.red.pixels_67_68_69                    <= (rgb_9x9.red.k67 + rgb_9x9.red.k68  + rgb_9x9.red.k69) / 3;
+        sum.red.pixels_70_71_72                    <= (rgb_9x9.red.k70 + rgb_9x9.red.k71  + rgb_9x9.red.k72) / 3;
+        sum.red.pixels_73_74_75                    <= (rgb_9x9.red.k73 + rgb_9x9.red.k74  + rgb_9x9.red.k75) / 3;
+        sum.red.pixels_76_77_78                    <= (rgb_9x9.red.k76 + rgb_9x9.red.k77  + rgb_9x9.red.k78) / 3;
+        sum.red.pixels_79_80_81                    <= (rgb_9x9.red.k79 + rgb_9x9.red.k80  + rgb_9x9.red.k81) / 3;
+        sum.red.pixels_01_02_03_04_05_06_07_08_09  <= (sum.red.pixels_01_02_03 + sum.red.pixels_04_05_06 + sum.red.pixels_07_08_09) / 3;
+        sum.red.pixels_10_11_12_13_14_15_16_17_18  <= (sum.red.pixels_10_11_12 + sum.red.pixels_13_14_15 + sum.red.pixels_16_17_18) / 3;
+        sum.red.pixels_19_20_21_22_23_24_25_26_27  <= (sum.red.pixels_19_20_21 + sum.red.pixels_22_23_24 + sum.red.pixels_25_26_27) / 3;
+        sum.red.pixels_28_29_30_31_32_33_34_35_36  <= (sum.red.pixels_28_29_30 + sum.red.pixels_31_32_33 + sum.red.pixels_34_35_36) / 3;
+        sum.red.pixels_37_38_39_40_41_42_43_44_45  <= (sum.red.pixels_37_38_39 + sum.red.pixels_40_41_42 + sum.red.pixels_43_44_45) / 3;
+        sum.red.pixels_46_47_48_49_50_51_52_53_54  <= (sum.red.pixels_46_47_48 + sum.red.pixels_49_50_51 + sum.red.pixels_52_53_54) / 3;
+        sum.red.pixels_55_56_57_58_59_60_61_62_63  <= (sum.red.pixels_55_56_57 + sum.red.pixels_58_59_60 + sum.red.pixels_61_62_63) / 3;
+        sum.red.pixels_64_65_66_67_68_69_70_71_72  <= (sum.red.pixels_64_65_66 + sum.red.pixels_67_68_69 + sum.red.pixels_70_71_72) / 3;
+        sum.red.pixels_73_74_75_76_77_78_79_80_81  <= (sum.red.pixels_73_74_75 + sum.red.pixels_76_77_78 + sum.red.pixels_79_80_81) / 3;
+        sum.red.pixels_01_TO_27                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27)  / 3;
+        sum.red.pixels_28_TO_54                    <= (sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54)  / 3;
+        sum.red.pixels_55_TO_81                    <= (sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72 + sum.red.pixels_73_74_75_76_77_78_79_80_81)  / 3;
+        sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_TO_27 + sum.red.pixels_28_TO_54 + sum.red.pixels_55_TO_81) /3;
+        --sum.red.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.red.k10*1 + pix_9x9.red.k11*1 + pix_9x9.red.k12*1 + pix_9x9.red.k13*1 + pix_9x9.red.k14*1 + pix_9x9.red.k15*1 + pix_9x9.red.k16*1 + pix_9x9.red.k17*1 + pix_9x9.red.k18*1) / 9;
+        --sum.red.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.red.k19*1 + pix_9x9.red.k20*1 + pix_9x9.red.k21*1 + pix_9x9.red.k22*1 + pix_9x9.red.k23*1 + pix_9x9.red.k24*1 + pix_9x9.red.k25*1 + pix_9x9.red.k26*1 + pix_9x9.red.k27*1) / 9;
+        --sum.red.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.red.k28*1 + pix_9x9.red.k29*1 + pix_9x9.red.k30*1 + pix_9x9.red.k31*1 + pix_9x9.red.k32*1 + pix_9x9.red.k33*1 + pix_9x9.red.k34*1 + pix_9x9.red.k35*1 + pix_9x9.red.k36*1) / 9;
+        --sum.red.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.red.k37*1 + pix_9x9.red.k38*1 + pix_9x9.red.k39*1 + pix_9x9.red.k40*1 + pix_9x9.red.k41*1 + pix_9x9.red.k42*1 + pix_9x9.red.k43*1 + pix_9x9.red.k44*1 + pix_9x9.red.k45*1) / 9;
+        --sum.red.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.red.k46*1 + pix_9x9.red.k47*1 + pix_9x9.red.k48*1 + pix_9x9.red.k49*1 + pix_9x9.red.k50*1 + pix_9x9.red.k51*1 + pix_9x9.red.k52*1 + pix_9x9.red.k53*1 + pix_9x9.red.k54*1) / 9;
+        --sum.red.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.red.k55*1 + pix_9x9.red.k56*1 + pix_9x9.red.k57*1 + pix_9x9.red.k58*1 + pix_9x9.red.k59*1 + pix_9x9.red.k60*1 + pix_9x9.red.k61*1 + pix_9x9.red.k62*1 + pix_9x9.red.k63*1) / 9;
+        --sum.red.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.red.k64*1 + pix_9x9.red.k65*1 + pix_9x9.red.k66*1 + pix_9x9.red.k67*1 + pix_9x9.red.k68*1 + pix_9x9.red.k69*1 + pix_9x9.red.k70*1 + pix_9x9.red.k71*1 + pix_9x9.red.k72*1) / 9;
+        --sum.red.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.red.k73*1 + pix_9x9.red.k74*1 + pix_9x9.red.k75*1 + pix_9x9.red.k76*1 + pix_9x9.red.k77*1 + pix_9x9.red.k78*1 + pix_9x9.red.k79*1 + pix_9x9.red.k80*1 + pix_9x9.red.k81*1) / 9;
         --if(crd_s40.y=0)then
         --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09);
         --elsif(crd_s40.y=1)then
@@ -1191,33 +1228,73 @@ process (clk) begin
         --elsif(crd_s40.y=7)then
         --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72) /8;
         --else
-            sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72 + sum.red.pixels_73_74_75_76_77_78_79_80_81) /9;
+        --    sum.red.pixels_01_to_81                    <= (sum.red.pixels_01_02_03_04_05_06_07_08_09 + sum.red.pixels_10_11_12_13_14_15_16_17_18 + sum.red.pixels_19_20_21_22_23_24_25_26_27 + sum.red.pixels_28_29_30_31_32_33_34_35_36 + sum.red.pixels_37_38_39_40_41_42_43_44_45 + sum.red.pixels_46_47_48_49_50_51_52_53_54 + sum.red.pixels_55_56_57_58_59_60_61_62_63 + sum.red.pixels_64_65_66_67_68_69_70_71_72 + sum.red.pixels_73_74_75_76_77_78_79_80_81) /9;
         --end if;
     end if;
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        sum.green.pixels_01_02_03_3x3                <= (pix_9x9.green.k1  + pix_9x9.green.k2*2  + pix_9x9.green.k3) / 4;
-        sum.green.pixels_10_11_12_3x3                <= (pix_9x9.green.k10*2 + pix_9x9.green.k11*4 + pix_9x9.green.k12*2) / 8;
-        sum.green.pixels_19_20_21_3x3                <= (pix_9x9.green.k19 + pix_9x9.green.k20*2 + pix_9x9.green.k21) / 4;
-        sum.green.pixels_01                          <= (pix_9x9.green.k5);
-        sum.green.pixels_01_02                       <= (pix_9x9.green.k1*2  + pix_9x9.green.k2) / 3;
-        if(crd_s40.y=0)then
-            sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3);
-        elsif(crd_s40.y=1)then
-            sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3 + sum.green.pixels_10_11_12_3x3) / 2;
-        else
-            sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3 + sum.green.pixels_10_11_12_3x3 + sum.green.pixels_19_20_21_3x3) / 3;
-        end if;
-        sum.green.pixels_01_02_03_04_05_06_07_08_09  <= (pix_9x9.green.k1 *1 + pix_9x9.green.k2 *1 + pix_9x9.green.k3 *1 + pix_9x9.green.k4 *1 + pix_9x9.green.k5 *1 + pix_9x9.green.k6 *1 + pix_9x9.green.k7 *1 + pix_9x9.green.k8 *1 + pix_9x9.green.k9 *1) / 9;
-        sum.green.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.green.k10*1 + pix_9x9.green.k11*1 + pix_9x9.green.k12*1 + pix_9x9.green.k13*1 + pix_9x9.green.k14*1 + pix_9x9.green.k15*1 + pix_9x9.green.k16*1 + pix_9x9.green.k17*1 + pix_9x9.green.k18*1) / 9;
-        sum.green.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.green.k19*1 + pix_9x9.green.k20*1 + pix_9x9.green.k21*1 + pix_9x9.green.k22*1 + pix_9x9.green.k23*1 + pix_9x9.green.k24*1 + pix_9x9.green.k25*1 + pix_9x9.green.k26*1 + pix_9x9.green.k27*1) / 9;
-        sum.green.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.green.k28*1 + pix_9x9.green.k29*1 + pix_9x9.green.k30*1 + pix_9x9.green.k31*1 + pix_9x9.green.k32*1 + pix_9x9.green.k33*1 + pix_9x9.green.k34*1 + pix_9x9.green.k35*1 + pix_9x9.green.k36*1) / 9;
-        sum.green.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.green.k37*1 + pix_9x9.green.k38*1 + pix_9x9.green.k39*1 + pix_9x9.green.k40*1 + pix_9x9.green.k41*1 + pix_9x9.green.k42*1 + pix_9x9.green.k43*1 + pix_9x9.green.k44*1 + pix_9x9.green.k45*1) / 9;
-        sum.green.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.green.k46*1 + pix_9x9.green.k47*1 + pix_9x9.green.k48*1 + pix_9x9.green.k49*1 + pix_9x9.green.k50*1 + pix_9x9.green.k51*1 + pix_9x9.green.k52*1 + pix_9x9.green.k53*1 + pix_9x9.green.k54*1) / 9;
-        sum.green.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.green.k55*1 + pix_9x9.green.k56*1 + pix_9x9.green.k57*1 + pix_9x9.green.k58*1 + pix_9x9.green.k59*1 + pix_9x9.green.k60*1 + pix_9x9.green.k61*1 + pix_9x9.green.k62*1 + pix_9x9.green.k63*1) / 9;
-        sum.green.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.green.k64*1 + pix_9x9.green.k65*1 + pix_9x9.green.k66*1 + pix_9x9.green.k67*1 + pix_9x9.green.k68*1 + pix_9x9.green.k69*1 + pix_9x9.green.k70*1 + pix_9x9.green.k71*1 + pix_9x9.green.k72*1) / 9;
-        sum.green.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.green.k73*1 + pix_9x9.green.k74*1 + pix_9x9.green.k75*1 + pix_9x9.green.k76*1 + pix_9x9.green.k77*1 + pix_9x9.green.k78*1 + pix_9x9.green.k79*1 + pix_9x9.green.k80*1 + pix_9x9.green.k81*1) / 9;
+        --sum.green.pixels_01_02_03_3x3                <= (pix_9x9.green.k1  + pix_9x9.green.k2*2  + pix_9x9.green.k3) / 4;
+        --sum.green.pixels_10_11_12_3x3                <= (pix_9x9.green.k10*2 + pix_9x9.green.k11*4 + pix_9x9.green.k12*2) / 8;
+        --sum.green.pixels_19_20_21_3x3                <= (pix_9x9.green.k19 + pix_9x9.green.k20*2 + pix_9x9.green.k21) / 4;
+        --sum.green.pixels_01                          <= (pix_9x9.green.k5);
+        --sum.green.pixels_01_02                       <= (pix_9x9.green.k1*2  + pix_9x9.green.k2) / 3;
+        ----if(crd_s40.y=0)then
+        -- --   sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3);
+        ----elsif(crd_s40.y=1)then
+        ----    sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3 + sum.green.pixels_10_11_12_3x3) / 2;
+        ----else
+        --    sum.green.pixels_01_to_21_3x3                <= (sum.green.pixels_01_02_03_3x3 + sum.green.pixels_10_11_12_3x3 + sum.green.pixels_19_20_21_3x3) / 3;
+        ----end if;
+        sum.green.pixels_01_02_03                    <= (rgb_9x9.green.k1  + rgb_9x9.green.k2   + rgb_9x9.green.k3)  / 3;
+        sum.green.pixels_04_05_06                    <= (rgb_9x9.green.k4  + rgb_9x9.green.k5   + rgb_9x9.green.k6)  / 3;
+        sum.green.pixels_07_08_09                    <= (rgb_9x9.green.k7  + rgb_9x9.green.k8   + rgb_9x9.green.k9)  / 3;
+        sum.green.pixels_10_11_12                    <= (rgb_9x9.green.k10 + rgb_9x9.green.k11  + rgb_9x9.green.k12) / 3;
+        sum.green.pixels_13_14_15                    <= (rgb_9x9.green.k13 + rgb_9x9.green.k14  + rgb_9x9.green.k15) / 3;
+        sum.green.pixels_16_17_18                    <= (rgb_9x9.green.k16 + rgb_9x9.green.k17  + rgb_9x9.green.k18) / 3;
+        sum.green.pixels_19_20_21                    <= (rgb_9x9.green.k19 + rgb_9x9.green.k20  + rgb_9x9.green.k21) / 3;
+        sum.green.pixels_22_23_24                    <= (rgb_9x9.green.k22 + rgb_9x9.green.k23  + rgb_9x9.green.k24) / 3;
+        sum.green.pixels_25_26_27                    <= (rgb_9x9.green.k25 + rgb_9x9.green.k26  + rgb_9x9.green.k27) / 3;
+        sum.green.pixels_28_29_30                    <= (rgb_9x9.green.k28 + rgb_9x9.green.k29  + rgb_9x9.green.k30) / 3;
+        sum.green.pixels_31_32_33                    <= (rgb_9x9.green.k31 + rgb_9x9.green.k32  + rgb_9x9.green.k33) / 3;
+        sum.green.pixels_34_35_36                    <= (rgb_9x9.green.k34 + rgb_9x9.green.k35  + rgb_9x9.green.k36) / 3;
+        sum.green.pixels_37_38_39                    <= (rgb_9x9.green.k37 + rgb_9x9.green.k38  + rgb_9x9.green.k39) / 3;
+        sum.green.pixels_40_41_42                    <= (rgb_9x9.green.k40 + rgb_9x9.green.k41  + rgb_9x9.green.k42) / 3;
+        sum.green.pixels_43_44_45                    <= (rgb_9x9.green.k43 + rgb_9x9.green.k44  + rgb_9x9.green.k45) / 3;
+        sum.green.pixels_46_47_48                    <= (rgb_9x9.green.k46 + rgb_9x9.green.k47  + rgb_9x9.green.k48) / 3;
+        sum.green.pixels_49_50_51                    <= (rgb_9x9.green.k49 + rgb_9x9.green.k50  + rgb_9x9.green.k51) / 3;
+        sum.green.pixels_52_53_54                    <= (rgb_9x9.green.k52 + rgb_9x9.green.k53  + rgb_9x9.green.k54) / 3;
+        sum.green.pixels_55_56_57                    <= (rgb_9x9.green.k55 + rgb_9x9.green.k56  + rgb_9x9.green.k57) / 3;
+        sum.green.pixels_58_59_60                    <= (rgb_9x9.green.k58 + rgb_9x9.green.k59  + rgb_9x9.green.k60) / 3;
+        sum.green.pixels_61_62_63                    <= (rgb_9x9.green.k61 + rgb_9x9.green.k62  + rgb_9x9.green.k63) / 3;
+        sum.green.pixels_64_65_66                    <= (rgb_9x9.green.k64 + rgb_9x9.green.k65  + rgb_9x9.green.k66) / 3;
+        sum.green.pixels_67_68_69                    <= (rgb_9x9.green.k67 + rgb_9x9.green.k68  + rgb_9x9.green.k69) / 3;
+        sum.green.pixels_70_71_72                    <= (rgb_9x9.green.k70 + rgb_9x9.green.k71  + rgb_9x9.green.k72) / 3;
+        sum.green.pixels_73_74_75                    <= (rgb_9x9.green.k73 + rgb_9x9.green.k74  + rgb_9x9.green.k75) / 3;
+        sum.green.pixels_76_77_78                    <= (rgb_9x9.green.k76 + rgb_9x9.green.k77  + rgb_9x9.green.k78) / 3;
+        sum.green.pixels_79_80_81                    <= (rgb_9x9.green.k79 + rgb_9x9.green.k80  + rgb_9x9.green.k81) / 3;
+        sum.green.pixels_01_02_03_04_05_06_07_08_09  <= (sum.green.pixels_01_02_03 + sum.green.pixels_04_05_06 + sum.green.pixels_07_08_09) / 3;
+        sum.green.pixels_10_11_12_13_14_15_16_17_18  <= (sum.green.pixels_10_11_12 + sum.green.pixels_13_14_15 + sum.green.pixels_16_17_18) / 3;
+        sum.green.pixels_19_20_21_22_23_24_25_26_27  <= (sum.green.pixels_19_20_21 + sum.green.pixels_22_23_24 + sum.green.pixels_25_26_27) / 3;
+        sum.green.pixels_28_29_30_31_32_33_34_35_36  <= (sum.green.pixels_28_29_30 + sum.green.pixels_31_32_33 + sum.green.pixels_34_35_36) / 3;
+        sum.green.pixels_37_38_39_40_41_42_43_44_45  <= (sum.green.pixels_37_38_39 + sum.green.pixels_40_41_42 + sum.green.pixels_43_44_45) / 3;
+        sum.green.pixels_46_47_48_49_50_51_52_53_54  <= (sum.green.pixels_46_47_48 + sum.green.pixels_49_50_51 + sum.green.pixels_52_53_54) / 3;
+        sum.green.pixels_55_56_57_58_59_60_61_62_63  <= (sum.green.pixels_55_56_57 + sum.green.pixels_58_59_60 + sum.green.pixels_61_62_63) / 3;
+        sum.green.pixels_64_65_66_67_68_69_70_71_72  <= (sum.green.pixels_64_65_66 + sum.green.pixels_67_68_69 + sum.green.pixels_70_71_72) / 3;
+        sum.green.pixels_73_74_75_76_77_78_79_80_81  <= (sum.green.pixels_73_74_75 + sum.green.pixels_76_77_78 + sum.green.pixels_79_80_81) / 3;
+        sum.green.pixels_01_TO_27                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27)  / 3;
+        sum.green.pixels_28_TO_54                    <= (sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54)  / 3;
+        sum.green.pixels_55_TO_81                    <= (sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72 + sum.green.pixels_73_74_75_76_77_78_79_80_81)  / 3;
+        sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_TO_27 + sum.green.pixels_28_TO_54 + sum.green.pixels_55_TO_81) /3;
+        --sum.green.pixels_01_02_03_04_05_06_07_08_09  <= (pix_9x9.green.k1 *1 + pix_9x9.green.k2 *1 + pix_9x9.green.k3 *1 + pix_9x9.green.k4 *1 + pix_9x9.green.k5 *1 + pix_9x9.green.k6 *1 + pix_9x9.green.k7 *1 + pix_9x9.green.k8 *1 + pix_9x9.green.k9 *1) / 9;
+        --sum.green.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.green.k10*1 + pix_9x9.green.k11*1 + pix_9x9.green.k12*1 + pix_9x9.green.k13*1 + pix_9x9.green.k14*1 + pix_9x9.green.k15*1 + pix_9x9.green.k16*1 + pix_9x9.green.k17*1 + pix_9x9.green.k18*1) / 9;
+        --sum.green.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.green.k19*1 + pix_9x9.green.k20*1 + pix_9x9.green.k21*1 + pix_9x9.green.k22*1 + pix_9x9.green.k23*1 + pix_9x9.green.k24*1 + pix_9x9.green.k25*1 + pix_9x9.green.k26*1 + pix_9x9.green.k27*1) / 9;
+        --sum.green.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.green.k28*1 + pix_9x9.green.k29*1 + pix_9x9.green.k30*1 + pix_9x9.green.k31*1 + pix_9x9.green.k32*1 + pix_9x9.green.k33*1 + pix_9x9.green.k34*1 + pix_9x9.green.k35*1 + pix_9x9.green.k36*1) / 9;
+        --sum.green.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.green.k37*1 + pix_9x9.green.k38*1 + pix_9x9.green.k39*1 + pix_9x9.green.k40*1 + pix_9x9.green.k41*1 + pix_9x9.green.k42*1 + pix_9x9.green.k43*1 + pix_9x9.green.k44*1 + pix_9x9.green.k45*1) / 9;
+        --sum.green.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.green.k46*1 + pix_9x9.green.k47*1 + pix_9x9.green.k48*1 + pix_9x9.green.k49*1 + pix_9x9.green.k50*1 + pix_9x9.green.k51*1 + pix_9x9.green.k52*1 + pix_9x9.green.k53*1 + pix_9x9.green.k54*1) / 9;
+        --sum.green.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.green.k55*1 + pix_9x9.green.k56*1 + pix_9x9.green.k57*1 + pix_9x9.green.k58*1 + pix_9x9.green.k59*1 + pix_9x9.green.k60*1 + pix_9x9.green.k61*1 + pix_9x9.green.k62*1 + pix_9x9.green.k63*1) / 9;
+        --sum.green.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.green.k64*1 + pix_9x9.green.k65*1 + pix_9x9.green.k66*1 + pix_9x9.green.k67*1 + pix_9x9.green.k68*1 + pix_9x9.green.k69*1 + pix_9x9.green.k70*1 + pix_9x9.green.k71*1 + pix_9x9.green.k72*1) / 9;
+        --sum.green.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.green.k73*1 + pix_9x9.green.k74*1 + pix_9x9.green.k75*1 + pix_9x9.green.k76*1 + pix_9x9.green.k77*1 + pix_9x9.green.k78*1 + pix_9x9.green.k79*1 + pix_9x9.green.k80*1 + pix_9x9.green.k81*1) / 9;
         --if(crd_s40.y=0)then
         --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09);
         --elsif(crd_s40.y=1)then
@@ -1235,33 +1312,73 @@ process (clk) begin
         --elsif(crd_s40.y=7)then
         --    sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72) /8;
         --else
-            sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72 + sum.green.pixels_73_74_75_76_77_78_79_80_81) /9;
+        -- sum.green.pixels_01_to_81                    <= (sum.green.pixels_01_02_03_04_05_06_07_08_09 + sum.green.pixels_10_11_12_13_14_15_16_17_18 + sum.green.pixels_19_20_21_22_23_24_25_26_27 + sum.green.pixels_28_29_30_31_32_33_34_35_36 + sum.green.pixels_37_38_39_40_41_42_43_44_45 + sum.green.pixels_46_47_48_49_50_51_52_53_54 + sum.green.pixels_55_56_57_58_59_60_61_62_63 + sum.green.pixels_64_65_66_67_68_69_70_71_72 + sum.green.pixels_73_74_75_76_77_78_79_80_81) /9;
        --end if;
     end if;
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        sum.blue.pixels_01_02_03_3x3                <= (pix_9x9.blue.k1  + pix_9x9.blue.k2*2  + pix_9x9.blue.k3) / 4;
-        sum.blue.pixels_10_11_12_3x3                <= (pix_9x9.blue.k10*2 + pix_9x9.blue.k11*4 + pix_9x9.blue.k12*2) / 8;
-        sum.blue.pixels_19_20_21_3x3                <= (pix_9x9.blue.k19 + pix_9x9.blue.k20*2 + pix_9x9.blue.k21) / 4;
-        sum.blue.pixels_01                          <= (pix_9x9.blue.k5);
-        sum.blue.pixels_01_02                       <= (pix_9x9.blue.k1*2  + pix_9x9.blue.k2) / 3;
-        if(crd_s40.y=0)then
-            sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3);
-        elsif(crd_s40.y=1)then
-            sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3 + sum.blue.pixels_10_11_12_3x3) / 2;
-        else
-            sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3 + sum.blue.pixels_10_11_12_3x3 + sum.blue.pixels_19_20_21_3x3) / 3;
-        end if;
-        sum.blue.pixels_01_02_03_04_05_06_07_08_09  <= (pix_9x9.blue.k1 *1 + pix_9x9.blue.k2 *1 + pix_9x9.blue.k3 *1 + pix_9x9.blue.k4 *1 + pix_9x9.blue.k5 *1 + pix_9x9.blue.k6 *1 + pix_9x9.blue.k7 *1 + pix_9x9.blue.k8 *1 + pix_9x9.blue.k9 *1) / 9;
-        sum.blue.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.blue.k10*1 + pix_9x9.blue.k11*1 + pix_9x9.blue.k12*1 + pix_9x9.blue.k13*1 + pix_9x9.blue.k14*1 + pix_9x9.blue.k15*1 + pix_9x9.blue.k16*1 + pix_9x9.blue.k17*1 + pix_9x9.blue.k18*1) / 9;
-        sum.blue.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.blue.k19*1 + pix_9x9.blue.k20*1 + pix_9x9.blue.k21*1 + pix_9x9.blue.k22*1 + pix_9x9.blue.k23*1 + pix_9x9.blue.k24*1 + pix_9x9.blue.k25*1 + pix_9x9.blue.k26*1 + pix_9x9.blue.k27*1) / 9;
-        sum.blue.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.blue.k28*1 + pix_9x9.blue.k29*1 + pix_9x9.blue.k30*1 + pix_9x9.blue.k31*1 + pix_9x9.blue.k32*1 + pix_9x9.blue.k33*1 + pix_9x9.blue.k34*1 + pix_9x9.blue.k35*1 + pix_9x9.blue.k36*1) / 9;
-        sum.blue.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.blue.k37*1 + pix_9x9.blue.k38*1 + pix_9x9.blue.k39*1 + pix_9x9.blue.k40*1 + pix_9x9.blue.k41*1 + pix_9x9.blue.k42*1 + pix_9x9.blue.k43*1 + pix_9x9.blue.k44*1 + pix_9x9.blue.k45*1) / 9;
-        sum.blue.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.blue.k46*1 + pix_9x9.blue.k47*1 + pix_9x9.blue.k48*1 + pix_9x9.blue.k49*1 + pix_9x9.blue.k50*1 + pix_9x9.blue.k51*1 + pix_9x9.blue.k52*1 + pix_9x9.blue.k53*1 + pix_9x9.blue.k54*1) / 9;
-        sum.blue.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.blue.k55*1 + pix_9x9.blue.k56*1 + pix_9x9.blue.k57*1 + pix_9x9.blue.k58*1 + pix_9x9.blue.k59*1 + pix_9x9.blue.k60*1 + pix_9x9.blue.k61*1 + pix_9x9.blue.k62*1 + pix_9x9.blue.k63*1) / 9;
-        sum.blue.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.blue.k64*1 + pix_9x9.blue.k65*1 + pix_9x9.blue.k66*1 + pix_9x9.blue.k67*1 + pix_9x9.blue.k68*1 + pix_9x9.blue.k69*1 + pix_9x9.blue.k70*1 + pix_9x9.blue.k71*1 + pix_9x9.blue.k72*1) / 9;
-        sum.blue.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.blue.k73*1 + pix_9x9.blue.k74*1 + pix_9x9.blue.k75*1 + pix_9x9.blue.k76*1 + pix_9x9.blue.k77*1 + pix_9x9.blue.k78*1 + pix_9x9.blue.k79*1 + pix_9x9.blue.k80*1 + pix_9x9.blue.k81*1) / 9;
+        --sum.blue.pixels_01_02_03_3x3                <= (pix_9x9.blue.k1  + pix_9x9.blue.k2*2  + pix_9x9.blue.k3) / 4;
+        --sum.blue.pixels_10_11_12_3x3                <= (pix_9x9.blue.k10*2 + pix_9x9.blue.k11*4 + pix_9x9.blue.k12*2) / 8;
+        --sum.blue.pixels_19_20_21_3x3                <= (pix_9x9.blue.k19 + pix_9x9.blue.k20*2 + pix_9x9.blue.k21) / 4;
+        --sum.blue.pixels_01                          <= (pix_9x9.blue.k5);
+        --sum.blue.pixels_01_02                       <= (pix_9x9.blue.k1*2  + pix_9x9.blue.k2) / 3;
+        --if(crd_s40.y=0)then
+        --    sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3);
+        --elsif(crd_s40.y=1)then
+        --    sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3 + sum.blue.pixels_10_11_12_3x3) / 2;
+        --else
+        --    sum.blue.pixels_01_to_21_3x3                <= (sum.blue.pixels_01_02_03_3x3 + sum.blue.pixels_10_11_12_3x3 + sum.blue.pixels_19_20_21_3x3) / 3;
+        --end if;
+        sum.blue.pixels_01_02_03                    <= (rgb_9x9.blue.k1  + rgb_9x9.blue.k2   + rgb_9x9.blue.k3)  / 3;
+        sum.blue.pixels_04_05_06                    <= (rgb_9x9.blue.k4  + rgb_9x9.blue.k5   + rgb_9x9.blue.k6)  / 3;
+        sum.blue.pixels_07_08_09                    <= (rgb_9x9.blue.k7  + rgb_9x9.blue.k8   + rgb_9x9.blue.k9)  / 3;
+        sum.blue.pixels_10_11_12                    <= (rgb_9x9.blue.k10 + rgb_9x9.blue.k11  + rgb_9x9.blue.k12) / 3;
+        sum.blue.pixels_13_14_15                    <= (rgb_9x9.blue.k13 + rgb_9x9.blue.k14  + rgb_9x9.blue.k15) / 3;
+        sum.blue.pixels_16_17_18                    <= (rgb_9x9.blue.k16 + rgb_9x9.blue.k17  + rgb_9x9.blue.k18) / 3;
+        sum.blue.pixels_19_20_21                    <= (rgb_9x9.blue.k19 + rgb_9x9.blue.k20  + rgb_9x9.blue.k21) / 3;
+        sum.blue.pixels_22_23_24                    <= (rgb_9x9.blue.k22 + rgb_9x9.blue.k23  + rgb_9x9.blue.k24) / 3;
+        sum.blue.pixels_25_26_27                    <= (rgb_9x9.blue.k25 + rgb_9x9.blue.k26  + rgb_9x9.blue.k27) / 3;
+        sum.blue.pixels_28_29_30                    <= (rgb_9x9.blue.k28 + rgb_9x9.blue.k29  + rgb_9x9.blue.k30) / 3;
+        sum.blue.pixels_31_32_33                    <= (rgb_9x9.blue.k31 + rgb_9x9.blue.k32  + rgb_9x9.blue.k33) / 3;
+        sum.blue.pixels_34_35_36                    <= (rgb_9x9.blue.k34 + rgb_9x9.blue.k35  + rgb_9x9.blue.k36) / 3;
+        sum.blue.pixels_37_38_39                    <= (rgb_9x9.blue.k37 + rgb_9x9.blue.k38  + rgb_9x9.blue.k39) / 3;
+        sum.blue.pixels_40_41_42                    <= (rgb_9x9.blue.k40 + rgb_9x9.blue.k41  + rgb_9x9.blue.k42) / 3;
+        sum.blue.pixels_43_44_45                    <= (rgb_9x9.blue.k43 + rgb_9x9.blue.k44  + rgb_9x9.blue.k45) / 3;
+        sum.blue.pixels_46_47_48                    <= (rgb_9x9.blue.k46 + rgb_9x9.blue.k47  + rgb_9x9.blue.k48) / 3;
+        sum.blue.pixels_49_50_51                    <= (rgb_9x9.blue.k49 + rgb_9x9.blue.k50  + rgb_9x9.blue.k51) / 3;
+        sum.blue.pixels_52_53_54                    <= (rgb_9x9.blue.k52 + rgb_9x9.blue.k53  + rgb_9x9.blue.k54) / 3;
+        sum.blue.pixels_55_56_57                    <= (rgb_9x9.blue.k55 + rgb_9x9.blue.k56  + rgb_9x9.blue.k57) / 3;
+        sum.blue.pixels_58_59_60                    <= (rgb_9x9.blue.k58 + rgb_9x9.blue.k59  + rgb_9x9.blue.k60) / 3;
+        sum.blue.pixels_61_62_63                    <= (rgb_9x9.blue.k61 + rgb_9x9.blue.k62  + rgb_9x9.blue.k63) / 3;
+        sum.blue.pixels_64_65_66                    <= (rgb_9x9.blue.k64 + rgb_9x9.blue.k65  + rgb_9x9.blue.k66) / 3;
+        sum.blue.pixels_67_68_69                    <= (rgb_9x9.blue.k67 + rgb_9x9.blue.k68  + rgb_9x9.blue.k69) / 3;
+        sum.blue.pixels_70_71_72                    <= (rgb_9x9.blue.k70 + rgb_9x9.blue.k71  + rgb_9x9.blue.k72) / 3;
+        sum.blue.pixels_73_74_75                    <= (rgb_9x9.blue.k73 + rgb_9x9.blue.k74  + rgb_9x9.blue.k75) / 3;
+        sum.blue.pixels_76_77_78                    <= (rgb_9x9.blue.k76 + rgb_9x9.blue.k77  + rgb_9x9.blue.k78) / 3;
+        sum.blue.pixels_79_80_81                    <= (rgb_9x9.blue.k79 + rgb_9x9.blue.k80  + rgb_9x9.blue.k81) / 3;
+        sum.blue.pixels_01_02_03_04_05_06_07_08_09  <= (sum.blue.pixels_01_02_03 + sum.blue.pixels_04_05_06 + sum.blue.pixels_07_08_09) / 3;
+        sum.blue.pixels_10_11_12_13_14_15_16_17_18  <= (sum.blue.pixels_10_11_12 + sum.blue.pixels_13_14_15 + sum.blue.pixels_16_17_18) / 3;
+        sum.blue.pixels_19_20_21_22_23_24_25_26_27  <= (sum.blue.pixels_19_20_21 + sum.blue.pixels_22_23_24 + sum.blue.pixels_25_26_27) / 3;
+        sum.blue.pixels_28_29_30_31_32_33_34_35_36  <= (sum.blue.pixels_28_29_30 + sum.blue.pixels_31_32_33 + sum.blue.pixels_34_35_36) / 3;
+        sum.blue.pixels_37_38_39_40_41_42_43_44_45  <= (sum.blue.pixels_37_38_39 + sum.blue.pixels_40_41_42 + sum.blue.pixels_43_44_45) / 3;
+        sum.blue.pixels_46_47_48_49_50_51_52_53_54  <= (sum.blue.pixels_46_47_48 + sum.blue.pixels_49_50_51 + sum.blue.pixels_52_53_54) / 3;
+        sum.blue.pixels_55_56_57_58_59_60_61_62_63  <= (sum.blue.pixels_55_56_57 + sum.blue.pixels_58_59_60 + sum.blue.pixels_61_62_63) / 3;
+        sum.blue.pixels_64_65_66_67_68_69_70_71_72  <= (sum.blue.pixels_64_65_66 + sum.blue.pixels_67_68_69 + sum.blue.pixels_70_71_72) / 3;
+        sum.blue.pixels_73_74_75_76_77_78_79_80_81  <= (sum.blue.pixels_73_74_75 + sum.blue.pixels_76_77_78 + sum.blue.pixels_79_80_81) / 3;
+        sum.blue.pixels_01_TO_27                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27)  / 3;
+        sum.blue.pixels_28_TO_54                    <= (sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54)  / 3;
+        sum.blue.pixels_55_TO_81                    <= (sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72 + sum.blue.pixels_73_74_75_76_77_78_79_80_81)  / 3;
+        sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_TO_27 + sum.blue.pixels_28_TO_54 + sum.blue.pixels_55_TO_81) /3;
+        --sum.blue.pixels_01_02_03_04_05_06_07_08_09  <= (pix_9x9.blue.k1 *1 + pix_9x9.blue.k2 *1 + pix_9x9.blue.k3 *1 + pix_9x9.blue.k4 *1 + pix_9x9.blue.k5 *1 + pix_9x9.blue.k6 *1 + pix_9x9.blue.k7 *1 + pix_9x9.blue.k8 *1 + pix_9x9.blue.k9 *1) / 9;
+        --sum.blue.pixels_10_11_12_13_14_15_16_17_18  <= (pix_9x9.blue.k10*1 + pix_9x9.blue.k11*1 + pix_9x9.blue.k12*1 + pix_9x9.blue.k13*1 + pix_9x9.blue.k14*1 + pix_9x9.blue.k15*1 + pix_9x9.blue.k16*1 + pix_9x9.blue.k17*1 + pix_9x9.blue.k18*1) / 9;
+        --sum.blue.pixels_19_20_21_22_23_24_25_26_27  <= (pix_9x9.blue.k19*1 + pix_9x9.blue.k20*1 + pix_9x9.blue.k21*1 + pix_9x9.blue.k22*1 + pix_9x9.blue.k23*1 + pix_9x9.blue.k24*1 + pix_9x9.blue.k25*1 + pix_9x9.blue.k26*1 + pix_9x9.blue.k27*1) / 9;
+        --sum.blue.pixels_28_29_30_31_32_33_34_35_36  <= (pix_9x9.blue.k28*1 + pix_9x9.blue.k29*1 + pix_9x9.blue.k30*1 + pix_9x9.blue.k31*1 + pix_9x9.blue.k32*1 + pix_9x9.blue.k33*1 + pix_9x9.blue.k34*1 + pix_9x9.blue.k35*1 + pix_9x9.blue.k36*1) / 9;
+        --sum.blue.pixels_37_38_39_40_41_42_43_44_45  <= (pix_9x9.blue.k37*1 + pix_9x9.blue.k38*1 + pix_9x9.blue.k39*1 + pix_9x9.blue.k40*1 + pix_9x9.blue.k41*1 + pix_9x9.blue.k42*1 + pix_9x9.blue.k43*1 + pix_9x9.blue.k44*1 + pix_9x9.blue.k45*1) / 9;
+        --sum.blue.pixels_46_47_48_49_50_51_52_53_54  <= (pix_9x9.blue.k46*1 + pix_9x9.blue.k47*1 + pix_9x9.blue.k48*1 + pix_9x9.blue.k49*1 + pix_9x9.blue.k50*1 + pix_9x9.blue.k51*1 + pix_9x9.blue.k52*1 + pix_9x9.blue.k53*1 + pix_9x9.blue.k54*1) / 9;
+        --sum.blue.pixels_55_56_57_58_59_60_61_62_63  <= (pix_9x9.blue.k55*1 + pix_9x9.blue.k56*1 + pix_9x9.blue.k57*1 + pix_9x9.blue.k58*1 + pix_9x9.blue.k59*1 + pix_9x9.blue.k60*1 + pix_9x9.blue.k61*1 + pix_9x9.blue.k62*1 + pix_9x9.blue.k63*1) / 9;
+        --sum.blue.pixels_64_65_66_67_68_69_70_71_72  <= (pix_9x9.blue.k64*1 + pix_9x9.blue.k65*1 + pix_9x9.blue.k66*1 + pix_9x9.blue.k67*1 + pix_9x9.blue.k68*1 + pix_9x9.blue.k69*1 + pix_9x9.blue.k70*1 + pix_9x9.blue.k71*1 + pix_9x9.blue.k72*1) / 9;
+        --sum.blue.pixels_73_74_75_76_77_78_79_80_81  <= (pix_9x9.blue.k73*1 + pix_9x9.blue.k74*1 + pix_9x9.blue.k75*1 + pix_9x9.blue.k76*1 + pix_9x9.blue.k77*1 + pix_9x9.blue.k78*1 + pix_9x9.blue.k79*1 + pix_9x9.blue.k80*1 + pix_9x9.blue.k81*1) / 9;
         --if(crd_s40.y=0)then
         --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09);
         --elsif(crd_s40.y=1)then
@@ -1279,7 +1396,7 @@ process (clk) begin
         --elsif(crd_s40.y=7)then
         --    sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72) /8;
         --else
-            sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72 + sum.blue.pixels_73_74_75_76_77_78_79_80_81) /9;
+        --  sum.blue.pixels_01_to_81                    <= (sum.blue.pixels_01_02_03_04_05_06_07_08_09 + sum.blue.pixels_10_11_12_13_14_15_16_17_18 + sum.blue.pixels_19_20_21_22_23_24_25_26_27 + sum.blue.pixels_28_29_30_31_32_33_34_35_36 + sum.blue.pixels_37_38_39_40_41_42_43_44_45 + sum.blue.pixels_46_47_48_49_50_51_52_53_54 + sum.blue.pixels_55_56_57_58_59_60_61_62_63 + sum.blue.pixels_64_65_66_67_68_69_70_71_72 + sum.blue.pixels_73_74_75_76_77_78_79_80_81) /9;
         --end if;
     end if;
 end process;
@@ -1368,10 +1485,10 @@ process (clk) begin
      rgb_9x9_detect.filter_size_9x9.red.k(81).n  =81) then  
                pixels_1_81_enabled <= hi;
                 sum.red.result      <= std_logic_vector(to_unsigned(sum.red.pixels_01_to_81, 10));
-        elsif (rgb_9x9_detect.filter_size_9x9.red.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.red.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.red.k(3).n=3
-           and rgb_9x9_detect.filter_size_9x9.red.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.red.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.red.k(12).n=12  
-           and rgb_9x9_detect.filter_size_9x9.red.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.red.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.red.k(21).n=21) then
-                sum.red.result      <= std_logic_vector(to_unsigned(sum.red.pixels_01_to_21_3x3, 10));
+        --elsif (rgb_9x9_detect.filter_size_9x9.red.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.red.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.red.k(3).n=3
+        --   and rgb_9x9_detect.filter_size_9x9.red.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.red.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.red.k(12).n=12  
+        --   and rgb_9x9_detect.filter_size_9x9.red.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.red.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.red.k(21).n=21) then
+        --        sum.red.result      <= std_logic_vector(to_unsigned(sum.red.pixels_01_to_21_3x3, 10));
         else
                 pixels_1_81_enabled <= lo;
                 sum.red.result   <= Rgb3.red;
@@ -1462,10 +1579,10 @@ process (clk) begin
           rgb_9x9_detect.filter_size_9x9.green.k(80).n  =80  and
           rgb_9x9_detect.filter_size_9x9.green.k(81).n  =81) then  
                 sum.green.result   <= std_logic_vector(to_unsigned(sum.green.pixels_01_to_81, 10));
-        elsif (rgb_9x9_detect.filter_size_9x9.green.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.green.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.green.k(3).n=3
-           and rgb_9x9_detect.filter_size_9x9.green.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.green.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.green.k(12).n=12  
-           and rgb_9x9_detect.filter_size_9x9.green.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.green.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.green.k(21).n=21) then
-                sum.green.result      <= std_logic_vector(to_unsigned(sum.green.pixels_01_to_21_3x3, 10));
+        --elsif (rgb_9x9_detect.filter_size_9x9.green.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.green.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.green.k(3).n=3
+        --   and rgb_9x9_detect.filter_size_9x9.green.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.green.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.green.k(12).n=12  
+        --   and rgb_9x9_detect.filter_size_9x9.green.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.green.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.green.k(21).n=21) then
+        --        sum.green.result      <= std_logic_vector(to_unsigned(sum.green.pixels_01_to_21_3x3, 10));
          else
              sum.green.result   <= Rgb3.green;
          end if;
@@ -1555,10 +1672,10 @@ process (clk) begin
             rgb_9x9_detect.filter_size_9x9.blue.k(80).n  =80  and
             rgb_9x9_detect.filter_size_9x9.blue.k(81).n  =81) then  
                 sum.blue.result   <= std_logic_vector(to_unsigned(sum.blue.pixels_01_to_81, 10));
-        elsif (rgb_9x9_detect.filter_size_9x9.blue.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.blue.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.blue.k(3).n=3
-           and rgb_9x9_detect.filter_size_9x9.blue.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.blue.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.blue.k(12).n=12  
-           and rgb_9x9_detect.filter_size_9x9.blue.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.blue.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.blue.k(21).n=21) then
-                sum.blue.result      <= std_logic_vector(to_unsigned(sum.blue.pixels_01_to_21_3x3, 10));
+        --elsif (rgb_9x9_detect.filter_size_9x9.blue.k(1).n=1 and  rgb_9x9_detect.filter_size_9x9.blue.k(2).n=2 and rgb_9x9_detect.filter_size_9x9.blue.k(3).n=3
+        --   and rgb_9x9_detect.filter_size_9x9.blue.k(10).n=10 and rgb_9x9_detect.filter_size_9x9.blue.k(11).n=11 and rgb_9x9_detect.filter_size_9x9.blue.k(12).n=12  
+        --   and rgb_9x9_detect.filter_size_9x9.blue.k(19).n=19 and rgb_9x9_detect.filter_size_9x9.blue.k(20).n=20  and rgb_9x9_detect.filter_size_9x9.blue.k(21).n=21) then
+        --        sum.blue.result      <= std_logic_vector(to_unsigned(sum.blue.pixels_01_to_21_3x3, 10));
             else
                 sum.blue.result   <= Rgb3.blue;
             end if;
