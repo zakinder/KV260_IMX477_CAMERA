@@ -12,7 +12,7 @@
 void menu_calls(ON_OFF) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
-    u32 current_state = imx477c1;
+    u32 current_state = lwip;
     u32 k_number;
     u32 k_number_value;
 

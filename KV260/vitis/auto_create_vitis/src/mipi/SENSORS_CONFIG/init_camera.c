@@ -41,6 +41,23 @@ int init_camera()
   	if (Status != XST_SUCCESS) {
   		print("OV5647 Camera Sensor Not connected\n\r");
   	}
+
+
+//    Status = scan_sensor2(&iic_cam);
+//  	if (Status != XST_SUCCESS) {
+//  		print("scan_sensor1 Camera Sensor Not connected\n\r");
+//  	}
+
+    Status = imx519_sensor_init(&iic_cam);
+  	if (Status != XST_SUCCESS) {
+  		print("OV5647 Camera Sensor Not connected\n\r");
+  	}
+
+
+//    Status = imx686_sensor_init(&iic_cam);
+//  	if (Status != XST_SUCCESS) {
+//  		print("OV5647 Camera Sensor Not connected\n\r");
+//  	}
     return 0;
 }
 
@@ -65,3 +82,63 @@ void write_imx477_reg(u16 addr,u8 data)
   		print("IMX477 Camera Sensor Not connected\n\r");
   	}
 }
+
+int scan_sensor1(XIicPs *IicInstance)
+{
+	u8 sensor_id[2];
+	for(int address = 0; address < 256; address++ )
+	 {
+		if (sensor_id[0] != 0x5 || sensor_id[1] != 0x19)
+		{
+			scan_read(IicInstance, 0x300A, &sensor_id[0],address);
+			scan_read(IicInstance, 0x300B, &sensor_id[1],address);
+			printf("Got DEVICE. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		else
+		{
+			printf("Got DEVICE.. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		printf("Id @ address ==== %x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
+	 }
+	return 0;
+}
+int scan_sensor2(XIicPs *IicInstance)
+{
+	u8 sensor_id[2];
+	for(int address = 0; address < 256; address++ )
+	 {
+		if (sensor_id[0] != 0x5 || sensor_id[1] != 0x19)
+		{
+			scan_read(IicInstance, 0x16, &sensor_id[0],address);
+			scan_read(IicInstance, 0x17, &sensor_id[1],address);
+			printf("Got DEVICE. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		else
+		{
+			printf("Got DEVICE.. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		printf("Id @ address ==== %x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
+	 }
+	return 0;
+}
+
+int scan_sensor3(XIicPs *IicInstance)
+{
+	u8 sensor_id[2];
+	for(int address = 0; address < 256; address++ )
+	 {
+		if (sensor_id[0] != 0x5 || sensor_id[1] != 0x19)
+		{
+			scan_read(IicInstance, 0x1A, &sensor_id[0],address);
+			scan_read(IicInstance, 0x0A, &sensor_id[1],address);
+			printf("Got DEVICE. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		else
+		{
+			printf("Got DEVICE.. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+		}
+		printf("Id @ address ==== %x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
+	 }
+	return 0;
+}
+

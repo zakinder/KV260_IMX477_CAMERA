@@ -52,7 +52,8 @@
 #endif
 
 int WriteOneFrameEnd[2]={-1,-1};
-int frame_length_curr = VIDEO_ROWS*VIDEO_COLUMNS*4;
+//int frame_length_curr = VIDEO_ROWS*VIDEO_COLUMNS*4;
+int frame_length_curr = 1280*720*3;
 static struct udp_pcb *udp8080_pcb = NULL;
 static struct pbuf *udp8080_q = NULL;
 static int udp8080_qlen = 0;
@@ -134,18 +135,7 @@ void print_app_header() {
 	xil_printf("UDP packets sent to port 8080\n\r");
 }
 
-#if defined (__arm__) && !defined (ARMR5)
-#if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || XPAR_GIGE_PCS_PMA_1000BASEX_CORE_PRESENT == 1
-int ProgramSi5324(void);
-int ProgramSfpPhy(void);
-#endif
-#endif
 
-#ifdef XPS_BOARD_ZCU102
-#ifdef XPAR_XIICPS_0_DEVICE_ID
-int IicPhyReset(void);
-#endif
-#endif
 
 int lwip_loop()
 {
@@ -173,7 +163,7 @@ int lwip_loop()
 	}
 #endif
 
-	init_platform();
+	init_platforms();
 
 #if LWIP_IPV6==0
 #if LWIP_DHCP==1
@@ -261,7 +251,7 @@ int lwip_loop()
 	/* receive and process packets */
 	while (1) {
 		xemacif_input(echo_netif);
-		if((WriteOneFrameEnd[0] >= 0) && (sendchannel[0]) )
+		if((WriteOneFrameEnd[0] >= 0))
 		{
 			targetPicHeader[4] = 2;
 			index = WriteOneFrameEnd[0];
@@ -307,7 +297,7 @@ int lwip_loop()
 		}
 	}
 	/* never reached */
-	cleanup_platform();
+	cleanup_platforms();
 
 	return 0;
 }
@@ -376,10 +366,10 @@ int sendpic(const char *pic, int piclen, int sn)
 	q = pbuf_alloc(PBUF_TRANSPORT, 8+piclen, PBUF_POOL);
 	if(!q)
 	{
-		//xil_printf("pbuf_alloc %d fail\n\r", piclen+8);
+		xil_printf("pbuf_alloc %d fail\n\r", piclen+8);
 		return -3;
 	}
-
+	xil_printf("--> sendpic\n\r");
 	memcpy(q->payload, targetPicHeader, 8);
 	memcpy(q->payload+8, pic, piclen);
 	q->len = q->tot_len = 8+piclen;
@@ -491,7 +481,8 @@ int start_udp(unsigned int port) {
 		return -2;
 	}
 	udp_recv(udp8080_pcb, udp_recive, 0);
-	IP4_ADDR(&target_addr, 192,168,1,35);
-
+	//xil_printf("--> udp_recv \n\r");
+	IP4_ADDR(&target_addr, 192,168,1,42);
+	//xil_printf("--> IP4_ADDR \n\r");
 	return 0;
 }

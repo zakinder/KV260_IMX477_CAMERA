@@ -22,8 +22,8 @@ int main()
     per_write_reg(REG11,0);
     per_write_reg(REG15,2);
     per_write_reg(REG19,4);
-    init_camera();
     mipi_init();
+    init_camera();
     demosaic_init();
     print("Camera Configuration Complete\n\r");
     tpg_init(1);
