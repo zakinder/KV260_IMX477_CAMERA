@@ -9,8 +9,6 @@
 #include "../UART/uartio.h"
 #include "config_defines.h"
 
-XIicPs imx219_i2c_cam;
-#define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
 void menu_calls(ON_OFF) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
@@ -193,9 +191,11 @@ void menu_calls(ON_OFF) {
             printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG8))+1) & 0x0000ffff);
             printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
             current_state = mainmenu;break;
-
         case readpixels:
-        	camera_loop();
+        	fetch_rgb_data();
+            current_state = mainmenu;break;
+        case lwip:
+        	lwip_loop();
             current_state = mainmenu;break;
         case imxwrite:
             printf("Enter imx477 Register Address.\n");

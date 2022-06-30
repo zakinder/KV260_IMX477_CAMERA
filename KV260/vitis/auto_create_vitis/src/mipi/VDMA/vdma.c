@@ -192,7 +192,7 @@ void fetch_rgb_data() {
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 	uint32_t red = 0, green = 0, blue = 0;
-	for (j = 0; j < 1000; j++) {
+	for (j = 0; j < 100; j++) {
             for (i = 0; i < res; i++) {
                 blue              = (pS2MM_Mem[i] & 0x3ff00000)>>20;
                 red               = (pS2MM_Mem[i] & 0x000ffc00)>>10;

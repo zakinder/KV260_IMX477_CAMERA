@@ -18,17 +18,8 @@ u32 *pFrames[DISPLAY_NUM_FRAMES];
 int main()
 {
     video = VMODE_1920x1080;
-    per_write_reg(REG1,5000);
-    per_write_reg(REG2,0);
-    per_write_reg(REG3,0);
-    per_write_reg(REG4,0);
-    per_write_reg(REG5,5000);
-    per_write_reg(REG6,0);
-    per_write_reg(REG7,0);
-    per_write_reg(REG8,0);
-    per_write_reg(REG9,2500);
     per_write_reg(REG16,0);
-    per_write_reg(REG11,15);
+    per_write_reg(REG11,0);
     per_write_reg(REG15,2);
     per_write_reg(REG19,4);
     init_camera();

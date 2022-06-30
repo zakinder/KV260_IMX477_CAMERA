@@ -134,7 +134,7 @@ ccSfConfig_P: process (clk,rst_l)begin
         ccRgb.ccSf.k2           <= -500;
         ccRgb.ccSf.k3           <= -500;
         ccRgb.ccSf.k4           <= -500; 
-        ccRgb.ccSf.k5           <= 8000;
+        ccRgb.ccSf.k5           <= 5000;
         ccRgb.ccSf.k6           <= -500;
         ccRgb.ccSf.k7           <= 0; 
         ccRgb.ccSf.k8           <= 0;
