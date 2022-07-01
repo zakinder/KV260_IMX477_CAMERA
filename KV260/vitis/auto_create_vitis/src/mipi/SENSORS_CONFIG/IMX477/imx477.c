@@ -845,32 +845,7 @@ void imx_477_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 		i++;
 	}
 }
-//int imx477_sensor_init(XIicPs *IicInstance)
-//{
-//	u8 sensor_id[2];
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	printf("Id @ address... ====  %x %x\r\n", sensor_id[0], sensor_id[1]);
-//
-//	imx_477_sensor_write_array(IicInstance,cfg1_imx477_mode_common);
-//	usleep(1000000);
-//	imx_477_sensor_write_array(IicInstance,cfg2_imx477_1920x1080p);
-//	usleep(1000000);
-//	imx477_read(IicInstance, 0x16, &sensor_id[0]);
-//	imx477_read(IicInstance, 0x17, &sensor_id[1]);
-//	printf("Id @ address ====  %x %x\r\n", sensor_id[0], sensor_id[1]);
-//	return 0;
-//}
+
 int imx477_sensor_init(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];
@@ -879,11 +854,7 @@ int imx477_sensor_init(XIicPs *IicInstance)
 			scan_read(IicInstance, 0x0016, &sensor_id[0],address);
 			scan_read(IicInstance, 0x0017, &sensor_id[1],address);
 	 }
-	if (sensor_id[0] != 0x7 || sensor_id[1] != 0x7)
-	{
-		printf("Not IMX477 Camera Sensor ID: %x %x\n", sensor_id[0], sensor_id[1]);
-	}
-	else
+	if (sensor_id[0] == 0x7 || sensor_id[1] == 0x7)
 	{
 		printf("Got IMX477 Camera Sensor ID: 4%x%x\r\n", sensor_id[0], sensor_id[1]);
 		imx_477_sensor_write_array(IicInstance,cfg1_imx477_mode_common);

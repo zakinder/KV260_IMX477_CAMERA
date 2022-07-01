@@ -707,12 +707,8 @@ int imx519_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2];
 	imx519_read(IicInstance, 0x0016, &sensor_id[0]);
 	imx519_read(IicInstance, 0x0017, &sensor_id[1]);
-	if (sensor_id[0] != 0x5 || sensor_id[1] != 0x19)
-	{
-		printf("Not imx519 Camera Sensor ID: %x %x\n", sensor_id[0], sensor_id[1]);
-	}
-	else
-	{
+	if (sensor_id[0] == 0x5 || sensor_id[1] == 0x19)
+    {
 		printf("Got imx519 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
 		imx_519_sensor_write_array(IicInstance,cfg_imx519_mode_common_regs);
 		usleep(1000000);

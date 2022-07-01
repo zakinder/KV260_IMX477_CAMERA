@@ -118,6 +118,7 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 	vdmaDMA.VertSizeInput           = VertSizeInput;
 	vdmaDMA.HoriSizeInput           = HoriSizeInput;
 	vdmaDMA.Stride                  = Stride;
+	vdmaDMA.EnableVFlip             = 1;
 	vdmaDMA.FrameStoreStartAddr[0]  = FrameStoreStartAddr1;
 	vdmaDMA.FrameStoreStartAddr[1]  = FrameStoreStartAddr2;
 	vdmaDMA.FrameStoreStartAddr[2]  = FrameStoreStartAddr3;

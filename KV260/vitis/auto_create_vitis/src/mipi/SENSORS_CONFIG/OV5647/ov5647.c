@@ -267,14 +267,9 @@ int ov5647_camera_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2] ;
 	ov5647_read(IicInstance, 0x300A, &sensor_id[0]);
 	ov5647_read(IicInstance, 0x300B, &sensor_id[1]);
-	if (sensor_id[0] != 0x56 || sensor_id[1] != 0x47)
+	if (sensor_id[0] == 0x56 || sensor_id[1] == 0x47)
 	{
-		xil_printf("Not OV5647 id: %x %x\r\n", sensor_id[0], sensor_id[1]);
-		return XST_FAILURE;
-	}
-	else
-	{
-		xil_printf("Got OV5647 id: %x %x\r\n", sensor_id[0], sensor_id[1]);
+    xil_printf("Got OV5647 id: %x %x\r\n", sensor_id[0], sensor_id[1]);
 	//[1]=0 System input clock from pad; Default read = 0x11
 	//ov5647_write(IicInstance,0x3103,0x11);
 	//[7]=1 Software reset; [6]=0 Software power down; Default=0x02

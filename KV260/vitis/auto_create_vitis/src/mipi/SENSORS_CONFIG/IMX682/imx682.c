@@ -1,4 +1,4 @@
-#include "imx686.h"
+#include "../IMX682/imx682.h"
 
 #include <xil_types.h>
 #include <xstatus.h>
@@ -8,10 +8,10 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
-#define IIC_IMX686_ADDR  	        0x9A
+#define IIC_IMX682_ADDR  	        0x9A
 #define REG_MODE_SEL 				0x0100
 
-struct reginfo cfg_imx686_mode_common_setting_part1_regs[] =
+struct reginfo cfg_imx682_mode_common_setting_part1_regs[] =
 {
 		{0x0136, 0x13},
 		{0x0137, 0x33},
@@ -616,7 +616,7 @@ struct reginfo cfg_imx686_mode_common_setting_part1_regs[] =
 	    {SEQUENCE_END, 0x00}
 };
 
-struct reginfo cfg_imx686_mode_common_setting_part2_regs[] =
+struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 {
 		{0x9227, 0xCA},
 		{0x9228, 0xEA},
@@ -1109,67 +1109,55 @@ struct reginfo cfg_imx686_mode_common_setting_part2_regs[] =
 	    {SEQUENCE_END, 0x00}
 };
 
-int imx686_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
+int imx682_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
-	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX686_ADDR,addr);
+	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX682_ADDR,addr);
 	return XST_SUCCESS;
 }
-int imx686_write(XIicPs *IicInstance,u16 addr,u8 data,u8 WR_ADDR)
+int imx682_write(XIicPs *IicInstance,u16 addr,u8 data)
 {
-	return i2c_reg16_write(IicInstance,WR_ADDR,addr,data);
+	return i2c_reg16_write(IicInstance,IIC_IMX682_ADDR,addr,data);
 }
-void imx_686_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray,u8 WR_ADDR)
+void imx_682_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 {
 	int i = 0;
 	while (regarray[i].reg != SEQUENCE_END) {
-		imx686_write(IicInstance,regarray[i].reg,regarray[i].val,WR_ADDR);
+		imx682_write(IicInstance,regarray[i].reg,regarray[i].val);
 		i++;
 	}
 }
-int imx686_sensor_init(XIicPs *IicInstance)
+int imx682_sensor_init(XIicPs *IicInstance)
 {
-    sleep(20);
 	u8 sensor_id[2];
-	imx686_read(IicInstance, 0x0016, &sensor_id[0]);
-	imx686_read(IicInstance, 0x0017, &sensor_id[1]);
-	if (sensor_id[0] != 0x6 || sensor_id[1] != 0x82)
+	imx682_read(IicInstance, 0x0016, &sensor_id[0]);
+	imx682_read(IicInstance, 0x0017, &sensor_id[1]);
+	if (sensor_id[0] == 0x6 || sensor_id[1] == 0x82)
 	{
-		printf("Not imx686 Camera Sensor ID: %x %x\n", sensor_id[0], sensor_id[1]);
+		printf("Got IMX682 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
+		imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part1_regs);
+		usleep(1000000);
+		imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
+		usleep(1000000);
 	}
-	//else
-	//{
-		printf("Got imx686 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
-        
-		for(int address = 0; address < 256; address++ )
-		{
-		printf("      address ==== %x \r\n",address);
-		imx_686_sensor_write_array(IicInstance,cfg_imx686_mode_common_setting_part1_regs,address);
-		usleep(1000000);
-		imx_686_sensor_write_array(IicInstance,cfg_imx686_mode_common_setting_part2_regs,address);
-		usleep(1000000);
-        }
-        sleep(10);
-        
-	//}
 	return 0;
 }
-int imx686_read_register(XIicPs *IicInstance,u16 addr)
+int imx682_read_register(XIicPs *IicInstance,u16 addr)
 {
 	u8 sensor_id[1];
-    imx686_read(IicInstance, addr, &sensor_id[0]);
-    printf("Read imx686 Read Reg Address  =  %x   Value = %x\n",addr,sensor_id[0]);
+    imx682_read(IicInstance, addr, &sensor_id[0]);
+    printf("Read imx682 Read Reg Address  =  %x   Value = %x\n",addr,sensor_id[0]);
 	return 0;
 }
-int imx686_write_register(XIicPs *IicInstance,u16 addr,u8 data)
+int imx682_write_register(XIicPs *IicInstance,u16 addr,u8 data)
 {
 	u8 sensor_id[1];
 	imx219_write(IicInstance,addr,data);
-    printf("Read imx686 Write Reg Address  =  %x   Value = %x\n",addr,data);
+    printf("Read imx682 Write Reg Address  =  %x   Value = %x\n",addr,data);
 	return 0;
 }
-int imx686_write_read_register(XIicPs *IicInstance,u16 addr,u8 data)
+int imx682_write_read_register(XIicPs *IicInstance,u16 addr,u8 data)
 {
-	imx686_write_register(IicInstance,addr,data);
-	imx686_read_register(IicInstance,addr);
+	imx682_write_register(IicInstance,addr,data);
+	imx682_read_register(IicInstance,addr);
 	return 0;
 }

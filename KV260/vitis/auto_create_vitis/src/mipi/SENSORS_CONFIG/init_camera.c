@@ -41,23 +41,14 @@ int init_camera()
   	if (Status != XST_SUCCESS) {
   		print("OV5647 Camera Sensor Not connected\n\r");
   	}
-
-
-//    Status = scan_sensor2(&iic_cam);
-//  	if (Status != XST_SUCCESS) {
-//  		print("scan_sensor1 Camera Sensor Not connected\n\r");
-//  	}
-
     Status = imx519_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
   		print("OV5647 Camera Sensor Not connected\n\r");
   	}
-
-
-//    Status = imx686_sensor_init(&iic_cam);
-//  	if (Status != XST_SUCCESS) {
-//  		print("OV5647 Camera Sensor Not connected\n\r");
-//  	}
+    Status = imx682_sensor_init(&iic_cam);
+  	if (Status != XST_SUCCESS) {
+  		print("OV5647 Camera Sensor Not connected\n\r");
+  	}
     return 0;
 }
 
