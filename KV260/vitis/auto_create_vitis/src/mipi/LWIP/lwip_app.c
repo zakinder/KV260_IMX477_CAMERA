@@ -163,7 +163,7 @@ int lwip_loop()
 	}
 #endif
 
-	init_platforms();
+	init_platform();
 
 #if LWIP_IPV6==0
 #if LWIP_DHCP==1
@@ -207,7 +207,7 @@ int lwip_loop()
 	netif_set_default(echo_netif);
 
 	/* now enable interrupts */
-	platform_enable_interrupts();
+	//platform_enable_interrupts();
 
 	/* specify that the network if is up */
 	netif_set_up(echo_netif);

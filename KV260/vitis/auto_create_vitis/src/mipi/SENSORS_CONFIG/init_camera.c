@@ -2,13 +2,11 @@
 #include <xil_printf.h>
 #include <xil_types.h>
 #include <xstatus.h>
-
 #include "I2c_transections.h"
 #include "IMX219/imx219.h"
-
 XIicPs iic_cam;
 #define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
-#define IIC_SCLK_RATE		100000
+#define IIC_SCLK_RATE		400000
 #define SW_IIC_ADDR         0x74
 u8 SendBuffer [10];
 int init_camera()
@@ -43,11 +41,11 @@ int init_camera()
   	}
     Status = imx519_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
-  		print("OV5647 Camera Sensor Not connected\n\r");
+  		print("imx519 Camera Sensor Not connected\n\r");
   	}
     Status = imx682_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
-  		print("OV5647 Camera Sensor Not connected\n\r");
+  		print("imx682 Camera Sensor Not connected\n\r");
   	}
     return 0;
 }
@@ -118,19 +116,15 @@ int scan_sensor1(XIicPs *IicInstance)
 int scan_sensor2(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];
-	for(int address = 0; address < 256; address++ )
+	for(int address = 255; address > 0; address-- )
 	 {
-		if (sensor_id[0] != 0x5 || sensor_id[1] != 0x19)
+		scan_read(IicInstance, 0x0000, &sensor_id[0],address);
+		scan_read(IicInstance, 0x0001, &sensor_id[1],address);
+		usleep(100);
+		if (sensor_id[0] != 0x0)
 		{
-			scan_read(IicInstance, 0x16, &sensor_id[0],address);
-			scan_read(IicInstance, 0x17, &sensor_id[1],address);
-			printf("Got DEVICE. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
+			printf("%x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
 		}
-		else
-		{
-			printf("Got DEVICE.. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
-		}
-		printf("Id @ address ==== %x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
 	 }
 	return 0;
 }
