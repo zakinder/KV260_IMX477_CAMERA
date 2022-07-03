@@ -74,6 +74,28 @@ void write_imx477_reg(u16 addr,u8 data)
   	}
 }
 
+
+void read_imx519_reg(u16 addr)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX519 Camera\n\r");
+    Status = imx519_read_register(&iic_cam,addr);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Read IMX519 Camera Sensor\n\r");
+  	}
+}
+void write_imx519_reg(u16 addr,u8 data)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX519 Camera\n\r");
+    Status = imx519_write_read_register(&iic_cam,addr,data);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Write IMX519 Camera Sensor\n\r");
+  	}
+}
+
 int scan_sensor1(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];

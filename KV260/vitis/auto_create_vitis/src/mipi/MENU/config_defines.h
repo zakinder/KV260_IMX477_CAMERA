@@ -91,6 +91,8 @@
 #define cmds_uart               0x95BA4834
 #define imxwrite                0x45E01E71
 #define imxread                 0x6FCB6D2
+#define write519                0x4E6CED6F
+#define read519                 0x775F357
 #define imx477c1                0x045CCC8F3
 #define imx477c2                0x045CCC8F4
 #define imx477c3                0x045CCC8F5

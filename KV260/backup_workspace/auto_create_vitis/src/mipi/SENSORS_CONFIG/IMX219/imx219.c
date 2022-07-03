@@ -393,12 +393,7 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2] ;
 	imx219_read(IicInstance, 0x0000, &sensor_id[0]);
 	imx219_read(IicInstance, 0x0001, &sensor_id[1]);
-	if (sensor_id[0] != 0x2 || sensor_id[1] != 0x19)
-	{
-		printf("Not IMX219 camera sensor id: %x %x\n", sensor_id[0], sensor_id[1]);
-	return XST_FAILURE;
-	}
-	else
+	if (sensor_id[0] == 0x2 || sensor_id[1] == 0x19)
 	{
 		printf("Got IMX219 camera sensor id: %x %x\r\n", sensor_id[0], sensor_id[1]);
         usleep(10000);
@@ -484,25 +479,4 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 //    	printf("Read imx219 id 0x01A3 LSC_TUNING_B_A[7:0]   = %x\n",sensor_id[0]);
 	return XST_SUCCESS;
 	}
-}
-int scan_sensor(XIicPs *IicInstance)
-{
-
-	u8 sensor_id[2];
-	for(int address = 0; address < 256; address++ )
-	 {
-		if (sensor_id[0] != 0x4 || sensor_id[1] != 0x77)
-		{
-			scan_read(IicInstance, 0x300A, &sensor_id[0],address);
-			scan_read(IicInstance, 0x300B, &sensor_id[1],address);
-			printf("Got DEVICE. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
-		}
-		else
-		{
-			printf("Got DEVICE.. id, %x %x\r\n", sensor_id[0], sensor_id[1]);
-		}
-		printf("Id @ address ==== %x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
-	 }
-
-	return 0;
 }

@@ -1514,22 +1514,18 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
    CONFIG.CLK_LANE_IO_LOC_NAME {IO_L13P_T2L_N0_GC_QBC_66} \
    CONFIG.CMN_NUM_LANES {2} \
    CONFIG.CMN_PXL_FORMAT {RAW10} \
-   CONFIG.CSI_BUF_DEPTH {8192} \
-   CONFIG.CSI_CONTROLLER_REG_IF {true} \
+   CONFIG.CSI_BUF_DEPTH {4096} \
    CONFIG.CSI_EMB_NON_IMG {false} \
    CONFIG.C_CLK_LANE_IO_POSITION {26} \
    CONFIG.C_CSI_EN_ACTIVELANES {false} \
-   CONFIG.C_CSI_EN_CRC {true} \
-   CONFIG.C_CSI_FILTER_USERDATATYPE {true} \
+   CONFIG.C_CSI_EN_CRC {false} \
+   CONFIG.C_CSI_FILTER_USERDATATYPE {false} \
    CONFIG.C_DATA_LANE0_IO_POSITION {28} \
    CONFIG.C_DATA_LANE1_IO_POSITION {30} \
-   CONFIG.C_DATA_LANE2_IO_POSITION {0} \
-   CONFIG.C_DATA_LANE3_IO_POSITION {2} \
    CONFIG.C_DPHY_LANES {2} \
    CONFIG.C_EN_BG0_PIN0 {false} \
    CONFIG.C_EN_BG1_PIN0 {false} \
    CONFIG.C_EN_CSI_V2_0 {false} \
-   CONFIG.C_EN_TIMEOUT_REGS {true} \
    CONFIG.C_HS_LINE_RATE {1000} \
    CONFIG.C_HS_SETTLE_NS {145} \
    CONFIG.C_STRETCH_LINE_RATE {2500} \
@@ -1537,11 +1533,7 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
    CONFIG.DATA_LANE0_IO_LOC_NAME {IO_L14P_T2L_N2_GC_66} \
    CONFIG.DATA_LANE1_IO_LOC {G6} \
    CONFIG.DATA_LANE1_IO_LOC_NAME {IO_L15P_T2L_N4_AD11P_66} \
-   CONFIG.DATA_LANE2_IO_LOC {G1} \
-   CONFIG.DATA_LANE2_IO_LOC_NAME {IO_L1P_T0L_N0_DBC_66} \
-   CONFIG.DATA_LANE3_IO_LOC {E1} \
-   CONFIG.DATA_LANE3_IO_LOC_NAME {IO_L2P_T0L_N2_66} \
-   CONFIG.DPY_EN_REG_IF {true} \
+   CONFIG.DPY_EN_REG_IF {false} \
    CONFIG.DPY_LINE_RATE {1000} \
    CONFIG.HP_IO_BANK_SELECTION {66} \
    CONFIG.SupportLevel {1} \
@@ -1832,6 +1824,7 @@ proc create_root_design { parentCell } {
   # Restore current instance
   current_bd_instance $oldCurInst
 
+  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -1843,6 +1836,4 @@ proc create_root_design { parentCell } {
 
 create_root_design ""
 
-
-common::send_gid_msg -ssname BD::TCL -id 2053 -severity "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 
