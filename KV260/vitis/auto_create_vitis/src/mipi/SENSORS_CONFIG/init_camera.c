@@ -1,9 +1,26 @@
+/*
+   MODIFICATION HISTORY:
+   
+   Ver   Who Date     Changes
+   ----- -------- -------- -----------------------------------------------
+   1.0	 Sakinder 06/01/22 Initial Release
+   1.2   Sakinder 06/08/22 Added IMX219 Camera functions.
+   1.3   Sakinder 06/14/22 Added IMX477 Camera functions.
+   1.4   Sakinder 07/01/22 Added IMX519 Camera functions.
+   1.5   Sakinder 07/06/22 Added IMX682 Camera functions.
+   -----------------------------------------------------------------------
+*/
 #include <xiicps.h>
 #include <xil_printf.h>
 #include <xil_types.h>
 #include <xstatus.h>
 #include "I2c_transections.h"
 #include "IMX219/imx219.h"
+#include "IMX519/imx519.h"
+#include "IMX477/imx477.h"
+#include "OV5640/ov5640.h"
+#include "OV5647/ov5647.h"
+#include "init_camera.h"
 XIicPs iic_cam;
 #define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
 #define IIC_SCLK_RATE		400000
@@ -49,8 +66,6 @@ int init_camera()
   	}
     return 0;
 }
-
-
 void read_imx477_reg(u16 addr)
 {
 	XIicPs_Config *iic_conf;
@@ -71,8 +86,6 @@ void write_imx477_reg(u16 addr,u8 data)
   		print("IMX477 Camera Sensor Not connected\n\r");
   	}
 }
-
-
 void read_imx519_reg(u16 addr)
 {
 	XIicPs_Config *iic_conf;
@@ -93,7 +106,26 @@ void write_imx519_reg(u16 addr,u8 data)
   		print("Unable to Write IMX519 Camera Sensor\n\r");
   	}
 }
-
+void read_imx219_reg(u16 addr)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX219 Camera\n\r");
+    Status = imx219_read_register(&iic_cam,addr);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Read IMX219 Camera Sensor\n\r");
+  	}
+}
+void write_imx219_reg(u16 addr,u8 data)
+{
+	XIicPs_Config *iic_conf;
+	int Status;
+	print("IMX219 Camera\n\r");
+    Status = imx219_write_read_register(&iic_cam,addr,data);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Write IMX219 Camera Sensor\n\r");
+  	}
+}
 int scan_sensor1(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];
@@ -128,7 +160,6 @@ int scan_sensor2(XIicPs *IicInstance)
 	 }
 	return 0;
 }
-
 int scan_sensor3(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];
@@ -148,4 +179,3 @@ int scan_sensor3(XIicPs *IicInstance)
 	 }
 	return 0;
 }
-

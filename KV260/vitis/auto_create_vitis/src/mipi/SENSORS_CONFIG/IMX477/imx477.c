@@ -1,5 +1,15 @@
+/*
+   MODIFICATION HISTORY:
+   
+   Ver   Who Date     Changes
+   ----- -------- -------- -----------------------------------------------
+   1.0	 Sakinder 06/01/22 Initial Release
+   1.3   Sakinder 06/14/22 Added IMX477 Camera functions.
+   -----------------------------------------------------------------------
+*/
 #include "imx477.h"
 #include <xil_types.h>
+#include <stdio.h>
 #include <xstatus.h>
 #include "xiicps.h"
 #include "xparameters.h"
@@ -7,6 +17,7 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
+#include "../init_camera.h"
 #define IIC_IMX477_ADDR  	        0x9A
 #define REG_MODE_SEL 				0x0100
 ////////////////////////////////////////////////////
@@ -925,8 +936,9 @@ int imx477_read_register(XIicPs *IicInstance,u16 addr)
 }
 int imx477_write_register(XIicPs *IicInstance,u16 addr,u8 data)
 {
-	u8 sensor_id[1];
-	imx219_write(IicInstance,addr,data);
+	imx477_write(IicInstance,REG_MODE_SEL,0x00);
+	imx477_write(IicInstance,addr,data);
+	imx477_write(IicInstance,REG_MODE_SEL,0x01);
     printf("Read IMX477 Write Reg Address  =  %x   Value = %x\n",addr,data);
 	return 0;
 }

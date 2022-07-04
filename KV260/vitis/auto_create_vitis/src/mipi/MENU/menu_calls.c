@@ -1,21 +1,17 @@
 #include "menu_calls.h"
-
 #include <stdio.h>
 #include <xiicps.h>
 #include <xil_printf.h>
 #include <xstatus.h>
-
-
 #include "../UART/uartio.h"
 #include "config_defines.h"
-
+#include "../SENSORS_CONFIG/init_camera.h"
 void menu_calls(ON_OFF) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
     u32 current_state = mainmenu;
     u32 k_number;
     u32 k_number_value;
-
     while (menu_calls_enable == TRUE)
     {
         switch (current_state)
@@ -197,7 +193,7 @@ void menu_calls(ON_OFF) {
         case lwip:
         	//lwip_loop();
             current_state = mainmenu;break;
-        case imxwrite:
+        case imx477wr:
             printf("Enter imx477 Register Address.\n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -212,9 +208,9 @@ void menu_calls(ON_OFF) {
                 menu_print_prompt();
                 k_number_value = uart_prompt_io();
                 write_imx477_reg(k_number,k_number_value);
-            	current_state = imxwrite;break;
+            	current_state = imx477wr;break;
             }
-        case imxread:
+        case imx477rd:
             printf("Enter imx477 Register Address \n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -226,9 +222,9 @@ void menu_calls(ON_OFF) {
             else
             {
             	read_imx477_reg(k_number);
-            	current_state = imxread;break;
+            	current_state = imx477rd;break;
             }
-        case write519:
+        case imx519wr:
             printf("Enter imx519 Register Address.\n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -243,9 +239,9 @@ void menu_calls(ON_OFF) {
                 menu_print_prompt();
                 k_number_value = uart_prompt_io();
                 write_imx519_reg(k_number,k_number_value);
-            	current_state = write519;break;
+            	current_state = imx519wr;break;
             }
-        case read519:
+        case imx519rd:
             printf("Enter imx519 Register Address \n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -256,8 +252,39 @@ void menu_calls(ON_OFF) {
             }
             else
             {
+            	read_imx219_reg(k_number);
+            	current_state = imx519rd;break;
+            }
+        case imx219wr:
+            printf("Enter imx219 Register Address.\n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	printf("Enter imx219 Register Data for the Register.\n");
+                menu_print_prompt();
+                k_number_value = uart_prompt_io();
+                write_imx219_reg(k_number,k_number_value);
+            	current_state = imx219wr;break;
+            }
+        case imx219rd:
+            printf("Enter imx219 Register Address \n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
             	read_imx519_reg(k_number);
-            	current_state = read519;break;
+            	current_state = imx219rd;break;
             }
         case quit:
             menu_calls_enable = FALSE;

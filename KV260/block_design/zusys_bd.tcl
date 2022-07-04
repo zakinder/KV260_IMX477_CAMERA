@@ -455,7 +455,7 @@ proc create_hier_cell_VIDEO_PIPELINE { parentCell nameHier } {
   # Create instance: ila_1, and set properties
   set ila_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_1 ]
   set_property -dict [ list \
-   CONFIG.C_DATA_DEPTH {16384} \
+   CONFIG.C_DATA_DEPTH {4096} \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_MONITOR_TYPE {Native} \
    CONFIG.C_NUM_OF_PROBES {9} \
@@ -1485,7 +1485,7 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
   # Create instance: ila_0, and set properties
   set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_DATA_DEPTH {16384} \
+   CONFIG.C_DATA_DEPTH {8192} \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_MONITOR_TYPE {Native} \
    CONFIG.C_NUM_OF_PROBES {11} \
@@ -1514,27 +1514,27 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
    CONFIG.CLK_LANE_IO_LOC_NAME {IO_L13P_T2L_N0_GC_QBC_66} \
    CONFIG.CMN_NUM_LANES {2} \
    CONFIG.CMN_PXL_FORMAT {RAW10} \
-   CONFIG.CSI_BUF_DEPTH {4096} \
+   CONFIG.CSI_BUF_DEPTH {8192} \
    CONFIG.CSI_EMB_NON_IMG {false} \
    CONFIG.C_CLK_LANE_IO_POSITION {26} \
    CONFIG.C_CSI_EN_ACTIVELANES {false} \
-   CONFIG.C_CSI_EN_CRC {false} \
-   CONFIG.C_CSI_FILTER_USERDATATYPE {false} \
+   CONFIG.C_CSI_EN_CRC {true} \
+   CONFIG.C_CSI_FILTER_USERDATATYPE {true} \
    CONFIG.C_DATA_LANE0_IO_POSITION {28} \
    CONFIG.C_DATA_LANE1_IO_POSITION {30} \
    CONFIG.C_DPHY_LANES {2} \
    CONFIG.C_EN_BG0_PIN0 {false} \
    CONFIG.C_EN_BG1_PIN0 {false} \
    CONFIG.C_EN_CSI_V2_0 {false} \
-   CONFIG.C_HS_LINE_RATE {1000} \
-   CONFIG.C_HS_SETTLE_NS {145} \
+   CONFIG.C_HS_LINE_RATE {1440} \
+   CONFIG.C_HS_SETTLE_NS {141} \
    CONFIG.C_STRETCH_LINE_RATE {2500} \
    CONFIG.DATA_LANE0_IO_LOC {E5} \
    CONFIG.DATA_LANE0_IO_LOC_NAME {IO_L14P_T2L_N2_GC_66} \
    CONFIG.DATA_LANE1_IO_LOC {G6} \
    CONFIG.DATA_LANE1_IO_LOC_NAME {IO_L15P_T2L_N4_AD11P_66} \
    CONFIG.DPY_EN_REG_IF {false} \
-   CONFIG.DPY_LINE_RATE {1000} \
+   CONFIG.DPY_LINE_RATE {1440} \
    CONFIG.HP_IO_BANK_SELECTION {66} \
    CONFIG.SupportLevel {1} \
  ] $mipi_csi2_rx_subsyst_0
@@ -1835,4 +1835,5 @@ proc create_root_design { parentCell } {
 ##################################################################
 
 create_root_design ""
+
 

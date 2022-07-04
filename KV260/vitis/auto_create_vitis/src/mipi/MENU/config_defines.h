@@ -89,10 +89,12 @@
 #define cmds_quit               0x95BA400A
 #define cmds_space              0x20
 #define cmds_uart               0x95BA4834
-#define imxwrite                0x45E01E71
-#define imxread                 0x6FCB6D2
-#define write519                0x4E6CED6F
-#define read519                 0x775F357
+#define imx477wr                0x45CCCA2C
+#define imx477rd                0x45CCC9EC
+#define imx519wr                0x45CCDA94
+#define imx519rd                0x45CCDA54
+#define imx219wr                0x45CC6564
+#define imx219rd                0x45CC6524
 #define imx477c1                0x045CCC8F3
 #define imx477c2                0x045CCC8F4
 #define imx477c3                0x045CCC8F5

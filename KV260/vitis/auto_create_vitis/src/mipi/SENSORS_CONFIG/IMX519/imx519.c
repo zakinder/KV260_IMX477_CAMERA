@@ -1,5 +1,15 @@
+/*
+   MODIFICATION HISTORY:
+   
+   Ver   Who Date     Changes
+   ----- -------- -------- -----------------------------------------------
+   1.0	 Sakinder 06/01/22 Initial Release
+   1.4   Sakinder 07/01/22 Added IMX519 Camera functions.
+   -----------------------------------------------------------------------
+*/
 #include "imx519.h"
 #include <xil_types.h>
+#include <stdio.h>
 #include <xstatus.h>
 #include "xiicps.h"
 #include "xparameters.h"
@@ -7,6 +17,7 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
+#include "../init_camera.h"
 #define IIC_IMX519_ADDR  	        0x9A
 #define REG_MODE_SEL 				0x0100
 /* Chip ID */
@@ -610,6 +621,10 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 	{0x3f79, 0x40},
 	{0x3f7c, 0x00},
 	{0x3f7d, 0x00},
+	//{REG_MODE_SEL, 0x01},
+	//{SEQUENCE_END, 0x00},
+	//{REG_MODE_SEL, 0x00},
+	//{0x0601, 0x02},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
@@ -692,8 +707,13 @@ struct reginfo cfg_imx519_mode_1280x720_regs[] =
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
-
+struct reginfo cfg_imx519_testpattern_bar_regs[] =
+{
+	{REG_MODE_SEL, 0x00},
+	{0x0601, 0x02},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
 int imx519_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX519_ADDR,addr);
@@ -735,8 +755,9 @@ int imx519_read_register(XIicPs *IicInstance,u16 addr)
 }
 int imx519_write_register(XIicPs *IicInstance,u16 addr,u8 data)
 {
-	u8 sensor_id[1];
-	imx219_write(IicInstance,addr,data);
+	imx519_write(IicInstance,REG_MODE_SEL,0x00);
+	imx519_write(IicInstance,addr,data);
+	imx519_write(IicInstance,REG_MODE_SEL,0x01);
     printf("Read imx519 Write Reg Address  =  %x   Value = %x\n",addr,data);
 	return 0;
 }
