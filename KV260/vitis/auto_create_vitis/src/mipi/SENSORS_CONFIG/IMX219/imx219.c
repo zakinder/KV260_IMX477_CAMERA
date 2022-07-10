@@ -413,10 +413,10 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
         #else
         imx219_sensor_write_array(IicInstance,cfg_imx219_1280_702p_60fps);
         #endif
-        imx219_write(IicInstance, IMX219_ANA_GAIN_GLOBAL, 230);
+        imx219_write(IicInstance, IMX219_ANA_GAIN_GLOBAL, 50);
     	imx219_read(IicInstance, 0x0158, &sensor_id[0]);
     	imx219_read(IicInstance, 0x0159, &sensor_id[1]);
-    	printf("Read imx219 id 0x0158: %x  id 0x0159: %x\n", sensor_id[0], sensor_id[1]);
+    	printf("Read imx219 id IMX219_ANA_GAIN_GLOBAL 0x0158: %x  id 0x0159: %x\n", sensor_id[0], sensor_id[1]);
         //imx219_write(IicInstance, 0x0190, 1);
 //    	imx219_read(IicInstance, 0x0190, &sensor_id[0]);
 //    	printf("Read imx219 id 0x0190 LSC_ENABLE_A                  = %x\n",sensor_id[0]);

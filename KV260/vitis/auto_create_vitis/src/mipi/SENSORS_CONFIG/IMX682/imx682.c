@@ -1,6 +1,5 @@
 /*
    MODIFICATION HISTORY:
-   
    Ver   Who Date     Changes
    ----- -------- -------- -----------------------------------------------
    1.0	 Sakinder 06/01/22 Initial Release
@@ -22,8 +21,8 @@
 #define REG_MODE_SEL 				0x0100
 struct reginfo cfg_imx682_mode_common_setting_part1_regs[] =
 {
-		{0x0136, 0x13},
-		{0x0137, 0x33},
+		// {0x0136, 0x13},
+		// {0x0137, 0x33},
 		{0x33F0, 0x01},
 		{0x33F1, 0x06},
 		{0x0111, 0x03},
@@ -624,7 +623,6 @@ struct reginfo cfg_imx682_mode_common_setting_part1_regs[] =
 		{0x9226, 0xEA},
 	    {SEQUENCE_END, 0x00}
 };
-
 struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 {
 		{0x9227, 0xCA},
@@ -1021,7 +1019,7 @@ struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 		{0x0101, 0x03},
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114, 0x01},
 		{0x0342, 0x27},
 		{0x0343, 0xE0},
 		{0x0340, 0x0D},
@@ -1116,10 +1114,7 @@ struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 	   // {REG_MODE_SEL, 0x01},
 	    {SEQUENCE_END, 0x00}
 };
-
-
 ///////////////////////////////////////////////////////////////////////////////
-
 struct reginfo sensor_imx682_setfile_B_Global[] = {
 	/* External Clock Setting */
 	{0x0136,  0x1A}, 
@@ -1769,7 +1764,6 @@ struct reginfo sensor_imx682_setfile_B_Global[] = {
 	{0xB026,  0x00}, 
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* reg_Full */
 	/* Full_Remosaic */
@@ -1778,7 +1772,7 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01},
 	/* Line Length PCK Setting */
 	{0x0342,  0x31}, 
 	{0x0343,  0x40}, 
@@ -1865,10 +1859,14 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	{0x3400,  0x02}, 
 	/* PDAF TYPE2 Setting */
 	{0x3093,  0x01}, 
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
 	    {REG_MODE_SEL, 0x01},
 	    {SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	/* reg_2Bin_A */
 	/* 2x2 Binning mode A 4624x3468 30fps */
@@ -1877,7 +1875,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	{0x0342,  0x24}, 
 	{0x0343,  0xD8}, 
@@ -1964,10 +1962,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	{0x3400,  0x02}, 
 	/* PDAF TYPE2 Setting */
 	{0x3093,  0x01},
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS[] = {
 	/* reg_2Bin_B */
 	/* 2x2 Binning mode B 4624x2604 30fps */
@@ -1976,7 +1978,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	{0x0342,  0x24}, 
 	{0x0343,  0xD8}, 
@@ -2063,10 +2065,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS[] = {
 	{0x3400,  0x02}, 
 	/* PDAF TYPE2 Setting */
 	{0x3093,  0x01},
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS[] = {
 	/* reg_2Bin_D */
 	/* 2x2 Binning mode D 4000x3000 30fps */
@@ -2075,7 +2081,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01},
 	/* Line Length PCK Setting */
 	{0x0342,  0x24}, 
 	{0x0343,  0xD8}, 
@@ -2162,11 +2168,417 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS[] = {
 	{0x3400,  0x02}, 
 	/* PDAF TYPE2 Setting */
 	{0x3093,  0x01},
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
-
+struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK[] = {
+	/* MIPI output setting */
+	{0x0112,  0x0A},
+	{0x0113,  0x0A},
+	{0x0114,  0x01},
+	/* Frame Length Lines Setting */
+	{0x0340, 0x08},
+	{0x0341, 0xff},
+	/* ROI Setting */
+	{0x0344, 0x01},
+	{0x0345, 0x98},
+	{0x0346, 0x02},
+	{0x0347, 0xa2},
+	{0x0348, 0x10},
+	{0x0349, 0x97},
+	{0x034a, 0x0b},
+	{0x034b, 0x15},
+	{0x0220, 0x00},
+	{0x0221, 0x11},
+	{0x0222, 0x01},
+	/* Mode Setting */
+	{0x0900, 0x01},
+	{0x0901, 0x22},
+	{0x0902, 0x0a},
+	{0x30D8,  0x00},
+	{0x3200,  0x41},
+	{0x3201,  0x41},
+	/* Digital Crop & Scaling */
+	{0x0408, 0x00},
+	{0x0409, 0x00},
+	{0x040a, 0x00},
+	{0x040b, 0x00},
+	{0x040c, 0x07},
+	{0x040d, 0x80},
+	{0x040e, 0x04},
+	{0x040f, 0x38},
+	/* Output Size Setting */
+	{0x034c, 0x07},
+	{0x034d, 0x80},
+	{0x034e, 0x04},
+	{0x034f, 0x38},
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
+    /* Line Length PCK Setting */
+	{0x0342, 0x25},
+	{0x0343, 0xd9},
+    /* Clock Setting */
+	{0x0301, 0x06},
+	{0x0303, 0x04},
+	{0x0305, 0x04},
+	{0x0306, 0x01},
+	{0x0307, 0x57},
+	{0x0309, 0x0a},
+	{0x030b, 0x02},
+	{0x030d, 0x04},
+	{0x030e, 0x01},
+	{0x030f, 0x49},
+	{0x0310, 0x01},
+    /* ------------ */
+	{0x0820, 0x07},
+	{0x0821, 0xb6},
+	{0x0822, 0x00},
+	{0x0823, 0x00},
+	{0x3e20, 0x01},
+	{0x3e37, 0x00},
+	{0x3e3b, 0x00},
+	{0x0106, 0x00},
+	{0x0b00, 0x00},
+	{0x3230, 0x00},
+	{0x3f14, 0x01},
+	{0x3f3c, 0x01},
+	{0x3f0d, 0x0a},
+	{0x3fbc, 0x00},
+	{0x3c06, 0x00},
+	{0x3c07, 0x48},
+	{0x3c0a, 0x00},
+	{0x3c0b, 0x00},
+	{0x3f78, 0x00},
+	{0x3f79, 0x40},
+	{0x3f7c, 0x00},
+	{0x3f7d, 0x00},
+	/* Other Setting */
+	{0x30D9,  0x01},
+	{0x32D5,  0x00},
+	{0x32D6,  0x00},
+	{0x401E,  0x00},
+	{0x40B8,  0x04},
+	{0x40B9,  0xC4},
+	{0x40BC,  0x00},
+	{0x40BD,  0xB4},
+	{0x40BE,  0x00},
+	{0x40BF,  0xB4},
+	{0x41A4,  0x06},
+	{0x5A09,  0x01},
+	{0x5A17,  0x01},
+	{0x5A25,  0x01},
+	{0x5A33,  0x01},
+	{0x98D7,  0xB4},
+	{0x98D8,  0x8C},
+	{0x98D9,  0x0A},
+	{0x99C4,  0x16},
+	/* Integration Setting */
+	{0x0202,  0x0B},
+	{0x0203,  0x33},
+	/* Gain Setting */
+	{0x0204,  0x00},
+	{0x0205,  0x00},
+	{0x020E,  0x01},
+	{0x020F,  0x00},
+	/* PDAF Setting */
+	{0x4018,  0x00},
+	{0x4019,  0x00},
+	{0x401A,  0x00},
+	{0x401B,  0x00},
+	/* DPC correction ctrl Setting */
+	{0x0B06,  0x00},
+	/* PDAF TYPE Setting */
+	{0x3400,  0x01},//{0x3400,  0x02},
+	/* PDAF TYPE2 Setting */
+	{0x3093,  0x00},
+	/* Image Quality adjustment setting */
+	{0x32D9,  0x01},
+	{0x85C0,  0x01},
+	{0xA503,  0x04}, 
+	{0xA533,  0x3F}, 
+	{0xA53C,  0x06}, 
+	{0xA53F,  0x04}, 
+	{0xA56F,  0x3F}, 
+	{0xA654,  0x01},
+	{0xA655,  0x68}, 
+	{0xA6D2,  0x01},
+	{0xA6D3,  0x68}, 
+	{0xA6D6,  0x00}, 
+	{0xA6D7,  0x4C}, 
+	{0xA737,  0x20}, 
+	{0xAC2C,  0x05}, 
+	{0xAC5C,  0x05}, 
+	{0xAC8C,  0x05}, 
+	{0xB026,  0x00},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
+struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V4_BK[] = {
+	/* MIPI output setting */
+	{0x0112,  0x0A},
+	{0x0113,  0x0A},
+	{0x0114,  0x01},
+	/* Frame Length Lines Setting */
+	{0x0340, 0x08},
+	{0x0341, 0xff},
+	/* ROI Setting */
+	{0x0344, 0x01},
+	{0x0345, 0x98},
+	{0x0346, 0x02},
+	{0x0347, 0xa2},
+	{0x0348, 0x10},
+	{0x0349, 0x97},
+	{0x034a, 0x0b},
+	{0x034b, 0x15},
+	{0x0220, 0x00},
+	{0x0221, 0x11},
+	{0x0222, 0x01},
+	/* Mode Setting */
+	{0x0900, 0x01},
+	{0x0901, 0x22},
+	{0x0902, 0x0a},
+	{0x30D8,  0x00},
+	{0x3200,  0x41},
+	{0x3201,  0x41},
+	/* Digital Crop & Scaling */
+	{0x0408, 0x00},
+	{0x0409, 0x00},
+	{0x040a, 0x00},
+	{0x040b, 0x00},
+	{0x040c, 0x07},
+	{0x040d, 0x80},
+	{0x040e, 0x04},
+	{0x040f, 0x38},
+	/* Output Size Setting */
+	{0x034c, 0x07},
+	{0x034d, 0x80},
+	{0x034e, 0x04},
+	{0x034f, 0x38},
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
+    /* Line Length PCK Setting */
+	{0x0342, 0x25},
+	{0x0343, 0xd9},
+    /* Clock Setting */
+	{0x0301, 0x06},
+	{0x0303, 0x04},
+	{0x0305, 0x04},
+	{0x0306, 0x01},
+	{0x0307, 0x57},
+	{0x0309, 0x0a},
+	{0x030b, 0x02},
+	{0x030d, 0x04},
+	{0x030e, 0x01},
+	{0x030f, 0x49},
+	{0x0310, 0x01},
+    /* ------------ */
+	{0x0820, 0x07},
+	{0x0821, 0xb6},
+	{0x0822, 0x00},
+	{0x0823, 0x00},
+	{0x3e20, 0x01},
+	{0x3e37, 0x00},
+	{0x3e3b, 0x00},
+	{0x0106, 0x00},
+	{0x0b00, 0x00},
+	{0x3230, 0x00},
+	{0x3f14, 0x01},
+	{0x3f3c, 0x01},
+	{0x3f0d, 0x0a},
+	{0x3fbc, 0x00},
+	{0x3c06, 0x00},
+	{0x3c07, 0x48},
+	{0x3c0a, 0x00},
+	{0x3c0b, 0x00},
+	{0x3f78, 0x00},
+	{0x3f79, 0x40},
+	{0x3f7c, 0x00},
+	{0x3f7d, 0x00},
+	/* Other Setting */
+	{0x30D9,  0x01},
+	{0x32D5,  0x00},
+	{0x32D6,  0x00},
+	{0x401E,  0x00},
+	{0x40B8,  0x04},
+	{0x40B9,  0xC4},
+	{0x40BC,  0x00},
+	{0x40BD,  0xB4},
+	{0x40BE,  0x00},
+	{0x40BF,  0xB4},
+	{0x41A4,  0x06},
+	{0x5A09,  0x01},
+	{0x5A17,  0x01},
+	{0x5A25,  0x01},
+	{0x5A33,  0x01},
+	{0x98D7,  0xB4},
+	{0x98D8,  0x8C},
+	{0x98D9,  0x0A},
+	{0x99C4,  0x16},
+	/* Integration Setting */
+	{0x0202,  0x0B},
+	{0x0203,  0x33},
+	/* Gain Setting */
+	{0x0204,  0x00},
+	{0x0205,  0x00},
+	{0x020E,  0x01},
+	{0x020F,  0x00},
+	/* PDAF Setting */
+	{0x4018,  0x00},
+	{0x4019,  0x00},
+	{0x401A,  0x00},
+	{0x401B,  0x00},
+	/* DPC correction ctrl Setting */
+	{0x0B06,  0x00},
+	/* PDAF TYPE Setting */
+	{0x3400,  0x01},//{0x3400,  0x02},
+	/* PDAF TYPE2 Setting */
+	{0x3093,  0x00},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
+struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V3_BK[] = {
+	/* MIPI output setting */
+	{0x0112,  0x0A},
+	{0x0113,  0x0A},
+	{0x0114,  0x01},
+	/* Frame Length Lines Setting */
+	{0x0340,  0x0B},
+	{0x0341,  0x63},
+	/* ROI Setting */
+	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
+	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
+	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
+	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
+	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
+	{0x0349,  0x1F}, /*	x_addr_end[7:0]	*/
+	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
+	{0x034B,  0xBF},  /*	y_addr_end[7:0]	*/
+	/* Mode Setting */
+	{0x0900,  0x01},  /* Binning mode: Enable */
+	{0x0901,  0x02},  /* Binning Type for Horizontal */
+	{0x0902,  0x08},  /* Binning Type for Vertical   */
+	{0x30D8,  0x00},
+	{0x3200,  0x41},
+	{0x3201,  0x41},
+	/* Digital Crop & Scaling */
+	{0x0408,  0x00},
+	{0x0409,  0x00},
+	{0x040A,  0x00},
+	{0x040B,  0x02},
+	{0x040C,  0x12},
+	{0x040D,  0x10},
+	{0x040E,  0x0A},
+	{0x040F,  0x2C},
+	/* Output Size Setting */
+	{0x034C,  0x12},  /*	x_output_size[15:8]	*/
+	{0x034D,  0x10},  /*	x_output_size[7:0]	*/
+	{0x034E,  0x0A},  /*	y_output_size[15:8]	*/
+	{0x034F,  0x2C},  /*	y_output_size[7:0]	*/
+	/* Signaling mode setting */
+	{0x0111,  0x02},
+	/* External Clock Setting */
+	{0x0136,  0x1A},
+	{0x0137,  0x00},
+    /* Line Length PCK Setting */
+	{0x0342, 0x25},
+	{0x0343, 0xd9},
+    /* Clock Setting */
+	{0x0301, 0x06},
+	{0x0303, 0x04},
+	{0x0305, 0x04},
+	{0x0306, 0x01},
+	{0x0307, 0x57},
+	{0x0309, 0x0a},
+	{0x030b, 0x02},
+	{0x030d, 0x04},
+	{0x030e, 0x01},
+	{0x030f, 0x49},
+	{0x0310, 0x01},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
+struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK[] = {
+	/* MIPI output setting */
+	{0x0112,  0x0A},
+	{0x0113,  0x0A},
+	{0x0114,  0x01},
+	/* Frame Length Lines Setting */
+	{0x0340,  0x0B},
+	{0x0341,  0x63},
+	/* ROI Setting */
+	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
+	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
+	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
+	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
+	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
+	{0x0349,  0x1F}, /*	x_addr_end[7:0]	*/
+	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
+	{0x034B,  0xBF},  /*	y_addr_end[7:0]	*/
+	/* Mode Setting */
+	{0x0900,  0x01},  /* Binning mode: Enable */
+	{0x0901,  0x22},  /* Binning Type for Horizontal */
+	{0x0902,  0x08},  /* Binning Type for Vertical   */
+	{0x30D8,  0x00},
+	{0x3200,  0x41},
+	{0x3201,  0x41},
+	/* Digital Crop & Scaling */
+	{0x0408,  0x00},
+	{0x0409,  0x00},
+	{0x040A,  0x00},
+	{0x040B,  0x02},
+	{0x040C,  0x12},
+	{0x040D,  0x10},
+	{0x040E,  0x0A},
+	{0x040F,  0x2C},
+	/* Output Size Setting */
+	{0x034C,  0x12},  /*	x_output_size[15:8]	*/
+	{0x034D,  0x10},  /*	x_output_size[7:0]	*/
+	{0x034E,  0x0A},  /*	y_output_size[15:8]	*/
+	{0x034F,  0x2C},  /*	y_output_size[7:0]	*/
+    /* Line Length PCK Setting */
+	{0x0342, 0x25},
+	{0x0343, 0xd9},
+    /* Clock Setting */
+	{0x0301, 0x06},
+	{0x0303, 0x04},
+	{0x0305, 0x04},
+	{0x0306, 0x01},
+	{0x0307, 0x57},
+	{0x0309, 0x0a},
+	{0x030b, 0x02},
+	{0x030d, 0x04},
+	{0x030e, 0x01},
+	{0x030f, 0x49},
+	{0x0310, 0x01},
+    /* ------------ */
+	///* Line Length PCK Setting */
+	//{0x0342,  0x17},
+	//{0x0343,  0x70},
+	///* PLL Clock Setting */
+	//{0x0301,  0x08}, /*	vt_pix_clk_div[7:0]	    The Pixel Clock Divider for IVTS   */
+	//{0x0303,  0x02}, /*	vt_sys_clk_div[7:0]	    The System Clock Divider*/
+	//{0x0305,  0x04}, /*	pre_pll_clk_div[7:0]	The pre-PLL Clock Divider */
+	//{0x0306,  0x01}, /* PLL_VT_MPY[10:8]        The PLL multiplier*/
+	//{0x0307,  0x43}, /* PLL_VT_MPY[7:0]         The PLL multiplier*/
+	//{0x030B,  0x01}, /* OPSYCK_DIV              The System Clock Divider*/
+	//{0x030D,  0x04}, /* The pre-PLL Clock Divider for IOPS */
+	//{0x030E,  0x01}, /* The PLL multiplier for IOPS [10:8] */
+	//{0x030F,  0x5C}, /* The PLL multiplier for IOPS [7:0]  */
+	//{0x0310,  0x01}, /* PLL mode select: Dual Mode         */
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	/* reg_2Bin_C */
 	/* 2x2 Binning mode C 4624x2604 60fps */
@@ -2175,7 +2587,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01},
 	/* Line Length PCK Setting */
 	{0x0342,  0x17}, 
 	{0x0343,  0x70}, 
@@ -2199,14 +2611,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x00}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x02}, 
-	{0x040C,  0x12}, 
-	{0x040D,  0x10}, 
-	{0x040E,  0x0A}, 
-	{0x040F,  0x2C}, 
+	{0x0408,  0x00},
+	{0x0409,  0x00},
+	{0x040A,  0x00},
+	{0x040B,  0x02},
+	{0x040C,  0x12},
+	{0x040D,  0x10},
+	{0x040E,  0x0A},
+	{0x040F,  0x2C},
 	/* Output Size Setting */
 	{0x034C,  0x12}, 
 	{0x034D,  0x10}, 
@@ -2265,7 +2677,6 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS[] = {
 	/* reg_V2H2_FAE */
 	/* 2x2 Binning mode V2H2 Fast AE */
@@ -2274,7 +2685,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	{0x0342,  0x0C}, 
 	{0x0343,  0xD8}, 
@@ -2364,7 +2775,6 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	/* reg_V2H2_SSL_3 */
 	/* 2x2 Binning mode V2H2 Slow Motion */
@@ -2373,7 +2783,7 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	{0x0342,  0x0C}, 
 	{0x0343,  0xD8}, 
@@ -2463,7 +2873,6 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	/* reg_Full_CropA */
 	/* Full_Remosaic_Crop A 4624x3468 */
@@ -2473,7 +2882,7 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	{0x0111, 0x02},
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	//{0x0114,  0x03}, 
+	//{0x0114,  0x01}, 
 	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	//{0x0342,  0x31}, 
@@ -2608,7 +3017,6 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS[] = {
 	/* reg_Full_CropB_2 */
 	/* Full_Remosaic_Crop B 4624x2604 */
@@ -2617,7 +3025,7 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS[] = {
 	/* MIPI output setting */
 	{0x0112,  0x0A}, 
 	{0x0113,  0x0A}, 
-	{0x0114,  0x03}, 
+	{0x0114,  0x01}, 
 	/* Line Length PCK Setting */
 	{0x0342,  0x31}, 
 	{0x0343,  0x40}, 
@@ -2707,7 +3115,6 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo cfg_imx519_mode_common_reg[] =
 {
 	{0x0136, 0x18},
@@ -2987,6 +3394,8 @@ struct reginfo cfg_imx519_mode_common_reg[] =
 /* 1080p 60fps mode */
 struct reginfo cfg_imx519_mode_1920x1080_reg[] =
 {
+	{0x0136, 0x18},
+	{0x0137, 0x00},
 	/* MIPI output setting */
 	{0x0111, 0x02},
 	{0x0112, 0x0a},
@@ -3072,14 +3481,8 @@ struct reginfo cfg_imx519_mode_1920x1080_reg[] =
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
-
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-
-
-
 struct reginfo imx682_init_setting[] = {
 	    /*External Clock Setting*/
 		{0x0136, 0x18},
@@ -3728,12 +4131,11 @@ struct reginfo imx682_init_setting[] = {
 		{0x0B026, 0x00},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_preview_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -3821,12 +4223,11 @@ struct reginfo imx682_preview_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_capture_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -3913,14 +4314,12 @@ struct reginfo imx682_capture_setting[] = {
 		{0x03093, 0x01},
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
-
 };
-
 struct reginfo imx682_normal_video_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -4007,14 +4406,12 @@ struct reginfo imx682_normal_video_setting[] = {
 		{0x03093, 0x01},
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
-
 };
-
 struct reginfo imx682_slim_video_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -4101,14 +4498,12 @@ struct reginfo imx682_slim_video_setting[] = {
 		{0x03093, 0x01},
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
-
 };
-
 struct reginfo imx682_hs_video_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x0A},
 		{0x0343, 0xA8},
@@ -4196,12 +4591,11 @@ struct reginfo imx682_hs_video_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_custom1_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -4289,12 +4683,11 @@ struct reginfo imx682_custom1_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_custom2_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x0A},
 		{0x0343, 0xA8},
@@ -4382,12 +4775,11 @@ struct reginfo imx682_custom2_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_custom3_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -4475,12 +4867,11 @@ struct reginfo imx682_custom3_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_custom4_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114, 0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x28},
 		{0x0343, 0x30},
@@ -4568,12 +4959,11 @@ struct reginfo imx682_custom4_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
 struct reginfo imx682_custom5_setting[] = {
 	    /*MIPI output setting*/
 		{0x0112, 0x0A},
 		{0x0113, 0x0A},
-		{0x0114, 0x02},
+		{0x0114,  0x01},
 	    /*Line Length PCK Setting*/
 		{0x0342, 0x24},
 		{0x0343, 0xD8},
@@ -4661,14 +5051,6 @@ struct reginfo imx682_custom5_setting[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 int imx682_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
@@ -4702,22 +5084,19 @@ int imx682_sensor_init(XIicPs *IicInstance)
 		//usleep(1000000);
 		//imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_Global);
 		//usleep(1000000);
-		//imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS);
+        //imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part1_regs);
+        imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
+		//imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_Global);
+		imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK);
 		//usleep(1000000);
-        
-        
-        
-		imx_682_sensor_write_array(IicInstance,imx682_init_setting);
-		usleep(1000000);
+		//usleep(1000000);
         //imx682_hs_video_setting
         //imx682_normal_video_setting
         //imx682_slim_video_setting
         //imx682_custom1_setting
         //imx682_custom2_setting
         //imx682_custom3_setting
-		imx_682_sensor_write_array(IicInstance,imx682_normal_video_setting);
-		usleep(1000000);
-
+		//imx_682_sensor_write_array(IicInstance,imx682_normal_video_setting);
 	}
 	return 0;
 }

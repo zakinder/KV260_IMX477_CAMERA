@@ -286,6 +286,37 @@ void menu_calls(ON_OFF) {
             	read_imx519_reg(k_number);
             	current_state = imx219rd;break;
             }
+        case imx682wr:
+            printf("Enter imx682 Register Address.\n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	printf("Enter imx682 Register Data for the Register.\n");
+                menu_print_prompt();
+                k_number_value = uart_prompt_io();
+                write_imx682_reg(k_number,k_number_value);
+            	current_state = imx682wr;break;
+            }
+        case imx682rd:
+            printf("Enter imx682 Register Address \n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	read_imx519_reg(k_number);
+            	current_state = imx682rd;break;
+            }
         case quit:
             menu_calls_enable = FALSE;
             break;

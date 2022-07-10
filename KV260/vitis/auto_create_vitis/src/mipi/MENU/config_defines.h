@@ -95,6 +95,8 @@
 #define imx519rd                0x45CCDA54
 #define imx219wr                0x45CC6564
 #define imx219rd                0x45CC6524
+#define imx682wr                0x45CD1A40
+#define imx682rd                0x45CD1A00
 #define imx477c1                0x045CCC8F3
 #define imx477c2                0x045CCC8F4
 #define imx477c3                0x045CCC8F5

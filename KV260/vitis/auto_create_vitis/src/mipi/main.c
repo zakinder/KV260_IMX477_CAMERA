@@ -10,7 +10,7 @@
    1.5   Sakinder 07/06/22 Added IMX682 Camera functions.
    -----------------------------------------------------------------------
 */
-#include <xaxivdma.h>
+#include <stdio.h>
 #include <xil_printf.h>
 #include <xil_types.h>
 #include <xparameters.h>
@@ -19,11 +19,12 @@
 #include "DP_VIDEO/video_modes.h"
 #include "DP_VIDEO/xdpdma_video.h"
 #include "MENU/menu_calls.h"
-#include "PLATFORM/platform.h"
+#include "MIPI/mipi.h"
+#include "SENSORS_CONFIG/init_camera.h"
 #include "TPG/tpg.h"
 #include "UART/uartio.h"
+#include "VDMA/vdma.h"
 #include "VTC/vtc.h"
-#include "MIPI/mipi.h"
 VideoMode video;
 u32 frameBuf[DISPLAY_NUM_FRAMES][DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
 u32 *pFrames[DISPLAY_NUM_FRAMES];

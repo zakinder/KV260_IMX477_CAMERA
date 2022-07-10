@@ -14,9 +14,11 @@
 #include <xil_printf.h>
 #include <xil_types.h>
 #include <xstatus.h>
+#include <stdio.h>
 #include "I2c_transections.h"
 #include "IMX219/imx219.h"
 #include "IMX519/imx519.h"
+#include "IMX682/imx682.h"
 #include "IMX477/imx477.h"
 #include "OV5640/ov5640.h"
 #include "OV5647/ov5647.h"
@@ -40,6 +42,14 @@ int init_camera()
   		print("I2C Write Error\n\r");
   		return XST_FAILURE;
   	}
+    Status = imx519_sensor_init(&iic_cam);
+  	if (Status != XST_SUCCESS) {
+  		print("imx519 Camera Sensor Not connected\n\r");
+  	}
+    Status = imx682_sensor_init(&iic_cam);
+  	if (Status != XST_SUCCESS) {
+  		print("imx682 Camera Sensor Not connected\n\r");
+  	}
     Status = imx219_camera_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
   		print("IMX219 Camera Sensor Not connected\n\r");
@@ -55,14 +65,6 @@ int init_camera()
     Status = ov5647_camera_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
   		print("OV5647 Camera Sensor Not connected\n\r");
-  	}
-    Status = imx519_sensor_init(&iic_cam);
-  	if (Status != XST_SUCCESS) {
-  		print("imx519 Camera Sensor Not connected\n\r");
-  	}
-    Status = imx682_sensor_init(&iic_cam);
-  	if (Status != XST_SUCCESS) {
-  		print("imx682 Camera Sensor Not connected\n\r");
   	}
     return 0;
 }
@@ -88,7 +90,6 @@ void write_imx477_reg(u16 addr,u8 data)
 }
 void read_imx519_reg(u16 addr)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX519 Camera\n\r");
     Status = imx519_read_register(&iic_cam,addr);
@@ -98,7 +99,6 @@ void read_imx519_reg(u16 addr)
 }
 void write_imx519_reg(u16 addr,u8 data)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX519 Camera\n\r");
     Status = imx519_write_read_register(&iic_cam,addr,data);
@@ -106,9 +106,26 @@ void write_imx519_reg(u16 addr,u8 data)
   		print("Unable to Write IMX519 Camera Sensor\n\r");
   	}
 }
+void read_imx682_reg(u16 addr)
+{
+	int Status;
+	print("IMX682 Camera\n\r");
+    Status = imx682_read_register(&iic_cam,addr);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Read IMX682 Camera Sensor\n\r");
+  	}
+}
+void write_imx682_reg(u16 addr,u8 data)
+{
+	int Status;
+	print("IMX682 Camera\n\r");
+    Status = imx682_write_read_register(&iic_cam,addr,data);
+  	if (Status != XST_SUCCESS) {
+  		print("Unable to Write IMX682 Camera Sensor\n\r");
+  	}
+}
 void read_imx219_reg(u16 addr)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX219 Camera\n\r");
     Status = imx219_read_register(&iic_cam,addr);
@@ -118,7 +135,6 @@ void read_imx219_reg(u16 addr)
 }
 void write_imx219_reg(u16 addr,u8 data)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX219 Camera\n\r");
     Status = imx219_write_read_register(&iic_cam,addr,data);
