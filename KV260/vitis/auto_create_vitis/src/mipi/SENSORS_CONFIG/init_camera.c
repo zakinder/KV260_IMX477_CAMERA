@@ -70,7 +70,6 @@ int init_camera()
 }
 void read_imx477_reg(u16 addr)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX477 Camera\n\r");
     Status = imx477_read_register(&iic_cam,addr);
@@ -80,7 +79,6 @@ void read_imx477_reg(u16 addr)
 }
 void write_imx477_reg(u16 addr,u8 data)
 {
-	XIicPs_Config *iic_conf;
 	int Status;
 	print("IMX477 Camera\n\r");
     Status = imx477_write_read_register(&iic_cam,addr,data);
@@ -109,8 +107,7 @@ void write_imx519_reg(u16 addr,u8 data)
 void read_imx682_reg(u16 addr)
 {
 	int Status;
-	print("IMX682 Camera\n\r");
-    Status = imx682_read_register(&iic_cam,addr);
+    Status = imx682_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
   		print("Unable to Read IMX682 Camera Sensor\n\r");
   	}

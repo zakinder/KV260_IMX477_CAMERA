@@ -314,7 +314,7 @@ void menu_calls(ON_OFF) {
             }
             else
             {
-            	read_imx519_reg(k_number);
+            	read_imx682_reg(k_number);
             	current_state = imx682rd;break;
             }
         case quit:
