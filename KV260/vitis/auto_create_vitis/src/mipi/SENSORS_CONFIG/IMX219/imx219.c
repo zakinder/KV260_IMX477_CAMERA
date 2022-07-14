@@ -404,7 +404,7 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2] ;
 	imx219_read(IicInstance, 0x0000, &sensor_id[0]);
 	imx219_read(IicInstance, 0x0001, &sensor_id[1]);
-	if (sensor_id[0] == 0x2 || sensor_id[1] == 0x19)
+	if (sensor_id[0] == 0x2 && sensor_id[1] == 0x19)
 	{
 		printf("Got IMX219 camera sensor id: %x %x\r\n", sensor_id[0], sensor_id[1]);
         usleep(10000);
