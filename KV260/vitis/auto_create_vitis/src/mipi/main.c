@@ -31,10 +31,7 @@ u32 *pFrames[DISPLAY_NUM_FRAMES];
 int main()
 {
     video = VMODE_1920x1080;
-    per_write_reg(REG16,0);
-    per_write_reg(REG11,0);
-    per_write_reg(REG15,2);
-    per_write_reg(REG19,4);
+
     mipi_init();
     init_camera();
     demosaic_init();

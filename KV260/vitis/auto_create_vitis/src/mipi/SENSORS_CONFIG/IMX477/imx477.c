@@ -1,6 +1,5 @@
 /*
    MODIFICATION HISTORY:
-   
    Ver   Who Date     Changes
    ----- -------- -------- -----------------------------------------------
    1.0	 Sakinder 06/01/22 Initial Release
@@ -89,17 +88,6 @@
 #define IMX477_DIG_GAIN_B_L	            0x0213
 #define IMX477_DIG_GAIN_GB_U	        0x0214
 #define IMX477_DIG_GAIN_GB_L	        0x0215
-
-
-
-
-
-
-
-
-
-
-
 struct reginfo cfg1_imx477_mode_common[] =
 {
         {REG_EXCK_FREQ_MSB, 0x18},
@@ -412,7 +400,6 @@ struct reginfo cfg1_imx477_mode_common[] =
         {0x3ff9, 0x01},
         {SEQUENCE_END, 0x00}
 };
-
 /* 1080p cropped mode */
 struct reginfo mode_2028x1080_regs[] = {
 	/* MIPI output setting */
@@ -627,7 +614,6 @@ struct reginfo mode_2028x1520_regs[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 //4x4 binning 10bit
 struct reginfo mode_1332x990_regs[] = {
 	/* MIPI output setting */
@@ -783,17 +769,6 @@ struct reginfo mode_1332x990_regs[] = {
 	    {REG_MODE_SEL, 0x01},
 	    {SEQUENCE_END, 0x00}
 };
-
-
-
-
-
-
-
-
-
-
-
 struct reginfo cfg1_imx477_1920x1080p[] =
 {
         {REG_LINE_LEN_MSB, 0x31},
@@ -1406,7 +1381,6 @@ struct reginfo sensor_imx477_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V3_BK[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo mode_4056x3040_regs[] = {
 	{REG_CSI_FORMAT_C, 0x0c},
 	{REG_CSI_FORMAT_D, 0x0c},
@@ -1523,7 +1497,6 @@ struct reginfo mode_4056x3040_regs[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
 struct reginfo mode_default[]={	//default register settings, Resolution and FPS specific settings will be over written
 			{REG_EXCK_FREQ_MSB, 0x18},
 			{REG_EXCK_FREQ_LSB, 0x00},
@@ -1866,7 +1839,6 @@ struct reginfo mode_default[]={	//default register settings, Resolution and FPS 
         {0x99C4,  0x16},
         {SEQUENCE_END, 0x00}
 };
-
 //4x4 binning 10bit
 struct reginfo mode_640x480_regs[] = {
         /* MIPI output setting */
@@ -2003,8 +1975,6 @@ struct reginfo mode_640x480_regs[] = {
 		{REG_MODE_SEL, 0x01},
 		{SEQUENCE_END, 0x00}
 };
-
-
 struct reginfo mode_1_regs[] = {
   {IMX477_REG_ORIENTATION, 0xff},
   {REG_CSI_FORMAT_C, 0x0A},
@@ -2146,7 +2116,6 @@ struct reginfo mode_1_regs[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-    
 int imx477_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX477_ADDR,addr);
@@ -2164,8 +2133,7 @@ void imx_477_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 		i++;
 	}
 }
-
-int imx477_sensor_init(XIicPs *IicInstance)
+int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
 {
 	u8 sensor_id[2];
 	for(int address = 100; address < 155; address++ )

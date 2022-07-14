@@ -12,6 +12,10 @@ void menu_calls(ON_OFF) {
     u32 current_state = mainmenu;
     u32 k_number;
     u32 k_number_value;
+    per_write_reg(REG16,0);
+    per_write_reg(REG11,0);
+    per_write_reg(REG15,2);
+    per_write_reg(REG19,4);
     while (menu_calls_enable == TRUE)
     {
         switch (current_state)

@@ -1799,10 +1799,12 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* MIPI output setting */
 	{REG_CSI_FORMAT_C,  0x0A}, 
 	{REG_CSI_FORMAT_D,  0x0A}, 
-	{REG_CSI_LANE,  0x01},
+	{REG_CSI_LANE,      0x01},
 	/* Line Length PCK Setting */
-	{REG_LINE_LEN_MSB,  0x31}, 
-	{REG_LINE_LEN_LSB,  0x40}, 
+	{REG_LINE_LEN_MSB,  0x42}, 
+	{REG_LINE_LEN_LSB,  0x40},  
+	//{REG_LINE_LEN_MSB,  0x31}, 
+	//{REG_LINE_LEN_LSB,  0x40}, 
 	/* Frame Length Lines Setting */
 	{REG_FRAME_LEN_MSB,  0x1B}, 
 	{REG_FRAME_LEN_LSB,  0xB8}, 
@@ -1816,8 +1818,8 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	{0x034A,  0x1B}, 
 	{0x034B,  0x1F}, 
 	/* Mode Setting */
-	{REG_BINNING_MODE,  0x00}, 
-	{REG_BINNING_HV,  0x11}, 
+	{REG_BINNING_MODE,       0x00}, 
+	{REG_BINNING_HV,         0x11}, 
 	{REG_BINNING_WEIGHTING,  0x0A}, 
 	{0x30D8,  0x00}, 
 	{0x3200,  0x01},
@@ -1837,16 +1839,16 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	{0x034E,  0x1B}, 
 	{0x034F,  0x18}, 
 	/* Clock Setting */
-	{REG_IVTPXCK_DIV,  0x08}, 
-	{REG_IVTSYCK_DIV,  0x02}, 
+	{REG_IVTPXCK_DIV,       0x08}, 
+	{REG_IVTSYCK_DIV,       0x02}, 
 	{REG_IVT_PREPLLCK_DIV,  0x04}, 
-	{REG_PLL_IVT_MPY_MSB,  0x01},
-	{REG_PLL_IVT_MPY_LSB,  0x4F}, 
-	{REG_IOPSYCK_DIV,  0x01},
+	{REG_PLL_IVT_MPY_MSB,   0x01},
+	{REG_PLL_IVT_MPY_LSB,   0x4F}, 
+	{REG_IOPSYCK_DIV,       0x01},
 	{REG_IOP_PREPLLCK_DIV,  0x04}, 
-	{REG_IOP_MPY_MSB,  0x01},
-	{REG_IOP_MPY_LSB,  0x5C}, 
-	{REG_PLL_MULTI_DRV,  0x01},
+	{REG_IOP_MPY_MSB,       0x01},
+	{REG_IOP_MPY_LSB,       0x5C}, 
+	{REG_PLL_MULTI_DRV,     0x01},
 	/* Other Setting */
 	{0x30D9,  0x01},
 	{0x32D5,  0x01},
@@ -1891,8 +1893,8 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* External Clock Setting */
 	{REG_EXCK_FREQ_MSB,  0x1A},
 	{REG_EXCK_FREQ_LSB,  0x00},
-	    {REG_MODE_SEL, 0x01},
-	    {SEQUENCE_END, 0x00}
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
 };
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	/* reg_2Bin_A */
@@ -3077,52 +3079,54 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	{REG_CSI_FORMAT_D,  0x0A}, 
 	{REG_CSI_LANE,  0x01}, 
 	/* Line Length PCK Setting */
-	{REG_LINE_LEN_MSB,  0x0C}, 
-	{REG_LINE_LEN_LSB,  0xD8}, 
+	{REG_LINE_LEN_MSB, 0xAD},
+	{REG_LINE_LEN_LSB, 0xC0},
+	//{REG_LINE_LEN_MSB,  0x0C}, 
+	//{REG_LINE_LEN_LSB,  0xD8}, 
 	/* Frame Length Lines Setting */
-	{REG_FRAME_LEN_MSB,  0x05}, 
-	{REG_FRAME_LEN_LSB,  0x5E}, 
+	{REG_FRAME_LEN_MSB,  0x1B}, 
+	{REG_FRAME_LEN_LSB,  0x1F}, 
 	/* ROI Setting */
 	{0x0344,  0x00}, 
 	{0x0345,  0x00}, 
-	{0x0346,  0x03}, 
-	{0x0347,  0x70}, 
+	{0x0346,  0x00},
+	{0x0347,  0x00}, 
 	{0x0348,  0x24}, 
 	{0x0349,  0x1F}, 
-	{0x034A,  0x17}, 
-	{0x034B,  0xAF}, 
+	{0x034A,  0x1B}, 
+	{0x034B,  0x1F}, 
 	/* Mode Setting */
-	{REG_BINNING_MODE,  0x01},
-	{REG_BINNING_HV,  0x44}, 
-	{REG_BINNING_WEIGHTING,  0x08}, 
+	{REG_BINNING_MODE,          0x01},
+	{REG_BINNING_HV,            0x44}, 
+	{REG_BINNING_WEIGHTING,     0x0A},
 	{0x30D8,  0x00}, 
 	{0x3200,  0x43}, 
 	{0x3201,  0x43}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x9C}, 
+	{0x0408,  0x01},
+	{0x0409,  0x38}, 
 	{0x040A,  0x00}, 
-	{0x040B,  0x54}, 
-	{0x040C,  0x07}, 
-	{0x040D,  0xD0}, 
-	{0x040E,  0x04}, 
-	{0x040F,  0x68}, 
+	{0x040B,  0x04}, 
+	{0x040C,  0x0F}, 
+	{0x040D,  0xA0}, 
+	{0x040E,  0x3E}, 
+	{0x040F,  0x08}, 
 	/* Output Size Setting */
-	{0x034C,  0x07}, 
-	{0x034D,  0xD0}, 
-	{0x034E,  0x04}, 
-	{0x034F,  0x68}, 
+	{0x034C,  0x0F}, 
+	{0x034D,  0xA0}, 
+	{0x034E,  0x3E},//2000
+	{0x034F,  0x08},// |
 	/* Clock Setting */
-	{REG_IVTPXCK_DIV,  0x08}, 
-	{REG_IVTSYCK_DIV,  0x02}, 
+	{REG_IVTPXCK_DIV,       0x08}, 
+	{REG_IVTSYCK_DIV,       0x02}, 
 	{REG_IVT_PREPLLCK_DIV,  0x04}, 
-	{REG_PLL_IVT_MPY_MSB,  0x01},
-	{REG_PLL_IVT_MPY_LSB,  0x4E}, 
-	{REG_IOPSYCK_DIV,  0x01},
+	{REG_PLL_IVT_MPY_MSB,   0x01},
+	{REG_PLL_IVT_MPY_LSB,   0x4E}, 
+	{REG_IOPSYCK_DIV,       0x01},
 	{REG_IOP_PREPLLCK_DIV,  0x04}, 
-	{REG_IOP_MPY_MSB,  0x01},
-	{REG_IOP_MPY_LSB,  0x5C}, 
-	{REG_PLL_MULTI_DRV,  0x01},
+	{REG_IOP_MPY_MSB,       0x01},
+	{REG_IOP_MPY_LSB,       0x5C}, 
+	{REG_PLL_MULTI_DRV,     0x01},
 	/* Other Setting */
 	{0x30D9,  0x01},
 	{0x32D5,  0x00}, 
@@ -3179,8 +3183,10 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	/* Line Length PCK Setting */
 	//{REG_LINE_LEN_MSB,  0x31}, 
 	//{REG_LINE_LEN_LSB,  0x40}, 
-	{REG_LINE_LEN_MSB, 0x25},
-	{REG_LINE_LEN_LSB, 0xd9},
+	//{REG_LINE_LEN_MSB, 0x25},
+	//{REG_LINE_LEN_LSB, 0xd9},
+	{REG_LINE_LEN_MSB,  0x42}, 
+	{REG_LINE_LEN_LSB,  0x40}, 
 	/* Frame Length Lines Setting */
 	//{REG_FRAME_LEN_MSB,  0x10}, 
 	//{REG_FRAME_LEN_LSB,  0xF7}, 
@@ -5073,8 +5079,10 @@ struct reginfo imx682_custom3_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x24},
-		{REG_LINE_LEN_LSB, 0xD8},
+	    {REG_LINE_LEN_MSB,  0x42}, 
+	    {REG_LINE_LEN_LSB,  0x40},                    		
+	    //{REG_LINE_LEN_MSB, 0x24},
+	    //{REG_LINE_LEN_LSB, 0xD8},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x07},
 		{REG_FRAME_LEN_LSB, 0x64},
@@ -5165,8 +5173,10 @@ struct reginfo imx682_custom4_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE, 0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x28},
-		{REG_LINE_LEN_LSB, 0x30},
+	    {REG_LINE_LEN_MSB,  0x42}, 
+	    {REG_LINE_LEN_LSB,  0x40},  
+		//{REG_LINE_LEN_MSB, 0x28},
+		//{REG_LINE_LEN_LSB, 0x30},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x1B},
 		{REG_FRAME_LEN_LSB, 0xCB},
@@ -5257,8 +5267,10 @@ struct reginfo imx682_custom5_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x24},
-		{REG_LINE_LEN_LSB, 0xD8},
+	    {REG_LINE_LEN_MSB,  0x42}, 
+	    {REG_LINE_LEN_LSB,  0x40},  
+		//{REG_LINE_LEN_MSB, 0x24},
+		//{REG_LINE_LEN_LSB, 0xD8},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x0E},
 		{REG_FRAME_LEN_LSB, 0xA9},
@@ -5612,9 +5624,6 @@ struct reginfo min_sensor_imx682_1920x1080_60FPS[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 int imx682_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX682_ADDR,addr);
@@ -5632,7 +5641,7 @@ void imx_682_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 		i++;
 	}
 }
-int imx682_sensor_init(XIicPs *IicInstance)
+int imx682_sensor_init(XIicPs *IicInstance,u16 config_number)
 {
 	u8 sensor_id[2];
 	imx682_read(IicInstance, 0x0016, &sensor_id[0]);
@@ -5640,35 +5649,69 @@ int imx682_sensor_init(XIicPs *IicInstance)
 	if (sensor_id[0] == 0x6 || sensor_id[1] == 0x82)
 	{
 		printf("Got IMX682 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
-		//imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part1_regs);
-		//usleep(1000000);
-		//imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
-		//usleep(1000000);
-		//imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_Global);
-		//usleep(1000000);
-        //imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part1_regs);
-        imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
-		//imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_Global);
-		imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_2000x1128_60FPS);
-        
-        //IicInstance,imx682_1920x1080_regs
-        //sensor_imx682_2X2BIN_4624x2604_60FPS
-        //sensor_imx682_2X2BIN_2000x1128_60FPS
-        // sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK dp
-        // sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V6_BK dp
-        
-        
-        // sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V3_BK dp
-        // sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK ndp
-		//usleep(1000000);
-		//usleep(1000000);
-        //imx682_hs_video_setting
-        //imx682_normal_video_setting
-        //imx682_slim_video_setting
-        //imx682_custom1_setting
-        //imx682_custom2_setting
-        //imx682_custom3_setting
-		//imx_682_sensor_write_array(IicInstance,imx682_normal_video_setting);
+            //imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part1_regs);
+            //imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
+            //imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_Global);
+            imx_682_sensor_write_array(IicInstance,cfg_imx682_mode_common_setting_part2_regs);
+        if(config_number == 0) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_2000x1128_60FPS);
+        } else if (config_number == 1) {
+            imx_682_sensor_write_array(IicInstance,imx682_1920x1080_regs);
+        } else if (config_number == 2) {
+            imx_682_sensor_write_array(IicInstance,imx682_hs_video_setting);
+        } else if (config_number == 3) {
+            imx_682_sensor_write_array(IicInstance,imx682_normal_video_setting);
+        } else if (config_number == 4) {
+            imx_682_sensor_write_array(IicInstance,imx682_slim_video_setting);
+        } else if (config_number == 5) {
+            imx_682_sensor_write_array(IicInstance,imx682_custom1_setting);
+        } else if (config_number == 6) {
+            imx_682_sensor_write_array(IicInstance,imx682_custom2_setting);
+        } else if (config_number == 7) {
+            imx_682_sensor_write_array(IicInstance,imx682_custom3_setting);
+        } else if (config_number == 8) {
+            imx_682_sensor_write_array(IicInstance,imx682_custom4_setting);
+        } else if (config_number == 9) {
+            imx_682_sensor_write_array(IicInstance,imx682_custom5_setting);
+        } else if (config_number == 10) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK);
+        } else if (config_number == 11) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V6_BK);
+        } else if (config_number == 12) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V7_BK);
+        } else if (config_number == 13) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS);
+        } else if (config_number == 14) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS);
+        } else if (config_number == 15) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS);
+        } else if (config_number == 16) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS);
+        } else if (config_number == 17) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_4624x2604_60FPS);
+        } else if (config_number == 18) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK);
+        } else if (config_number == 19) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS);
+        } else if (config_number == 20) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS);
+        } else if (config_number == 21) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS);
+        } else if (config_number == 22) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS);
+        } else if (config_number == 23) {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS);
+        } else if (config_number == 24) {
+            imx_682_sensor_write_array(IicInstance,imx682_preview_setting);
+        } else if (config_number == 25) {
+            imx_682_sensor_write_array(IicInstance,imx682_capture_setting);
+        } else if (config_number == 26) {
+            imx_682_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_reg);
+        } else if (config_number == 27) {
+            imx_682_sensor_write_array(IicInstance,min_sensor_imx682_1920x1080_60FPS);
+        } else {
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_2000x1128_60FPS);
+        }
 	}
 	return 0;
 }

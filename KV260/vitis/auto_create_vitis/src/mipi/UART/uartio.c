@@ -397,20 +397,6 @@ void cmds_menu()
 printf(
 "\n"
 "|--------------------------------|\n"
-"| cmds videochannel |rgbselect   |\n"
-"| cmds gridpoint    |vchannel    |\n"
-"| cmds griddelta    |ltselect    |\n"
-"| cmds fifomode     |kernalconfig|\n"
-"| cmds printpixel   |ycbcrenable |\n"
-"| cmds readfifo     |ycbcrdisable|\n"
-"| cmds displaytype  |keygain     |\n"
-"| d5mw testpattern  |hsvpervalue |\n"
-"| d5mw colorgain    |yccpervalue |\n"
-"| d5mw config       |colorgain   |\n"
-"| d5mw update       |d5mgain     |\n"
-"| d5mw exposer      |colorgain   |\n"
-"| d5mw regs         |sdcard      |\n"
-"| d5mr regs         |            |\n"
 "| d5mr exposer      |            |\n"
 "|--------------------------------|\n");
 menu_print_prompt();
