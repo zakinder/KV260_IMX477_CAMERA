@@ -2116,6 +2116,24 @@ struct reginfo mode_1_regs[] = {
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
+
+struct reginfo RGB_GAIN_SETTINGS[] = 
+{
+	/*GAIN SETTING*/
+	{REG_MODE_SEL, 0x00},
+	{REG_ANA_GLOBAL_GAIN_U, 0x03},
+	{REG_ANA_GLOBAL_GAIN_L, 0x7f},
+	{REG_DIG_GAIN_GR_U, 0x01},
+	{REG_DIG_GAIN_GR_L, 0x00},
+	{REG_DIG_GAIN_R_U, 0x03},
+	{REG_DIG_GAIN_R_L, 0x00},
+	{REG_DIG_GAIN_B_U, 0x02},
+	{REG_DIG_GAIN_B_L , 0x00},
+	{REG_DIG_GAIN_GB_U , 0x01},
+	{REG_DIG_GAIN_GB_L, 0x00},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
 int imx477_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX477_ADDR,addr);
@@ -2147,66 +2165,30 @@ int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
 		imx_477_sensor_write_array(IicInstance,mode_default);
 		usleep(1000000);
 		imx_477_sensor_write_array(IicInstance,mode_1332x990_regs);
-        //mode_1332x990_regs //4x4 binning 10bit
-        //mode_4056x3040_regs
-        //mode_2028x1080_regs
-        //mode_2028x1520_regs /* 2x2 binned.  */
-        //sensor_imx477_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V3_BK
-        //cfg2_imx477_1920x1080p
+		usleep(1000000);
+        imx_477_sensor_write_array(IicInstance,RGB_GAIN_SETTINGS);
 		usleep(1000000);
 	}
-    	//imx477_read(IicInstance, IMX477_DIG_GLOBAL_GAIN, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GLOBAL_GAIN                  = %x\n",sensor_id[0]);
-        //
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GR_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GR_U                  = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GR_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GR_L                  = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_L                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_B_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_B_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_B_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_B_L                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GB_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GB_L                  = %x\n",sensor_id[0]);
-        //imx219_write(IicInstance, IMX477_DIG_GLOBAL_GAIN, 0);
-        //imx219_write(IicInstance, IMX477_DIG_GAIN_R_U, 0xf);
-        //imx219_write(IicInstance, IMX477_DIG_GAIN_R_L, 0xff);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GR_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GR_U                  = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GR_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GR_L                  = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_L                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_B_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_B_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_B_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_B_L                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_R_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_R_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_DIG_GAIN_GB_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_DIG_GAIN_GB_L                  = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_ANA_GLOBAL_GAIN_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_ANA_GLOBAL_GAIN_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_ANA_GLOBAL_GAIN_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_ANA_GLOBAL_GAIN_L                  = %x\n",sensor_id[0]);
-        //imx219_write(IicInstance, IMX477_ANA_GLOBAL_GAIN_U, 0x3);
-        //imx219_write(IicInstance, IMX477_ANA_GLOBAL_GAIN_L, 0xc8);
-        //
-    	//imx477_read(IicInstance, IMX477_ANA_GLOBAL_GAIN_U, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_ANA_GLOBAL_GAIN_U                   = %x\n",sensor_id[0]);
-    	//imx477_read(IicInstance, IMX477_ANA_GLOBAL_GAIN_L, &sensor_id[0]);
-    	//printf("Read IMX477 Reg: IMX477_ANA_GLOBAL_GAIN_L                  = %x\n",sensor_id[0]);
-        //imx477_read(IicInstance, IMX477_REG_ORIENTATION, &sensor_id[0]);
-        //printf("Read IMX477 Reg: IMX477_REG_ORIENTATION                   = %x\n",sensor_id[0]);
-        //imx219_write(IicInstance, IMX477_REG_ORIENTATION, 0x1);
+//        if(config_number == 0) {
+//            imx_477_sensor_write_array(IicInstance,mode_1332x990_regs);
+//        } else if (config_number == 1) {
+//            imx_477_sensor_write_array(IicInstance,mode_2028x1080_regs);
+//        } else if (config_number == 2) {
+//            imx_477_sensor_write_array(IicInstance,mode_2028x1520_regs);
+//        } else if (config_number == 3) {
+//            imx_477_sensor_write_array(IicInstance,cfg1_imx477_1920x1080p);
+//        } else if (config_number == 4) {
+//            imx_477_sensor_write_array(IicInstance,cfg2_imx477_1920x1080p);
+//        } else if (config_number == 5) {
+//            imx_477_sensor_write_array(IicInstance,sensor_imx477_2X2BIN_2000x1128_60FPS);
+//        } else if (config_number == 6) {
+//            imx_477_sensor_write_array(IicInstance,sensor_imx477_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V3_BK);
+//        } else if (config_number == 7) {
+//            imx_477_sensor_write_array(IicInstance,mode_4056x3040_regs);
+//        } else {
+//            imx_477_sensor_write_array(IicInstance,mode_640x480_regs);
+//        }
+
 	return 0;
 }
 int imx477_read_register(XIicPs *IicInstance,u16 addr)

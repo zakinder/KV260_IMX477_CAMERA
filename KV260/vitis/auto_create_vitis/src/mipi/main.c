@@ -31,8 +31,7 @@ u32 *pFrames[DISPLAY_NUM_FRAMES];
 int main()
 {
     video = VMODE_1920x1080;
-
-    mipi_init();
+    //mipi_init();
     init_camera();
     demosaic_init();
     print("Camera Configuration Complete\n\r");
