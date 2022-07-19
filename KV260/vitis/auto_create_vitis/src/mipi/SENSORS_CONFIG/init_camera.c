@@ -25,7 +25,7 @@
 #include "init_camera.h"
 XIicPs iic_cam;
 #define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
-#define IIC_SCLK_RATE		400000
+#define IIC_SCLK_RATE		100000
 #define SW_IIC_ADDR         0x74
 u8 SendBuffer [10];
 int init_camera()
@@ -36,6 +36,16 @@ int init_camera()
 	XIicPs_CfgInitialize(&iic_cam,iic_conf,iic_conf->BaseAddress);
 	XIicPs_SetSClk(&iic_cam, IIC_SCLK_RATE);
     i2c_init(&iic_cam, IIC_DEVICEID,IIC_SCLK_RATE);
+    SendBuffer[0]= 0x01;
+    Status = XIicPs_MasterSendPolled(&iic_cam, SendBuffer, 1, SW_IIC_ADDR);
+  	if (Status != XST_SUCCESS) {
+  		print("I2C Write Error\n\r");
+  		return XST_FAILURE;
+  	}
+    Status = ap1302_camera_sensor_init(&iic_cam);
+  	if (Status != XST_SUCCESS) {
+  		print("ap1302 Sensor Not connected\n\r");
+  	}
     SendBuffer[0]= 0x04;
     Status = XIicPs_MasterSendPolled(&iic_cam, SendBuffer, 1, SW_IIC_ADDR);
   	if (Status != XST_SUCCESS) {
@@ -161,15 +171,12 @@ int scan_sensor1(XIicPs *IicInstance)
 int scan_sensor2(XIicPs *IicInstance)
 {
 	u8 sensor_id[2];
-	for(int address = 255; address > 0; address-- )
+	for(int address = 0; address < 255; address++)
 	 {
-		scan_read(IicInstance, 0x0000, &sensor_id[0],address);
-		scan_read(IicInstance, 0x0001, &sensor_id[1],address);
+		scan_read(IicInstance, address, &sensor_id[0],0x3C);
+		scan_read(IicInstance, address+255, &sensor_id[1],0x3C);
 		usleep(100);
-		if (sensor_id[0] != 0x0)
-		{
-			printf("%x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
-		}
+		printf("%x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
 	 }
 	return 0;
 }

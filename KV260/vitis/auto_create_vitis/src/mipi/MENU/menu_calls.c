@@ -195,7 +195,7 @@ void menu_calls(ON_OFF) {
         	fetch_rgb_data();
             current_state = mainmenu;break;
         case lwip:
-        	//lwip_loop();
+        	WrFrData();
             current_state = mainmenu;break;
         case imx477wr:
             printf("Enter imx477 Register Address.\n");

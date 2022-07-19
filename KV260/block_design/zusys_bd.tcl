@@ -447,7 +447,7 @@ proc create_hier_cell_VIDEO_PIPELINE { parentCell nameHier } {
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
   create_bd_pin -dir O vid_active_video
-  create_bd_pin -dir O -from 35 -to 0 vid_data
+  create_bd_pin -dir O -from 29 -to 0 vid_data
   create_bd_pin -dir O vid_hsync
   create_bd_pin -dir I -type clk vid_io_out_clk
   create_bd_pin -dir O vid_vsync
@@ -467,7 +467,7 @@ proc create_hier_cell_VIDEO_PIPELINE { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.C_ADDR_WIDTH {12} \
    CONFIG.C_HAS_ASYNC_CLK {1} \
-   CONFIG.C_NATIVE_COMPONENT_WIDTH {12} \
+   CONFIG.C_NATIVE_COMPONENT_WIDTH {10} \
    CONFIG.C_S_AXIS_VIDEO_DATA_WIDTH {10} \
  ] $v_axi4s_vid_out_0
 
@@ -582,7 +582,7 @@ proc create_hier_cell_TO_PS { parentCell nameHier } {
   create_bd_pin -dir O -type clk clk_out1
   create_bd_pin -dir I dp_live_video_in_de
   create_bd_pin -dir I dp_live_video_in_hsync
-  create_bd_pin -dir I -from 35 -to 0 dp_live_video_in_pixel1
+  create_bd_pin -dir I -from 29 -to 0 dp_live_video_in_pixel1
   create_bd_pin -dir I dp_live_video_in_vsync
   create_bd_pin -dir O -type clk dp_video_in_clk
   create_bd_pin -dir I -from 3 -to 0 -type intr intr
@@ -1514,27 +1514,27 @@ proc create_hier_cell_RX_VIDEO { parentCell nameHier } {
    CONFIG.CLK_LANE_IO_LOC_NAME {IO_L13P_T2L_N0_GC_QBC_66} \
    CONFIG.CMN_NUM_LANES {2} \
    CONFIG.CMN_PXL_FORMAT {RAW10} \
-   CONFIG.CSI_BUF_DEPTH {8192} \
+   CONFIG.CSI_BUF_DEPTH {4096} \
    CONFIG.CSI_EMB_NON_IMG {false} \
    CONFIG.C_CLK_LANE_IO_POSITION {26} \
    CONFIG.C_CSI_EN_ACTIVELANES {false} \
    CONFIG.C_CSI_EN_CRC {true} \
-   CONFIG.C_CSI_FILTER_USERDATATYPE {true} \
+   CONFIG.C_CSI_FILTER_USERDATATYPE {false} \
    CONFIG.C_DATA_LANE0_IO_POSITION {28} \
    CONFIG.C_DATA_LANE1_IO_POSITION {30} \
    CONFIG.C_DPHY_LANES {2} \
    CONFIG.C_EN_BG0_PIN0 {false} \
    CONFIG.C_EN_BG1_PIN0 {false} \
    CONFIG.C_EN_CSI_V2_0 {false} \
-   CONFIG.C_HS_LINE_RATE {1440} \
-   CONFIG.C_HS_SETTLE_NS {141} \
+   CONFIG.C_HS_LINE_RATE {912} \
+   CONFIG.C_HS_SETTLE_NS {145} \
    CONFIG.C_STRETCH_LINE_RATE {2500} \
    CONFIG.DATA_LANE0_IO_LOC {E5} \
    CONFIG.DATA_LANE0_IO_LOC_NAME {IO_L14P_T2L_N2_GC_66} \
    CONFIG.DATA_LANE1_IO_LOC {G6} \
    CONFIG.DATA_LANE1_IO_LOC_NAME {IO_L15P_T2L_N4_AD11P_66} \
    CONFIG.DPY_EN_REG_IF {false} \
-   CONFIG.DPY_LINE_RATE {1440} \
+   CONFIG.DPY_LINE_RATE {912} \
    CONFIG.HP_IO_BANK_SELECTION {66} \
    CONFIG.SupportLevel {1} \
  ] $mipi_csi2_rx_subsyst_0

@@ -161,12 +161,12 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 		   xil_printf("Error Starting XAxiVdma_DmaStart..!");
 		   return Status;
 	}
-	Status = XAxiVdma_StartParking(&Vdma, 1, XAXIVDMA_READ);
+	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_READ);
 	if (Status != XST_SUCCESS) {
 		   xil_printf("Error Starting XAxiVdma_StartParking..!");
 		   return Status;
 	}
-    sleep(4);
+    //sleep(4);
     fetch_rgb_data();
 	return XST_SUCCESS;
 }
@@ -193,16 +193,17 @@ void fetch_rgb_data() {
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 	uint32_t red = 0, green = 0, blue = 0;
-	for (j = 0; j < 10; j++) {
+	for (j = 0; j < 20; j++) {
             for (i = 0; i < res; i++) {
-                blue              = (pS2MM_Mem[i] & 0x3ff00000)>>20;
-                red               = (pS2MM_Mem[i] & 0x000ffc00)>>10;
-                green             = (pS2MM_Mem[i] & 0x000003ff);
+                blue              = (pS2MM_Mem[i*4+0] & 0x3ff00000)>>20;
+                red               = (pS2MM_Mem[i*4+1] & 0x000ffc00)>>10;
+                green             = (pS2MM_Mem[i*4+2] & 0x000003ff);
                 uint32_t Cb       = (uint32_t)((((((int)red) * 1) + (((int)green) * 0) + (((int)blue) * 0)) / 1));
                 uint32_t Cr       = (uint32_t)((((((int)red) * 0) + (((int)green) * 1) + (((int)blue) * 0)) / 1));
                 uint32_t Y1       = (uint32_t)((((((int)red) * 0) + (((int)green) * 0) + (((int)blue) * 1)) / 1));
                 uint32_t final1   = (((Cb) << 20) | ((Cr) << 10) | ((Y1)));
-                pMM2S_Mem[i]      = final1;
+                //pMM2S_Mem[i*4]      = final1;
+                pMM2S_Mem[i]      = pS2MM_Mem[i];
             }
 	}
 	//Grab the DMA Control Registers, and re-enable circular park mode.

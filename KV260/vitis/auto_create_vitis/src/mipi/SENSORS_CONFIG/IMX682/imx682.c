@@ -1023,14 +1023,14 @@ struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 		{REG_LINE_LEN_LSB, 0xE0},
 		{REG_FRAME_LEN_MSB, 0x0D},
 		{REG_FRAME_LEN_LSB, 0xAC},
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x10},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x0F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x10},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x0F},
 		{0x0220, 0x62},
 		{0x0221, 0x11},
 		{0x0222, 0x01},
@@ -1042,18 +1042,18 @@ struct reginfo cfg_imx682_mode_common_setting_part2_regs[] =
 		{0x3201, 0x41},
 		{0x350C, 0x00},
 		{0x350D, 0x00},
-		{0x0408, 0x00},
-		{0x0409, 0x08},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x00},
-		{0x040E, 0x0D},
-		{0x040F, 0x80},
-		{0x034C, 0x12},
-		{0x034D, 0x00},
-		{0x034E, 0x0D},
-		{0x034F, 0x80},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x08},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB,    0x12},
+		{REG_DIG_CROP_WIDTH_LSB,    0x00},
+		{REG_DIG_CROP_HEIGHT_MSB,   0x0D},
+		{REG_DIG_CROP_HEIGHT_LSB,   0x80},
+		{REG_X_OUT_SIZE_MSB,        0x12},
+		{REG_X_OUT_SIZE_LSB,        0x00},
+		{REG_Y_OUT_SIZE_MSB,        0x0D},
+		{REG_Y_OUT_SIZE_LSB,        0x80},
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x04},
 		{REG_IVT_PREPLLCK_DIV, 0x03},
@@ -1803,20 +1803,18 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* Line Length PCK Setting */
 	{REG_LINE_LEN_MSB,  0x42}, 
 	{REG_LINE_LEN_LSB,  0x40},  
-	//{REG_LINE_LEN_MSB,  0x31}, 
-	//{REG_LINE_LEN_LSB,  0x40}, 
 	/* Frame Length Lines Setting */
 	{REG_FRAME_LEN_MSB,  0x1B}, 
 	{REG_FRAME_LEN_LSB,  0xB8}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x00}, 
-	{0x0347,  0x00}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x1B}, 
-	{0x034B,  0x1F}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x00}, 
+	{REG_Y_ADD_STA_LSB,  0x00}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x1B}, 
+	{REG_Y_ADD_END_LSB,  0x1F}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,       0x00}, 
 	{REG_BINNING_HV,         0x11}, 
@@ -1825,19 +1823,19 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	{0x3200,  0x01},
 	{0x3201,  0x01},
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x00}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x04}, 
-	{0x040C,  0x24}, 
-	{0x040D,  0x20}, 
-	{0x040E,  0x1B}, 
-	{0x040F,  0x18}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x04}, 
+	{REG_DIG_CROP_WIDTH_MSB,     0x24}, 
+	{REG_DIG_CROP_WIDTH_LSB,     0x20}, 
+	{REG_DIG_CROP_HEIGHT_MSB,    0x1B}, 
+	{REG_DIG_CROP_HEIGHT_LSB,    0x18}, 
 	/* Output Size Setting */
-	{0x034C,  0x24}, 
-	{0x034D,  0x20}, 
-	{0x034E,  0x1B}, 
-	{0x034F,  0x18}, 
+	{REG_X_OUT_SIZE_MSB,  0x24}, 
+	{REG_X_OUT_SIZE_LSB,  0x20}, 
+	{REG_Y_OUT_SIZE_MSB,  0x1B}, 
+	{REG_Y_OUT_SIZE_LSB,  0x18}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,       0x08}, 
 	{REG_IVTSYCK_DIV,       0x02}, 
@@ -1885,16 +1883,16 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS[] = {
 	/* DPC correction ctrl Setting */
 	{REG_SING_DYNAMIC_CORR,  0x01},
 	/* PDAF TYPE Setting */
-	{0x3400,  0x02}, 
+	{0x3400,             0x02}, 
 	/* PDAF TYPE2 Setting */
-	{0x3093,  0x01}, 
+	{0x3093,             0x01}, 
 	/* Signaling mode setting */
-	{0x0111,  0x02},
+	{0x0111,             0x02},
 	/* External Clock Setting */
 	{REG_EXCK_FREQ_MSB,  0x1A},
 	{REG_EXCK_FREQ_LSB,  0x00},
-	{REG_MODE_SEL, 0x01},
-	{SEQUENCE_END, 0x00}
+	{REG_MODE_SEL,       0x01},
+	{SEQUENCE_END,       0x00}
 };
 struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	/* reg_2Bin_A */
@@ -1912,14 +1910,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x0F}, 
 	{REG_FRAME_LEN_LSB,  0x1E}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x00}, 
-	{0x0347,  0x00}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x1B}, 
-	{0x034B,  0x1F}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x00}, 
+	{REG_Y_ADD_STA_LSB,  0x00}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x1B}, 
+	{REG_Y_ADD_END_LSB,  0x1F}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},
 	{REG_BINNING_HV,  0x22}, 
@@ -1928,19 +1926,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x00}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x02}, 
-	{0x040C,  0x12}, 
-	{0x040D,  0x10}, 
-	{0x040E,  0x0D}, 
-	{0x040F,  0x8C}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x02}, 
+	{REG_DIG_CROP_WIDTH_MSB,  0x12}, 
+	{REG_DIG_CROP_WIDTH_LSB,  0x10}, 
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0D}, 
+	{REG_DIG_CROP_HEIGHT_LSB,  0x8C}, 
 	/* Output Size Setting */
-	{0x034C,  0x12}, 
-	{0x034D,  0x10}, 
-	{0x034E,  0x0D}, 
-	{0x034F,  0x8C}, 
+	{REG_X_OUT_SIZE_MSB,  0x12}, 
+	{REG_X_OUT_SIZE_LSB,  0x10}, 
+	{REG_Y_OUT_SIZE_MSB,  0x0D}, 
+	{REG_Y_OUT_SIZE_LSB,  0x8C}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -2015,14 +2013,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x0F}, 
 	{REG_FRAME_LEN_LSB,  0x1E}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x03}, 
-	{0x0347,  0x60}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x17}, 
-	{0x034B,  0xBF}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x03}, 
+	{REG_Y_ADD_STA_LSB,  0x60}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x17}, 
+	{REG_Y_ADD_END_LSB,  0xBF}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},
 	{REG_BINNING_HV,  0x22}, 
@@ -2031,19 +2029,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x00}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x02}, 
-	{0x040C,  0x12}, 
-	{0x040D,  0x10}, 
-	{0x040E,  0x0A}, 
-	{0x040F,  0x2C}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x02}, 
+	{REG_DIG_CROP_WIDTH_MSB,  0x12}, 
+	{REG_DIG_CROP_WIDTH_LSB,  0x10}, 
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A}, 
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C}, 
 	/* Output Size Setting */
-	{0x034C,  0x12}, 
-	{0x034D,  0x10}, 
-	{0x034E,  0x0A}, 
-	{0x034F,  0x2C}, 
+	{REG_X_OUT_SIZE_MSB,  0x12}, 
+	{REG_X_OUT_SIZE_LSB,  0x10}, 
+	{REG_Y_OUT_SIZE_MSB,  0x0A}, 
+	{REG_Y_OUT_SIZE_LSB,  0x2C}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -2118,14 +2116,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x0F}, 
 	{REG_FRAME_LEN_LSB,  0x1E}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x01},
-	{0x0347,  0xD0}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x19}, 
-	{0x034B,  0x4F}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x01},
+	{REG_Y_ADD_STA_LSB,  0xD0}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x19}, 
+	{REG_Y_ADD_END_LSB,  0x4F}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},
 	{REG_BINNING_HV,  0x22}, 
@@ -2134,19 +2132,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x01},
-	{0x0409,  0x38}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x04}, 
-	{0x040C,  0x0F}, 
-	{0x040D,  0xA0}, 
-	{0x040E,  0x0B}, 
-	{0x040F,  0xB8}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x01},
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x38}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x04}, 
+	{REG_DIG_CROP_WIDTH_MSB,  0x0F}, 
+	{REG_DIG_CROP_WIDTH_LSB,  0xA0}, 
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0B}, 
+	{REG_DIG_CROP_HEIGHT_LSB,  0xB8}, 
 	/* Output Size Setting */
-	{0x034C,  0x0F}, 
-	{0x034D,  0xA0}, 
-	{0x034E,  0x0B}, 
-	{0x034F,  0xB8}, 
+	{REG_X_OUT_SIZE_MSB,  0x0F}, 
+	{REG_X_OUT_SIZE_LSB,  0xA0}, 
+	{REG_Y_OUT_SIZE_MSB,  0x0B}, 
+	{REG_Y_OUT_SIZE_LSB,  0xB8}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -2215,12 +2213,12 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V7_BK[] = {
 	{REG_FRAME_LEN_MSB, 0x09},
 	{REG_FRAME_LEN_LSB, 0xac},
 	/* ROI Setting */
-	{0x0344, 0x00},
-	{0x0345, 0x00},
-	{0x0346, 0x00},
-	{0x0347, 0x00},
-	{0x0348, 0x12},
-	{0x0349, 0x2f},
+	{REG_X_ADD_STA_MSB, 0x00},
+	{REG_X_ADD_STA_LSB, 0x00},
+	{REG_Y_ADD_STA_MSB, 0x00},
+	{REG_Y_ADD_STA_LSB, 0x00},
+	{REG_X_ADD_END_MSB, 0x12},
+	{REG_X_ADD_END_LSB, 0x2f},
 	{0x034a, 0x0d},
 	{0x034b, 0xa7},
 	/* Mode Setting */
@@ -2231,8 +2229,8 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V7_BK[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x09},
@@ -2318,12 +2316,12 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK[] = {
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
 	/* ROI Setting */
-	{0x0344, 0x01},
-	{0x0345, 0x98},
-	{0x0346, 0x02},
-	{0x0347, 0xa2},
-	{0x0348, 0x10},
-	{0x0349, 0x97},
+	{REG_X_ADD_STA_MSB, 0x01},
+	{REG_X_ADD_STA_LSB, 0x98},
+	{REG_Y_ADD_STA_MSB, 0x02},
+	{REG_Y_ADD_STA_LSB, 0xa2},
+	{REG_X_ADD_END_MSB, 0x10},
+	{REG_X_ADD_END_LSB, 0x97},
 	{0x034a, 0x0b},
 	{0x034b, 0x15},
 	{0x0220, 0x00},
@@ -2337,8 +2335,8 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V5_BK[] = {
 	{0x3200, 0x41},
 	{0x3201, 0x41},
 	/* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -2463,14 +2461,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V6_BK[] = {
 	{REG_FRAME_LEN_MSB,  0x0B},
 	{REG_FRAME_LEN_LSB,  0x63},
 	/* ROI Setting */
-	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
-	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
-	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
-	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
-	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
-	{0x0349,  0x1F}, /*	x_addr_end[7:0]	*/
-	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
-	{0x034B,  0xBF},  /*y_addr_end[7:0]	*/
+	{REG_X_ADD_STA_MSB,  0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,  0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,  0x03}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,  0x60}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,  0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,  0x1F}, /*	x_addr_end[7:0]	*/
+	{REG_Y_ADD_END_MSB,  0x17}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,  0xBF},  /*y_addr_end[7:0]	*/
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},  /* Binning mode: Enable */
 	{REG_BINNING_HV,  0x02},  /* Binning Type for Horizontal */
@@ -2479,19 +2477,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V6_BK[] = {
 	{0x3200,  0x41},
 	{0x3201,  0x41},
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00},
-	{0x0409,  0x00},
-	{0x040A,  0x00},
-	{0x040B,  0x02},
-	{0x040C,  0x12},
-	{0x040D,  0x10},
-	{0x040E,  0x0A},
-	{0x040F,  0x2C},
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x02},
+	{REG_DIG_CROP_WIDTH_MSB,  0x12},
+	{REG_DIG_CROP_WIDTH_LSB,  0x10},
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A},
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C},
 	/* Output Size Setting */
-	{0x034C,  0x12},  /*	x_output_size[15:8]	*/
-	{0x034D,  0x10},  /*	x_output_size[7:0]	*/
-	{0x034E,  0x0A},  /*	y_output_size[15:8]	*/
-	{0x034F,  0x2C},  /*	y_output_size[7:0]	*/
+	{REG_X_OUT_SIZE_MSB,  0x12},  /*	x_output_size[15:8]	*/
+	{REG_X_OUT_SIZE_LSB,  0x10},  /*	x_output_size[7:0]	*/
+	{REG_Y_OUT_SIZE_MSB,  0x0A},  /*	y_output_size[15:8]	*/
+	{REG_Y_OUT_SIZE_LSB,  0x2C},  /*	y_output_size[7:0]	*/
 	/* Signaling mode setting */
 	{0x0111,  0x02},
 	/* External Clock Setting */
@@ -2605,14 +2603,14 @@ struct reginfo sensor_imx682_2X2BIN_2000x1128_60FPS[] =
 	{REG_FRAME_LEN_MSB,  0x0B}, 
 	{REG_FRAME_LEN_LSB,  0x63}, 
 	/*ROI Setting*/
-	{0x0344, 0x00},
-	{0x0345, 0x00},
-	{0x0346, 0x02},
-	{0x0347, 0xE8},
-	{0x0348, 0x1F},
-	{0x0349, 0x3F},
-	{0x034A, 0x14},
-	{0x034B, 0x87},
+	{REG_X_ADD_STA_MSB, 0x00},
+	{REG_X_ADD_STA_LSB, 0x00},
+	{REG_Y_ADD_STA_MSB, 0x02},
+	{REG_Y_ADD_STA_LSB, 0xE8},
+	{REG_X_ADD_END_MSB, 0x1F},
+	{REG_X_ADD_END_LSB, 0x3F},
+	{REG_Y_ADD_END_MSB, 0x14},
+	{REG_Y_ADD_END_LSB, 0x87},
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},  /* Binning mode: Enable        */
 	{REG_BINNING_HV,    0x22},  /* Binning Type for Horizontal */
@@ -2624,19 +2622,19 @@ struct reginfo sensor_imx682_2X2BIN_2000x1128_60FPS[] =
 	{0x0401, 0x00},
 	{0x0404, 0x00},
 	{0x0405, 0x10},
-	{0x0408, 0x00},
-	{0x0409, 0x00},
-	{0x040A, 0x00},
-	{0x040B, 0x00},
-	{0x040C, 0x07},
-	{0x040D, 0xD0},
-	{0x040E, 0x04},
-	{0x040F, 0x68},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+	{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+	{REG_DIG_CROP_WIDTH_MSB, 0x07},
+	{REG_DIG_CROP_WIDTH_LSB, 0xD0},
+	{REG_DIG_CROP_HEIGHT_MSB, 0x04},
+	{REG_DIG_CROP_HEIGHT_LSB, 0x68},
 	/*Output Size Setting*/
-	{0x034C, 0x07},
-	{0x034D, 0xD0},
-	{0x034E, 0x04},
-	{0x034F, 0x68},
+	{REG_X_OUT_SIZE_MSB, 0x07},
+	{REG_X_OUT_SIZE_LSB, 0xD0},
+	{REG_Y_OUT_SIZE_MSB, 0x04},
+	{REG_Y_OUT_SIZE_LSB, 0x68},
 	/*Clock Setting*/
 	{REG_IVTPXCK_DIV, 0x06},
 	{REG_IVTSYCK_DIV, 0x04},
@@ -2690,14 +2688,14 @@ struct reginfo sensor_imx682_2X2BIN_4624x2604_60FPS[] =
 	{REG_FRAME_LEN_MSB,  0x0B}, 
 	{REG_FRAME_LEN_LSB,  0x63}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
-	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
-	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
-	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
-	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
-	{0x0349,  0x1F}, /*	x_addr_end[7:0]	    */
-	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
-	{0x034B,  0xBF}, /*	y_addr_end[7:0]	    */
+	{REG_X_ADD_STA_MSB,  0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,  0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,  0x03}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,  0x60}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,  0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,  0x1F}, /*	x_addr_end[7:0]	    */
+	{REG_Y_ADD_END_MSB,  0x17}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,  0xBF}, /*	y_addr_end[7:0]	    */
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},  /* Binning mode: Enable        */
 	{REG_BINNING_HV,  0x22},  /* Binning Type for Horizontal */
@@ -2706,19 +2704,19 @@ struct reginfo sensor_imx682_2X2BIN_4624x2604_60FPS[] =
 	{0x3200,  0x41},
 	{0x3201,  0x41},
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00},
-	{0x0409,  0x00},
-	{0x040A,  0x00},
-	{0x040B,  0x00},
-	{0x040C,  0x12},
-	{0x040D,  0x10},
-	{0x040E,  0x0A},
-	{0x040F,  0x2C},
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x00},
+	{REG_DIG_CROP_WIDTH_MSB,  0x12},
+	{REG_DIG_CROP_WIDTH_LSB,  0x10},
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A},
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C},
 	/* Output Size Setting */
-	{0x034C,  0x12},  /*	x_output_size[15:8]	*/
-	{0x034D,  0x10},  /*	x_output_size[7:0]	*/
-	{0x034E,  0x0A},  /*	y_output_size[15:8]	*/
-	{0x034F,  0x2C},  /*	y_output_size[7:0]	*/
+	{REG_X_OUT_SIZE_MSB,  0x12},  /*	x_output_size[15:8]	*/
+	{REG_X_OUT_SIZE_LSB,  0x10},  /*	x_output_size[7:0]	*/
+	{REG_Y_OUT_SIZE_MSB,  0x0A},  /*	y_output_size[15:8]	*/
+	{REG_Y_OUT_SIZE_LSB,  0x2C},  /*	y_output_size[7:0]	*/
 	/* External Clock Setting */
 	{REG_EXCK_FREQ_MSB,  0x1A},
 	{REG_EXCK_FREQ_LSB,  0x00},
@@ -2749,14 +2747,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK[] = {
 	{REG_FRAME_LEN_MSB,  0x0B},
 	{REG_FRAME_LEN_LSB,  0x63},
 	/* ROI Setting */
-	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
-	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
-	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
-	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
-	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
-	{0x0349,  0x1F}, /*	x_addr_end[7:0]	*/
-	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
-	{0x034B,  0xBF},  /*	y_addr_end[7:0]	*/
+	{REG_X_ADD_STA_MSB,  0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,  0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,  0x03}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,  0x60}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,  0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,  0x1F}, /*	x_addr_end[7:0]	*/
+	{REG_Y_ADD_END_MSB,  0x17}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,  0xBF},  /*	y_addr_end[7:0]	*/
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},  /* Binning mode: Enable */
 	{REG_BINNING_HV,  0x22},  /* Binning Type for Horizontal */
@@ -2765,19 +2763,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK[] = {
 	{0x3200,  0x41},
 	{0x3201,  0x41},
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00},
-	{0x0409,  0x00},
-	{0x040A,  0x00},
-	{0x040B,  0x02},
-	{0x040C,  0x12},
-	{0x040D,  0x10},
-	{0x040E,  0x0A},
-	{0x040F,  0x2C},
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x02},
+	{REG_DIG_CROP_WIDTH_MSB,  0x12},
+	{REG_DIG_CROP_WIDTH_LSB,  0x10},
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A},
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C},
 	/* Output Size Setting */
-	{0x034C,  0x12},  /*	x_output_size[15:8]	*/
-	{0x034D,  0x10},  /*	x_output_size[7:0]	*/
-	{0x034E,  0x0A},  /*	y_output_size[15:8]	*/
-	{0x034F,  0x2C},  /*	y_output_size[7:0]	*/
+	{REG_X_OUT_SIZE_MSB,  0x12},  /*	x_output_size[15:8]	*/
+	{REG_X_OUT_SIZE_LSB,  0x10},  /*	x_output_size[7:0]	*/
+	{REG_Y_OUT_SIZE_MSB,  0x0A},  /*	y_output_size[15:8]	*/
+	{REG_Y_OUT_SIZE_LSB,  0x2C},  /*	y_output_size[7:0]	*/
     /* Line Length PCK Setting */
 	{REG_LINE_LEN_MSB, 0x25},
 	{REG_LINE_LEN_LSB, 0xd9},
@@ -2822,12 +2820,12 @@ struct reginfo imx682_1920x1080_regs[] =
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
     /* ROI Setting */
-	{0x0344, 0x01},
-	{0x0345, 0x98},
-	{0x0346, 0x02},
-	{0x0347, 0xa2},
-	{0x0348, 0x10},
-	{0x0349, 0x97},
+	{REG_X_ADD_STA_MSB, 0x01},
+	{REG_X_ADD_STA_LSB, 0x98},
+	{REG_Y_ADD_STA_MSB, 0x02},
+	{REG_Y_ADD_STA_LSB, 0xa2},
+	{REG_X_ADD_END_MSB, 0x10},
+	{REG_X_ADD_END_LSB, 0x97},
 	{0x034a, 0x0b},
 	{0x034b, 0x15},
     /* Mode Setting */
@@ -2838,8 +2836,8 @@ struct reginfo imx682_1920x1080_regs[] =
 	{0x3200, 0x41},
 	{0x3201, 0x41},
     /* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -2884,14 +2882,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x0B}, 
 	{REG_FRAME_LEN_LSB,  0x63}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x03}, 
-	{0x0347,  0x60}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x17}, 
-	{0x034B,  0xBF}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x03}, 
+	{REG_Y_ADD_STA_LSB,  0x60}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x17}, 
+	{REG_Y_ADD_END_LSB,  0xBF}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x01},
 	{REG_BINNING_HV,  0x22}, 
@@ -2900,19 +2898,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS[] = {
 	{0x3200,  0x41}, 
 	{0x3201,  0x41}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00},
-	{0x0409,  0x00},
-	{0x040A,  0x00},
-	{0x040B,  0x02},
-	{0x040C,  0x12},
-	{0x040D,  0x10},
-	{0x040E,  0x0A},
-	{0x040F,  0x2C},
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x02},
+	{REG_DIG_CROP_WIDTH_MSB,  0x12},
+	{REG_DIG_CROP_WIDTH_LSB,  0x10},
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A},
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C},
 	/* Output Size Setting */
-	{0x034C,  0x12}, 
-	{0x034D,  0x10}, 
-	{0x034E,  0x0A}, 
-	{0x034F,  0x2C}, 
+	{REG_X_OUT_SIZE_MSB,  0x12}, 
+	{REG_X_OUT_SIZE_LSB,  0x10}, 
+	{REG_Y_OUT_SIZE_MSB,  0x0A}, 
+	{REG_Y_OUT_SIZE_LSB,  0x2C}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -2987,14 +2985,14 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x08}, 
 	{REG_FRAME_LEN_LSB,  0x22}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x00}, 
-	{0x0347,  0x10}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x1B}, 
-	{0x034B,  0x0F}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x00}, 
+	{REG_Y_ADD_STA_LSB,  0x10}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x1B}, 
+	{REG_Y_ADD_END_LSB,  0x0F}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,          0x01},
 	{REG_BINNING_HV,            0x44}, 
@@ -3003,19 +3001,19 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS[] = {
 	{0x3200,  0x43}, 
 	{0x3201,  0x43}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x00}, 
-	{0x0409,  0x04}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x00}, 
-	{0x040C,  0x09}, 
-	{0x040D,  0x00}, 
-	{0x040E,  0x06}, 
-	{0x040F,  0xC0}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x04}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x00}, 
+	{REG_DIG_CROP_WIDTH_MSB,  0x09}, 
+	{REG_DIG_CROP_WIDTH_LSB,  0x00}, 
+	{REG_DIG_CROP_HEIGHT_MSB,  0x06}, 
+	{REG_DIG_CROP_HEIGHT_LSB,  0xC0}, 
 	/* Output Size Setting */
-	{0x034C,  0x09}, 
-	{0x034D,  0x00}, 
-	{0x034E,  0x06}, 
-	{0x034F,  0xC0}, 
+	{REG_X_OUT_SIZE_MSB,  0x09}, 
+	{REG_X_OUT_SIZE_LSB,  0x00}, 
+	{REG_Y_OUT_SIZE_MSB,  0x06}, 
+	{REG_Y_OUT_SIZE_LSB,  0xC0}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -3075,58 +3073,59 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	/* H: 2000 */
 	/* V: 1128 */
 	/* MIPI output setting */
-	{REG_CSI_FORMAT_C,  0x0A}, 
-	{REG_CSI_FORMAT_D,  0x0A}, 
-	{REG_CSI_LANE,  0x01}, 
+	{REG_CSI_FORMAT_C,                 0x0A}, 
+	{REG_CSI_FORMAT_D,                 0x0A}, 
+	{REG_CSI_LANE,                     0x01}, 
 	/* Line Length PCK Setting */
-	{REG_LINE_LEN_MSB, 0xAD},
-	{REG_LINE_LEN_LSB, 0xC0},
-	//{REG_LINE_LEN_MSB,  0x0C}, 
-	//{REG_LINE_LEN_LSB,  0xD8}, 
+	{REG_LINE_LEN_MSB,                 0xAD}, 
+	{REG_LINE_LEN_LSB,                 0xC0}, 
 	/* Frame Length Lines Setting */
-	{REG_FRAME_LEN_MSB,  0x1B}, 
-	{REG_FRAME_LEN_LSB,  0x1F}, 
+	{REG_FRAME_LEN_MSB,                0x1B}, 
+	{REG_FRAME_LEN_LSB,                0x1F}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x00},
-	{0x0347,  0x00}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x1B}, 
-	{0x034B,  0x1F}, 
+	{REG_X_ADD_STA_MSB,                0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,                0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,                0x00}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,                0x00}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,                0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,                0x1F}, /*	x_addr_end[7:0]	    */
+	{REG_Y_ADD_END_MSB,                0x1B}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,                0x1F}, /*	y_addr_end[7:0]	    */
 	/* Mode Setting */
-	{REG_BINNING_MODE,          0x01},
-	{REG_BINNING_HV,            0x44}, 
-	{REG_BINNING_WEIGHTING,     0x0A},
-	{0x30D8,  0x00}, 
-	{0x3200,  0x43}, 
-	{0x3201,  0x43}, 
+	{REG_BINNING_MODE,                 0x01},
+	{REG_BINNING_HV,                   0x44}, 
+	{REG_BINNING_WEIGHTING,            0x0A},
+	{0x30D8,                           0x00}, 
+	{0x3200,                           0x43}, 
+	{0x3201,                           0x43}, 
 	/* Digital Crop & Scaling */
-	{0x0408,  0x01},
-	{0x0409,  0x38}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x04}, 
-	{0x040C,  0x0F}, 
-	{0x040D,  0xA0}, 
-	{0x040E,  0x3E}, 
-	{0x040F,  0x08}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,        0x01},
+	{REG_DIG_CROP_X_OFFSET_LSB,        0x38},
+	{REG_DIG_CROP_Y_OFFSET_MSB,        0x00},
+	{REG_DIG_CROP_Y_OFFSET_LSB,        0x04},
+	{REG_DIG_CROP_WIDTH_MSB,           0x0F},
+	{REG_DIG_CROP_WIDTH_LSB,           0xA0},
+	{REG_DIG_CROP_HEIGHT_MSB,          0x3E},
+	{REG_DIG_CROP_HEIGHT_LSB,          0x08},
 	/* Output Size Setting */
-	{0x034C,  0x0F}, 
-	{0x034D,  0xA0}, 
-	{0x034E,  0x3E},//2000
-	{0x034F,  0x08},// |
+	{REG_X_OUT_SIZE_MSB,               0x0F},  /*	x_output_size[15:8]	*/
+	{REG_X_OUT_SIZE_LSB,               0xA0},  /*	x_output_size[7:0]	*/
+	{REG_Y_OUT_SIZE_MSB,               0x3E},  /*	y_output_size[15:8]	*/
+	{REG_Y_OUT_SIZE_LSB,               0x08},  /*	y_output_size[7:0]	*/
+	/* Integration Setting */
+	{REG_COARSE_INTEGRATION_TIME_MSB,  0x05}, 
+	{REG_COARSE_INTEGRATION_TIME_LSB,  0x2E}, 
 	/* Clock Setting */
-	{REG_IVTPXCK_DIV,       0x08}, 
-	{REG_IVTSYCK_DIV,       0x02}, 
-	{REG_IVT_PREPLLCK_DIV,  0x04}, 
-	{REG_PLL_IVT_MPY_MSB,   0x01},
-	{REG_PLL_IVT_MPY_LSB,   0x4E}, 
-	{REG_IOPSYCK_DIV,       0x01},
-	{REG_IOP_PREPLLCK_DIV,  0x04}, 
-	{REG_IOP_MPY_MSB,       0x01},
-	{REG_IOP_MPY_LSB,       0x5C}, 
-	{REG_PLL_MULTI_DRV,     0x01},
+	{REG_IVTPXCK_DIV,                  0x08}, 
+	{REG_IVTSYCK_DIV,                  0x02}, 
+	{REG_IVT_PREPLLCK_DIV,             0x04}, 
+	{REG_PLL_IVT_MPY_MSB,              0x01},
+	{REG_PLL_IVT_MPY_LSB,              0x4E}, 
+	{REG_IOPSYCK_DIV,                  0x01},
+	{REG_IOP_PREPLLCK_DIV,             0x04}, 
+	{REG_IOP_MPY_MSB,                  0x01},
+	{REG_IOP_MPY_LSB,                  0x5C}, 
+	{REG_PLL_MULTI_DRV,                0x01},
 	/* Other Setting */
 	{0x30D9,  0x01},
 	{0x32D5,  0x00}, 
@@ -3147,9 +3146,6 @@ struct reginfo sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS[] = {
 	{0x98D8,  0x8C}, 
 	{0x98D9,  0x0A}, 
 	{0x99C4,  0x16}, 
-	/* Integration Setting */
-	{REG_COARSE_INTEGRATION_TIME_MSB,  0x05}, 
-	{REG_COARSE_INTEGRATION_TIME_LSB,  0x2E}, 
 	/* Gain Setting */
 	{0x0204,  0x00}, 
 	{0x0205,  0x00}, 
@@ -3193,20 +3189,20 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
 	/* ROI Setting */
-	//{0x0344,  0x00}, 
-	//{0x0345,  0x00}, 
-	//{0x0346,  0x06}, 
-	//{0x0347,  0xC0}, 
-	//{0x0348,  0x24}, 
-	//{0x0349,  0x1F}, 
-	//{0x034A,  0x14}, 
-	//{0x034B,  0x5F}, 
-	{0x0344, 0x01},
-	{0x0345, 0x98},
-	{0x0346, 0x02},
-	{0x0347, 0xa2},
-	{0x0348, 0x10},
-	{0x0349, 0x97},
+	//{REG_X_ADD_STA_MSB,  0x00}, 
+	//{REG_X_ADD_STA_LSB,  0x00}, 
+	//{REG_Y_ADD_STA_MSB,  0x06}, 
+	//{REG_Y_ADD_STA_LSB,  0xC0}, 
+	//{REG_X_ADD_END_MSB,  0x24}, 
+	//{REG_X_ADD_END_LSB,  0x1F}, 
+	//{REG_Y_ADD_END_MSB,  0x14}, 
+	//{REG_Y_ADD_END_LSB,  0x5F}, 
+	{REG_X_ADD_STA_MSB, 0x01},
+	{REG_X_ADD_STA_LSB, 0x98},
+	{REG_Y_ADD_STA_MSB, 0x02},
+	{REG_Y_ADD_STA_LSB, 0xa2},
+	{REG_X_ADD_END_MSB, 0x10},
+	{REG_X_ADD_END_LSB, 0x97},
 	{0x034a, 0x0b},
 	{0x034b, 0x15},
 	/* Mode Setting */
@@ -3226,16 +3222,16 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	{0x0404, 0x00},
 	{0x0405, 0x10},
 	/* Digital Crop & Scaling */
-	//{0x0408,  0x09}, 
-	//{0x0409,  0x08}, 
-	//{0x040A,  0x00}, 
-	//{0x040B,  0x0A}, 
-	//{0x040C,  0x12}, 
-	//{0x040D,  0x10}, 
-	//{0x040E,  0x0D}, 
-	//{0x040F,  0x8C}, 
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	//{REG_DIG_CROP_X_OFFSET_MSB,  0x09}, 
+	//{REG_DIG_CROP_X_OFFSET_LSB,  0x08}, 
+	//{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	//{REG_DIG_CROP_Y_OFFSET_LSB,  0x0A}, 
+	//{REG_DIG_CROP_WIDTH_MSB,  0x12}, 
+	//{REG_DIG_CROP_WIDTH_LSB,  0x10}, 
+	//{REG_DIG_CROP_HEIGHT_MSB,  0x0D}, 
+	//{REG_DIG_CROP_HEIGHT_LSB,  0x8C}, 
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -3243,10 +3239,10 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS[] = {
 	{0x040e, 0x04},
 	{0x040f, 0x38},
 	/* Output Size Setting */
-	//{0x034C,  0x12}, 
-	//{0x034D,  0x10}, 
-	//{0x034E,  0x0D}, 
-	//{0x034F,  0x8C}, 
+	//{REG_X_OUT_SIZE_MSB,  0x12}, 
+	//{REG_X_OUT_SIZE_LSB,  0x10}, 
+	//{REG_Y_OUT_SIZE_MSB,  0x0D}, 
+	//{REG_Y_OUT_SIZE_LSB,  0x8C}, 
 	{0x034c, 0x07},
 	{0x034d, 0x80},
 	{0x034e, 0x04},
@@ -3331,14 +3327,14 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS[] = {
 	{REG_FRAME_LEN_MSB,  0x10}, 
 	{REG_FRAME_LEN_LSB,  0xF7}, 
 	/* ROI Setting */
-	{0x0344,  0x00}, 
-	{0x0345,  0x00}, 
-	{0x0346,  0x08}, 
-	{0x0347,  0x70}, 
-	{0x0348,  0x24}, 
-	{0x0349,  0x1F}, 
-	{0x034A,  0x12}, 
-	{0x034B,  0xAF}, 
+	{REG_X_ADD_STA_MSB,  0x00}, 
+	{REG_X_ADD_STA_LSB,  0x00}, 
+	{REG_Y_ADD_STA_MSB,  0x08}, 
+	{REG_Y_ADD_STA_LSB,  0x70}, 
+	{REG_X_ADD_END_MSB,  0x24}, 
+	{REG_X_ADD_END_LSB,  0x1F}, 
+	{REG_Y_ADD_END_MSB,  0x12}, 
+	{REG_Y_ADD_END_LSB,  0xAF}, 
 	/* Mode Setting */
 	{REG_BINNING_MODE,  0x00}, 
 	{REG_BINNING_HV,  0x11}, 
@@ -3347,19 +3343,19 @@ struct reginfo sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS[] = {
 	{0x3200,  0x01},
 	{0x3201,  0x01},
 	/* Digital Crop & Scaling */
-	{0x0408,  0x09}, 
-	{0x0409,  0x08}, 
-	{0x040A,  0x00}, 
-	{0x040B,  0x0A}, 
-	{0x040C,  0x12}, 
-	{0x040D,  0x10}, 
-	{0x040E,  0x0A}, 
-	{0x040F,  0x2C}, 
+	{REG_DIG_CROP_X_OFFSET_MSB,  0x09}, 
+	{REG_DIG_CROP_X_OFFSET_LSB,  0x08}, 
+	{REG_DIG_CROP_Y_OFFSET_MSB,  0x00}, 
+	{REG_DIG_CROP_Y_OFFSET_LSB,  0x0A}, 
+	{REG_DIG_CROP_WIDTH_MSB,  0x12}, 
+	{REG_DIG_CROP_WIDTH_LSB,  0x10}, 
+	{REG_DIG_CROP_HEIGHT_MSB,  0x0A}, 
+	{REG_DIG_CROP_HEIGHT_LSB,  0x2C}, 
 	/* Output Size Setting */
-	{0x034C,  0x12}, 
-	{0x034D,  0x10}, 
-	{0x034E,  0x0A}, 
-	{0x034F,  0x2C}, 
+	{REG_X_OUT_SIZE_MSB,  0x12}, 
+	{REG_X_OUT_SIZE_LSB,  0x10}, 
+	{REG_Y_OUT_SIZE_MSB,  0x0A}, 
+	{REG_Y_OUT_SIZE_LSB,  0x2C}, 
 	/* Clock Setting */
 	{REG_IVTPXCK_DIV,  0x08}, 
 	{REG_IVTSYCK_DIV,  0x02}, 
@@ -3706,12 +3702,12 @@ struct reginfo cfg_imx519_mode_1920x1080_reg[] =
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
     /* ROI Setting */
-	{0x0344, 0x01},
-	{0x0345, 0x98},
-	{0x0346, 0x02},
-	{0x0347, 0xa2},
-	{0x0348, 0x10},
-	{0x0349, 0x97},
+	{REG_X_ADD_STA_MSB, 0x01},
+	{REG_X_ADD_STA_LSB, 0x98},
+	{REG_Y_ADD_STA_MSB, 0x02},
+	{REG_Y_ADD_STA_LSB, 0xa2},
+	{REG_X_ADD_END_MSB, 0x10},
+	{REG_X_ADD_END_LSB, 0x97},
 	{0x034a, 0x0b},
 	{0x034b, 0x15},
 	{0x0220, 0x00},
@@ -3728,8 +3724,8 @@ struct reginfo cfg_imx519_mode_1920x1080_reg[] =
 	{0x0404, 0x00},
 	{0x0405, 0x10},
     /* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -3779,8 +3775,6 @@ struct reginfo cfg_imx519_mode_1920x1080_reg[] =
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 struct reginfo imx682_init_setting[] = {
 	    /*External Clock Setting*/
 		{REG_EXCK_FREQ_MSB, 0x18},
@@ -4441,14 +4435,14 @@ struct reginfo imx682_preview_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x0E},
 		{REG_FRAME_LEN_LSB, 0xA9},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x00},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x1F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x00},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x1F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -4457,19 +4451,19 @@ struct reginfo imx682_preview_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x00},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x10},
-		{0x040E, 0x0D},
-		{0x040F, 0x90},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x10},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0D},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x90},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x10},
-		{0x034E, 0x0D},
-		{0x034F, 0x90},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x10},
+		{REG_Y_OUT_SIZE_MSB, 0x0D},
+		{REG_Y_OUT_SIZE_LSB, 0x90},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4533,14 +4527,14 @@ struct reginfo imx682_capture_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x0E},
 		{REG_FRAME_LEN_LSB, 0xA9},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x00},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x1F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x00},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x1F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -4549,19 +4543,19 @@ struct reginfo imx682_capture_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x00},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x10},
-		{0x040E, 0x0D},
-		{0x040F, 0x90},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x10},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0D},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x90},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x10},
-		{0x034E, 0x0D},
-		{0x034F, 0x90},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x10},
+		{REG_Y_OUT_SIZE_MSB, 0x0D},
+		{REG_Y_OUT_SIZE_LSB, 0x90},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4619,20 +4613,20 @@ struct reginfo imx682_normal_video_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x24},
-		{REG_LINE_LEN_LSB, 0xD8},
+		{REG_LINE_LEN_MSB,  0x42}, 
+		{REG_LINE_LEN_LSB,  0x40}, 
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x0B},
 		{REG_FRAME_LEN_LSB, 0x04},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x03},
-		{0x0347, 0x70},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x17},
-		{0x034B, 0xAF},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x03},
+		{REG_Y_ADD_STA_LSB, 0x70},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x17},
+		{REG_Y_ADD_END_LSB, 0xAF},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -4641,19 +4635,19 @@ struct reginfo imx682_normal_video_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x08},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x00},
-		{0x040E, 0x0A},
-		{0x040F, 0x20},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x08},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x00},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0A},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x20},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x00},
-		{0x034E, 0x0A},
-		{0x034F, 0x20},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x00},
+		{REG_Y_OUT_SIZE_MSB, 0x0A},
+		{REG_Y_OUT_SIZE_LSB, 0x20},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4711,20 +4705,20 @@ struct reginfo imx682_slim_video_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x24},
+		{REG_LINE_LEN_MSB, 0x48},
 		{REG_LINE_LEN_LSB, 0xD8},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x0A},
 		{REG_FRAME_LEN_LSB, 0xA4},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x03},
-		{0x0347, 0x70},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x17},
-		{0x034B, 0xAF},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x03},
+		{REG_Y_ADD_STA_LSB, 0x70},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x17},
+		{REG_Y_ADD_END_LSB, 0xAF},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -4733,19 +4727,19 @@ struct reginfo imx682_slim_video_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x08},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x00},
-		{0x040E, 0x0A},
-		{0x040F, 0x20},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x08},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x00},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0A},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x20},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x00},
-		{0x034E, 0x0A},
-		{0x034F, 0x20},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x00},
+		{REG_Y_OUT_SIZE_MSB, 0x0A},
+		{REG_Y_OUT_SIZE_LSB, 0x20},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4803,20 +4797,20 @@ struct reginfo imx682_hs_video_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x0A},
+		{REG_LINE_LEN_MSB, 0x82},
 		{REG_LINE_LEN_LSB, 0xA8},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x06},
 		{REG_FRAME_LEN_LSB, 0x8C},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x03},
-		{0x0347, 0x70},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x17},
-		{0x034B, 0xAF},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x03},
+		{REG_Y_ADD_STA_LSB, 0x70},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x17},
+		{REG_Y_ADD_END_LSB, 0xAF},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x44},
@@ -4825,19 +4819,19 @@ struct reginfo imx682_hs_video_setting[] = {
 		{0x03200, 0x43},
 		{0x03201, 0x43},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x04},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x09},
-		{0x040D, 0x00},
-		{0x040E, 0x05},
-		{0x040F, 0x10},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x04},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x09},
+		{REG_DIG_CROP_WIDTH_LSB, 0x00},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x05},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x10},
 	    /*Output Size Setting*/
-		{0x034C, 0x09},
-		{0x034D, 0x00},
-		{0x034E, 0x05},
-		{0x034F, 0x10},
+		{REG_X_OUT_SIZE_MSB, 0x09},
+		{REG_X_OUT_SIZE_LSB, 0x00},
+		{REG_Y_OUT_SIZE_MSB, 0x05},
+		{REG_Y_OUT_SIZE_LSB, 0x10},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4895,20 +4889,20 @@ struct reginfo imx682_custom1_setting[] = {
 		{REG_CSI_FORMAT_D, 0x0A},
 		{REG_CSI_LANE,  0x01},
 	    /*Line Length PCK Setting*/
-		{REG_LINE_LEN_MSB, 0x24},
+		{REG_LINE_LEN_MSB, 0x88},
 		{REG_LINE_LEN_LSB, 0xD8},
 	    /*Frame Length Lines Setting*/
 		{REG_FRAME_LEN_MSB, 0x0E},
 		{REG_FRAME_LEN_LSB, 0x22},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x00},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x1F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x00},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x1F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -4917,19 +4911,19 @@ struct reginfo imx682_custom1_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x00},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x10},
-		{0x040E, 0x0D},
-		{0x040F, 0x90},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x10},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0D},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x90},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x10},
-		{0x034E, 0x0D},
-		{0x034F, 0x90},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x10},
+		{REG_Y_OUT_SIZE_MSB, 0x0D},
+		{REG_Y_OUT_SIZE_LSB, 0x90},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -4993,14 +4987,14 @@ struct reginfo imx682_custom2_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x06},
 		{REG_FRAME_LEN_LSB, 0x8C},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x03},
-		{0x0347, 0x70},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x17},
-		{0x034B, 0xAF},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x03},
+		{REG_Y_ADD_STA_LSB, 0x70},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x17},
+		{REG_Y_ADD_END_LSB, 0xAF},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x44},
@@ -5009,19 +5003,19 @@ struct reginfo imx682_custom2_setting[] = {
 		{0x03200, 0x43},
 		{0x03201, 0x43},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x04},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x09},
-		{0x040D, 0x00},
-		{0x040E, 0x05},
-		{0x040F, 0x10},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x04},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x09},
+		{REG_DIG_CROP_WIDTH_LSB, 0x00},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x05},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x10},
 	    /*Output Size Setting*/
-		{0x034C, 0x09},
-		{0x034D, 0x00},
-		{0x034E, 0x05},
-		{0x034F, 0x10},
+		{REG_X_OUT_SIZE_MSB, 0x09},
+		{REG_X_OUT_SIZE_LSB, 0x00},
+		{REG_Y_OUT_SIZE_MSB, 0x05},
+		{REG_Y_OUT_SIZE_LSB, 0x10},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x04},
@@ -5087,14 +5081,14 @@ struct reginfo imx682_custom3_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x07},
 		{REG_FRAME_LEN_LSB, 0x64},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x06},
-		{0x0347, 0xD0},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x14},
-		{0x034B, 0x4F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x06},
+		{REG_Y_ADD_STA_LSB, 0xD0},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x14},
+		{REG_Y_ADD_END_LSB, 0x4F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -5103,19 +5097,19 @@ struct reginfo imx682_custom3_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x03},
-		{0x0409, 0x10},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x0B},
-		{0x040D, 0xF0},
-		{0x040E, 0x06},
-		{0x040F, 0xC0},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x03},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x10},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x0B},
+		{REG_DIG_CROP_WIDTH_LSB, 0xF0},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x06},
+		{REG_DIG_CROP_HEIGHT_LSB, 0xC0},
 	    /*Output Size Setting*/
-		{0x034C, 0x0B},
-		{0x034D, 0xF0},
-		{0x034E, 0x06},
-		{0x034F, 0xC0},
+		{REG_X_OUT_SIZE_MSB, 0x0B},
+		{REG_X_OUT_SIZE_LSB, 0xF0},
+		{REG_Y_OUT_SIZE_MSB, 0x06},
+		{REG_Y_OUT_SIZE_LSB, 0xC0},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -5181,14 +5175,14 @@ struct reginfo imx682_custom4_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x1B},
 		{REG_FRAME_LEN_LSB, 0xCB},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x00},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x1F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x00},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x1F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x00},
 		{REG_BINNING_HV, 0x11},
@@ -5197,19 +5191,19 @@ struct reginfo imx682_custom4_setting[] = {
 		{0x03200, 0x01},
 		{0x03201, 0x01},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x00},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x24},
-		{0x040D, 0x20},
-		{0x040E, 0x1B},
-		{0x040F, 0x20},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x24},
+		{REG_DIG_CROP_WIDTH_LSB, 0x20},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x1B},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x20},
 	    /*Output Size Setting*/
-		{0x034C, 0x24},
-		{0x034D, 0x20},
-		{0x034E, 0x1B},
-		{0x034F, 0x20},
+		{REG_X_OUT_SIZE_MSB, 0x24},
+		{REG_X_OUT_SIZE_LSB, 0x20},
+		{REG_Y_OUT_SIZE_MSB, 0x1B},
+		{REG_Y_OUT_SIZE_LSB, 0x20},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -5275,14 +5269,14 @@ struct reginfo imx682_custom5_setting[] = {
 		{REG_FRAME_LEN_MSB, 0x0E},
 		{REG_FRAME_LEN_LSB, 0xA9},
 	    /*ROI Setting*/
-		{0x0344, 0x00},
-		{0x0345, 0x00},
-		{0x0346, 0x00},
-		{0x0347, 0x00},
-		{0x0348, 0x24},
-		{0x0349, 0x1F},
-		{0x034A, 0x1B},
-		{0x034B, 0x1F},
+		{REG_X_ADD_STA_MSB, 0x00},
+		{REG_X_ADD_STA_LSB, 0x00},
+		{REG_Y_ADD_STA_MSB, 0x00},
+		{REG_Y_ADD_STA_LSB, 0x00},
+		{REG_X_ADD_END_MSB, 0x24},
+		{REG_X_ADD_END_LSB, 0x1F},
+		{REG_Y_ADD_END_MSB, 0x1B},
+		{REG_Y_ADD_END_LSB, 0x1F},
 	    /*Mode Setting*/
 		{REG_BINNING_MODE, 0x01},
 		{REG_BINNING_HV, 0x22},
@@ -5291,19 +5285,19 @@ struct reginfo imx682_custom5_setting[] = {
 		{0x03200, 0x41},
 		{0x03201, 0x41},
 	    /*Digital Crop & Scaling*/
-		{0x0408, 0x00},
-		{0x0409, 0x00},
-		{0x040A, 0x00},
-		{0x040B, 0x00},
-		{0x040C, 0x12},
-		{0x040D, 0x10},
-		{0x040E, 0x0D},
-		{0x040F, 0x90},
+		{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_MSB, 0x00},
+		{REG_DIG_CROP_Y_OFFSET_LSB, 0x00},
+		{REG_DIG_CROP_WIDTH_MSB, 0x12},
+		{REG_DIG_CROP_WIDTH_LSB, 0x10},
+		{REG_DIG_CROP_HEIGHT_MSB, 0x0D},
+		{REG_DIG_CROP_HEIGHT_LSB, 0x90},
 	    /*Output Size Setting*/
-		{0x034C, 0x12},
-		{0x034D, 0x10},
-		{0x034E, 0x0D},
-		{0x034F, 0x90},
+		{REG_X_OUT_SIZE_MSB, 0x12},
+		{REG_X_OUT_SIZE_LSB, 0x10},
+		{REG_Y_OUT_SIZE_MSB, 0x0D},
+		{REG_Y_OUT_SIZE_LSB, 0x90},
 	    /*Clock Setting*/
 		{REG_IVTPXCK_DIV, 0x08},
 		{REG_IVTSYCK_DIV, 0x02},
@@ -5365,14 +5359,14 @@ struct reginfo sensor_imx682_1920x1080_60FPS[] = {
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
 	/* ROI Setting */
-	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
-	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
-	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
-	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
-	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
-	{0x0349,  0x1F}, /*	x_addr_end[7:0]	    */
-	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
-	{0x034B,  0xBF}, /* y_addr_end[7:0]	    */
+	{REG_X_ADD_STA_MSB,  0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,  0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,  0x03}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,  0x60}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,  0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,  0x1F}, /*	x_addr_end[7:0]	    */
+	{REG_Y_ADD_END_MSB,  0x17}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,  0xBF}, /* y_addr_end[7:0]	    */
 	{0x0220, 0x00},
 	{0x0221, 0x11},
 	{0x0222, 0x01},
@@ -5384,8 +5378,8 @@ struct reginfo sensor_imx682_1920x1080_60FPS[] = {
 	{0x3200, 0x41},
 	{0x3201, 0x41},
 	/* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -5511,14 +5505,14 @@ struct reginfo min_sensor_imx682_1920x1080_60FPS[] = {
 	{REG_FRAME_LEN_MSB, 0x08},
 	{REG_FRAME_LEN_LSB, 0xff},
 	/* ROI Setting */
-	{0x0344,  0x00}, /*	x_addr_start[15:8]	*/
-	{0x0345,  0x00}, /*	x_addr_start[7:0]	*/
-	{0x0346,  0x03}, /*	y_addr_start[15:8]	*/
-	{0x0347,  0x60}, /*	y_addr_start[7:0]	*/
-	{0x0348,  0x24}, /*	x_addr_end[15:8]	*/
-	{0x0349,  0x1F}, /*	x_addr_end[7:0]	    */
-	{0x034A,  0x17}, /*	y_addr_end[15:8]	*/
-	{0x034B,  0xBF}, /* y_addr_end[7:0]	    */
+	{REG_X_ADD_STA_MSB,  0x00}, /*	x_addr_start[15:8]	*/
+	{REG_X_ADD_STA_LSB,  0x00}, /*	x_addr_start[7:0]	*/
+	{REG_Y_ADD_STA_MSB,  0x03}, /*	y_addr_start[15:8]	*/
+	{REG_Y_ADD_STA_LSB,  0x60}, /*	y_addr_start[7:0]	*/
+	{REG_X_ADD_END_MSB,  0x24}, /*	x_addr_end[15:8]	*/
+	{REG_X_ADD_END_LSB,  0x1F}, /*	x_addr_end[7:0]	    */
+	{REG_Y_ADD_END_MSB,  0x17}, /*	y_addr_end[15:8]	*/
+	{REG_Y_ADD_END_LSB,  0xBF}, /* y_addr_end[7:0]	    */
     {0x0220, 0x00},
     {0x0221, 0x11},
     {0x0222, 0x01},
@@ -5530,8 +5524,8 @@ struct reginfo min_sensor_imx682_1920x1080_60FPS[] = {
 	{0x3200, 0x41},
 	{0x3201, 0x41},
 	/* Digital Crop & Scaling */
-	{0x0408, 0x00},
-	{0x0409, 0x00},
+	{REG_DIG_CROP_X_OFFSET_MSB, 0x00},
+	{REG_DIG_CROP_X_OFFSET_LSB, 0x00},
 	{0x040a, 0x00},
 	{0x040b, 0x00},
 	{0x040c, 0x07},
@@ -5658,19 +5652,19 @@ int imx682_sensor_init(XIicPs *IicInstance,u16 config_number)
         } else if (config_number == 1) {
             imx_682_sensor_write_array(IicInstance,imx682_1920x1080_regs);
         } else if (config_number == 2) {
-            imx_682_sensor_write_array(IicInstance,imx682_hs_video_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_hs_video_setting);//not working
         } else if (config_number == 3) {
             imx_682_sensor_write_array(IicInstance,imx682_normal_video_setting);
         } else if (config_number == 4) {
             imx_682_sensor_write_array(IicInstance,imx682_slim_video_setting);
         } else if (config_number == 5) {
-            imx_682_sensor_write_array(IicInstance,imx682_custom1_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_custom1_setting);//not working
         } else if (config_number == 6) {
-            imx_682_sensor_write_array(IicInstance,imx682_custom2_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_custom2_setting);//not working
         } else if (config_number == 7) {
             imx_682_sensor_write_array(IicInstance,imx682_custom3_setting);
         } else if (config_number == 8) {
-            imx_682_sensor_write_array(IicInstance,imx682_custom4_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_custom4_setting);//not working
         } else if (config_number == 9) {
             imx_682_sensor_write_array(IicInstance,imx682_custom5_setting);
         } else if (config_number == 10) {
@@ -5678,35 +5672,35 @@ int imx682_sensor_init(XIicPs *IicInstance,u16 config_number)
         } else if (config_number == 11) {
             imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V6_BK);
         } else if (config_number == 12) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V7_BK);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V7_BK);//not working grids
         } else if (config_number == 13) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4000x3000_30FPS);//not working
         } else if (config_number == 14) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_30FPS);//not working
         } else if (config_number == 15) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x3468_30FPS);//not working
         } else if (config_number == 16) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_FULL_9248x6936_13FPS);//not working
         } else if (config_number == 17) {
             imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_4624x2604_60FPS);
         } else if (config_number == 18) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS_V2_BK);//not working
         } else if (config_number == 19) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_4624x2604_60FPS);//not working
         } else if (config_number == 20) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_2304x1728_120FPS);//not working
         } else if (config_number == 21) {
             imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_2X2BIN_FULL_2000x1128_240FPS);
         } else if (config_number == 22) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x3468_30FPS);//not working grids
         } else if (config_number == 23) {
-            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS);
+            imx_682_sensor_write_array(IicInstance,sensor_imx682_setfile_B_REMOSAIC_CROP_4624x2604_30FPS);//not working
         } else if (config_number == 24) {
-            imx_682_sensor_write_array(IicInstance,imx682_preview_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_preview_setting);//not working
         } else if (config_number == 25) {
-            imx_682_sensor_write_array(IicInstance,imx682_capture_setting);
+            imx_682_sensor_write_array(IicInstance,imx682_capture_setting);//not working
         } else if (config_number == 26) {
-            imx_682_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_reg);
+            imx_682_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_reg);//not working grids
         } else if (config_number == 27) {
             imx_682_sensor_write_array(IicInstance,min_sensor_imx682_1920x1080_60FPS);
         } else {

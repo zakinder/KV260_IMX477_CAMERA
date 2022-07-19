@@ -55,17 +55,17 @@
 #define REG_FINE_INTEGRATION_TIME_LSB 	0x0201
 #define REG_COARSE_INTEGRATION_TIME_MSB	0x0202
 #define REG_COARSE_INTEGRATION_TIME_LSB 0x0203
-#define REG_IVTPXCK_DIV				    0x0301
-#define REG_IVTSYCK_DIV				    0x0303
-#define REG_IOP_PREPLLCK_DIV		    0x030D
-#define	REG_IVT_PREPLLCK_DIV		    0x0305
-#define	REG_PLL_IVT_MPY_MSB			    0x0306
-#define	REG_PLL_IVT_MPY_LSB			    0x0307
-#define REG_IOPPXCK_DIV				    0x0309
-#define REG_IOPSYCK_DIV				    0x030B
-#define REG_IOP_MPY_MSB				    0x030E
-#define REG_IOP_MPY_LSB				    0x030F
-#define REG_PLL_MULTI_DRV			    0x0310
+#define REG_IVTPXCK_DIV				    0x0301 /* The Pixel Clock Divider for IVTS   */
+#define REG_IVTSYCK_DIV				    0x0303 /* The System Clock Divider for IVTS  */
+#define REG_IOP_PREPLLCK_DIV		    0x030D /* The pre-PLL Clock Divider for IOPS */
+#define	REG_IVT_PREPLLCK_DIV		    0x0305 /* The pre-PLL Clock Divider for IVTS */
+#define	REG_PLL_IVT_MPY_MSB			    0x0306 /* The PLL multiplier for IVTS [10:8] */
+#define	REG_PLL_IVT_MPY_LSB			    0x0307 /* The PLL multiplier for IVTS [7:0]  */
+#define REG_IOPPXCK_DIV				    0x0309 /* The Pixel Clock Divider for IOPS   */
+#define REG_IOPSYCK_DIV				    0x030B /* The System Clock Divider for IOPS  */
+#define REG_IOP_MPY_MSB				    0x030E /* The pre-PLL Clock Divider for IOPS */
+#define REG_IOP_MPY_LSB				    0x030F /* The PLL multiplier for IOPS [7:0]  */
+#define REG_PLL_MULTI_DRV			    0x0310 /* PLL mode select: Dual Mode         */
 #define REG_TEST_PATTERN_MSB		    0x0600
 #define REG_TEST_PATTERN_LSB		    0x0601
 #define REG_TP_RED_MSB				    0x0602
@@ -103,26 +103,26 @@
 #define REG_DIG_CROP_WIDTH_LSB		    0x040D
 #define REG_DIG_CROP_HEIGHT_MSB		    0x040E
 #define REG_DIG_CROP_HEIGHT_LSB		    0x040F
-#define REG_REQ_LINK_BIT_RATE_MSB	    0x0820
-#define REG_REQ_LINK_BIT_RATE_LMSB	    0x0821
-#define REG_REQ_LINK_BIT_RATE_MLSB	    0x0822
-#define REG_REQ_LINK_BIT_RATE_LSB	    0x0823
-#define REG_TCLK_POST_EX_MSB		    0x080A
-#define REG_TCLK_POST_EX_LSB		    0x080B
-#define REG_THS_PRE_EX_MSB			    0x080C
-#define REG_THS_PRE_EX_LSB			    0x080D
-#define REG_THS_ZERO_MIN_MSB		    0x080E
-#define REG_THS_ZERO_MIN_LSB		    0x080F
-#define REG_THS_TRAIL_EX_MSB		    0x0810
-#define REG_THS_TRAIL_EX_LSB		    0x0811
-#define REG_TCLK_TRAIL_MIN_MSB		    0x0812
-#define REG_TCLK_TRAIL_MIN_LSB		    0x0813
-#define REG_TCLK_PREP_EX_MSB		    0x0814
-#define REG_TCLK_PREP_EX_LSB		    0x0815
-#define REG_TCLK_ZERO_EX_MSB		    0x0816
-#define REG_TCLK_ZERO_EX_LSB		    0x0817
-#define REG_TLPX_EX_MSB				    0x0818
-#define REG_TLPX_EX_LSB				    0x0819
+#define REG_REQ_LINK_BIT_RATE_MSB	    0x0820 /* Output Data Rate, Mbps [31:24]     */
+#define REG_REQ_LINK_BIT_RATE_LMSB	    0x0821 /* Output Data Rate, Mbps [23:16]     */
+#define REG_REQ_LINK_BIT_RATE_MLSB	    0x0822 /* Output Data Rate, Mbps [15:8]      */
+#define REG_REQ_LINK_BIT_RATE_LSB	    0x0823 /* Output Data Rate, Mbps [7:0]       */
+#define REG_TCLK_POST_EX_MSB		    0x080A /* MIPI Global Timing (Tclk) [9:8]    */
+#define REG_TCLK_POST_EX_LSB		    0x080B /* MIPI Global Timing (Tclk) [7:0]    */
+#define REG_THS_PRE_EX_MSB			    0x080C /* MIPI Global Timing (ths_prepare)   */
+#define REG_THS_PRE_EX_LSB			    0x080D /* MIPI Global Timing (ths_prepare)   */
+#define REG_THS_ZERO_MIN_MSB		    0x080E /* MIPI Global Timing (ths_zero_min)  */
+#define REG_THS_ZERO_MIN_LSB		    0x080F /* MIPI Global Timing (ths_zero_min)  */
+#define REG_THS_TRAIL_EX_MSB		    0x0810 /* MIPI Global Timing (ths_trail)     */
+#define REG_THS_TRAIL_EX_LSB		    0x0811 /* MIPI Global Timing (ths_trail)     */
+#define REG_TCLK_TRAIL_MIN_MSB		    0x0812 /* MIPI Global Timing (Tclk_trail_min)*/
+#define REG_TCLK_TRAIL_MIN_LSB		    0x0813 /* MIPI Global Timing (Tclk_trail_min)*/
+#define REG_TCLK_PREP_EX_MSB		    0x0814 /* MIPI Global Timing (Tclk_prepare)  */
+#define REG_TCLK_PREP_EX_LSB		    0x0815 /* MIPI Global Timing (Tclk_prepare)  */
+#define REG_TCLK_ZERO_EX_MSB		    0x0816 /* MIPI Global Timing (Tclk_zero)     */
+#define REG_TCLK_ZERO_EX_LSB		    0x0817 /* MIPI Global Timing (Tclk_zero)     */
+#define REG_TLPX_EX_MSB				    0x0818 /* MIPI Global Timing (Tlpx)          */
+#define REG_TLPX_EX_LSB				    0x0819 /* MIPI Global Timing (Tlpx)          */
 #define REG_PDAF_CTRL1_0			    0x3E37
 #define REG_POWER_SAVE_ENABLE		    0x3F50
 #define REG_LINE_LEN_INCLK_MSB		    0x3F56
