@@ -105,5 +105,6 @@
 #define imx477c6                0x045CCC8F8
 #define readpixels              0x25738CEF
 #define lwip                    0x1D8E6
+#define pics                    0x1E2D5
 /*****************************************************************************************************************/
 #endif // __SYSTEM_CONFIG_DEFINES_H__

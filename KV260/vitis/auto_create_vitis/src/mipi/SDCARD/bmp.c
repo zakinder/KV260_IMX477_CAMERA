@@ -76,18 +76,42 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 	Ximage=(unsigned short)head_buf[19]*256+head_buf[18];
 	Yimage=(unsigned short)head_buf[23]*256+head_buf[22];
 	iPixelAddr = (Yimage-1)*stride ;
-    uint32_t red = 0, green = 0, blue = 0;
+    uint32_t Blue = 0, Red = 0, Green = 0, abc = 0;
 	for(y = 0; y < Yimage ; y++)
 	{
 		for(x = 0; x < Ximage; x++)
 		{
-			Write_line_buf[x*4 + 3] = data_buf[x*4 + iPixelAddr + 0];
-			Write_line_buf[x*4 + 2] = data_buf[x*4 + iPixelAddr + 1];
-			Write_line_buf[x*4 + 1] = data_buf[x*4 + iPixelAddr + 2];
-			Write_line_buf[x*4 + 0] = data_buf[x*4 + iPixelAddr + 3];
-            // blue              = (pS2MM_Mem[i*4+0] & 0x3ff00000)>>20;
-            // red               = (pS2MM_Mem[i*4+1] & 0x000ffc00)>>10;
-            // green             = (pS2MM_Mem[i*4+2] & 0x000003ff);
+            Green                    = (((data_buf[x*4 + iPixelAddr + 1])<<8) | (data_buf[x*4 + iPixelAddr + 0])) & 0x3ff;
+            abc                      = (data_buf[x*4 + iPixelAddr + 2] | (data_buf[x*4 + iPixelAddr + 3] & 0x00f));
+            Red                      = (((data_buf[x*4 + iPixelAddr + 3]) << 4) | ((abc & 0x0F0)>>4)) & 0x3ff;
+            Blue                     = (((((data_buf[x*4 + iPixelAddr + 2]) & 0x00F)<<8)| (data_buf[x*4 + iPixelAddr + 1]))>>2) & 0x3ff;
+			Write_line_buf[x*4 + 3] = Red;
+			Write_line_buf[x*4 + 2] = Blue;
+			Write_line_buf[x*4 + 1] = Green;
+			Write_line_buf[x*4 + 0] = Red;
+            //111: 0100010001
+            //222: 1000100010
+            //333: 1100110011
+            //00.6Green.4Green.4Red.6Red.2Blue.8Blue
+            // 1100110011.1000100010.0100010001
+            // 110011001110001000100100010001
+            // 3338 8911
+            //        00010001  11
+            //        10001001  89
+            //        00111000  38
+            //        00110011  33
+			//Write_line_buf[x*4 + 0] = (Green&0x3FF)>>4;                    //6BIT-GREEN
+			//Write_line_buf[x*4 + 1] = (((Green&0x0F)<<4)|(Red&0x3C0)>>6);  //4BIT-GREEN AND 4BIT-RED
+			//Write_line_buf[x*4 + 2] = (((Red&0x3F)<<2)|(Blue&0x0300)>>8);  //6BIT-RED AND 2BIT-BLUE
+			//Write_line_buf[x*4 + 3] = Blue;                                //8BIT-BLUE
+			//Write_line_buf[x*4 + 3] = Blue;
+			//Write_line_buf[x*4 + 2] = ((Blue&0x03)<<6 |(Red&0x3F));
+			//Write_line_buf[x*4 + 1] = ((Green&0x0F)|(Red)<<4)&0xFF;
+			//Write_line_buf[x*4 + 0] = (Green&0x3F);
+            if(y<1 && x<5){
+            printf  ("Y:%i X:%i 1st:%x  2nd:%x  3rd:%x  4th:%x\r\n",y,x,Write_line_buf[x*4 + 0],Write_line_buf[x*4 + 1],Write_line_buf[x*4 + 2],Write_line_buf[x*4 + 3]);
+            //printf  ("Y:%i X:%i Blue:%x  Green:%x  Red:%x \r\n",y,x,(unsigned)Blue,(unsigned)Green,(unsigned)Red);
+            }
 		}
 		res = f_write(fil, Write_line_buf, Ximage*4, &br) ;
 		if(res != FR_OK)
@@ -127,7 +151,6 @@ void bmp_tx(char * name, char *head_buf, Xuint32 *data_buf, u32 stride, FIL *fil
 		return ;
 	}
     printf  ("1ST PIXEL VALUE %i\n",(unsigned)(data_buf[0] & 0x03ff));
-
         for(x = 0; x < 1920*1080; x++) {
             unsigned char buffer[PIXEL_LENGTH] = { 0 };
             pix = ((data_buf[x] & 0x03ff)>>1);
@@ -140,7 +163,6 @@ void bmp_tx(char * name, char *head_buf, Xuint32 *data_buf, u32 stride, FIL *fil
                 return;
             }
         }
-            
         res = f_write(fil,"\n", 1, &bw);
         if(res != FR_OK)
         {

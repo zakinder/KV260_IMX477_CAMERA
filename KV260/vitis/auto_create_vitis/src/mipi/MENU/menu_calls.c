@@ -3,15 +3,25 @@
 #include <xiicps.h>
 #include <xil_printf.h>
 #include <xstatus.h>
+#include "string.h"
+#include "ff.h"
 #include "../UART/uartio.h"
 #include "config_defines.h"
 #include "../SENSORS_CONFIG/init_camera.h"
-void menu_calls(ON_OFF) {
+#include "../config.h"
+static FIL fil;
+static FATFS fatfs;
+u8 photobufs[DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
+void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
     u32 current_state = mainmenu;
     u32 k_number;
     u32 k_number_value;
+	int i;
+	FRESULT rc;
+	char PhotoName[9] ;
+	char PhotoPath[] = {'1',':','/','0','0','1','9', '.','b','m','p'};
     per_write_reg(REG16,0);
     per_write_reg(REG11,0);
     per_write_reg(REG15,2);
@@ -197,6 +207,18 @@ void menu_calls(ON_OFF) {
         case lwip:
         	WrFrData();
             current_state = mainmenu;break;
+        case pics:
+            //fetch_rgb_data();
+            rc = f_mount(&fatfs, "1:/", 0);
+            if (rc != FR_OK)
+            {
+                return 0 ;
+            }
+            sprintf(PhotoName, "%04u.bmp", 1);
+            for(i = 4;i < 8;i++)
+            PhotoPath[i+3] = PhotoName[i];
+        	bmp_write(PhotoPath,head_buf,data_buf,stride,&fil);
+            current_state = mainmenu;break;
         case imx477wr:
             printf("Enter imx477 Register Address.\n");
             menu_print_prompt();
@@ -335,5 +357,5 @@ void menu_calls(ON_OFF) {
         }
     }
     printf("Break\r\n");
-    menu_calls_enable = TRUE;
+    //menu_calls_enable = TRUE;
 }

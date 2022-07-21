@@ -9,6 +9,20 @@ set_property IOSTANDARD LVCMOS33 [get_ports {rpi_enb[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports IIC_0_0_scl_io]
 set_property IOSTANDARD LVCMOS33 [get_ports IIC_0_0_sda_io]
 
+
+#ISP AP1302_RST_B HDA02
+set_property PACKAGE_PIN J11 [get_ports {ap1302_rst_b}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ap1302_rst_b}]
+set_property SLEW SLOW [get_ports {ap1302_rst_b}]
+set_property DRIVE 4 [get_ports {ap1302_rst_b}]
+
+#ISP AP1302_STANDBY HDA03
+set_property PACKAGE_PIN J10 [get_ports {ap1302_standby}]
+set_property IOSTANDARD LVCMOS33 [get_ports {ap1302_standby}]
+set_property SLEW SLOW [get_ports {ap1302_standby}]
+set_property DRIVE 4 [get_ports {ap1302_standby}]
+
+
 set_property PULLUP true [get_ports IIC_0_0_scl_io]
 set_property PULLUP true [get_ports IIC_0_0_sda_io]
 

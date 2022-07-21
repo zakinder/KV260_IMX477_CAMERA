@@ -68,7 +68,7 @@ int init_camera()
   	if (Status != XST_SUCCESS) {
   		print("OV5640 Camera Sensor Not connected\n\r");
   	}
-    Status = imx477_sensor_init(&iic_cam,4);
+    Status = imx477_sensor_init(&iic_cam,3);
   	if (Status != XST_SUCCESS) {
   		print("IMX477 Camera Sensor Not connected\n\r");
   	}
