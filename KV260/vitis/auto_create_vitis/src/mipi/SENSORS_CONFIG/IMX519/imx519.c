@@ -745,20 +745,32 @@ void imx_519_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 		i++;
 	}
 }
-int imx519_sensor_init(XIicPs *IicInstance)
+int imx519_sensor_init(XIicPs *IicInstance,u16 config_number)
 {
 	u8 sensor_id[2];
 	imx519_read(IicInstance, 0x0016, &sensor_id[0]);
 	imx519_read(IicInstance, 0x0017, &sensor_id[1]);
-	if (sensor_id[0] == 0x5 || sensor_id[1] == 0x19)
+	if (sensor_id[0] == 0x5 && sensor_id[1] == 0x19)
     {
 		printf("Got imx519 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
 		imx_519_sensor_write_array(IicInstance,cfg_imx519_mode_common_regs);
 		usleep(1000000);
-		imx_519_sensor_write_array(IicInstance,cfg_imx519_mode_2328x1748_regs);
-		usleep(1000000);
+        if(config_number == 0) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_2328x1748_regs);
+        } else if (config_number == 1) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_4656x3496_regs);
+        } else if (config_number == 2) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_3840x2160_regs);
+        } else if (config_number == 3) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_regs);
+        } else if (config_number == 4) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_1280x720_regs);
+        } else {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_testpattern_bar_regs);
+        }
+	return 519;
 	}
-	return 0;
+
 }
 int imx519_read_register(XIicPs *IicInstance,u16 addr)
 {

@@ -9,10 +9,12 @@
 #include "config_defines.h"
 #include "../SENSORS_CONFIG/init_camera.h"
 #include "../config.h"
+#define MAX_STRING_LENGTH 80
 static FIL fil;
 static FATFS fatfs;
+static char *SD_File;
 u8 photobufs[DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
-void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
+void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
     u32 current_state = mainmenu;
@@ -20,12 +22,15 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
     u32 k_number_value;
 	int i;
 	FRESULT rc;
-	char PhotoName[9] ;
-	char PhotoPath[] = {'1',':','/','0','0','1','9', '.','b','m','p'};
-    per_write_reg(REG16,0);
-    per_write_reg(REG11,0);
-    per_write_reg(REG15,2);
-    per_write_reg(REG19,4);
+	char PhotoName[40];
+        per_write_reg(REG16,0);
+        per_write_reg(REG11,0);
+        per_write_reg(REG15,2);
+    if(connected_camera == 477){
+        per_write_reg(REG19,4);  
+    } else {
+        per_write_reg(REG19,5);  
+    }
     while (menu_calls_enable == TRUE)
     {
         switch (current_state)
@@ -208,16 +213,19 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
         	WrFrData();
             current_state = mainmenu;break;
         case pics:
-            //fetch_rgb_data();
             rc = f_mount(&fatfs, "1:/", 0);
             if (rc != FR_OK)
             {
                 return 0 ;
             }
-            sprintf(PhotoName, "%04u.bmp", 1);
-            for(i = 4;i < 8;i++)
-            PhotoPath[i+3] = PhotoName[i];
-        	bmp_write(PhotoPath,head_buf,data_buf,stride,&fil);
+            printf("Enter file name with extension\n");
+            menu_print_prompt();
+            char FileName[MAX_STRING_LENGTH] = { 0 };
+            char_to_uart(FileName);
+            SD_File  = (char *)FileName;
+            sprintf(PhotoName, "1:/%s.BMP", SD_File);
+            memcpy(&photobufs,data_buf,DEMO_MAX_FRAME) ;
+        	bmp_write(PhotoName,head_buf,(char *)&photobufs,stride,&fil);
             current_state = mainmenu;break;
         case imx477wr:
             printf("Enter imx477 Register Address.\n");
@@ -278,7 +286,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
             }
             else
             {
-            	read_imx219_reg(k_number);
+            	read_imx519_reg(k_number);
             	current_state = imx519rd;break;
             }
         case imx219wr:
@@ -309,7 +317,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride) {
             }
             else
             {
-            	read_imx519_reg(k_number);
+            	read_imx219_reg(k_number);
             	current_state = imx219rd;break;
             }
         case imx682wr:

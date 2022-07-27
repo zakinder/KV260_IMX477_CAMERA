@@ -52,25 +52,25 @@ int init_camera()
   		print("I2C Write Error\n\r");
   		return XST_FAILURE;
   	}
-    Status = imx519_sensor_init(&iic_cam);
-  	if (Status != XST_SUCCESS) {
-  		print("imx519 Camera Sensor Not connected\n\r");
+    Status = imx519_sensor_init(&iic_cam,0);
+  	if (Status == 519) {
+  		return 519;
   	}
     Status = imx682_sensor_init(&iic_cam,0);
-  	if (Status != XST_SUCCESS) {
-  		print("imx682 Camera Sensor Not connected\n\r");
+  	if (Status == 682) {
+  		return 682;
   	}
     Status = imx219_camera_sensor_init(&iic_cam);
-  	if (Status != XST_SUCCESS) {
-  		print("IMX219 Camera Sensor Not connected\n\r");
+  	if (Status == 219) {
+  		return 219;
   	}
     Status = ov5640_camera_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
   		print("OV5640 Camera Sensor Not connected\n\r");
   	}
-    Status = imx477_sensor_init(&iic_cam,3);
-  	if (Status != XST_SUCCESS) {
-  		print("IMX477 Camera Sensor Not connected\n\r");
+    Status = imx477_sensor_init(&iic_cam,4);
+  	if (Status == 477) {
+  		return 477;
   	}
     Status = ov5647_camera_sensor_init(&iic_cam);
   	if (Status != XST_SUCCESS) {
@@ -100,7 +100,7 @@ void read_imx519_reg(u16 addr)
 {
 	int Status;
 	print("IMX519 Camera\n\r");
-    Status = imx519_sensor_init(&iic_cam);
+    Status = imx519_sensor_init(&iic_cam,addr);
   	if (Status != XST_SUCCESS) {
   		print("Unable to Read IMX519 Camera Sensor\n\r");
   	}

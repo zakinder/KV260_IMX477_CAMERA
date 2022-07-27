@@ -5706,8 +5706,9 @@ int imx682_sensor_init(XIicPs *IicInstance,u16 config_number)
         } else {
             imx_682_sensor_write_array(IicInstance,sensor_imx682_2X2BIN_2000x1128_60FPS);
         }
+        return 682;
 	}
-	return 0;
+	
 }
 
 int imx682_read_register(XIicPs *IicInstance,u16 addr)

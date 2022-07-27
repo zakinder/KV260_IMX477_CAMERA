@@ -488,7 +488,7 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 //        imx219_write(IicInstance, 0x01A3, 50);
 //    	imx219_read(IicInstance, 0x01A3, &sensor_id[0]);
 //    	printf("Read imx219 id 0x01A3 LSC_TUNING_B_A[7:0]   = %x\n",sensor_id[0]);
-	return XST_SUCCESS;
+	return 219;
 	}
 }
 int imx219_read_register(XIicPs *IicInstance,u16 addr)

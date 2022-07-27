@@ -76,19 +76,19 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 	Ximage=(unsigned short)head_buf[19]*256+head_buf[18];
 	Yimage=(unsigned short)head_buf[23]*256+head_buf[22];
 	iPixelAddr = (Yimage-1)*stride ;
-    uint32_t Blue = 0, Red = 0, Green = 0, abc = 0;
+    uint32_t Blu = 0, Red = 0, Green = 0, abc = 0;
 	for(y = 0; y < Yimage ; y++)
 	{
 		for(x = 0; x < Ximage; x++)
 		{
-            Green                    = (((data_buf[x*4 + iPixelAddr + 1])<<8) | (data_buf[x*4 + iPixelAddr + 0])) & 0x3ff;
+            Green                    = ((((data_buf[x*4 + iPixelAddr + 1])<<8) | (data_buf[x*4 + iPixelAddr + 0])) & 0x3ff)>>2;
             abc                      = (data_buf[x*4 + iPixelAddr + 2] | (data_buf[x*4 + iPixelAddr + 3] & 0x00f));
-            Red                      = (((data_buf[x*4 + iPixelAddr + 3]) << 4) | ((abc & 0x0F0)>>4)) & 0x3ff;
-            Blue                     = (((((data_buf[x*4 + iPixelAddr + 2]) & 0x00F)<<8)| (data_buf[x*4 + iPixelAddr + 1]))>>2) & 0x3ff;
-			Write_line_buf[x*4 + 3] = Red;
-			Write_line_buf[x*4 + 2] = Blue;
-			Write_line_buf[x*4 + 1] = Green;
-			Write_line_buf[x*4 + 0] = Red;
+            Blu                      = ((((data_buf[x*4 + iPixelAddr + 3]) << 4) | ((abc & 0x0F0)>>4)) & 0x3ff)>>2;
+            Red                      = ((((((data_buf[x*4 + iPixelAddr + 2]) & 0x00F)<<8)| (data_buf[x*4 + iPixelAddr + 1]))>>2) & 0x3ff)>>2;
+			Write_line_buf[x*4 + 3]  = Blu;
+			Write_line_buf[x*4 + 2]  = Red;
+			Write_line_buf[x*4 + 1]  = Green;
+			Write_line_buf[x*4 + 0]  = Blu;
             //111: 0100010001
             //222: 1000100010
             //333: 1100110011
@@ -109,7 +109,7 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 			//Write_line_buf[x*4 + 1] = ((Green&0x0F)|(Red)<<4)&0xFF;
 			//Write_line_buf[x*4 + 0] = (Green&0x3F);
             if(y<1 && x<5){
-            printf  ("Y:%i X:%i 1st:%x  2nd:%x  3rd:%x  4th:%x\r\n",y,x,Write_line_buf[x*4 + 0],Write_line_buf[x*4 + 1],Write_line_buf[x*4 + 2],Write_line_buf[x*4 + 3]);
+            printf  ("Y:%i X:%i Blu:%x  Green:%x  Red:%x  \r\n",y,x,Blu,Green,Red);
             //printf  ("Y:%i X:%i Blue:%x  Green:%x  Red:%x \r\n",y,x,(unsigned)Blue,(unsigned)Green,(unsigned)Red);
             }
 		}

@@ -2376,10 +2376,12 @@ int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
         imx477_read(IicInstance, REG_MODEL_ID_LSB, &sensor_id[1]);
         if ((sensor_id[0] == 0x7 && sensor_id[1] == 0x7)  || (sensor_id[0] == 0x4 && sensor_id[1] == 0x77))
 	{
-            printf("Got IMX477 Camera Sensor ID: 4%x%x\r\n", sensor_id[0], sensor_id[1]);
+            printf("Got IMX477 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
             imx_477_sensor_write_array(IicInstance,mode1_default);
             usleep(1000000);
+            if(config_number < 8) {
             imx_477_sensor_write_array(IicInstance,RGB_GAIN_SETTINGS);
+            }
             if(config_number == 0) {
                 imx_477_sensor_write_array(IicInstance,mode_1332x990_regs);
             } else if (config_number == 1) {
@@ -2396,11 +2398,14 @@ int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
                 imx_477_sensor_write_array(IicInstance,mode_1_regs);
             } else if (config_number == 7) {
                 imx_477_sensor_write_array(IicInstance,mode_4056x3040_regs);
-            } else {
+            } else if (config_number == 8) {
                 imx_477_sensor_write_array(IicInstance,mode_3840x2160_30fps_regs);
+            } else {
+                imx_477_sensor_write_array(IicInstance,mode2_1920x1080p_regs);
             }
+            return 477;
     }
-	return 0;
+	
 }
 int imx477_read_register(XIicPs *IicInstance,u16 addr)
 {
