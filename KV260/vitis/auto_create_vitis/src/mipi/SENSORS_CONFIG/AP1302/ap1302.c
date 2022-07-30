@@ -400,9 +400,9 @@ int ap1302_camera_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2] ;
 	ap1302_read(IicInstance, 0x0000, &sensor_id[0]);
 	ap1302_read(IicInstance, 0x0001, &sensor_id[1]);
-	if (sensor_id[0] == 0x2 || sensor_id[1] == 0x65)
+	if (sensor_id[0] == 0x2 && sensor_id[1] == 0x65)
 	{
-		//printf("Got ap1302 camera sensor id: %x %x\r\n", sensor_id[0], sensor_id[1]);
+		printf("Got ap1302 sensor id: %x %x\r\n", sensor_id[0], sensor_id[1]);
         //usleep(10000);
         //#if P1080 == 1
         //ap1302_sensor_write_array(IicInstance,cfg1_ap1302_1920_1080p_60fps);

@@ -13,6 +13,7 @@ char uart_per_char_read(u32 uart_address)
 void per_write_reg(u32 offset, u32 data)
 {
 	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,offset,data);
+    usleep(1000);
 }
 char* char_to_uart(char auserinput[])
 {

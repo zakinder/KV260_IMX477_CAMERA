@@ -17,7 +17,7 @@ u8 photobufs[DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
 void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
-    u32 current_state = mainmenu;
+    u32 current_state = imx477s1;
     u32 k_number;
     u32 k_number_value;
 	int i;
@@ -26,10 +26,41 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         per_write_reg(REG16,0);
         per_write_reg(REG11,0);
         per_write_reg(REG15,2);
+        
+        per_write_reg(REG31,0);
+        per_write_reg(REG32,0);
+        per_write_reg(REG33,170);
+        per_write_reg(REG34,341);
+        per_write_reg(REG35,512);
+        per_write_reg(REG36,341);
+        per_write_reg(REG37,170);
+        per_write_reg(REG38,341);
+        per_write_reg(REG39,853);
+        per_write_reg(REG40,682);
+        per_write_reg(REG41,170);
+        per_write_reg(REG42,341); 
+    if(connected_camera == 219){
+        per_write_reg(REG19,4);  
+    }
+    if(connected_camera == 519){
+        per_write_reg(REG19,4);  
+    }
     if(connected_camera == 477){
         per_write_reg(REG19,4);  
-    } else {
-        per_write_reg(REG19,5);  
+    }
+    if(connected_camera == 682){
+        per_write_reg(REG19,4);
+        per_write_reg(REG15,8);
+        per_write_reg(REG1,5000);
+        per_write_reg(REG2,0);
+        per_write_reg(REG3,0);
+        per_write_reg(REG4,0);
+        per_write_reg(REG5,5000);
+        per_write_reg(REG6,0);
+        per_write_reg(REG7,0);
+        per_write_reg(REG8,0);
+        per_write_reg(REG9,3000);
+        per_write_reg(REG11,15);
     }
     while (menu_calls_enable == TRUE)
     {
@@ -210,7 +241,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         	fetch_rgb_data();
             current_state = mainmenu;break;
         case lwip:
-        	WrFrData();
+        	lwip_loop();
             current_state = mainmenu;break;
         case pics:
             rc = f_mount(&fatfs, "1:/", 0);
@@ -351,6 +382,22 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             	read_imx682_reg(k_number);
             	current_state = imx682rd;break;
             }
+        case imx477s1:
+            printf("Settings For IMX477 Senesor\n");
+            per_write_reg(REG1,1000);
+            per_write_reg(REG2,0);
+            per_write_reg(REG3,0);
+            per_write_reg(REG4,0);
+            per_write_reg(REG5,1000);
+            per_write_reg(REG6,0);
+            per_write_reg(REG7,0);
+            per_write_reg(REG8,0);
+            per_write_reg(REG9,1000);
+            per_write_reg(REG11,15);
+            per_write_reg(REG15,8);
+            k_number = 3;
+            read_imx477_reg(k_number);
+            current_state = mainmenu;break;
         case quit:
             menu_calls_enable = FALSE;
             break;

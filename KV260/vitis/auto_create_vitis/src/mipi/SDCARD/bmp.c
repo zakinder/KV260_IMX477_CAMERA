@@ -76,14 +76,20 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 	Ximage=(unsigned short)head_buf[19]*256+head_buf[18];
 	Yimage=(unsigned short)head_buf[23]*256+head_buf[22];
 	iPixelAddr = (Yimage-1)*stride ;
-    uint32_t Blu = 0, Red = 0, Green = 0, abc = 0;
+    uint32_t Blu = 0, Red = 0, Green = 0, Rgb = 0;
+    uint32_t Blu_x10 = 0, Red_x10 = 0, Green_x10 = 0, Rgb_x10 = 0;
 	for(y = 0; y < Yimage ; y++)
 	{
 		for(x = 0; x < Ximage; x++)
 		{
+			Blu_x10   = data_buf[x*4 + iPixelAddr + 3];
+			Red_x10   = data_buf[x*4 + iPixelAddr + 2];
+			Green_x10 = data_buf[x*4 + iPixelAddr + 1];
+			Rgb_x10   = data_buf[x*4 + iPixelAddr + 0];
+            
             Green                    = ((((data_buf[x*4 + iPixelAddr + 1])<<8) | (data_buf[x*4 + iPixelAddr + 0])) & 0x3ff)>>2;
-            abc                      = (data_buf[x*4 + iPixelAddr + 2] | (data_buf[x*4 + iPixelAddr + 3] & 0x00f));
-            Blu                      = ((((data_buf[x*4 + iPixelAddr + 3]) << 4) | ((abc & 0x0F0)>>4)) & 0x3ff)>>2;
+            Rgb                      = (data_buf[x*4 + iPixelAddr + 2] | (data_buf[x*4 + iPixelAddr + 3] & 0x00f));
+            Blu                      = ((((data_buf[x*4 + iPixelAddr + 3]) << 4) | ((Rgb & 0x0F0)>>4)) & 0x3ff)>>2;
             Red                      = ((((((data_buf[x*4 + iPixelAddr + 2]) & 0x00F)<<8)| (data_buf[x*4 + iPixelAddr + 1]))>>2) & 0x3ff)>>2;
 			Write_line_buf[x*4 + 3]  = Blu;
 			Write_line_buf[x*4 + 2]  = Red;
@@ -108,10 +114,17 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 			//Write_line_buf[x*4 + 2] = ((Blue&0x03)<<6 |(Red&0x3F));
 			//Write_line_buf[x*4 + 1] = ((Green&0x0F)|(Red)<<4)&0xFF;
 			//Write_line_buf[x*4 + 0] = (Green&0x3F);
-            if(y<1 && x<5){
-            printf  ("Y:%i X:%i Blu:%x  Green:%x  Red:%x  \r\n",y,x,Blu,Green,Red);
+            
+			Blu_x10   = data_buf[x*4 + iPixelAddr + 3];
+			Red_x10   = data_buf[x*4 + iPixelAddr + 2];
+			Green_x10 = data_buf[x*4 + iPixelAddr + 1];
+			Rgb_x10   = data_buf[x*4 + iPixelAddr + 0];
+            
+            
+            //if(Blu_x10!=0 | Red_x10!=0 | Green_x10!=0 | Rgb_x10!=0){
+            //printf  ("Y:%i X:%i    Blu:%x  Red:%x  Green:%x  Rgb_x10:%x\r\n",y,x,Blu_x10,Red_x10,Green_x10,Rgb_x10);
             //printf  ("Y:%i X:%i Blue:%x  Green:%x  Red:%x \r\n",y,x,(unsigned)Blue,(unsigned)Green,(unsigned)Red);
-            }
+            //}
 		}
 		res = f_write(fil, Write_line_buf, Ximage*4, &br) ;
 		if(res != FR_OK)
@@ -123,51 +136,4 @@ void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil
 		iPixelAddr -= stride;
 	}
 	f_close(fil);
-}
-void bmp_tx(char * name, char *head_buf, Xuint32 *data_buf, u32 stride, FIL *fil)
-{
-    u64 adrSof;
-    u8  nAddre;
-    int  pix;
-	short y,x;
-	u32 iPixelAddr = 0;
-    UINT bw;
-	FRESULT res;
-	unsigned int br;
-    adrSof  = 0x317BF00;
-    nAddre  = 0x1;
-    int len;
-	res = f_open(fil, name, FA_CREATE_ALWAYS | FA_WRITE);
-	if(res != FR_OK)
-	{
-		printf("error: f_open Failed!\r\n") ;
-		return ;
-	}
-	res = f_write(fil, head_buf, 54, &br) ;
-	if(res != FR_OK)
-	{
-		f_close(fil);
-		printf("error: f_write Failed!\r\n") ;
-		return ;
-	}
-    printf  ("1ST PIXEL VALUE %i\n",(unsigned)(data_buf[0] & 0x03ff));
-        for(x = 0; x < 1920*1080; x++) {
-            unsigned char buffer[PIXEL_LENGTH] = { 0 };
-            pix = ((data_buf[x] & 0x03ff)>>1);
-            len =snprintf((void*)buffer,sizeof(buffer),"%d ",pix);
-            unsigned char *response = (void*)buffer;
-            res = f_write(fil,response,len,&bw);
-            if(res != FR_OK)
-            {
-                printf("error: f_write Failed!\r\n") ;
-                return;
-            }
-        }
-        res = f_write(fil,"\n", 1, &bw);
-        if(res != FR_OK)
-        {
-            printf("error: f_write Failed!\r\n") ;
-            return ;
-        }
-        res = f_close(fil);
 }

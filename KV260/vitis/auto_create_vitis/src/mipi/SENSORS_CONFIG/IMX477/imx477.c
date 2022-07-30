@@ -2340,6 +2340,23 @@ struct reginfo RGB_GAIN_SETTINGS[] =
 	{REG_MODE_SEL,          0x00},
 	{SEQUENCE_END,          0x00}
 };
+
+struct reginfo RGB_COLOR1_SETTINGS[] = 
+{
+	/*GAIN SETTING*/
+	{REG_MODE_SEL,                         0x00},
+	{REG_DIG_GAIN_GR_U,                    0x01},
+	{REG_DIG_GAIN_R_U,                     0x03},
+	{REG_DIG_GAIN_B_U,                     0x03},
+	{REG_DIG_GAIN_GB_U,                    0x01},
+	{REG_ANA_GLOBAL_GAIN_U,                0x0A},
+	{REG_COARSE_INTEGRATION_TIME_MSB,      0x7F},
+	{REG_MODE_SEL,                         0x01},
+	{SEQUENCE_END,                         0x00}
+};
+
+
+
 int imx477_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX477_ADDR,addr);
@@ -2390,6 +2407,7 @@ int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
                 imx_477_sensor_write_array(IicInstance,mode_2028x1520_regs);
             } else if (config_number == 3) {
                 imx_477_sensor_write_array(IicInstance,mode1_1920x1080p_regs);
+                imx_477_sensor_write_array(IicInstance,RGB_COLOR1_SETTINGS);
             } else if (config_number == 4) {
                 imx_477_sensor_write_array(IicInstance,mode2_1920x1080p_regs);
             } else if (config_number == 5) {

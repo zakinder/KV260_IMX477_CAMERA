@@ -103,6 +103,12 @@
 #define imx477c4                0x045CCC8F6
 #define imx477c5                0x045CCC8F7
 #define imx477c6                0x045CCC8F8
+#define imx477s1                0x45CCC993
+#define imx477s2                0x45CCC994
+#define imx477s3                0x45CCC995
+#define imx477s4                0x45CCC996
+#define imx477s5                0x45CCC997
+#define imx477s6                0x45CCC998
 #define readpixels              0x25738CEF
 #define lwip                    0x1D8E6
 #define pics                    0x1E2D5

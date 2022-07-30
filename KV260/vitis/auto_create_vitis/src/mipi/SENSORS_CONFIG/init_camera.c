@@ -56,7 +56,7 @@ int init_camera()
   	if (Status == 519) {
   		return 519;
   	}
-    Status = imx682_sensor_init(&iic_cam,0);
+    Status = imx682_sensor_init(&iic_cam,1);
   	if (Status == 682) {
   		return 682;
   	}
@@ -83,7 +83,7 @@ void read_imx477_reg(u16 addr)
 	int Status;
 	print("IMX477 Camera\n\r");
     Status = imx477_sensor_init(&iic_cam,addr);
-  	if (Status != XST_SUCCESS) {
+  	if (Status != 477) {
   		print("IMX477 Camera Sensor Not connected\n\r");
   	}
 }
@@ -173,9 +173,8 @@ int scan_sensor2(XIicPs *IicInstance)
 	u8 sensor_id[2];
 	for(int address = 0; address < 255; address++)
 	 {
-		scan_read(IicInstance, address, &sensor_id[0],0x3C);
-		scan_read(IicInstance, address+255, &sensor_id[1],0x3C);
-		usleep(100);
+		scan_read(IicInstance, 0x300a, &sensor_id[0],address);
+		scan_read(IicInstance, 0x300b, &sensor_id[1],address);
 		printf("%x is %x %x\r\n",address, sensor_id[0], sensor_id[1]);
 	 }
 	return 0;
