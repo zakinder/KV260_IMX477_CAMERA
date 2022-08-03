@@ -227,3 +227,93 @@ void fetch_rgb_data() {
 	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
 	return;
 }
+
+
+int vdma_write_init_x(short DeviceID,XAxiVdma *Vdma,short HoriSizeInput,short VertSizeInput,short Stride,unsigned int FrameStoreStartAddr0,unsigned int FrameStoreStartAddr1,unsigned int FrameStoreStartAddr2)
+{
+	//XAxiVdma Vdma;
+	XAxiVdma_Config *Config;
+	XAxiVdma_FrameCounter FrameCfg;
+	XAxiVdma_DmaSetup WriteCfg;
+	int Status;
+
+
+	Config = XAxiVdma_LookupConfig(DeviceID);
+	if (NULL == Config) {
+		xil_printf("XAxiVdma_LookupConfig failure\r\n");
+		return XST_FAILURE;
+	}
+
+	Status = XAxiVdma_CfgInitialize(Vdma, Config, Config->BaseAddress);
+	if (Status != XST_SUCCESS) {
+		xil_printf("XAxiVdma_CfgInitialize failure\r\n");
+		return XST_FAILURE;
+	}
+
+/*
+	Status = XAxiVdma_SetFrmStore(Vdma, 3,XAXIVDMA_WRITE);
+	if (Status != XST_SUCCESS) {
+
+		xil_printf(
+		    "Setting Frame Store Number Failed in Write Channel"
+							" %d\r\n", Status);
+
+		return XST_FAILURE;
+	}
+*/
+	FrameCfg.WriteFrameCount = 1;
+	FrameCfg.WriteDelayTimerCount = 10;
+
+	Status = XAxiVdma_SetFrameCounter(Vdma, &FrameCfg);
+	if (Status != XST_SUCCESS) {
+		xil_printf(
+			"Set frame counter failed %d\r\n", Status);
+
+		if(Status == XST_VDMA_MISMATCH_ERROR)
+			xil_printf("DMA Mismatch Error\r\n");
+
+		return XST_FAILURE;
+	}
+
+	WriteCfg.EnableCircularBuf = 0;
+	WriteCfg.EnableFrameCounter = 0;
+	WriteCfg.FixedFrameStoreAddr = 0;
+
+	WriteCfg.EnableSync = 1;
+	WriteCfg.PointNum = 1;
+
+	WriteCfg.FrameDelay = 0;
+
+	WriteCfg.VertSizeInput = VertSizeInput;
+	WriteCfg.HoriSizeInput = HoriSizeInput;
+	WriteCfg.Stride = Stride;
+
+	Status = XAxiVdma_DmaConfig(Vdma, XAXIVDMA_WRITE, &WriteCfg);
+	if (Status != XST_SUCCESS) {
+			xdbg_printf(XDBG_DEBUG_ERROR,
+				"Read channel config failed %d\r\n", Status);
+
+			return XST_FAILURE;
+	}
+
+
+	WriteCfg.FrameStoreStartAddr[0] = FrameStoreStartAddr0;
+	WriteCfg.FrameStoreStartAddr[1] = FrameStoreStartAddr1;
+	WriteCfg.FrameStoreStartAddr[2] = FrameStoreStartAddr2;
+
+	Status = XAxiVdma_DmaSetBufferAddr(Vdma, XAXIVDMA_WRITE, WriteCfg.FrameStoreStartAddr);
+	if (Status != XST_SUCCESS) {
+			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel set buffer address failed %d\r\n", Status);
+			return XST_FAILURE;
+	}
+
+
+	//Status = vdma_write_start(&Vdma);
+	//if (Status != XST_SUCCESS) {
+		   //xil_printf("error starting VDMA..!");
+		  // return Status;
+	//}
+	return XST_SUCCESS;
+
+}
+

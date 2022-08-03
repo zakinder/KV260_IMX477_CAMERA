@@ -22,7 +22,7 @@
 struct ip4_addr remote_add= {0};
 ip_addr_t *add = NULL;
 u16_t portnow;
-extern struct netif server_netif;
+extern struct netif netif;
 static struct udp_pcb *pcb;
 //static struct perf_stats server;
 /* Report interval in ms */
@@ -124,6 +124,17 @@ void start_application(void)
 
 	return;
 }
+void print_app_header(void)
+{
+	xil_printf("UDP server listening on port %d\r\n",
+			UDP_CONN_PORT);
+	xil_printf("On Host: Run client\r\n",
+			inet_ntoa(netif.ip_addr),
+			INTERIM_REPORT_INTERVAL);
+
+}
+
+
 /*
 int sendpic(const char *pic, int piclen, int sn)
 {

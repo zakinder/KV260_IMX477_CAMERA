@@ -27,17 +27,15 @@
 #include "VDMA/vdma.h"
 #include "VTC/vtc.h"
 #include "SDCARD/bmp.h"
-
 VideoMode video;
 u32 frameBuf[DISPLAY_NUM_FRAMES][DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
 u32 *pFrames[DISPLAY_NUM_FRAMES];
 int main()
-
 {
     video = VMODE_1920x1080;
 	int i,connected_camera;
     connected_camera=init_camera();
-    printf("connected_camera = %i \n\r",connected_camera);
+    //printf("connected_camera = %i \n\r",connected_camera);
     demosaic_init();
     vtc_init(video);
 	for (i = 0; i < DISPLAY_NUM_FRAMES; i++)
@@ -45,9 +43,9 @@ int main()
 		pFrames[i] = frameBuf[i];
         memset(pFrames[i], 0, DEMO_MAX_FRAME);
 	}
-    run_dppsu((unsigned int)pFrames[1]);
-    vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,DEMO_STRIDE,VIDEO_ROWS,DEMO_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
-    //lwip_loop();
+    //run_dppsu((unsigned int)pFrames[1]);
+    //vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,DEMO_STRIDE,VIDEO_ROWS,DEMO_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
+    lwip_loop();
      while(1){
          menu_calls(TRUE,(char *)&BMODE_1920x1080,pFrames[0], DEMO_STRIDE,connected_camera);
      }
