@@ -201,16 +201,17 @@ void fetch_rgb_data() {
     Xil_DCacheFlush();
 	for (j = 0; j < 5; j++) {
             for (i = 0; i < res; i++) {
-                Red           = (pS2MM_Mem[i] & 0x3ff00000)>>20;
-                Green         = (pS2MM_Mem[i] & 0x000ffc00)>>10;
-                Blue          = (pS2MM_Mem[i] & 0x000003ff);
-            if(j<1 && i<5){
-            printf  ("Y:%i X:%i Red:%x  Green:%x  Blue:%x \r\n",j,i,Red,Green,Blue);
-            //printf  ("Y:%i X:%i Blue:%x  Green:%x  Red:%x \r\n",y,x,(unsigned)Blue,(unsigned)Green,(unsigned)Red);
-            }
-                //Red                = 0x0222;
-                //Green              = 0x0333;
-                //Blue               = 0x0111;
+                
+                //Red           = (pS2MM_Mem[i] & 0x3ff00000)>>20;
+                //Green         = (pS2MM_Mem[i] & 0x000ffc00)>>10;
+                //Blue          = (pS2MM_Mem[i] & 0x000003ff);
+                //if(j<1 && i<5){
+                //printf  ("Y:%i X:%i Red:%x  Green:%x  Blue:%x \r\n",j,i,Red,Green,Blue);
+                ////printf  ("Y:%i X:%i Blue:%x  Green:%x  Red:%x \r\n",y,x,(unsigned)Blue,(unsigned)Green,(unsigned)Red);
+                //}
+                Red                = 0x0033;
+                Green              = 0x0022;
+                Blue               = 0x0011;
                 //uint32_t Cb       = (uint32_t)((((((int)Blue) * 1) + (((int)Red) * 0) + (((int)Green) * 0)) / 1));
                 //uint32_t Cr       = (uint32_t)((((((int)Blue) * 0) + (((int)Red) * 1) + (((int)Green) * 0)) / 1));
                 //uint32_t Y1       = (uint32_t)((((((int)Blue) * 0) + (((int)Red) * 0) + (((int)Green) * 1)) / 1));

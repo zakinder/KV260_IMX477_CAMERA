@@ -152,6 +152,6 @@ static const BmpMode BMODE_1920x1080 = {
 //};
 
 
-void bmp_read(char * bmp,u8 *frame,u32 stride, FIL *fil) ;
-void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil) ;
+//void bmp_read(char * bmp,u8 *frame,u32 stride, FIL *fil) ;
+//void bmp_write(char * name, char *head_buf, char *data_buf, u32 stride, FIL *fil) ;
 
