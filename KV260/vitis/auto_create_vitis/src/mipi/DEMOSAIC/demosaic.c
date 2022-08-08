@@ -26,6 +26,6 @@ int demosaic_init() {
 	}
 	XV_demosaic_EnableAutoRestart(&demosaic);
 	XV_demosaic_Start(&demosaic);
-	xil_printf("Demosiac module initialized\r\n");
+	//xil_printf("Demosiac module initialized\r\n");
 	return XST_SUCCESS;
 }

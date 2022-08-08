@@ -6,5 +6,5 @@ setlocal
 @cd %batchfile_path%
 @echo -- Run : %batchfile_name%
 @echo -- Current Design Path: %batchfile_path%
-@set  driverletter= R
+@set  driverletter= Z
 @subst %driverletter%: /D

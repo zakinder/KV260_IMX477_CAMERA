@@ -46,7 +46,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         per_write_reg(REG19,4);  
     }
     if(connected_camera == 477){
-        per_write_reg(REG19,4);  
+        per_write_reg(REG19,3);
     }
     if(connected_camera == 682){
         per_write_reg(REG19,4);
@@ -238,7 +238,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
             current_state = mainmenu;break;
         case readpixels:
-        	fetch_rgb_data();
+        	//fetch_rgb_data();
             current_state = mainmenu;break;
         case lwip:
         	lwip_loop();
@@ -397,7 +397,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             per_write_reg(REG15,8);
             k_number = 3;
             read_imx477_reg(k_number);
-            current_state = mainmenu;break;
+            current_state = lwip;break;
         case quit:
             menu_calls_enable = FALSE;
             break;
