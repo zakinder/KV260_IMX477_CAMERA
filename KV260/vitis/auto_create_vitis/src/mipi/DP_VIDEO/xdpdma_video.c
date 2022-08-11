@@ -68,9 +68,9 @@
 #define AVBUF_BASEADDR		XPAR_PSU_DP_BASEADDR
 #define DPDMA_BASEADDR		XPAR_PSU_DPDMA_BASEADDR
 
-#define BUFFERSIZE			DEMO_MAX_FRAME		/* HTotal * VTotal * BPP */
-#define LINESIZE			DEMO_STRIDE			/* HTotal * BPP */
-#define STRIDE				LINESIZE			/* The stride value should
+#define BUFFERSIZE			VIDEO1_MAX_FRAME		/* HTotal * VTotal * BPP */
+#define LINESIZE			VIDEO1_STRIDE			/* HTotal * BPP */
+#define STRIDE				LINESIZE			    /* The stride value should
 													be aligned to 256*/
 
 /************************** Variable Declarations ***************************/

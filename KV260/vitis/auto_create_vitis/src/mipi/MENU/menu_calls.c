@@ -13,7 +13,7 @@
 static FIL fil;
 static FATFS fatfs;
 static char *SD_File;
-u8 photobufs[DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
+u8 photobufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
 void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
@@ -43,10 +43,10 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         per_write_reg(REG19,4);  
     }
     if(connected_camera == 519){
-        per_write_reg(REG19,4);  
+        per_write_reg(REG19,4);
     }
     if(connected_camera == 477){
-        per_write_reg(REG19,4);  
+        per_write_reg(REG19,4);
     }
     if(connected_camera == 682){
         per_write_reg(REG19,4);
@@ -255,7 +255,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             char_to_uart(FileName);
             SD_File  = (char *)FileName;
             sprintf(PhotoName, "1:/%s.BMP", SD_File);
-            memcpy(&photobufs,data_buf,DEMO_MAX_FRAME) ;
+            memcpy(&photobufs,data_buf,VIDEO2_MAX_FRAME);
         	bmp_write(PhotoName,head_buf,(char *)&photobufs,stride,&fil);
             current_state = mainmenu;break;
         case imx477wr:
@@ -397,7 +397,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             per_write_reg(REG15,8);
             k_number = 3;
             read_imx477_reg(k_number);
-            current_state = mainmenu;break;
+            current_state = lwip;break;
         case quit:
             menu_calls_enable = FALSE;
             break;

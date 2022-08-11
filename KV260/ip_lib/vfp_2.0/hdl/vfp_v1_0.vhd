@@ -49,6 +49,18 @@ entity vfp_v1_0 is
         ovideo_tlast              : out std_logic;
         ovideo_tready             : in std_logic;
         ovideo_tuser              : out std_logic;
+        
+        o1video_aclk               : in std_logic;
+        o1video_aresetn            : in std_logic;
+        o1video_tvalid             : out std_logic;
+        o1video_tkeep              : out std_logic_vector(2 downto 0);
+        o1video_tdata              : out std_logic_vector(23 downto 0);
+        o1video_tstrb              : out std_logic_vector(2 downto 0);
+        o1video_tlast              : out std_logic;
+        o1video_tready             : in std_logic;
+        o1video_tuser              : out std_logic;
+        
+        
         rgb_fr_plw_red            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_gre            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_blu            : out std_logic_vector(9 downto 0);
@@ -456,12 +468,23 @@ process (ivideo_aclk)begin
     end if;
     end if;
 end process;
+
+
    ovideo_tstrb           <= ivideo_tstrb;
    ovideo_tkeep           <= ivideo_tkeep;
    ovideo_tdata           <= "00" & rgb_fr_ccm.red & rgb_fr_ccm.green & rgb_fr_ccm.blue;
    ovideo_tvalid          <= rgb_fr_ccm.valid;
    ovideo_tuser           <= rgb_fr_ccm.sof;
    ovideo_tlast           <= rgb_fr_ccm.eol;
+   
+   o1video_tstrb           <= ivideo_tstrb(2 downto 0);
+   o1video_tkeep           <= ivideo_tkeep(2 downto 0);
+-- o1video_tdata           <= rgb_fr_ccm.red(9 downto 2) & rgb_fr_ccm.green(9 downto 2) & rgb_fr_ccm.blue(9 downto 2);
+   o1video_tdata           <= rgb_fr_ccm.green(9 downto 2) & rgb_fr_ccm.blue(9 downto 2) & rgb_fr_ccm.red(9 downto 2);
+   o1video_tvalid          <= rgb_fr_ccm.valid;
+   o1video_tuser           <= rgb_fr_ccm.sof;
+   o1video_tlast           <= rgb_fr_ccm.eol;
+   
    rgb_fr_plw_red         <= rgb_fr_ccm.red;
    rgb_fr_plw_gre         <= rgb_fr_ccm.green;
    rgb_fr_plw_blu         <= rgb_fr_ccm.blue;

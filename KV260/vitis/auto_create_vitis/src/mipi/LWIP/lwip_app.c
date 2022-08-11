@@ -14,35 +14,48 @@
 #include "xil_cache.h"
 #include "lwip/dhcp.h"
 #include "../SDCARD/bmp.h"
-#define IMG_W 1920
-#define IMG_H 1080
-#define UDP_BUFF_SIZE IMG_W*4
-#define frame_length_curr 4*1920*1080
-#define DEFAULT_IP_ADDRESS	"192.168.1.10"
+#include "string.h"
+#include "../VDMA/vdma.h"
+
+
+#define UDP_BUFF_SIZE 1440
+
+#define frame_length_curr 3*VIDEO2_COLUMNS*VIDEO2_ROWS
+u8 bmpbufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
+extern u8 *pFrames1[NUM_FRAMES];
+
+#define DEFAULT_IP_ADDRESS	"192.168.0.10"
 #define DEFAULT_IP_MASK		"255.255.255.0"
-#define DEFAULT_GW_ADDRESS	"192.168.1.1"
-u8 bmpbufs[DEMO_MAX_FRAME] __attribute__ ((aligned(256)));
+#define DEFAULT_GW_ADDRESS	"192.168.0.1"
+
 void platform_enable_interrupts(void);
 int WriteOneFrameEnd[2]={-1,-1};
+static int WriteError;
+int wr_index[2]={0,0};
+int rd_index[2]={0,0};
 static struct udp_pcb *udp8080_pcb = NULL;
-static struct pbuf *udp8080_q = NULL;
-static int udp8080_qlen = 0;
 ip_addr_t target_addr;
 char TargetHeader[8] = { 0, 0x00, 0x01, 0x00, 0x02 };
 unsigned char ip_export[4];
 unsigned char mac_export[6];
-extern u8 *pFrames[DISPLAY_NUM_FRAMES];
+
 extern int WriteOneFrameEnd[2];
-extern char targetPicHeader[8];
-char targetPicHeader[8]={0, 0x00, 0x02, 0x00, 0x02};
 int start_udp(unsigned int port);
-int sendpic(const char *pic, int piclen, int sn);
+int tx_bmp(const char *bmp, int bmp_length, int sn);
 void lwip_init();
+int frame_id1 = 1;
 extern volatile int dhcp_timoutcntr;
 err_t dhcp_start(struct netif *netif);
 static struct netif server_netif;
 struct netif *netif;
 u32 k_number;
+extern char targetPicHeader[8];
+char targetPicHeader[8]={0, 0x00, 0x02, 0x00, 0x02};
+
+static void WriteCallBack0(void *CallbackRef, u32 Mask);
+static void WriteErrorCallBack(void *CallbackRef, u32 Mask);
+
+
 void print_ip(char *msg, ip_addr_t *ip)
 {
 	print(msg);
@@ -72,12 +85,11 @@ int lwip_loop()
 {
 	struct netif *netif;
 	ip_addr_t ipaddr, netmask, gw;
-	unsigned char mac_ethernet_address[] =
-	{0x00,0x0a,0x35,0x00,0x01,0x02};
+	unsigned char mac_ethernet_address[] = {0x00,0x0a,0x35,0x00,0x01,0x02};
 	netif = &server_netif;
 	init_platform();
-	ipaddr.addr = 0;
-	gw.addr = 0;
+	ipaddr.addr  = 0;
+	gw.addr      = 0;
 	netmask.addr = 0;
 	xil_printf("\r\n\r\n");
 	lwip_init();
@@ -88,12 +100,6 @@ int lwip_loop()
 	netif_set_default(netif);
 	platform_enable_interrupts();
 	netif_set_up(netif);
-#if (LWIP_IPV6 == 0)
-#if (LWIP_DHCP==1)
-	/* Create a new DHCP client for this interface.
-	 * Note: you must call dhcp_fine_tmr() and dhcp_coarse_tmr() at
-	 * the predefined regular intervals after starting the client.
-	 */
 	dhcp_start(netif);
 	dhcp_timoutcntr = 24;
 	while(((netif->ip_addr.addr) == 0) && (dhcp_timoutcntr > 0))
@@ -102,72 +108,136 @@ int lwip_loop()
             if ((netif->ip_addr.addr) == 0) {
                 xil_printf("DHCP Timeout\r\n");
                 xil_printf("Configuring default IP of 192.168.1.10\r\n");
-                IP4_ADDR(&(netif->ip_addr),  192, 168,   1, 10);
+                IP4_ADDR(&(netif->ip_addr),  192, 168,   0, 10);
                 IP4_ADDR(&(netif->netmask), 255, 255, 255,  0);
-                IP4_ADDR(&(netif->gw),      192, 168,   1,  1);
+                IP4_ADDR(&(netif->gw),      192, 168,   0,  1);
             }
         }
 	ipaddr.addr  = netif->ip_addr.addr;
 	gw.addr      = netif->gw.addr;
 	netmask.addr = netif->netmask.addr;
-#endif
 	print_ip_settings(&ipaddr, &netmask, &gw);
 	memcpy(ip_export,&ipaddr, 4);
 	memcpy(mac_export,&mac_ethernet_address, 6);
-#endif
 	start_udp(8080);
-	int index;
 	while (1) {
 		xemacif_input(netif);
+		WriteOneFrameEnd[0] = 1;
 		if((WriteOneFrameEnd[0] >= 0))
 		{
-			index = 1;
-			int sn = 1;
-			int i;
-			int cot;
-			Xil_DCacheInvalidateRange((u32)pFrames[index], frame_length_curr+1920*4);
-            fetch_rgb_data();
-            memcpy(&bmpbufs,(u32)pFrames[index],DEMO_MAX_FRAME);
-			for(i=0;i<=(frame_length_curr+1920*4);i+=1920*4)
+			int sn = 0;
+			//Xil_DCacheInvalidateRange((u32)pFrames1[0], VIDEO2_MAX_FRAME);
+            memcpy(&bmpbufs,(u32)pFrames1[0],VIDEO2_MAX_FRAME);
+#if P540 == 1
+            tx_bmp((const char *)&BMODE_1920x540, 54,0);
+			for(int i=0;i<=(VIDEO2_MAX_FRAME+(0*UDP_BUFF_SIZE))/2;i+=UDP_BUFF_SIZE)
 			{
-              sendpic((const char *)&bmpbufs+i,1920*4,sn++);
+			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
+			      usleep(40);
 			}
-            WriteOneFrameEnd[0] = -1;
+#else
+            tx_bmp((const char *)&BMODE_1920x1080, 54,0);
+			for(int i=0;i<=(VIDEO2_MAX_FRAME+(1*UDP_BUFF_SIZE));i+=UDP_BUFF_SIZE)
+			{
+			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
+			      usleep(15);
+			}
+#endif
 		}
 	}
 	cleanup_platform();
 	return 0;
 }
+int tx_bmp(const char *bmp, int bmp_length, int sn)
+{
+	struct pbuf *q;
+    q = pbuf_alloc(PBUF_TRANSPORT, bmp_length, PBUF_POOL);
+	if(!q)
+	{
+		xil_printf("pbuf_alloc %d fail\n\r", bmp_length+8);
+		return -3;
+	}
+    memcpy(q->payload, bmp, bmp_length);
+	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
+	pbuf_free(q);
+	return 0;
+}
+int transfer_data_x(const char *pData, int cam,int frame, int seq, int len)
+{
+	//xil_printf("%d\r\n",seq);
+	//if (add==NULL){
+	//	return 0;
+	//}
+
+	char buff[5] = {0,frame,seq >> 16,seq >> 8,seq};
+
+	if (cam ==1) buff[0] = 1;
+	//print the udp send header
+	//xil_printf("%d %d %d\n",buff[0],buff[1], seq);
+	struct pbuf *q;
+	q = pbuf_alloc(PBUF_TRANSPORT, len+5, PBUF_POOL);
+	if (q == NULL){
+		xil_printf("pbuf allo fail");
+		return -2;
+	}
+	/* copy data to pbuf payload */
+	memcpy(q->payload, buff, 5);
+	memcpy(q->payload+5, pData, len);
+	q->len = len+5;
+	q->tot_len = len+5;
+	/* Start to send udp data */
+	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
+	pbuf_free(q);
+	return 0;
+}
 int sendpic(const char *pic, int piclen, int sn)
 {
-    xil_printf("sn %d\n\r",sn);
+	//if(!targetPicHeader[0])
+	//{
+	//	return -1;
+	//}
 	targetPicHeader[5] = sn>>16;
 	targetPicHeader[6] = sn>>8;
 	targetPicHeader[7] = sn>>0;
+
 	struct pbuf *q;
-    q = pbuf_alloc(PBUF_TRANSPORT, piclen, PBUF_POOL);
+	q = pbuf_alloc(PBUF_TRANSPORT, 8+piclen, PBUF_POOL);
 	if(!q)
 	{
-		xil_printf("pbuf_alloc %d fail\n\r", piclen+8);
+		//xil_printf("pbuf_alloc %d fail\n\r", piclen+8);
 		return -3;
 	}
-    memcpy(q->payload, pic, piclen);
+
+	memcpy(q->payload, targetPicHeader, 0);
+	memcpy(q->payload+0, pic, piclen);
+	q->len = q->tot_len = 0+piclen;
 	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
 	pbuf_free(q);
 	return 0;
 }
 void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr_t *addr, u16_t port) {
     char *pData;
-    char buff[100];
     int i;
+    int a1,a2,a3;
+    int a4=0;
     if(p_rx != NULL)
     {
     pData = (char *)p_rx->payload;
     if(p_rx->len >= 1){
-            xil_printf("Data= %d %d %d %d %d %d\n\r", (int)pData[0],(int)pData[1],(int)pData[2],(int)pData[3],(int)pData[4],(int)pData[5]);
-            sendpic((const char *)&BMODE_1920x1080, 54,0);
+        a1 = concat((int)pData[0], (int)pData[1]);
+        a2 = concat((int)pData[2], (int)pData[3]);
+        a3 = concat((int)pData[4], (int)pData[5]);
+        a4 = (int)pData[6];
+        if(a4==1){
+        	WriteOneFrameEnd[0] = 1;
+        }else{
+        	WriteOneFrameEnd[0] = -1;
+        }
+            xil_printf("Data= %i %i %i\n\r", a1,a2,a3);
+            per_write_reg(0,a1);
+            per_write_reg(20,a2);
+            per_write_reg(36,a3);
             memcpy(&target_addr, addr, sizeof(target_addr));
-            WriteOneFrameEnd[0] = 0;
     }
     pbuf_free(p_rx);
     }
@@ -185,6 +255,47 @@ int start_udp(unsigned int port) {
 		return -2;
 	}
 	udp_recv(udp8080_pcb, udp_recive, 0);
-	IP4_ADDR(&target_addr, 192,168,1,42);
+	IP4_ADDR(&target_addr, 192,168,0,42);
 	return 0;
 }
+int concat(int x, int y){
+    char str1[10];
+    char str2[10];
+    sprintf(str1,"%d",x);
+    sprintf(str2,"%d",y);
+    strcat(str1,str2);
+    return atoi(str1);
+}
+static void WriteCallBack0(void *CallbackRef, u32 Mask)
+{
+	if (Mask & XAXIVDMA_IXR_FRMCNT_MASK)
+	{
+		if(WriteOneFrameEnd[0] >= 0)
+		{
+			return;
+		}
+		int hold_rd = rd_index[0];
+		if(wr_index[0]==2)
+		{
+			wr_index[0]=0;
+			rd_index[0]=2;
+		}
+		else
+		{
+			rd_index[0] = wr_index[0];
+			wr_index[0]++;
+		}
+		/* Set park pointer */
+		XAxiVdma_StartParking((XAxiVdma*)CallbackRef, wr_index[0], XAXIVDMA_WRITE);
+		WriteOneFrameEnd[0] = hold_rd;
+
+	}
+}
+
+static void WriteErrorCallBack(void *CallbackRef, u32 Mask)
+{
+	if (Mask & XAXIVDMA_IXR_ERROR_MASK) {
+		WriteError += 1;
+	}
+}
+
