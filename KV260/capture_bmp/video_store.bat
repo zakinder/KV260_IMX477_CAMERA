@@ -1,1 +1,0 @@
-ffmpeg.exe -i "udp://127.0.0.0:8080?overrun_nonfatal=1&fifo_size=50000000" -threads 8 -vcodec libx264 -crf 0 -preset ultrafast -vf vflip video_1.mp4

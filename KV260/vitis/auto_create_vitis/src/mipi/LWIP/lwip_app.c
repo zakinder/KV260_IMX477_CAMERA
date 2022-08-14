@@ -16,11 +16,11 @@
 #include "../SDCARD/bmp.h"
 #include "string.h"
 #include "../VDMA/vdma.h"
-
-
+#include "../MENU/menu_calls.h"
+#include "../SENSORS_CONFIG/init_camera.h"
 #define UDP_BUFF_SIZE 1440
 
-#define frame_length_curr 3*VIDEO2_COLUMNS*VIDEO2_ROWS
+#define frame_length_curr VIDEO2_MAX_FRAME
 u8 bmpbufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
 extern u8 *pFrames1[NUM_FRAMES];
 
@@ -54,8 +54,8 @@ char targetPicHeader[8]={0, 0x00, 0x02, 0x00, 0x02};
 
 static void WriteCallBack0(void *CallbackRef, u32 Mask);
 static void WriteErrorCallBack(void *CallbackRef, u32 Mask);
-
-
+int stream_it;
+int delay;
 void print_ip(char *msg, ip_addr_t *ip)
 {
 	print(msg);
@@ -83,6 +83,9 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 int lwip_loop()
 {
+	stream_it = -1;
+	delay     = 12;
+	WriteOneFrameEnd[0] = -1;
 	struct netif *netif;
 	ip_addr_t ipaddr, netmask, gw;
 	unsigned char mac_ethernet_address[] = {0x00,0x0a,0x35,0x00,0x01,0x02};
@@ -106,8 +109,8 @@ int lwip_loop()
 		xemacif_input(netif);
         if (dhcp_timoutcntr <= 0) {
             if ((netif->ip_addr.addr) == 0) {
-                xil_printf("DHCP Timeout\r\n");
-                xil_printf("Configuring default IP of 192.168.1.10\r\n");
+                //xil_printf("DHCP Timeout\r\n");
+                //xil_printf("Configuring default IP of 192.168.1.10\r\n");
                 IP4_ADDR(&(netif->ip_addr),  192, 168,   0, 10);
                 IP4_ADDR(&(netif->netmask), 255, 255, 255,  0);
                 IP4_ADDR(&(netif->gw),      192, 168,   0,  1);
@@ -122,7 +125,6 @@ int lwip_loop()
 	start_udp(8080);
 	while (1) {
 		xemacif_input(netif);
-		WriteOneFrameEnd[0] = 1;
 		if((WriteOneFrameEnd[0] >= 0))
 		{
 			int sn = 0;
@@ -137,13 +139,15 @@ int lwip_loop()
 			}
 #else
             tx_bmp((const char *)&BMODE_1920x1080, 54,0);
-			for(int i=0;i<=(VIDEO2_MAX_FRAME+(1*UDP_BUFF_SIZE));i+=UDP_BUFF_SIZE)
+			for(int i=0;i<=(VIDEO2_MAX_FRAME+(0*UDP_BUFF_SIZE));i+=UDP_BUFF_SIZE)
 			{
 			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
-			      usleep(15);
+			      usleep(delay);
 			}
+			usleep(0.25);
 #endif
 		}
+		WriteOneFrameEnd[0] = stream_it;
 	}
 	cleanup_platform();
 	return 0;
@@ -162,81 +166,80 @@ int tx_bmp(const char *bmp, int bmp_length, int sn)
 	pbuf_free(q);
 	return 0;
 }
-int transfer_data_x(const char *pData, int cam,int frame, int seq, int len)
-{
-	//xil_printf("%d\r\n",seq);
-	//if (add==NULL){
-	//	return 0;
-	//}
 
-	char buff[5] = {0,frame,seq >> 16,seq >> 8,seq};
-
-	if (cam ==1) buff[0] = 1;
-	//print the udp send header
-	//xil_printf("%d %d %d\n",buff[0],buff[1], seq);
-	struct pbuf *q;
-	q = pbuf_alloc(PBUF_TRANSPORT, len+5, PBUF_POOL);
-	if (q == NULL){
-		xil_printf("pbuf allo fail");
-		return -2;
-	}
-	/* copy data to pbuf payload */
-	memcpy(q->payload, buff, 5);
-	memcpy(q->payload+5, pData, len);
-	q->len = len+5;
-	q->tot_len = len+5;
-	/* Start to send udp data */
-	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
-	pbuf_free(q);
-	return 0;
-}
-int sendpic(const char *pic, int piclen, int sn)
-{
-	//if(!targetPicHeader[0])
-	//{
-	//	return -1;
-	//}
-	targetPicHeader[5] = sn>>16;
-	targetPicHeader[6] = sn>>8;
-	targetPicHeader[7] = sn>>0;
-
-	struct pbuf *q;
-	q = pbuf_alloc(PBUF_TRANSPORT, 8+piclen, PBUF_POOL);
-	if(!q)
-	{
-		//xil_printf("pbuf_alloc %d fail\n\r", piclen+8);
-		return -3;
-	}
-
-	memcpy(q->payload, targetPicHeader, 0);
-	memcpy(q->payload+0, pic, piclen);
-	q->len = q->tot_len = 0+piclen;
-	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
-	pbuf_free(q);
-	return 0;
-}
 void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr_t *addr, u16_t port) {
     char *pData;
-    int i;
+
     int a1,a2,a3;
-    int a4=0;
+    int a4,a5,a6;
+    int a7,a8,a9;
+
+
+    int a0=0;
     if(p_rx != NULL)
     {
     pData = (char *)p_rx->payload;
     if(p_rx->len >= 1){
-        a1 = concat((int)pData[0], (int)pData[1]);
-        a2 = concat((int)pData[2], (int)pData[3]);
-        a3 = concat((int)pData[4], (int)pData[5]);
-        a4 = (int)pData[6];
-        if(a4==1){
+    	stream_it = -1;
+    	WriteOneFrameEnd[0] = -1;
+    	a0 = (int)pData[0];
+        if(a0==3){
+        	// udp stream delay
+        	delay = (int)pData[19];
+            xil_printf("delay= %d\n\r",delay);
         	WriteOneFrameEnd[0] = 1;
-        }else{
+        	stream_it = -1;
+        }else if(a0==4){
         	WriteOneFrameEnd[0] = -1;
+        	stream_it = -1;
+            a1 = concat((int)pData[1], (int)pData[2]);
+            a2 = concat((int)pData[3], (int)pData[4]);
+            a3 = concat((int)pData[5], (int)pData[6]);
+            a4 = concat((int)pData[7], (int)pData[8]);
+            a5 = concat((int)pData[9], (int)pData[10]);
+            a6 = concat((int)pData[11], (int)pData[12]);
+
+            a7 = concat((int)pData[13], (int)pData[14]);
+            a8 = concat((int)pData[15], (int)pData[16]);
+            a9 = concat((int)pData[17], (int)pData[18]);
+
+
+            per_write_reg(REG1,a1);
+            per_write_reg(REG2,(~a2)+1);
+            per_write_reg(REG3,(~a3)+1);
+            per_write_reg(REG4,(~a4)+1);
+            per_write_reg(REG5,a5);
+            per_write_reg(REG6,(~a6)+1);
+            per_write_reg(REG7,(~a7)+1);
+            per_write_reg(REG8,(~a8)+1);
+            per_write_reg(REG9,a9);
+            //xil_printf("Data= %i %i %i\n\r", a1,a2,a3);
+            printf("K1 =  %i \n", ((PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG1))) & 0x0000ffff);
+            printf("K2 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG2))+1) & 0x0000ffff);
+            printf("K3 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG3))+1) & 0x0000ffff);
+            printf("K4 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG4))+1) & 0x0000ffff);
+            printf("K5 =  %i \n", ((PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG5))) & 0x0000ffff);
+            printf("K6 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG6))+1) & 0x0000ffff);
+            printf("K7 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG7))+1) & 0x0000ffff);
+            printf("K8 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG8))+1) & 0x0000ffff);
+            printf("K9 =  %i \n", ((PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
+            delay = (int)pData[19];
+        	per_write_reg(REG11,(int)pData[20]);
+        	per_write_reg(REG12,(int)pData[21]);
+        	per_write_reg(REG13,(int)pData[22]);
+        	per_write_reg(REG14,(int)pData[23]);
+        	per_write_reg(REG15,(int)pData[24]);
+        	per_write_reg(REG16,(int)pData[25]);
+        	per_write_reg(REG17,(int)pData[26]);
+        	read_imx477_reg((int)pData[27]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+        }else if(a0==5){
+        	write_imx477_reg(concat((int)pData[28], (int)pData[29]),concat((int)pData[30], (int)pData[31]));
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
         }
-            xil_printf("Data= %i %i %i\n\r", a1,a2,a3);
-            per_write_reg(0,a1);
-            per_write_reg(20,a2);
-            per_write_reg(36,a3);
+
             memcpy(&target_addr, addr, sizeof(target_addr));
     }
     pbuf_free(p_rx);

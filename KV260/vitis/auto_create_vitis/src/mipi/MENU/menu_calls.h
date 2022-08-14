@@ -71,5 +71,6 @@
 #define REG63 252
 u32 uartcmd(u32 argA,u32 argB);
 void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride, int connected_camera);
-
+#define PL_ReadReg(BaseAddress, RegOffset) \
+    Xil_In32((BaseAddress) + (RegOffset))
 #endif // __MENU_CALLS_H__

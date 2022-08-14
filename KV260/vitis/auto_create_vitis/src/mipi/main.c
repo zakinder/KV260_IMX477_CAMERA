@@ -42,7 +42,7 @@ int main()
     video = VMODE_1920x1080;
 	int i,connected_camera;
     connected_camera=init_camera();
-    printf("connectedcamera = %i \n\r",connected_camera);
+    //printf("connectedcamera = %i \n\r",connected_camera);
     demosaic_init();
     vtc_init(video);
 	for (i = 0; i < DISPLAY_NUM_FRAMES; i++)

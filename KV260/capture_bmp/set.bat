@@ -1,1 +1,2 @@
 python set.py
+@pause

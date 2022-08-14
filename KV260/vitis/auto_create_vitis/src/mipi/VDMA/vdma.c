@@ -121,9 +121,9 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 	vdmaDMA.FrameStoreStartAddr[0]  = FrameStoreStartAddr1;
 	vdmaDMA.FrameStoreStartAddr[1]  = FrameStoreStartAddr2;
 	vdmaDMA.FrameStoreStartAddr[2]  = FrameStoreStartAddr3;
-	xil_printf("FrameStoreStartAddr1 = %X\n\r", FrameStoreStartAddr1);
-	xil_printf("FrameStoreStartAddr2 = %X\n\r", FrameStoreStartAddr2);
-	xil_printf("FrameStoreStartAddr3 = %X\n\r", FrameStoreStartAddr3);
+	//xil_printf("FrameStoreStartAddr1 = %X\n\r", FrameStoreStartAddr1);
+	//xil_printf("FrameStoreStartAddr2 = %X\n\r", FrameStoreStartAddr2);
+	//xil_printf("FrameStoreStartAddr3 = %X\n\r", FrameStoreStartAddr3);
 	Status = XAxiVdma_DmaConfig(&Vdma, XAXIVDMA_WRITE, &vdmaDMA);
 	if (Status != XST_SUCCESS) {
 			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel config failed %d\r\n", Status);
