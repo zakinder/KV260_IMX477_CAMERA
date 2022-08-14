@@ -13,3 +13,6 @@ KV260/vitis/mipi/Debug/*
 KV260/vitis/mipi/.cproject
 KV260/vitis/mipi/.project
 KV260/vitis/mipi/mipi.prj
+KV260/capture_bmp/ffmpeg.exe
+KV260/capture_bmp/ffplay.exe
+KV260/capture_bmp/ffprobe.exe
