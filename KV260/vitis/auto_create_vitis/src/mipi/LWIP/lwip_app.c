@@ -19,41 +19,24 @@
 #include "../MENU/menu_calls.h"
 #include "../SENSORS_CONFIG/init_camera.h"
 #define UDP_BUFF_SIZE 1440
-
-#define frame_length_curr VIDEO2_MAX_FRAME
 u8 bmpbufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
 extern u8 *pFrames1[NUM_FRAMES];
-
 #define DEFAULT_IP_ADDRESS	"192.168.0.10"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.0.1"
-
 void platform_enable_interrupts(void);
 int WriteOneFrameEnd[2]={-1,-1};
-static int WriteError;
-int wr_index[2]={0,0};
-int rd_index[2]={0,0};
 static struct udp_pcb *udp8080_pcb = NULL;
 ip_addr_t target_addr;
-char TargetHeader[8] = { 0, 0x00, 0x01, 0x00, 0x02 };
 unsigned char ip_export[4];
 unsigned char mac_export[6];
-
-extern int WriteOneFrameEnd[2];
 int start_udp(unsigned int port);
 int tx_bmp(const char *bmp, int bmp_length, int sn);
 void lwip_init();
-int frame_id1 = 1;
 extern volatile int dhcp_timoutcntr;
 err_t dhcp_start(struct netif *netif);
 static struct netif server_netif;
 struct netif *netif;
-u32 k_number;
-extern char targetPicHeader[8];
-char targetPicHeader[8]={0, 0x00, 0x02, 0x00, 0x02};
-
-static void WriteCallBack0(void *CallbackRef, u32 Mask);
-static void WriteErrorCallBack(void *CallbackRef, u32 Mask);
 int stream_it;
 int delay;
 void print_ip(char *msg, ip_addr_t *ip)
@@ -144,7 +127,6 @@ int lwip_loop()
 			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
 			      usleep(delay);
 			}
-			usleep(0.25);
 #endif
 		}
 		WriteOneFrameEnd[0] = stream_it;
@@ -166,44 +148,35 @@ int tx_bmp(const char *bmp, int bmp_length, int sn)
 	pbuf_free(q);
 	return 0;
 }
-
 void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr_t *addr, u16_t port) {
-    char *pData;
-
+    u16 *pData;
     int a1,a2,a3;
     int a4,a5,a6;
     int a7,a8,a9;
-
-
     int a0=0;
     if(p_rx != NULL)
     {
-    pData = (char *)p_rx->payload;
+    pData = (u16 *)p_rx->payload;
     if(p_rx->len >= 1){
     	stream_it = -1;
     	WriteOneFrameEnd[0] = -1;
     	a0 = (int)pData[0];
-        if(a0==3){
+        if(a0==1){
         	// udp stream delay
-        	delay = (int)pData[19];
+        	delay = (int)pData[10];
             xil_printf("delay= %d\n\r",delay);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = -1;
-        }else if(a0==4){
-        	WriteOneFrameEnd[0] = -1;
-        	stream_it = -1;
-            a1 = concat((int)pData[1], (int)pData[2]);
-            a2 = concat((int)pData[3], (int)pData[4]);
-            a3 = concat((int)pData[5], (int)pData[6]);
-            a4 = concat((int)pData[7], (int)pData[8]);
-            a5 = concat((int)pData[9], (int)pData[10]);
-            a6 = concat((int)pData[11], (int)pData[12]);
-
-            a7 = concat((int)pData[13], (int)pData[14]);
-            a8 = concat((int)pData[15], (int)pData[16]);
-            a9 = concat((int)pData[17], (int)pData[18]);
-
-
+        }else if(a0==2){
+            a1 = (int)pData[1];
+            a2 = (int)pData[2];
+            a3 = (int)pData[3];
+            a4 = (int)pData[4];
+            a5 = (int)pData[5];
+            a6 = (int)pData[6];
+            a7 = (int)pData[7];
+            a8 = (int)pData[8];
+            a9 = (int)pData[9];
             per_write_reg(REG1,a1);
             per_write_reg(REG2,(~a2)+1);
             per_write_reg(REG3,(~a3)+1);
@@ -223,23 +196,40 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
             printf("K7 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG7))+1) & 0x0000ffff);
             printf("K8 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG8))+1) & 0x0000ffff);
             printf("K9 =  %i \n", ((PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG9))) & 0x0000ffff);
-            delay = (int)pData[19];
-        	per_write_reg(REG11,(int)pData[20]);
-        	per_write_reg(REG12,(int)pData[21]);
-        	per_write_reg(REG13,(int)pData[22]);
-        	per_write_reg(REG14,(int)pData[23]);
-        	per_write_reg(REG15,(int)pData[24]);
-        	per_write_reg(REG16,(int)pData[25]);
-        	per_write_reg(REG17,(int)pData[26]);
-        	read_imx477_reg((int)pData[27]);
+            delay = (int)pData[10];
+            xil_printf("delay= %d\n\r",delay);
+        	per_write_reg(REG11,(int)pData[11]);
+        	per_write_reg(REG12,(int)pData[12]);
+        	per_write_reg(REG13,(int)pData[13]);
+        	per_write_reg(REG14,(int)pData[14]);
+        	per_write_reg(REG15,(int)pData[15]);
+        	per_write_reg(REG16,(int)pData[16]);
+        	per_write_reg(REG17,(int)pData[17]);
+            xil_printf("REG18= %d\n\r",(int)pData[18]);
         	WriteOneFrameEnd[0] = 1;
-        	stream_it = 0;
+        	stream_it = 1;
+        }else if(a0==3){
+        	read_imx477_reg((int)pData[18]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = -1;
+        }else if(a0==4){
+            xil_printf("IMX 477: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+        	write_imx477_reg((int)pData[19],(int)pData[20]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = -1;
         }else if(a0==5){
-        	write_imx477_reg(concat((int)pData[28], (int)pData[29]),concat((int)pData[30], (int)pData[31]));
+        	read_imx682_reg((int)pData[18]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = -1;
+        }else if(a0==6){
+            xil_printf("IMX 682: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+            write_imx682_reg((int)pData[19],(int)pData[20]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = -1;
+        }else if(a0==7){
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }
-
             memcpy(&target_addr, addr, sizeof(target_addr));
     }
     pbuf_free(p_rx);
@@ -261,44 +251,3 @@ int start_udp(unsigned int port) {
 	IP4_ADDR(&target_addr, 192,168,0,42);
 	return 0;
 }
-int concat(int x, int y){
-    char str1[10];
-    char str2[10];
-    sprintf(str1,"%d",x);
-    sprintf(str2,"%d",y);
-    strcat(str1,str2);
-    return atoi(str1);
-}
-static void WriteCallBack0(void *CallbackRef, u32 Mask)
-{
-	if (Mask & XAXIVDMA_IXR_FRMCNT_MASK)
-	{
-		if(WriteOneFrameEnd[0] >= 0)
-		{
-			return;
-		}
-		int hold_rd = rd_index[0];
-		if(wr_index[0]==2)
-		{
-			wr_index[0]=0;
-			rd_index[0]=2;
-		}
-		else
-		{
-			rd_index[0] = wr_index[0];
-			wr_index[0]++;
-		}
-		/* Set park pointer */
-		XAxiVdma_StartParking((XAxiVdma*)CallbackRef, wr_index[0], XAXIVDMA_WRITE);
-		WriteOneFrameEnd[0] = hold_rd;
-
-	}
-}
-
-static void WriteErrorCallBack(void *CallbackRef, u32 Mask)
-{
-	if (Mask & XAXIVDMA_IXR_ERROR_MASK) {
-		WriteError += 1;
-	}
-}
-
