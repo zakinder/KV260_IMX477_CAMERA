@@ -25,10 +25,24 @@ bsp regenerate
 
 bsp setlib -name xilffs -ver 4.7
 bsp setlib -name lwip211 -ver 1.7
-bsp config pbuf_pool_bufsize "2000"
-bsp config pbuf_pool_size "4096"
+bsp config pbuf_pool_bufsize "115200"
+bsp config pbuf_pool_size "16384"
+bsp config memp_n_pbuf "16384"
+bsp config memp_num_netbuf "8"
+bsp config mem_size "51998488"
+bsp config n_tx_descriptors "2048"
+bsp config n_rx_descriptors "2048"
+bsp config lwip_tcp "false"
+bsp config tcp_queue_ooseq "0"
+bsp config use_axieth_on_zynq "0"
+bsp config use_emaclite_on_zynq "0"
 bsp config dhcp_does_arp_check "true"
 bsp config lwip_dhcp "true"
+bsp config phy_link_speed "CONFIG_LINKSPEED1000"
+bsp config udp_tx_blocking "false"
+bsp config temac_use_jumbo_frames "false"
+bsp config emac_number "0"
+
 bsp regenerate
 #Build platform project
 platform generate
