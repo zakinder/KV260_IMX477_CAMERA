@@ -1,5 +1,15 @@
+/*
+   MODIFICATION HISTORY:
+   
+   Ver   Who Date     Changes
+   ----- -------- -------- -----------------------------------------------
+   1.0	 Sakinder 06/01/22 Initial Release
+   1.4   Sakinder 07/01/22 Added IMX519 Camera functions.
+   -----------------------------------------------------------------------
+*/
 #include "imx519.h"
 #include <xil_types.h>
+#include <stdio.h>
 #include <xstatus.h>
 #include "xiicps.h"
 #include "xparameters.h"
@@ -7,15 +17,16 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
+#include "../init_camera.h"
+#include "../imx_registers.h"
 #define IIC_IMX519_ADDR  	        0x9A
-#define REG_MODE_SEL 				0x0100
-/* Chip ID */
 #define IMX519_REG_CHIP_ID		    0x0016
 #define IMX519_CHIP_ID			    0x0519
+
 struct reginfo cfg_imx519_mode_common_regs[] =
 {
-	{0x0136, 0x18},
-	{0x0137, 0x00},
+	{REG_EXCK_FREQ_MSB, 0x18},
+	{REG_EXCK_FREQ_LSB, 0x00},
 	{0x3c7e, 0x01},
 	{0x3c7f, 0x07},
 	{0x3020, 0x00},
@@ -292,13 +303,13 @@ struct reginfo cfg_imx519_mode_common_regs[] =
 struct reginfo cfg_imx519_mode_4656x3496_regs[] =
 {
 	{0x0111, 0x02},
-	{0x0112, 0x0a},
-	{0x0113, 0x0a},
-	{0x0114, 0x01},
-	{0x0342, 0x42},
-	{0x0343, 0x00},
-	{0x0340, 0x0d},
-	{0x0341, 0xf4},
+	{REG_CSI_FORMAT_C, 0x0a},
+	{REG_CSI_FORMAT_D, 0x0a},
+	{REG_CSI_LANE, 0x01},
+	{REG_LINE_LEN_MSB, 0x42},
+	{REG_LINE_LEN_LSB, 0x00},
+	{REG_FRAME_LEN_MSB, 0x0d},
+	{REG_FRAME_LEN_LSB, 0xf4},
 	{0x0344, 0x00},
 	{0x0345, 0x00},
 	{0x0346, 0x00},
@@ -310,9 +321,9 @@ struct reginfo cfg_imx519_mode_4656x3496_regs[] =
 	{0x0220, 0x00},
 	{0x0221, 0x11},
 	{0x0222, 0x01},
-	{0x0900, 0x00},
-	{0x0901, 0x11},
-	{0x0902, 0x0a},
+	{REG_BINNING_MODE, 0x00},
+	{REG_BINNING_HV, 0x11},
+	{REG_BINNING_WEIGHTING, 0x0a},
 	{0x3f4c, 0x01},
 	{0x3f4d, 0x01},
 	{0x4254, 0x7f},
@@ -331,21 +342,21 @@ struct reginfo cfg_imx519_mode_4656x3496_regs[] =
 	{0x034d, 0x30},
 	{0x034e, 0x0d},
 	{0x034f, 0xa8},
-	{0x0301, 0x06},
-	{0x0303, 0x04},
-	{0x0305, 0x04},
-	{0x0306, 0x01},
-	{0x0307, 0x57},
-	{0x0309, 0x0a},
-	{0x030b, 0x02},
-	{0x030d, 0x04},
-	{0x030e, 0x01},
-	{0x030f, 0x49},
-	{0x0310, 0x01},
-	{0x0820, 0x07},
-	{0x0821, 0xb6},
-	{0x0822, 0x00},
-	{0x0823, 0x00},
+	{REG_IVTPXCK_DIV, 0x06},
+	{REG_IVTSYCK_DIV, 0x04},
+	{REG_IVT_PREPLLCK_DIV, 0x04},
+	{REG_PLL_IVT_MPY_MSB, 0x01},
+	{REG_PLL_IVT_MPY_LSB, 0x57},
+	{REG_IOPPXCK_DIV, 0x0a},
+	{REG_IOPSYCK_DIV, 0x02},
+	{REG_IOP_PREPLLCK_DIV, 0x04},
+	{REG_IOP_MPY_MSB, 0x01},
+	{REG_IOP_MPY_LSB, 0x49},
+	{REG_PLL_MULTI_DRV, 0x01},
+	{REG_REQ_LINK_BIT_RATE_MSB, 0x07},
+	{REG_REQ_LINK_BIT_RATE_LMSB, 0xb6},
+	{REG_REQ_LINK_BIT_RATE_MLSB, 0x00},
+	{REG_REQ_LINK_BIT_RATE_LSB, 0x00},
 	{0x3e20, 0x01},
 	{0x3e37, 0x00},
 	{0x3e3b, 0x00},
@@ -354,7 +365,7 @@ struct reginfo cfg_imx519_mode_4656x3496_regs[] =
 	{0x3230, 0x00},
 	{0x3f14, 0x01},
 	{0x3f3c, 0x01},
-	{0x3f0d, 0x0a},
+	{REG_ADC_BIT_SETTING, 0x0a},
 	{0x3fbc, 0x00},
 	{0x3c06, 0x00},
 	{0x3c07, 0x48},
@@ -371,13 +382,13 @@ struct reginfo cfg_imx519_mode_4656x3496_regs[] =
 struct reginfo cfg_imx519_mode_3840x2160_regs[] =
 {
 	{0x0111, 0x02},
-	{0x0112, 0x0a},
-	{0x0113, 0x0a},
-	{0x0114, 0x01},
-	{0x0342, 0x38},
-	{0x0343, 0x70},
-	{0x0340, 0x08},
-	{0x0341, 0xd4},
+	{REG_CSI_FORMAT_C, 0x0a},
+	{REG_CSI_FORMAT_D, 0x0a},
+	{REG_CSI_LANE, 0x01},
+	{REG_LINE_LEN_MSB, 0x38},
+	{REG_LINE_LEN_LSB, 0x70},
+	{REG_FRAME_LEN_MSB, 0x08},
+	{REG_FRAME_LEN_LSB, 0xd4},
 	{0x0344, 0x01},
 	{0x0345, 0x98},
 	{0x0346, 0x02},
@@ -389,9 +400,9 @@ struct reginfo cfg_imx519_mode_3840x2160_regs[] =
 	{0x0220, 0x00},
 	{0x0221, 0x11},
 	{0x0222, 0x01},
-	{0x0900, 0x00},
-	{0x0901, 0x11},
-	{0x0902, 0x0a},
+	{REG_BINNING_MODE, 0x00},
+	{REG_BINNING_HV, 0x11},
+	{REG_BINNING_WEIGHTING, 0x0a},
 	{0x3f4c, 0x01},
 	{0x3f4d, 0x01},
 	{0x4254, 0x7f},
@@ -410,21 +421,21 @@ struct reginfo cfg_imx519_mode_3840x2160_regs[] =
 	{0x034d, 0x00},
 	{0x034e, 0x08},
 	{0x034f, 0x70},
-	{0x0301, 0x06},
-	{0x0303, 0x04},
-	{0x0305, 0x04},
-	{0x0306, 0x01},
-	{0x0307, 0x57},
-	{0x0309, 0x0a},
-	{0x030b, 0x02},
-	{0x030d, 0x04},
-	{0x030e, 0x01},
-	{0x030f, 0x49},
-	{0x0310, 0x01},
-	{0x0820, 0x07},
-	{0x0821, 0xb6},
-	{0x0822, 0x00},
-	{0x0823, 0x00},
+	{REG_IVTPXCK_DIV, 0x06},
+	{REG_IVTSYCK_DIV, 0x04},
+	{REG_IVT_PREPLLCK_DIV, 0x04},
+	{REG_PLL_IVT_MPY_MSB, 0x01},
+	{REG_PLL_IVT_MPY_LSB, 0x57},
+	{REG_IOPPXCK_DIV, 0x0a},
+	{REG_IOPSYCK_DIV, 0x02},
+	{REG_IOP_PREPLLCK_DIV, 0x04},
+	{REG_IOP_MPY_MSB, 0x01},
+	{REG_IOP_MPY_LSB, 0x49},
+	{REG_PLL_MULTI_DRV, 0x01},
+	{REG_REQ_LINK_BIT_RATE_MSB, 0x07},
+	{REG_REQ_LINK_BIT_RATE_LMSB, 0xb6},
+	{REG_REQ_LINK_BIT_RATE_MLSB, 0x00},
+	{REG_REQ_LINK_BIT_RATE_LSB, 0x00},
 	{0x3e20, 0x01},
 	{0x3e37, 0x00},
 	{0x3e3b, 0x00},
@@ -433,7 +444,7 @@ struct reginfo cfg_imx519_mode_3840x2160_regs[] =
 	{0x3230, 0x00},
 	{0x3f14, 0x01},
 	{0x3f3c, 0x01},
-	{0x3f0d, 0x0a},
+	{REG_ADC_BIT_SETTING, 0x0a},
 	{0x3fbc, 0x00},
 	{0x3c06, 0x00},
 	{0x3c07, 0x48},
@@ -449,14 +460,14 @@ struct reginfo cfg_imx519_mode_3840x2160_regs[] =
 /* 2x2 binned 30fps mode */
 struct reginfo cfg_imx519_mode_2328x1748_regs[] =
 {
-	{0x0111, 0x02},
-	{0x0112, 0x0a},
-	{0x0113, 0x0a},
-	{0x0114, 0x01},
-	{0x0342, 0x24},
-	{0x0343, 0x12},
-	{0x0340, 0x09},
-	{0x0341, 0xac},
+	/* MIPI output setting */
+	{REG_CSI_FORMAT_C, 0x0a},
+	{REG_CSI_FORMAT_D, 0x0a},
+	{REG_CSI_LANE, 0x01},
+	/* Frame Length Lines Setting */
+	{REG_FRAME_LEN_MSB, 0x09},
+	{REG_FRAME_LEN_LSB, 0xac},
+	/* ROI Setting */
 	{0x0344, 0x00},
 	{0x0345, 0x00},
 	{0x0346, 0x00},
@@ -468,15 +479,17 @@ struct reginfo cfg_imx519_mode_2328x1748_regs[] =
 	{0x0220, 0x00},
 	{0x0221, 0x11},
 	{0x0222, 0x01},
-	{0x0900, 0x01},
-	{0x0901, 0x22},
-	{0x0902, 0x0a},
+	/* Mode Setting */
+	{REG_BINNING_MODE, 0x01},
+	{REG_BINNING_HV, 0x22},
+	{REG_BINNING_WEIGHTING, 0x0a},
 	{0x3f4c, 0x01},
 	{0x3f4d, 0x01},
 	{0x4254, 0x7f},
 	{0x0401, 0x00},
 	{0x0404, 0x00},
 	{0x0405, 0x10},
+	/* Digital Crop & Scaling */
 	{0x0408, 0x00},
 	{0x0409, 0x00},
 	{0x040a, 0x00},
@@ -485,25 +498,37 @@ struct reginfo cfg_imx519_mode_2328x1748_regs[] =
 	{0x040d, 0x18},
 	{0x040e, 0x06},
 	{0x040f, 0xd4},
+	/* Output Size Setting */
 	{0x034c, 0x09},
 	{0x034d, 0x18},
 	{0x034e, 0x06},
 	{0x034f, 0xd4},
-	{0x0301, 0x06},
-	{0x0303, 0x04},
-	{0x0305, 0x04},
-	{0x0306, 0x01},
-	{0x0307, 0x57},
-	{0x0309, 0x0a},
-	{0x030b, 0x02},
-	{0x030d, 0x04},
-	{0x030e, 0x01},
-	{0x030f, 0x49},
-	{0x0310, 0x01},
-	{0x0820, 0x07},
-	{0x0821, 0xb6},
-	{0x0822, 0x00},
-	{0x0823, 0x00},
+	/* Signaling mode setting */
+	{0x0111, 0x02},
+	/* External Clock Setting */
+	{REG_EXCK_FREQ_MSB, 0x18},
+	{REG_EXCK_FREQ_LSB, 0x00},
+    /* Line Length PCK Setting */
+	{REG_LINE_LEN_MSB, 0x24},
+	{REG_LINE_LEN_LSB, 0x12},
+    /* Clock Setting */
+	{REG_IVTPXCK_DIV, 0x06},
+	{REG_IVTSYCK_DIV, 0x04},
+	{REG_IVT_PREPLLCK_DIV, 0x04},
+	{REG_PLL_IVT_MPY_MSB, 0x01},
+	{REG_PLL_IVT_MPY_LSB, 0x57},
+	{REG_IOPPXCK_DIV, 0x0a},
+	{REG_IOPSYCK_DIV, 0x02},
+	{REG_IOP_PREPLLCK_DIV, 0x04},
+	{REG_IOP_MPY_MSB, 0x01},
+	{REG_IOP_MPY_LSB, 0x49},
+	{REG_PLL_MULTI_DRV, 0x01},
+    /* ------------ */
+	/* Other Setting */
+	{REG_REQ_LINK_BIT_RATE_MSB, 0x07},
+	{REG_REQ_LINK_BIT_RATE_LMSB, 0xb6},
+	{REG_REQ_LINK_BIT_RATE_MLSB, 0x00},
+	{REG_REQ_LINK_BIT_RATE_LSB, 0x00},
 	{0x3e20, 0x01},
 	{0x3e37, 0x00},
 	{0x3e3b, 0x00},
@@ -512,7 +537,7 @@ struct reginfo cfg_imx519_mode_2328x1748_regs[] =
 	{0x3230, 0x00},
 	{0x3f14, 0x01},
 	{0x3f3c, 0x01},
-	{0x3f0d, 0x0a},
+	{REG_ADC_BIT_SETTING, 0x0a},
 	{0x3fbc, 0x00},
 	{0x3c06, 0x00},
 	{0x3c07, 0x48},
@@ -530,15 +555,15 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 {
 	/* MIPI output setting */
 	{0x0111, 0x02},
-	{0x0112, 0x0a},
-	{0x0113, 0x0a},
-	{0x0114, 0x01},
+	{REG_CSI_FORMAT_C, 0x0a},
+	{REG_CSI_FORMAT_D, 0x0a},
+	{REG_CSI_LANE, 0x01},
     /* Line Length PCK Setting */
-	{0x0342, 0x25},
-	{0x0343, 0xd9},
+	{REG_LINE_LEN_MSB, 0x25},
+	{REG_LINE_LEN_LSB, 0xd9},
     /* Frame Length Lines Setting */
-	{0x0340, 0x08},
-	{0x0341, 0xff},
+	{REG_FRAME_LEN_MSB, 0x08},
+	{REG_FRAME_LEN_LSB, 0xff},
     /* ROI Setting */
 	{0x0344, 0x01},
 	{0x0345, 0x98},
@@ -552,9 +577,9 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 	{0x0221, 0x11},
 	{0x0222, 0x01},
     /* Mode Setting */
-	{0x0900, 0x01},
-	{0x0901, 0x22},
-	{0x0902, 0x0a},
+	{REG_BINNING_MODE, 0x01},
+	{REG_BINNING_HV, 0x22},
+	{REG_BINNING_WEIGHTING, 0x0a},
 	{0x3f4c, 0x01},
 	{0x3f4d, 0x01},
 	{0x4254, 0x7f},
@@ -576,22 +601,22 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 	{0x034e, 0x04},
 	{0x034f, 0x38},
     /* Clock Setting */
-	{0x0301, 0x06},
-	{0x0303, 0x04},
-	{0x0305, 0x04},
-	{0x0306, 0x01},
-	{0x0307, 0x57},
-	{0x0309, 0x0a},
-	{0x030b, 0x02},
-	{0x030d, 0x04},
-	{0x030e, 0x01},
-	{0x030f, 0x49},
-	{0x0310, 0x01},
+	{REG_IVTPXCK_DIV, 0x06},
+	{REG_IVTSYCK_DIV, 0x04},
+	{REG_IVT_PREPLLCK_DIV, 0x04},
+	{REG_PLL_IVT_MPY_MSB, 0x01},
+	{REG_PLL_IVT_MPY_LSB, 0x57},
+	{REG_IOPPXCK_DIV, 0x0a},
+	{REG_IOPSYCK_DIV, 0x02},
+	{REG_IOP_PREPLLCK_DIV, 0x04},
+	{REG_IOP_MPY_MSB, 0x01},
+	{REG_IOP_MPY_LSB, 0x49},
+	{REG_PLL_MULTI_DRV, 0x01},
     /* ------------ */
-	{0x0820, 0x07},
-	{0x0821, 0xb6},
-	{0x0822, 0x00},
-	{0x0823, 0x00},
+	{REG_REQ_LINK_BIT_RATE_MSB, 0x07},
+	{REG_REQ_LINK_BIT_RATE_LMSB, 0xb6},
+	{REG_REQ_LINK_BIT_RATE_MLSB, 0x00},
+	{REG_REQ_LINK_BIT_RATE_LSB, 0x00},
 	{0x3e20, 0x01},
 	{0x3e37, 0x00},
 	{0x3e3b, 0x00},
@@ -600,7 +625,7 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 	{0x3230, 0x00},
 	{0x3f14, 0x01},
 	{0x3f3c, 0x01},
-	{0x3f0d, 0x0a},
+	{REG_ADC_BIT_SETTING, 0x0a},
 	{0x3fbc, 0x00},
 	{0x3c06, 0x00},
 	{0x3c07, 0x48},
@@ -610,6 +635,10 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 	{0x3f79, 0x40},
 	{0x3f7c, 0x00},
 	{0x3f7d, 0x00},
+	//{REG_MODE_SEL, 0x01},
+	//{SEQUENCE_END, 0x00},
+	//{REG_MODE_SEL, 0x00},
+	//{0x0601, 0x02},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
@@ -617,13 +646,13 @@ struct reginfo cfg_imx519_mode_1920x1080_regs[] =
 struct reginfo cfg_imx519_mode_1280x720_regs[] =
 {
 	{0x0111, 0x02},
-	{0x0112, 0x0a},
-	{0x0113, 0x0a},
-	{0x0114, 0x01},
-	{0x0342, 0x1b},
-	{0x0343, 0x3b},
-	{0x0340, 0x03},
-	{0x0341, 0x34},
+	{REG_CSI_FORMAT_C, 0x0a},
+	{REG_CSI_FORMAT_D, 0x0a},
+	{REG_CSI_LANE, 0x01},
+	{REG_LINE_LEN_MSB, 0x1b},
+	{REG_LINE_LEN_LSB, 0x3b},
+	{REG_FRAME_LEN_MSB, 0x03},
+	{REG_FRAME_LEN_LSB, 0x34},
 	{0x0344, 0x04},
 	{0x0345, 0x18},
 	{0x0346, 0x04},
@@ -635,9 +664,9 @@ struct reginfo cfg_imx519_mode_1280x720_regs[] =
 	{0x0220, 0x00},
 	{0x0221, 0x11},
 	{0x0222, 0x01},
-	{0x0900, 0x01},
-	{0x0901, 0x22},
-	{0x0902, 0x0a},
+	{REG_BINNING_MODE, 0x01},
+	{REG_BINNING_HV, 0x22},
+	{REG_BINNING_WEIGHTING, 0x0a},
 	{0x3f4c, 0x01},
 	{0x3f4d, 0x01},
 	{0x4254, 0x7f},
@@ -656,21 +685,21 @@ struct reginfo cfg_imx519_mode_1280x720_regs[] =
 	{0x034d, 0x00},
 	{0x034e, 0x02},
 	{0x034f, 0xd0},
-	{0x0301, 0x06},
-	{0x0303, 0x04},
-	{0x0305, 0x04},
-	{0x0306, 0x01},
-	{0x0307, 0x57},
-	{0x0309, 0x0a},
-	{0x030b, 0x02},
-	{0x030d, 0x04},
-	{0x030e, 0x01},
-	{0x030f, 0x49},
-	{0x0310, 0x01},
-	{0x0820, 0x07},
-	{0x0821, 0xb6},
-	{0x0822, 0x00},
-	{0x0823, 0x00},
+	{REG_IVTPXCK_DIV, 0x06},
+	{REG_IVTSYCK_DIV, 0x04},
+	{REG_IVT_PREPLLCK_DIV, 0x04},
+	{REG_PLL_IVT_MPY_MSB, 0x01},
+	{REG_PLL_IVT_MPY_LSB, 0x57},
+	{REG_IOPPXCK_DIV, 0x0a},
+	{REG_IOPSYCK_DIV, 0x02},
+	{REG_IOP_PREPLLCK_DIV, 0x04},
+	{REG_IOP_MPY_MSB, 0x01},
+	{REG_IOP_MPY_LSB, 0x49},
+	{REG_PLL_MULTI_DRV, 0x01},
+	{REG_REQ_LINK_BIT_RATE_MSB, 0x07},
+	{REG_REQ_LINK_BIT_RATE_LMSB, 0xb6},
+	{REG_REQ_LINK_BIT_RATE_MLSB, 0x00},
+	{REG_REQ_LINK_BIT_RATE_LSB, 0x00},
 	{0x3e20, 0x01},
 	{0x3e37, 0x00},
 	{0x3e3b, 0x00},
@@ -679,7 +708,7 @@ struct reginfo cfg_imx519_mode_1280x720_regs[] =
 	{0x3230, 0x00},
 	{0x3f14, 0x01},
 	{0x3f3c, 0x01},
-	{0x3f0d, 0x0a},
+	{REG_ADC_BIT_SETTING, 0x0a},
 	{0x3fbc, 0x00},
 	{0x3c06, 0x00},
 	{0x3c07, 0x48},
@@ -692,8 +721,13 @@ struct reginfo cfg_imx519_mode_1280x720_regs[] =
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
-
-
+struct reginfo cfg_imx519_testpattern_bar_regs[] =
+{
+	{REG_MODE_SEL, 0x00},
+	{0x0601, 0x02},
+	{REG_MODE_SEL, 0x01},
+	{SEQUENCE_END, 0x00}
+};
 int imx519_read(XIicPs *IicInstance,u16 addr,u8 *read_buf)
 {
 	*read_buf=i2c_reg16_read(IicInstance,IIC_IMX519_ADDR,addr);
@@ -711,20 +745,32 @@ void imx_519_sensor_write_array(XIicPs *IicInstance, struct reginfo *regarray)
 		i++;
 	}
 }
-int imx519_sensor_init(XIicPs *IicInstance)
+int imx519_sensor_init(XIicPs *IicInstance,u16 config_number)
 {
 	u8 sensor_id[2];
 	imx519_read(IicInstance, 0x0016, &sensor_id[0]);
 	imx519_read(IicInstance, 0x0017, &sensor_id[1]);
-	if (sensor_id[0] == 0x5 || sensor_id[1] == 0x19)
+	if (sensor_id[0] == 0x5 && sensor_id[1] == 0x19)
     {
 		printf("Got imx519 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
 		imx_519_sensor_write_array(IicInstance,cfg_imx519_mode_common_regs);
 		usleep(1000000);
-		imx_519_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_regs);
-		usleep(1000000);
+        if(config_number == 0) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_2328x1748_regs);
+        } else if (config_number == 1) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_4656x3496_regs);
+        } else if (config_number == 2) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_3840x2160_regs);
+        } else if (config_number == 3) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_1920x1080_regs);
+        } else if (config_number == 4) {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_mode_1280x720_regs);
+        } else {
+            imx_477_sensor_write_array(IicInstance,cfg_imx519_testpattern_bar_regs);
+        }
+	return 519;
 	}
-	return 0;
+
 }
 int imx519_read_register(XIicPs *IicInstance,u16 addr)
 {
@@ -735,8 +781,9 @@ int imx519_read_register(XIicPs *IicInstance,u16 addr)
 }
 int imx519_write_register(XIicPs *IicInstance,u16 addr,u8 data)
 {
-	u8 sensor_id[1];
-	imx219_write(IicInstance,addr,data);
+	imx519_write(IicInstance,REG_MODE_SEL,0x00);
+	imx519_write(IicInstance,addr,data);
+	imx519_write(IicInstance,REG_MODE_SEL,0x01);
     printf("Read imx519 Write Reg Address  =  %x   Value = %x\n",addr,data);
 	return 0;
 }

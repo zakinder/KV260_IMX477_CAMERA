@@ -1,15 +1,10 @@
 #ifndef __IMX519_H__
 #define __IMX519_H__
-#include "xil_types.h"
+#include <xbasic_types.h>
 #include <xiicps.h>
-struct reginfo
-{
-    u16 reg;
-    u8 val;
-};
-#define SEQUENCE_INIT        0x00
-#define SEQUENCE_NORMAL      0x01
-#define SEQUENCE_PROPERTY    0xFFFD
-#define SEQUENCE_WAIT_MS     0xFFFE
-#define SEQUENCE_END	     0xFFFF
+int imx519_write(XIicPs *IicInstance,u16 addr,u8 data);
+int imx519_sensor_init(XIicPs *IicInstance,u16 config_number);
+int imx519_read_register(XIicPs *IicInstance,u16 addr);
+int imx519_write_register(XIicPs *IicInstance,u16 addr,u8 data);
+int imx519_write_read_register(XIicPs *IicInstance,u16 addr,u8 data);
 #endif

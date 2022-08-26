@@ -1,21 +1,67 @@
 #include "menu_calls.h"
-
 #include <stdio.h>
 #include <xiicps.h>
 #include <xil_printf.h>
 #include <xstatus.h>
-
-
+#include "string.h"
+#include "ff.h"
 #include "../UART/uartio.h"
 #include "config_defines.h"
-
-void menu_calls(ON_OFF) {
+#include "../SENSORS_CONFIG/init_camera.h"
+#include "../config.h"
+#define MAX_STRING_LENGTH 80
+static FIL fil;
+static FATFS fatfs;
+static char *SD_File;
+u8 photobufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
+void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
-    u32 current_state = mainmenu;
+    u32 current_state = imx477s1;
     u32 k_number;
     u32 k_number_value;
-
+	int i;
+	FRESULT rc;
+	char PhotoName[40];
+        per_write_reg(REG16,0);
+        per_write_reg(REG11,0);
+        per_write_reg(REG15,2);
+        
+        per_write_reg(REG31,0);
+        per_write_reg(REG32,0);
+        per_write_reg(REG33,170);
+        per_write_reg(REG34,341);
+        per_write_reg(REG35,512);
+        per_write_reg(REG36,341);
+        per_write_reg(REG37,170);
+        per_write_reg(REG38,341);
+        per_write_reg(REG39,853);
+        per_write_reg(REG40,682);
+        per_write_reg(REG41,170);
+        per_write_reg(REG42,341); 
+    if(connected_camera == 219){
+        per_write_reg(REG19,4);  
+    }
+    if(connected_camera == 519){
+        per_write_reg(REG19,4);
+    }
+    if(connected_camera == 477){
+        per_write_reg(REG19,4);
+    }
+    if(connected_camera == 682){
+        per_write_reg(REG19,4);
+        per_write_reg(REG15,8);
+        per_write_reg(REG1,5000);
+        per_write_reg(REG2,0);
+        per_write_reg(REG3,0);
+        per_write_reg(REG4,0);
+        per_write_reg(REG5,5000);
+        per_write_reg(REG6,0);
+        per_write_reg(REG7,0);
+        per_write_reg(REG8,0);
+        per_write_reg(REG9,3000);
+        per_write_reg(REG11,15);
+    }
     while (menu_calls_enable == TRUE)
     {
         switch (current_state)
@@ -195,9 +241,24 @@ void menu_calls(ON_OFF) {
         	fetch_rgb_data();
             current_state = mainmenu;break;
         case lwip:
-        	//lwip_loop();
+        	lwip_loop();
             current_state = mainmenu;break;
-        case imxwrite:
+        case pics:
+            rc = f_mount(&fatfs, "1:/", 0);
+            if (rc != FR_OK)
+            {
+                return 0 ;
+            }
+            printf("Enter file name with extension\n");
+            menu_print_prompt();
+            char FileName[MAX_STRING_LENGTH] = { 0 };
+            char_to_uart(FileName);
+            SD_File  = (char *)FileName;
+            sprintf(PhotoName, "1:/%s.BMP", SD_File);
+            memcpy(&photobufs,data_buf,VIDEO2_MAX_FRAME);
+        	bmp_write(PhotoName,head_buf,(char *)&photobufs,stride,&fil);
+            current_state = mainmenu;break;
+        case imx477wr:
             printf("Enter imx477 Register Address.\n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -212,9 +273,9 @@ void menu_calls(ON_OFF) {
                 menu_print_prompt();
                 k_number_value = uart_prompt_io();
                 write_imx477_reg(k_number,k_number_value);
-            	current_state = imxwrite;break;
+            	current_state = imx477wr;break;
             }
-        case imxread:
+        case imx477rd:
             printf("Enter imx477 Register Address \n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -226,9 +287,9 @@ void menu_calls(ON_OFF) {
             else
             {
             	read_imx477_reg(k_number);
-            	current_state = imxread;break;
+            	current_state = imx477rd;break;
             }
-        case write519:
+        case imx519wr:
             printf("Enter imx519 Register Address.\n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -243,9 +304,9 @@ void menu_calls(ON_OFF) {
                 menu_print_prompt();
                 k_number_value = uart_prompt_io();
                 write_imx519_reg(k_number,k_number_value);
-            	current_state = write519;break;
+            	current_state = imx519wr;break;
             }
-        case read519:
+        case imx519rd:
             printf("Enter imx519 Register Address \n");
             menu_print_prompt();
             k_number = uart_prompt_io();
@@ -257,8 +318,86 @@ void menu_calls(ON_OFF) {
             else
             {
             	read_imx519_reg(k_number);
-            	current_state = read519;break;
+            	current_state = imx519rd;break;
             }
+        case imx219wr:
+            printf("Enter imx219 Register Address.\n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	printf("Enter imx219 Register Data for the Register.\n");
+                menu_print_prompt();
+                k_number_value = uart_prompt_io();
+                write_imx219_reg(k_number,k_number_value);
+            	current_state = imx219wr;break;
+            }
+        case imx219rd:
+            printf("Enter imx219 Register Address \n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	read_imx219_reg(k_number);
+            	current_state = imx219rd;break;
+            }
+        case imx682wr:
+            printf("Enter imx682 Register Address.\n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	printf("Enter imx682 Register Data for the Register.\n");
+                menu_print_prompt();
+                k_number_value = uart_prompt_io();
+                write_imx682_reg(k_number,k_number_value);
+            	current_state = imx682wr;break;
+            }
+        case imx682rd:
+            printf("Enter imx682 Register Address \n");
+            menu_print_prompt();
+            k_number = uart_prompt_io();
+            if (k_number == quit)
+            {
+                printf("Entered Quit\n");
+                current_state = mainmenu;break;
+            }
+            else
+            {
+            	read_imx682_reg(k_number);
+            	current_state = imx682rd;break;
+            }
+        case imx477s1:
+            printf("Settings For IMX477 Senesor\n");
+            per_write_reg(REG1,1000);
+            per_write_reg(REG2,0);
+            per_write_reg(REG3,0);
+            per_write_reg(REG4,0);
+            per_write_reg(REG5,1000);
+            per_write_reg(REG6,0);
+            per_write_reg(REG7,0);
+            per_write_reg(REG8,0);
+            per_write_reg(REG9,1000);
+            per_write_reg(REG11,15);
+            per_write_reg(REG15,8);
+            k_number = 3;
+            read_imx477_reg(k_number);
+            current_state = lwip;break;
         case quit:
             menu_calls_enable = FALSE;
             break;
@@ -273,5 +412,5 @@ void menu_calls(ON_OFF) {
         }
     }
     printf("Break\r\n");
-    menu_calls_enable = TRUE;
+    //menu_calls_enable = TRUE;
 }

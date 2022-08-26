@@ -1,6 +1,8 @@
 // LAST TESTED : 09/01/2019
 #ifndef __MENU_CALLS_H__
 #define __MENU_CALLS_H__
+
+#include <ff.h>
 #include <xil_types.h>
 
 #define REG0 0
@@ -68,6 +70,7 @@
 #define REG62 248
 #define REG63 252
 u32 uartcmd(u32 argA,u32 argB);
-void menu_calls(int ON_OFF);
-
+void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride, int connected_camera);
+#define PL_ReadReg(BaseAddress, RegOffset) \
+    Xil_In32((BaseAddress) + (RegOffset))
 #endif // __MENU_CALLS_H__

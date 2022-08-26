@@ -110,10 +110,10 @@ end process;
 
 process (clk)begin
     if rising_edge(clk) then
-        oRgb.eol     <= rgbSyncEol(6);
-        oRgb.sof     <= rgbSyncSof(6);
-        oRgb.eof     <= rgbSyncEof(6);
-        oRgb.valid   <= rgbSyncValid(6);
+        oRgb.eol     <= rgbSyncEol(4);
+        oRgb.sof     <= rgbSyncSof(4);
+        oRgb.eof     <= rgbSyncEof(4);
+        oRgb.valid   <= rgbSyncValid(4);
     end if;
 end process;
 

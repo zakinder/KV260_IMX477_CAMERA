@@ -162,7 +162,6 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
     	WriteOneFrameEnd[0] = -1;
     	a0 = (int)pData[0];
         if(a0==1){
-        	// udp stream delay
         	delay = (int)pData[10];
             xil_printf("delay= %d\n\r",delay);
         	WriteOneFrameEnd[0] = 1;
@@ -186,7 +185,6 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
             per_write_reg(REG7,(~a7)+1);
             per_write_reg(REG8,(~a8)+1);
             per_write_reg(REG9,a9);
-            //xil_printf("Data= %i %i %i\n\r", a1,a2,a3);
             printf("K1 =  %i \n", ((PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG1))) & 0x0000ffff);
             printf("K2 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG2))+1) & 0x0000ffff);
             printf("K3 = -%i \n", (~(PL_ReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,REG3))+1) & 0x0000ffff);
@@ -227,6 +225,11 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = -1;
         }else if(a0==7){
+            xil_printf("IMX 219: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+            write_imx219_reg((int)pData[19],(int)pData[20]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = -1;
+        }else if(a0==8){
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }

@@ -1,5 +1,15 @@
+/*
+   MODIFICATION HISTORY:
+   
+   Ver   Who Date     Changes
+   ----- -------- -------- -----------------------------------------------
+   1.0	 Sakinder 06/01/22 Initial Release
+   1.1   Sakinder 06/08/22 Added IMX219 Camera functions.
+   -----------------------------------------------------------------------
+*/
 #include "imx219.h"
 #include <xil_types.h>
+#include <stdio.h>
 #include <xstatus.h>
 #include "xiicps.h"
 #include "xparameters.h"
@@ -7,6 +17,7 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
+#include "../init_camera.h"
 #define IIC_IMX219_ADDR  	        0x10
 #define IMX219_ANA_GAIN_GLOBAL      0x0157
 #define IMX219_SENSOR_ID			0x0219
@@ -393,7 +404,7 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 	u8 sensor_id[2] ;
 	imx219_read(IicInstance, 0x0000, &sensor_id[0]);
 	imx219_read(IicInstance, 0x0001, &sensor_id[1]);
-	if (sensor_id[0] == 0x2 || sensor_id[1] == 0x19)
+	if (sensor_id[0] == 0x2 && sensor_id[1] == 0x19)
 	{
 		printf("Got IMX219 camera sensor id: %x %x\r\n", sensor_id[0], sensor_id[1]);
         usleep(10000);
@@ -402,10 +413,10 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
         #else
         imx219_sensor_write_array(IicInstance,cfg_imx219_1280_702p_60fps);
         #endif
-        imx219_write(IicInstance, IMX219_ANA_GAIN_GLOBAL, 230);
+        imx219_write(IicInstance, IMX219_ANA_GAIN_GLOBAL, 50);
     	imx219_read(IicInstance, 0x0158, &sensor_id[0]);
     	imx219_read(IicInstance, 0x0159, &sensor_id[1]);
-    	printf("Read imx219 id 0x0158: %x  id 0x0159: %x\n", sensor_id[0], sensor_id[1]);
+    	printf("Read imx219 id IMX219_ANA_GAIN_GLOBAL 0x0158: %x  id 0x0159: %x\n", sensor_id[0], sensor_id[1]);
         //imx219_write(IicInstance, 0x0190, 1);
 //    	imx219_read(IicInstance, 0x0190, &sensor_id[0]);
 //    	printf("Read imx219 id 0x0190 LSC_ENABLE_A                  = %x\n",sensor_id[0]);
@@ -477,6 +488,27 @@ int imx219_camera_sensor_init(XIicPs *IicInstance)
 //        imx219_write(IicInstance, 0x01A3, 50);
 //    	imx219_read(IicInstance, 0x01A3, &sensor_id[0]);
 //    	printf("Read imx219 id 0x01A3 LSC_TUNING_B_A[7:0]   = %x\n",sensor_id[0]);
-	return XST_SUCCESS;
+	return 219;
 	}
+}
+int imx219_read_register(XIicPs *IicInstance,u16 addr)
+{
+	u8 sensor_id[1];
+    imx219_read(IicInstance, addr, &sensor_id[0]);
+    printf("Read imx219 Read Reg Address  =  %x   Value = %x\n",addr,sensor_id[0]);
+	return 0;
+}
+int imx219_write_register(XIicPs *IicInstance,u16 addr,u8 data)
+{
+	imx219_write(IicInstance,REG_MODE_SEL,0x00);
+	imx219_write(IicInstance,addr,data);
+	imx219_write(IicInstance,REG_MODE_SEL,0x01);
+    printf("Read imx219 Write Reg Address  =  %x   Value = %x\n",addr,data);
+	return 0;
+}
+int imx219_write_read_register(XIicPs *IicInstance,u16 addr,u8 data)
+{
+	imx219_write_register(IicInstance,addr,data);
+	imx219_read_register(IicInstance,addr);
+	return 0;
 }

@@ -41,9 +41,9 @@ architecture arch of rgb_4taps is
     signal d3RGB        : std_logic_vector(tpDataWidth - 1 downto 0) := (others => '0');
     signal d2RGB        : std_logic_vector(tpDataWidth - 1 downto 0) := (others => '0');
     signal d1RGB        : std_logic_vector(tpDataWidth - 1 downto 0) := (others => '0');
-    signal dS_1RGB        : channel;
-    signal dS_2RGB        : channel;
-    signal dS_3RGB        : channel;
+    signal dS_1RGB      : channel;
+    signal dS_2RGB      : channel;
+    signal dS_3RGB      : channel;
     signal rgbPixel     : std_logic_vector(tpDataWidth - 1 downto 0) := (others => '0');
     signal readCnt      : natural range 0 to 3 := zero;
     signal read_en      : std_logic := lo;
@@ -69,7 +69,7 @@ begin
     tap_d3_valid <= '1' when (readCnt =3 and iRgb.valid = hi) or (writess = hi)  else '0';
 
     
-    read_en      <= '1' when (readCnt =0 and iRgb.valid = hi)  else '0';
+    read_en      <= '1' when (iRgb.valid = hi)  else '0';
 
     
 process (clk) begin
@@ -214,7 +214,7 @@ generic map(
 port map(
     clk         => clk,
     rst_l       => rst_l,
-    write_en    => tap_d1_valid,
+    write_en    => read_en,
     idata       => rgbPixel,
     read_en     => read_en,
     odata       => tap0_data);
@@ -225,8 +225,8 @@ generic map(
 port map(
     clk         => clk,
     rst_l       => rst_l,
-    write_en    => tap_d2_valid,
-    idata       => rgbPixel,
+    write_en    => read_en,
+    idata       => tap0_data,
     read_en     => read_en,
     odata       => tap1_data);
 tapLineD2: tap4Line
@@ -236,8 +236,8 @@ generic map(
 port map(
     clk         => clk,
     rst_l       => rst_l,
-    write_en    => tap_d3_valid,
-    idata       => rgbPixel,
+    write_en    => read_en,
+    idata       => tap1_data,
     read_en     => read_en,
     odata       => tap2_data);
 end architecture;

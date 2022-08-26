@@ -93,10 +93,7 @@ entity rgb_ycbcr is
     clk       : in  std_logic;
     rst_l     : in  std_logic;
     iRgb      : in channel;
-    y         : out std_logic_vector(i_data_width-1 downto 0);
-    cb        : out std_logic_vector(i_data_width-1 downto 0);
-    cr        : out std_logic_vector(i_data_width-1 downto 0);
-    oValid    : out std_logic);
+    oRgb      : out channel);
 end rgb_ycbcr;
 architecture imp of rgb_ycbcr is
   constant C_1_PRE : unsigned(i_precision-1 downto 0) := to_unsigned(1, i_precision);
@@ -138,7 +135,13 @@ architecture imp of rgb_ycbcr is
   signal en_2 : std_logic;
   -- Stage 3 signals
   signal y_3, cb_3, cr_3 : unsigned(i_data_width-1 downto 0);
-  signal en_3 : std_logic;
+
+  
+  signal rgbSyncValid             : std_logic_vector(23 downto 0) := x"000000";
+  signal rgbSyncEol               : std_logic_vector(23 downto 0) := x"000000";
+  signal rgbSyncSof               : std_logic_vector(23 downto 0) := x"000000";
+  signal rgbSyncEof               : std_logic_vector(23 downto 0) := x"000000";
+  
 begin
   -- Assign constants based on current mode (full range or not)
   GEN_FULL_RANGE_CONSTANTS_T: if i_full_range generate
@@ -211,6 +214,122 @@ begin
       en_0 <= iRgb.valid;
     end if;
   end process;
+  
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncValid(0)   <= iRgb.valid;
+      rgbSyncValid(1)   <= rgbSyncValid(0);
+      rgbSyncValid(2)   <= rgbSyncValid(1);
+      rgbSyncValid(3)   <= rgbSyncValid(2);
+      rgbSyncValid(4)   <= rgbSyncValid(3);
+      rgbSyncValid(5)   <= rgbSyncValid(4);
+      rgbSyncValid(6)   <= rgbSyncValid(5);
+      rgbSyncValid(7)   <= rgbSyncValid(6);
+      rgbSyncValid(8)   <= rgbSyncValid(7);
+      rgbSyncValid(9)   <= rgbSyncValid(8);
+      rgbSyncValid(10)  <= rgbSyncValid(9);
+      rgbSyncValid(11)  <= rgbSyncValid(10);
+      rgbSyncValid(12)  <= rgbSyncValid(11);
+      rgbSyncValid(13)  <= rgbSyncValid(12);
+      rgbSyncValid(14)  <= rgbSyncValid(13);
+      rgbSyncValid(15)  <= rgbSyncValid(14);
+      rgbSyncValid(16)  <= rgbSyncValid(15);
+      rgbSyncValid(17)  <= rgbSyncValid(16);
+      rgbSyncValid(18)  <= rgbSyncValid(17);
+      rgbSyncValid(19)  <= rgbSyncValid(18);
+      rgbSyncValid(20)  <= rgbSyncValid(19);
+      rgbSyncValid(21)  <= rgbSyncValid(20);
+      rgbSyncValid(22)  <= rgbSyncValid(21);
+      rgbSyncValid(23)  <= rgbSyncValid(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncEol(0)   <= iRgb.eol;
+      rgbSyncEol(1)   <= rgbSyncEol(0);
+      rgbSyncEol(2)   <= rgbSyncEol(1);
+      rgbSyncEol(3)   <= rgbSyncEol(2);
+      rgbSyncEol(4)   <= rgbSyncEol(3);
+      rgbSyncEol(5)   <= rgbSyncEol(4);
+      rgbSyncEol(6)   <= rgbSyncEol(5);
+      rgbSyncEol(7)   <= rgbSyncEol(6);
+      rgbSyncEol(8)   <= rgbSyncEol(4);
+      rgbSyncEol(9)   <= rgbSyncEol(8);
+      rgbSyncEol(10)  <= rgbSyncEol(9);
+      rgbSyncEol(11)  <= rgbSyncEol(10);
+      rgbSyncEol(12)  <= rgbSyncEol(11);
+      rgbSyncEol(13)  <= rgbSyncEol(12);
+      rgbSyncEol(14)  <= rgbSyncEol(13);
+      rgbSyncEol(15)  <= rgbSyncEol(14);
+      rgbSyncEol(16)  <= rgbSyncEol(15);
+      rgbSyncEol(17)  <= rgbSyncEol(16);
+      rgbSyncEol(18)  <= rgbSyncEol(17);
+      rgbSyncEol(19)  <= rgbSyncEol(18);
+      rgbSyncEol(20)  <= rgbSyncEol(19);
+      rgbSyncEol(21)  <= rgbSyncEol(20);
+      rgbSyncEol(22)  <= rgbSyncEol(21);
+      rgbSyncEol(23)  <= rgbSyncEol(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncSof(0)   <= iRgb.sof;
+      rgbSyncSof(1)   <= rgbSyncSof(0);
+      rgbSyncSof(2)   <= rgbSyncSof(1);
+      rgbSyncSof(3)   <= rgbSyncSof(2);
+      rgbSyncSof(4)   <= rgbSyncSof(3);
+      rgbSyncSof(5)   <= rgbSyncSof(4);
+      rgbSyncSof(6)   <= rgbSyncSof(5);
+      rgbSyncSof(7)   <= rgbSyncSof(6);
+      rgbSyncSof(8)   <= rgbSyncSof(4);
+      rgbSyncSof(9)   <= rgbSyncSof(8);
+      rgbSyncSof(10)  <= rgbSyncSof(9);
+      rgbSyncSof(11)  <= rgbSyncSof(10);
+      rgbSyncSof(12)  <= rgbSyncSof(11);
+      rgbSyncSof(13)  <= rgbSyncSof(12);
+      rgbSyncSof(14)  <= rgbSyncSof(13);
+      rgbSyncSof(15)  <= rgbSyncSof(14);
+      rgbSyncSof(16)  <= rgbSyncSof(15);
+      rgbSyncSof(17)  <= rgbSyncSof(16);
+      rgbSyncSof(18)  <= rgbSyncSof(17);
+      rgbSyncSof(19)  <= rgbSyncSof(18);
+      rgbSyncSof(20)  <= rgbSyncSof(19);
+      rgbSyncSof(21)  <= rgbSyncSof(20);
+      rgbSyncSof(22)  <= rgbSyncSof(21);
+      rgbSyncSof(23)  <= rgbSyncSof(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncEof(0)   <= iRgb.eof;
+      rgbSyncEof(1)   <= rgbSyncEof(0);
+      rgbSyncEof(2)   <= rgbSyncEof(1);
+      rgbSyncEof(3)   <= rgbSyncEof(2);
+      rgbSyncEof(4)   <= rgbSyncEof(3);
+      rgbSyncEof(5)   <= rgbSyncEof(4);
+      rgbSyncEof(6)   <= rgbSyncEof(5);
+      rgbSyncEof(7)   <= rgbSyncEof(6);
+      rgbSyncEof(8)   <= rgbSyncEof(4);
+      rgbSyncEof(9)   <= rgbSyncEof(8);
+      rgbSyncEof(10)  <= rgbSyncEof(9);
+      rgbSyncEof(11)  <= rgbSyncEof(10);
+      rgbSyncEof(12)  <= rgbSyncEof(11);
+      rgbSyncEof(13)  <= rgbSyncEof(12);
+      rgbSyncEof(14)  <= rgbSyncEof(13);
+      rgbSyncEof(15)  <= rgbSyncEof(14);
+      rgbSyncEof(16)  <= rgbSyncEof(15);
+      rgbSyncEof(17)  <= rgbSyncEof(16);
+      rgbSyncEof(18)  <= rgbSyncEof(17);
+      rgbSyncEof(19)  <= rgbSyncEof(18);
+      rgbSyncEof(20)  <= rgbSyncEof(19);
+      rgbSyncEof(21)  <= rgbSyncEof(20);
+      rgbSyncEof(22)  <= rgbSyncEof(21);
+      rgbSyncEof(23)  <= rgbSyncEof(22);
+    end if;
+end process;
+  
+  
+  
   -----------------------------------------------------------------------------
   -- STAGE 1: Multiplication
   -----------------------------------------------------------------------------
@@ -286,12 +405,12 @@ begin
     variable cr_round : unsigned(i_data_width-1 downto 0);
   begin
     if rst_l = '0' then
-      en_3 <= '0';
+
       y_3 <= (others => '0');
       cb_3 <= (others => '0');
       cr_3 <= (others => '0');
     elsif clk'event and clk = '1' then
-      en_3 <= en_2;
+
       -- Determine rounding, combine with the 128 constant
       if y_2(0) = '1' then
         if i_full_range then
@@ -321,8 +440,11 @@ begin
       cr_3 <= cr_2(cr_2'left downto 1) + cr_round;
     end if;
   end process;
-  y     <= std_logic_vector(y_3);
-  cb    <= std_logic_vector(cb_3);
-  cr    <= std_logic_vector(cr_3);
-  oValid <= en_3;
+  oRgb.red      <= std_logic_vector(y_3);
+  oRgb.green    <= std_logic_vector(cb_3);
+  oRgb.blue     <= std_logic_vector(cr_3);
+  oRgb.valid    <= rgbSyncValid(3);
+  oRgb.eol      <= rgbSyncEol(3);
+  oRgb.sof      <= rgbSyncSof(3);
+  oRgb.eof      <= rgbSyncEof(3);
 end imp;

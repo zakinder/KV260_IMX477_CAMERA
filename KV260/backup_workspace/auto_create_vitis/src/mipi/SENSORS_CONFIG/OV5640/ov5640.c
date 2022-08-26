@@ -1,5 +1,6 @@
 #include "ov5640.h"
 #include <xil_types.h>
+#include <stdio.h>
 #include <xstatus.h>
 #include "xiicps.h"
 #include "xparameters.h"
@@ -7,6 +8,7 @@
 #include <xil_printf.h>
 #include "../../config.h"
 #include "../I2c_transections.h"
+#include "../init_camera.h"
 #define IIC_OV5640_ADDR  	        0X3C
 struct reginfo cfg_ov5640_init_data[] =
 {	

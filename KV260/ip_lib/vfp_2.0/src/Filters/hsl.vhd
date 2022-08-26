@@ -48,6 +48,15 @@ port (
     config_number_40   : in integer;
     config_number_41   : in integer;
     config_number_42   : in integer;
+    oHueVal            : out std_logic;
+    oHueRed            : out std_logic_vector(9 downto 0);
+    oHueBlu            : out std_logic_vector(9 downto 0);
+    oHueGre            : out std_logic_vector(9 downto 0);
+    oHueTop            : out std_logic_vector(23 downto 0);
+    oHueBot            : out std_logic_vector(9 downto 0);
+    oHueQut            : out std_logic_vector(9 downto 0);
+    oHueDeg            : out std_logic_vector(9 downto 0);
+    oHueOut            : out std_logic_vector(9 downto 0);
     oHsl               : out channel);
 end hsl_c;
 architecture behavioral of hsl_c is
@@ -60,44 +69,62 @@ architecture behavioral of hsl_c is
     signal rgb_delta                 : natural := zero;
     signal rgb_delta_1               : integer := zero;
     signal rgb_delta_sum             : natural := zero;
-    signal rgb_delta_sum_1           : natural := zero;
-    signal rgb_delta_max_1           : natural := zero;
     signal rgb_delta_max_2           : natural := zero;
     signal rgb_delta_max             : natural := zero;
-    signal rgb_delta_sum_denominator : ufixed(19 downto 0)    :=(others => '0');
-    signal rgb_delta_numerator       : ufixed(10 downto 0)    :=(others => '0');
-    signal rgb_delta_numerator_1     : ufixed(10 downto 0)    :=(others => '0');
-    signal rgb_delta_quotient_1      : ufixed(21 downto -9)   :=(others => '0');
-    signal rgb_delta_quotient_2      : ufixed(12 downto -9)   :=(others => '0');
-    signal rgb_delta_quot_1          : ufixed(10 downto 0)    :=(others => '0');
-    signal rgb_delta_quot_2          : ufixed(10 downto 0)    :=(others => '0');
+    signal hsync                     : hueArray(0 to 19);
     --H
-    signal hue_quotient       : ufixed(21 downto -9) :=(others => '0');
-    signal hue_numerator      : natural := zero;
-    signal hue_denominator    : natural := zero;
-    signal hue_quot           : ufixed(19 downto 0)  :=(others => '0');
-    signal uuFiXhueTop        : ufixed(19 downto 0)  :=(others => '0');
-    signal uuFiXhueBot        : ufixed(10 downto 0)   :=(others => '0');
-    signal uFiXhueQuot        : natural := zero;
-    signal hue_quotient_value : natural := zero;
-    signal hue_degree         : natural := zero;
-    signal hue_degree_sync    : natural := zero;
-    signal hue_result         : natural := zero;
-    signal hue                : natural := zero;
+    signal hue_quotient       : natural;
+    signal hue_numerator      : natural := 1;
+    signal hue_denominator    : natural := 1;
+    signal hue_degree         : natural := 1;
+    signal hue                : natural := 1;
     --S
-    signal saturate           : unsigned(9 downto 0);
-    signal saturate_sync1     : unsigned(9 downto 0);
-    signal saturate_sync2     : unsigned(9 downto 0);
+    signal saturate           : natural;
     --V
     signal luminosity         : natural;
-    signal luminosity_sync1   : unsigned(9 downto 0);
-    signal luminosity_sync2   : unsigned(9 downto 0);
     --Valid
-    signal rgbSyncValid       : std_logic_vector(11 downto 0) := x"000";
-    signal rgbSyncEol         : std_logic_vector(11 downto 0) := x"000";
-    signal rgbSyncSof         : std_logic_vector(11 downto 0) := x"000";
-    signal rgbSyncEof         : std_logic_vector(11 downto 0) := x"000";
+    signal rgbSyncValid             : std_logic_vector(23 downto 0) := x"000000";
+    signal rgbSyncEol               : std_logic_vector(23 downto 0) := x"000000";
+    signal rgbSyncSof               : std_logic_vector(23 downto 0) := x"000000";
+    signal rgbSyncEof               : std_logic_vector(23 downto 0) := x"000000";
+    signal s_axis_dividend_tvalid   : std_logic := '1';
+    signal s_axis_dividend_tdata    : std_logic_vector(15 downto 0) := (others => 'X');
+    signal s_axis_divisor_tvalid    : std_logic := '1';
+    signal s_axis_divisor_tdata     : std_logic_vector(31 downto 0) := (others => 'X');
+    signal m_axis_dout_tvalid       : std_logic := '0';
+    signal m_axis_dout_tdata        : std_logic_vector(31 downto 0) := (others => '0');
+    signal s2_axis_dividend_tvalid  : std_logic := '1';
+    signal s2_axis_dividend_tdata   : std_logic_vector(15 downto 0) := (others => 'X');
+    signal s2_axis_divisor_tvalid   : std_logic := '1';
+    signal s2_axis_divisor_tdata    : std_logic_vector(15 downto 0) := (others => 'X');
+    signal m2_axis_dout_tvalid      : std_logic := '0';
+    signal m2_axis_dout_tdata       : std_logic_vector(31 downto 0) := (others => '0');
 begin
+hsync(0).lum      <= luminosity;
+hsync(0).sat      <= saturate;
+process (clk) begin
+    if rising_edge(clk) then
+        hsync(1)          <= hsync(0);
+        hsync(2)          <= hsync(1);
+        hsync(3)          <= hsync(2);
+        hsync(4)          <= hsync(3);
+        hsync(5)          <= hsync(4);
+        hsync(6)          <= hsync(5);
+        hsync(7)          <= hsync(6);
+        hsync(8)          <= hsync(7);
+        hsync(9)          <= hsync(8);
+        hsync(10)         <= hsync(9);
+        hsync(11)         <= hsync(10);
+        hsync(12)         <= hsync(11);
+        hsync(13)         <= hsync(12);
+        hsync(14)         <= hsync(13);
+        hsync(15)         <= hsync(14);
+        hsync(16)         <= hsync(15);
+        hsync(17)         <= hsync(16);
+        hsync(18)         <= hsync(17);
+        hsync(19)         <= hsync(18);
+    end if;
+end process;
 rgbToUfP: process (clk,reset)begin
     if (reset = lo) then
         rgb_sync_1.red    <= zero;
@@ -143,28 +170,23 @@ end process pipRgbMaxUfD1P;
 -- RGB.∆ = RGB.max − RGB.min
 rgbDeltaP: process (clk) begin
     if rising_edge(clk) then
-        rgb_delta      <= (rgb_max - rgb_min);
+        rgb_delta      <= (rgb_max - rgb_min); --output rgb_delta 3 clks
         rgb_delta_1    <= (rgb_max - rgb_min);
         rgb_delta_sum  <= (rgb_max + rgb_min);
     end if;
 end process rgbDeltaP;
-rgb_delta_sum_denominator   <= to_ufixed(rgb_delta_sum,uuFiXhueTop);
-rgb_delta_numerator         <= to_ufixed(rgb_delta_sum,uuFiXhueBot);
-rgb_delta_numerator_1       <= to_ufixed(rgb_delta_1,uuFiXhueBot);
-rgb_delta_quotient_1        <= (rgb_delta_numerator / rgb_delta_sum_denominator);
-rgb_delta_quotient_2        <= (rgb_delta_numerator / rgb_delta_numerator_1);
-rgb_delta_quot_1            <= resize(rgb_delta_quotient_1,rgb_delta_quot_1);
-rgb_delta_quot_2            <= resize(rgb_delta_quotient_2,rgb_delta_quot_2);
-rgb_delta_max_1             <= to_integer(unsigned(rgb_delta_quot_1));
-rgb_delta_max_2             <= to_integer(unsigned(rgb_delta_quot_2));
-
-process(rgb_delta_max_2)begin
-    if (rgb_delta_max_2 < 1024) then
-        rgb_delta_max     <= rgb_delta_max_2;
-    end if;
-end process;
-
-
+--s2_axis_dividend_tdata <= std_logic_vector(to_unsigned((rgb_delta_sum),16));
+--s2_axis_divisor_tdata  <= std_logic_vector(to_unsigned((rgb_delta_1),16));
+--saturate_divider_inst: divider
+--  port map (
+--    aclk                      => clk,
+--    s_axis_dividend_tvalid    => s2_axis_dividend_tvalid,
+--    s_axis_dividend_tdata     => s2_axis_dividend_tdata,
+--    s_axis_divisor_tvalid     => s2_axis_divisor_tvalid,
+--    s_axis_divisor_tdata      => s2_axis_divisor_tdata,
+--    m_axis_dout_tvalid        => m2_axis_dout_tvalid,
+--    m_axis_dout_tdata         => m2_axis_dout_tdata);
+--rgb_delta_max_2 <= to_integer(unsigned(m2_axis_dout_tdata(31 downto 16)));
 -------------------------------------------------
 pipRgbD2P: process (clk) begin
     if rising_edge(clk) then
@@ -183,32 +205,31 @@ hueP: process (clk) begin
   if rising_edge(clk) then
     if (rgb_sync_3.red  = rgb_max_value) then
         if (rgb_sync_3.green >= rgb_sync_3.blue) then
-            hue_degree <= config_number_31;--0
-            hue_numerator        <= (rgb_sync_3.green - rgb_sync_3.blue) * config_number_33; --44
+            hue_degree           <= 0;                                                          --0   ---\
+            hue_numerator        <= abs(rgb_sync_3.green - rgb_sync_3.blue) * config_number_33; --170 ----= 170
         else
-            hue_degree <= config_number_32;--0
-            hue_numerator        <= (rgb_sync_3.blue - rgb_sync_3.green) * config_number_34; --85
+            hue_degree           <= config_number_32;                                           --0   ---\
+            hue_numerator        <= abs(rgb_sync_3.blue - rgb_sync_3.green) * config_number_34; --341 ----= 341
         end if;
     elsif(rgb_sync_3.green = rgb_max_value)  then
         if (rgb_sync_3.blue >= rgb_sync_3.red ) then
-            hue_degree <= config_number_35;--129
-            hue_numerator       <= (rgb_sync_3.blue - rgb_sync_3.red) * config_number_37;--43
+            hue_degree          <= config_number_35;                                            --512 ---\
+            hue_numerator       <= abs(rgb_sync_3.blue - rgb_sync_3.red) * config_number_37;    --170 ----= 682
         else
-            hue_degree <= config_number_36;--86
-            hue_numerator       <= (rgb_sync_3.red  - rgb_sync_3.blue) * config_number_38;--84
+            hue_degree          <= config_number_36;                                            --341 ---\
+            hue_numerator       <= abs(rgb_sync_3.red  - rgb_sync_3.blue) * config_number_38;   --341 ----= 682
         end if;
     elsif(rgb_sync_3.blue = rgb_max_value)  then
         if (rgb_sync_3.red  >= rgb_sync_3.green) then
-            hue_degree <= config_number_39;--212
-            hue_numerator       <= (rgb_sync_3.red  - rgb_sync_3.green) * config_number_41;--43
+            hue_degree          <= config_number_39;                                            --853 ---\
+            hue_numerator       <= abs(rgb_sync_3.red  - rgb_sync_3.green) * config_number_41;  --170 ----= 1023
         else
-            hue_degree <= config_number_40;--171
-            hue_numerator       <= (rgb_sync_3.green - rgb_sync_3.red ) * config_number_42;--84
+            hue_degree          <= config_number_40;                                            --682 ---\
+            hue_numerator       <= abs(rgb_sync_3.green - rgb_sync_3.red ) * config_number_42;  --341 ----= 1023
         end if;
     end if;
   end if;
 end process hueP;
-
 -------------------------------------------------
 -- HUE
 -- RGB.∆ = RGB.max − RGB.min
@@ -216,134 +237,211 @@ end process hueP;
 hueBottomP: process (clk) begin
     if rising_edge(clk) then
         if (rgb_delta > 0) then
-            hue_denominator <= rgb_delta;
+            hue_denominator <= rgb_delta; -- output 4clks
         else
             hue_denominator <= 6;
         end if;
     end if;
 end process hueBottomP;
 -------------------------------------------------
--- HUE DIVISION
+-- HUE DIVISION 4+18=22
 -------------------------------------------------
-uuFiXhueTop   <= to_ufixed(hue_numerator,uuFiXhueTop);
-uuFiXhueBot   <= to_ufixed(hue_denominator,uuFiXhueBot);
-hue_quotient  <= (uuFiXhueTop / uuFiXhueBot);
-hue_quot      <= resize(hue_quotient,hue_quot);
-uFiXhueQuot   <= to_integer(unsigned(hue_quot));
+s_axis_divisor_tdata  <= std_logic_vector(to_unsigned((hue_numerator),32));   -- 4 clks at this point
+s_axis_dividend_tdata <= std_logic_vector(to_unsigned((hue_denominator),16)); -- 4 clks at this point
+divider_inst: divider
+  port map (
+    aclk                      => clk,
+    s_axis_dividend_tvalid    => s_axis_dividend_tvalid,
+    s_axis_dividend_tdata     => s_axis_dividend_tdata,
+    s_axis_divisor_tvalid     => s_axis_divisor_tvalid,
+    s_axis_divisor_tdata      => s_axis_divisor_tdata,
+    m_axis_dout_tvalid        => m_axis_dout_tvalid,
+    m_axis_dout_tdata         => m_axis_dout_tdata);
+hue_quotient <= to_integer(unsigned(m_axis_dout_tdata(31 downto 16)));
 -------------------------------------------------
-hueDegreeP: process (clk) begin
-    if rising_edge(clk) then
-        hue_degree_sync  <= hue_degree;
-    end if;
-end process hueDegreeP;
-hueDividerResizeP: process (clk) begin
-    if rising_edge(clk) then
-        hue_quotient_value  <= uFiXhueQuot;
-    end if;
-end process hueDividerResizeP;
-hue  <= hue_quotient_value + hue_degree_sync;
+oHueVal <= rgbSyncValid(22);
+oHueRed <= std_logic_vector(to_unsigned(hue, 10));
+oHueBlu <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+oHueGre <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+oHueTop <= std_logic_vector(to_unsigned((hue_numerator),24));
+oHueBot <= std_logic_vector(to_unsigned((hue_denominator),10));
+oHueQut <= std_logic_vector(to_unsigned((hue_quotient),10));
+oHueDeg <= m_axis_dout_tdata(9 downto 0);
+oHueOut <= std_logic_vector(to_unsigned((hue),10));
+-------------------------------------------------
+hue  <= hue_quotient + hue_degree;
 -------------------------------------------------
 -- SATURATE
--------------------------------------------------     
-satValueP: process (clk) begin
+-------------------------------------------------
+process(rgb_delta)begin
+    if (rgb_delta < 1024) then
+        rgb_delta_max     <= rgb_delta;
+    end if;
+end process;
+process (clk) begin
     if rising_edge(clk) then
         if(rgb_max /= 0)then
-            saturate <= to_unsigned((rgb_delta_max),10);
+            saturate <= rgb_delta_max; --output 4 clks ... need to make it 22 inorder to sync with rgb
         else
-            saturate <= to_unsigned(0, 10);
+            saturate <= 0;
         end if;
     end if;
-end process satValueP; 
+end process; 
 -------------------------------------------------
 -- VALUE
 -------------------------------------------------
 valValueP: process (clk) begin
     if rising_edge(clk) then
-        luminosity <= (rgb_max + rgb_min) /2;
+        luminosity <= (rgb_max + rgb_min) /2;-- output 3clks ... need to make it 22 inorder to sync with rgb
     end if;
 end process valValueP;
-
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncValid(0)   <= iRgb.valid;
+      rgbSyncValid(1)   <= rgbSyncValid(0);
+      rgbSyncValid(2)   <= rgbSyncValid(1);
+      rgbSyncValid(3)   <= rgbSyncValid(2);
+      rgbSyncValid(4)   <= rgbSyncValid(3);
+      rgbSyncValid(5)   <= rgbSyncValid(4);
+      rgbSyncValid(6)   <= rgbSyncValid(5);
+      rgbSyncValid(7)   <= rgbSyncValid(6);
+      rgbSyncValid(8)   <= rgbSyncValid(7);
+      rgbSyncValid(9)   <= rgbSyncValid(8);
+      rgbSyncValid(10)  <= rgbSyncValid(9);
+      rgbSyncValid(11)  <= rgbSyncValid(10);
+      rgbSyncValid(12)  <= rgbSyncValid(11);
+      rgbSyncValid(13)  <= rgbSyncValid(12);
+      rgbSyncValid(14)  <= rgbSyncValid(13);
+      rgbSyncValid(15)  <= rgbSyncValid(14);
+      rgbSyncValid(16)  <= rgbSyncValid(15);
+      rgbSyncValid(17)  <= rgbSyncValid(16);
+      rgbSyncValid(18)  <= rgbSyncValid(17);
+      rgbSyncValid(19)  <= rgbSyncValid(18);
+      rgbSyncValid(20)  <= rgbSyncValid(19);
+      rgbSyncValid(21)  <= rgbSyncValid(20);
+      rgbSyncValid(22)  <= rgbSyncValid(21);
+      rgbSyncValid(23)  <= rgbSyncValid(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncEol(0)   <= iRgb.eol;
+      rgbSyncEol(1)   <= rgbSyncEol(0);
+      rgbSyncEol(2)   <= rgbSyncEol(1);
+      rgbSyncEol(3)   <= rgbSyncEol(2);
+      rgbSyncEol(4)   <= rgbSyncEol(3);
+      rgbSyncEol(5)   <= rgbSyncEol(4);
+      rgbSyncEol(6)   <= rgbSyncEol(5);
+      rgbSyncEol(7)   <= rgbSyncEol(6);
+      rgbSyncEol(8)   <= rgbSyncEol(4);
+      rgbSyncEol(9)   <= rgbSyncEol(8);
+      rgbSyncEol(10)  <= rgbSyncEol(9);
+      rgbSyncEol(11)  <= rgbSyncEol(10);
+      rgbSyncEol(12)  <= rgbSyncEol(11);
+      rgbSyncEol(13)  <= rgbSyncEol(12);
+      rgbSyncEol(14)  <= rgbSyncEol(13);
+      rgbSyncEol(15)  <= rgbSyncEol(14);
+      rgbSyncEol(16)  <= rgbSyncEol(15);
+      rgbSyncEol(17)  <= rgbSyncEol(16);
+      rgbSyncEol(18)  <= rgbSyncEol(17);
+      rgbSyncEol(19)  <= rgbSyncEol(18);
+      rgbSyncEol(20)  <= rgbSyncEol(19);
+      rgbSyncEol(21)  <= rgbSyncEol(20);
+      rgbSyncEol(22)  <= rgbSyncEol(21);
+      rgbSyncEol(23)  <= rgbSyncEol(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncSof(0)   <= iRgb.sof;
+      rgbSyncSof(1)   <= rgbSyncSof(0);
+      rgbSyncSof(2)   <= rgbSyncSof(1);
+      rgbSyncSof(3)   <= rgbSyncSof(2);
+      rgbSyncSof(4)   <= rgbSyncSof(3);
+      rgbSyncSof(5)   <= rgbSyncSof(4);
+      rgbSyncSof(6)   <= rgbSyncSof(5);
+      rgbSyncSof(7)   <= rgbSyncSof(6);
+      rgbSyncSof(8)   <= rgbSyncSof(4);
+      rgbSyncSof(9)   <= rgbSyncSof(8);
+      rgbSyncSof(10)  <= rgbSyncSof(9);
+      rgbSyncSof(11)  <= rgbSyncSof(10);
+      rgbSyncSof(12)  <= rgbSyncSof(11);
+      rgbSyncSof(13)  <= rgbSyncSof(12);
+      rgbSyncSof(14)  <= rgbSyncSof(13);
+      rgbSyncSof(15)  <= rgbSyncSof(14);
+      rgbSyncSof(16)  <= rgbSyncSof(15);
+      rgbSyncSof(17)  <= rgbSyncSof(16);
+      rgbSyncSof(18)  <= rgbSyncSof(17);
+      rgbSyncSof(19)  <= rgbSyncSof(18);
+      rgbSyncSof(20)  <= rgbSyncSof(19);
+      rgbSyncSof(21)  <= rgbSyncSof(20);
+      rgbSyncSof(22)  <= rgbSyncSof(21);
+      rgbSyncSof(23)  <= rgbSyncSof(22);
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+      rgbSyncEof(0)   <= iRgb.eof;
+      rgbSyncEof(1)   <= rgbSyncEof(0);
+      rgbSyncEof(2)   <= rgbSyncEof(1);
+      rgbSyncEof(3)   <= rgbSyncEof(2);
+      rgbSyncEof(4)   <= rgbSyncEof(3);
+      rgbSyncEof(5)   <= rgbSyncEof(4);
+      rgbSyncEof(6)   <= rgbSyncEof(5);
+      rgbSyncEof(7)   <= rgbSyncEof(6);
+      rgbSyncEof(8)   <= rgbSyncEof(4);
+      rgbSyncEof(9)   <= rgbSyncEof(8);
+      rgbSyncEof(10)  <= rgbSyncEof(9);
+      rgbSyncEof(11)  <= rgbSyncEof(10);
+      rgbSyncEof(12)  <= rgbSyncEof(11);
+      rgbSyncEof(13)  <= rgbSyncEof(12);
+      rgbSyncEof(14)  <= rgbSyncEof(13);
+      rgbSyncEof(15)  <= rgbSyncEof(14);
+      rgbSyncEof(16)  <= rgbSyncEof(15);
+      rgbSyncEof(17)  <= rgbSyncEof(16);
+      rgbSyncEof(18)  <= rgbSyncEof(17);
+      rgbSyncEof(19)  <= rgbSyncEof(18);
+      rgbSyncEof(20)  <= rgbSyncEof(19);
+      rgbSyncEof(21)  <= rgbSyncEof(20);
+      rgbSyncEof(22)  <= rgbSyncEof(21);
+      rgbSyncEof(23)  <= rgbSyncEof(22);
+    end if;
+end process;
 process (clk) begin
     if rising_edge(clk) then
-        luminosity_sync1 <= to_unsigned(luminosity, 10);
+        if(config_number_31=0)then
+            oHsl.red   <= std_logic_vector(to_unsigned(hue, 10));
+            oHsl.green <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+            oHsl.blue  <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+        elsif(config_number_31=1)then
+            oHsl.red   <= std_logic_vector(to_unsigned(hue, 10));
+            oHsl.green <= std_logic_vector(to_unsigned(1023,10));
+            oHsl.blue  <= std_logic_vector(to_unsigned(1023,10));
+        elsif(config_number_31=2)then
+            oHsl.red   <= std_logic_vector(to_unsigned(1023, 10));
+            oHsl.green <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+            oHsl.blue  <= std_logic_vector(to_unsigned(1023,10));
+        elsif(config_number_31=3)then
+            oHsl.red   <= std_logic_vector(to_unsigned(1023,10));
+            oHsl.green <= std_logic_vector(to_unsigned(1023,10));
+            oHsl.blue  <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+        elsif(config_number_31=4)then
+            oHsl.red     <= std_logic_vector(to_unsigned(hue, 10));
+            oHsl.green   <= std_logic_vector(to_unsigned(hue, 10));
+            oHsl.blue    <= std_logic_vector(to_unsigned(hue, 10));
+        elsif(config_number_31=5)then
+            oHsl.red   <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+            oHsl.green <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+            oHsl.blue  <= std_logic_vector(to_unsigned(hsync(18).sat, 10));
+        else
+            oHsl.red    <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+            oHsl.green  <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+            oHsl.blue   <= std_logic_vector(to_unsigned(hsync(19).lum, 10));
+        end if;
     end if;
 end process;
-
-process (clk)begin
-    if rising_edge(clk) then
-      rgbSyncValid(0)  <= iRgb.valid;
-      rgbSyncValid(1)  <= rgbSyncValid(0);
-      rgbSyncValid(2)  <= rgbSyncValid(1);
-      rgbSyncValid(3)  <= rgbSyncValid(2);
-      rgbSyncValid(4)  <= rgbSyncValid(3);
-      rgbSyncValid(5)  <= rgbSyncValid(4);
-      rgbSyncValid(6)  <= rgbSyncValid(5);
-      rgbSyncValid(7)  <= rgbSyncValid(6);
-      rgbSyncValid(8)  <= rgbSyncValid(7);
-      rgbSyncValid(9)  <= rgbSyncValid(8);
-      rgbSyncValid(10) <= rgbSyncValid(9);
-    end if;
-end process;
-process (clk)begin
-    if rising_edge(clk) then
-      rgbSyncEol(0)  <= iRgb.eol;
-      rgbSyncEol(1)  <= rgbSyncEol(0);
-      rgbSyncEol(2)  <= rgbSyncEol(1);
-      rgbSyncEol(3)  <= rgbSyncEol(2);
-      rgbSyncEol(4)  <= rgbSyncEol(3);
-      rgbSyncEol(5)  <= rgbSyncEol(4);
-      rgbSyncEol(6)  <= rgbSyncEol(5);
-      rgbSyncEol(7)  <= rgbSyncEol(6);
-      rgbSyncEol(8)  <= rgbSyncEol(4);
-      rgbSyncEol(9)  <= rgbSyncEol(8);
-      rgbSyncEol(10) <= rgbSyncEol(9);
-    end if;
-end process;
-process (clk)begin
-    if rising_edge(clk) then
-      rgbSyncSof(0)  <= iRgb.sof;
-      rgbSyncSof(1)  <= rgbSyncSof(0);
-      rgbSyncSof(2)  <= rgbSyncSof(1);
-      rgbSyncSof(3)  <= rgbSyncSof(2);
-      rgbSyncSof(4)  <= rgbSyncSof(3);
-      rgbSyncSof(5)  <= rgbSyncSof(4);
-      rgbSyncSof(6)  <= rgbSyncSof(5);
-      rgbSyncSof(7)  <= rgbSyncSof(6);
-      rgbSyncSof(8)  <= rgbSyncSof(4);
-      rgbSyncSof(9)  <= rgbSyncSof(8);
-      rgbSyncSof(10) <= rgbSyncSof(9);
-    end if;
-end process;
-process (clk)begin
-    if rising_edge(clk) then
-      rgbSyncEof(0)  <= iRgb.eof;
-      rgbSyncEof(1)  <= rgbSyncEof(0);
-      rgbSyncEof(2)  <= rgbSyncEof(1);
-      rgbSyncEof(3)  <= rgbSyncEof(2);
-      rgbSyncEof(4)  <= rgbSyncEof(3);
-      rgbSyncEof(5)  <= rgbSyncEof(4);
-      rgbSyncEof(6)  <= rgbSyncEof(5);
-      rgbSyncEof(7)  <= rgbSyncEof(6);
-      rgbSyncEof(8)  <= rgbSyncEof(4);
-      rgbSyncEof(9)  <= rgbSyncEof(8);
-      rgbSyncEof(10) <= rgbSyncEof(9);
-    end if;
-end process;
-
-process (clk) begin
-    if rising_edge(clk) then
-        luminosity_sync2        <= luminosity_sync1;
-        saturate_sync1          <= saturate;
-        saturate_sync2          <= saturate_sync1;
-    end if;
-end process;
-
-    oHsl.red   <= std_logic_vector(to_unsigned(hue, 10));
-    oHsl.green <= std_logic_vector(saturate_sync2);
-    oHsl.blue  <= std_logic_vector(luminosity_sync2);
-    oHsl.valid <= rgbSyncValid(4);
-    oHsl.eol   <= rgbSyncEol(4);
-    oHsl.sof   <= rgbSyncSof(4);
-    oHsl.eof   <= rgbSyncEof(4);
-    
+    oHsl.valid <= rgbSyncValid(22);
+    oHsl.eol   <= rgbSyncEol(22);
+    oHsl.sof   <= rgbSyncSof(22);
+    oHsl.eof   <= rgbSyncEof(22);
 end behavioral;

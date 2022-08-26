@@ -1,4 +1,4 @@
-@set XILDIR=C:/Xilinx
+@set XILDIR=D:/Xilinx
 @set VIVADO_VERSION=2017.2
 @set PARTNUMBER=1
 @set SWAPP=NA

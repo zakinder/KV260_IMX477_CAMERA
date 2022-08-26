@@ -174,7 +174,7 @@ int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame)
 void InitRunConfig(Run_Config *RunCfgPtr)
 {
 	/* Initial configuration parameters. */
-		RunCfgPtr->DpPsuPtr   = &DpPsu;
+		RunCfgPtr->DpPsuPtr  = &DpPsu;
 		RunCfgPtr->IntrPtr   = &Intr;
 		RunCfgPtr->AVBufPtr  = &AVBuf;
 		RunCfgPtr->DpDmaPtr  = &DpDma;
@@ -257,7 +257,7 @@ int InitDpDmaSubsystem(Run_Config *RunCfgPtr)
 	/* Configure the output video pipeline */
 	XAVBuf_ConfigureOutputVideo(AVBufPtr);
 	/* Disable the global alpha, since we are using the pixel based alpha */
-	XAVBuf_SetBlenderAlpha(AVBufPtr, 0, 0);
+	XAVBuf_SetBlenderAlpha(AVBufPtr, 200, 0);
 	/* Set the clock mode */
 	XDpPsu_CfgMsaEnSynchClkMode(DpPsuPtr, RunCfgPtr->EnSynchClkMode);
 	/* Set the clock source depending on the use case.

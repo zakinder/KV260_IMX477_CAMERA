@@ -8,5 +8,5 @@ setlocal
 @echo -- Run Design with: %batchfile_name%
 @echo -- Use Design Path: %batchfile_path%
 @echo ---------------------Load basic design settings---------------------
-call C:\Xilinx\Vitis\2022.1\bin\xsct.bat build_vitis.tcl
+call D:\Xilinx\Vitis\2022.1\bin\xsct.bat build_vitis.tcl
 pause

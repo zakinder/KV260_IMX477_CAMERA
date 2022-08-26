@@ -9,7 +9,7 @@ use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
         -- System Revision
-        revision_number           : std_logic_vector(31 downto 0) := x"06122022";
+        revision_number           : std_logic_vector(31 downto 0) := x"08182022";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
@@ -138,6 +138,8 @@ architecture arch_imp of vfp_v1_0 is
     signal ccm6                : channel;
     signal ccm7                : channel;
     signal ccm8                : channel;
+    signal rgbYcbcr            : channel;
+    
 begin
 -- this module encode and decode cpu config data to slave components
 vfpConfigInst: vfp_config
@@ -303,7 +305,7 @@ end process;
 
 rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.05,15,-3),
+    contrast_val          => to_sfixed(1.10,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
@@ -351,7 +353,7 @@ port map(
     oRgb                        => ccc6);
 rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.10,15,-3),
+    contrast_val          => to_sfixed(1.15,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
@@ -360,7 +362,7 @@ port map (
     oRgb                  => ccc7);
 rgb_contrast_brightness_3_inst: rgb_contrast_brightness_level_1
 generic map (
-    contrast_val          => to_sfixed(1.20,15,-3),
+    contrast_val          => to_sfixed(1.45,15,-3),
     exposer_val           => 0)
 port map (                  
     clk                   => ivideo_aclk,
@@ -435,6 +437,22 @@ port map(
     config_number_42   => config_number_42,
     oHsl               => ccm4);
     
+ycc_inst  : rgb_ycbcr
+generic map(
+    i_data_width         => 10,
+    i_precision          => 12,
+    i_full_range         => TRUE)
+port map(
+    clk                  => ivideo_aclk,
+    rst_l                => ivideo_aresetn,
+    iRgb                 => ccc2,
+    oRgb                 => rgbYcbcr);
+    
+    
+    
+    
+    
+    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
     if(config_number_15 = 0) then
@@ -463,6 +481,8 @@ process (ivideo_aclk)begin
         rgb_fr_ccm           <= ccm3;
     elsif(config_number_15 = 12)then
         rgb_fr_ccm           <= ccm4;
+    elsif(config_number_15 = 13)then
+        rgb_fr_ccm           <= rgbYcbcr;
     else
         rgb_fr_ccm           <= rgb_to_ccm;
     end if;

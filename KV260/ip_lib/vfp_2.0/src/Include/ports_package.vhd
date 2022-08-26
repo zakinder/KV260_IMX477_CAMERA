@@ -941,7 +941,7 @@ end component blur_mac;
 component testpattern is
 port (
     clk                   : in std_logic;
-    iValid                : in std_logic;
+    iRgb                  : in channel;
     iCord                 : in coord;
     tpSelect              : in integer;
     oRgb                  : out channel);
@@ -1084,6 +1084,15 @@ port (
     config_number_40            : in integer;
     config_number_41            : in integer;
     config_number_42            : in integer;
+    oHueVal                     : out std_logic;
+    oHueRed                     : out std_logic_vector(9 downto 0);
+    oHueBlu                     : out std_logic_vector(9 downto 0);
+    oHueGre                     : out std_logic_vector(9 downto 0);
+    oHueTop                     : out std_logic_vector(23 downto 0);
+    oHueBot                     : out std_logic_vector(9 downto 0);
+    oHueQut                     : out std_logic_vector(9 downto 0);
+    oHueDeg                     : out std_logic_vector(9 downto 0);
+    oHueOut                     : out std_logic_vector(9 downto 0);
     oHsl                        : out channel);
 end component hsl_c;
 component rgb_ycbcr is
@@ -1095,10 +1104,7 @@ port (
     clk                         : in  std_logic;
     rst_l                       : in  std_logic;
     iRgb                        : in channel;
-    y                           : out std_logic_vector(i_data_width-1 downto 0);
-    cb                          : out std_logic_vector(i_data_width-1 downto 0);
-    cr                          : out std_logic_vector(i_data_width-1 downto 0);
-    oValid                      : out std_logic);
+    oRgb                        : out channel);
 end component rgb_ycbcr;
 component color_correction is
 generic (
@@ -1750,6 +1756,20 @@ port (
     tuser              : out std_logic;
     tvalid             : out std_logic);
 end component;
+
+COMPONENT divider
+  PORT (
+    aclk : IN STD_LOGIC;
+    s_axis_divisor_tvalid : IN STD_LOGIC;
+    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axis_dividend_tvalid : IN STD_LOGIC;
+    s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    m_axis_dout_tvalid : OUT STD_LOGIC;
+    m_axis_dout_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+  );
+END COMPONENT;
+
 
 
 end package;

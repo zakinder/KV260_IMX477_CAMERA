@@ -13,6 +13,7 @@ char uart_per_char_read(u32 uart_address)
 void per_write_reg(u32 offset, u32 data)
 {
 	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,offset,data);
+    usleep(1000);
 }
 char* char_to_uart(char auserinput[])
 {
@@ -397,20 +398,6 @@ void cmds_menu()
 printf(
 "\n"
 "|--------------------------------|\n"
-"| cmds videochannel |rgbselect   |\n"
-"| cmds gridpoint    |vchannel    |\n"
-"| cmds griddelta    |ltselect    |\n"
-"| cmds fifomode     |kernalconfig|\n"
-"| cmds printpixel   |ycbcrenable |\n"
-"| cmds readfifo     |ycbcrdisable|\n"
-"| cmds displaytype  |keygain     |\n"
-"| d5mw testpattern  |hsvpervalue |\n"
-"| d5mw colorgain    |yccpervalue |\n"
-"| d5mw config       |colorgain   |\n"
-"| d5mw update       |d5mgain     |\n"
-"| d5mw exposer      |colorgain   |\n"
-"| d5mw regs         |sdcard      |\n"
-"| d5mr regs         |            |\n"
 "| d5mr exposer      |            |\n"
 "|--------------------------------|\n");
 menu_print_prompt();

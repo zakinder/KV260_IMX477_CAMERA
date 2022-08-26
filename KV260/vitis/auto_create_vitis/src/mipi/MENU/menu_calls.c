@@ -17,10 +17,10 @@ u8 photobufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
 void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
-    u32 current_state = imx477s1;
+    u32 current_state;
     u32 k_number;
     u32 k_number_value;
-	int i;
+
 	FRESULT rc;
 	char PhotoName[40];
         per_write_reg(REG16,0);
@@ -40,13 +40,16 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         per_write_reg(REG41,170);
         per_write_reg(REG42,341); 
     if(connected_camera == 219){
-        per_write_reg(REG19,4);  
+        per_write_reg(REG19,5);
+        current_state = lwip;
     }
     if(connected_camera == 519){
         per_write_reg(REG19,4);
+        current_state = lwip;
     }
     if(connected_camera == 477){
         per_write_reg(REG19,4);
+        current_state = imx477s1;
     }
     if(connected_camera == 682){
         per_write_reg(REG19,4);
@@ -59,8 +62,9 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         per_write_reg(REG6,0);
         per_write_reg(REG7,0);
         per_write_reg(REG8,0);
-        per_write_reg(REG9,3000);
+        per_write_reg(REG9,2500);
         per_write_reg(REG11,15);
+        current_state = lwip;
     }
     while (menu_calls_enable == TRUE)
     {

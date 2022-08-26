@@ -13,6 +13,7 @@
   	Xil_Out32((BaseAddress) + (RegOffset), (u32)(Data))
 #define D5M_mReadReg(BaseAddress, RegOffset) \
     Xil_In32((BaseAddress) + (RegOffset))
+
 /*****************************************************************************************************************/
 
 
@@ -89,17 +90,28 @@
 #define cmds_quit               0x95BA400A
 #define cmds_space              0x20
 #define cmds_uart               0x95BA4834
-#define imxwrite                0x45E01E71
-#define imxread                 0x6FCB6D2
-#define write519                0x4E6CED6F
-#define read519                 0x775F357
+#define imx477wr                0x45CCCA2C
+#define imx477rd                0x45CCC9EC
+#define imx519wr                0x45CCDA94
+#define imx519rd                0x45CCDA54
+#define imx219wr                0x45CC6564
+#define imx219rd                0x45CC6524
+#define imx682wr                0x45CD1A40
+#define imx682rd                0x45CD1A00
 #define imx477c1                0x045CCC8F3
 #define imx477c2                0x045CCC8F4
 #define imx477c3                0x045CCC8F5
 #define imx477c4                0x045CCC8F6
 #define imx477c5                0x045CCC8F7
 #define imx477c6                0x045CCC8F8
+#define imx477s1                0x45CCC993
+#define imx477s2                0x45CCC994
+#define imx477s3                0x45CCC995
+#define imx477s4                0x45CCC996
+#define imx477s5                0x45CCC997
+#define imx477s6                0x45CCC998
 #define readpixels              0x25738CEF
 #define lwip                    0x1D8E6
+#define pics                    0x1E2D5
 /*****************************************************************************************************************/
 #endif // __SYSTEM_CONFIG_DEFINES_H__

@@ -1986,6 +1986,14 @@ record
     rgb              : channel;
 end record;
 type rgbArray is array(natural range <>) of type_RgbChannel;
+
+type type_hueChannel is
+record
+    lum              : natural;
+    sat              : natural;
+end record;
+type hueArray is array(natural range <>) of type_hueChannel;
+
 type type_cordChannel is
 record
     xy               : cord;
