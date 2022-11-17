@@ -18,51 +18,651 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="10,530.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="15,526.001 ns"></ZoomEndTime>
-      <Cursor1Time time="11,920.000 ns"></Cursor1Time>
+      <ZoomStartTime time="21,275.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="21,785.001 ns"></ZoomEndTime>
+      <Cursor1Time time="21,360.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="381"></NameColumnWidth>
+      <NameColumnWidth column_width="329"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/clk" type="logic">
+   <WVObjectSize size="70" />
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rst_l" type="logic">
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/rst_l" type="logic">
       <obj_property name="ElementShortName">rst_l</obj_property>
       <obj_property name="ObjectShortName">rst_l</obj_property>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/iRgb" type="array">
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb" type="array">
       <obj_property name="ElementShortName">iRgb</obj_property>
       <obj_property name="ObjectShortName">iRgb</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.valid" type="logic">
+         <obj_property name="ElementShortName">.valid</obj_property>
+         <obj_property name="ObjectShortName">.valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.sof" type="logic">
+         <obj_property name="ElementShortName">.sof</obj_property>
+         <obj_property name="ObjectShortName">.sof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.eol" type="logic">
+         <obj_property name="ElementShortName">.eol</obj_property>
+         <obj_property name="ObjectShortName">.eol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.eof" type="logic">
+         <obj_property name="ElementShortName">.eof</obj_property>
+         <obj_property name="ObjectShortName">.eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.xcnt" type="other">
+         <obj_property name="ElementShortName">.xcnt</obj_property>
+         <obj_property name="ObjectShortName">.xcnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.ycnt" type="other">
+         <obj_property name="ElementShortName">.ycnt</obj_property>
+         <obj_property name="ObjectShortName">.ycnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.red" type="array">
+         <obj_property name="ElementShortName">.red[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.red[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.green" type="array">
+         <obj_property name="ElementShortName">.green[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.green[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iRgb.blue" type="array">
+         <obj_property name="ElementShortName">.blue[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.blue[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/kls" type="array">
-      <obj_property name="ElementShortName">kls</obj_property>
-      <obj_property name="ObjectShortName">kls</obj_property>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb" type="array">
+      <obj_property name="ElementShortName">i2Rgb</obj_property>
+      <obj_property name="ObjectShortName">i2Rgb</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.valid" type="logic">
+         <obj_property name="ElementShortName">.valid</obj_property>
+         <obj_property name="ObjectShortName">.valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.sof" type="logic">
+         <obj_property name="ElementShortName">.sof</obj_property>
+         <obj_property name="ObjectShortName">.sof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.eol" type="logic">
+         <obj_property name="ElementShortName">.eol</obj_property>
+         <obj_property name="ObjectShortName">.eol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.eof" type="logic">
+         <obj_property name="ElementShortName">.eof</obj_property>
+         <obj_property name="ObjectShortName">.eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.xcnt" type="other">
+         <obj_property name="ElementShortName">.xcnt</obj_property>
+         <obj_property name="ObjectShortName">.xcnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.ycnt" type="other">
+         <obj_property name="ElementShortName">.ycnt</obj_property>
+         <obj_property name="ObjectShortName">.ycnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.red" type="array">
+         <obj_property name="ElementShortName">.red[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.red[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.green" type="array">
+         <obj_property name="ElementShortName">.green[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.green[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i2Rgb.blue" type="array">
+         <obj_property name="ElementShortName">.blue[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.blue[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/oRgb" type="array">
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb" type="array">
       <obj_property name="ElementShortName">oRgb</obj_property>
       <obj_property name="ObjectShortName">oRgb</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.valid" type="logic">
+         <obj_property name="ElementShortName">.valid</obj_property>
+         <obj_property name="ObjectShortName">.valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.sof" type="logic">
+         <obj_property name="ElementShortName">.sof</obj_property>
+         <obj_property name="ObjectShortName">.sof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.eol" type="logic">
+         <obj_property name="ElementShortName">.eol</obj_property>
+         <obj_property name="ObjectShortName">.eol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.eof" type="logic">
+         <obj_property name="ElementShortName">.eof</obj_property>
+         <obj_property name="ObjectShortName">.eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.xcnt" type="other">
+         <obj_property name="ElementShortName">.xcnt</obj_property>
+         <obj_property name="ObjectShortName">.xcnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.ycnt" type="other">
+         <obj_property name="ElementShortName">.ycnt</obj_property>
+         <obj_property name="ObjectShortName">.ycnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.red" type="array">
+         <obj_property name="ElementShortName">.red[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.red[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.green" type="array">
+         <obj_property name="ElementShortName">.green[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.green[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/oRgb.blue" type="array">
+         <obj_property name="ElementShortName">.blue[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.blue[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncValid" type="array">
-      <obj_property name="ElementShortName">rgbSyncValid[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rgbSyncValid[31:0]</obj_property>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/blurRgb" type="array">
+      <obj_property name="ElementShortName">blurRgb</obj_property>
+      <obj_property name="ObjectShortName">blurRgb</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncEol" type="array">
-      <obj_property name="ElementShortName">rgbSyncEol[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rgbSyncEol[31:0]</obj_property>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/blur_rgb" type="array">
+      <obj_property name="ElementShortName">blur_rgb</obj_property>
+      <obj_property name="ObjectShortName">blur_rgb</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncSof" type="array">
-      <obj_property name="ElementShortName">rgbSyncSof[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rgbSyncSof[31:0]</obj_property>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/v1TapRGB0x" type="array">
+      <obj_property name="ElementShortName">v1TapRGB0x[29:0]</obj_property>
+      <obj_property name="ObjectShortName">v1TapRGB0x[29:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_sharpe_inst/rgbSyncEof" type="array">
-      <obj_property name="ElementShortName">rgbSyncEof[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rgbSyncEof[31:0]</obj_property>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/v1TapRGB1x" type="array">
+      <obj_property name="ElementShortName">v1TapRGB1x[29:0]</obj_property>
+      <obj_property name="ObjectShortName">v1TapRGB1x[29:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/v1TapRGB2x" type="array">
+      <obj_property name="ElementShortName">v1TapRGB2x[29:0]</obj_property>
+      <obj_property name="ObjectShortName">v1TapRGB2x[29:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/v1TapRGB3x" type="array">
+      <obj_property name="ElementShortName">v1TapRGB3x[29:0]</obj_property>
+      <obj_property name="ObjectShortName">v1TapRGB3x[29:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/tpValid" type="logic">
+      <obj_property name="ElementShortName">tpValid</obj_property>
+      <obj_property name="ObjectShortName">tpValid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/tpd1" type="array">
+      <obj_property name="ElementShortName">tpd1</obj_property>
+      <obj_property name="ObjectShortName">tpd1</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/tpd2" type="array">
+      <obj_property name="ElementShortName">tpd2</obj_property>
+      <obj_property name="ObjectShortName">tpd2</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/tpd3" type="array">
+      <obj_property name="ElementShortName">tpd3</obj_property>
+      <obj_property name="ObjectShortName">tpd3</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/tpd4" type="array">
+      <obj_property name="ElementShortName">tpd4</obj_property>
+      <obj_property name="ObjectShortName">tpd4</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn1KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn1KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn1KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn2KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn2KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn2KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn3KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn3KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn3KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn4KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn4KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn4KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn5KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn5KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn5KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synaKernalData_red" type="array">
+      <obj_property name="ElementShortName">synaKernalData_red</obj_property>
+      <obj_property name="ObjectShortName">synaKernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synbKernalData_red" type="array">
+      <obj_property name="ElementShortName">synbKernalData_red</obj_property>
+      <obj_property name="ObjectShortName">synbKernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn6KernalData_red" type="array">
+      <obj_property name="ElementShortName">syn6KernalData_red</obj_property>
+      <obj_property name="ObjectShortName">syn6KernalData_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn1KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn1KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn1KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn2KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn2KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn2KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn3KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn3KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn3KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn4KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn4KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn4KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn5KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn5KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn5KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synaKernalData_gre" type="array">
+      <obj_property name="ElementShortName">synaKernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">synaKernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synbKernalData_gre" type="array">
+      <obj_property name="ElementShortName">synbKernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">synbKernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn6KernalData_gre" type="array">
+      <obj_property name="ElementShortName">syn6KernalData_gre</obj_property>
+      <obj_property name="ObjectShortName">syn6KernalData_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn1KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn1KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn1KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn2KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn2KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn2KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn3KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn3KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn3KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn4KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn4KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn4KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn5KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn5KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn5KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synaKernalData_blu" type="array">
+      <obj_property name="ElementShortName">synaKernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">synaKernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/synbKernalData_blu" type="array">
+      <obj_property name="ElementShortName">synbKernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">synbKernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/syn6KernalData_blu" type="array">
+      <obj_property name="ElementShortName">syn6KernalData_blu</obj_property>
+      <obj_property name="ObjectShortName">syn6KernalData_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red" type="array">
+      <obj_property name="ElementShortName">k_4_x_4_red</obj_property>
+      <obj_property name="ObjectShortName">k_4_x_4_red</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k1" type="other">
+         <obj_property name="ElementShortName">.k1</obj_property>
+         <obj_property name="ObjectShortName">.k1</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k2" type="other">
+         <obj_property name="ElementShortName">.k2</obj_property>
+         <obj_property name="ObjectShortName">.k2</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k3" type="other">
+         <obj_property name="ElementShortName">.k3</obj_property>
+         <obj_property name="ObjectShortName">.k3</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k4" type="other">
+         <obj_property name="ElementShortName">.k4</obj_property>
+         <obj_property name="ObjectShortName">.k4</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k5" type="other">
+         <obj_property name="ElementShortName">.k5</obj_property>
+         <obj_property name="ObjectShortName">.k5</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k6" type="other">
+         <obj_property name="ElementShortName">.k6</obj_property>
+         <obj_property name="ObjectShortName">.k6</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k7" type="other">
+         <obj_property name="ElementShortName">.k7</obj_property>
+         <obj_property name="ObjectShortName">.k7</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k8" type="other">
+         <obj_property name="ElementShortName">.k8</obj_property>
+         <obj_property name="ObjectShortName">.k8</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k9" type="other">
+         <obj_property name="ElementShortName">.k9</obj_property>
+         <obj_property name="ObjectShortName">.k9</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k10" type="other">
+         <obj_property name="ElementShortName">.k10</obj_property>
+         <obj_property name="ObjectShortName">.k10</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k11" type="other">
+         <obj_property name="ElementShortName">.k11</obj_property>
+         <obj_property name="ObjectShortName">.k11</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k12" type="other">
+         <obj_property name="ElementShortName">.k12</obj_property>
+         <obj_property name="ObjectShortName">.k12</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k13" type="other">
+         <obj_property name="ElementShortName">.k13</obj_property>
+         <obj_property name="ObjectShortName">.k13</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k14" type="other">
+         <obj_property name="ElementShortName">.k14</obj_property>
+         <obj_property name="ObjectShortName">.k14</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k15" type="other">
+         <obj_property name="ElementShortName">.k15</obj_property>
+         <obj_property name="ObjectShortName">.k15</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_red.k16" type="other">
+         <obj_property name="ElementShortName">.k16</obj_property>
+         <obj_property name="ObjectShortName">.k16</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_gre" type="array">
+      <obj_property name="ElementShortName">k_4_x_4_gre</obj_property>
+      <obj_property name="ObjectShortName">k_4_x_4_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/k_4_x_4_blu" type="array">
+      <obj_property name="ElementShortName">k_4_x_4_blu</obj_property>
+      <obj_property name="ObjectShortName">k_4_x_4_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/rgbSyncValid" type="array">
+      <obj_property name="ElementShortName">rgbSyncValid[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rgbSyncValid[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac1X_red" type="array">
+      <obj_property name="ElementShortName">mac1X_red</obj_property>
+      <obj_property name="ObjectShortName">mac1X_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac2X_red" type="array">
+      <obj_property name="ElementShortName">mac2X_red</obj_property>
+      <obj_property name="ObjectShortName">mac2X_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac3X_red" type="array">
+      <obj_property name="ElementShortName">mac3X_red</obj_property>
+      <obj_property name="ObjectShortName">mac3X_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac4X_red" type="array">
+      <obj_property name="ElementShortName">mac4X_red</obj_property>
+      <obj_property name="ObjectShortName">mac4X_red</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/pa_data_red" type="array">
+      <obj_property name="ElementShortName">pa_data_red[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pa_data_red[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac1X_gre" type="array">
+      <obj_property name="ElementShortName">mac1X_gre</obj_property>
+      <obj_property name="ObjectShortName">mac1X_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac2X_gre" type="array">
+      <obj_property name="ElementShortName">mac2X_gre</obj_property>
+      <obj_property name="ObjectShortName">mac2X_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac3X_gre" type="array">
+      <obj_property name="ElementShortName">mac3X_gre</obj_property>
+      <obj_property name="ObjectShortName">mac3X_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac4X_gre" type="array">
+      <obj_property name="ElementShortName">mac4X_gre</obj_property>
+      <obj_property name="ObjectShortName">mac4X_gre</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/pa_data_gre" type="array">
+      <obj_property name="ElementShortName">pa_data_gre[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pa_data_gre[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac1X_blu" type="array">
+      <obj_property name="ElementShortName">mac1X_blu</obj_property>
+      <obj_property name="ObjectShortName">mac1X_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac2X_blu" type="array">
+      <obj_property name="ElementShortName">mac2X_blu</obj_property>
+      <obj_property name="ObjectShortName">mac2X_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac3X_blu" type="array">
+      <obj_property name="ElementShortName">mac3X_blu</obj_property>
+      <obj_property name="ObjectShortName">mac3X_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/mac4X_blu" type="array">
+      <obj_property name="ElementShortName">mac4X_blu</obj_property>
+      <obj_property name="ObjectShortName">mac4X_blu</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/pa_data_blu" type="array">
+      <obj_property name="ElementShortName">pa_data_blu[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pa_data_blu[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB" type="array">
+      <obj_property name="ElementShortName">sRGB</obj_property>
+      <obj_property name="ObjectShortName">sRGB</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.valid" type="logic">
+         <obj_property name="ElementShortName">.valid</obj_property>
+         <obj_property name="ObjectShortName">.valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.sof" type="logic">
+         <obj_property name="ElementShortName">.sof</obj_property>
+         <obj_property name="ObjectShortName">.sof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.eol" type="logic">
+         <obj_property name="ElementShortName">.eol</obj_property>
+         <obj_property name="ObjectShortName">.eol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.eof" type="logic">
+         <obj_property name="ElementShortName">.eof</obj_property>
+         <obj_property name="ObjectShortName">.eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.xcnt" type="other">
+         <obj_property name="ElementShortName">.xcnt</obj_property>
+         <obj_property name="ObjectShortName">.xcnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.ycnt" type="other">
+         <obj_property name="ElementShortName">.ycnt</obj_property>
+         <obj_property name="ObjectShortName">.ycnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.red" type="array">
+         <obj_property name="ElementShortName">.red[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.red[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.green" type="array">
+         <obj_property name="ElementShortName">.green[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.green[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/sRGB.blue" type="array">
+         <obj_property name="ElementShortName">.blue[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.blue[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/store_red" type="array">
+      <obj_property name="ElementShortName">store_red[9:0]</obj_property>
+      <obj_property name="ObjectShortName">store_red[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/store_gre" type="array">
+      <obj_property name="ElementShortName">store_gre[9:0]</obj_property>
+      <obj_property name="ObjectShortName">store_gre[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/store_blu" type="array">
+      <obj_property name="ElementShortName">store_blu[9:0]</obj_property>
+      <obj_property name="ObjectShortName">store_blu[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iMSB" type="other">
+      <obj_property name="ElementShortName">iMSB</obj_property>
+      <obj_property name="ObjectShortName">iMSB</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/iLSB" type="other">
+      <obj_property name="ElementShortName">iLSB</obj_property>
+      <obj_property name="ObjectShortName">iLSB</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/i_data_width" type="other">
+      <obj_property name="ElementShortName">i_data_width</obj_property>
+      <obj_property name="ObjectShortName">i_data_width</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/img_width" type="other">
+      <obj_property name="ElementShortName">img_width</obj_property>
+      <obj_property name="ObjectShortName">img_width</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/adwrWidth" type="other">
+      <obj_property name="ElementShortName">adwrWidth</obj_property>
+      <obj_property name="ObjectShortName">adwrWidth</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/filter_blur_3_inst/addrWidth" type="other">
+      <obj_property name="ElementShortName">addrWidth</obj_property>
+      <obj_property name="ObjectShortName">addrWidth</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm" type="array">
+      <obj_property name="ElementShortName">rgb_f8_ccm</obj_property>
+      <obj_property name="ObjectShortName">rgb_f8_ccm</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.valid" type="logic">
+         <obj_property name="ElementShortName">.valid</obj_property>
+         <obj_property name="ObjectShortName">.valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.sof" type="logic">
+         <obj_property name="ElementShortName">.sof</obj_property>
+         <obj_property name="ObjectShortName">.sof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.eol" type="logic">
+         <obj_property name="ElementShortName">.eol</obj_property>
+         <obj_property name="ObjectShortName">.eol</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.eof" type="logic">
+         <obj_property name="ElementShortName">.eof</obj_property>
+         <obj_property name="ObjectShortName">.eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.xcnt" type="other">
+         <obj_property name="ElementShortName">.xcnt</obj_property>
+         <obj_property name="ObjectShortName">.xcnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.ycnt" type="other">
+         <obj_property name="ElementShortName">.ycnt</obj_property>
+         <obj_property name="ObjectShortName">.ycnt</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.red" type="array">
+         <obj_property name="ElementShortName">.red[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.red[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.green" type="array">
+         <obj_property name="ElementShortName">.green[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.green[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/video_process_tb/VFP_V1_0_INST/rgb_f8_ccm.blue" type="array">
+         <obj_property name="ElementShortName">.blue[9:0]</obj_property>
+         <obj_property name="ObjectShortName">.blue[9:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

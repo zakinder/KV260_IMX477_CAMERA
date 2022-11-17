@@ -103,6 +103,7 @@ process (s_axis_aclk) begin
             oRgb.eof        <= '0';
             if (s_axis_tuser = '1') then
                 oRgb.sof        <= '1';
+                YrCont          <= 0;
             end if;
             if (s_axis_tlast = '1') then
                 VIDEO_OUT_STATES <= V_LINE;
@@ -178,13 +179,13 @@ process(config_number_19,vdata)begin
        oRgb.green       <= vdata(9 downto 0);
        oRgb.blue        <= vdata(19 downto 10);
     elsif(config_number_19=3)then
-       oRgb.red         <= vdata(19 downto 10);
-       oRgb.green       <= vdata(9 downto 0);
-       oRgb.blue        <= vdata(29 downto 20);
+       oRgb.red         <= vdata(19 downto 10);--G
+       oRgb.green       <= vdata(9 downto 0);  --B
+       oRgb.blue        <= vdata(29 downto 20);--R
     elsif(config_number_19=4)then
-       oRgb.red         <= vdata(29 downto 20);
-       oRgb.green       <= vdata(19 downto 10);
-       oRgb.blue        <= vdata(9 downto 0);
+       oRgb.red         <= vdata(29 downto 20);--R
+       oRgb.green       <= vdata(19 downto 10);--G
+       oRgb.blue        <= vdata(9 downto 0);  --B
     else
        oRgb.red         <= vdata(19 downto 10);
        oRgb.green       <= vdata(29 downto 20);

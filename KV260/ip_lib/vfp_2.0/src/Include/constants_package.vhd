@@ -175,8 +175,16 @@ package constants_package is
     constant FRAC_BITS_TO_KEEP                  : natural := 3;
     constant MULT_RESULT_WIDTH                  : natural := DATA_EXT_WIDTH + C_WHOLE_WIDTH + FRAC_BITS_TO_KEEP;
     constant ADD_RESULT_WIDTH                   : natural := MULT_RESULT_WIDTH + 1;
+    
+    constant DATA_EXT2_WIDTH                     : natural := 9;
+    constant MULT_RESULT2_WIDTH                  : natural := DATA_EXT2_WIDTH + C_WHOLE_WIDTH + FRAC_BITS_TO_KEEP;
+    constant ADD_RESULT2_WIDTH                   : natural := MULT_RESULT2_WIDTH + 1;
+    
+    
     constant ROUND_RESULT_WIDTH                 : natural := ADD_RESULT_WIDTH - FRAC_BITS_TO_KEEP;
     constant ROUND                              : signed(ADD_RESULT_WIDTH-1 downto 0) := to_signed(0, ADD_RESULT_WIDTH-FRAC_BITS_TO_KEEP)&'1' & to_signed(0, FRAC_BITS_TO_KEEP-1);
+    constant R2OUND_RESULT_WIDTH                : natural := ADD_RESULT2_WIDTH - FRAC_BITS_TO_KEEP;
+    constant R2OUND                             : signed(ADD_RESULT2_WIDTH-1 downto 0) := to_signed(0, ADD_RESULT2_WIDTH-FRAC_BITS_TO_KEEP)&'1' & to_signed(0, FRAC_BITS_TO_KEEP-1);
     -------------------------------------------------------------------------
     constant pixclk_freq                        : real    := 150.00e6;
     constant aclk_freq                          : real    := 150.00e6;

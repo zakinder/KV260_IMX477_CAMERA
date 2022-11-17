@@ -317,6 +317,7 @@ generic (
 port (
     clk            : in  std_logic;
     reset          : in  std_logic;
+    gain           : in  natural;
     iRgb           : in channel;
     oRgb           : out channel);
 end component rgb_range;
@@ -745,6 +746,19 @@ port (
     tp7         : out std_logic_vector(tpDataWidth - 1 downto 0);
     tp8         : out std_logic_vector(tpDataWidth - 1 downto 0));
 end component rgb_8taps;
+component rgb_3taps is
+generic (
+    img_width     : integer := 4096;
+    tpDataWidth   : integer := 8);
+port (
+    clk         : in std_logic;
+    iRgb        : in channel;
+    rst_l       : in std_logic;
+    tpValid     : out std_logic;
+    tp0         : out std_logic_vector(tpDataWidth - 1 downto 0);
+    tp1         : out std_logic_vector(tpDataWidth - 1 downto 0);
+    tp2         : out std_logic_vector(tpDataWidth - 1 downto 0));
+end component rgb_3taps;
 component tapLine is
 generic (
     img_width    : integer := 4095;
@@ -925,6 +939,7 @@ port (
     clk                         : in std_logic;
     rst_l                       : in std_logic;
     iRgb                        : in channel;
+    i2Rgb                        : in channel;
     oRgb                        : out channel);
 end component blur_filter_4by4;
 component blur_mac is
@@ -967,7 +982,17 @@ port (
     oRgbGre               : out channel;
     oRgbBlu               : out channel);
 end component ResoTestPattern;
-component edge_objects is
+component edge_1objects is
+generic (
+    i_data_width                : integer := 8);
+port (
+    clk                         : in std_logic;
+    rst_l                       : in std_logic;
+    color_channel               : in integer;
+    iRgb                        : in channel;
+    oRgbRemix                   : out channel);
+end component edge_1objects;
+component edge_objects2 is
 generic (
     i_data_width                : integer := 8);
 port (
@@ -975,7 +1000,16 @@ port (
     rst_l                       : in std_logic;
     iRgb                        : in channel;
     oRgbRemix                   : out channel);
-end component edge_objects;
+end component edge_objects2;
+component edge_3objects is
+generic (
+    i_data_width                : integer := 8);
+port (
+    clk                         : in std_logic;
+    rst_l                       : in std_logic;
+    iRgb                        : in channel;
+    oRgbRemix                   : out channel);
+end component edge_3objects;
 component detect_pixel is
 generic (
     i_data_width                : integer := 8);
@@ -1171,6 +1205,9 @@ port (
     oRgb                        : out channel);
 end component recolor_rgb;
 component ccm is
+generic (
+    data_width                  : integer := 8;
+    i_k_config_number           : integer := 8);
 port (
     clk                         : in std_logic;
     rst_l                       : in std_logic;
@@ -1190,6 +1227,49 @@ port (
     iRgb               : in channel;
     oRgb               : out channel);
 end component ccm_frame;
+component clustering is
+generic (
+    k_red          : integer := 255;
+    k_gre          : integer := 255;
+    k_blu          : integer := 255;
+    data_width     : integer := 8);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    threshold      : out integer);
+end component clustering;
+component color_k_clustering is
+generic (
+    i_data_width   : integer := 8);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    oRgb           : out channel);
+end component color_k_clustering;
+component color_k2_clustering is
+generic (
+    i_data_width   : integer := 8);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    color_channel  : in integer;
+    K_VALUE        : in integer;
+    oRgb           : out channel);
+end component color_k2_clustering;
+component square_root is
+   generic (
+      data_width : integer := 32);
+   port (
+      clock     : in  std_logic;
+      rst_l     : in  std_logic;
+      data_in   : in  std_logic_vector(data_width-1 downto 0);
+      data_out  : out std_logic_vector((data_width/2)-1 downto 0)); 
+end component square_root;
+
+
 
 component ImageKernel is
 generic (
@@ -1757,8 +1837,8 @@ port (
     tvalid             : out std_logic);
 end component;
 
-COMPONENT divider
-  PORT (
+component divider
+  port (
     aclk : IN STD_LOGIC;
     s_axis_divisor_tvalid : IN STD_LOGIC;
     s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -1766,10 +1846,88 @@ COMPONENT divider
     s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-  );
-END COMPONENT;
+    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
+end component;
 
+component rgb2hsv
+    port(
+    -- Control signals
+    clock           : in std_logic;
+    reset_n         : in std_logic;
+    -- data input
+    in_red          : in std_logic_vector(7 downto 0);
+    in_green        : in std_logic_vector(7 downto 0);
+    in_blue         : in std_logic_vector(7 downto 0);
+    in_valid        : in std_logic;
+    in_visual       : in std_logic;
+    in_done         : in std_logic;
+    -- data output
+    out_red         : out std_logic_vector(7 downto 0);
+    out_green       : out std_logic_vector(7 downto 0);
+    out_blue        : out std_logic_vector(7 downto 0);
+    out_hue         : out std_logic_vector(7 downto 0);
+    out_saturation  : out std_logic_vector(7 downto 0);
+    out_brightness  : out std_logic_vector(7 downto 0);
+    out_valid       : out std_logic;
+    out_visual      : out std_logic;
+    out_done        : out std_logic);
+end component;
 
+component rgb_hsv
+    port(
+        clk        : in  std_logic;   --! Clock input
+        rstn       : in  std_logic;   --! Negated asynchronous reset
+        data_rdy   : in  std_logic;   --! Input bit indicating if the input data (#r, #g, #b) is ready to be processed
+        r          : in  std_logic_vector(7 downto 0);  --! 8 bit red component of the input pixel
+        g          : in  std_logic_vector(7 downto 0);  --! 8 bit green component of the input pixel
+        b          : in  std_logic_vector(7 downto 0);  --! 8 bit blue component of the input pixel
+        result_rdy : out std_logic;       --! Indicates whether the outputs (#h, #s, #v) represent valid pixel data
+        h          : out std_logic_vector(7 downto 0);    --! 9 bit hue component of the output pixel (Range: 0° - 360°)
+        s          : out std_logic_vector(7 downto 0);    --! 8 bit saturation component of the output pixel
+        v          : out std_logic_vector(7 downto 0));     --! 8 bit value component of the output pixel
+end component;
 
+component rgb_2_hsv
+    port(
+     clk            : in std_logic;
+     rst            : in std_logic;
+     iRGB           : in channel;
+     oHSV           : out channel;
+     oHSV_YCB       : out channel);
+end component;
+component hsv_conv is
+	port
+	(
+		clk : IN std_logic;
+		reset : IN std_logic;
+		valid_in : IN std_logic;
+		R : IN std_logic_vector(7 downto 0);
+		G : IN std_logic_vector(7 downto 0);
+		B : IN std_logic_vector(7 downto 0);
+		H : OUT std_logic_vector(7 downto 0);
+		S : OUT std_logic_vector(7 downto 0);
+		V : OUT std_logic_vector(7 downto 0);
+		valid_out : OUT std_logic
+	);
+end component;
+
+component delta_check is
+port (
+    clk            : in std_logic;
+    rst            : in std_logic;
+    iRGB           : in channel;
+    iHue           : in channel;
+    oRGB           : out channel);
+end component delta_check;
+component sobel is
+generic (
+    i_data_width   : integer := 8;
+    img_width      : integer := 256);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    threshold      : in std_logic_vector(15 downto 0);
+    oRgb           : out channel);
+end component sobel;
 end package;

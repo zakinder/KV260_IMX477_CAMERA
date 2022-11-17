@@ -156,10 +156,10 @@ for row_i in 0 to image_height - 1 loop
   end loop;
         crd.x       <= std_logic_vector(to_unsigned(0, 16));
         oRgb.valid  <= lo;
-    wait for 30 ns;
+    wait for 50 ns;
 end loop;
 
-wait for 10 us;
+wait for 20 us;
 
 for row_i in 0 to image_height - 1 loop
   row := image(row_i);

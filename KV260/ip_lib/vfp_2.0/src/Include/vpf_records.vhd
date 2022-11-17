@@ -32,6 +32,22 @@ type ty7sf is record
     k8               : sfixed(15 downto -3);
     k9               : sfixed(15 downto -3);
 end record;
+
+type ty7_sf is record
+    n1               : integer;
+    n2               : integer;
+    n3               : integer;
+    k1               : sfixed(16 downto -3);
+    k2               : sfixed(16 downto -3);
+    k3               : sfixed(16 downto -3);
+    k4               : sfixed(16 downto -3);
+    k5               : sfixed(16 downto -3);
+    k6               : sfixed(16 downto -3);
+    k7               : sfixed(16 downto -3);
+    k8               : sfixed(16 downto -3);
+    k9               : sfixed(16 downto -3);
+end record;
+
 type ty24sf_3 is record
     k1               : sfixed(26 downto -3);
     k2               : sfixed(26 downto -3);
@@ -624,10 +640,22 @@ type filters_size_rgb_integers is record
     filter_size_9x9  : k_9by9_rgb_integers;
 end record;
 
+
+
+type rgbToSf10bRecord is record
+    red              : sfixed(9 downto 0);
+    green            : sfixed(9 downto 0);
+    blue             : sfixed(9 downto 0);
+end record;
 type rgbToSfRecord is record
     red              : sfixed(10 downto 0);
     green            : sfixed(10 downto 0);
     blue             : sfixed(10 downto 0);
+end record;
+type rgb2SfRecord is record
+    red              : sfixed(9 downto 0);
+    green            : sfixed(9 downto 0);
+    blue             : sfixed(9 downto 0);
 end record;
 type rgbToSf12Record is record
     red              : sfixed(11 downto 0);
@@ -639,6 +667,18 @@ type rgb_SnSumRecord is record
     green            : signed(16 downto 0);
     blue             : signed(16 downto 0);
 end record;
+
+type rgbSn2SumRecord is record
+    red              : signed(ADD_RESULT2_WIDTH-1 downto 0);
+    green            : signed(ADD_RESULT2_WIDTH-1 downto 0);
+    blue             : signed(ADD_RESULT2_WIDTH-1 downto 0);
+end record;
+type rgb_Sn2_Sum_Record is record
+    red              : signed(ADD_RESULT2_WIDTH-1 downto 0);
+    green            : signed(ADD_RESULT2_WIDTH-1 downto 0);
+    blue             : signed(ADD_RESULT2_WIDTH-1 downto 0);
+end record;
+
 type rgbSnSumRecord is record
     red              : signed(ADD_RESULT_WIDTH-1 downto 0);
     green            : signed(ADD_RESULT_WIDTH-1 downto 0);
@@ -663,6 +703,11 @@ type rgbSnSumTrRecord is record
     red              : signed(14 downto 0);
     green            : signed(14 downto 0);
     blue             : signed(14 downto 0);
+end record;
+type rgbSn2SumTrRecord is record
+    red              : signed(12 downto 0);
+    green            : signed(12 downto 0);
+    blue             : signed(12 downto 0);
 end record;
 type ty46sf_6 is record
     k1               : sfixed(34 downto -6);
@@ -701,6 +746,19 @@ type rgbSnSum_Tr_Record is record
     green            : signed(9 downto 0);
     blue             : signed(9 downto 0);
 end record;
+
+type cc8biRgbRecord is record
+    rgbToSf          : rgb2SfRecord;
+    ccSf             : ty7_sf;
+    ccProdSf         : ty8sf;
+    ccProdSsf        : ty8sf;
+    ccProdToSn       : ty9sn;
+    ccProdTrSn       : ty1sn;
+    rgbSnSum         : rgbSn2SumRecord;
+    rgbSnSumTr       : rgbSn2SumTrRecord;
+end record;
+
+
 type ccRgbRecord is record
     rgbToSf          : rgbTointegerRecord;
     ccSf             : ty_integer;
@@ -982,6 +1040,7 @@ type rgb_pixel_sum is record
   pixels_01_to_21_3x3                              : natural;
   pixels_01                                        : natural;
   pixels_01_02                                     : natural;
+  store_rgb                                        : std_logic_vector(9 downto 0);
   result                                           : std_logic_vector(9 downto 0);
 end record;
 
@@ -1276,6 +1335,17 @@ type channel is record
     red              : std_logic_vector(9 downto 0);
     green            : std_logic_vector(9 downto 0);
     blue             : std_logic_vector(9 downto 0);
+end record;
+type channel_8bi is record
+    valid            : std_logic;
+    sof              : std_logic;
+    eol              : std_logic;
+    eof              : std_logic;
+    xcnt             : integer;
+    ycnt             : integer;
+    red              : std_logic_vector(7 downto 0);
+    green            : std_logic_vector(7 downto 0);
+    blue             : std_logic_vector(7 downto 0);
 end record;
 type channel_9bi is record
     valid            : std_logic;
@@ -1706,22 +1776,22 @@ type w_pixels is record
     pix9 : unsigned(i_data_width downto 0);
 end record;
 type w_4_by_4_pixels is record
-    k1  : unsigned(i_data_width downto 0);
-    k2  : unsigned(i_data_width downto 0);
-    k3  : unsigned(i_data_width downto 0);
-    k4  : unsigned(i_data_width downto 0);
-    k5  : unsigned(i_data_width downto 0);
-    k6  : unsigned(i_data_width downto 0);
-    k7  : unsigned(i_data_width downto 0);
-    k8  : unsigned(i_data_width downto 0);
-    k9  : unsigned(i_data_width downto 0);
-    k10 : unsigned(i_data_width downto 0);
-    k11 : unsigned(i_data_width downto 0);
-    k12 : unsigned(i_data_width downto 0);
-    k13 : unsigned(i_data_width downto 0);
-    k14 : unsigned(i_data_width downto 0);
-    k15 : unsigned(i_data_width downto 0);
-    k16 : unsigned(i_data_width downto 0);
+    k1  : integer;
+    k2  : integer;
+    k3  : integer;
+    k4  : integer;
+    k5  : integer;
+    k6  : integer;
+    k7  : integer;
+    k8  : integer;
+    k9  : integer;
+    k10 : integer;
+    k11 : integer;
+    k12 : integer;
+    k13 : integer;
+    k14 : integer;
+    k15 : integer;
+    k16 : integer;
 end record;
 type w_3_by_3_pixels is record
     k1  : unsigned(23 downto 0);

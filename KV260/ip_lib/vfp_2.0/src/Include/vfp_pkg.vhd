@@ -25,7 +25,8 @@ package vfp_pkg is
     function int_max_val(l, m, r, e: integer)                       return integer;
     function int_min_val(l, m : integer)                            return integer;
     function int_min_val(l, m, r: integer)                          return integer;
-    function int_min_val(l, m, r, e: integer)                       return integer;
+    function int_min_val(l, m, r, f: integer)                       return integer;
+    function int_min_val(l, m, r, f, e: integer)                    return integer;
     function selframe(l, r: boolean)                                return boolean;
     function selframe(l, r, m: boolean)                             return boolean;
     function per_frame(l, r: integer)                               return boolean;
@@ -117,6 +118,8 @@ package body vfp_pkg is
            return 1280;
        elsif bmp = "1754_1006" then
            return 1754;
+       elsif bmp = "1920_1080" then
+           return 1920;
        elsif bmp = "2638_1012" then
            return 2638;
        elsif bmp = "3000_3000" then
@@ -200,6 +203,8 @@ package body vfp_pkg is
            return 720;
        elsif bmp = "1754_1006" then
            return 1006;
+       elsif bmp = "1920_1080" then
+           return 1080;
        elsif bmp = "2638_1012" then
            return 1012;
        elsif bmp = "3000_3000" then
@@ -306,14 +311,29 @@ package body vfp_pkg is
        end if;
     end;
     ----------------------------------------------------------------------------------------------------
-    function int_min_val(l, m, r, e : integer) return integer is
+    function int_min_val(l, m, r, f : integer) return integer is
     begin
-       if l <= r and l <= m and l <= e then
+       if l <= r and l <= m and l <= f then
            return l;
-       elsif m <= l and m <= r and m <= e then
+       elsif m <= l and m <= r and m <= f then
            return m;
-       elsif r <= l and r <= m and r <= e then
+       elsif r <= l and r <= m and r <= f then
            return r;
+       else
+           return f;
+       end if;
+    end;
+    ----------------------------------------------------------------------------------------------------
+    function int_min_val(l, m, r, f, e : integer) return integer is
+    begin
+       if l <= r and l <= m and l <= e and l <= f then
+           return l;
+       elsif m <= l and m <= r and m <= e and m <= f then
+           return m;
+       elsif r <= l and r <= m and r <= e and r <= f then
+           return r;
+       elsif f <= l and f <= m and f <= e and f <= r then
+           return f;
        else
            return e;
        end if;

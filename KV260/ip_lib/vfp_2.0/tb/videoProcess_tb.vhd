@@ -23,8 +23,8 @@ generic (
         C_oVideo_START_COUNT      : integer    := 32;
         C_iVideo_TDATA_WIDTH      : integer    := 32;
         FRAME_PIXEL_DEPTH         : integer    := 10;
-        FRAME_WIDTH               : natural    := 1280;
-        FRAME_HEIGHT              : natural    := 720);
+        FRAME_WIDTH               : natural    := 1920;
+        FRAME_HEIGHT              : natural    := 1080);
 port (
         vfpconfig_aclk            : in std_logic;
         vfpconfig_aresetn         : in std_logic;
@@ -56,6 +56,18 @@ port (
         ovideo_tlast              : out std_logic;
         ovideo_tready             : in std_logic;
         ovideo_tuser              : out std_logic;
+        
+        o1video_aclk               : in std_logic;
+        o1video_aresetn            : in std_logic;
+        o1video_tvalid             : out std_logic;
+        o1video_tkeep              : out std_logic_vector(2 downto 0);
+        o1video_tdata              : out std_logic_vector(23 downto 0);
+        o1video_tstrb              : out std_logic_vector(2 downto 0);
+        o1video_tlast              : out std_logic;
+        o1video_tready             : in std_logic;
+        o1video_tuser              : out std_logic;
+        
+        
         rgb_fr_plw_red            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_gre            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_blu            : out std_logic_vector(9 downto 0);
@@ -140,7 +152,13 @@ end component;
     signal ivideo_tvalid             : std_logic;
     
     
-    
+
+    signal o1video_tvalid             : std_logic;
+    signal o1video_tkeep              : std_logic_vector(2 downto 0);
+    signal o1video_tdata              : std_logic_vector(23 downto 0);
+    signal o1video_tstrb              : std_logic_vector(2 downto 0);
+    signal o1video_tlast              : std_logic;
+    signal o1video_tuser              : std_logic;
     
 begin
 
@@ -194,8 +212,8 @@ generic map(
     C_oVideo_START_COUNT      => 32,
     C_iVideo_TDATA_WIDTH      => 32,
     FRAME_PIXEL_DEPTH         => 10,
-    FRAME_WIDTH               => 128,
-    FRAME_HEIGHT              => 128)
+    FRAME_WIDTH               => 1920,
+    FRAME_HEIGHT              => 1080)
 port map (
         vfpconfig_aclk            =>  vfpconfig_aclk   ,-- in 
         vfpconfig_aresetn         =>  vfpconfig_aresetn,-- in 
@@ -238,6 +256,15 @@ port map (
         rgb_fr_plw_ycnt           =>  rgb_fr_plw_ycnt  ,-- out
         crd_x                     =>  crd_x            ,-- out
         crd_y                     =>  crd_y            ,-- out
+        o1video_aclk              =>  ovideo_aclk      ,-- in 
+        o1video_aresetn           =>  ovideo_aresetn   ,-- in 
+        o1video_tvalid            =>  o1video_tvalid            ,-- out
+        o1video_tkeep             =>  o1video_tkeep            ,-- out
+        o1video_tdata             =>  o1video_tdata            ,-- out
+        o1video_tstrb             =>  o1video_tstrb            ,-- out
+        o1video_tlast             =>  o1video_tlast            ,-- out
+        o1video_tready            =>  ovideo_tready    ,-- in 
+        o1video_tuser             =>  o1video_tuser            ,-- out
         ivideo_aclk               =>  ivideo_aclk      ,-- in 
         ivideo_aresetn            =>  ivideo_aresetn   ,-- in 
         ivideo_tready             =>  ivideo_tready    ,-- out

@@ -67,9 +67,9 @@ end process tPattenP;
 rgbSumP: Process (clk) begin
     if rising_edge(clk) then
         oRgb.valid    <= iValid;
-        oRgb.red      <= std_logic_vector(to_unsigned(irgbSum,12));
-        oRgb.green    <= std_logic_vector(to_unsigned(irgbSum,12));
-        oRgb.blue     <= std_logic_vector(to_unsigned(irgbSum,12));
+        oRgb.red      <= std_logic_vector(to_unsigned(irgbSum,14));
+        oRgb.green    <= std_logic_vector(to_unsigned(irgbSum,14));
+        oRgb.blue     <= std_logic_vector(to_unsigned(irgbSum,14));
     end if;
 end process rgbSumP;
 end arch_imp;
@@ -161,33 +161,33 @@ end process tPattenP;
 oRgbCoP: Process (clk) begin
     if rising_edge(clk) then
         oRgbCo.valid    <= iValid;
-        oRgbCo.red      <= std_logic_vector(to_unsigned(bCoRed,8));
-        oRgbCo.green    <= std_logic_vector(to_unsigned(bCoGre,8));
-        oRgbCo.blue     <= std_logic_vector(to_unsigned(bCoBlu,8));
+        oRgbCo.red      <= std_logic_vector(to_unsigned(bCoRed,10));
+        oRgbCo.green    <= std_logic_vector(to_unsigned(bCoGre,10));
+        oRgbCo.blue     <= std_logic_vector(to_unsigned(bCoBlu,10));
     end if;
 end process oRgbCoP;
 oRgbRedCoP: Process (clk) begin
     if rising_edge(clk) then
         oRgbRed.valid    <= iValid;
-        oRgbRed.red      <= std_logic_vector(to_unsigned(rowdist,8));
-        oRgbRed.green    <= std_logic_vector(to_unsigned(0,8));
-        oRgbRed.blue     <= std_logic_vector(to_unsigned(0,8));
+        oRgbRed.red      <= std_logic_vector(to_unsigned(rowdist,10));
+        oRgbRed.green    <= std_logic_vector(to_unsigned(0,10));
+        oRgbRed.blue     <= std_logic_vector(to_unsigned(0,10));
     end if;
 end process oRgbRedCoP;
 oRgbGreCoP: Process (clk) begin
     if rising_edge(clk) then
         oRgbGre.valid    <= iValid;
-        oRgbGre.red      <= std_logic_vector(to_unsigned(0,8));
-        oRgbGre.green    <= std_logic_vector(to_unsigned(rowdist,8));
-        oRgbGre.blue     <= std_logic_vector(to_unsigned(0,8));
+        oRgbGre.red      <= std_logic_vector(to_unsigned(0,10));
+        oRgbGre.green    <= std_logic_vector(to_unsigned(rowdist,10));
+        oRgbGre.blue     <= std_logic_vector(to_unsigned(0,10));
     end if;
 end process oRgbGreCoP;
 oRgbBluCoP: Process (clk) begin
     if rising_edge(clk) then
         oRgbBlu.valid    <= iValid;
-        oRgbBlu.red      <= std_logic_vector(to_unsigned(0,8));
-        oRgbBlu.green    <= std_logic_vector(to_unsigned(0,8));
-        oRgbBlu.blue     <= std_logic_vector(to_unsigned(rowdist,8));
+        oRgbBlu.red      <= std_logic_vector(to_unsigned(0,10));
+        oRgbBlu.green    <= std_logic_vector(to_unsigned(0,10));
+        oRgbBlu.blue     <= std_logic_vector(to_unsigned(rowdist,10));
     end if;
 end process oRgbBluCoP;
 end arch_imp;

@@ -28,7 +28,7 @@ package tb_pkg is
     --       [1012_606  = 622 us]
     --       [1024_1024 = 622 us]
     --       [1754_1006 = 622 us]
-    constant readbmp             : string  := "128_128";
+    constant readbmp             : string  := "1920_1080";
     constant Histrograms         : string  := "Histrograms";
     constant img_width           : integer := image_size_width(readbmp);
     constant img_height          : integer := image_size_height(readbmp);
