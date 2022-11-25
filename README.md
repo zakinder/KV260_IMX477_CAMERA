@@ -38,7 +38,8 @@ PL Design include following IPs
 PS Design include following Modules
 
       Configuration and Intialization of VTC, VDMA, Camera Sensors And Lwip.
-
+      
+# COLOR K-MEANS CLUSTERING
 
 * Select rgb n color references for k points to decide number of clusters.
 * Assign each new pixel value to closest selected rgb n values using Euclidean distance.
