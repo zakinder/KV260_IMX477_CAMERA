@@ -51,7 +51,7 @@ int main()
         memset(pFrames[i], 0, VIDEO1_MAX_FRAME);
 	}
     vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,VIDEO1_STRIDE,VIDEO1_ROWS,VIDEO1_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
-    run_dppsu((unsigned int)pFrames[0]);
+    run_dppsu((unsigned int)pFrames[1]);
      while(1){
          menu_calls(TRUE,(char *)&BMODE_1920x1080,pFrames1[0], VIDEO2_STRIDE,connected_camera);
      }

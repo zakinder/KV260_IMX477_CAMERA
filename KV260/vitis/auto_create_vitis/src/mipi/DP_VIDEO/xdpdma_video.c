@@ -105,7 +105,7 @@ int run_dppsu(u8* Frame)
 //	Xil_DCacheEnable();
 //	Xil_ICacheEnable();
 
-	xil_printf("DPDMA Generic Video Example Test \r\n");
+	//xil_printf("DPDMA Generic Video Example Test \r\n");
 	Status = DpdmaVideoExample(&RunCfg,&Frame);
 	if (Status != XST_SUCCESS) {
 			xil_printf("DPDMA Video Example Test Failed\r\n");
@@ -250,14 +250,14 @@ int InitDpDmaSubsystem(Run_Config *RunCfgPtr)
 	 * Here in this example we are going to demonstrate
 	 * graphics overlay over the TPG video.
 	 */
-	XAVBuf_InputVideoSelect(AVBufPtr, XAVBUF_VIDSTREAM1_LIVE, XAVBUF_VIDSTREAM2_NONE);
+	XAVBuf_InputVideoSelect(AVBufPtr, XAVBUF_VIDSTREAM1_LIVE, XAVBUF_VIDSTREAM2_LIVE_GFX);
 	/* Configure Video pipeline for graphics channel */
 	//XAVBuf_ConfigureGraphicsPipeline(AVBufPtr);
 
 	/* Configure the output video pipeline */
 	XAVBuf_ConfigureOutputVideo(AVBufPtr);
 	/* Disable the global alpha, since we are using the pixel based alpha */
-	XAVBuf_SetBlenderAlpha(AVBufPtr, 200, 0);
+	XAVBuf_SetBlenderAlpha(AVBufPtr, 255, 0);
 	/* Set the clock mode */
 	XDpPsu_CfgMsaEnSynchClkMode(DpPsuPtr, RunCfgPtr->EnSynchClkMode);
 	/* Set the clock source depending on the use case.
@@ -356,14 +356,14 @@ u8 *GraphicsOverlay(u8* Frame, Run_Config *RunCfgPtr)
 		 * Alpha = 0x0F
 		 * */
 	for(Index = 0; Index < (BUFFERSIZE/4) /2; Index ++) {
-		RGBA[Index] = 0x0F0000FF;
+		RGBA[Index] = 0x00000000;
 	}
 	for(; Index < BUFFERSIZE/4; Index ++) {
 		/*
 		 * Green at the bottom half
 		 * Alpha = 0xF0
 		 * */
-		RGBA[Index] = 0xF000FF00;
+		RGBA[Index] = 0x00000000;
 	}
 	return Frame;
 }

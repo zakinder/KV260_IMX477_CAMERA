@@ -988,7 +988,6 @@ generic (
 port (
     clk                         : in std_logic;
     rst_l                       : in std_logic;
-    color_channel               : in integer;
     iRgb                        : in channel;
     oRgbRemix                   : out channel);
 end component edge_1objects;
@@ -1010,6 +1009,15 @@ port (
     iRgb                        : in channel;
     oRgbRemix                   : out channel);
 end component edge_3objects;
+component edge_6objects is
+generic (
+    i_data_width                : integer := 8);
+port (
+    clk                         : in std_logic;
+    rst_l                       : in std_logic;
+    iRgb                        : in channel;
+    oRgbRemix                   : out channel);
+end component edge_6objects;
 component detect_pixel is
 generic (
     i_data_width                : integer := 8);
@@ -1229,6 +1237,16 @@ port (
 end component ccm_frame;
 component clustering is
 generic (
+    data_width     : integer := 8);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    k_rgb          : in int_rgb;
+    threshold      : out integer);
+end component clustering;
+component clustering_1k is
+generic (
     k_red          : integer := 255;
     k_gre          : integer := 255;
     k_blu          : integer := 255;
@@ -1238,7 +1256,8 @@ port (
     rst_l          : in std_logic;
     iRgb           : in channel;
     threshold      : out integer);
-end component clustering;
+end component clustering_1k;
+
 component color_k_clustering is
 generic (
     i_data_width   : integer := 8);
@@ -1248,17 +1267,52 @@ port (
     iRgb           : in channel;
     oRgb           : out channel);
 end component color_k_clustering;
-component color_k2_clustering is
+component color_k1_clustering is
 generic (
     i_data_width   : integer := 8);
 port (
     clk            : in std_logic;
     rst_l          : in std_logic;
     iRgb           : in channel;
-    color_channel  : in integer;
-    K_VALUE        : in integer;
     oRgb           : out channel);
+end component color_k1_clustering;
+
+
+component color_k2_clustering is
+generic (
+    i_data_width    : integer := 8);
+port (
+    clk             : in std_logic;
+    rst_l           : in std_logic;
+    iRgb            : in channel;
+    K_VALUE         : in integer;
+    oRgb            : out channel);
 end component color_k2_clustering;
+component color_k3_clustering is
+generic (
+    i_data_width    : integer := 8);
+port (
+    clk             : in std_logic;
+    rst_l           : in std_logic;
+    iRgb            : in channel;
+    iLutNum         : in integer;
+    k_lut           : in integer;
+    oRgb            : out channel);
+end component color_k3_clustering;
+component color_k5_clustering is
+generic (
+    i_data_width    : integer := 8);
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    iRgb           : in channel;
+    k_lut_selected : in natural;
+    k_lut_in       : in std_logic_vector(23 downto 0);
+    k_lut_out      : out std_logic_vector(31 downto 0);
+    k_ind_w        : in natural;
+    k_ind_r        : in natural;
+    oRgb           : out channel);
+end component color_k5_clustering;
 component square_root is
    generic (
       data_width : integer := 32);
@@ -1927,7 +1981,7 @@ port (
     clk            : in std_logic;
     rst_l          : in std_logic;
     iRgb           : in channel;
-    threshold      : in std_logic_vector(15 downto 0);
+    threshold      : in natural;
     oRgb           : out channel);
 end component sobel;
 end package;

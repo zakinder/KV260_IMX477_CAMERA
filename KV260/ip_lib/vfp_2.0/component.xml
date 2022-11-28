@@ -617,7 +617,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f71b1ac1</spirit:value>
+            <spirit:value>961bd703</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -636,7 +636,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f71b1ac1</spirit:value>
+            <spirit:value>961bd703</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -693,7 +693,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>43ceee11</spirit:value>
+            <spirit:value>d5efc2a3</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1571,7 +1571,7 @@
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="std_logic_vector(31 downto 0)">
         <spirit:name>revision_number</spirit:name>
         <spirit:displayName>Revision Number</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.revision_number" spirit:bitStringLength="32">0x10132022</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.revision_number" spirit:bitStringLength="32">0x11272022</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_vfpConfig_DATA_WIDTH</spirit:name>
@@ -1635,7 +1635,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>src/Include/constants_package.vhd</spirit:name>
+        <spirit:name>src/include/constants_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1651,15 +1651,15 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vpf_records.vhd</spirit:name>
+        <spirit:name>src/include/vpf_records.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/ports_package.vhd</spirit:name>
+        <spirit:name>src/include/ports_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Process/TestPattern.vhd</spirit:name>
+        <spirit:name>src/process/TestPattern.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1671,11 +1671,11 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vfp_pkg.vhd</spirit:name>
+        <spirit:name>src/include/vfp_pkg.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/color_segments/color_k2_clustering.vhd</spirit:name>
+        <spirit:name>src/color_segments/color_k5_clustering.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1687,15 +1687,31 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Process/frame_testpattern.vhd</spirit:name>
+        <spirit:name>src/color_segments/edge_6objects.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Filters/rgb_contrast_brightness_level_1.vhd</spirit:name>
+        <spirit:name>src/process/frame_testpattern.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/control/rgb_3taps.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/filters/rgb_contrast_brightness_level_1.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/filters/sobel.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/control/square_root.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/control/tap4Line.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1709,7 +1725,7 @@
       <spirit:file>
         <spirit:name>hdl/vfp_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_32490125</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_0749ad30</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1725,7 +1741,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>src/Include/constants_package.vhd</spirit:name>
+        <spirit:name>src/include/constants_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1741,15 +1757,15 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vpf_records.vhd</spirit:name>
+        <spirit:name>src/include/vpf_records.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/ports_package.vhd</spirit:name>
+        <spirit:name>src/include/ports_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Process/TestPattern.vhd</spirit:name>
+        <spirit:name>src/process/TestPattern.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1761,11 +1777,11 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vfp_pkg.vhd</spirit:name>
+        <spirit:name>src/include/vfp_pkg.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/color_segments/color_k2_clustering.vhd</spirit:name>
+        <spirit:name>src/color_segments/color_k5_clustering.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1777,15 +1793,31 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Process/frame_testpattern.vhd</spirit:name>
+        <spirit:name>src/color_segments/edge_6objects.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Filters/rgb_contrast_brightness_level_1.vhd</spirit:name>
+        <spirit:name>src/process/frame_testpattern.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/control/rgb_3taps.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/filters/rgb_contrast_brightness_level_1.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/filters/sobel.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/control/square_root.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/control/tap4Line.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1862,28 +1894,28 @@
     <spirit:fileSet>
       <spirit:name>xilinx_testbench_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>src/Include/constants_package.vhd</spirit:name>
+        <spirit:name>src/include/constants_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vpf_records.vhd</spirit:name>
+        <spirit:name>src/include/vpf_records.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/ports_package.vhd</spirit:name>
+        <spirit:name>src/include/ports_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>src/Include/vfp_pkg.vhd</spirit:name>
+        <spirit:name>src/include/vfp_pkg.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
@@ -1960,7 +1992,7 @@
     <spirit:parameter>
       <spirit:name>revision_number</spirit:name>
       <spirit:displayName>Revision Number</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.revision_number" spirit:bitStringLength="32">0x10132022</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.revision_number" spirit:bitStringLength="32">0x11272022</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_vfpConfig_DATA_WIDTH</spirit:name>
@@ -2012,20 +2044,20 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>vfp_v2.0</xilinx:displayName>
-      <xilinx:coreRevision>99</xilinx:coreRevision>
+      <xilinx:coreRevision>118</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:vfp:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2022-11-17T02:53:58Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-11-28T06:28:16Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="fee34156"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="9c25d0d0"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="026aee08"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="358c50d6"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="e2bf9860"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="3eaa4e48"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="01ca12e2"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="199ff05c"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="b7ee70d4"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

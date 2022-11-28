@@ -16,7 +16,7 @@ use work.float_pkg.all;
 use work.constants_package.all;
 use work.vpf_records.all;
 use work.ports_package.all;
-entity edge_3objects is
+entity edge_6objects is
 generic (
     i_data_width   : integer := 8);
 port (
@@ -25,7 +25,7 @@ port (
     iRgb           : in channel;
     oRgbRemix      : out channel);
 end entity;
-architecture arch of edge_3objects is
+architecture arch of edge_6objects is
     signal rgb1Int          : intChannel;
     signal rgb2Int          : intChannel;
     signal rgb3Int          : intChannel;
@@ -105,248 +105,419 @@ rgbMinP: process (clk) begin
 end process rgbMinP;
 rgbMaxP: process (clk) begin
     if rising_edge(clk) then
-    
-    
-    ------------------------------------------------------------------------------------------
-    -- GRAY
-    ------------------------------------------------------------------------------------------
-    
-    
-    if (rgb2Int.green >= 0    and rgb2Int.green <= 20)  and (rgb2Int.blue >= 0    and rgb2Int.blue <= 20) then
-        if (rgb2Int.red >= 250 and rgb2Int.red <= 255) then
-            degRed <= 255;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 240 and rgb2Int.red < 250) then
-            degRed <= 240;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 200 and rgb2Int.red < 225) then
-            degRed <= 200;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 175 and rgb2Int.red < 200) then
-            degRed <= 175;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 150 and rgb2Int.red < 175) then
-            degRed <= 150;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 125 and rgb2Int.red < 150) then
-            degRed <= 125;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 100 and rgb2Int.red < 125) then
-            degRed <= 100;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 75 and rgb2Int.red < 100) then
-            degRed <= 75;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 50 and rgb2Int.red < 75) then
-            degRed <= 50;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 25 and rgb2Int.red < 50) then
-            degRed <= 25;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 10 and rgb2Int.red < 25) then
-            degRed <= 10;degGreen <= 0;degBlue <= 0;
-        elsif(rgb2Int.red >= 0 and rgb2Int.red < 10) then
-            degRed <= 0;degGreen <= 0;degBlue <= 0;
-        else
-            degRed <= 255;degGreen <= 255;degBlue <= 255;
-        end if;
-    elsif(rgb2Int.red >= 0    and rgb2Int.red <= 20)    and (rgb2Int.blue >= 0    and rgb2Int.blue <= 20) then
-        if (rgb2Int.green >= 250 and rgb2Int.green <= 255) then
-            degGreen <= 255;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 240 and rgb2Int.green < 250) then
-            degGreen <= 240;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 200 and rgb2Int.green < 225) then
-            degGreen <= 200;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 175 and rgb2Int.green < 200) then
-            degGreen <= 175;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 150 and rgb2Int.green < 175) then
-            degGreen <= 150;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 125 and rgb2Int.green < 150) then
-            degGreen <= 125;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 100 and rgb2Int.green < 125) then
-            degGreen <= 100;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 75 and rgb2Int.green < 100) then
-            degGreen <= 75;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 50 and rgb2Int.green < 75) then
-            degGreen <= 50;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 25 and rgb2Int.green < 50) then
-            degGreen <= 25;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 10 and rgb2Int.green < 25) then
-            degGreen <= 10;degRed <= 0;degBlue <= 0;
-        elsif(rgb2Int.green >= 0 and rgb2Int.green < 10) then
-            degGreen <= 0; degRed <= 0;degBlue <= 0;
-        else
-            degGreen <= 255; degRed <= 255;degBlue <= 255;
-        end if;
-    elsif(rgb2Int.red >= 0    and rgb2Int.red <= 20)    and (rgb2Int.green >= 0   and rgb2Int.green <= 20)  then
-        if (rgb2Int.blue >= 250 and rgb2Int.blue <= 255) then
-            degBlue <= 255;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 240 and rgb2Int.blue < 250) then
-            degBlue <= 240;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 200 and rgb2Int.blue < 225) then
-            degBlue <= 200;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 175 and rgb2Int.blue < 200) then
-            degBlue <= 175;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 150 and rgb2Int.blue < 175) then
-            degBlue <= 150;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 125 and rgb2Int.blue < 150) then
-            degBlue <= 125;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 100 and rgb2Int.blue < 125) then
-            degBlue <= 100;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 75 and rgb2Int.blue < 100) then
-            degBlue <= 75;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 50 and rgb2Int.blue < 75) then
-            degBlue <= 50;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 25 and rgb2Int.blue < 50) then
-            degBlue <= 25;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 10 and rgb2Int.blue < 25) then
-            degBlue <= 10;degGreen <= 0;degRed <= 0;
-        elsif(rgb2Int.blue >= 0 and rgb2Int.blue < 10) then
-            degBlue <= 0;degGreen <= 0;degRed <= 0;
-        else
-            degBlue <= 255;degGreen <= 255;degRed <= 255;
-        end if;
-    elsif((abs(rgb2Int.red - rgb2Int.green) <= 11) and ((rgb2Int.blue) <= 20)) then
-        if (rgb2Int.blue >= 250 and rgb2Int.blue <= 255) then
-            degRed <= 255;degGreen <= 255;degBlue <= 0;
-        elsif(rgb2Int.blue >= 240 and rgb2Int.blue < 250)  then
-            degRed <= 240;degGreen <= 240;degBlue <= 0;
-        elsif(rgb2Int.blue >= 200 and rgb2Int.blue < 225)  then
-            degRed <= 200;degGreen <= 200;degBlue <= 0;
-        elsif(rgb2Int.blue >= 175 and rgb2Int.blue < 200)  then
-            degRed <= 175;degGreen <= 175;degBlue <= 0;
-        elsif(rgb2Int.blue >= 150 and rgb2Int.blue < 175)  then
-            degRed <= 150;degGreen <= 150;degBlue <= 0;
-        elsif(rgb2Int.blue >= 125 and rgb2Int.blue < 150)  then
-            degRed <= 125;degGreen <= 125;degBlue <= 0;
-        elsif(rgb2Int.blue >= 100 and rgb2Int.blue < 125)  then
-            degRed <= 100;degGreen <= 100;degBlue <= 0;
-        elsif(rgb2Int.blue >= 75 and rgb2Int.blue < 100)  then
-            degRed <= 75;degGreen <= 75;degBlue <= 0;
-        elsif(rgb2Int.blue >= 50 and rgb2Int.blue < 75)  then
-            degRed <= 50;degGreen <= 50;degBlue <= 0;
-        elsif(rgb2Int.blue >= 25 and rgb2Int.blue < 50)  then
-            degRed <= 25;degGreen <= 25;degBlue <= 25;
-        elsif(rgb2Int.blue >= 10 and rgb2Int.blue < 25)  then
-            degRed <= 10;degGreen <= 10;degBlue <= 0;
-        elsif(rgb2Int.blue >= 0 and rgb2Int.blue < 10)  then
-            degRed <= 0;degGreen <= 0;degBlue <= 0;
-        else
-            degRed <= 255;degGreen <= 255;degBlue <= 255;
-        end if;
+
     ------------------------------------------------------------
     -- [0:63]
     ------------------------------------------------------------
+    if (rgb2Int.red <= 64)  and (rgb2Int.green <= 64) and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 50;degBlue <= 40;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 40;degBlue <= 50;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 40;degGreen <= 64;degBlue <= 50;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 50;degGreen <= 64;degBlue <= 40;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 40;degGreen <= 50;degBlue <= 64;
+       else
+           degRed <= 50;degGreen <= 40;degBlue <= 64;
+       end if;
     ------------------------------------------------------------
-    -- [0:32]
+    -- [ 64:128]
     ------------------------------------------------------------
-    elsif (rgb2Int.red <= 32) and (rgb2Int.green <= 32)  and (rgb2Int.blue <= 32) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 32;degGreen <= 16;degBlue <= 16;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 16;degGreen <= 32;degBlue <= 16;
-        else
-            degRed <= 16;degGreen <= 16;degBlue <= 32;
-        end if;
-    ------------------------------------------------------------
-    -- [32:63]
-    ------------------------------------------------------------
-    elsif(rgb2Int.red > 32 and rgb2Int.red < 64) and (rgb2Int.green > 32 and rgb2Int.green < 64)  and (rgb2Int.blue > 32 and rgb2Int.blue < 64) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 64;degGreen <= 48;degBlue <= 48;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 48;degGreen <= 64;degBlue <= 48;
-        else
-            degRed <= 48;degGreen <= 16;degBlue <= 64;
-        end if;
-    elsif(rgb2Int.red > 32 and rgb2Int.red < 64) and (rgb2Int.green > 32 and rgb2Int.green < 64)  and (rgb2Int.blue < 32) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 64;degGreen <= 48;degBlue <= 16;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 48;degGreen <= 64;degBlue <= 16;
-        else
-            degRed <= 48;degGreen <= 64;degBlue <= 16;
-        end if;
-    elsif(rgb2Int.red > 32 and rgb2Int.red < 64) and (rgb2Int.green < 32)  and (rgb2Int.blue > 32 and rgb2Int.blue < 64) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 64;degGreen <= 16;degBlue <= 48;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 48;degGreen <= 16;degBlue <= 48;
-        else
-            degRed <= 48;degGreen <= 16;degBlue <= 64;
-        end if;
-    elsif(rgb2Int.red < 32) and (rgb2Int.green > 32 and rgb2Int.green < 64)  and (rgb2Int.blue > 32 and rgb2Int.blue < 64) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 16;degGreen <= 48;degBlue <= 48;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 16;degGreen <= 64;degBlue <= 48;
-        else
-            degRed <= 16;degGreen <= 16;degBlue <= 64;
-        end if;
-    elsif(rgb2Int.red > 32 and rgb2Int.red < 64) and (rgb2Int.green < 32)  and (rgb2Int.blue < 32) then
-        if(rgb2Int.green = rgbMin)  then
-            degRed <= 64;degGreen <= 16;degBlue <= 32;
-        else
-            degRed <= 64;degGreen <= 32;degBlue <= 16;
-        end if;
-    elsif(rgb2Int.red < 32) and (rgb2Int.green < 32)  and (rgb2Int.blue > 32 and rgb2Int.blue < 64) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 20;degGreen <= 16;degBlue <= 48;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 16;degGreen <= 20;degBlue <= 48;
-        else
-            degRed <= 16;degGreen <= 16;degBlue <= 64;
-        end if;
-    elsif(rgb2Int.red < 32) and (rgb2Int.green > 32 and rgb2Int.green < 64)  and (rgb2Int.blue < 32) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 20;degGreen <= 48;degBlue <= 16;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 16;degGreen <= 64;degBlue <= 16;
-        else
-            degRed <= 16;degGreen <= 16;degBlue <= 20;
-        end if;
-    ------------------------------------------------------------
-    -- [240:256]
-    ------------------------------------------------------------
-    elsif (rgb2Int.red > 240) and (rgb2Int.green > 240)  and (rgb2Int.blue > 240) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 255;degGreen <= 240;degBlue <= 240;
-        elsif(rgb2Int.green = rgbMax)  then
-            degRed <= 240;degGreen <= 255;degBlue <= 240;
-        else
-            degRed <= 240;degGreen <= 240;degBlue <= 255;
-        end if;
-    ------------------------------------------------------------
-    -- [224:240]and[240:256]
-    ------------------------------------------------------------
-    elsif(rgb2Int.red > 240) and (rgb2Int.green > 224 and rgb2Int.green <= 240)  and (rgb2Int.blue > 224 and rgb2Int.blue <= 240) then
-        if(rgb2Int.green = rgbMin)  then
-            degRed <= 255;degGreen <= 224;degBlue <= 240;
-        else
-            degRed <= 255;degGreen <= 240;degBlue <= 224;
-        end if;
-    elsif(rgb2Int.red > 224 and rgb2Int.red <= 240) and (rgb2Int.green > 240)  and (rgb2Int.blue > 224 and rgb2Int.blue <= 240) then
-        if(rgb2Int.red = rgbMin)  then
-            degRed <= 224;degGreen <= 255;degBlue <= 240;
-        else
-            degRed <= 240;degGreen <= 255;degBlue <= 224;
-        end if;
-    elsif(rgb2Int.red > 224 and rgb2Int.red <= 240) and (rgb2Int.green > 224 and rgb2Int.green <= 240)  and (rgb2Int.blue > 240) then
-        if(rgb2Int.red = rgbMin)  then
-            degRed <= 224;degGreen <= 240;degBlue <= 255;
-        else
-            degRed <= 240;degGreen <= 224;degBlue <= 255;
-        end if;
-    elsif(rgb2Int.red > 240) and (rgb2Int.green > 240)  and (rgb2Int.blue > 224 and rgb2Int.blue <= 240) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 255;degGreen <= 240;degBlue <= 224;
-        else
-            degRed <= 240;degGreen <= 255;degBlue <= 224;
-        end if;
-    elsif(rgb2Int.red > 224 and rgb2Int.red <= 240) and (rgb2Int.green > 240)  and (rgb2Int.blue > 240) then
-        if(rgb2Int.green = rgbMax)  then
-            degRed <= 224;degGreen <= 255;degBlue <= 240;
-        else
-            degRed <= 224;degGreen <= 240;degBlue <= 255;
-        end if;
-    elsif(rgb2Int.red > 240) and (rgb2Int.green > 224 and rgb2Int.green <= 240)  and (rgb2Int.blue > 240) then
-        if(rgb2Int.red = rgbMax)  then
-            degRed <= 255;degGreen <= 224;degBlue <= 240;
-        else
-            degRed <= 240;degGreen <= 224;degBlue <= 255;
-        end if;
-    -------------------------------------------------------------------------------------------------------------------------
-    -------------------------------------------------------------------------------------------------------------------------
+    elsif (rgb2Int.red > 64  and rgb2Int.red <= 128) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 128;degGreen <= 50;degBlue <= 40;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 128;degGreen <= 40;degBlue <= 50;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 40;degGreen <= 128;degBlue <= 50;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 50;degGreen <= 128;degBlue <= 40;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 40;degGreen <= 50;degBlue <= 128;
+       else
+           degRed <= 50;degGreen <= 40;degBlue <= 128;
+       end if;
+    elsif (rgb2Int.red > 128 and rgb2Int.red <= 192) and (rgb2Int.green > 128 and rgb2Int.green <= 192)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 192;degGreen <= 100;degBlue <= 80;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 192;degGreen <= 80;degBlue <= 100;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 80;degGreen <= 192;degBlue <= 100;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 100;degGreen <= 192;degBlue <= 80;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 80;degGreen <= 100;degBlue <= 192;
+       else
+           degRed <= 100;degGreen <= 80;degBlue <= 192;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 200;degBlue <= 160;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 160;degBlue <= 200;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 160;degGreen <= 255;degBlue <= 200;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 200;degGreen <= 255;degBlue <= 160;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 160;degGreen <= 200;degBlue <= 255;
+       else
+           degRed <= 200;degGreen <= 160;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       else
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green <= 64) and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 64;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 64;degBlue <= 255;
+       else
+           degRed <= 64;degGreen <= 64;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       else
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 128 and rgb2Int.green <= 192)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 192;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 192;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 192;degBlue <= 255;
+       else
+           degRed <= 192;degGreen <= 64;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 230;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 230;degBlue <= 255;
+       else
+           degRed <= 230;degGreen <= 64;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 230;degBlue <= 128;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 230;degBlue <= 255;
+       else
+           degRed <= 230;degGreen <= 128;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 230;degBlue <= 192;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 192;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 230;degBlue <= 255;
+       else
+           degRed <= 230;degGreen <= 192;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 230;degBlue <= 220;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 220;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 220;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 230;degBlue <= 255;
+       else
+           degRed <= 230;degGreen <= 220;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 128 and rgb2Int.green <= 192)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 192;degBlue <= 220;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 220;degBlue <= 192;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 220;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 192;degBlue <= 255;
+       else
+           degRed <= 192;degGreen <= 220;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 128;degBlue <= 220;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 220;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 220;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 128;degBlue <= 255;
+       else
+           degRed <= 128;degGreen <= 220;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.blue <= 64)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 64;degBlue <= 220;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 220;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 220;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 220;degGreen <= 64;degBlue <= 255;
+       else
+           degRed <= 64;degGreen <= 220;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.blue <= 64)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 64;degBlue <= 192;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 192;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 64;degBlue <= 255;
+       else
+           degRed <= 64;degGreen <= 192;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red > 192 and rgb2Int.red <= 255) and (rgb2Int.blue <= 64)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       else
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 64;
+       else
+           degRed <= 255;degGreen <= 64;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       else
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 192;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 192;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 64;
+       else
+           degRed <= 255;degGreen <= 192;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 230;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 230;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 230;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 64;
+       else
+           degRed <= 255;degGreen <= 230;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red > 64  and rgb2Int.red <= 128) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 128;degGreen <= 255;degBlue <= 230;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 128;degGreen <= 230;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 230;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 230;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 230;degGreen <= 255;degBlue <= 128;
+       else
+           degRed <= 255;degGreen <= 230;degBlue <= 128;
+       end if;
+    elsif (rgb2Int.red > 64  and rgb2Int.red <= 128) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 128;degGreen <= 255;degBlue <= 192;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 128;degGreen <= 192;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 192;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 255;degBlue <= 128;
+       else
+           degRed <= 255;degGreen <= 192;degBlue <= 128;
+       end if;
+    elsif (rgb2Int.red > 64  and rgb2Int.red <= 128) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 128;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 128;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 128;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 128;degGreen <= 255;degBlue <= 128;
+       else
+           degRed <= 255;degGreen <= 128;degBlue <= 128;
+       end if;
+    elsif (rgb2Int.red > 64  and rgb2Int.red <= 128) and (rgb2Int.green > 192 and rgb2Int.green <= 255)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       else
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue <= 64) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 128;degBlue <= 64;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 64;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 64;degGreen <= 128;degBlue <= 64;
+       else
+           degRed <= 128;degGreen <= 64;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 64 and rgb2Int.blue <= 128) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 128;degBlue <= 100;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 100;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 100;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 100;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 100;degGreen <= 128;degBlue <= 64;
+       else
+           degRed <= 128;degGreen <= 100;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 128 and rgb2Int.blue <= 192) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 128;degBlue <= 192;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 192;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 192;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 192;degGreen <= 128;degBlue <= 64;
+       else
+           degRed <= 128;degGreen <= 192;degBlue <= 64;
+       end if;
+    elsif (rgb2Int.red <= 64) and (rgb2Int.green > 64 and rgb2Int.green <= 128)  and (rgb2Int.blue > 192 and rgb2Int.blue <= 255) then
+       if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+           degRed <= 64;degGreen <= 128;degBlue <= 255;
+       elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+           degRed <= 64;degGreen <= 255;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 255;degGreen <= 64;degBlue <= 128;
+       elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+           degRed <= 128;degGreen <= 64;degBlue <= 255;
+       elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+           degRed <= 255;degGreen <= 128;degBlue <= 64;
+       else
+           degRed <= 128;degGreen <= 255;degBlue <= 64;
+       end if;
     -------------------------------------------------------------------------------------------------------------------------
     -------------------------------------------------------------------------------------------------------------------------
     elsif(rgb2Int.red = rgbMax)  then
@@ -354,7 +525,19 @@ rgbMaxP: process (clk) begin
         -- [0:63]
         ------------------------------------------------------------
         if (rgb2Int.red >= 0 and rgb2Int.red < 64)  then
-            degRed <= 64;degGreen <= 32;degBlue <= 32;
+           if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+               degRed <= 64;degGreen <= 50;degBlue <= 40;
+           elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+               degRed <= 64;degGreen <= 40;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 64;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+               degRed <= 50;degGreen <= 64;degBlue <= 40;
+           elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 50;degBlue <= 64;
+           else
+               degRed <= 50;degGreen <= 40;degBlue <= 64;
+           end if;
         ------------------------------------------------------------
         -- [64:127]
         ------------------------------------------------------------
@@ -518,7 +701,19 @@ rgbMaxP: process (clk) begin
         -- [0:63]
         ------------------------------------------------------------
         if (rgb2Int.green >= 0 and rgb2Int.green < 64)  then
-            degRed <= 32;degGreen <= 32;degBlue <= 32;
+           if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+               degRed <= 64;degGreen <= 50;degBlue <= 40;
+           elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+               degRed <= 64;degGreen <= 40;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 64;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+               degRed <= 50;degGreen <= 64;degBlue <= 40;
+           elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 50;degBlue <= 64;
+           else
+               degRed <= 50;degGreen <= 40;degBlue <= 64;
+           end if;
         ------------------------------------------------------------
         -- [64:127]
         ------------------------------------------------------------
@@ -637,7 +832,19 @@ rgbMaxP: process (clk) begin
         --  Max Blue
         ------------------------------------------------------------
         if (rgb2Int.blue >= 0 and rgb2Int.blue < 64)  then
-            degRed <= 32;degGreen <= 32;degBlue <= 64;
+           if(rgb2Int.red = rgbMax) and (rgb2Int.blue = rgbMin) then
+               degRed <= 64;degGreen <= 50;degBlue <= 40;
+           elsif(rgb2Int.red = rgbMax) and (rgb2Int.green = rgbMin)then
+               degRed <= 64;degGreen <= 40;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 64;degBlue <= 50;
+           elsif(rgb2Int.green = rgbMax) and (rgb2Int.blue = rgbMin)then
+               degRed <= 50;degGreen <= 64;degBlue <= 40;
+           elsif(rgb2Int.blue = rgbMax) and (rgb2Int.red = rgbMin)then
+               degRed <= 40;degGreen <= 50;degBlue <= 64;
+           else
+               degRed <= 50;degGreen <= 40;degBlue <= 64;
+           end if;
         elsif(rgb2Int.blue >= 64 and rgb2Int.blue < 128)  then
             if (rgb2Int.red >= 0 and rgb2Int.red < 64) and (rgb2Int.green >= 0 and rgb2Int.green < 64) then
                 degRed <= 32;degGreen <= 32;degBlue <= 128;

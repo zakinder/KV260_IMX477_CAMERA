@@ -735,7 +735,11 @@ type ty_integer is record
     k8               : integer;
     k9               : integer;
 end record;
-
+type int_rgb is record
+    red              : integer;
+    gre              : integer;
+    blu              : integer;
+end record;
 type rgbTointegerRecord is record
     red              : integer;
     green            : integer;
@@ -2037,6 +2041,130 @@ record
     red              : rgb_u8bits;
     green            : rgb_u8bits;
     blue             : rgb_u8bits;
+end record;
+
+
+type k_lut is
+record
+    red              : natural;
+    gre              : natural;
+    blu              : natural;
+end record;
+type rgb_k_lut is array(natural range <>) of k_lut;
+type k_range is
+record
+    max              : natural;
+    mid              : natural;
+    min              : natural;
+end record;
+type rgb_k_range is array(natural range <>) of k_range;
+
+type thr_record is record
+    threshold1       : integer;
+    threshold2       : integer;
+    threshold3       : integer;
+    threshold4       : integer;
+    threshold5       : integer;
+    threshold6       : integer;
+    threshold7       : integer;
+    threshold8       : integer;
+    threshold9       : integer;
+    threshold10      : integer;
+    threshold11      : integer;
+    threshold12      : integer;
+    threshold13      : integer;
+    threshold14      : integer;
+    threshold15      : integer;
+    threshold16      : integer;
+    threshold17      : integer;
+    threshold18      : integer;
+    threshold19      : integer;
+    threshold20      : integer;
+    threshold21      : integer;
+    threshold22      : integer;
+    threshold23      : integer;
+    threshold24      : integer;
+    threshold25      : integer;
+    threshold26      : integer;
+    threshold27      : integer;
+    threshold28      : integer;
+    threshold29      : integer;
+    threshold30      : integer;
+    threshold31      : integer;
+    threshold32      : integer;
+    threshold33      : integer;
+    threshold34      : integer;
+    threshold35      : integer;
+    threshold36      : integer;
+    threshold37      : integer;
+    threshold38      : integer;
+    threshold39      : integer;
+    threshold40      : integer;
+    threshold41      : integer;
+    threshold42      : integer;
+    threshold43      : integer;
+    threshold44      : integer;
+    threshold45      : integer;
+    threshold46      : integer;
+    threshold47      : integer;
+    threshold48      : integer;
+    threshold49      : integer;
+    threshold50      : integer;
+    threshold51      : integer;
+    threshold52      : integer;
+    threshold53      : integer;
+    threshold54      : integer;
+    threshold55      : integer;
+    threshold56      : integer;
+    threshold57      : integer;
+    threshold58      : integer;
+    threshold59      : integer;
+    threshold60      : integer;
+    threshold61      : integer;
+    threshold62      : integer;
+    threshold63      : integer;
+    threshold64      : integer;
+    threshold65      : integer;
+    threshold66      : integer;
+    threshold67      : integer;
+    threshold68      : integer;
+    threshold69      : integer;
+    threshold70      : integer;
+    threshold71      : integer;
+    threshold72      : integer;
+    threshold73      : integer;
+    threshold74      : integer;
+    threshold75      : integer;
+    threshold76      : integer;
+    threshold77      : integer;
+    threshold78      : integer;
+    threshold79      : integer;
+    threshold80      : integer;
+    threshold81      : integer;
+    threshold82      : integer;
+    threshold83      : integer;
+    threshold84      : integer;
+    threshold85      : integer;
+    threshold86      : integer;
+    threshold87      : integer;
+    threshold88      : integer;
+    threshold89      : integer;
+    threshold90      : integer;
+    threshold91      : integer;
+    threshold92      : integer;
+    threshold93      : integer;
+    threshold94      : integer;
+    threshold95      : integer;
+    threshold96      : integer;
+    threshold97      : integer;
+    threshold98      : integer;
+    threshold99      : integer;
+    threshold100     : integer;
+    threshold101     : integer;
+    threshold102     : integer;
+    threshold103     : integer;
+    threshold104     : integer;
+    threshold105     : integer;
 end record;
 type type_RgbArray is array(natural range <>) of type_Rgb;
 type type_line is

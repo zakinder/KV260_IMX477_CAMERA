@@ -412,7 +412,7 @@ process (clk) begin
         rgbSyncEof(31) <= rgbSyncEof(30);
     end if;
 end process;
-color_k1_clustering_inst: clustering
+color_k1_clustering_inst: clustering_1k
 generic map(
     k_red             => color01_red,
     k_gre             => color01_green,
@@ -423,7 +423,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold1);
-color_k2_clustering_inst: clustering
+color_k2_clustering_inst: clustering_1k
 generic map(
     k_red             => color02_red,
     k_gre             => color02_green,
@@ -434,7 +434,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold2);
-color_k3_clustering_inst: clustering
+color_k3_clustering_inst: clustering_1k
 generic map(
     k_red             => color03_red,
     k_gre             => color03_green,
@@ -445,7 +445,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold3);
-color_k4_clustering_inst: clustering
+color_k4_clustering_inst: clustering_1k
 generic map(
     k_red             => color04_red,
     k_gre             => color04_green,
@@ -456,7 +456,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold4);
-color_k5_clustering_inst: clustering
+color_k5_clustering_inst: clustering_1k
 generic map(
     k_red             => color05_red,
     k_gre             => color05_green,
@@ -467,7 +467,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold5);
-color_k6_clustering_inst: clustering
+color_k6_clustering_inst: clustering_1k
 generic map(
     k_red             => color06_red,
     k_gre             => color06_green,
@@ -478,7 +478,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold6);
-color_k7_clustering_inst: clustering
+color_k7_clustering_inst: clustering_1k
 generic map(
     k_red             => color07_red,
     k_gre             => color07_green,
@@ -489,7 +489,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold7);
-color_k8_clustering_inst: clustering
+color_k8_clustering_inst: clustering_1k
 generic map(
     k_red             => color08_red,
     k_gre             => color08_green,
@@ -500,7 +500,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold8);
-color_k9_clustering_inst: clustering
+color_k9_clustering_inst: clustering_1k
 generic map(
     k_red             => color09_red,
     k_gre             => color09_green,
@@ -511,7 +511,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold9);
-color_k10_clustering_inst: clustering
+color_k10_clustering_inst: clustering_1k
 generic map(
     k_red             => color10_red,
     k_gre             => color10_green,
@@ -522,7 +522,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold10);
-color_k11_clustering_inst: clustering
+color_k11_clustering_inst: clustering_1k
 generic map(
     k_red             => color11_red,
     k_gre             => color11_green,
@@ -533,7 +533,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold11);
-color_k12_clustering_inst: clustering
+color_k12_clustering_inst: clustering_1k
 generic map(
     k_red             => color12_red,
     k_gre             => color12_green,
@@ -544,7 +544,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold12);
-color_k13_clustering_inst: clustering
+color_k13_clustering_inst: clustering_1k
 generic map(
     k_red             => color13_red,
     k_gre             => color13_green,
@@ -555,7 +555,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold13);
-color_k14_clustering_inst: clustering
+color_k14_clustering_inst: clustering_1k
 generic map(
     k_red             => color14_red,
     k_gre             => color14_green,
@@ -566,7 +566,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold14);
-color_k15_clustering_inst: clustering
+color_k15_clustering_inst: clustering_1k
 generic map(
     k_red             => color15_red,
     k_gre             => color15_green,
@@ -577,7 +577,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold15);
-color_k16clustering_inst: clustering
+color_k16clustering_inst: clustering_1k
 generic map(
     k_red             => color16_red,
     k_gre             => color16_green,
@@ -588,7 +588,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold16);
-color_k17_clustering_inst: clustering
+color_k17_clustering_inst: clustering_1k
 generic map(
     k_red             => color17_red,
     k_gre             => color17_green,
@@ -599,7 +599,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold17);
-color_k18_clustering_inst: clustering
+color_k18_clustering_inst: clustering_1k
 generic map(
     k_red             => color18_red,
     k_gre             => color18_green,
@@ -610,7 +610,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold18);
-color_k19_clustering_inst: clustering
+color_k19_clustering_inst: clustering_1k
 generic map(
     k_red             => color19_red,
     k_gre             => color19_green,
@@ -621,7 +621,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold19);
-color_k20_clustering_inst: clustering
+color_k20_clustering_inst: clustering_1k
 generic map(
     k_red             => color20_red,
     k_gre             => color20_green,
@@ -632,7 +632,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold20);
-color_k21_clustering_inst: clustering
+color_k21_clustering_inst: clustering_1k
 generic map(
     k_red             => color21_red,
     k_gre             => color21_green,
@@ -643,7 +643,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold21);
-color_k22_clustering_inst: clustering
+color_k22_clustering_inst: clustering_1k
 generic map(
     k_red             => color22_red,
     k_gre             => color22_green,
@@ -654,7 +654,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold22);
-color_k23_clustering_inst: clustering
+color_k23_clustering_inst: clustering_1k
 generic map(
     k_red             => color23_red,
     k_gre             => color23_green,
@@ -665,7 +665,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold23);
-color_k24_clustering_inst: clustering
+color_k24_clustering_inst: clustering_1k
 generic map(
     k_red             => color24_red,
     k_gre             => color24_green,
@@ -676,7 +676,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold24);
-color_k25_clustering_inst: clustering
+color_k25_clustering_inst: clustering_1k
 generic map(
     k_red             => color25_red,
     k_gre             => color25_green,
@@ -687,7 +687,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold25);
-color_k26_clustering_inst: clustering
+color_k26_clustering_inst: clustering_1k
 generic map(
     k_red             => color26_red,
     k_gre             => color26_green,
@@ -698,7 +698,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold26);
-color_k27_clustering_inst: clustering
+color_k27_clustering_inst: clustering_1k
 generic map(
     k_red             => color27_red,
     k_gre             => color27_green,
@@ -709,7 +709,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold27);
-color_k28_clustering_inst: clustering
+color_k28_clustering_inst: clustering_1k
 generic map(
     k_red             => color28_red,
     k_gre             => color28_green,
@@ -720,7 +720,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold28);
-color_k29_clustering_inst: clustering
+color_k29_clustering_inst: clustering_1k
 generic map(
     k_red             => color29_red,
     k_gre             => color29_green,
@@ -731,7 +731,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold29);
-color_k30_clustering_inst: clustering
+color_k30_clustering_inst: clustering_1k
 generic map(
     k_red             => color30_red,
     k_gre             => color30_green,
@@ -742,7 +742,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold30);
-color_k31_clustering_inst: clustering
+color_k31_clustering_inst: clustering_1k
 generic map(
     k_red             => color31_red,
     k_gre             => color31_green,
@@ -753,7 +753,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold31);
-color_k32_clustering_inst: clustering
+color_k32_clustering_inst: clustering_1k
 generic map(
     k_red             => color32_red,
     k_gre             => color32_green,
@@ -764,7 +764,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold32);
-color_k33_clustering_inst: clustering
+color_k33_clustering_inst: clustering_1k
 generic map(
     k_red             => color33_red,
     k_gre             => color33_green,
@@ -775,7 +775,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold33);
-color_k34_clustering_inst: clustering
+color_k34_clustering_inst: clustering_1k
 generic map(
     k_red             => color34_red,
     k_gre             => color34_green,
@@ -786,7 +786,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold34);
-color_k35_clustering_inst: clustering
+color_k35_clustering_inst: clustering_1k
 generic map(
     k_red             => color35_red,
     k_gre             => color35_green,
@@ -797,7 +797,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold35);
-color_k36_clustering_inst: clustering
+color_k36_clustering_inst: clustering_1k
 generic map(
     k_red             => color36_red,
     k_gre             => color36_green,
@@ -808,7 +808,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold36);
-color_k37_clustering_inst: clustering
+color_k37_clustering_inst: clustering_1k
 generic map(
     k_red             => color37_red,
     k_gre             => color37_green,
@@ -819,7 +819,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold37);
-color_k38clustering_inst: clustering
+color_k38clustering_inst: clustering_1k
 generic map(
     k_red             => color38_red,
     k_gre             => color38_green,
@@ -830,7 +830,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold38);
-color_k39_clustering_inst: clustering
+color_k39_clustering_inst: clustering_1k
 generic map(
     k_red             => color39_red,
     k_gre             => color39_green,
@@ -841,7 +841,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold39);
-color_k40_clustering_inst: clustering
+color_k40_clustering_inst: clustering_1k
 generic map(
     k_red             => color40_red,
     k_gre             => color40_green,
@@ -852,7 +852,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold40);
-color_k41_clustering_inst: clustering
+color_k41_clustering_inst: clustering_1k
 generic map(
     k_red             => color41_red,
     k_gre             => color41_green,
@@ -863,7 +863,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold41);
-color_k42_clustering_inst: clustering
+color_k42_clustering_inst: clustering_1k
 generic map(
     k_red             => color42_red,
     k_gre             => color42_green,
@@ -874,7 +874,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold42);
-color_k43_clustering_inst: clustering
+color_k43_clustering_inst: clustering_1k
 generic map(
     k_red             => color43_red,
     k_gre             => color43_green,
@@ -885,7 +885,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold43);
-color_k44_clustering_inst: clustering
+color_k44_clustering_inst: clustering_1k
 generic map(
     k_red             => color44_red,
     k_gre             => color44_green,
@@ -896,7 +896,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold44);
-color_k45_clustering_inst: clustering
+color_k45_clustering_inst: clustering_1k
 generic map(
     k_red             => color45_red,
     k_gre             => color45_green,
@@ -907,7 +907,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold45);
-color_k46_clustering_inst: clustering
+color_k46_clustering_inst: clustering_1k
 generic map(
     k_red             => color46_red,
     k_gre             => color46_green,
@@ -918,7 +918,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold46);
-color_k47_clustering_inst: clustering
+color_k47_clustering_inst: clustering_1k
 generic map(
     k_red             => color47_red,
     k_gre             => color47_green,
@@ -929,7 +929,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold47);
-color_k48clustering_inst: clustering
+color_k48clustering_inst: clustering_1k
 generic map(
     k_red             => color48_red,
     k_gre             => color48_green,
@@ -940,7 +940,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold48);
-color_k49_clustering_inst: clustering
+color_k49_clustering_inst: clustering_1k
 generic map(
     k_red             => color49_red,
     k_gre             => color49_green,
@@ -951,7 +951,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold49);
-color_k50_clustering_inst: clustering
+color_k50_clustering_inst: clustering_1k
 generic map(
     k_red             => color50_red,
     k_gre             => color50_green,
@@ -962,7 +962,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold50);
-color_k51_clustering_inst: clustering
+color_k51_clustering_inst: clustering_1k
 generic map(
     k_red             => color51_red,
     k_gre             => color51_green,
@@ -973,7 +973,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold51);
-color_k52_clustering_inst: clustering
+color_k52_clustering_inst: clustering_1k
 generic map(
     k_red             => color52_red,
     k_gre             => color52_green,
@@ -984,7 +984,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold52);
-color_k53_clustering_inst: clustering
+color_k53_clustering_inst: clustering_1k
 generic map(
     k_red             => color53_red,
     k_gre             => color53_green,
@@ -995,7 +995,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold53);
-color_k54_clustering_inst: clustering
+color_k54_clustering_inst: clustering_1k
 generic map(
     k_red             => color54_red,
     k_gre             => color54_green,
@@ -1006,7 +1006,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold54);
-color_k55_clustering_inst: clustering
+color_k55_clustering_inst: clustering_1k
 generic map(
     k_red             => color55_red,
     k_gre             => color55_green,
@@ -1017,7 +1017,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold55);
-color_k56_clustering_inst: clustering
+color_k56_clustering_inst: clustering_1k
 generic map(
     k_red             => color56_red,
     k_gre             => color56_green,
@@ -1028,7 +1028,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold56);
-color_k57_clustering_inst: clustering
+color_k57_clustering_inst: clustering_1k
 generic map(
     k_red             => color57_red,
     k_gre             => color57_green,
@@ -1039,7 +1039,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold57);
-color_k58clustering_inst: clustering
+color_k58clustering_inst: clustering_1k
 generic map(
     k_red             => color58_red,
     k_gre             => color58_green,
@@ -1050,7 +1050,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold58);
-color_k59_clustering_inst: clustering
+color_k59_clustering_inst: clustering_1k
 generic map(
     k_red             => color59_red,
     k_gre             => color59_green,
@@ -1061,7 +1061,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold59);
-color_k60_clustering_inst: clustering
+color_k60_clustering_inst: clustering_1k
 generic map(
     k_red             => color60_red,
     k_gre             => color60_green,
@@ -1072,7 +1072,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold60);
-color_k61_clustering_inst: clustering
+color_k61_clustering_inst: clustering_1k
 generic map(
     k_red             => color61_red,
     k_gre             => color61_green,
@@ -1083,7 +1083,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold61);
-color_k62_clustering_inst: clustering
+color_k62_clustering_inst: clustering_1k
 generic map(
     k_red             => color62_red,
     k_gre             => color62_green,
@@ -1094,7 +1094,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold62);
-color_k63_clustering_inst: clustering
+color_k63_clustering_inst: clustering_1k
 generic map(
     k_red             => color63_red,
     k_gre             => color63_green,
@@ -1105,7 +1105,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold63);
-color_k64_clustering_inst: clustering
+color_k64_clustering_inst: clustering_1k
 generic map(
     k_red             => color64_red,
     k_gre             => color64_green,
@@ -1116,7 +1116,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold64);
-color_k65_clustering_inst: clustering
+color_k65_clustering_inst: clustering_1k
 generic map(
     k_red             => color65_red,
     k_gre             => color65_green,
@@ -1127,7 +1127,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold65);
-color_k66_clustering_inst: clustering
+color_k66_clustering_inst: clustering_1k
 generic map(
     k_red             => color66_red,
     k_gre             => color66_green,
@@ -1138,7 +1138,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold66);
-color_k67_clustering_inst: clustering
+color_k67_clustering_inst: clustering_1k
 generic map(
     k_red             => color67_red,
     k_gre             => color67_green,
@@ -1149,7 +1149,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold67);
-color_k68clustering_inst: clustering
+color_k68clustering_inst: clustering_1k
 generic map(
     k_red             => color68_red,
     k_gre             => color68_green,
@@ -1160,7 +1160,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold68);
-color_k69_clustering_inst: clustering
+color_k69_clustering_inst: clustering_1k
 generic map(
     k_red             => color69_red,
     k_gre             => color69_green,
@@ -1171,7 +1171,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold69);
-color_k70_clustering_inst: clustering
+color_k70_clustering_inst: clustering_1k
 generic map(
     k_red             => color70_red,
     k_gre             => color70_green,
@@ -1182,7 +1182,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold70);
-color_k71_clustering_inst: clustering
+color_k71_clustering_inst: clustering_1k
 generic map(
     k_red             => color71_red,
     k_gre             => color71_green,
@@ -1193,7 +1193,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold71);
-color_k72_clustering_inst: clustering
+color_k72_clustering_inst: clustering_1k
 generic map(
     k_red             => color72_red,
     k_gre             => color72_green,
@@ -1204,7 +1204,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold72);
-color_k73_clustering_inst: clustering
+color_k73_clustering_inst: clustering_1k
 generic map(
     k_red             => color73_red,
     k_gre             => color73_green,
@@ -1215,7 +1215,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold73);
-color_k74_clustering_inst: clustering
+color_k74_clustering_inst: clustering_1k
 generic map(
     k_red             => color74_red,
     k_gre             => color74_green,
@@ -1226,7 +1226,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold74);
-color_k75_clustering_inst: clustering
+color_k75_clustering_inst: clustering_1k
 generic map(
     k_red             => color75_red,
     k_gre             => color75_green,
@@ -1237,7 +1237,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold75);
-color_k76_clustering_inst: clustering
+color_k76_clustering_inst: clustering_1k
 generic map(
     k_red             => color76_red,
     k_gre             => color76_green,
@@ -1248,7 +1248,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold76);
-color_k77_clustering_inst: clustering
+color_k77_clustering_inst: clustering_1k
 generic map(
     k_red             => color77_red,
     k_gre             => color77_green,
@@ -1259,7 +1259,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold77);
-color_k78clustering_inst: clustering
+color_k78clustering_inst: clustering_1k
 generic map(
     k_red             => color78_red,
     k_gre             => color78_green,
@@ -1270,7 +1270,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold78);
-color_k79_clustering_inst: clustering
+color_k79_clustering_inst: clustering_1k
 generic map(
     k_red             => color79_red,
     k_gre             => color79_green,
@@ -1281,7 +1281,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold79);
-color_k80_clustering_inst: clustering
+color_k80_clustering_inst: clustering_1k
 generic map(
     k_red             => color80_red,
     k_gre             => color80_green,
@@ -1292,7 +1292,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold80);
-color_k81_clustering_inst: clustering
+color_k81_clustering_inst: clustering_1k
 generic map(
     k_red             => color81_red,
     k_gre             => color81_green,
@@ -1303,7 +1303,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold81);
-color_k82_clustering_inst: clustering
+color_k82_clustering_inst: clustering_1k
 generic map(
     k_red             => color82_red,
     k_gre             => color82_green,
@@ -1314,7 +1314,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold82);
-color_k83_clustering_inst: clustering
+color_k83_clustering_inst: clustering_1k
 generic map(
     k_red             => color83_red,
     k_gre             => color83_green,
@@ -1325,7 +1325,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold83);
-color_k84_clustering_inst: clustering
+color_k84_clustering_inst: clustering_1k
 generic map(
     k_red             => color84_red,
     k_gre             => color84_green,
@@ -1336,7 +1336,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold84);
-color_k85_clustering_inst: clustering
+color_k85_clustering_inst: clustering_1k
 generic map(
     k_red             => color85_red,
     k_gre             => color85_green,
@@ -1347,7 +1347,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold85);
-color_k86_clustering_inst: clustering
+color_k86_clustering_inst: clustering_1k
 generic map(
     k_red             => color86_red,
     k_gre             => color86_green,
@@ -1358,7 +1358,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold86);
-color_k87_clustering_inst: clustering
+color_k87_clustering_inst: clustering_1k
 generic map(
     k_red             => color87_red,
     k_gre             => color87_green,
@@ -1369,7 +1369,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold87);
-color_k88clustering_inst: clustering
+color_k88clustering_inst: clustering_1k
 generic map(
     k_red             => color88_red,
     k_gre             => color88_green,
@@ -1380,7 +1380,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold88);
-color_k89_clustering_inst: clustering
+color_k89_clustering_inst: clustering_1k
 generic map(
     k_red             => color89_red,
     k_gre             => color89_green,
@@ -1391,7 +1391,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold89);
-color_k90_clustering_inst: clustering
+color_k90_clustering_inst: clustering_1k
 generic map(
     k_red             => color90_red,
     k_gre             => color90_green,
@@ -1402,7 +1402,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold90);
-color_k91_clustering_inst: clustering
+color_k91_clustering_inst: clustering_1k
 generic map(
     k_red             => color91_red,
     k_gre             => color91_green,
@@ -1413,7 +1413,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold91);
-color_k92_clustering_inst: clustering
+color_k92_clustering_inst: clustering_1k
 generic map(
     k_red             => color92_red,
     k_gre             => color92_green,
@@ -1424,7 +1424,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold92);
-color_k93_clustering_inst: clustering
+color_k93_clustering_inst: clustering_1k
 generic map(
     k_red             => color93_red,
     k_gre             => color93_green,
@@ -1435,7 +1435,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold93);
-color_k94_clustering_inst: clustering
+color_k94_clustering_inst: clustering_1k
 generic map(
     k_red             => color94_red,
     k_gre             => color94_green,
@@ -1446,7 +1446,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold94);
-color_k95_clustering_inst: clustering
+color_k95_clustering_inst: clustering_1k
 generic map(
     k_red             => color95_red,
     k_gre             => color95_green,
@@ -1457,7 +1457,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold95);
-color_k96_clustering_inst: clustering
+color_k96_clustering_inst: clustering_1k
 generic map(
     k_red             => color96_red,
     k_gre             => color96_green,
@@ -1468,7 +1468,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold96);
-color_k97_clustering_inst: clustering
+color_k97_clustering_inst: clustering_1k
 generic map(
     k_red             => color97_red,
     k_gre             => color97_green,
@@ -1479,7 +1479,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold97);
-color_k98clustering_inst: clustering
+color_k98clustering_inst: clustering_1k
 generic map(
     k_red             => color98_red,
     k_gre             => color98_green,
@@ -1490,7 +1490,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold98);
-color_k99clustering_inst: clustering
+color_k99clustering_inst: clustering_1k
 generic map(
     k_red             => color99_red,
     k_gre             => color99_green,
@@ -1501,7 +1501,7 @@ port map(
     rst_l              => rst_l,
     iRgb               => iRgb,
     threshold          => thr1.threshold99);
-color_k100clustering_inst: clustering
+color_k100clustering_inst: clustering_1k
 generic map(
     k_red             => color100red,
     k_gre             => color100green,

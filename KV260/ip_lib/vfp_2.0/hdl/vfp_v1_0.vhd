@@ -1,3 +1,8 @@
+-------------------------------------------------------------------------------
+-- Filename    : vfp.vhd
+-- Create Date : 02092019 [02-09-2019]
+-- Author      : Zakinder
+-------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -8,8 +13,7 @@ use work.fixed_pkg.all;
 use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
-        -- System Revision
-        revision_number           : std_logic_vector(31 downto 0) := x"10132022";
+        revision_number           : std_logic_vector(31 downto 0) := x"11272022";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
@@ -49,15 +53,15 @@ entity vfp_v1_0 is
         ovideo_tlast              : out std_logic;
         ovideo_tready             : in std_logic;
         ovideo_tuser              : out std_logic;
-        o1video_aclk               : in std_logic;
-        o1video_aresetn            : in std_logic;
-        o1video_tvalid             : out std_logic;
-        o1video_tkeep              : out std_logic_vector(2 downto 0);
-        o1video_tdata              : out std_logic_vector(23 downto 0);
-        o1video_tstrb              : out std_logic_vector(2 downto 0);
-        o1video_tlast              : out std_logic;
-        o1video_tready             : in std_logic;
-        o1video_tuser              : out std_logic;
+        o1video_aclk              : in std_logic;
+        o1video_aresetn           : in std_logic;
+        o1video_tvalid            : out std_logic;
+        o1video_tkeep             : out std_logic_vector(2 downto 0);
+        o1video_tdata             : out std_logic_vector(23 downto 0);
+        o1video_tstrb             : out std_logic_vector(2 downto 0);
+        o1video_tlast             : out std_logic;
+        o1video_tready            : in std_logic;
+        o1video_tuser             : out std_logic;
         rgb_fr_plw_red            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_gre            : out std_logic_vector(9 downto 0);
         rgb_fr_plw_blu            : out std_logic_vector(9 downto 0);
@@ -80,32 +84,26 @@ entity vfp_v1_0 is
         ivideo_tvalid             : in std_logic);
 end vfp_v1_0;
 architecture arch_imp of vfp_v1_0 is
-
     signal wr_regs            : mRegs;
     signal rd_regs            : mRegs;
-    
     signal cord_x             : std_logic_vector(15 downto 0);
     signal cord_y             : std_logic_vector(15 downto 0);
-    
     signal coefficients_in_1  : coefficient_values;
     signal coefficients_out_1 : coefficient_values;
     signal coefficients_in_2  : coefficient_values;
     signal coefficients_out_2 : coefficient_values;
     signal coefficients_in_3  : coefficient_values;
     signal coefficients_out_3 : coefficient_values;
-    
-
     signal txCord             : coord;
-    
     signal k_config_number_1  : integer := 0;
     signal k_config_number_2  : integer := 0;
     signal k_config_number_3  : integer := 0;
-    
     signal config_number_14   : integer := 0;
-    signal config_number_15   : integer := 0;
+    signal config_number_15   : natural := 0;
     signal config_number_16   : integer := 0;
     signal config_number_17   : integer := 0;
     signal config_number_19   : integer := 0;
+    signal config_number_43   : integer := 0;
     signal config_number_44   : integer := 14;
     signal config_number_45   : integer := 0;
     signal config_number_20   : integer := 0;
@@ -124,8 +122,17 @@ architecture arch_imp of vfp_v1_0 is
     signal ccc13               : channel;
     signal ccc14               : channel;
     signal ccc15               : channel;
+    signal ccc16               : channel;
+    signal ccc17               : channel;
+    signal ccc18               : channel;
+    signal ccc19               : channel;
+    signal ccc20               : channel;
+    signal ccc21               : channel;
+    signal ccc22               : channel;
+    signal ccc23               : channel;
+    signal ccc31               : channel;
+    signal ccc32               : channel;
 begin
-
 -- this module encode and decode cpu config data to slave components
 vfpConfigInst: vfp_config
 generic map(
@@ -176,8 +183,6 @@ port map (
     oCord_x                         => cord_x,
     oCord_y                         => cord_y,
     oRgb                            => ccc1);
-    
-    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         rgb_fr_plw_xcnt                 <= std_logic_vector(to_unsigned(ccc1.xcnt, 16));
@@ -195,12 +200,11 @@ process (ivideo_aclk)begin
         config_number_17                <= to_integer((unsigned(wr_regs.cfigReg17)));
         config_number_19                <= to_integer((unsigned(wr_regs.cfigReg19)));
         config_number_20                <= to_integer((unsigned(wr_regs.cfigReg20)));
+        config_number_43                <= to_integer((unsigned(wr_regs.cfigReg43)));
         config_number_44                <= to_integer((unsigned(wr_regs.cfigReg44)));
         config_number_45                <= to_integer((unsigned(wr_regs.cfigReg45)));
     end if;
 end process;
-
-    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         coefficients_in_1.k1   <= wr_regs.cfigReg1;
@@ -259,7 +263,6 @@ process (ivideo_aclk)begin
         rd_regs.cfigReg63      <= coefficients_out_3.k9;
     end if;
 end process;
-
 test_patterns_inst  : testpattern
 port map(
     clk           => ivideo_aclk,
@@ -267,7 +270,6 @@ port map(
     iCord         => txCord,
     tpSelect      => config_number_44,
     oRgb          => ccc2);
-    
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_14 = 0) then
@@ -277,7 +279,6 @@ process (ivideo_aclk)begin
         end if;
     end if;
 end process;
-    
 dark_ccm_inst  : ccm
 generic map (
     data_width              => 8,
@@ -314,26 +315,15 @@ port map(
     coefficients_out      => coefficients_out_3,
     iRgb                  => ccc5,
     oRgb                  => ccc6);
-process (ivideo_aclk)begin
-    if rising_edge(ivideo_aclk) then
-        if(config_number_15 = 0) then
-            ccc7           <= ccc1;
-        else
-            ccc7           <= ccc6;
-        end if;
-    end if;
-end process;
-
+    ccc7 <= ccc6;
 edge_1objects_inst: edge_1objects
 generic map (
    i_data_width       => FRAME_PIXEL_DEPTH)
 port map (                  
    clk                => ivideo_aclk,
    rst_l              => ivideo_aresetn,
-   color_channel      => config_number_20,
    iRgb               => ccc7,
    oRgbRemix          => ccc13);
-   
 edge_3objects_inst: edge_3objects
 generic map (
    i_data_width       => FRAME_PIXEL_DEPTH)
@@ -342,63 +332,102 @@ port map (
    rst_l              => ivideo_aresetn,
    iRgb               => ccc7,
    oRgbRemix          => ccc14);
-   
+edge_6objects_inst: edge_6objects
+generic map (
+   i_data_width       => FRAME_PIXEL_DEPTH)
+port map (                  
+   clk                => ivideo_aclk,
+   rst_l              => ivideo_aresetn,
+   iRgb               => ccc7,
+   oRgbRemix          => ccc16);
 rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
 generic map (
-   contrast_val          => to_sfixed(1.50,15,-3),
+   contrast_val          => to_sfixed(1.40,15,-3),
    exposer_val           => 0)
 port map (                  
    clk                   => ivideo_aclk,
    rst_l                 => ivideo_aresetn,
-   iRgb                  => ccc13,
+   iRgb                  => ccc7,
    oRgb                  => ccc15);
-   
--- redge_objects2_inst: edge_objects2
--- generic map (
-   -- i_data_width       => FRAME_PIXEL_DEPTH)
--- port map (                  
-   -- clk                => ivideo_aclk,
-   -- rst_l              => ivideo_aresetn,
-   -- iRgb               => ccc7,
-   -- oRgbRemix          => ccc11);
-
-
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_17 = 0) then
             ccc8           <= ccc13;
         elsif(config_number_17 = 1)then
-            ccc8           <= ccc11;
+            ccc8           <= ccc14;
+        elsif(config_number_17 = 2)then
+            ccc8           <= ccc15;
         else
             ccc8           <= ccc7;
         end if;
     end if;
 end process;
-
-
--- color_k1_clustering_inst: color_k_clustering
--- generic map(
-    -- i_data_width      => i_data_width)
--- port map(
-    -- clk                => ivideo_aclk,
-    -- rst_l              => ivideo_aresetn,
-    -- iRgb               => ccc8,
-    -- oRgb               => ccc10);
-    
-
-color_k2_clustering_inst: color_k2_clustering
+sobel_inst: sobel
+generic map(
+   i_data_width        => 8,
+   img_width           => FRAME_WIDTH)
+port map(
+   clk                => ivideo_aclk,
+   rst_l              => ivideo_aresetn,
+   iRgb               => ccc8,
+   threshold          => config_number_44,
+   oRgb               => ccc18);
+process (ivideo_aclk) begin
+    if rising_edge(ivideo_aclk) then
+        ccc19 <=ccc18;
+        ccc20 <=ccc19;
+        ccc21 <=ccc20;
+        ccc22 <=ccc21;
+        ccc23 <=ccc22;
+    end if;
+end process;
+color_k5_clustering_inst: color_k5_clustering
 generic map(
     i_data_width      => i_data_width)
 port map(
     clk                => ivideo_aclk,
     rst_l              => ivideo_aresetn,
     iRgb               => ccc8,
-    color_channel      => 1,
-    K_VALUE            => config_number_45,
+    k_lut_selected     => config_number_43,
+    k_lut_in           => wr_regs.cfigReg45(23 downto 0),
+    k_lut_out          => rd_regs.cfigReg45,
+    k_ind_w            => config_number_15,
+    k_ind_r            => config_number_20,
     oRgb               => ccc10);
-    
-    
-    
+process (ivideo_aclk) begin
+    if rising_edge(ivideo_aclk) then
+        if (ccc19.green(0) = '0') then
+            ccc31.red   <= (others => '0');
+            ccc31.green <= (others => '0');
+            ccc31.blue  <= (others => '0');
+        else
+            ccc31.red   <= ccc10.red;
+            ccc31.green <= ccc10.green;
+            ccc31.blue  <= ccc10.blue;
+        end if;
+            ccc31.valid <= ccc10.valid;
+            ccc31.eol   <= ccc10.eol;
+            ccc31.sof   <= ccc10.sof;
+            ccc31.eof   <= ccc10.eof;
+    end if;
+end process;
+process (ivideo_aclk) begin
+    if rising_edge(ivideo_aclk) then
+        if (ccc23.green(0) = '0') then
+            ccc32.red   <= (others => '0');
+            ccc32.green <= (others => '0');
+            ccc32.blue  <= (others => '0');
+        else
+            ccc32.red   <= ccc10.red;
+            ccc32.green <= ccc10.green;
+            ccc32.blue  <= ccc10.blue;
+        end if;
+            ccc32.valid <= ccc10.valid;
+            ccc32.eol   <= ccc10.eol;
+            ccc32.sof   <= ccc10.sof;
+            ccc32.eof   <= ccc10.eof;
+    end if;
+end process;
 rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
 generic map (
    contrast_val          => to_sfixed(1.40,15,-3),
@@ -408,7 +437,16 @@ port map (
    rst_l                 => ivideo_aresetn,
    iRgb                  => ccc10,
    oRgb                  => ccc9);
-   
+-- color_k2_clustering_inst: color_k3_clustering
+-- generic map(
+    -- i_data_width      => i_data_width)
+-- port map(
+    -- clk                => ivideo_aclk,
+    -- rst_l              => ivideo_aresetn,
+    -- iRgb               => ccc9,
+    -- iLutNum            => config_number_15,
+    -- k_lut              => config_number_45,
+    -- oRgb               => ccc17);
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_16 = 0) then
@@ -436,7 +474,17 @@ process (ivideo_aclk)begin
         elsif(config_number_16 = 11)then
             ccc12           <= ccc14;
         elsif(config_number_16 = 12)then
+            ccc12           <= ccc16;
+        elsif(config_number_16 = 13)then
             ccc12           <= ccc15;
+        elsif(config_number_16 = 14)then
+            ccc12           <= ccc17;
+        elsif(config_number_16 = 15)then
+            ccc12           <= ccc18;
+        elsif(config_number_16 = 16)then
+            ccc12           <= ccc31;
+        elsif(config_number_16 = 17)then
+            ccc12           <= ccc32;
         else
             ccc12           <= ccc11;
         end if;
@@ -462,8 +510,6 @@ end process;
    rgb_fr_plw_eof         <= ccc12.eof;
    rgb_fr_plw_val         <= ccc12.valid;
 end arch_imp;
-
-
 --library ieee;
 --use ieee.std_logic_1164.all;
 --use ieee.numeric_std.all;

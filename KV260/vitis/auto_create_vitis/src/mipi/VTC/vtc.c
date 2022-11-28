@@ -53,6 +53,6 @@ int vtc_init(VideoMode video) {
     XVtc_SetSource(&vtc, &SourceSelect);
     XVtc_EnableGenerator(&vtc);
     XVtc_Enable(&vtc);
-	xil_printf("Video timing generator initialized\r\n");
+	//xil_printf("Video timing generator initialized\r\n");
 	return XST_SUCCESS;
 }

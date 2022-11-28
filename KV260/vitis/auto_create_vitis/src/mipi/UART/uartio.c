@@ -10,10 +10,54 @@ char uart_per_char_read(u32 uart_address)
         read(1, (char*) &uart_io, 1);
     return (uart_io);
 }
+void per_write_reg_3values(u32 offset, u8 index, u8 red, u8 gre, u8 blu)
+{
+	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,60,index);
+    usleep(100);
+	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180,(((0x0000ff& red)<<16)|((gre & 0x0000ff)<<8)|(0x0000ff & blu)));
+    usleep(100);
+}
 void per_write_reg(u32 offset, u32 data)
 {
 	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,offset,data);
     usleep(1000);
+}
+void per_read_rgb1_reg()
+{
+    for (int i = 1; i < 31; i++)
+    {
+    	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
+        usleep(1000);
+    	printf("%2d Red > %4d Gre > %4d Blue > %4d \r\n",i, ((0xff0000& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>16),((0x00ff00& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>8),((0x0000ff& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))));
+        usleep(1000);
+    }
+
+}
+void per_read_rgb2_reg()
+{
+	int inte = 0;
+    for (int i = 61; i > 31; i--)
+    {
+    	inte++;
+    	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
+        usleep(1000);
+    	printf("%2d Red > %4d Gre > %4d Blue > %4d \r\n",inte, ((0xff0000& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>16),((0x00ff00& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>8),((0x0000ff& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))));
+        usleep(1000);
+    }
+
+}
+void per_read_rgb3_reg()
+{
+	int inte = 0;
+    for (int i = 91; i > 61; i--)
+    {
+    	inte++;
+    	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
+        usleep(1000);
+    	printf("%2d Red > %4d Gre > %4d Blue > %4d \r\n",inte, ((0xff0000& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>16),((0x00ff00& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>8),((0x0000ff& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))));
+        usleep(1000);
+    }
+
 }
 char* char_to_uart(char auserinput[])
 {

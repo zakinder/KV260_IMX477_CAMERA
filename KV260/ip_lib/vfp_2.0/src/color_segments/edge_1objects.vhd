@@ -23,7 +23,6 @@ port (
     clk            : in std_logic;
     rst_l          : in std_logic;
     iRgb           : in channel;
-    color_channel  : in integer;
     oRgbRemix      : out channel);
 end entity;
 architecture arch of edge_1objects is
@@ -38,7 +37,7 @@ architecture arch of edge_1objects is
     signal rgbSyncValid     : std_logic_vector(3 downto 0) := x"0";
     signal degRed           : integer;
     signal degGreen         : integer;
-    signal degBlue           : integer;
+    signal degBlue          : integer;
 begin
 process (clk)begin
     if rising_edge(clk) then
@@ -72,39 +71,12 @@ process (clk)begin
       rgbSyncEof(3)  <= rgbSyncEof(2);
     end if;
 end process;
-
 process (clk)begin
     if rising_edge(clk) then
-        if(color_channel = 0)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.red));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.green));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.blue));
-        elsif(color_channel = 1)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.red));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.blue));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.green));
-        elsif(color_channel = 2)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.blue));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.green));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.red));
-        elsif(color_channel = 3)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.green));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.blue));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.red));
-        elsif(color_channel = 4)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.green));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.red));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.blue));
-        elsif(color_channel = 5)then
-            rgb1Int.red    <= to_integer(unsigned(iRgb.blue));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.red));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.green));
-        else
-            rgb1Int.red    <= to_integer(unsigned(iRgb.blue));
-            rgb1Int.green  <= to_integer(unsigned(iRgb.green));
-            rgb1Int.blue   <= to_integer(unsigned(iRgb.red));
-        end if;
-        rgb1Int.valid  <= iRgb.valid;
+            rgb1Int.red    <= to_integer(unsigned(iRgb.red(9 downto 2)));
+            rgb1Int.green  <= to_integer(unsigned(iRgb.blue(9 downto 2)));
+            rgb1Int.blue   <= to_integer(unsigned(iRgb.green(9 downto 2)));
+            rgb1Int.valid  <= iRgb.valid;
     end if;
 end process;
 
@@ -351,79 +323,79 @@ rgbMaxP: process (clk) begin
     
     elsif(rgb2Int.green >= 0    and rgb2Int.green <= 10)  and (rgb2Int.blue >= 0    and rgb2Int.blue <= 10) then
         if (rgb2Int.red >= 250 and rgb2Int.red <= 255) then
-            degRed <= 255;degGreen <= 120;degBlue <= 120;
+            degRed <= 255;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 240 and rgb2Int.red < 250) then
-            degRed <= 240;degGreen <= 115;degBlue <= 115;
-        elsif(rgb2Int.red >= 200 and rgb2Int.red < 225) then
-            degRed <= 200;degGreen <= 110;degBlue <= 110;
+            degRed <= 240;degGreen <= 0;degBlue <= 0;
+        elsif(rgb2Int.red >= 200 and rgb2Int.red < 240) then
+            degRed <= 200;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 175 and rgb2Int.red < 200) then
-            degRed <= 175;degGreen <= 105;degBlue <= 105;
+            degRed <= 175;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 150 and rgb2Int.red < 175) then
-            degRed <= 150;degGreen <= 100;degBlue <= 100;
+            degRed <= 150;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 125 and rgb2Int.red < 150) then
-            degRed <= 125;degGreen <= 95;degBlue <= 95;
+            degRed <= 125;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 100 and rgb2Int.red < 125) then
-            degRed <= 100;degGreen <= 75;degBlue <= 75;
+            degRed <= 100;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 75 and rgb2Int.red < 100) then
-            degRed <= 75;degGreen <= 50;degBlue <= 50;
+            degRed <= 75;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 50 and rgb2Int.red < 75) then
-            degRed <= 50;degGreen <= 25;degBlue <= 25;
+            degRed <= 50;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 25 and rgb2Int.red < 50) then
-            degRed <= 25;degGreen <= 20;degBlue <= 20;
+            degRed <= 25;degGreen <= 0;degBlue <= 0;
         elsif(rgb2Int.red >= 10 and rgb2Int.red < 25) then
-            degRed <= 10;degGreen <= 5;degBlue <= 5;
+            degRed <= 10;degGreen <= 0;degBlue <= 0;
         else
             degRed <= 0;degGreen <= 0;degBlue <= 0;
         end if;
     elsif(rgb2Int.red >= 0    and rgb2Int.red <= 10)    and (rgb2Int.blue >= 0    and rgb2Int.blue <= 10) then
         if (rgb2Int.green >= 250 and rgb2Int.green <= 255) then
-            degGreen <= 255;degRed <= 120;degBlue <= 120;
+            degGreen <= 255;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 240 and rgb2Int.green < 250) then
-            degGreen <= 240;degRed <= 115;degBlue <= 115;
-        elsif(rgb2Int.green >= 200 and rgb2Int.green < 225) then
-            degGreen <= 200;degRed <= 110;degBlue <= 110;
+            degGreen <= 240;degRed <= 0;degBlue <= 0;
+        elsif(rgb2Int.green >= 200 and rgb2Int.green < 240) then
+            degGreen <= 200;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 175 and rgb2Int.green < 200) then
-            degGreen <= 175;degRed <= 105;degBlue <= 105;
+            degGreen <= 175;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 150 and rgb2Int.green < 175) then
-            degGreen <= 150;degRed <= 100;degBlue <= 100;
+            degGreen <= 150;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 125 and rgb2Int.green < 150) then
-            degGreen <= 125;degRed <= 95;degBlue <= 95;
+            degGreen <= 125;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 100 and rgb2Int.green < 125) then
-            degGreen <= 100;degRed <= 75;degBlue <= 75;
+            degGreen <= 100;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 75 and rgb2Int.green < 100) then
-            degGreen <= 75;degRed <= 50;degBlue <= 50;
+            degGreen <= 75;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 50 and rgb2Int.green < 75) then
-            degGreen <= 50;degRed <= 25;degBlue <= 25;
+            degGreen <= 50;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 25 and rgb2Int.green < 50) then
-            degGreen <= 25;degRed <= 20;degBlue <= 20;
+            degGreen <= 25;degRed <= 0;degBlue <= 0;
         elsif(rgb2Int.green >= 10 and rgb2Int.green < 25) then
-            degGreen <= 10;degRed <= 5;degBlue <= 5;
+            degGreen <= 10;degRed <= 0;degBlue <= 0;
         else
             degGreen <= 0; degRed <= 0;degBlue <= 0;
         end if;
     elsif(rgb2Int.red >= 0    and rgb2Int.red <= 10)    and (rgb2Int.green >= 0   and rgb2Int.green <= 10)  then
         if (rgb2Int.blue >= 250 and rgb2Int.blue <= 255) then
-            degBlue <= 255;degGreen <= 120;degRed <= 120;
+            degBlue <= 255;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 240 and rgb2Int.blue < 250) then
-            degBlue <= 240;degGreen <= 115;degRed <= 115;
-        elsif(rgb2Int.blue >= 200 and rgb2Int.blue < 225) then
-            degBlue <= 200;degGreen <= 110;degRed <= 110;
+            degBlue <= 240;degGreen <= 0;degRed <= 0;
+        elsif(rgb2Int.blue >= 200 and rgb2Int.blue < 240) then
+            degBlue <= 200;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 175 and rgb2Int.blue < 200) then
-            degBlue <= 175;degGreen <= 105;degRed <= 105;
+            degBlue <= 175;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 150 and rgb2Int.blue < 175) then
-            degBlue <= 150;degGreen <= 100;degRed <= 100;
+            degBlue <= 150;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 125 and rgb2Int.blue < 150) then
-            degBlue <= 125;degGreen <= 95;degRed <= 95;
+            degBlue <= 125;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 100 and rgb2Int.blue < 125) then
-            degBlue <= 100;degGreen <= 75;degRed <= 75;
+            degBlue <= 100;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 75 and rgb2Int.blue < 100) then
-            degBlue <= 75;degGreen <= 50;degRed <= 50;
+            degBlue <= 75;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 50 and rgb2Int.blue < 75) then
-            degBlue <= 50;degGreen <= 25;degRed <= 25;
+            degBlue <= 50;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 25 and rgb2Int.blue < 50) then
-            degBlue <= 25;degGreen <= 20;degRed <= 20;
+            degBlue <= 25;degGreen <= 0;degRed <= 0;
         elsif(rgb2Int.blue >= 10 and rgb2Int.blue < 25) then
-            degBlue <= 10;degGreen <= 5;degRed <= 5;
+            degBlue <= 10;degGreen <= 0;degRed <= 0;
         else
             degBlue <= 0;degGreen <= 0;degRed <= 0;
         end if;
@@ -851,7 +823,6 @@ rgbMaxP: process (clk) begin
                 degRed <= 255;degGreen <= 192;degBlue <= 128;
             -- SET3:SET4
             elsif(rgb2Int.green >= 128 and rgb2Int.green < 192) and (rgb2Int.blue >= 192 and rgb2Int.blue < 256)then
-                degRed <= 255;degGreen <= 160;degBlue <= 192;
                 if(rgb2Int.green = rgbMin)  then
                     degRed <= 255;degGreen <= 128;degBlue <= 192;
                 else
@@ -868,7 +839,7 @@ rgbMaxP: process (clk) begin
               degRed <= 255;degGreen <= 220;degBlue <= 32;
             --------------------
             else
-              degRed <= 200;degGreen <= 100;degBlue <= 200;
+              degRed <= 255;degGreen <= 255;degBlue <= 255;
             end if;
         end if;
     elsif(rgb2Int.green = rgbMax)  then
@@ -1260,7 +1231,7 @@ rgbMaxP: process (clk) begin
               degBlue <= 255;degGreen <= 220;degRed <= 32;
             --------------------
             else
-              degBlue <= 200;degGreen <= 200;degRed <= 200;
+              degRed <= rgb2Int.red;degGreen <= rgb2Int.green;degBlue <= rgb2Int.blue;
             end if;
         end if;
     end if;

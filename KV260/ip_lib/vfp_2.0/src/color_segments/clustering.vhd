@@ -18,14 +18,12 @@ use work.vpf_records.all;
 use work.ports_package.all;
 entity clustering is
 generic (
-    k_red          : integer := 255;
-    k_gre          : integer := 255;
-    k_blu          : integer := 255;
     data_width     : integer := 8);
 port (
     clk            : in std_logic;
     rst_l          : in std_logic;
     iRgb           : in channel;
+    k_rgb          : in int_rgb;
     threshold      : out integer);
 end entity;
 architecture arch of clustering is
@@ -57,9 +55,9 @@ end process;
 -----------------------------------------------------------------------------
 process (clk) begin
     if rising_edge(clk) then
-          rgb_set1.red          <= abs(k_red - rgb_set1.i_red);
-          rgb_set1.gre          <= abs(k_gre - rgb_set1.i_gre);
-          rgb_set1.blu          <= abs(k_blu -rgb_set1.i_blu);
+          rgb_set1.red          <= abs(k_rgb.red - rgb_set1.i_red);
+          rgb_set1.gre          <= abs(k_rgb.gre - rgb_set1.i_gre);
+          rgb_set1.blu          <= abs(k_rgb.blu - rgb_set1.i_blu);
     end if;
 end process;
 process (clk) begin
@@ -97,3 +95,4 @@ process (clk, rst_l) begin
 end process;
 
 end architecture;
+

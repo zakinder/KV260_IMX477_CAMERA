@@ -20,4 +20,5 @@ void cmds_menu();
 void master_menu();
 void menu_cls();
 void per_write_reg(u32 offset, u32 data);
+void per_write_reg_3values(u32 offset, u8 index, u8 red, u8 gre, u8 blu);
 #endif // __UART_H__
