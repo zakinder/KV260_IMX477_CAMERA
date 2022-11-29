@@ -11,6 +11,7 @@
    1.6   Sakinder 07/21/22 Implemented rgb frame bmp format write to sdcard.
    1.7   Sakinder 08/02/22 Validated Lwip udp image transfer.
    1.8   Sakinder 08/10/22 Validated Lwip udp video stream.
+   1.9   Sakinder 11/21/22 Added K-Cluster registers for PL access.
    -----------------------------------------------------------------------
 */
 

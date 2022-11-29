@@ -1828,7 +1828,7 @@ process (clk)begin
                 k_rgb(i).red <=   k_rgb_lut_0_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_0_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_0_l(i).mid;
               end loop;
             ---------------------------------------------------------------------------------------------------------
-            if (rgb_sync2.red = rgb_max1) then
+            elsif(rgb_sync2.red = rgb_max1) then
                 if (rgb_sync2.red >= 170) then
                     -------------------------------------------------------------------------------------------------
                     if (rgb_sync2.green = rgb_min1) then
@@ -1942,7 +1942,6 @@ process (clk)begin
                 end if;                                                            
             end if;
             ---------------------------------------------------------------------------------------------------------
-            end if;
         end if;
     end if;
 end process;

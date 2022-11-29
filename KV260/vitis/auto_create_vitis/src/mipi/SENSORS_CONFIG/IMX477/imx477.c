@@ -2349,7 +2349,8 @@ struct reginfo RGB_COLOR1_SETTINGS[] =
 	{REG_DIG_GAIN_R_U,                     0x03},
 	{REG_DIG_GAIN_B_U,                     0x02},
 	{REG_DIG_GAIN_GB_U,                    0x01},
-	{REG_ANA_GLOBAL_GAIN_U,                0x0A},
+	{REG_ANA_GLOBAL_GAIN_U,                0x02},
+	{REG_ANA_GLOBAL_GAIN_L,                0xF0},
 	{REG_COARSE_INTEGRATION_TIME_MSB,      0x7F},
 	{REG_MODE_SEL,                         0x01},
 	{SEQUENCE_END,                         0x00}

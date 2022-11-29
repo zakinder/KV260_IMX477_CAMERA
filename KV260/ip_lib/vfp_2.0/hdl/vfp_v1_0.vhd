@@ -303,19 +303,7 @@ port map(
     coefficients_out      => coefficients_out_2,
     iRgb                  => ccc4,
     oRgb                  => ccc5);
-balance_ccm_inst  : ccm
-generic map (
-    data_width              => 8,
-    i_k_config_number       => 8)
-port map(
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_3,
-    coefficients_in       => coefficients_in_3,
-    coefficients_out      => coefficients_out_3,
-    iRgb                  => ccc5,
-    oRgb                  => ccc6);
-    ccc7 <= ccc6;
+    ccc7 <= ccc5;
 edge_1objects_inst: edge_1objects
 generic map (
    i_data_width       => FRAME_PIXEL_DEPTH)
@@ -437,59 +425,66 @@ port map (
    rst_l                 => ivideo_aresetn,
    iRgb                  => ccc10,
    oRgb                  => ccc9);
--- color_k2_clustering_inst: color_k3_clustering
--- generic map(
-    -- i_data_width      => i_data_width)
--- port map(
-    -- clk                => ivideo_aclk,
-    -- rst_l              => ivideo_aresetn,
-    -- iRgb               => ccc9,
-    -- iLutNum            => config_number_15,
-    -- k_lut              => config_number_45,
-    -- oRgb               => ccc17);
+
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_16 = 0) then
-            ccc12           <= ccc1;
+            ccc11           <= ccc1;
         elsif(config_number_16 = 1)then
-            ccc12           <= ccc2;
+            ccc11           <= ccc2;
         elsif(config_number_16 = 2)then
-            ccc12           <= ccc3;
+            ccc11           <= ccc3;
         elsif(config_number_16 = 3)then
-            ccc12           <= ccc4;
+            ccc11           <= ccc4;
         elsif(config_number_16 = 4)then
-            ccc12           <= ccc5;
+            ccc11           <= ccc5;
         elsif(config_number_16 = 5)then
-            ccc12           <= ccc6;
+            ccc11           <= ccc6;
         elsif(config_number_16 = 6)then
-            ccc12           <= ccc7;
+            ccc11           <= ccc7;
         elsif(config_number_16 = 7)then
-            ccc12           <= ccc8;
+            ccc11           <= ccc8;
         elsif(config_number_16 = 8)then
-            ccc12           <= ccc9;
+            ccc11           <= ccc9;
         elsif(config_number_16 = 9)then
-            ccc12           <= ccc10;
+            ccc11           <= ccc10;
         elsif(config_number_16 = 10)then
-            ccc12           <= ccc13;
+            ccc11           <= ccc13;
         elsif(config_number_16 = 11)then
-            ccc12           <= ccc14;
+            ccc11           <= ccc14;
         elsif(config_number_16 = 12)then
-            ccc12           <= ccc16;
+            ccc11           <= ccc16;
         elsif(config_number_16 = 13)then
-            ccc12           <= ccc15;
+            ccc11           <= ccc15;
         elsif(config_number_16 = 14)then
-            ccc12           <= ccc17;
+            ccc11           <= ccc17;
         elsif(config_number_16 = 15)then
-            ccc12           <= ccc18;
+            ccc11           <= ccc18;
         elsif(config_number_16 = 16)then
-            ccc12           <= ccc31;
-        elsif(config_number_16 = 17)then
-            ccc12           <= ccc32;
+            ccc11           <= ccc31;
         else
-            ccc12           <= ccc11;
+            ccc11           <= ccc32;
         end if;
     end if;
 end process;
+
+balance_ccm_inst  : ccm
+generic map (
+    data_width              => 8,
+    i_k_config_number       => 8)
+port map(
+    clk                   => ivideo_aclk,
+    rst_l                 => ivideo_aresetn,
+    k_config_number       => k_config_number_3,
+    coefficients_in       => coefficients_in_3,
+    coefficients_out      => coefficients_out_3,
+    iRgb                  => ccc11,
+    oRgb                  => ccc12);
+
+
+
+
+
    ovideo_tstrb           <= ivideo_tstrb;
    ovideo_tkeep           <= ivideo_tkeep;
    ovideo_tdata           <= "00" & ccc12.red & ccc12.green & ccc12.blue;

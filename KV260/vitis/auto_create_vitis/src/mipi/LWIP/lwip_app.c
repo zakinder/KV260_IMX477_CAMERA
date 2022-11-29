@@ -210,14 +210,15 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
 //        }else if(a0==9){
-//        	per_write_reg(REG19,(int)pData[21]);
+//        	per_write_rdeg(REG19,(int)pData[21]);
 //        	WriteOneFrameEnd[0] = 1;
 //        	stream_it = 0;
         }else if(a0==10){
         	per_write_reg(REG15,(int)pData[1]);
         	per_write_reg(REG45,((0x0000ff& pData[2])<<16) | (REG45,((0x0000ff& pData[3])<<8))| ((0x0000ff& pData[4])));
-//        	if(pData[1]<31){
-//        	per_read_rgb1_reg();
+        	//if(pData[1]<31){
+        	per_read_rgb1_reg();
+        	//}
 //        	}else if(pData[1]>30 & pData[1]<61){
 //        	per_read_rgb2_reg();
 //        	}else if(pData[1]>60){

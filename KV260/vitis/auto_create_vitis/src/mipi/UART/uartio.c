@@ -24,7 +24,7 @@ void per_write_reg(u32 offset, u32 data)
 }
 void per_read_rgb1_reg()
 {
-    for (int i = 1; i < 31; i++)
+    for (int i = 1; i < 91; i++)
     {
     	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
         usleep(1000);
