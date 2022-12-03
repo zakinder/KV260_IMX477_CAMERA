@@ -960,6 +960,7 @@ architecture arch of color_k5_clustering is
     signal k25rgb                : rgb_k_lut(0 to 30);
     signal k26rgb                : rgb_k_lut(0 to 30);
     signal k27rgb                : rgb_k_lut(0 to 30);
+    signal rgb                   : k_val_rgb(0 to 30);
     signal thr1                  : thr_record;
     signal thr2                  : thr_record;
     signal thr3                  : thr_record;
@@ -1048,7 +1049,6 @@ architecture arch of color_k5_clustering is
     signal rgb_gre               : std_logic_vector(7 downto 0);
     signal rgb_blu               : std_logic_vector(7 downto 0);
     constant K_VALUE             : integer := 11;
-    --constant k_lut_selected      : integer := 0;
 begin
 process (clk) begin
     if rising_edge(clk) then
@@ -1945,6 +1945,8 @@ process (clk)begin
         end if;
     end if;
 end process;
+
+
 process (clk)begin
     if rising_edge(clk) then
       k1_rgb      <= k_rgb;
@@ -1976,6 +1978,105 @@ process (clk)begin
       k27rgb      <= k26rgb;
     end if;
 end process;
+
+process (clk)begin
+    if rising_edge(clk) then
+        rgb(1).red     <= std_logic_vector(to_unsigned(k26rgb(1).red, 8)) & "00";
+        rgb(1).gre     <= std_logic_vector(to_unsigned(k26rgb(1).gre, 8)) & "00";
+        rgb(1).blu     <= std_logic_vector(to_unsigned(k26rgb(1).blu, 8)) & "00";
+        rgb(2).red     <= std_logic_vector(to_unsigned(k26rgb(2).red, 8)) & "00";
+        rgb(2).gre     <= std_logic_vector(to_unsigned(k26rgb(2).gre, 8)) & "00";
+        rgb(2).blu     <= std_logic_vector(to_unsigned(k26rgb(2).blu, 8)) & "00";
+        rgb(3).red     <= std_logic_vector(to_unsigned(k26rgb(3).red, 8)) & "00";
+        rgb(3).gre     <= std_logic_vector(to_unsigned(k26rgb(3).gre, 8)) & "00";
+        rgb(3).blu     <= std_logic_vector(to_unsigned(k26rgb(3).blu, 8)) & "00";
+        rgb(4).red     <= std_logic_vector(to_unsigned(k26rgb(4).red, 8)) & "00";
+        rgb(4).gre     <= std_logic_vector(to_unsigned(k26rgb(4).gre, 8)) & "00";
+        rgb(4).blu     <= std_logic_vector(to_unsigned(k26rgb(4).blu, 8)) & "00";
+        rgb(5).red     <= std_logic_vector(to_unsigned(k26rgb(5).red, 8)) & "00";
+        rgb(5).gre     <= std_logic_vector(to_unsigned(k26rgb(5).gre, 8)) & "00";
+        rgb(5).blu     <= std_logic_vector(to_unsigned(k26rgb(5).blu, 8)) & "00";
+        rgb(6).red     <= std_logic_vector(to_unsigned(k26rgb(6).red, 8)) & "00";
+        rgb(6).gre     <= std_logic_vector(to_unsigned(k26rgb(6).gre, 8)) & "00";
+        rgb(6).blu     <= std_logic_vector(to_unsigned(k26rgb(6).blu, 8)) & "00";
+        rgb(7).red     <= std_logic_vector(to_unsigned(k26rgb(7).red, 8)) & "00";
+        rgb(7).gre     <= std_logic_vector(to_unsigned(k26rgb(7).gre, 8)) & "00";
+        rgb(7).blu     <= std_logic_vector(to_unsigned(k26rgb(7).blu, 8)) & "00";
+        rgb(8).red     <= std_logic_vector(to_unsigned(k26rgb(8).red, 8)) & "00";
+        rgb(8).gre     <= std_logic_vector(to_unsigned(k26rgb(8).gre, 8)) & "00";
+        rgb(8).blu     <= std_logic_vector(to_unsigned(k26rgb(8).blu, 8)) & "00";
+        rgb(9).red     <= std_logic_vector(to_unsigned(k26rgb(9).red, 8)) & "00";
+        rgb(9).gre     <= std_logic_vector(to_unsigned(k26rgb(9).gre, 8)) & "00";
+        rgb(9).blu     <= std_logic_vector(to_unsigned(k26rgb(9).blu, 8)) & "00";
+        rgb(10).red    <= std_logic_vector(to_unsigned(k26rgb(10).red, 8)) & "00";
+        rgb(10).gre    <= std_logic_vector(to_unsigned(k26rgb(10).gre, 8)) & "00";
+        rgb(10).blu    <= std_logic_vector(to_unsigned(k26rgb(10).blu, 8)) & "00";
+        rgb(11).red    <= std_logic_vector(to_unsigned(k26rgb(11).red, 8)) & "00";
+        rgb(11).gre    <= std_logic_vector(to_unsigned(k26rgb(11).gre, 8)) & "00";
+        rgb(11).blu    <= std_logic_vector(to_unsigned(k26rgb(11).blu, 8)) & "00";
+        rgb(12).red    <= std_logic_vector(to_unsigned(k26rgb(12).red, 8)) & "00";
+        rgb(12).gre    <= std_logic_vector(to_unsigned(k26rgb(12).gre, 8)) & "00";
+        rgb(12).blu    <= std_logic_vector(to_unsigned(k26rgb(12).blu, 8)) & "00";
+        rgb(13).red    <= std_logic_vector(to_unsigned(k26rgb(13).red, 8)) & "00";
+        rgb(13).gre    <= std_logic_vector(to_unsigned(k26rgb(13).gre, 8)) & "00";
+        rgb(13).blu    <= std_logic_vector(to_unsigned(k26rgb(13).blu, 8)) & "00";
+        rgb(14).red    <= std_logic_vector(to_unsigned(k26rgb(14).red, 8)) & "00";
+        rgb(14).gre    <= std_logic_vector(to_unsigned(k26rgb(14).gre, 8)) & "00";
+        rgb(14).blu    <= std_logic_vector(to_unsigned(k26rgb(14).blu, 8)) & "00";
+        rgb(15).red    <= std_logic_vector(to_unsigned(k26rgb(15).red, 8)) & "00";
+        rgb(15).gre    <= std_logic_vector(to_unsigned(k26rgb(15).gre, 8)) & "00";
+        rgb(15).blu    <= std_logic_vector(to_unsigned(k26rgb(15).blu, 8)) & "00";
+        rgb(16).red    <= std_logic_vector(to_unsigned(k26rgb(16).red, 8)) & "00";
+        rgb(16).gre    <= std_logic_vector(to_unsigned(k26rgb(16).gre, 8)) & "00";
+        rgb(16).blu    <= std_logic_vector(to_unsigned(k26rgb(16).blu, 8)) & "00";
+        rgb(17).red    <= std_logic_vector(to_unsigned(k26rgb(17).red, 8)) & "00";
+        rgb(17).gre    <= std_logic_vector(to_unsigned(k26rgb(17).gre, 8)) & "00";
+        rgb(17).blu    <= std_logic_vector(to_unsigned(k26rgb(17).blu, 8)) & "00";
+        rgb(18).red    <= std_logic_vector(to_unsigned(k26rgb(18).red, 8)) & "00";
+        rgb(18).gre    <= std_logic_vector(to_unsigned(k26rgb(18).gre, 8)) & "00";
+        rgb(18).blu    <= std_logic_vector(to_unsigned(k26rgb(18).blu, 8)) & "00";
+        rgb(19).red    <= std_logic_vector(to_unsigned(k26rgb(19).red, 8)) & "00";
+        rgb(19).gre    <= std_logic_vector(to_unsigned(k26rgb(19).gre, 8)) & "00";
+        rgb(19).blu    <= std_logic_vector(to_unsigned(k26rgb(19).blu, 8)) & "00";
+        rgb(20).red    <= std_logic_vector(to_unsigned(k26rgb(20).red, 8)) & "00";
+        rgb(20).gre    <= std_logic_vector(to_unsigned(k26rgb(20).gre, 8)) & "00";
+        rgb(20).blu    <= std_logic_vector(to_unsigned(k26rgb(20).blu, 8)) & "00";
+        rgb(21).red    <= std_logic_vector(to_unsigned(k26rgb(21).red, 8)) & "00";
+        rgb(21).gre    <= std_logic_vector(to_unsigned(k26rgb(21).gre, 8)) & "00";
+        rgb(21).blu    <= std_logic_vector(to_unsigned(k26rgb(21).blu, 8)) & "00";
+        rgb(22).red    <= std_logic_vector(to_unsigned(k26rgb(22).red, 8)) & "00";
+        rgb(22).gre    <= std_logic_vector(to_unsigned(k26rgb(22).gre, 8)) & "00";
+        rgb(22).blu    <= std_logic_vector(to_unsigned(k26rgb(22).blu, 8)) & "00";
+        rgb(23).red    <= std_logic_vector(to_unsigned(k26rgb(23).red, 8)) & "00";
+        rgb(23).gre    <= std_logic_vector(to_unsigned(k26rgb(23).gre, 8)) & "00";
+        rgb(23).blu    <= std_logic_vector(to_unsigned(k26rgb(23).blu, 8)) & "00";
+        rgb(24).red    <= std_logic_vector(to_unsigned(k26rgb(24).red, 8)) & "00";
+        rgb(24).gre    <= std_logic_vector(to_unsigned(k26rgb(24).gre, 8)) & "00";
+        rgb(24).blu    <= std_logic_vector(to_unsigned(k26rgb(24).blu, 8)) & "00";
+        rgb(25).red    <= std_logic_vector(to_unsigned(k26rgb(25).red, 8)) & "00";
+        rgb(25).gre    <= std_logic_vector(to_unsigned(k26rgb(25).gre, 8)) & "00";
+        rgb(25).blu    <= std_logic_vector(to_unsigned(k26rgb(25).blu, 8)) & "00";
+        rgb(26).red    <= std_logic_vector(to_unsigned(k26rgb(26).red, 8)) & "00";
+        rgb(26).gre    <= std_logic_vector(to_unsigned(k26rgb(26).gre, 8)) & "00";
+        rgb(26).blu    <= std_logic_vector(to_unsigned(k26rgb(26).blu, 8)) & "00";
+        rgb(27).red    <= std_logic_vector(to_unsigned(k26rgb(27).red, 8)) & "00";
+        rgb(27).gre    <= std_logic_vector(to_unsigned(k26rgb(27).gre, 8)) & "00";
+        rgb(27).blu    <= std_logic_vector(to_unsigned(k26rgb(27).blu, 8)) & "00";
+        rgb(28).red    <= std_logic_vector(to_unsigned(k26rgb(28).red, 8)) & "00";
+        rgb(28).gre    <= std_logic_vector(to_unsigned(k26rgb(28).gre, 8)) & "00";
+        rgb(28).blu    <= std_logic_vector(to_unsigned(k26rgb(28).blu, 8)) & "00";
+        rgb(29).red    <= std_logic_vector(to_unsigned(k26rgb(29).red, 8)) & "00";
+        rgb(29).gre    <= std_logic_vector(to_unsigned(k26rgb(29).gre, 8)) & "00";
+        rgb(29).blu    <= std_logic_vector(to_unsigned(k26rgb(29).blu, 8)) & "00";
+        rgb(30).red    <= std_logic_vector(to_unsigned(k26rgb(30).red, 8)) & "00";
+        rgb(30).gre    <= std_logic_vector(to_unsigned(k26rgb(30).gre, 8)) & "00";
+        rgb(30).blu    <= std_logic_vector(to_unsigned(k26rgb(30).blu, 8)) & "00";
+    end if;
+end process;
+
+
+
+
 color_k1_clustering_inst: clustering
 generic map(
     data_width        => i_data_width)
@@ -2339,141 +2440,135 @@ end process;
 process (clk) begin
     if rising_edge(clk) then
         if ((thr5.threshold1  = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(1).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(1).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(1).blu, 8));
+            oRgb.red     <= rgb(1).red;
+            oRgb.green   <= rgb(1).gre;
+            oRgb.blue    <= rgb(1).blu;
         elsif((thr5.threshold2 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(2).red,8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(2).gre,8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(2).blu, 8));
+            oRgb.red     <= rgb(2).red;
+            oRgb.green   <= rgb(2).gre;
+            oRgb.blue    <= rgb(2).blu;
         elsif((thr5.threshold3 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(3).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(3).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(3).blu, 8));
+            oRgb.red     <= rgb(3).red;
+            oRgb.green   <= rgb(3).gre;
+            oRgb.blue    <= rgb(3).blu;
         elsif((thr5.threshold4 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(4).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(4).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(4).blu, 8));
+            oRgb.red     <= rgb(4).red;
+            oRgb.green   <= rgb(4).gre;
+            oRgb.blue    <= rgb(4).blu;
         elsif((thr5.threshold5 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(5).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(5).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(5).blu, 8));
+            oRgb.red     <= rgb(5).red;
+            oRgb.green   <= rgb(5).gre;
+            oRgb.blue    <= rgb(5).blu;
         elsif((thr5.threshold6 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(6).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(6).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(6).blu, 8));
+            oRgb.red     <= rgb(6).red;
+            oRgb.green   <= rgb(6).gre;
+            oRgb.blue    <= rgb(6).blu;
         elsif((thr5.threshold7 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(7).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(7).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(7).blu, 8));
+            oRgb.red     <= rgb(7).red;
+            oRgb.green   <= rgb(7).gre;
+            oRgb.blue    <= rgb(7).blu;
         elsif((thr5.threshold8 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(8).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(8).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(8).blu, 8));
+            oRgb.red     <= rgb(8).red;
+            oRgb.green   <= rgb(8).gre;
+            oRgb.blue    <= rgb(8).blu;
         elsif((thr5.threshold9 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(9).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(9).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(9).blu, 8));
+            oRgb.red     <= rgb(9).red;
+            oRgb.green   <= rgb(9).gre;
+            oRgb.blue    <= rgb(9).blu;
         elsif((thr5.threshold10 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(10).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(10).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(10).blu, 8));
+            oRgb.red     <= rgb(10).red;
+            oRgb.green   <= rgb(10).gre;
+            oRgb.blue    <= rgb(10).blu;
         elsif((thr5.threshold11 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(11).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(11).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(11).blu, 8));
+            oRgb.red     <= rgb(11).red;
+            oRgb.green   <= rgb(11).gre;
+            oRgb.blue    <= rgb(11).blu;
         elsif((thr5.threshold12 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(12).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(12).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(12).blu, 8));
+            oRgb.red     <= rgb(12).red;
+            oRgb.green   <= rgb(12).gre;
+            oRgb.blue    <= rgb(12).blu;
         elsif((thr5.threshold13 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(13).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(13).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(13).blu, 8));
+            oRgb.red     <= rgb(13).red;
+            oRgb.green   <= rgb(13).gre;
+            oRgb.blue    <= rgb(13).blu;
         elsif((thr5.threshold14 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(14).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(14).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(14).blu, 8));
+            oRgb.red     <= rgb(14).red;
+            oRgb.green   <= rgb(14).gre;
+            oRgb.blue    <= rgb(14).blu;
         elsif((thr5.threshold15 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(15).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(15).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(15).blu, 8));
+            oRgb.red     <= rgb(15).red;
+            oRgb.green   <= rgb(15).gre;
+            oRgb.blue    <= rgb(15).blu;
         elsif((thr5.threshold16 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(16).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(16).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(16).blu, 8));
+            oRgb.red     <= rgb(16).red;
+            oRgb.green   <= rgb(16).gre;
+            oRgb.blue    <= rgb(16).blu;
         elsif((thr5.threshold17 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(17).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(17).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(17).blu, 8));
+            oRgb.red     <= rgb(17).red;
+            oRgb.green   <= rgb(17).gre;
+            oRgb.blue    <= rgb(17).blu;
         elsif((thr5.threshold18 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(18).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(18).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(18).blu, 8));
+            oRgb.red     <= rgb(18).red;
+            oRgb.green   <= rgb(18).gre;
+            oRgb.blue    <= rgb(18).blu;
         elsif((thr5.threshold19 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(19).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(19).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(19).blu, 8));
+            oRgb.red     <= rgb(19).red;
+            oRgb.green   <= rgb(19).gre;
+            oRgb.blue    <= rgb(19).blu;
         elsif((thr5.threshold20 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(20).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(20).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(20).blu, 8));
+            oRgb.red     <= rgb(20).red;
+            oRgb.green   <= rgb(20).gre;
+            oRgb.blue    <= rgb(20).blu;
         elsif((thr5.threshold21 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(21).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(21).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(21).blu, 8));
+            oRgb.red     <= rgb(21).red;
+            oRgb.green   <= rgb(21).gre;
+            oRgb.blue    <= rgb(21).blu;
         elsif((thr5.threshold22 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(22).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(22).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(22).blu, 8));
+            oRgb.red     <= rgb(22).red;
+            oRgb.green   <= rgb(22).gre;
+            oRgb.blue    <= rgb(22).blu;
         elsif((thr5.threshold23 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(23).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(23).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(23).blu, 8));
+            oRgb.red     <= rgb(23).red;
+            oRgb.green   <= rgb(23).gre;
+            oRgb.blue    <= rgb(23).blu;
         elsif((thr5.threshold24 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(24).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(24).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(24).blu, 8));
+            oRgb.red     <= rgb(24).red;
+            oRgb.green   <= rgb(24).gre;
+            oRgb.blue    <= rgb(24).blu;
         elsif((thr5.threshold25 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(25).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(25).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(25).blu, 8));
+            oRgb.red     <= rgb(25).red;
+            oRgb.green   <= rgb(25).gre;
+            oRgb.blue    <= rgb(25).blu;
         elsif((thr5.threshold26 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(26).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(26).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(26).blu, 8));
+            oRgb.red     <= rgb(26).red;
+            oRgb.green   <= rgb(26).gre;
+            oRgb.blue    <= rgb(26).blu;
         elsif((thr5.threshold27 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(27).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(27).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(27).blu, 8));
+            oRgb.red     <= rgb(27).red;
+            oRgb.green   <= rgb(27).gre;
+            oRgb.blue    <= rgb(27).blu;
         elsif((thr5.threshold28 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(28).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(28).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(28).blu, 8));
+            oRgb.red     <= rgb(28).red;
+            oRgb.green   <= rgb(28).gre;
+            oRgb.blue    <= rgb(28).blu;
         elsif((thr5.threshold29 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(29).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(29).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(29).blu, 8));
+            oRgb.red     <= rgb(29).red;
+            oRgb.green   <= rgb(29).gre;
+            oRgb.blue    <= rgb(29).blu;
         elsif((thr5.threshold30 = threshold)) then
-            rgb_red     <= std_logic_vector(to_unsigned(k27rgb(30).red, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(k27rgb(30).gre, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(k27rgb(30).blu, 8));
+            oRgb.red     <= rgb(30).red;
+            oRgb.green   <= rgb(30).gre;
+            oRgb.blue    <= rgb(30).blu;
         else
-            rgb_red     <= std_logic_vector(to_unsigned(255, 8));
-            rgb_gre     <= std_logic_vector(to_unsigned(255, 8));
-            rgb_blu     <= std_logic_vector(to_unsigned(255, 8));
+            oRgb.red     <= (others => '1');
+            oRgb.green   <= (others => '1');
+            oRgb.blue    <= (others => '1');
         end if;
     end if;
 end process;
-process (clk)begin
-    if rising_edge(clk) then
-       oRgb.red    <= rgb_red & "00";
-       oRgb.green  <= rgb_gre & "00";
-       oRgb.blue   <= rgb_blu & "00";
-    end if;
-end process;
-oRgb.valid <= rgbSyncValid(28);
-oRgb.eol   <= rgbSyncEol(28);
-oRgb.sof   <= rgbSyncSof(28);
-oRgb.eof   <= rgbSyncEof(28);
+
+oRgb.valid <= rgbSyncValid(27);
+oRgb.eol   <= rgbSyncEol(27);
+oRgb.sof   <= rgbSyncSof(27);
+oRgb.eof   <= rgbSyncEof(27);
 end architecture;

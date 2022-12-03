@@ -1137,7 +1137,7 @@ port (
     oHueOut                     : out std_logic_vector(9 downto 0);
     oHsl                        : out channel);
 end component hsl_c;
-component rgb_ycbcr is
+component rgb2ycbcr is
 generic (
     i_data_width                : integer:= 8;
     i_precision                 : integer:= 12;
@@ -1147,7 +1147,16 @@ port (
     rst_l                       : in  std_logic;
     iRgb                        : in channel;
     oRgb                        : out channel);
-end component rgb_ycbcr;
+end component rgb2ycbcr;
+component ycbcr2rgb is
+port (
+    clk             : in std_logic;
+    rst_l           : in std_logic;
+    iRgb            : in channel;
+    oRgb            : out channel);
+end component ycbcr2rgb;
+
+
 component color_correction is
 generic (
     i_k_config_number           : integer := 8);

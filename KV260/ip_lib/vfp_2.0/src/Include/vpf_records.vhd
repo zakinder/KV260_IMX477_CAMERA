@@ -2235,4 +2235,17 @@ type r2xData is record
     dita             : std_logic_vector(24 downto 0);
     cord             : coord;
 end record;
+type k_val is
+record
+    red              : std_logic_vector(9 downto 0);
+    gre              : std_logic_vector(9 downto 0);
+    blu              : std_logic_vector(9 downto 0);
+end record;
+type k_val_rgb is array(natural range <>) of k_val;
+type s_channel is record
+    valid            : std_logic;
+    red              : signed(8 downto 0);
+    green            : signed(8 downto 0);
+    blue             : signed(8 downto 0);
+end record;
 end package;

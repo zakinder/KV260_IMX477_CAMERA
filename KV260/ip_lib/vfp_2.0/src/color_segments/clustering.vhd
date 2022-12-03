@@ -38,6 +38,7 @@ type s_pixel is record
     m2         : integer;
     m3         : integer;
     mac        : integer;
+    mac_syn    : integer;
     sum        : std_logic_vector (31 downto 0);
     sum2       : std_logic_vector (31 downto 0);
     rslt       : std_logic_vector (15 downto 0);
@@ -52,7 +53,7 @@ process (clk) begin
           rgb_set1.i_blu      <= to_integer(unsigned(iRgb.blue(9 downto 2)));
     end if;
 end process;
------------------------------------------------------------------------------
+
 process (clk) begin
     if rising_edge(clk) then
           rgb_set1.red          <= abs(k_rgb.red - rgb_set1.i_red);
@@ -60,22 +61,33 @@ process (clk) begin
           rgb_set1.blu          <= abs(k_rgb.blu - rgb_set1.i_blu);
     end if;
 end process;
+
 process (clk) begin
   if rising_edge(clk) then
       rgb_set1.m1    <= (rgb_set1.red * rgb_set1.red);
       rgb_set1.m2    <= (rgb_set1.gre * rgb_set1.gre);
       rgb_set1.m3    <= (rgb_set1.blu * rgb_set1.blu);
-      rgb_set1.mac   <= rgb_set1.m1 + rgb_set1.m2 + rgb_set1.m3;
   end if;
 end process;
 
 process (clk) begin
   if rising_edge(clk) then
-    rgb_set1.sum <= std_logic_vector(to_unsigned(rgb_set1.mac,32));
-    rgb_set1.sum2 <= rgb_set1.sum;
+      rgb_set1.mac   <= rgb_set1.m1 + rgb_set1.m2 + rgb_set1.m3;
   end if;
 end process;
 
+
+process (clk) begin
+  if rising_edge(clk) then
+    rgb_set1.sum <= std_logic_vector(to_unsigned(rgb_set1.mac,32));
+  end if;
+end process;
+
+process (clk) begin
+  if rising_edge(clk) then
+    rgb_set1.sum2 <= rgb_set1.sum;
+  end if;
+end process;
 
 set1_inst: square_root
 generic map(
@@ -90,6 +102,12 @@ port map(
 process (clk, rst_l) begin
   if rising_edge(clk) then
     rgb_set1.rslt2      <= to_integer(unsigned(rgb_set1.rslt));
+
+  end if;
+end process;
+
+process (clk, rst_l) begin
+  if rising_edge(clk) then
     threshold           <= rgb_set1.rslt2;
   end if;
 end process;

@@ -132,6 +132,9 @@ architecture arch_imp of vfp_v1_0 is
     signal ccc23               : channel;
     signal ccc31               : channel;
     signal ccc32               : channel;
+    signal ccc33               : channel;
+    signal ccc34               : channel;
+    signal ccc35               : channel;
 begin
 -- this module encode and decode cpu config data to slave components
 vfpConfigInst: vfp_config
@@ -425,7 +428,22 @@ port map (
    rst_l                 => ivideo_aresetn,
    iRgb                  => ccc10,
    oRgb                  => ccc9);
-
+rgb2ycbcr_inst  : rgb2ycbcr --3clk
+generic map(
+   i_data_width         => 8,
+   i_precision          => 12,
+   i_full_range         => TRUE)
+port map(
+   clk                  => ivideo_aclk,
+   rst_l                => ivideo_aresetn,
+   iRgb                 => ccc7,
+   oRgb                 => ccc33);
+ycbcr2rgb_inst  : ycbcr2rgb --3clk
+port map(
+   clk                 => ivideo_aclk,
+   rst_l               => ivideo_aresetn,
+   iRgb                => ccc33,
+   oRgb                => ccc34);
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_16 = 0) then
@@ -462,6 +480,10 @@ process (ivideo_aclk)begin
             ccc11           <= ccc18;
         elsif(config_number_16 = 16)then
             ccc11           <= ccc31;
+        elsif(config_number_16 = 17)then
+            ccc11           <= ccc33;
+        elsif(config_number_16 = 18)then
+            ccc11           <= ccc34;
         else
             ccc11           <= ccc32;
         end if;

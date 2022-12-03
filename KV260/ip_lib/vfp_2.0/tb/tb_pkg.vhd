@@ -28,7 +28,7 @@ package tb_pkg is
     --       [1012_606  = 622 us]
     --       [1024_1024 = 622 us]
     --       [1754_1006 = 622 us]
-    constant readbmp             : string  := "1920_1080";
+    constant readbmp             : string  := "255_255";
     constant Histrograms         : string  := "Histrograms";
     constant img_width           : integer := image_size_width(readbmp);
     constant img_height          : integer := image_size_height(readbmp);
@@ -40,8 +40,8 @@ package tb_pkg is
     constant adwrWidth           : integer := 16;
     constant addrWidth           : integer := 12;
     constant SLOT_NUM            : integer := 770;
-    constant wImgFolder          : string := "K:/ZEDBOARD/simulations/images/write";
-    constant rImgFolder          : string := "K:/ZEDBOARD/simulations/images/read";
+    constant wImgFolder          : string := "R:/KV260/simulations/images/write";
+    constant rImgFolder          : string := "R:/KV260/simulations/images/read";
     constant bSlash              : string := "\";
     constant fSlash              : string := "/";
     constant LogsFolder          : string := "Logs";
