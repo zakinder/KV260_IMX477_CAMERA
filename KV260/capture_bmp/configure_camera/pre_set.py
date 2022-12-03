@@ -259,7 +259,7 @@ class MyWindow:
         self.LABEL45_ENTER.insert(0, "1")
         self.LABEL45_ENTER.place(x=200, y=650)
         ####################### REG46
-        self.LABEL46=Label(win, text='REG46')
+        self.LABEL46=Label(win, text='K Type Select [REG46]')
         self.LABEL46.place(x=50, y=675)
         self.LABEL46_ENTER=Entry()
         self.LABEL46_ENTER.insert(0, "0")
@@ -441,7 +441,7 @@ class MyWindow:
         reg21       =int(self.LABEL18_ENTER.get()).to_bytes(2, 'little')
         s.sendto(b"".join([control_reg00,a1_reg,a2_reg,a3_reg,a4_reg,a5_reg,a6_reg,a7_reg,a8_reg,a9_reg,delay_reg10,reg11,reg12,reg13,reg14,reg15,reg16,reg17,reg18,reg19,reg20,reg21]), UDP)
     def reg46(self):
-        control_reg00 =int(14).to_bytes(2, 'little')
+        control_reg00 =int(5).to_bytes(2, 'little')
         delay_reg10   =int(12).to_bytes(2, 'little')
         a1_reg        =int(self.LABEL46_ENTER.get()).to_bytes(2, 'little')
         s.sendto(b"".join([control_reg00,a1_reg]), UDP)
