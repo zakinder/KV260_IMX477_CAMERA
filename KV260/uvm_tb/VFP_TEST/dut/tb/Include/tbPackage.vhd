@@ -40,8 +40,8 @@ package tbPackage is
     constant adwrWidth           : integer := 16;
     constant addrWidth           : integer := 12;
     constant SLOT_NUM            : integer := 770;
-    constant wImgFolder          : string := "R:/KV260/simulations/images/write";
-    constant rImgFolder          : string := "R:/KV260/simulations/images/read";
+    constant wImgFolder          : string := "R:/KV260/simulation_results/images/write";
+    constant rImgFolder          : string := "R:/KV260/simulation_results/images/read";
     constant bSlash              : string := "\";
     constant fSlash              : string := "/";
     constant LogsFolder          : string := "Logs";

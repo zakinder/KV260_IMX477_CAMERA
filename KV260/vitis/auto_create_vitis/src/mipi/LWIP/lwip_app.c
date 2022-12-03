@@ -192,9 +192,13 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }else if(a0==5){
-        	read_imx682_reg((int)pData[18]);
+        	per_write_reg(REG46,(int)pData[1]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
+//        }else if(a0==5){
+//        	read_imx682_reg((int)pData[18]);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = 0;
 //        }else if(a0==6){
 //            xil_printf("IMX 682: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
 //            write_imx682_reg((int)pData[19],(int)pData[20]);
@@ -217,7 +221,7 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	per_write_reg(REG15,(int)pData[1]);
         	per_write_reg(REG45,((0x0000ff& pData[2])<<16) | (REG45,((0x0000ff& pData[3])<<8))| ((0x0000ff& pData[4])));
         	//if(pData[1]<31){
-        	per_read_rgb1_reg();
+        	per_read_rgb_reg((int)pData[1]);
         	//}
 //        	}else if(pData[1]>30 & pData[1]<61){
 //        	per_read_rgb2_reg();

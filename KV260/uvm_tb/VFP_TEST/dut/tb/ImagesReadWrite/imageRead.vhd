@@ -27,7 +27,7 @@ port (
 end imageRead;
 architecture Behavioral of imageRead is 
     -------------------------------------------------------------------------
-    constant proj_fol  : string := "R:/KV260/uvm_tb/VFP_TEST/dut/tb/uvm_images/read";
+    constant proj_fol  : string := "R:/KV260/simulation_results/images/read/128_128";
     constant bacslash  : string := "/";
     constant readbmp   : string := proj_fol&bacslash&input_file&".bmp";
     -------------------------------------------------------------------------
