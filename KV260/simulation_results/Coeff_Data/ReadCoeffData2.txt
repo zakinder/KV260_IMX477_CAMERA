@@ -1,0 +1,7 @@
+(a) very strong gradients between colors; highly saturated colors; luminance: bright, dark, bright, dark, …
+(b) color/value pairs no longer unique
+(c) identification of most important information difficult/impossible
+(d) eye automatically focuses on dark “artefact’s”
+(1) decreasing luminance with higher values (high amounts of rain: darker areas)
+(2) increasing chroma with higher values (grayish colors on the lower side of the value range)
+(3) additional hue to support the user task
