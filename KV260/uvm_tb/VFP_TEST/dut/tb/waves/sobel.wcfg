@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="videoProcess_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constantspackage" />
+            <top_module name="dutportspackage" />
+            <top_module name="fixed_float_types" />
+            <top_module name="fixed_pkg" />
+            <top_module name="float_pkg" />
+            <top_module name="portspackage" />
+            <top_module name="tbpackage" />
+            <top_module name="videoProcess_tb" />
+            <top_module name="vpfrecords" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="34600000001fs"></ZoomEndTime>
+      <Cursor1Time time="1677610000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="217"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="77" />
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/txCord" type="array">
+      <obj_property name="ElementShortName">txCord</obj_property>
+      <obj_property name="ObjectShortName">txCord</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/rst_l" type="logic">
+      <obj_property name="ElementShortName">rst_l</obj_property>
+      <obj_property name="ObjectShortName">rst_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/iRgb" type="array">
+      <obj_property name="ElementShortName">iRgb</obj_property>
+      <obj_property name="ObjectShortName">iRgb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/iEdgeType" type="array">
+      <obj_property name="ElementShortName">iEdgeType[31:0]</obj_property>
+      <obj_property name="ObjectShortName">iEdgeType[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/endOfFrame" type="logic">
+      <obj_property name="ElementShortName">endOfFrame</obj_property>
+      <obj_property name="ObjectShortName">endOfFrame</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/threshold" type="array">
+      <obj_property name="ElementShortName">threshold[15:0]</obj_property>
+      <obj_property name="ObjectShortName">threshold[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/kls" type="array">
+      <obj_property name="ElementShortName">kls</obj_property>
+      <obj_property name="ObjectShortName">kls</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/oRgb" type="array">
+      <obj_property name="ElementShortName">oRgb</obj_property>
+      <obj_property name="ObjectShortName">oRgb</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sValid" type="logic">
+      <obj_property name="ElementShortName">sValid</obj_property>
+      <obj_property name="ObjectShortName">sValid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/edgeValid" type="logic">
+      <obj_property name="ElementShortName">edgeValid</obj_property>
+      <obj_property name="ObjectShortName">edgeValid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_1_X" type="array">
+      <obj_property name="ElementShortName">Kernel_1_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_1_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_2_X" type="array">
+      <obj_property name="ElementShortName">Kernel_2_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_2_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_3_X" type="array">
+      <obj_property name="ElementShortName">Kernel_3_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_3_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_4_X" type="array">
+      <obj_property name="ElementShortName">Kernel_4_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_4_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_5_X" type="array">
+      <obj_property name="ElementShortName">Kernel_5_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_5_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_6_X" type="array">
+      <obj_property name="ElementShortName">Kernel_6_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_6_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_7_X" type="array">
+      <obj_property name="ElementShortName">Kernel_7_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_7_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_8_X" type="array">
+      <obj_property name="ElementShortName">Kernel_8_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_8_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_9_X" type="array">
+      <obj_property name="ElementShortName">Kernel_9_X[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_9_X[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_1_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_1_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_1_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_2_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_2_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_2_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_3_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_3_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_3_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_4_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_4_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_4_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_5_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_5_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_5_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_6_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_6_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_6_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_7_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_7_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_7_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_8_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_8_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_8_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/Kernel_9_Y" type="array">
+      <obj_property name="ElementShortName">Kernel_9_Y[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Kernel_9_Y[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/vTap0x" type="array">
+      <obj_property name="ElementShortName">vTap0x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">vTap0x[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/vTap1x" type="array">
+      <obj_property name="ElementShortName">vTap1x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">vTap1x[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/vTap2x" type="array">
+      <obj_property name="ElementShortName">vTap2x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">vTap2x[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d1R" type="array">
+      <obj_property name="ElementShortName">d1R[7:0]</obj_property>
+      <obj_property name="ObjectShortName">d1R[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d2R" type="array">
+      <obj_property name="ElementShortName">d2R[7:0]</obj_property>
+      <obj_property name="ObjectShortName">d2R[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d3R" type="array">
+      <obj_property name="ElementShortName">d3R[7:0]</obj_property>
+      <obj_property name="ObjectShortName">d3R[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac1X" type="array">
+      <obj_property name="ElementShortName">mac1X</obj_property>
+      <obj_property name="ObjectShortName">mac1X</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac2X" type="array">
+      <obj_property name="ElementShortName">mac2X</obj_property>
+      <obj_property name="ObjectShortName">mac2X</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac3X" type="array">
+      <obj_property name="ElementShortName">mac3X</obj_property>
+      <obj_property name="ObjectShortName">mac3X</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac1Y" type="array">
+      <obj_property name="ElementShortName">mac1Y</obj_property>
+      <obj_property name="ObjectShortName">mac1Y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac2Y" type="array">
+      <obj_property name="ElementShortName">mac2Y</obj_property>
+      <obj_property name="ObjectShortName">mac2Y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mac3Y" type="array">
+      <obj_property name="ElementShortName">mac3Y</obj_property>
+      <obj_property name="ObjectShortName">mac3Y</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel" type="array">
+      <obj_property name="ElementShortName">sobel</obj_property>
+      <obj_property name="ObjectShortName">sobel</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.pax" type="array">
+         <obj_property name="ElementShortName">.pax[16:0]</obj_property>
+         <obj_property name="ObjectShortName">.pax[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.pay" type="array">
+         <obj_property name="ElementShortName">.pay[16:0]</obj_property>
+         <obj_property name="ObjectShortName">.pay[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.mx" type="array">
+         <obj_property name="ElementShortName">.mx[34:0]</obj_property>
+         <obj_property name="ObjectShortName">.mx[34:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.my" type="array">
+         <obj_property name="ElementShortName">.my[34:0]</obj_property>
+         <obj_property name="ObjectShortName">.my[34:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.sxy" type="array">
+         <obj_property name="ElementShortName">.sxy[34:0]</obj_property>
+         <obj_property name="ObjectShortName">.sxy[34:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.sqr" type="array">
+         <obj_property name="ElementShortName">.sqr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">.sqr[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.edgeValid" type="logic">
+         <obj_property name="ElementShortName">.edgeValid</obj_property>
+         <obj_property name="ObjectShortName">.edgeValid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/sobel.sbof" type="array">
+         <obj_property name="ElementShortName">.sbof[31:0]</obj_property>
+         <obj_property name="ObjectShortName">.sbof[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+         <obj_property name="CellHeight">100</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/tpd1" type="array">
+      <obj_property name="ElementShortName">tpd1</obj_property>
+      <obj_property name="ObjectShortName">tpd1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/tpd2" type="array">
+      <obj_property name="ElementShortName">tpd2</obj_property>
+      <obj_property name="ObjectShortName">tpd2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/tpd3" type="array">
+      <obj_property name="ElementShortName">tpd3</obj_property>
+      <obj_property name="ObjectShortName">tpd3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/en_datao" type="logic">
+      <obj_property name="ElementShortName">en_datao</obj_property>
+      <obj_property name="ObjectShortName">en_datao</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d1en" type="logic">
+      <obj_property name="ElementShortName">d1en</obj_property>
+      <obj_property name="ObjectShortName">d1en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d2en" type="logic">
+      <obj_property name="ElementShortName">d2en</obj_property>
+      <obj_property name="ObjectShortName">d2en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d3en" type="logic">
+      <obj_property name="ElementShortName">d3en</obj_property>
+      <obj_property name="ObjectShortName">d3en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d4en" type="logic">
+      <obj_property name="ElementShortName">d4en</obj_property>
+      <obj_property name="ObjectShortName">d4en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/d5en" type="logic">
+      <obj_property name="ElementShortName">d5en</obj_property>
+      <obj_property name="ObjectShortName">d5en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/valid1R" type="logic">
+      <obj_property name="ElementShortName">valid1R</obj_property>
+      <obj_property name="ObjectShortName">valid1R</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/valid2R" type="logic">
+      <obj_property name="ElementShortName">valid2R</obj_property>
+      <obj_property name="ObjectShortName">valid2R</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/validO" type="logic">
+      <obj_property name="ElementShortName">validO</obj_property>
+      <obj_property name="ObjectShortName">validO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/configReg" type="other">
+      <obj_property name="ElementShortName">configReg</obj_property>
+      <obj_property name="ObjectShortName">configReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/rCountAddress" type="other">
+      <obj_property name="ElementShortName">rCountAddress</obj_property>
+      <obj_property name="ObjectShortName">rCountAddress</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/rAddress" type="array">
+      <obj_property name="ElementShortName">rAddress[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rAddress[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/i_data_width" type="other">
+      <obj_property name="ElementShortName">i_data_width</obj_property>
+      <obj_property name="ObjectShortName">i_data_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/img_width" type="other">
+      <obj_property name="ElementShortName">img_width</obj_property>
+      <obj_property name="ObjectShortName">img_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/adwrWidth" type="other">
+      <obj_property name="ElementShortName">adwrWidth</obj_property>
+      <obj_property name="ObjectShortName">adwrWidth</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/addrWidth" type="other">
+      <obj_property name="ElementShortName">addrWidth</obj_property>
+      <obj_property name="ObjectShortName">addrWidth</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider73">
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/aclk" type="logic">
+      <obj_property name="ElementShortName">aclk</obj_property>
+      <obj_property name="ObjectShortName">aclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/i_enable" type="logic">
+      <obj_property name="ElementShortName">i_enable</obj_property>
+      <obj_property name="ObjectShortName">i_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/i_data" type="array">
+      <obj_property name="ElementShortName">i_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_data[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/i_wadd" type="array">
+      <obj_property name="ElementShortName">i_wadd[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_wadd[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/i_radd" type="array">
+      <obj_property name="ElementShortName">i_radd[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_radd[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/en_datao" type="logic">
+      <obj_property name="ElementShortName">en_datao</obj_property>
+      <obj_property name="ObjectShortName">en_datao</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/taps0x" type="array">
+      <obj_property name="ElementShortName">taps0x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">taps0x[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/taps1x" type="array">
+      <obj_property name="ElementShortName">taps1x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">taps1x[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_1_inst/taps2x" type="array">
+      <obj_property name="ElementShortName">taps2x[7:0]</obj_property>
+      <obj_property name="ObjectShortName">taps2x[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider73">
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_2_inst/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_2_inst/ivalid" type="logic">
+      <obj_property name="ElementShortName">ivalid</obj_property>
+      <obj_property name="ObjectShortName">ivalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_2_inst/idata" type="array">
+      <obj_property name="ElementShortName">idata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">idata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_2_inst/ovalid" type="logic">
+      <obj_property name="ElementShortName">ovalid</obj_property>
+      <obj_property name="ObjectShortName">ovalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/videoProcess_tb/sobel_test_enabled/SobelFilterInst/mod6_1_2_inst/odata" type="array">
+      <obj_property name="ElementShortName">odata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">odata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>
