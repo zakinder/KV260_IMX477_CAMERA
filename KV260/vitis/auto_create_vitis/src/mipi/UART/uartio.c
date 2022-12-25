@@ -24,7 +24,7 @@ void per_write_reg(u32 offset, u32 data)
 }
 void per_read_rgb1_reg()
 {
-    for (int i = 1; i < 91; i++)
+    for (int i = 1; i < 121; i++)
     {
     	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
         usleep(1000);
@@ -61,13 +61,10 @@ void per_read_rgb3_reg()
 }
 void per_read_rgb_reg(int i)
 {
-
     	D5M_mWriteReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,80,i);
         usleep(1000);
     	printf("%2d Red > %4d Gre > %4d Blue > %4d \r\n",i, ((0xff0000& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>16),((0x00ff00& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))>>8),((0x0000ff& D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,180))));
         usleep(1000);
-
-
 }
 char* char_to_uart(char auserinput[])
 {

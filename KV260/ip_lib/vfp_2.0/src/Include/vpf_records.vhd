@@ -2187,6 +2187,7 @@ type rgbArray is array(natural range <>) of type_RgbChannel;
 
 type type_hueChannel is
 record
+    hue              : natural;
     lum              : natural;
     sat              : natural;
 end record;

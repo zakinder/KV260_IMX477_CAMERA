@@ -1,8 +1,8 @@
--------------------------------------------------------------------------------
--- Filename    : vfp.vhd
--- Create Date : 02092019 [02-09-2019]
--- Author      : Zakinder
--------------------------------------------------------------------------------
+--◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+--◆ Filename    : vfp.vhd
+--◆ Create Date : 02092019 [02-09-2019]
+--◆ Author      : Sakinder
+--◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -13,7 +13,7 @@ use work.fixed_pkg.all;
 use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
-        revision_number           : std_logic_vector(31 downto 0) := x"11272022";
+        revision_number           : std_logic_vector(31 downto 0) := x"12162022";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
@@ -81,13 +81,26 @@ entity vfp_v1_0 is
         ivideo_tstrb              : in std_logic_vector((C_iVideo_TDATA_WIDTH/8)-1 downto 0);
         ivideo_tlast              : in std_logic;
         ivideo_tuser              : in std_logic; 
-        ivideo_tvalid             : in std_logic);
+        ivideo_tvalid             : in std_logic;
+        video2_aclk               : in std_logic;
+        video2_aresetn            : in std_logic;
+        video2_tready             : out std_logic;
+        video2_tkeep              : in std_logic_vector(3 downto 0);  
+        video2_tdata              : in std_logic_vector(C_iVideo_TDATA_WIDTH-1 downto 0);
+        video2_tstrb              : in std_logic_vector((C_iVideo_TDATA_WIDTH/8)-1 downto 0);
+        video2_tlast              : in std_logic;
+        video2_tuser              : in std_logic; 
+        video2_tvalid             : in std_logic);
 end vfp_v1_0;
 architecture arch_imp of vfp_v1_0 is
     signal wr_regs            : mRegs;
     signal rd_regs            : mRegs;
     signal cord_x             : std_logic_vector(15 downto 0);
     signal cord_y             : std_logic_vector(15 downto 0);
+    signal cord1x             : std_logic_vector(15 downto 0);
+    signal cord1y             : std_logic_vector(15 downto 0);
+    signal cord2x             : std_logic_vector(15 downto 0);
+    signal cord2y             : std_logic_vector(15 downto 0);
     signal coefficients_in_1  : coefficient_values;
     signal coefficients_out_1 : coefficient_values;
     signal coefficients_in_2  : coefficient_values;
@@ -95,18 +108,20 @@ architecture arch_imp of vfp_v1_0 is
     signal coefficients_in_3  : coefficient_values;
     signal coefficients_out_3 : coefficient_values;
     signal txCord             : coord;
-    signal k_config_number_1  : integer := 0;
-    signal k_config_number_2  : integer := 0;
-    signal k_config_number_3  : integer := 0;
+    signal k_config_number_1  : integer := 15;
+    signal k_config_number_2  : integer := 15;
+    signal k_config_number_3  : integer := 15;
     signal config_number_14   : integer := 0;
-    signal config_number_15   : natural := 0;
-    signal config_number_16   : integer := 0;
-    signal config_number_17   : integer := 0;
-    signal config_number_19   : integer := 0;
-    signal config_number_43   : integer := 0;
-    signal config_number_44   : integer := 14;
+    signal config_number_15   : natural := 221;
+    signal config_number_16   : integer := 16;
+    signal config_number_17   : integer := 2;
+    signal config_number_19   : integer := 4;
+    signal config_number_43   : integer := 5;
+    signal config_number_44   : integer := 100;
     signal config_number_45   : integer := 0;
     signal config_number_20   : integer := 0;
+    signal ccx                 : channel;
+    signal ccy                 : channel;
     signal ccc1                : channel;
     signal ccc2                : channel;
     signal ccc3                : channel;
@@ -135,8 +150,15 @@ architecture arch_imp of vfp_v1_0 is
     signal ccc33               : channel;
     signal ccc34               : channel;
     signal ccc35               : channel;
+    signal ccc36               : channel;
+    signal ccc37               : channel;
+    signal ccc38               : channel;
+    signal ccc39               : channel;
+    signal ccc40               : channel;
 begin
--- this module encode and decode cpu config data to slave components
+------------------------------------------------------------
+--                                                VFP_CONFIG
+------------------------------------------------------------
 vfpConfigInst: vfp_config
 generic map(
     revision_number      => revision_number,
@@ -168,7 +190,10 @@ port map(
     S_AXI_RRESP          => vfpconfig_rresp,
     S_AXI_RVALID         => vfpconfig_rvalid,
     S_AXI_RREADY         => vfpconfig_rready);
-VFP_AXI_STREAM_INST : vfp_axi_stream 
+------------------------------------------------------------
+--                                           VFP_AXI_STREAM1
+------------------------------------------------------------
+VFP_AXI_STREAM1_INST : vfp_axi_stream 
 generic map(
     TDATA_WIDTH                     => C_iVideo_TDATA_WIDTH,
     FRAME_PIXEL_DEPTH               => FRAME_PIXEL_DEPTH,
@@ -182,10 +207,46 @@ port map (
     s_axis_tlast                    => ivideo_tlast,
     s_axis_tuser                    => ivideo_tuser,
     s_axis_tvalid                   => ivideo_tvalid,
-    config_number_19                => config_number_19,
+    config_number_19                => 4,
     oCord_x                         => cord_x,
     oCord_y                         => cord_y,
     oRgb                            => ccc1);
+------------------------------------------------------------
+--                                           VFP_AXI_STREAM2
+------------------------------------------------------------
+VFP_AXI_STREAM2_INST : vfp_axi_stream 
+generic map(
+    TDATA_WIDTH                     => C_iVideo_TDATA_WIDTH,
+    FRAME_PIXEL_DEPTH               => FRAME_PIXEL_DEPTH,
+    FRAME_WIDTH                     => FRAME_WIDTH,
+    FRAME_HEIGHT                    => FRAME_HEIGHT)
+port map (
+    s_axis_aclk                     => video2_aclk,
+    s_axis_aresetn                  => video2_aresetn,
+    s_axis_tready                   => video2_tready,
+    s_axis_tdata                    => video2_tdata,
+    s_axis_tlast                    => video2_tlast,
+    s_axis_tuser                    => video2_tuser,
+    s_axis_tvalid                   => video2_tvalid,
+    config_number_19                => 4,
+    oCord_x                         => cord2x,
+    oCord_y                         => cord2y,
+    oRgb                            => ccy);
+-- process(config_number_19,ccx,ccy,cord2x,cord2y,cord1x,cord1y)begin
+    -- if(config_number_19=5)then
+       -- ccc1         <= ccy;
+       -- cord_x       <= cord2x;
+       -- cord_y       <= cord2y;
+    -- else
+       -- ccc1         <= ccx;
+       -- cord_x       <= cord1x;
+       -- cord_y       <= cord1y;
+    -- end if;
+-- end process;
+    
+------------------------------------------------------------
+--                                     CONFIGURATION SIGNALS
+------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         rgb_fr_plw_xcnt                 <= std_logic_vector(to_unsigned(ccc1.xcnt, 16));
@@ -208,6 +269,9 @@ process (ivideo_aclk)begin
         config_number_45                <= to_integer((unsigned(wr_regs.cfigReg45)));
     end if;
 end process;
+------------------------------------------------------------
+--                                  CONFIGURATION WRITE/READ
+------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         coefficients_in_1.k1   <= wr_regs.cfigReg1;
@@ -266,6 +330,9 @@ process (ivideo_aclk)begin
         rd_regs.cfigReg63      <= coefficients_out_3.k9;
     end if;
 end process;
+------------------------------------------------------------
+--                                               TESTPATTERN
+------------------------------------------------------------
 test_patterns_inst  : testpattern
 port map(
     clk           => ivideo_aclk,
@@ -273,27 +340,40 @@ port map(
     iCord         => txCord,
     tpSelect      => config_number_44,
     oRgb          => ccc2);
+------------------------------------------------------------
+--                                      RGB_CHANNEL_SELECTOR
+------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_14 = 0) then
-            ccc3           <= ccc1;
+            ccc3            <= ccc1;
+        elsif(config_number_14 = 1)then
+           ccc3.red         <= ccy.green;
+           ccc3.green       <= ccy.blue;
+           ccc3.blue        <= ccy.red;
+           ccc3.valid       <= ccy.valid;
+           ccc3.eol         <= ccy.eol;
+           ccc3.sof         <= ccy.sof;
+           ccc3.eof         <= ccy.eof;
         else
-            ccc3           <= ccc2;
+            ccc3            <= ccc2;
         end if;
     end if;
 end process;
-dark_ccm_inst  : ccm
-generic map (
-    data_width              => 8,
-    i_k_config_number       => 8)
+
+------------------------------------------------------------
+--                                                   RGB2HSV
+------------------------------------------------------------
+rgb_4_hsv_inst  : rgb_2_hsv
 port map(
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_1,
-    coefficients_in       => coefficients_in_1,
-    coefficients_out      => coefficients_out_1,
-    iRgb                  => ccc3,
-    oRgb                  => ccc4);
+   clk                  => ivideo_aclk,
+   rst                  => ivideo_aresetn,
+   iRgb                 => ccc3,
+   oHSV                 => ccc37,
+   oHSV_YCB             => open);
+------------------------------------------------------------
+--                                                      CCM2
+------------------------------------------------------------
 light_ccm_inst  : ccm
 generic map (
     data_width              => 8,
@@ -304,33 +384,37 @@ port map(
     k_config_number       => k_config_number_2,
     coefficients_in       => coefficients_in_2,
     coefficients_out      => coefficients_out_2,
-    iRgb                  => ccc4,
+    iRgb                  => ccc37,
     oRgb                  => ccc5);
-    ccc7 <= ccc5;
-edge_1objects_inst: edge_1objects
-generic map (
-   i_data_width       => FRAME_PIXEL_DEPTH)
-port map (                  
+------------------------------------------------------------
+--                                                   HSV2RGB
+------------------------------------------------------------
+hsv2rgb1_inst: hsv2rgb
+port map(
    clk                => ivideo_aclk,
-   rst_l              => ivideo_aresetn,
-   iRgb               => ccc7,
-   oRgbRemix          => ccc13);
-edge_3objects_inst: edge_3objects
+   reset              => ivideo_aresetn,
+   iHsl               => ccc5,
+   oRgb               => ccc38);
+
+
+------------------------------------------------------------
+--                                                      CCM1
+------------------------------------------------------------
+dark_ccm_inst  : ccm
 generic map (
-   i_data_width       => FRAME_PIXEL_DEPTH)
-port map (                  
-   clk                => ivideo_aclk,
-   rst_l              => ivideo_aresetn,
-   iRgb               => ccc7,
-   oRgbRemix          => ccc14);
-edge_6objects_inst: edge_6objects
-generic map (
-   i_data_width       => FRAME_PIXEL_DEPTH)
-port map (                  
-   clk                => ivideo_aclk,
-   rst_l              => ivideo_aresetn,
-   iRgb               => ccc7,
-   oRgbRemix          => ccc16);
+    data_width              => 8,
+    i_k_config_number       => 8)
+port map(
+    clk                   => ivideo_aclk,
+    rst_l                 => ivideo_aresetn,
+    k_config_number       => k_config_number_1,
+    coefficients_in       => coefficients_in_1,
+    coefficients_out      => coefficients_out_1,
+    iRgb                  => ccc38,
+    oRgb                  => ccc4);
+------------------------------------------------------------
+--                                              SOBEL_FILTER
+------------------------------------------------------------
 rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
 generic map (
    contrast_val          => to_sfixed(1.40,15,-3),
@@ -338,8 +422,11 @@ generic map (
 port map (                  
    clk                   => ivideo_aclk,
    rst_l                 => ivideo_aresetn,
-   iRgb                  => ccc7,
+   iRgb                  => ccc4,
    oRgb                  => ccc15);
+------------------------------------------------------------
+--                                              SOBEL_FILTER
+------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_17 = 0) then
@@ -349,10 +436,13 @@ process (ivideo_aclk)begin
         elsif(config_number_17 = 2)then
             ccc8           <= ccc15;
         else
-            ccc8           <= ccc7;
+            ccc8           <= ccc4;
         end if;
     end if;
 end process;
+------------------------------------------------------------
+--                                              SOBEL_FILTER
+------------------------------------------------------------
 sobel_inst: sobel
 generic map(
    i_data_width        => 8,
@@ -363,6 +453,9 @@ port map(
    iRgb               => ccc8,
    threshold          => config_number_44,
    oRgb               => ccc18);
+------------------------------------------------------------
+--                                         SYNC RGB CHANNELS
+------------------------------------------------------------
 process (ivideo_aclk) begin
     if rising_edge(ivideo_aclk) then
         ccc19 <=ccc18;
@@ -372,6 +465,9 @@ process (ivideo_aclk) begin
         ccc23 <=ccc22;
     end if;
 end process;
+------------------------------------------------------------
+--                                          COLOR_CLUSTERING
+------------------------------------------------------------
 color_k5_clustering_inst: color_k5_clustering
 generic map(
     i_data_width      => i_data_width)
@@ -385,6 +481,9 @@ port map(
     k_ind_w            => config_number_15,
     k_ind_r            => config_number_20,
     oRgb               => ccc10);
+------------------------------------------------------------
+--                                             EDGE_MASK_RGB
+------------------------------------------------------------
 process (ivideo_aclk) begin
     if rising_edge(ivideo_aclk) then
         if (ccc19.green(0) = '0') then
@@ -402,6 +501,9 @@ process (ivideo_aclk) begin
             ccc31.eof   <= ccc10.eof;
     end if;
 end process;
+------------------------------------------------------------
+--                                             EDGE_MASK_RGB
+------------------------------------------------------------
 process (ivideo_aclk) begin
     if rising_edge(ivideo_aclk) then
         if (ccc23.green(0) = '0') then
@@ -419,6 +521,9 @@ process (ivideo_aclk) begin
             ccc32.eof   <= ccc10.eof;
     end if;
 end process;
+------------------------------------------------------------
+--                                              RGB_CONTRAST
+------------------------------------------------------------
 rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
 generic map (
    contrast_val          => to_sfixed(1.40,15,-3),
@@ -428,7 +533,10 @@ port map (
    rst_l                 => ivideo_aresetn,
    iRgb                  => ccc10,
    oRgb                  => ccc9);
-rgb2ycbcr_inst  : rgb2ycbcr --3clk
+------------------------------------------------------------
+--                                                 RGB2YCBCR
+------------------------------------------------------------
+rgb2ycbcr_inst  : rgb2ycbcr
 generic map(
    i_data_width         => 8,
    i_precision          => 12,
@@ -436,14 +544,20 @@ generic map(
 port map(
    clk                  => ivideo_aclk,
    rst_l                => ivideo_aresetn,
-   iRgb                 => ccc7,
+   iRgb                 => ccc4,
    oRgb                 => ccc33);
-ycbcr2rgb_inst  : ycbcr2rgb --3clk
+------------------------------------------------------------
+--                                                 YCBCR2RGB
+------------------------------------------------------------
+ycbcr2rgb_inst  : ycbcr2rgb
 port map(
    clk                 => ivideo_aclk,
    rst_l               => ivideo_aresetn,
    iRgb                => ccc33,
    oRgb                => ccc34);
+------------------------------------------------------------
+--                                              RGB_SELECTOR
+------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_16 = 0) then
@@ -459,7 +573,7 @@ process (ivideo_aclk)begin
         elsif(config_number_16 = 5)then
             ccc11           <= ccc6;
         elsif(config_number_16 = 6)then
-            ccc11           <= ccc7;
+            ccc11           <= ccc4;
         elsif(config_number_16 = 7)then
             ccc11           <= ccc8;
         elsif(config_number_16 = 8)then
@@ -484,12 +598,24 @@ process (ivideo_aclk)begin
             ccc11           <= ccc33;
         elsif(config_number_16 = 18)then
             ccc11           <= ccc34;
+        elsif(config_number_16 = 19)then
+            ccc11           <= ccc35;
+        elsif(config_number_16 = 20)then
+            ccc11           <= ccc36;
+        elsif(config_number_16 = 21)then
+            ccc11           <= ccc37;
+        elsif(config_number_16 = 22)then
+            ccc11           <= ccc38;
+        elsif(config_number_16 = 23)then
+            ccc11           <= ccy;
         else
             ccc11           <= ccc32;
         end if;
     end if;
 end process;
-
+------------------------------------------------------------
+--                                                      CCM3
+------------------------------------------------------------
 balance_ccm_inst  : ccm
 generic map (
     data_width              => 8,
@@ -502,11 +628,36 @@ port map(
     coefficients_out      => coefficients_out_3,
     iRgb                  => ccc11,
     oRgb                  => ccc12);
-
-
-
-
-
+-- process(config_number_19,ccc12)begin
+    -- if(config_number_19=0)then
+       -- ccc39.red         <= ccc12.red;
+       -- ccc39.green       <= ccc12.green;
+       -- ccc39.blue        <= ccc12.blue;
+    -- elsif(config_number_19=1) then
+       -- ccc39.red         <= ccc12.red;
+       -- ccc39.green       <= ccc12.blue;
+       -- ccc39.blue        <= ccc12.green;
+    -- elsif(config_number_19=2)then
+       -- ccc39.red         <= ccc12.green;
+       -- ccc39.green       <= ccc12.blue;
+       -- ccc39.blue        <= ccc12.red;
+    -- elsif(config_number_19=3)then
+       -- ccc39.red         <= ccc12.green;
+       -- ccc39.green       <= ccc12.red;
+       -- ccc39.blue        <= ccc12.blue;
+    -- elsif(config_number_19=4)then
+       -- ccc39.red         <= ccc12.blue;
+       -- ccc39.green       <= ccc12.red;
+       -- ccc39.blue        <= ccc12.green;
+    -- else
+       -- ccc39.red         <= ccc12.blue;
+       -- ccc39.green       <= ccc12.green;
+       -- ccc39.blue        <= ccc12.red;
+    -- end if;
+-- end process;
+------------------------------------------------------------
+--                                                 VIDEO_OUT
+------------------------------------------------------------
    ovideo_tstrb           <= ivideo_tstrb;
    ovideo_tkeep           <= ivideo_tkeep;
    ovideo_tdata           <= "00" & ccc12.red & ccc12.green & ccc12.blue;
@@ -519,14 +670,26 @@ port map(
    o1video_tvalid         <= ccc12.valid;
    o1video_tuser          <= ccc12.sof;
    o1video_tlast          <= ccc12.eol;
-   rgb_fr_plw_red         <= "00" & ccc12.red(7 downto 0);
-   rgb_fr_plw_gre         <= "00" & ccc12.green(7 downto 0);
-   rgb_fr_plw_blu         <= "00" & ccc12.blue(7 downto 0);
-   rgb_fr_plw_sof         <= ccc12.sof;
-   rgb_fr_plw_eol         <= ccc12.eol;
-   rgb_fr_plw_eof         <= ccc12.eof;
-   rgb_fr_plw_val         <= ccc12.valid;
+   rgb_fr_plw_red         <= "00" & ccy.red(9 downto 2);
+   rgb_fr_plw_gre         <= "00" & ccy.green(9 downto 2);
+   rgb_fr_plw_blu         <= "00" & ccy.blue(9 downto 2);
+   rgb_fr_plw_sof         <= ccy.sof;
+   rgb_fr_plw_eol         <= ccy.eol;
+   rgb_fr_plw_eof         <= ccy.eof;
+   rgb_fr_plw_val         <= ccy.valid;
 end arch_imp;
+
+
+
+
+
+
+
+
+
+
+
+
 --library ieee;
 --use ieee.std_logic_1164.all;
 --use ieee.numeric_std.all;

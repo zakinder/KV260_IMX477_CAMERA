@@ -30,6 +30,19 @@ int i2c_reg16_write(XIicPs *InstancePtr, u16 IIC_ADDR, unsigned short Addr, char
 	while (XIicPs_BusIsBusy(InstancePtr));
 	return Status;
 }
+int i2c_reg16_write2bytes(XIicPs *InstancePtr, u16 IIC_ADDR, unsigned short Addr, unsigned short Data)
+{
+	int Status;
+	u8 SendBuffer[4];
+	SendBuffer[0] = Addr>>8;
+	SendBuffer[1] = Addr & 0x00FF;
+	SendBuffer[2] = Data>>8;
+	SendBuffer[3] = Data & 0x00FF;
+	Status = XIicPs_MasterSendPolled(InstancePtr, SendBuffer, 4, IIC_ADDR);
+	while (XIicPs_BusIsBusy(InstancePtr));
+	return Status;
+}
+
 char i2c_reg16_read(XIicPs *InstancePtr, u16 IIC_ADDR, unsigned short Addr)
 {
 	u8 rd_data;
@@ -41,6 +54,20 @@ char i2c_reg16_read(XIicPs *InstancePtr, u16 IIC_ADDR, unsigned short Addr)
 	while (XIicPs_BusIsBusy(InstancePtr));
 	return rd_data;
 }
+
+u16 i2c_reg16_2read(XIicPs *InstancePtr, u16 IIC_ADDR, unsigned short Addr)
+{
+	u8 SendBuffer[2];
+	u8 RxBuffer[2] = {0};
+	SendBuffer[0] = Addr>>8;
+	SendBuffer[1] = Addr;
+	XIicPs_MasterSendPolled(InstancePtr, SendBuffer, 2, IIC_ADDR);
+	XIicPs_MasterRecvPolled(InstancePtr, RxBuffer, 2, IIC_ADDR);
+	while (XIicPs_BusIsBusy(InstancePtr));
+	printf("ID %x : %x %x\r\n",IIC_ADDR, RxBuffer[0], RxBuffer[1]);
+	return (RxBuffer[0] << 8) | RxBuffer[1];
+}
+
 int i2c_init(XIicPs *Iic,short DeviceID ,u32 IIC_SCLK_RATE)
 {
 	XIicPs_Config *Config;

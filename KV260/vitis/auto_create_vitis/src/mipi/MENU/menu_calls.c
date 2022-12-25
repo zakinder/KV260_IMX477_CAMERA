@@ -23,10 +23,19 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
 
 	FRESULT rc;
 	char PhotoName[40];
-        per_write_reg(REG16,0);
-        per_write_reg(REG11,0);
-        per_write_reg(REG15,2);
-        
+        //per_write_reg(REG16,0);
+        //per_write_reg(REG11,0);
+        //per_write_reg(REG15,2);
+
+    	per_write_reg(REG11,3);
+    	per_write_reg(REG12,15);
+    	per_write_reg(REG13,3);
+        per_write_reg(REG15,221);
+        per_write_reg(REG16,22);
+        per_write_reg(REG17,2);
+        //per_write_reg(REG19,0);
+        per_write_reg(REG43,5);
+        per_write_reg(REG44,100);
 //        per_write_reg(REG31,0);
 //        per_write_reg(REG32,0);
 //        per_write_reg(REG33,170);
@@ -74,11 +83,11 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         current_state = lwip;
     }
     if(connected_camera == 519){
-        per_write_reg(REG19,4);
+        per_write_reg(REG19,0);
         current_state = lwip;
     }
     if(connected_camera == 477){
-        per_write_reg(REG19,4);
+        per_write_reg(REG19,0);
         current_state = imx477s1;
     }
     if(connected_camera == 682){
@@ -417,21 +426,21 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             	current_state = imx682rd;break;
             }
         case imx477s1:
-            printf("Settings For IMX477 Senesor\n");
-            per_write_reg(REG1,2000);
-            per_write_reg(REG2,0);
-            per_write_reg(REG3,0);
-            per_write_reg(REG4,0);
-            per_write_reg(REG5,2000);
-            per_write_reg(REG6,0);
-            per_write_reg(REG7,0);
-            per_write_reg(REG8,0);
-            per_write_reg(REG9,2000);
-            per_write_reg(REG11,15);
-            per_write_reg(REG15,8);
-            per_write_reg(REG19,4);
-            k_number = 3;
-            read_imx477_reg(k_number);
+//            printf("Settings For IMX477 Senesor\n");
+            per_write_reg(REG46,1000);
+            per_write_reg(REG47,0);
+            per_write_reg(REG48,0);
+            per_write_reg(REG49,0);
+            per_write_reg(REG50,1500);
+            per_write_reg(REG51,0);
+            per_write_reg(REG52,0);
+            per_write_reg(REG53,0);
+            per_write_reg(REG54,900);
+//            per_write_reg(REG11,15);
+//            per_write_reg(REG15,8);
+//            per_write_reg(REG19,4);
+            //k_number = 3;
+            //read_imx477_reg(k_number);
             current_state = lwip;break;
         case quit:
             menu_calls_enable = FALSE;

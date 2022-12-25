@@ -1114,27 +1114,6 @@ port (
     clk                         : in  std_logic;
     reset                       : in  std_logic;
     iRgb                        : in channel;
-    config_number_31            : in integer;
-    config_number_32            : in integer;
-    config_number_33            : in integer;
-    config_number_34            : in integer;
-    config_number_35            : in integer;
-    config_number_36            : in integer;
-    config_number_37            : in integer;
-    config_number_38            : in integer;
-    config_number_39            : in integer;
-    config_number_40            : in integer;
-    config_number_41            : in integer;
-    config_number_42            : in integer;
-    oHueVal                     : out std_logic;
-    oHueRed                     : out std_logic_vector(9 downto 0);
-    oHueBlu                     : out std_logic_vector(9 downto 0);
-    oHueGre                     : out std_logic_vector(9 downto 0);
-    oHueTop                     : out std_logic_vector(23 downto 0);
-    oHueBot                     : out std_logic_vector(9 downto 0);
-    oHueQut                     : out std_logic_vector(9 downto 0);
-    oHueDeg                     : out std_logic_vector(9 downto 0);
-    oHueOut                     : out std_logic_vector(9 downto 0);
     oHsl                        : out channel);
 end component hsl_c;
 component rgb2ycbcr is
@@ -1155,8 +1134,20 @@ port (
     iRgb            : in channel;
     oRgb            : out channel);
 end component ycbcr2rgb;
-
-
+component hsv2rgb is
+port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    iHsl           : in channel;
+    oRgb           : out channel);
+end component hsv2rgb;
+component rgb2hsv is
+port (
+    clk                : in  std_logic;
+    reset              : in  std_logic;
+    iRgb               : in channel;
+    oHsl               : out channel);
+end component rgb2hsv;
 component color_correction is
 generic (
     i_k_config_number           : integer := 8);
@@ -1899,7 +1890,19 @@ port (
     tuser              : out std_logic;
     tvalid             : out std_logic);
 end component;
-
+component div16_8_8 is
+generic(
+	A_WIDTH			: POSITIVE := 17;
+	B_WIDTH			: POSITIVE := 8;
+	RESULT_WIDTH	: POSITIVE := 9);
+port (
+	clk        : in  STD_LOGIC;
+	en         : in  STD_LOGIC;
+	rstn       : in  STD_LOGIC;
+	a          : in  STD_LOGIC_VECTOR( A_WIDTH-1 downto 0);
+	b          : in  STD_LOGIC_VECTOR( B_WIDTH-1 downto 0);
+	result     : out STD_LOGIC_VECTOR( RESULT_WIDTH-1 downto 0));
+end component;
 component divider
   port (
     aclk : IN STD_LOGIC;
@@ -1912,29 +1915,6 @@ component divider
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
 end component;
 
-component rgb2hsv
-    port(
-    -- Control signals
-    clock           : in std_logic;
-    reset_n         : in std_logic;
-    -- data input
-    in_red          : in std_logic_vector(7 downto 0);
-    in_green        : in std_logic_vector(7 downto 0);
-    in_blue         : in std_logic_vector(7 downto 0);
-    in_valid        : in std_logic;
-    in_visual       : in std_logic;
-    in_done         : in std_logic;
-    -- data output
-    out_red         : out std_logic_vector(7 downto 0);
-    out_green       : out std_logic_vector(7 downto 0);
-    out_blue        : out std_logic_vector(7 downto 0);
-    out_hue         : out std_logic_vector(7 downto 0);
-    out_saturation  : out std_logic_vector(7 downto 0);
-    out_brightness  : out std_logic_vector(7 downto 0);
-    out_valid       : out std_logic;
-    out_visual      : out std_logic;
-    out_done        : out std_logic);
-end component;
 
 component rgb_hsv
     port(
@@ -1945,7 +1925,7 @@ component rgb_hsv
         g          : in  std_logic_vector(7 downto 0);  --! 8 bit green component of the input pixel
         b          : in  std_logic_vector(7 downto 0);  --! 8 bit blue component of the input pixel
         result_rdy : out std_logic;       --! Indicates whether the outputs (#h, #s, #v) represent valid pixel data
-        h          : out std_logic_vector(7 downto 0);    --! 9 bit hue component of the output pixel (Range: 0° - 360°)
+        h          : out std_logic_vector(8 downto 0);    --! 9 bit hue component of the output pixel (Range: 0° - 360°)
         s          : out std_logic_vector(7 downto 0);    --! 8 bit saturation component of the output pixel
         v          : out std_logic_vector(7 downto 0));     --! 8 bit value component of the output pixel
 end component;
@@ -1993,4 +1973,27 @@ port (
     threshold      : in natural;
     oRgb           : out channel);
 end component sobel;
+
+component rgbhsv is
+port (
+    clk            : in std_logic;
+    rst_l          : in std_logic;
+    in_valid       : in std_logic;
+    in_red         : in std_logic_vector(7 downto 0);
+    in_green       : in std_logic_vector(7 downto 0);
+    in_blue        : in std_logic_vector(7 downto 0);
+    in_visual      : in std_logic;
+    in_done        : in std_logic;
+    out_valid      : out std_logic;
+    out_red        : out std_logic_vector(7 downto 0);
+    out_green      : out std_logic_vector(7 downto 0);
+    out_blue       : out std_logic_vector(7 downto 0);
+    out_hue        : out std_logic_vector(7 downto 0);
+    out_saturation : out std_logic_vector(7 downto 0);
+    out_brightness : out std_logic_vector(7 downto 0);
+    out_visual     : out std_logic;
+    out_done       : out std_logic);
+end component rgbhsv;
+
+
 end package;

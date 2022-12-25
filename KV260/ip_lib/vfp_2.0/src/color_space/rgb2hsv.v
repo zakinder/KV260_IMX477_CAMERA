@@ -7,15 +7,15 @@ This module convert the RGB values of the input to its HSV.
 
 The processing is divided in a 6 stages pipeline, in order to optimize
 the hardware, as the system works in streaming i.e. one pixel is
-processed at each clock cycle.
+processed at each clk cycle.
 
 NOTE: The Hue is the H component from the HSV image format,
 the Saturation is the S component,
 and the Brightness is the V component.
 */
-module rgb2hsv(
-        input clock,
-        input reset_n,
+module rgbhsv(
+        input clk,
+        input rst_l,
         // Data input
         input in_valid,
         input [7:0] in_red,
@@ -53,9 +53,9 @@ module rgb2hsv(
     reg [1:0] max_index1;
     reg [7:0] min_value1;
     reg [1:0] min_index1;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid1 <= in_valid;
             red1[7:0] <= in_red[7:0];
             green1[7:0] <= in_green[7:0];
@@ -135,9 +135,9 @@ module rgb2hsv(
     reg [1:0] max_index2;
     reg [7:0] min_value2;
     reg [1:0] min_index2;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid2 <= valid1;
             red2[7:0] <= red1[7:0];
             green2[7:0] <= green1[7:0];
@@ -188,9 +188,9 @@ module rgb2hsv(
     reg [1:0] max_index3;
     reg [7:0] min_value3;
     reg [1:0] min_index3;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid3 <= valid2;
             red3[7:0] <= red2[7:0];
             green3[7:0] <= green2[7:0];
@@ -267,9 +267,9 @@ module rgb2hsv(
     reg [7:0] dif4;
     reg [7:0] max_value4;
     reg [1:0] max_index4;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid4 <= valid3;
             red4[7:0] <= red3[7:0];
             green4[7:0] <= green3[7:0];
@@ -311,9 +311,9 @@ module rgb2hsv(
     reg [11:0] hue5;
     reg [7:0] dif5;
     reg [7:0] max_value5;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid5 <= valid4;
             red5[7:0] <= red4[7:0];
             green5[7:0] <= green4[7:0];
@@ -387,9 +387,9 @@ module rgb2hsv(
     reg [18:0] hue;
     reg [7:0] saturation;
     reg [7:0] max_value;
-    always @(posedge clock)
+    always @(posedge clk)
     begin
-        if (reset_n) begin
+        if (rst_l) begin
             valid <= valid5;
             red[7:0] <= red5[7:0];
             green[7:0] <= green5[7:0];

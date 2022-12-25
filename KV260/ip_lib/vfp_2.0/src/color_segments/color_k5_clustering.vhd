@@ -293,6 +293,38 @@ architecture arch of color_k5_clustering is
     (100, 50,  0),
     (100, 90,  0),
     (100, 25,  0));
+    signal k_rgb_lut_6ll               : rgb_k_range(0 to 30) := (
+    (  0,  0,  0),
+    (240,200,  0),
+    (240,180,  0),
+    (230,180,  0),
+    (230,170,  0),
+    (230,160,  0),
+    (230,180,  0),
+    (200,160,  0),
+    (200,150,  0),
+    (200,140,  0),
+    (200,130,  0),
+    (200,100,  0),
+    (160,160,  0),
+    (160,120, 70),
+    (160,110, 50),
+    (160,100, 40),
+    (160, 90, 30),
+    (160, 50, 10),
+    (150, 80, 20),
+    (140,140,  0),
+    (140,100, 40),
+    (140, 80, 40),
+    (140, 60,  0),
+    (120,120,  0),
+    (120, 50,  0),
+    (120, 80,  0),
+    (120, 70,  0),
+    (100,100,  0),
+    (100, 50,  0),
+    (100, 90,  0),
+    (100, 25,  0));
     signal k_rgb_lut_3_l               : rgb_k_range(0 to 30) := (
     (  0,  0,  0),
     (240,200,  0),
@@ -325,6 +357,39 @@ architecture arch of color_k5_clustering is
     (100, 50,  0),
     (100, 90,  0),
     (100, 25,  0));
+    signal k_rgb_lut_6_l               : rgb_k_range(0 to 30) := (
+    (  0,  0,  0),
+    (240,200,  0),
+    (240,180,  0),
+    (230,180,  0),
+    (230,170,  0),
+    (230,160,  0),
+    (230,180,  0),
+    (200,160,  0),
+    (200,150,  0),
+    (200,140,  0),
+    (200,130,  0),
+    (200,100,  0),
+    (160,160,  0),
+    (160,120, 70),
+    (160,110, 50),
+    (160,100, 40),
+    (160, 90, 30),
+    (160, 50, 10),
+    (150, 80, 20),
+    (140,140,  0),
+    (140,100, 40),
+    (140, 80, 40),
+    (140, 60,  0),
+    (120,120,  0),
+    (120, 50,  0),
+    (120, 80,  0),
+    (120, 70,  0),
+    (100,100,  0),
+    (100, 50,  0),
+    (100, 90,  0),
+    (100, 25,  0));
+    
     constant k_rgb_lut_41l             : rgb_k_range(0 to 30) := (
     (  0,  0,  0),
     (255,240,150),
@@ -933,6 +998,9 @@ architecture arch of color_k5_clustering is
     (100, 50,  0),
     (100, 90,  0),
     (100, 25,  0));
+    
+    
+    
     signal k1_rgb                : rgb_k_lut(0 to 30);
     signal k2_rgb                : rgb_k_lut(0 to 30);
     signal k3_rgb                : rgb_k_lut(0 to 30);
@@ -1045,11 +1113,20 @@ architecture arch of color_k5_clustering is
     signal rgb_sync21            : intChannel;
     signal rgb_sync22            : intChannel;
     signal rgb_sync23            : intChannel;
+    signal rgb_max               : integer;
+    signal rgb_mid               : integer;
+    signal rgb_min               : integer;
     signal rgb_red               : std_logic_vector(7 downto 0);
     signal rgb_gre               : std_logic_vector(7 downto 0);
     signal rgb_blu               : std_logic_vector(7 downto 0);
     constant K_VALUE             : integer := 11;
+    attribute keep : string;
+    attribute keep of rgb_max : signal is "true";
+    attribute keep of rgb_mid : signal is "true";
+    attribute keep of rgb_min : signal is "true";
+
 begin
+
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncValid(0)  <= iRgb.valid;
@@ -1058,6 +1135,7 @@ process (clk) begin
         end loop;
     end if;
 end process;
+
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncEol(0)  <= iRgb.eol;
@@ -1066,6 +1144,7 @@ process (clk) begin
         end loop;
     end if;
 end process;
+
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncSof(0)  <= iRgb.sof;
@@ -1074,6 +1153,7 @@ process (clk) begin
         end loop;
     end if;
 end process;
+
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncEof(0)  <= iRgb.eof;
@@ -1082,6 +1162,7 @@ process (clk) begin
         end loop;
     end if;
 end process;
+
 process (clk)begin
     if rising_edge(clk) then
         rgb_std1sync.red    <= iRgb.red;
@@ -1090,6 +1171,7 @@ process (clk)begin
         rgb_std1sync.valid  <= iRgb.valid;
     end if;
 end process;
+
 process (clk)begin
     if rising_edge(clk) then
         rgb_std2sync    <= rgb_std1sync;
@@ -1097,6 +1179,7 @@ process (clk)begin
         rgb_std4sync    <= rgb_std3sync;
     end if;
 end process;
+
 process (clk)begin
     if rising_edge(clk) then
             rgb_sync1.red    <= to_integer(unsigned(rgb_std1sync.red(9 downto 2)));
@@ -1104,6 +1187,7 @@ process (clk)begin
             rgb_sync1.blue   <= to_integer(unsigned(rgb_std1sync.blue(9 downto 2)));
     end if;
 end process;
+
 process (clk) begin
     if rising_edge(clk) then
         if ((rgb_sync1.red >= rgb_sync1.green) and (rgb_sync1.red >= rgb_sync1.blue)) then
@@ -1115,6 +1199,7 @@ process (clk) begin
         end if;
     end if;
 end process;
+
 process (clk) begin
     if rising_edge(clk) then
         if ((rgb_sync1.red <= rgb_sync1.green) and (rgb_sync1.red <= rgb_sync1.blue)) then
@@ -1126,6 +1211,37 @@ process (clk) begin
         end if;
     end if;
 end process;
+
+process (clk) begin
+    if rising_edge(clk) then
+        if (rgb_sync2.red = rgb_max1) and (rgb_sync2.green = rgb_min1) then
+            rgb_max <= rgb_sync2.red;
+            rgb_mid <= rgb_sync2.blue;
+            rgb_min <= rgb_sync2.green;
+        elsif(rgb_sync2.red = rgb_max1) and (rgb_sync2.blue = rgb_min1)then
+            rgb_max <= rgb_sync2.red;
+            rgb_mid <= rgb_sync2.green;
+            rgb_min <= rgb_sync2.blue;
+        elsif(rgb_sync2.green = rgb_max1) and (rgb_sync2.blue = rgb_min1)then
+            rgb_max <= rgb_sync2.green;
+            rgb_mid <= rgb_sync2.red;
+            rgb_min <= rgb_sync2.blue;
+        elsif(rgb_sync2.green = rgb_max1) and (rgb_sync2.red = rgb_min1)then
+            rgb_max <= rgb_sync2.green;
+            rgb_mid <= rgb_sync2.blue;
+            rgb_min <= rgb_sync2.red;
+        elsif(rgb_sync2.blue = rgb_max1) and (rgb_sync2.red = rgb_min1)then
+            rgb_max <= rgb_sync2.blue;
+            rgb_mid <= rgb_sync2.green;
+            rgb_min <= rgb_sync2.red;
+        elsif(rgb_sync2.blue = rgb_max1) and (rgb_sync2.green = rgb_min1)then
+            rgb_max <= rgb_sync2.blue;
+            rgb_mid <= rgb_sync2.red;
+            rgb_min <= rgb_sync2.green;
+        end if;
+    end if;
+end process;
+
 process (clk)begin
     if rising_edge(clk) then
       rgb_max2        <= rgb_max1;
@@ -1185,6 +1301,7 @@ process (clk)begin
         end if;
     end if;
 end process;
+
 process (clk)begin
     if rising_edge(clk) then
         if (k_ind_w >= 31 and k_ind_w <= 60) then
@@ -1192,6 +1309,7 @@ process (clk)begin
         end if;
     end if;
 end process;
+
 process (clk)begin
     if rising_edge(clk) then
         if (k_ind_w >= 61 and k_ind_w <= 90) then
@@ -1199,7 +1317,16 @@ process (clk)begin
         end if;
     end if;
 end process;
+
 process (clk)begin
+    if rising_edge(clk) then
+        if (k_ind_w >= 91 and k_ind_w <= 120) then
+            k_rgb_lut_6ll(121-k_ind_w).max  <= to_integer((unsigned(k_lut_in(23 downto 16)))); k_rgb_lut_6ll(121-k_ind_w).mid <= to_integer((unsigned(k_lut_in(15 downto 8))));   k_rgb_lut_6ll(121-k_ind_w).min <= to_integer((unsigned(k_lut_in(7 downto 0))));
+        end if;
+    end if;
+end process;
+
+process(clk)begin
     if rising_edge(clk) then
         if (k_ind_r <= 30)then
             k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_4_l(k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_4_l(k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_4_l(k_ind_r).min, 8));
@@ -1207,101 +1334,128 @@ process (clk)begin
             k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_2_l(61-k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_2_l(61-k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_2_l(61-k_ind_r).min, 8));
         elsif(k_ind_w >= 61 and k_ind_w <= 90)then
             k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).min, 8));
+        elsif(k_ind_w >= 91 and k_ind_w <= 120)then
+            k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_6_l(121-k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_6_l(121-k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_6_l(121-k_ind_r).min, 8));
         else
-            k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_4_l(61-k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_4_l(61-k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_4_l(61-k_ind_r).min, 8));
+            k_lut_out                 <= x"00" & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).max, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).mid, 8)) & std_logic_vector(to_unsigned(k_rgb_lut_3_l(91-k_ind_r).min, 8));
         end if;
     end if;
 end process;
+
+
+
 process (clk)begin
     if rising_edge(clk) then
         if (k_ind_w <= 90)then
             k_rgb_lut_4_l <= k_rgb_lut_4ll;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_2ll;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 201)then
             k_rgb_lut_4_l <= k_rgb_lut_42l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 202)then
             k_rgb_lut_4_l <= k_rgb_lut_43l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 203)then
             k_rgb_lut_4_l <= k_rgb_lut_41l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 204)then
             k_rgb_lut_4_l <= k_rgb_lut_42l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 205)then
             k_rgb_lut_4_l <= k_rgb_lut_43l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 206)then
             k_rgb_lut_4_l <= k_rgb_lut_44l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 207)then
             k_rgb_lut_4_l <= k_rgb_lut_45l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 208)then
             k_rgb_lut_4_l <= k_rgb_lut_46l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w = 209)then
             k_rgb_lut_4_l <= k_rgb_lut_47l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =210)then
             k_rgb_lut_4_l <= k_rgb_lut_48l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =211)then
             k_rgb_lut_4_l <= k_rgb_lut_49l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =212)then
             k_rgb_lut_4_l <= k_rgb_lut_50l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =213)then
             k_rgb_lut_4_l <= k_rgb_lut_51l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =214)then
             k_rgb_lut_4_l <= k_rgb_lut_52l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =215)then
             k_rgb_lut_4_l <= k_rgb_lut_53l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =216)then
             k_rgb_lut_4_l <= k_rgb_lut_54l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =217)then
             k_rgb_lut_4_l <= k_rgb_lut_55l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =218)then
             k_rgb_lut_4_l <= k_rgb_lut_56l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =219)then
             k_rgb_lut_4_l <= k_rgb_lut_57l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =220)then
             k_rgb_lut_4_l <= k_rgb_lut_58l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         elsif(k_ind_w =221)then
             k_rgb_lut_4_l <= k_rgb_lut_59l;
             k_rgb_lut_3_l <= k_rgb_lut_3ll;
             k_rgb_lut_2_l <= k_rgb_lut_22l;
+            k_rgb_lut_6_l <= k_rgb_lut_6ll;
         end if;
     end if;
 end process;
@@ -1708,6 +1862,153 @@ process (clk)begin
         elsif(k_lut_selected = 5) then
             ---------------------------------------------------------------------------------------------------------
             if (rgb_sync2.red = rgb_max1) then
+                if (rgb_sync2.red >= 210) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).mid;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).mid;
+                        end loop;
+                    end if;
+                elsif(rgb_sync2.red >= 170) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                end if;
+            -- GREEN MAX
+            elsif (rgb_sync2.green = rgb_max1) then
+                if(rgb_sync2.green >= 210) then
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).mid;
+                          end loop;
+                    end if;
+                elsif(rgb_sync2.green >= 170) then
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                          end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                          end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                          end loop;
+                    end if;                                                        
+                end if;
+            else
+            -- BLUE MAX
+                if(rgb_sync2.blue >= 210) then
+                    if (rgb_sync2.red = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).max;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_6_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_6_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_6_l(i).max;
+                        end loop;
+                    end if;
+                elsif(rgb_sync2.blue >= 170) then
+                    if (rgb_sync2.red = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
+                          end loop;
+                    end if;                                                        
+                end if;                                                            
+            end if;
+            ---------------------------------------------------------------------------------------------------------
+        elsif(k_lut_selected = 6) then
+            ---------------------------------------------------------------------------------------------------------
+            if (rgb_sync2.red = rgb_max1) then
                 if (rgb_sync2.red >= 170) then
                     -------------------------------------------------------------------------------------------------
                     if (rgb_sync2.green = rgb_min1) then
@@ -1716,7 +2017,7 @@ process (clk)begin
                         end loop;
                     else
                         for i in 0 to 30 loop
-                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
                         end loop;
                     end if;
                     -------------------------------------------------------------------------------------------------
@@ -1783,6 +2084,7 @@ process (clk)begin
                     end if;                                                        
                 end if;
             else
+            ---------------------------------------------------------------------------------------------------------
             -- BLUE MAX
                 if(rgb_sync2.blue >= 170) then
                     if (rgb_sync2.red = rgb_min1) then
@@ -1790,9 +2092,15 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
                         end loop;
                     else
-                        for i in 0 to 30 loop
-                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
-                        end loop;
+                        if ((abs(rgb_max - rgb_mid) <= 20) or (abs(rgb_max - rgb_min) <= 20))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
+                            end loop;
+                        end if;
                     end if;
                     -------------------------------------------------------------------------------------------------
                 elsif(rgb_sync2.red >= 85) then
@@ -1802,9 +2110,15 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
                         end loop;
                     else
-                        for i in 0 to 30 loop
-                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
-                        end loop;
+                        if ((abs(rgb_max - rgb_mid) <= 40) or (abs(rgb_max - rgb_min) <= 40))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
+                            end loop;
+                        end if;
                     end if;
                     -------------------------------------------------------------------------------------------------
                 else
@@ -1814,14 +2128,157 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
                           end loop;
                     else
-                          for i in 0 to 30 loop
-                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
-                          end loop;
+                        if ((abs(rgb_max - rgb_mid) <= 8) or (abs(rgb_max - rgb_min) <= 8))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  abs(k_rgb_lut_2_l(i).mid - 30);   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
+                            end loop;
+                        end if;
                     end if;                                                        
                 end if;                                                            
             end if;
             ---------------------------------------------------------------------------------------------------------
-        elsif(k_lut_selected = 6) then
+        elsif(k_lut_selected = 7) then
+            ---------------------------------------------------------------------------------------------------------
+            -- RED MAX
+            if (rgb_sync2.red = rgb_max1) then
+                if (rgb_sync2.red >= 170) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.green = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
+                        end loop;
+                    else
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
+                        end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                end if;
+            ---------------------------------------------------------------------------------------------------------
+            -- GREEN MAX
+            elsif (rgb_sync2.green = rgb_max1) then
+                if(rgb_sync2.green >= 170) then
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
+                          end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                          end loop;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                          end loop;
+                    else
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).max;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).mid;
+                          end loop;
+                    end if;                                                        
+                end if;
+            else
+            ---------------------------------------------------------------------------------------------------------
+            -- BLUE MAX
+                if(rgb_sync2.blue >= 170) then
+                    if (rgb_sync2.red = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
+                        end loop;
+                    else
+                        if ((abs(rgb_max - rgb_mid) <= 20) or (abs(rgb_max - rgb_min) <= 20))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
+                            end loop;
+                        end if;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                elsif(rgb_sync2.red >= 85) then
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                        for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
+                        end loop;
+                    else
+                        if ((abs(rgb_max - rgb_mid) <= 40) or (abs(rgb_max - rgb_min) <= 40))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
+                            end loop;
+                        end if;
+                    end if;
+                    -------------------------------------------------------------------------------------------------
+                else
+                    -------------------------------------------------------------------------------------------------
+                    if (rgb_sync2.red = rgb_min1) then
+                          for i in 0 to 30 loop
+                            k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
+                          end loop;
+                    else
+                        if ((abs(rgb_max - rgb_mid) <= 8) or (abs(rgb_max - rgb_min) <= 8))then
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  abs(k_rgb_lut_2_l(i).mid - 30);   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
+                            end loop;
+                        else
+                            for i in 0 to 30 loop
+                                k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
+                            end loop;
+                        end if;
+                    end if;                                                        
+                end if;                                                            
+            end if;
+            ---------------------------------------------------------------------------------------------------------
+        elsif(k_lut_selected = 9) then
             ---------------------------------------------------------------------------------------------------------
             if ((abs(rgb_sync2.red - rgb_sync2.green) <= 6) and (abs(rgb_sync2.red - rgb_sync2.blue) <= 6)) or (abs(rgb_sync2.red - rgb_sync2.blue) <= 6 and (abs(rgb_sync2.red - rgb_sync2.green) <= 6)) or (abs(rgb_sync2.green - rgb_sync2.blue) <= 6  and (abs(rgb_sync2.red - rgb_sync2.blue) <= 6))then
               for i in 0 to 30 loop
@@ -1837,7 +2294,7 @@ process (clk)begin
                         end loop;
                     else
                         for i in 0 to 30 loop
-                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).mid;
+                            k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).min;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).mid;
                         end loop;
                     end if;
                     -------------------------------------------------------------------------------------------------
@@ -1945,8 +2402,6 @@ process (clk)begin
         end if;
     end if;
 end process;
-
-
 process (clk)begin
     if rising_edge(clk) then
       k1_rgb      <= k_rgb;
@@ -1978,7 +2433,6 @@ process (clk)begin
       k27rgb      <= k26rgb;
     end if;
 end process;
-
 process (clk)begin
     if rising_edge(clk) then
         rgb(1).red     <= std_logic_vector(to_unsigned(k26rgb(1).red, 8)) & "00";
@@ -2073,10 +2527,6 @@ process (clk)begin
         rgb(30).blu    <= std_logic_vector(to_unsigned(k26rgb(30).blu, 8)) & "00";
     end if;
 end process;
-
-
-
-
 color_k1_clustering_inst: clustering
 generic map(
     data_width        => i_data_width)
@@ -2566,7 +3016,6 @@ process (clk) begin
         end if;
     end if;
 end process;
-
 oRgb.valid <= rgbSyncValid(27);
 oRgb.eol   <= rgbSyncEol(27);
 oRgb.sof   <= rgbSyncSof(27);

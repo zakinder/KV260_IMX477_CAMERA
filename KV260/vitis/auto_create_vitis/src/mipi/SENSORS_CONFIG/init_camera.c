@@ -23,28 +23,32 @@
 #include "OV5640/ov5640.h"
 #include "OV5647/ov5647.h"
 #include "init_camera.h"
+
 XIicPs iic_cam;
 #define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
 #define IIC_SCLK_RATE		100000
 #define SW_IIC_ADDR         0x74
 u8 SendBuffer [10];
+
 int init_camera()
 {
+
 	XIicPs_Config *iic_conf;
 	int Status;
 	iic_conf = XIicPs_LookupConfig(IIC_DEVICEID);
 	XIicPs_CfgInitialize(&iic_cam,iic_conf,iic_conf->BaseAddress);
 	XIicPs_SetSClk(&iic_cam, IIC_SCLK_RATE);
     i2c_init(&iic_cam, IIC_DEVICEID,IIC_SCLK_RATE);
-    SendBuffer[0]= 0x01;
+    SendBuffer[0]= 0x02;
     Status = XIicPs_MasterSendPolled(&iic_cam, SendBuffer, 1, SW_IIC_ADDR);
   	if (Status != XST_SUCCESS) {
-  		print("I2C Write Error\n\r");
+  		print("TCA9546 switch channel to IAS1 Failed\n\r");
   		return XST_FAILURE;
   	}
-    Status = ap1302_camera_sensor_init(&iic_cam);
-  	if (Status != XST_SUCCESS) {
-  		print("ap1302 Sensor Not connected\n\r");
+    Status = ar1335_camera_sensor_init(&iic_cam);
+    if (Status == 153) {
+  		//print("AR1335 Sensor Is Connected\n\r");
+  		//return 153;
   	}
     SendBuffer[0]= 0x04;
     Status = XIicPs_MasterSendPolled(&iic_cam, SendBuffer, 1, SW_IIC_ADDR);
@@ -68,7 +72,7 @@ int init_camera()
   	if (Status != XST_SUCCESS) {
   		print("OV5640 Camera Sensor Not connected\n\r");
   	}
-    Status = imx477_sensor_init(&iic_cam,4);
+    Status = imx477_sensor_init(&iic_cam,3);
   	if (Status == 477) {
   		return 477;
   	}
@@ -198,3 +202,4 @@ int scan_sensor3(XIicPs *IicInstance)
 	 }
 	return 0;
 }
+

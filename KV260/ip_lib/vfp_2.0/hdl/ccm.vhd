@@ -21,7 +21,7 @@ entity ccm is
     clk              : in std_logic;
     rst_l            : in std_logic;
     k_config_number  : in integer;
-    coefficients_in     : in coefficient_values;
+    coefficients_in  : in coefficient_values;
     coefficients_out : out coefficient_values;
     iRgb             : in channel;
     oRgb             : out channel);
@@ -34,8 +34,24 @@ architecture Behavioral of ccm is
   signal rgbSyncEof           : std_logic_vector(11 downto 0) := x"000";
   signal rgb_ccm              : channel;
   signal i_k_config_number    : integer := 2;
+  signal iCoefficients        : coefficient_values;
+  signal oCoefficients        : coefficient_values;
 begin
-i_k_config_number <= k_config_number;
+process (clk)begin
+    if rising_edge(clk) then
+        i_k_config_number <= k_config_number;
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+        iCoefficients <= coefficients_in;
+    end if;
+end process;
+process (clk)begin
+    if rising_edge(clk) then
+        coefficients_out <= oCoefficients;
+    end if;
+end process;
 rgbToSf_P: process (clk,rst_l)begin
     if rst_l = '0' then
         ccRgb.rgbToSf.red    <= 0;
@@ -47,64 +63,36 @@ rgbToSf_P: process (clk,rst_l)begin
         ccRgb.rgbToSf.blue   <= to_integer(unsigned(iRgb.blue));
     end if;
 end process rgbToSf_P;
-process (clk)begin
+process (clk) begin
     if rising_edge(clk) then
-      rgbSyncValid(0)  <= iRgb.valid;
-      rgbSyncValid(1)  <= rgbSyncValid(0);
-      rgbSyncValid(2)  <= rgbSyncValid(1);
-      rgbSyncValid(3)  <= rgbSyncValid(2);
-      rgbSyncValid(4)  <= rgbSyncValid(3);
-      rgbSyncValid(5)  <= rgbSyncValid(4);
-      rgbSyncValid(6)  <= rgbSyncValid(5);
-      rgbSyncValid(7)  <= rgbSyncValid(6);
-      rgbSyncValid(8)  <= rgbSyncValid(7);
-      rgbSyncValid(9)  <= rgbSyncValid(8);
-      rgbSyncValid(10) <= rgbSyncValid(9);
+        rgbSyncValid(0)  <= iRgb.valid;
+        for i in 0 to 10 loop
+          rgbSyncValid(i+1)  <= rgbSyncValid(i);
+        end loop;
     end if;
 end process;
-process (clk)begin
+process (clk) begin
     if rising_edge(clk) then
-      rgbSyncEol(0)  <= iRgb.eol;
-      rgbSyncEol(1)  <= rgbSyncEol(0);
-      rgbSyncEol(2)  <= rgbSyncEol(1);
-      rgbSyncEol(3)  <= rgbSyncEol(2);
-      rgbSyncEol(4)  <= rgbSyncEol(3);
-      rgbSyncEol(5)  <= rgbSyncEol(4);
-      rgbSyncEol(6)  <= rgbSyncEol(5);
-      rgbSyncEol(7)  <= rgbSyncEol(6);
-      rgbSyncEol(8)  <= rgbSyncEol(7);
-      rgbSyncEol(9)  <= rgbSyncEol(8);
-      rgbSyncEol(10) <= rgbSyncEol(9);
+        rgbSyncEol(0)  <= iRgb.eol;
+        for i in 0 to 10 loop
+          rgbSyncEol(i+1)  <= rgbSyncEol(i);
+        end loop;
     end if;
 end process;
-process (clk)begin
+process (clk) begin
     if rising_edge(clk) then
-      rgbSyncSof(0)  <= iRgb.sof;
-      rgbSyncSof(1)  <= rgbSyncSof(0);
-      rgbSyncSof(2)  <= rgbSyncSof(1);
-      rgbSyncSof(3)  <= rgbSyncSof(2);
-      rgbSyncSof(4)  <= rgbSyncSof(3);
-      rgbSyncSof(5)  <= rgbSyncSof(4);
-      rgbSyncSof(6)  <= rgbSyncSof(5);
-      rgbSyncSof(7)  <= rgbSyncSof(6);
-      rgbSyncSof(8)  <= rgbSyncSof(7);
-      rgbSyncSof(9)  <= rgbSyncSof(8);
-      rgbSyncSof(10) <= rgbSyncSof(9);
+        rgbSyncSof(0)  <= iRgb.sof;
+        for i in 0 to 10 loop
+          rgbSyncSof(i+1)  <= rgbSyncSof(i);
+        end loop;
     end if;
 end process;
-process (clk)begin
+process (clk) begin
     if rising_edge(clk) then
-      rgbSyncEof(0)  <= iRgb.eof;
-      rgbSyncEof(1)  <= rgbSyncEof(0);
-      rgbSyncEof(2)  <= rgbSyncEof(1);
-      rgbSyncEof(3)  <= rgbSyncEof(2);
-      rgbSyncEof(4)  <= rgbSyncEof(3);
-      rgbSyncEof(5)  <= rgbSyncEof(4);
-      rgbSyncEof(6)  <= rgbSyncEof(5);
-      rgbSyncEof(7)  <= rgbSyncEof(6);
-      rgbSyncEof(8)  <= rgbSyncEof(7);
-      rgbSyncEof(9)  <= rgbSyncEof(8);
-      rgbSyncEof(10) <= rgbSyncEof(9);
+        rgbSyncEof(0)  <= iRgb.eof;
+        for i in 0 to 10 loop
+          rgbSyncEof(i+1)  <= rgbSyncEof(i);
+        end loop;
     end if;
 end process;
 
@@ -116,59 +104,98 @@ process (clk)begin
         oRgb.valid   <= rgbSyncValid(4);
     end if;
 end process;
-
 ccSfConfig_P: process (clk,rst_l)begin
-    if rst_l = '0' then
-        ccRgb.ccSf.k1           <= 1000;
+    if (rst_l = '0') then
+        ccRgb.ccSf.k1           <= 1300;
         ccRgb.ccSf.k2           <= 0;
         ccRgb.ccSf.k3           <= 0;
-        ccRgb.ccSf.k4           <= 0;
-        ccRgb.ccSf.k5           <= 1000;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1300;
         ccRgb.ccSf.k6           <= 0;
         ccRgb.ccSf.k7           <= 0;
         ccRgb.ccSf.k8           <= 0;
-        ccRgb.ccSf.k9           <= 1000;
+        ccRgb.ccSf.k9           <= 1300;
     elsif rising_edge(clk) then
     if(i_k_config_number = 0)then
-        ccRgb.ccSf.k1           <= 500; 
-        ccRgb.ccSf.k2           <= 200;
-        ccRgb.ccSf.k3           <= 300;
-        ccRgb.ccSf.k4           <= 300; 
-        ccRgb.ccSf.k5           <= 500;
-        ccRgb.ccSf.k6           <= 200;
-        ccRgb.ccSf.k7           <= 200; 
-        ccRgb.ccSf.k8           <= 300;
-        ccRgb.ccSf.k9           <= 500;
+        ccRgb.ccSf.k1           <= 1300;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1300;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 1300;
      elsif(i_k_config_number = 1) then
-        ccRgb.ccSf.k1           <= 800; 
-        ccRgb.ccSf.k2           <= 100;
-        ccRgb.ccSf.k3           <= 100;
-        ccRgb.ccSf.k4           <= 300; 
-        ccRgb.ccSf.k5           <= 800;
-        ccRgb.ccSf.k6           <= 100;
-        ccRgb.ccSf.k7           <= 100; 
-        ccRgb.ccSf.k8           <= 100;
-        ccRgb.ccSf.k9           <= 800;
+        ccRgb.ccSf.k1           <= 2000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1300;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 1300;
      elsif(i_k_config_number = 2) then
-        ccRgb.ccSf.k1           <= 800; 
-        ccRgb.ccSf.k2           <= 100;
-        ccRgb.ccSf.k3           <= 100;
-        ccRgb.ccSf.k4           <= 300; 
-        ccRgb.ccSf.k5           <= 800;
-        ccRgb.ccSf.k6           <= 100;
-        ccRgb.ccSf.k7           <= 100; 
-        ccRgb.ccSf.k8           <= 100;
-        ccRgb.ccSf.k9           <= 800;
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1500;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 900;
      elsif(i_k_config_number = 3) then
-        ccRgb.ccSf.k1           <= 700; 
-        ccRgb.ccSf.k2           <= 500;
-        ccRgb.ccSf.k3           <= -200;
-        ccRgb.ccSf.k4           <= -200; 
-        ccRgb.ccSf.k5           <= 700;
-        ccRgb.ccSf.k6           <= 500;
-        ccRgb.ccSf.k7           <= 500; 
-        ccRgb.ccSf.k8           <= -200;
-        ccRgb.ccSf.k9           <= 700;
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1200;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 900;
+     elsif(i_k_config_number = 4) then
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 1500;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 2000;
+     elsif(i_k_config_number = 5) then
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 2000;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 2000;
+     elsif(i_k_config_number = 6) then
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 2000;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 1500;
+     elsif(i_k_config_number = 7) then
+        ccRgb.ccSf.k1           <= 1000;
+        ccRgb.ccSf.k2           <= 0;
+        ccRgb.ccSf.k3           <= 0;
+        ccRgb.ccSf.k4           <= 0; 
+        ccRgb.ccSf.k5           <= 2000;
+        ccRgb.ccSf.k6           <= 0;
+        ccRgb.ccSf.k7           <= 0;
+        ccRgb.ccSf.k8           <= 0;
+        ccRgb.ccSf.k9           <= 900;
      -- elsif(i_k_config_number = 2) then
         -- ccRgb.ccSf.k1           <= 700; 
         -- ccRgb.ccSf.k2           <= 200;
@@ -270,59 +297,59 @@ ccSfConfig_P: process (clk,rst_l)begin
         -- ccRgb.ccSf.k8           <= 300;
         -- ccRgb.ccSf.k9           <= 1500; 
      -- elsif(i_k_config_number = 12) then
-        -- ccRgb.ccSf.k1           <= to_integer(unsigned(coefficients_in.k1(15 downto 0)));
-        -- ccRgb.ccSf.k2           <= to_integer(unsigned(coefficients_in.k2(15 downto 0)));
-        -- ccRgb.ccSf.k3           <= to_integer(signed(coefficients_in.k3(15 downto 0)));
-        -- ccRgb.ccSf.k4           <= to_integer(unsigned(coefficients_in.k4(15 downto 0)));
-        -- ccRgb.ccSf.k5           <= to_integer(unsigned(coefficients_in.k5(15 downto 0)));
-        -- ccRgb.ccSf.k6           <= to_integer(signed(coefficients_in.k6(15 downto 0)));
-        -- ccRgb.ccSf.k7           <= to_integer(signed(coefficients_in.k7(15 downto 0)));
-        -- ccRgb.ccSf.k8           <= to_integer(signed(coefficients_in.k8(15 downto 0)));
-        -- ccRgb.ccSf.k9           <= to_integer(unsigned(coefficients_in.k9(15 downto 0)));
+        -- ccRgb.ccSf.k1           <= to_integer(unsigned(iCoefficients.k1(15 downto 0)));
+        -- ccRgb.ccSf.k2           <= to_integer(unsigned(iCoefficients.k2(15 downto 0)));
+        -- ccRgb.ccSf.k3           <= to_integer(signed(iCoefficients.k3(15 downto 0)));
+        -- ccRgb.ccSf.k4           <= to_integer(unsigned(iCoefficients.k4(15 downto 0)));
+        -- ccRgb.ccSf.k5           <= to_integer(unsigned(iCoefficients.k5(15 downto 0)));
+        -- ccRgb.ccSf.k6           <= to_integer(signed(iCoefficients.k6(15 downto 0)));
+        -- ccRgb.ccSf.k7           <= to_integer(signed(iCoefficients.k7(15 downto 0)));
+        -- ccRgb.ccSf.k8           <= to_integer(signed(iCoefficients.k8(15 downto 0)));
+        -- ccRgb.ccSf.k9           <= to_integer(unsigned(iCoefficients.k9(15 downto 0)));
      -- elsif(i_k_config_number = 13) then
-        -- ccRgb.ccSf.k1           <= to_integer(signed(coefficients_in.k1(15 downto 0)));
-        -- ccRgb.ccSf.k2           <= to_integer(unsigned(coefficients_in.k2(15 downto 0)));
-        -- ccRgb.ccSf.k3           <= to_integer(unsigned(coefficients_in.k3(15 downto 0)));
-        -- ccRgb.ccSf.k4           <= to_integer(unsigned(coefficients_in.k4(15 downto 0)));
-        -- ccRgb.ccSf.k5           <= to_integer(signed(coefficients_in.k5(15 downto 0)));
-        -- ccRgb.ccSf.k6           <= to_integer(unsigned(coefficients_in.k6(15 downto 0)));
-        -- ccRgb.ccSf.k7           <= to_integer(unsigned(coefficients_in.k7(15 downto 0)));
-        -- ccRgb.ccSf.k8           <= to_integer(unsigned(coefficients_in.k8(15 downto 0)));
-        -- ccRgb.ccSf.k9           <= to_integer(signed(coefficients_in.k9(15 downto 0)));
-     -- elsif(i_k_config_number = 14) then
-        -- ccRgb.ccSf.k1           <= to_integer(unsigned(coefficients_in.k1(15 downto 0)));
-        -- ccRgb.ccSf.k2           <= to_integer(unsigned(coefficients_in.k2(15 downto 0)));
-        -- ccRgb.ccSf.k3           <= to_integer(unsigned(coefficients_in.k3(15 downto 0)));
-        -- ccRgb.ccSf.k4           <= to_integer(unsigned(coefficients_in.k4(15 downto 0)));
-        -- ccRgb.ccSf.k5           <= to_integer(unsigned(coefficients_in.k5(15 downto 0)));
-        -- ccRgb.ccSf.k6           <= to_integer(unsigned(coefficients_in.k6(15 downto 0)));
-        -- ccRgb.ccSf.k7           <= to_integer(unsigned(coefficients_in.k7(15 downto 0)));
-        -- ccRgb.ccSf.k8           <= to_integer(unsigned(coefficients_in.k8(15 downto 0)));
-        -- ccRgb.ccSf.k9           <= to_integer(unsigned(coefficients_in.k9(15 downto 0)));
+        -- ccRgb.ccSf.k1           <= to_integer(signed(iCoefficients.k1(15 downto 0)));
+        -- ccRgb.ccSf.k2           <= to_integer(unsigned(iCoefficients.k2(15 downto 0)));
+        -- ccRgb.ccSf.k3           <= to_integer(unsigned(iCoefficients.k3(15 downto 0)));
+        -- ccRgb.ccSf.k4           <= to_integer(unsigned(iCoefficients.k4(15 downto 0)));
+        -- ccRgb.ccSf.k5           <= to_integer(signed(iCoefficients.k5(15 downto 0)));
+        -- ccRgb.ccSf.k6           <= to_integer(unsigned(iCoefficients.k6(15 downto 0)));
+        -- ccRgb.ccSf.k7           <= to_integer(unsigned(iCoefficients.k7(15 downto 0)));
+        -- ccRgb.ccSf.k8           <= to_integer(unsigned(iCoefficients.k8(15 downto 0)));
+        -- ccRgb.ccSf.k9           <= to_integer(signed(iCoefficients.k9(15 downto 0)));
+     elsif(i_k_config_number = 14) then
+        ccRgb.ccSf.k1           <= to_integer(unsigned(iCoefficients.k1(15 downto 0)));
+        ccRgb.ccSf.k2           <= to_integer(unsigned(iCoefficients.k2(15 downto 0)));
+        ccRgb.ccSf.k3           <= to_integer(unsigned(iCoefficients.k3(15 downto 0)));
+        ccRgb.ccSf.k4           <= to_integer(unsigned(iCoefficients.k4(15 downto 0)));
+        ccRgb.ccSf.k5           <= to_integer(unsigned(iCoefficients.k5(15 downto 0)));
+        ccRgb.ccSf.k6           <= to_integer(unsigned(iCoefficients.k6(15 downto 0)));
+        ccRgb.ccSf.k7           <= to_integer(unsigned(iCoefficients.k7(15 downto 0)));
+        ccRgb.ccSf.k8           <= to_integer(unsigned(iCoefficients.k8(15 downto 0)));
+        ccRgb.ccSf.k9           <= to_integer(unsigned(iCoefficients.k9(15 downto 0)));
      else
-        ccRgb.ccSf.k1           <= to_integer(unsigned(coefficients_in.k1(15 downto 0)));
-        ccRgb.ccSf.k2           <= to_integer(signed(coefficients_in.k2(15 downto 0)));
-        ccRgb.ccSf.k3           <= to_integer(signed(coefficients_in.k3(15 downto 0)));
-        ccRgb.ccSf.k4           <= to_integer(signed(coefficients_in.k4(15 downto 0)));
-        ccRgb.ccSf.k5           <= to_integer(unsigned(coefficients_in.k5(15 downto 0)));
-        ccRgb.ccSf.k6           <= to_integer(signed(coefficients_in.k6(15 downto 0)));
-        ccRgb.ccSf.k7           <= to_integer(signed(coefficients_in.k7(15 downto 0)));
-        ccRgb.ccSf.k8           <= to_integer(signed(coefficients_in.k8(15 downto 0)));
-        ccRgb.ccSf.k9           <= to_integer(unsigned(coefficients_in.k9(15 downto 0)));
+        ccRgb.ccSf.k1           <= to_integer(unsigned(iCoefficients.k1(15 downto 0)));
+        ccRgb.ccSf.k2           <= to_integer(signed(iCoefficients.k2(15 downto 0)));
+        ccRgb.ccSf.k3           <= to_integer(signed(iCoefficients.k3(15 downto 0)));
+        ccRgb.ccSf.k4           <= to_integer(signed(iCoefficients.k4(15 downto 0)));
+        ccRgb.ccSf.k5           <= to_integer(unsigned(iCoefficients.k5(15 downto 0)));
+        ccRgb.ccSf.k6           <= to_integer(signed(iCoefficients.k6(15 downto 0)));
+        ccRgb.ccSf.k7           <= to_integer(signed(iCoefficients.k7(15 downto 0)));
+        ccRgb.ccSf.k8           <= to_integer(signed(iCoefficients.k8(15 downto 0)));
+        ccRgb.ccSf.k9           <= to_integer(unsigned(iCoefficients.k9(15 downto 0)));
      end if;
     end if;
 end process;
 process (clk)begin
     if rising_edge(clk) then
-        coefficients_out.k1 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k1,16));
-        coefficients_out.k2 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k2,16));
-        coefficients_out.k3 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k3,16));
-        coefficients_out.k4 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k4,16));
-        coefficients_out.k5 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k5,16));
-        coefficients_out.k6 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k6,16));
-        coefficients_out.k7 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k7,16));
-        coefficients_out.k8 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k8,16));
-        coefficients_out.k9 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k9,16));
+        oCoefficients.k1 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k1,16));
+        oCoefficients.k2 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k2,16));
+        oCoefficients.k3 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k3,16));
+        oCoefficients.k4 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k4,16));
+        oCoefficients.k5 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k5,16));
+        oCoefficients.k6 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k6,16));
+        oCoefficients.k7 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k7,16));
+        oCoefficients.k8 <= x"FFFF" & std_logic_vector(to_unsigned(ccRgb.ccSf.k8,16));
+        oCoefficients.k9 <= x"0000" & std_logic_vector(to_unsigned(ccRgb.ccSf.k9,16));
     end if;
 end process;
 ccProdSf_P: process (clk)begin

@@ -2346,11 +2346,11 @@ struct reginfo RGB_COLOR1_SETTINGS[] =
 	/*GAIN SETTING*/
 	{REG_MODE_SEL,                         0x00},
 	{REG_DIG_GAIN_GR_U,                    0x01},
-	{REG_DIG_GAIN_R_U,                     0x03},
-	{REG_DIG_GAIN_B_U,                     0x02},
+	{REG_DIG_GAIN_R_U,                     0x04},
+	{REG_DIG_GAIN_B_U,                     0x01},
 	{REG_DIG_GAIN_GB_U,                    0x01},
 	{REG_ANA_GLOBAL_GAIN_U,                0x02},
-	{REG_ANA_GLOBAL_GAIN_L,                0xF0},
+	{REG_ANA_GLOBAL_GAIN_L,                0x4B},
 	{REG_COARSE_INTEGRATION_TIME_MSB,      0x7F},
 	{REG_MODE_SEL,                         0x01},
 	{SEQUENCE_END,                         0x00}
@@ -2394,7 +2394,7 @@ int imx477_sensor_init(XIicPs *IicInstance,u16 config_number)
         imx477_read(IicInstance, REG_MODEL_ID_LSB, &sensor_id[1]);
         if ((sensor_id[0] == 0x7 && sensor_id[1] == 0x7)  || (sensor_id[0] == 0x4 && sensor_id[1] == 0x77))
 	{
-            printf("Got IMX477 Camera Sensor ID: %x%x\r\n", sensor_id[0], sensor_id[1]);
+            printf("Got IMX477 Camera Sensor ID: %x%x\n", sensor_id[0], sensor_id[1]);
             imx_477_sensor_write_array(IicInstance,mode1_default);
             usleep(1000000);
             if(config_number < 8) {

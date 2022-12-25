@@ -1,31 +1,25 @@
-set_property PACKAGE_PIN F10 [get_ports IIC_0_0_sda_io]
-#set_property PACKAGE_PIN H12 [get_ports IIC_0_0_sda_io]
-
-set_property PACKAGE_PIN G11 [get_ports IIC_0_0_scl_io]
-#set_property PACKAGE_PIN E10 [get_ports IIC_0_0_scl_io]
-
-set_property PACKAGE_PIN F11 [get_ports {rpi_enb[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {rpi_enb[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports IIC_0_0_scl_io]
-set_property IOSTANDARD LVCMOS33 [get_ports IIC_0_0_sda_io]
-
-
-#ISP AP1302_RST_B HDA02
-set_property PACKAGE_PIN J11 [get_ports {ap1302_rst_b}]
-set_property IOSTANDARD LVCMOS33 [get_ports {ap1302_rst_b}]
-set_property SLEW SLOW [get_ports {ap1302_rst_b}]
-set_property DRIVE 4 [get_ports {ap1302_rst_b}]
-
-#ISP AP1302_STANDBY HDA03
-set_property PACKAGE_PIN J10 [get_ports {ap1302_standby}]
-set_property IOSTANDARD LVCMOS33 [get_ports {ap1302_standby}]
-set_property SLEW SLOW [get_ports {ap1302_standby}]
-set_property DRIVE 4 [get_ports {ap1302_standby}]
-
-
-set_property PULLUP true [get_ports IIC_0_0_scl_io]
-set_property PULLUP true [get_ports IIC_0_0_sda_io]
-
+set_property PACKAGE_PIN F10 [get_ports iic_sda_io]
+set_property PACKAGE_PIN G11 [get_ports iic_scl_io]
+set_property IOSTANDARD LVCMOS33 [get_ports iic_*]
+set_property PULLUP true [get_ports iic_scl_io]
+set_property PULLUP true [get_ports iic_sda_io]
+#MIPI - IAS1 (AR1335)
+set_property -dict {PACKAGE_PIN C1} [get_ports mipi_rx_ias_clk_p]
+set_property -dict {PACKAGE_PIN B1} [get_ports mipi_rx_ias_clk_n]
+set_property -dict {PACKAGE_PIN A2} [get_ports mipi_rx_ias_data_p[0]]
+set_property -dict {PACKAGE_PIN A1} [get_ports mipi_rx_ias_data_n[0]]
+set_property -dict {PACKAGE_PIN B3} [get_ports mipi_rx_ias_data_p[1]]
+set_property -dict {PACKAGE_PIN A3} [get_ports mipi_rx_ias_data_n[1]]
+set_property -dict {PACKAGE_PIN B4} [get_ports mipi_rx_ias_data_p[2]]
+set_property -dict {PACKAGE_PIN A4} [get_ports mipi_rx_ias_data_n[2]]
+set_property -dict {PACKAGE_PIN D4} [get_ports mipi_rx_ias_data_p[3]]
+set_property -dict {PACKAGE_PIN C4} [get_ports mipi_rx_ias_data_n[3]]
+#IAS1 RST
+set_property -dict {PACKAGE_PIN K13 IOSTANDARD LVCMOS33 DRIVE 4} [get_ports gpio_tri_o[0]]
+#RPI PWR
+set_property -dict {PACKAGE_PIN F11 IOSTANDARD LVCMOS33 DRIVE 4} [get_ports gpio_tri_o[1]]
+#RPI LED
+set_property -dict {PACKAGE_PIN J12 IOSTANDARD LVCMOS33 DRIVE 4} [get_ports gpio_tri_o[2]]
 set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]

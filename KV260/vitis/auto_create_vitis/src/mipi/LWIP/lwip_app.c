@@ -66,7 +66,8 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 int lwip_loop()
 {
-	stream_it = -1;
+
+	stream_it = 1;
 	delay     = 12;
 	WriteOneFrameEnd[0] = -1;
 	struct netif *netif;
@@ -77,7 +78,7 @@ int lwip_loop()
 	ipaddr.addr  = 0;
 	gw.addr      = 0;
 	netmask.addr = 0;
-	xil_printf("\r\n\r\n");
+	//xil_printf("\r\n\r\n");
 	lwip_init();
 	if (!xemac_add(netif, NULL, NULL, NULL, mac_ethernet_address,PLATFORM_EMAC_BASEADDR)) {
 		xil_printf("Error adding N/W interface\r\n");
@@ -95,8 +96,8 @@ int lwip_loop()
                 //xil_printf("DHCP Timeout\r\n");
                 //xil_printf("Configuring default IP of 192.168.1.10\r\n");
                 IP4_ADDR(&(netif->ip_addr),  192, 168,   0, 10);
-                IP4_ADDR(&(netif->netmask), 255, 255, 255,  0);
-                IP4_ADDR(&(netif->gw),      192, 168,   0,  1);
+                IP4_ADDR(&(netif->netmask),  255, 255, 255,  0);
+                IP4_ADDR(&(netif->gw),       192, 168,   0,  1);
             }
         }
 	ipaddr.addr  = netif->ip_addr.addr;
@@ -183,9 +184,9 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==3){
-        	read_imx477_reg((int)pData[18]);
+        	read_imx477_reg((int)pData[1]);
         	WriteOneFrameEnd[0] = 1;
-        	stream_it = -1;
+        	stream_it = 1;
         }else if(a0==4){
             xil_printf("IMX 477: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
         	write_imx477_reg((int)pData[19],(int)pData[20]);
@@ -232,25 +233,25 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	stream_it = 0;
         }else if(a0==11){
             per_write_reg(REG1,(int)pData[1]);
-            per_write_reg(REG2,(~(int)pData[2])+1);
-            per_write_reg(REG3,(~(int)pData[3])+1);
-            per_write_reg(REG4,(~(int)pData[4])+1);
+            per_write_reg(REG2,((int)pData[2])+1);
+            per_write_reg(REG3,((int)pData[3])+1);
+            per_write_reg(REG4,((int)pData[4])+1);
             per_write_reg(REG5,(int)pData[5]);
-            per_write_reg(REG6,(~(int)pData[6])+1);
-            per_write_reg(REG7,(~(int)pData[7])+1);
-            per_write_reg(REG8,(~(int)pData[8])+1);
+            per_write_reg(REG6,((int)pData[6])+1);
+            per_write_reg(REG7,((int)pData[7])+1);
+            per_write_reg(REG8,((int)pData[8])+1);
             per_write_reg(REG9,(int)pData[9]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==12){
             per_write_reg(REG46,(int)pData[1]);
-            per_write_reg(REG47,(~(int)pData[2])+1);
-            per_write_reg(REG48,(~(int)pData[3])+1);
-            per_write_reg(REG49,(~(int)pData[4])+1);
+            per_write_reg(REG47,((int)pData[2])+1);
+            per_write_reg(REG48,((int)pData[3])+1);
+            per_write_reg(REG49,((int)pData[4])+1);
             per_write_reg(REG50,(int)pData[5]);
-            per_write_reg(REG51,(~(int)pData[6])+1);
-            per_write_reg(REG52,(~(int)pData[7])+1);
-            per_write_reg(REG53,(~(int)pData[8])+1);
+            per_write_reg(REG51,((int)pData[6])+1);
+            per_write_reg(REG52,((int)pData[7])+1);
+            per_write_reg(REG53,((int)pData[8])+1);
             per_write_reg(REG54,(int)pData[9]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
@@ -267,7 +268,7 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==14){
-        	per_write_reg(REG20,(int)pData[1]);
+        	per_write_reg(REG19,(int)pData[21]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }

@@ -22,7 +22,7 @@ architecture arch_imp of rgb_2_hsv is
     signal rgb1Ycbcr                : channel;
     signal rgb2Ycbcr                : channel;
 
-    signal HueRed                   : std_logic_vector(7 downto 0);  
+    signal HueRed                   : std_logic_vector(8 downto 0);  
     signal HueGre                   : std_logic_vector(7 downto 0);  
     signal HueBlu                   : std_logic_vector(7 downto 0);
     signal rgb_hue                  : rgbToSf10bRecord;
@@ -143,30 +143,30 @@ process (clk)begin
     end if;
 end process;
 
-ycc2_inst  : rgb_ycbcr
-generic map(
-    i_data_width         => 10,
-    i_precision          => 12,
-    i_full_range         => TRUE)
-port map(
-    clk                  => clk,
-    rst_l                => rst,
-    iRgb                 => iRGB,
-    oRgb                 => rgb1Ycbcr);
+--ycc2_inst  : rgb_ycbcr
+--generic map(
+--    i_data_width         => 10,
+--    i_precision          => 12,
+--    i_full_range         => TRUE)
+--port map(
+--    clk                  => clk,
+--    rst_l                => rst,
+--    iRgb                 => iRGB,
+--    oRgb                 => rgb1Ycbcr);
 
-ycc2_syncr_inst  : sync_frames
-generic map(
-    pixelDelay      => 7)
-port map(
-    clk             => clk,
-    reset           => rst,
-    iRgb            => rgb1Ycbcr,
-    oRgb            => rgb2Ycbcr);
+--ycc2_syncr_inst  : sync_frames
+--generic map(
+--    pixelDelay      => 7)
+--port map(
+--    clk             => clk,
+--    reset           => rst,
+--    iRgb            => rgb1Ycbcr,
+--    oRgb            => rgb2Ycbcr);
 
 
 process (clk) begin
     if rising_edge(clk) then
-        rgb_hue.red    <= to_sfixed("00" & HueRed,rgb_hue.red);
+        rgb_hue.red    <= to_sfixed("00" & HueRed(7 downto 0),rgb_hue.red);
         rgb_hue.green  <= to_sfixed("00" & HueGre,rgb_hue.green);
         rgb_hue.blue   <= to_sfixed("00" & HueBlu,rgb_hue.blue);
     end if;
@@ -192,9 +192,9 @@ process (clk) begin
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        oHSV_YCB.red   <= "00" & std_logic_vector(ycb2hue.red(7 downto 0));
-        oHSV_YCB.green <= "00" & std_logic_vector(ycb2hue.green(7 downto 0));
-        oHSV_YCB.blue  <= "00" & std_logic_vector(ycb2hue.blue(7 downto 0));
+        oHSV_YCB.red   <= std_logic_vector(ycb2hue.red(7 downto 0)) & "00";
+        oHSV_YCB.green <= std_logic_vector(ycb2hue.green(7 downto 0)) & "00";
+        oHSV_YCB.blue  <= std_logic_vector(ycb2hue.blue(7 downto 0)) & "00";
         oHSV_YCB.valid <= rgbSyncValid(14);
         oHSV_YCB.eol   <= rgbSyncEol(14);
         oHSV_YCB.sof   <= rgbSyncSof(14);
@@ -203,15 +203,16 @@ process (clk) begin
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        oHSV.red   <= "00" & HueRed;
-        oHSV.green <= "00" & HueGre;
-        oHSV.blue  <= "00" & HueBlu;
+        oHSV.red   <= HueRed & '0';
+        oHSV.green <= HueGre & "00";
+        oHSV.blue  <= HueBlu & "00";
         oHSV.valid <= rgbSyncValid(11);
         oHSV.eol   <= rgbSyncEol(11);
         oHSV.sof   <= rgbSyncSof(11);
         oHSV.eof   <= rgbSyncEof(11);
     end if;
 end process;
+
 rgb_hsv_inst: rgb_hsv
 port map(
 
@@ -251,7 +252,7 @@ entity rgb_hsv is
         g          : in  std_logic_vector(7 downto 0);  --! 8 bit green component of the input pixel
         b          : in  std_logic_vector(7 downto 0);  --! 8 bit blue component of the input pixel
         result_rdy : out std_logic;       --! Indicates whether the outputs (#h, #s, #v) represent valid pixel data
-        h          : out std_logic_vector(7 downto 0);    --! 9 bit hue component of the output pixel (Range: 0° - 360°)
+        h          : out std_logic_vector(8 downto 0);    --! 9 bit hue component of the output pixel (Range: 0° - 360°)
         s          : out std_logic_vector(7 downto 0);    --! 8 bit saturation component of the output pixel
         v          : out std_logic_vector(7 downto 0)     --! 8 bit value component of the output pixel
     );
@@ -491,9 +492,9 @@ begin
             case(hue < 0) is
                 when true =>
                     uhue := unsigned(hue + 360);
-                    h <= std_logic_vector(uhue(8 downto 1));
+                    h <= std_logic_vector(uhue);
                 when false =>
-                    h <= std_logic_vector(uhue(8 downto 1));
+                    h <= std_logic_vector(uhue);
             end case;
 
             -- calculation of saturation
