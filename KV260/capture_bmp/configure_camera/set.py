@@ -156,7 +156,7 @@ class MyWindow:
         file = open(self.TXT_ENTER_LSB.get()+'.bmp',"wb");
         count = 0
         s.sendto(b"".join([control_reg00,a1_reg,a2_reg,a3_reg,a4_reg,a5_reg,a6_reg,a7_reg,a8_reg,a9_reg,delay_reg10,reg11,a21_reg,a22_reg,a23_reg,a24_reg,a25_reg,a26_reg,a27_reg,a28_reg,a29_reg]), UDP)
-        while (count <= 4790):
+        while (count <= 4434):
             count += 1;
             msg = p.recvfrom(framelen)[0]
             file.write(msg);

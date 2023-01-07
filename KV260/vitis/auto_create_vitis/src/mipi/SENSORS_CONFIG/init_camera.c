@@ -23,7 +23,7 @@
 #include "OV5640/ov5640.h"
 #include "OV5647/ov5647.h"
 #include "init_camera.h"
-
+#include "../config.h"
 XIicPs iic_cam;
 #define IIC_DEVICEID        XPAR_XIICPS_0_DEVICE_ID
 #define IIC_SCLK_RATE		100000
@@ -72,7 +72,11 @@ int init_camera()
   	if (Status != XST_SUCCESS) {
   		print("OV5640 Camera Sensor Not connected\n\r");
   	}
-    Status = imx477_sensor_init(&iic_cam,3);
+#if p3840x2160 == 1
+  	Status = imx477_sensor_init(&iic_cam,14);
+#else
+	Status = imx477_sensor_init(&iic_cam,3);
+#endif
   	if (Status == 477) {
   		return 477;
   	}

@@ -91,7 +91,7 @@
 #define REG_MULTI_CAM_MODE			    0x3F0B
 #define REG_ADC_BIT_SETTING			    0x3F0D
 #define REG_SCALE_MODE				    0x0401
-#define REG_SCALE_M_MSbit			    0x0404
+#define REG_SCALE_M_MSB			        0x0404
 #define REG_SCALE_M_LSB				    0x0405
 #define REG_SCALE_N_MSbit			    0x0406
 #define REG_SCALE_N_LSB				    0x0407

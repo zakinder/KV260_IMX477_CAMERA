@@ -10,8 +10,8 @@
 
 #include "../UART/uartio.h"
 
-const int res = 1920 * 1080;
-uint32_t bayer[1920 * 1080 * 4];
+const int res = 100 * 100;
+
 uint32_t to8(Xuint32 data){
 	data &= 0x3FFFFFFF;
 	return (uint32_t)(data);
@@ -268,7 +268,7 @@ void fetch_rgb_data() {
                 //pMM2S_Mem[i]      = pS2MM_Mem[i];
             }
 	}
-    Xil_DCacheFlush();     //Refresh the Cache, and update the data to 
+    Xil_DCacheFlush();     //Refresh the Cache, and update the data to
 	//Grab the DMA Control Registers, and re-enable circular park mode.
 	vdma_MM2S_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET);
 	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);

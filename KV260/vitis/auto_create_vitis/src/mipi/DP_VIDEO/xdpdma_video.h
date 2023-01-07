@@ -95,8 +95,8 @@ typedef struct {
 } Run_Config;
 
 /************************** Function Prototypes ******************************/
-int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame);
-void InitRunConfig(Run_Config *RunCfgPtr);
+int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame,XVidC_VideoMode TestMode);
+void InitRunConfig(Run_Config *RunCfgPtr,XVidC_VideoMode TestMode);
 int InitDpDmaSubsystem(Run_Config *RunCfgPtr);
 void SetupInterrupts(Run_Config *RunCfgPtr);
 u8* GraphicsOverlay(u8* Frame, Run_Config *RunCfgPtr);
@@ -107,7 +107,7 @@ void DpPsu_SetupVideoStream(Run_Config *RunCfgPtr);
 void DpPsu_Run(Run_Config *RunCfgPtr);
 void DpPsu_IsrHpdEvent(void *ref);
 void DpPsu_IsrHpdPulse(void *ref);
-int run_dppsu(u8* Frame);
+int run_dppsu(u8* Frame,XVidC_VideoMode TestMode);
 
 /************************** Variable Definitions *****************************/
 

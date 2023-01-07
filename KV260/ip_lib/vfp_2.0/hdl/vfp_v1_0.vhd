@@ -1,8 +1,8 @@
---◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
---◆ Filename    : vfp.vhd
---◆ Create Date : 02092019 [02-09-2019]
---◆ Author      : Sakinder
---◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+--------------------------------------------------------------------------------------------
+-- Filename    : vfp.vhd
+-- Create Date : 02092019 [02-09-2019]
+-- Author      : Sakinder Ali
+--------------------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -13,15 +13,15 @@ use work.fixed_pkg.all;
 use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
-        revision_number           : std_logic_vector(31 downto 0) := x"12162022";
+        revision_number           : std_logic_vector(31 downto 0) := x"12262022";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
         C_oVideo_START_COUNT      : integer    := 32;
         C_iVideo_TDATA_WIDTH      : integer    := 32;
         FRAME_PIXEL_DEPTH         : integer    := 10;
-        FRAME_WIDTH               : natural    := 1920;
-        FRAME_HEIGHT              : natural    := 1080);
+        FRAME_WIDTH               : natural    := 4096;
+        FRAME_HEIGHT              : natural    := 3040);
     port (
         vfpconfig_aclk            : in std_logic;
         vfpconfig_aresetn         : in std_logic;
@@ -47,9 +47,9 @@ entity vfp_v1_0 is
         ovideo_aclk               : in std_logic;
         ovideo_aresetn            : in std_logic;
         ovideo_tvalid             : out std_logic;
-        ovideo_tkeep              : out std_logic_vector(3 downto 0);
-        ovideo_tdata              : out std_logic_vector(C_oVideo_TDATA_WIDTH-1 downto 0);
-        ovideo_tstrb              : out std_logic_vector((C_oVideo_TDATA_WIDTH/8)-1 downto 0);
+        ovideo_tkeep              : out std_logic_vector(2 downto 0);
+        ovideo_tdata              : out std_logic_vector(23 downto 0);
+        ovideo_tstrb              : out std_logic_vector(2 downto 0);
         ovideo_tlast              : out std_logic;
         ovideo_tready             : in std_logic;
         ovideo_tuser              : out std_logic;
@@ -93,33 +93,34 @@ entity vfp_v1_0 is
         video2_tvalid             : in std_logic);
 end vfp_v1_0;
 architecture arch_imp of vfp_v1_0 is
-    signal wr_regs            : mRegs;
-    signal rd_regs            : mRegs;
-    signal cord_x             : std_logic_vector(15 downto 0);
-    signal cord_y             : std_logic_vector(15 downto 0);
-    signal cord1x             : std_logic_vector(15 downto 0);
-    signal cord1y             : std_logic_vector(15 downto 0);
-    signal cord2x             : std_logic_vector(15 downto 0);
-    signal cord2y             : std_logic_vector(15 downto 0);
-    signal coefficients_in_1  : coefficient_values;
-    signal coefficients_out_1 : coefficient_values;
-    signal coefficients_in_2  : coefficient_values;
-    signal coefficients_out_2 : coefficient_values;
-    signal coefficients_in_3  : coefficient_values;
-    signal coefficients_out_3 : coefficient_values;
-    signal txCord             : coord;
-    signal k_config_number_1  : integer := 15;
-    signal k_config_number_2  : integer := 15;
-    signal k_config_number_3  : integer := 15;
-    signal config_number_14   : integer := 0;
-    signal config_number_15   : natural := 221;
-    signal config_number_16   : integer := 16;
-    signal config_number_17   : integer := 2;
-    signal config_number_19   : integer := 4;
-    signal config_number_43   : integer := 5;
-    signal config_number_44   : integer := 100;
-    signal config_number_45   : integer := 0;
-    signal config_number_20   : integer := 0;
+    signal wr_regs             : mRegs;
+    signal rd_regs             : mRegs;
+    signal cord_x              : std_logic_vector(15 downto 0);
+    signal cord_y              : std_logic_vector(15 downto 0);
+    signal cord1x              : std_logic_vector(15 downto 0);
+    signal cord1y              : std_logic_vector(15 downto 0);
+    signal cord2x              : std_logic_vector(15 downto 0);
+    signal cord2y              : std_logic_vector(15 downto 0);
+    signal coefficients_in_1   : coefficient_values;
+    signal coefficients_out_1  : coefficient_values;
+    signal coefficients_in_2   : coefficient_values;
+    signal coefficients_out_2  : coefficient_values;
+    signal coefficients_in_3   : coefficient_values;
+    signal coefficients_out_3  : coefficient_values;
+    signal txCord              : coord;
+    signal k_config_number_1   : integer := 15;
+    signal k_config_number_2   : integer := 15;
+    signal k_config_number_3   : integer := 15;
+    signal config_number_14    : integer := 0;
+    signal config_number_15    : natural := 221;
+    signal config_number_16    : integer := 16;
+    signal config_number_17    : integer := 2;
+    signal config_frame_width  : integer := 1920;
+    signal config_frame_height : integer := 1080;
+    signal config_number_43    : integer := 5;
+    signal config_number_44    : integer := 100;
+    signal config_number_45    : integer := 0;
+    signal config_number_20    : integer := 0;
     signal ccx                 : channel;
     signal ccy                 : channel;
     signal ccc1                : channel;
@@ -208,6 +209,8 @@ port map (
     s_axis_tuser                    => ivideo_tuser,
     s_axis_tvalid                   => ivideo_tvalid,
     config_number_19                => 4,
+    config_frame_width              => config_frame_width,
+    config_frame_height             => config_frame_height,
     oCord_x                         => cord_x,
     oCord_y                         => cord_y,
     oRgb                            => ccc1);
@@ -229,6 +232,8 @@ port map (
     s_axis_tuser                    => video2_tuser,
     s_axis_tvalid                   => video2_tvalid,
     config_number_19                => 4,
+    config_frame_width              => config_frame_width,
+    config_frame_height             => config_frame_height,
     oCord_x                         => cord2x,
     oCord_y                         => cord2y,
     oRgb                            => ccy);
@@ -262,7 +267,8 @@ process (ivideo_aclk)begin
         config_number_15                <= to_integer((unsigned(wr_regs.cfigReg15)));
         config_number_16                <= to_integer((unsigned(wr_regs.cfigReg16)));
         config_number_17                <= to_integer((unsigned(wr_regs.cfigReg17)));
-        config_number_19                <= to_integer((unsigned(wr_regs.cfigReg19)));
+        config_frame_width              <= to_integer((unsigned(wr_regs.cfigReg19(15 downto 0))));
+        config_frame_height             <= to_integer((unsigned(wr_regs.cfigReg19(31 downto 16))));
         config_number_20                <= to_integer((unsigned(wr_regs.cfigReg20)));
         config_number_43                <= to_integer((unsigned(wr_regs.cfigReg43)));
         config_number_44                <= to_integer((unsigned(wr_regs.cfigReg44)));
@@ -658,9 +664,9 @@ port map(
 ------------------------------------------------------------
 --                                                 VIDEO_OUT
 ------------------------------------------------------------
-   ovideo_tstrb           <= ivideo_tstrb;
-   ovideo_tkeep           <= ivideo_tkeep;
-   ovideo_tdata           <= "00" & ccc12.red & ccc12.green & ccc12.blue;
+   ovideo_tstrb           <= ivideo_tstrb(2 downto 0);
+   ovideo_tkeep           <= ivideo_tkeep(2 downto 0);
+   ovideo_tdata           <= ccc12.red(9 downto 2) & ccc12.green(9 downto 2) & ccc12.blue(9 downto 2);
    ovideo_tvalid          <= ccc12.valid;
    ovideo_tuser           <= ccc12.sof;
    ovideo_tlast           <= ccc12.eol;
@@ -670,13 +676,13 @@ port map(
    o1video_tvalid         <= ccc12.valid;
    o1video_tuser          <= ccc12.sof;
    o1video_tlast          <= ccc12.eol;
-   rgb_fr_plw_red         <= "00" & ccy.red(9 downto 2);
-   rgb_fr_plw_gre         <= "00" & ccy.green(9 downto 2);
-   rgb_fr_plw_blu         <= "00" & ccy.blue(9 downto 2);
-   rgb_fr_plw_sof         <= ccy.sof;
-   rgb_fr_plw_eol         <= ccy.eol;
-   rgb_fr_plw_eof         <= ccy.eof;
-   rgb_fr_plw_val         <= ccy.valid;
+   rgb_fr_plw_red         <= "00" & ccc12.red(9 downto 2);
+   rgb_fr_plw_gre         <= "00" & ccc12.green(9 downto 2);
+   rgb_fr_plw_blu         <= "00" & ccc12.blue(9 downto 2);
+   rgb_fr_plw_sof         <= ccc12.sof;
+   rgb_fr_plw_eol         <= ccc12.eol;
+   rgb_fr_plw_eof         <= ccc12.eof;
+   rgb_fr_plw_val         <= ccc12.valid;
 end arch_imp;
 
 

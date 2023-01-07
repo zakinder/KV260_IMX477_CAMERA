@@ -13,7 +13,7 @@
 static FIL fil;
 static FATFS fatfs;
 static char *SD_File;
-u8 photobufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
+u8 photobufs[VIDEO2_MAX_FRAME];
 void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connected_camera) {
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
@@ -31,8 +31,8 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
     	per_write_reg(REG12,15);
     	per_write_reg(REG13,3);
         per_write_reg(REG15,221);
-        per_write_reg(REG16,22);
-        per_write_reg(REG17,2);
+        per_write_reg(REG16,6);
+        per_write_reg(REG17,23);
         //per_write_reg(REG19,0);
         per_write_reg(REG43,5);
         per_write_reg(REG44,100);
@@ -87,7 +87,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
         current_state = lwip;
     }
     if(connected_camera == 477){
-        per_write_reg(REG19,0);
+
         current_state = imx477s1;
     }
     if(connected_camera == 682){

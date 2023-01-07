@@ -110,7 +110,7 @@ timer_callback(XTtcPs * TimerInstance)
 
 	/* For detecting Ethernet phy link status periodically */
 	if (DetectEthLinkStatus == ETH_LINK_DETECT_INTERVAL) {
-		eth_link_detect(netif);
+		//eth_link_detect(netif);
 		DetectEthLinkStatus = 0;
 	}
 

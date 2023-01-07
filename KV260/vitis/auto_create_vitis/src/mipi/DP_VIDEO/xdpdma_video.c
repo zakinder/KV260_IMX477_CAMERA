@@ -56,6 +56,8 @@
 #include "xil_cache.h"
 #include "xdpdma_video.h"
 #include "../config.h"
+#include "xil_assert.h"
+
 /************************** Constant Definitions *****************************/
 #define DPPSU_DEVICE_ID		XPAR_PSU_DP_DEVICE_ID
 #define AVBUF_DEVICE_ID		XPAR_PSU_DP_DEVICE_ID
@@ -74,7 +76,7 @@
 													be aligned to 256*/
 
 /************************** Variable Declarations ***************************/
-u8 Frame[BUFFERSIZE] __attribute__ ((aligned(256)));
+u8 Frame[BUFFERSIZE];
 XDpDma_FrameBuffer FrameBuffer;
 
 
@@ -98,7 +100,7 @@ Run_Config RunCfg;
 * @note		None
 *
 ******************************************************************************/
-int run_dppsu(u8* Frame)
+int run_dppsu(u8* Frame,XVidC_VideoMode TestMode)
 {
 	int Status;
 //
@@ -106,7 +108,7 @@ int run_dppsu(u8* Frame)
 //	Xil_ICacheEnable();
 
 	//xil_printf("DPDMA Generic Video Example Test \r\n");
-	Status = DpdmaVideoExample(&RunCfg,&Frame);
+	Status = DpdmaVideoExample(&RunCfg,&Frame,TestMode);
 	if (Status != XST_SUCCESS) {
 			xil_printf("DPDMA Video Example Test Failed\r\n");
 			return XST_FAILURE;
@@ -130,13 +132,13 @@ int run_dppsu(u8* Frame)
 * @note		None.
 *
 *****************************************************************************/
-int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame)
+int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame,XVidC_VideoMode TestMode)
 
 {
 	u32 Status;
 	//u8 adrSof;
 	/* Initialize the application configuration */
-	InitRunConfig(RunCfgPtr);
+	InitRunConfig(RunCfgPtr,TestMode);
 	Status = InitDpDmaSubsystem(RunCfgPtr);
 	if (Status != XST_SUCCESS) {
 				return XST_FAILURE;
@@ -171,15 +173,15 @@ int DpdmaVideoExample(Run_Config *RunCfgPtr,u8* Frame)
 * @note		None.
 *
 *****************************************************************************/
-void InitRunConfig(Run_Config *RunCfgPtr)
+void InitRunConfig(Run_Config *RunCfgPtr,XVidC_VideoMode TestMode)
 {
 	/* Initial configuration parameters. */
 		RunCfgPtr->DpPsuPtr  = &DpPsu;
 		RunCfgPtr->IntrPtr   = &Intr;
 		RunCfgPtr->AVBufPtr  = &AVBuf;
 		RunCfgPtr->DpDmaPtr  = &DpDma;
-		RunCfgPtr->VideoMode = XVIDC_VM_1920x1080_60_P;
-		RunCfgPtr->Bpc		 = XVIDC_BPC_10;//XVIDC_BPC_8;
+		RunCfgPtr->VideoMode = TestMode;
+		RunCfgPtr->Bpc		 = XVIDC_BPC_8;//XVIDC_BPC_8;
 		RunCfgPtr->ColorEncode			= XDPPSU_CENC_RGB;
 		RunCfgPtr->UseMaxCfgCaps		= 1;
 		RunCfgPtr->LaneCount			= LANE_COUNT_2;
@@ -228,12 +230,12 @@ int InitDpDmaSubsystem(Run_Config *RunCfgPtr)
 		return XST_FAILURE;
 	}
 	/* Set the format graphics frame for DPDMA*/
-	Status = XDpDma_SetGraphicsFormat(DpDmaPtr, RGBA8888);
+	Status = XDpDma_SetGraphicsFormat(DpDmaPtr, BPP8);
 	if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 	}
 	/* Set the format graphics frame for Video Pipeline*/
-	Status = XAVBuf_SetInputNonLiveGraphicsFormat(AVBufPtr, RGBA8888);
+	Status = XAVBuf_SetInputNonLiveGraphicsFormat(AVBufPtr, BPP8);
 	if (Status != XST_SUCCESS) {
 			return XST_FAILURE;
 	}
@@ -241,10 +243,10 @@ int InitDpDmaSubsystem(Run_Config *RunCfgPtr)
 	XDpDma_SetQOS(RunCfgPtr->DpDmaPtr, 11);
 	/* Enable the Buffers required by Graphics Channel */
 	//XAVBuf_EnableGraphicsBuffers(RunCfgPtr->AVBufPtr, 1);
-	XAVBuf_SetInputLiveVideoFormat(&AVBufPtr, RGB_10BPC);
+	XAVBuf_SetInputLiveVideoFormat(&AVBufPtr, XVIDC_BPC_8);
 	XAVBuf_EnableVideoBuffers(&AVBufPtr, 1);
 	/* Set the output Video Format */
-	XAVBuf_SetOutputVideoFormat(AVBufPtr, RGB_10BPC);
+	XAVBuf_SetOutputVideoFormat(AVBufPtr, XVIDC_BPC_8);
 
 	/* Select the Input Video Sources.
 	 * Here in this example we are going to demonstrate

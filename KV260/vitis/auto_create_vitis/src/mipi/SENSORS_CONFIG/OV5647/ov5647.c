@@ -281,11 +281,10 @@ int ov5647_camera_sensor_init(XIicPs *IicInstance)
 	usleep(1000000);
 	//[7]=0 Software reset; [6]=1 Software power down; Default=0x02
 	ov5647_write(IicInstance,0x3008, 0x42);
-    #if P1080 == 1
+
 	ov5647_sensor_write_array(IicInstance,cfg_ov5647_1920_1080p_30fps);
-    #else
-	ov5647_sensor_write_array(IicInstance,cfg_ov5647_1280_702p_60fps);
-    #endif
+
+
 	//ov5647_sensor_write_array(IicInstance,cfg_ov5647_advanced_awb);
 	//[7]=0 Software reset; [6]=0 Software power down; Default=0x02
 	//ov5647_write(IicInstance,0x3008, 0x02);

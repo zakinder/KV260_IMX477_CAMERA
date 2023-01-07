@@ -25,11 +25,10 @@ bsp regenerate
 
 bsp setlib -name xilffs -ver 4.7
 bsp setlib -name lwip211 -ver 1.7
-bsp config pbuf_pool_bufsize "115200"
+bsp config pbuf_pool_bufsize "1700"
 bsp config pbuf_pool_size "16384"
 bsp config memp_n_pbuf "16384"
 bsp config memp_num_netbuf "8"
-bsp config mem_size "51998488"
 bsp config n_tx_descriptors "2048"
 bsp config n_rx_descriptors "2048"
 bsp config lwip_tcp "false"

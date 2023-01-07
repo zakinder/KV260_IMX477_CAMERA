@@ -14,6 +14,8 @@
    1.9   Sakinder 11/21/22 Added K-Cluster registers for PL access.
    2.0   Sakinder 12/16/22 Validated rgb2hsl and hsl2rgb video channel for further clustering usage.
    2.1   Sakinder 12/20/22 Added AR1335 Camera functions.
+   2.2   Sakinder 12/30/22 Added UHD 3840x2160p@30Hz functions.
+   2.3   Sakinder 12/30/22 Added function for dynamic reconfig clocks.
    -----------------------------------------------------------------------
 */
 #include <stdio.h>
@@ -25,21 +27,23 @@
 #include "DP_VIDEO/video_modes.h"
 #include "DP_VIDEO/xdpdma_video.h"
 #include "MENU/menu_calls.h"
-#include "MIPI/mipi.h"
 #include "SENSORS_CONFIG/init_camera.h"
 #include "UART/uartio.h"
 #include "VDMA/vdma.h"
 #include "VTC/vtc.h"
 #include "SDCARD/bmp.h"
 #include "xgpio.h"
+#include <xclk_wiz.h>
+#include "DP_CLOCK/clk_wiz.h"
+XClk_Wiz ClkWizInst;
 VideoMode video;
 static XGpio axi_gpio;
 #define GPIO_SENSOR_IAS1_RSTN	(0)
 #define GPIO_SENSOR_RPI_RSTN	(1)
 #define GPIO_SENSOR_RPI_LED	    (2)
-u32 frameBuf[DISPLAY_NUM_FRAMES][VIDEO1_MAX_FRAME] __attribute__ ((aligned(256)));
+u32 frameBuf[DISPLAY_NUM_FRAMES][VIDEO1_MAX_FRAME];
 u32 *pFrames[DISPLAY_NUM_FRAMES];
-u32 frameBuf1[NUM_FRAMES][VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
+u32 frameBuf1[NUM_FRAMES][VIDEO2_MAX_FRAME];
 u32 *pFrames1[NUM_FRAMES];
 void gpio_init()
 {
@@ -54,24 +58,43 @@ void gpio_init()
 }
 int main()
 {
+	per_write_reg(REG19,((0x00FFFF & VIDEO1_ROWS)<<16) | ((VIDEO1_COLUMNS)));
+	XVidC_VideoTiming const *TimingPtr;
+	XVidC_VideoStream VidStream;
+	VidStream.PixPerClk = 1;
+	VidStream.ColorFormatId = XVIDC_CSF_RGB;
+	VidStream.ColorDepth = 8;
+#if p3840x2160 == 1
+	VidStream.VmId = XVIDC_VM_3840x2160_30_P;
+#else
+	VidStream.VmId = XVIDC_VM_1920x1080_60_P;
+#endif
+	XClk_Wiz_dynamic_reconfig(&ClkWizInst, XPAR_PS_VIDEO_TO_PS_CLK_WIZ_0_DEVICE_ID,VidStream.VmId);
+	TimingPtr = XVidC_GetTimingInfo(VidStream.VmId);
+	VidStream.Timing = *TimingPtr;
+	VidStream.FrameRate = XVidC_GetFrameRate(VidStream.VmId);
+	xil_printf("\r\n********************************************\r\n");
+	printf("Test Input Stream: %s (%s)\r\n",
+			XVidC_GetVideoModeStr(VidStream.VmId),
+			XVidC_GetColorFormatStr(VidStream.ColorFormatId));
+	xil_printf("********************************************\r\n");
 	pFrames1[0] = frameBuf1[0];
     memset(pFrames1[0], 0, VIDEO2_MAX_FRAME);
     vdma_write(XPAR_AXIVDMA_1_DEVICE_ID,VIDEO2_STRIDE,VIDEO2_ROWS,VIDEO2_STRIDE,(unsigned int)pFrames1[0]);
-    video = VMODE_1920x1080;
     gpio_init();
 	int i,connected_camera;
     connected_camera=init_camera();
-    printf("connectedcamera = %i \n\r",connected_camera);
+    printf("Connected Camera = %i \n\r",connected_camera);
     demosaic2_init();
     demosaic1_init();
-    vtc_init(video);
+    vtc_init(&VidStream);
 	for (i = 0; i < DISPLAY_NUM_FRAMES; i++)
 	{
 		pFrames[i] = frameBuf[i];
         memset(pFrames[i], 0, VIDEO1_MAX_FRAME);
 	}
     vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,VIDEO1_STRIDE,VIDEO1_ROWS,VIDEO1_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
-	run_dppsu((unsigned int)pFrames[1]);
+	run_dppsu((unsigned int)pFrames[1],VidStream.VmId);
      while(1){
          menu_calls(TRUE,(char *)&BMODE_1920x1080,pFrames1[0], VIDEO2_STRIDE,connected_camera);
      }

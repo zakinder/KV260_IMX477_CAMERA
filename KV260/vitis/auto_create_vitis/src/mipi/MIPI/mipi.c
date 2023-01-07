@@ -1,8 +1,12 @@
-#include "xcsiss.h"
+#include <xcsiss.h>
+#include <xil_printf.h>
+#include <xil_types.h>
+#include <xstatus.h>
+
 int mipi_init() {
 	XCsiSs mipi;
 	XCsiSs_Config *mipi_config;
-	if ( (mipi_config = XCsiSs_LookupConfig(XPAR_PS_VIDEO_RX_VIDEO_MIPI_CSI2_RX_SUBSYST_0_RX_DEVICE_ID)) == NULL) {
+	if ( (mipi_config = XCsiSs_LookupConfig(XPAR_PS_VIDEO_RX_VIDEO_MIPI_CSI2_RX_SUBSYST_1_RX_DEVICE_ID)) == NULL) {
 		xil_printf("Xcsiss LookupConfig() failed\r\n");
 		return XST_FAILURE;
 	}

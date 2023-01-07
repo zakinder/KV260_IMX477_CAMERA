@@ -29,26 +29,27 @@ entity vfp_axi_stream is
     s_axis_tuser                    : in std_logic;
     s_axis_tvalid                   : in std_logic;
     config_number_19                : in integer;
+    config_frame_width              : in integer;
+    config_frame_height             : in integer;
     oCord_x                         : out std_logic_vector(15 downto 0);
     oCord_y                         : out std_logic_vector(15 downto 0);
     oRgb                            : out channel);
 end vfp_axi_stream;
 architecture arch_imp of vfp_axi_stream is
     type video_io_state is (VIDEO_SET_RESET,VIDEO_SOF_OFF,VIDEO_SOF_ON);
-    signal VIDEO_STATES      : video_io_state;
+    signal VIDEO_STATES          : video_io_state;
     type video_out_state is (V_SOF,V_LINE);
     signal VIDEO_OUT_STATES      : video_out_state;
-    signal Xcont             : integer := 0;
-    signal Ycont             : integer := 0;
-    signal XrCont            : integer := 0;
-    signal X1Cont            : integer := 0;
-    signal YrCont            : integer := 0;
-    signal Y1Cont            : integer := 0;
-    signal Y2Cont            : integer := 0;
-    
-    signal vdata             : std_logic_vector(TDATA_WIDTH-1 downto 0);
+    signal Xcont                 : integer := 0;
+    signal Ycont                 : integer := 0;
+    signal XrCont                : integer := 0;
+    signal X1Cont                : integer := 0;
+    signal YrCont                : integer := 0;
+    signal Y1Cont                : integer := 0;
+    signal Y2Cont                : integer := 0;
+    signal vdata                 : std_logic_vector(TDATA_WIDTH-1 downto 0);
     type ram_type is array (0 to FRAME_WIDTH-1) of std_logic_vector(TDATA_WIDTH-1 downto 0);
-    signal rowbuffer     : ram_type := (others => (others => '0'));
+    signal rowbuffer             : ram_type := (others => (others => '0'));
 begin
         oCord_x                <= std_logic_vector(to_unsigned(Xcont, 16));
         oCord_y                <= std_logic_vector(to_unsigned(Ycont, 16));
@@ -115,21 +116,21 @@ process (s_axis_aclk) begin
             if (XrCont = 1) then
                 oRgb.sof             <= '0';
             end if;
-            if (XrCont = FRAME_WIDTH-1) then
+            if (XrCont = config_frame_width-1) then
                 oRgb.eol             <= '1';
             end if;
-            if (XrCont < FRAME_WIDTH-1) then
+            if (XrCont < config_frame_width-1) then
                 XrCont               <= XrCont + 1;
                 oRgb.valid           <= '1';
                 VIDEO_OUT_STATES     <= V_LINE;
-                if ((YrCont = FRAME_HEIGHT-1) and (XrCont = FRAME_WIDTH-2)) then
+                if ((YrCont = config_frame_height-1) and (XrCont = config_frame_width-2)) then
                     oRgb.eof           <= '1';
                 else
                     oRgb.eof           <= '0';
                 end if;
             else
                 VIDEO_OUT_STATES     <= V_SOF;
-                if (YrCont < FRAME_WIDTH-1)then
+                if (YrCont < config_frame_width-1)then
                     YrCont               <= YrCont + 1;
                 else
                     YrCont               <= 0;
