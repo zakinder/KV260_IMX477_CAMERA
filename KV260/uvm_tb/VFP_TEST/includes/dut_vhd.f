@@ -10,9 +10,22 @@
 
 ../../../../ip_lib/VFP/tb/Include/dutPortsPackage.vhd
 ../../dut/tb/Include/tbPackage.vhd
+../../../../ip_lib/VFP/src/Filters/rgb_2_hsv.vhd
+../../../../ip_lib/VFP/src/Filters/hsv2rgb.vhd
+../../../../ip_lib/VFP/src/Filters/rgb2hsv.vhd
+../../../../ip_lib/VFP/src/Filters/rgb2cmyk.vhd
+../../../../ip_lib/VFP/src/Filters/cmyk2rgb.vhd
+../../../../ip_lib/VFP/src/Filters/rgb2cmykl.vhd
+../../../../ip_lib/VFP/src/Filters/rgb2cmykl_sat1.vhd
+../../../../ip_lib/VFP/src/Filters/cmykl2rgb.vhd
 ../../../../ip_lib/VFP/src/Filters/square_root.vhd
+../../../../ip_lib/VFP/src/color_segments/color_distance.vhd
 ../../../../ip_lib/VFP/src/color_segments/clustering.vhd
 ../../../../ip_lib/VFP/src/color_segments/color_k5_clustering.vhd
+../../../../ip_lib/VFP/src/color_segments/rgb_saturation_exposer.vhd
+../../../../ip_lib/VFP/src/Process/rgb_int_range.vhd
+../../../../ip_lib/VFP/src/Filters/rgb_to_ryb.vhd
+../../../../ip_lib/VFP/src/Filters/rgb_to_ryb.vhd
 ../../../../ip_lib/VFP/src/Filters/rgb_to_xyz_color_space_v2.vhd
 ../../../../ip_lib/VFP/src/Filters/ycbcr_rgb.vhd
 ../../../../ip_lib/VFP/src/Filters/sobel.vhd
@@ -58,6 +71,7 @@
 ../../../../ip_lib/VFP/src/Control/data_taps.vhd
 ../../../../ip_lib/VFP/src/Control/frame_process.vhd
 ../../../../ip_lib/VFP/src/Control/mWrRd.vhd
+../../../../ip_lib/VFP/src/Control/rgb3taps.vhd
 ../../../../ip_lib/VFP/src/Control/rgb_3taps.vhd
 ../../../../ip_lib/VFP/src/Control/rgb_3_taps.vhd
 ../../../../ip_lib/VFP/src/Control/rgb_4_taps.vhd
@@ -141,3 +155,7 @@
 ../../../../ip_lib/VFP/src/Xip/SquareRoot/squareRootTop.vhd
 ../../../../ip_lib/VFP/src/Xip/SquareRoot/sim/squareRoot.vhd
 ../../../../ip_lib/VFP/src/Xip/SquareRoot/squareRootTop.vhd
+../../../../ip_lib/VFP/src/Xip/Xil_Div/sim/xil_div.vhd
+../../../../ip_lib/VFP/src/Xip/Xil_Fixed_Val_Div/sim/xil_fixed_val_div.vhd
+../../../../ip_lib/VFP/src/Xip/Xil_Multi/sim/xil_mul.vhd
+../../../../ip_lib/VFP/src/Xip/Xil_Fixed_Val_Mul/sim/xil_fixed_val_mul.vhd

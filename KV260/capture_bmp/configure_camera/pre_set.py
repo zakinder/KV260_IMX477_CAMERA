@@ -277,8 +277,24 @@ class MyWindow:
         self.LABEL20=Button(win, text='REG19', command=self.reg_20)
         self.LABEL20.place(x=400, y=700)
         #######################
+        self.LABEL21=Label(win, text='CONTRAST_VAL')
+        self.LABEL21.place(x=50, y=725)
+        self.LABEL21_ENTER=Entry()
+        self.LABEL21_ENTER.insert(0, "0")
+        self.LABEL21_ENTER.place(x=200, y=725)
+        
+        self.LABEL22=Label(win, text='CONTRAST_NUM')
+        self.LABEL22.place(x=50, y=750)
+        self.LABEL22_ENTER=Entry()
+        self.LABEL22_ENTER.insert(0, "0")
+        self.LABEL22_ENTER.place(x=200, y=750)
+
+        
+        self.LABEL21=Button(win, text='Contrast', command=self.reg_21)
+        self.LABEL21.place(x=400, y=750)
+        #######################
         self.b1=Button(win, text='Update', command=self.Submit)
-        self.b1.place(x=50, y=750)
+        self.b1.place(x=50, y=775)
         
     def Submit(self):
         control_reg00 =int(2).to_bytes(2, 'little')
@@ -452,6 +468,12 @@ class MyWindow:
         delay_reg10   =int(12).to_bytes(2, 'little')
         a1_reg        =int(self.LABEL20_ENTER.get()).to_bytes(2, 'little')
         s.sendto(b"".join([control_reg00,a1_reg]), UDP)
+    def reg_21(self):
+        control_reg00 =int(9).to_bytes(2, 'little')
+        delay_reg10   =int(12).to_bytes(2, 'little')
+        a1_reg        =int(self.LABEL21_ENTER.get()).to_bytes(2, 'little')
+        a2_reg        =int(self.LABEL22_ENTER.get()).to_bytes(2, 'little')
+        s.sendto(b"".join([control_reg00,a1_reg,a2_reg]), UDP)
     def resolution(self):
         control_reg00 =int(3).to_bytes(2, 'little')
         a1_reg        =int(self.LABEL13_ENTER.get()).to_bytes(2, 'little')
