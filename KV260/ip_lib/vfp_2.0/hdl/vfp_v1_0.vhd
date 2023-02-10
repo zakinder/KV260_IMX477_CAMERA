@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------------------
--- Filename    : vfp.vhd
--- Create Date : 02092019 [02-09-2019]
--- Author      : Sakinder Ali
+-- Filename      : vfp.vhd
+-- Create Date   : 02092019 [02-09-2019]
+-- Modified Date : 02052023 [02-05-2023]
+-- Author        : Sakinder Ali
 --------------------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
@@ -13,7 +14,7 @@ use work.fixed_pkg.all;
 use work.float_pkg.all;
 entity vfp_v1_0 is
     generic (
-        revision_number           : std_logic_vector(31 downto 0) := x"12262022";
+        revision_number           : std_logic_vector(31 downto 0) := x"02052023";
         C_vfpConfig_DATA_WIDTH    : integer    := 32;
         C_vfpConfig_ADDR_WIDTH    : integer    := 8;
         C_oVideo_TDATA_WIDTH      : integer    := 32;
@@ -121,6 +122,12 @@ architecture arch_imp of vfp_v1_0 is
     signal config_number_44    : integer := 100;
     signal config_number_45    : integer := 0;
     signal config_number_20    : integer := 0;
+    signal config_contrast_val : integer := 0;
+    signal config_contrast_num : integer := 0;
+    signal config_contrast_1   : integer := 0;
+    signal config_contrast_2   : integer := 0;
+    signal config_contrast_3   : integer := 0;
+    signal config_contrast_4   : integer := 0;
     signal ccx                 : channel;
     signal ccy                 : channel;
     signal ccc1                : channel;
@@ -156,6 +163,31 @@ architecture arch_imp of vfp_v1_0 is
     signal ccc38               : channel;
     signal ccc39               : channel;
     signal ccc40               : channel;
+    signal ccc41               : channel;
+    signal ccc42               : channel;
+    signal ccc43               : channel;
+    signal ccc44               : channel;
+    signal ccc45               : channel;
+    signal ccc46               : channel;
+    signal ccc47               : channel;
+    signal ccc48               : channel;
+    signal ccc49               : channel;
+    signal ccc50               : channel;
+    signal cmyk1               : cmyk_channel;
+    signal cmyk2               : cmyk_channel;
+    signal cmyk3               : cmyk_channel;
+    signal cmyk4               : cmyk_channel;
+    signal cmyk5               : cmyk_channel;
+    signal cmyk6               : cmyk_channel;
+    signal P_SAT               : integer;
+    signal N_SAT               : integer;
+    signal RGB_VAL             : integer;
+    signal CONTRAST_EN         : integer;
+    signal N_SAT_VAL           : integer;
+    signal N_VAL               : integer;
+    signal cymk_key_red        : integer;
+    signal cymk_key_gre        : integer;
+    signal cymk_key_blu        : integer;
 begin
 ------------------------------------------------------------
 --                                                VFP_CONFIG
@@ -248,7 +280,6 @@ port map (
        -- cord_y       <= cord1y;
     -- end if;
 -- end process;
-    
 ------------------------------------------------------------
 --                                     CONFIGURATION SIGNALS
 ------------------------------------------------------------
@@ -270,9 +301,45 @@ process (ivideo_aclk)begin
         config_frame_width              <= to_integer((unsigned(wr_regs.cfigReg19(15 downto 0))));
         config_frame_height             <= to_integer((unsigned(wr_regs.cfigReg19(31 downto 16))));
         config_number_20                <= to_integer((unsigned(wr_regs.cfigReg20)));
+        config_contrast_val             <= to_integer((unsigned(wr_regs.cfigReg21(15 downto 0))));
+        config_contrast_num             <= to_integer((unsigned(wr_regs.cfigReg21(31 downto 16))));
         config_number_43                <= to_integer((unsigned(wr_regs.cfigReg43)));
         config_number_44                <= to_integer((unsigned(wr_regs.cfigReg44)));
         config_number_45                <= to_integer((unsigned(wr_regs.cfigReg45)));
+    end if;
+end process;
+------------------------------------------------------------
+--                                         CONTRAST_SELECTOR
+------------------------------------------------------------
+process (ivideo_aclk)begin
+    if rising_edge(ivideo_aclk) then
+        if(config_contrast_num = 1) then
+           config_contrast_1  <= config_contrast_val;
+        elsif(config_contrast_num = 2)then
+           config_contrast_2  <= config_contrast_val;
+        elsif(config_contrast_num = 3)then
+           config_contrast_3  <= config_contrast_val;
+        elsif(config_contrast_num = 4)then
+           config_contrast_4  <= config_contrast_val;
+        elsif(config_contrast_num = 5)then
+           P_SAT         <= config_contrast_val;
+        elsif(config_contrast_num = 6)then
+           N_SAT         <= config_contrast_val;
+        elsif(config_contrast_num = 7)then
+           RGB_VAL       <= config_contrast_val;
+        elsif(config_contrast_num = 8)then
+           CONTRAST_EN   <= config_contrast_val;
+        elsif(config_contrast_num = 9)then
+           N_SAT_VAL     <= config_contrast_val;
+        elsif(config_contrast_num = 10)then
+           N_VAL         <= config_contrast_val;
+        elsif(config_contrast_num = 11)then
+           cymk_key_red  <= config_contrast_val;
+        elsif(config_contrast_num = 12)then
+           cymk_key_gre  <= config_contrast_val;
+        elsif(config_contrast_num = 13)then
+           cymk_key_blu  <= config_contrast_val;
+        end if;
     end if;
 end process;
 ------------------------------------------------------------
@@ -347,12 +414,59 @@ port map(
     tpSelect      => config_number_44,
     oRgb          => ccc2);
 ------------------------------------------------------------
+--                                                RGB_TO_RYB
+------------------------------------------------------------
+rgb_to_ryb1_inst  : rgb_to_ryb
+generic map (
+    i_data_width          => 8)
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => ccc1,
+    oRgb                  => ccc42);
+------------------------------------------------------------
+--                                                  RGB2CMYK
+------------------------------------------------------------
+rgb2cmyk1_inst  : rgb2cmyk
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    cymk_key_red          => cymk_key_red,
+    cymk_key_gre          => cymk_key_gre,
+    cymk_key_blu          => cymk_key_blu,
+    iRgb                  => ccc1,
+    oRgb                  => cmyk1);
+------------------------------------------------------------
+--                                                  CMYK2RGB
+------------------------------------------------------------
+cmyk2rgb1_inst  : cmyk2rgb
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => cmyk1,
+    oRgb                  => ccc46);
+------------------------------------------------------------
+--                                        SATURATION_EXPOSER
+------------------------------------------------------------
+rgb_saturation_exposer1_inst  : rgb_saturation_exposer
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    P_SAT                 => P_SAT,
+    N_SAT                 => N_SAT,
+    RGB_VAL               => RGB_VAL,
+    CONTRAST_EN           => CONTRAST_EN,
+    N_SAT_VAL             => N_SAT_VAL,
+    N_VAL                 => N_VAL,
+    iRgb                  => ccc1,
+    oRgb                  => ccc43);
+------------------------------------------------------------
 --                                      RGB_CHANNEL_SELECTOR
 ------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
         if(config_number_14 = 0) then
-            ccc3            <= ccc1;
+           ccc3             <= ccc1;
         elsif(config_number_14 = 1)then
            ccc3.red         <= ccy.green;
            ccc3.green       <= ccy.blue;
@@ -361,22 +475,26 @@ process (ivideo_aclk)begin
            ccc3.eol         <= ccy.eol;
            ccc3.sof         <= ccy.sof;
            ccc3.eof         <= ccy.eof;
+        elsif(config_number_14 = 2)then
+           ccc3             <= ccc42;
+        elsif(config_number_14 = 3)then
+           ccc3             <= ccc43;
+        elsif(config_number_14 = 4)then
+           ccc3             <= ccc46;
         else
-            ccc3            <= ccc2;
+           ccc3             <= ccc2;
         end if;
     end if;
 end process;
-
 ------------------------------------------------------------
 --                                                   RGB2HSV
 ------------------------------------------------------------
-rgb_4_hsv_inst  : rgb_2_hsv
+rgb2hsv_inst  : rgb2hsv
 port map(
    clk                  => ivideo_aclk,
-   rst                  => ivideo_aresetn,
+   reset                => ivideo_aresetn,
    iRgb                 => ccc3,
-   oHSV                 => ccc37,
-   oHSV_YCB             => open);
+   oHsl                 => ccc37);
 ------------------------------------------------------------
 --                                                      CCM2
 ------------------------------------------------------------
@@ -401,8 +519,6 @@ port map(
    reset              => ivideo_aresetn,
    iHsl               => ccc5,
    oRgb               => ccc38);
-
-
 ------------------------------------------------------------
 --                                                      CCM1
 ------------------------------------------------------------
@@ -419,17 +535,78 @@ port map(
     iRgb                  => ccc38,
     oRgb                  => ccc4);
 ------------------------------------------------------------
---                                              SOBEL_FILTER
+--                                              RGB_CONTRAST
 ------------------------------------------------------------
-rgb_contrast_brightness_2_inst: rgb_contrast_brightness_level_1
-generic map (
-   contrast_val          => to_sfixed(1.40,15,-3),
-   exposer_val           => 0)
+rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level
 port map (                  
    clk                   => ivideo_aclk,
    rst_l                 => ivideo_aresetn,
+   contrast              => config_contrast_1,
    iRgb                  => ccc4,
    oRgb                  => ccc15);
+------------------------------------------------------------
+--                                                  RGB2CMYK
+------------------------------------------------------------
+rgb2cmyk2_inst  : rgb2cmyk
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    cymk_key_red          => cymk_key_red,
+    cymk_key_gre          => cymk_key_gre,
+    cymk_key_blu          => cymk_key_blu,
+    iRgb                  => ccc15,
+    oRgb                  => cmyk2);
+------------------------------------------------------------
+--                                                  CMYK2RGB
+------------------------------------------------------------
+cmyk2rgb2_inst  : cmyk2rgb
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => cmyk2,
+    oRgb                  => ccc47);
+------------------------------------------------------------
+--                                                  RGB2CMYK
+------------------------------------------------------------
+rgb2cmyk3_inst  : rgb2cmyk
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    cymk_key_red          => 50,
+    cymk_key_gre          => 50,
+    cymk_key_blu          => 50,
+    iRgb                  => ccc15,
+    oRgb                  => cmyk3);
+------------------------------------------------------------
+--                                                  CMYK2RGB
+------------------------------------------------------------
+cmyk2rgb3_inst  : cmyk2rgb
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => cmyk3,
+    oRgb                  => ccc48);
+------------------------------------------------------------
+--                                                  RGB2CMYK
+------------------------------------------------------------
+rgb2cmyk4_inst  : rgb2cmyk
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    cymk_key_red          => 80,
+    cymk_key_gre          => 80,
+    cymk_key_blu          => 80,
+    iRgb                  => ccc15,
+    oRgb                  => cmyk4);
+------------------------------------------------------------
+--                                                  CMYK2RGB
+------------------------------------------------------------
+cmyk2rgb4_inst  : cmyk2rgb
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => cmyk4,
+    oRgb                  => ccc49);
 ------------------------------------------------------------
 --                                              SOBEL_FILTER
 ------------------------------------------------------------
@@ -441,8 +618,24 @@ process (ivideo_aclk)begin
             ccc8           <= ccc14;
         elsif(config_number_17 = 2)then
             ccc8           <= ccc15;
-        else
+        elsif(config_number_17 = 3)then
             ccc8           <= ccc4;
+        elsif(config_number_17 = 4)then
+            ccc8           <= ccc34;
+        elsif(config_number_17 = 5)then
+            ccc8           <= ccc41;
+        elsif(config_number_17 = 6)then
+            ccc8           <= ccc42;
+        elsif(config_number_17 = 7)then
+            ccc8           <= ccc46;
+        elsif(config_number_17 = 8)then
+            ccc8           <= ccc47;
+        elsif(config_number_17 = 9)then
+            ccc8           <= ccc48;
+        elsif(config_number_17 = 10)then
+            ccc8           <= ccc49;
+        else
+            ccc8           <= ccc3;
         end if;
     end if;
 end process;
@@ -530,13 +723,11 @@ end process;
 ------------------------------------------------------------
 --                                              RGB_CONTRAST
 ------------------------------------------------------------
-rgb_contrast_brightness_1_inst: rgb_contrast_brightness_level_1
-generic map (
-   contrast_val          => to_sfixed(1.40,15,-3),
-   exposer_val           => 0)
+rgb_contrast_brightness_3_inst: rgb_contrast_brightness_level
 port map (                  
    clk                   => ivideo_aclk,
    rst_l                 => ivideo_aresetn,
+   contrast              => config_contrast_3,
    iRgb                  => ccc10,
    oRgb                  => ccc9);
 ------------------------------------------------------------
@@ -550,8 +741,68 @@ generic map(
 port map(
    clk                  => ivideo_aclk,
    rst_l                => ivideo_aresetn,
-   iRgb                 => ccc4,
+   iRgb                 => ccc3,
    oRgb                 => ccc33);
+------------------------------------------------------------
+--                                                      CCM3
+------------------------------------------------------------
+balance_ccm_inst  : ccm
+generic map (
+    data_width              => 8,
+    i_k_config_number       => 8)
+port map(
+    clk                   => ivideo_aclk,
+    rst_l                 => ivideo_aresetn,
+    k_config_number       => k_config_number_3,
+    coefficients_in       => coefficients_in_3,
+    coefficients_out      => coefficients_out_3,
+    iRgb                  => ccc33,
+    oRgb                  => ccc12);
+------------------------------------------------------------
+--                                         SYNC RGB CHANNELS
+------------------------------------------------------------
+ccm_syncr_inst  : sync_frames
+generic map(
+    pixelDelay          => 5)
+port map(
+    clk                 => ivideo_aclk,
+    reset               => ivideo_aresetn,
+    iRgb                => ccc12,
+    oRgb                => ccc17);
+------------------------------------------------------------
+--                                              RGB_CONTRAST
+------------------------------------------------------------
+rgb_contrast_brightness_4_inst: rgb_contrast_brightness_level
+port map (                  
+    clk               => ivideo_aclk,
+    rst_l             => ivideo_aresetn,
+    contrast          => config_contrast_4,
+    iRgb              => ccc12,
+    oRgb              => ccc16);
+------------------------------------------------------------
+--                                      RGB_CHANNEL_SELECTOR
+------------------------------------------------------------
+process (ivideo_aclk)begin
+    if rising_edge(ivideo_aclk) then
+        if(config_number_14 = 5) then
+           ccc7.red   <= ccc17.red;  --non contrast Luma
+           ccc7.green <= ccc16.green;--contrast CB
+           ccc7.blue  <= ccc16.blue; --contrast CR
+           ccc7.valid <= ccc16.valid;
+           ccc7.eol   <= ccc16.eol;
+           ccc7.sof   <= ccc16.sof;
+           ccc7.eof   <= ccc16.eof;
+        else
+           ccc7.red   <= ccc17.red;
+           ccc7.green <= ccc17.green;
+           ccc7.blue  <= ccc17.blue;
+           ccc7.valid <= ccc17.valid;
+           ccc7.eol   <= ccc17.eol;
+           ccc7.sof   <= ccc17.sof;
+           ccc7.eof   <= ccc17.eof;
+        end if;
+    end if;
+end process;
 ------------------------------------------------------------
 --                                                 YCBCR2RGB
 ------------------------------------------------------------
@@ -559,10 +810,51 @@ ycbcr2rgb_inst  : ycbcr2rgb
 port map(
    clk                 => ivideo_aclk,
    rst_l               => ivideo_aresetn,
-   iRgb                => ccc33,
+   iRgb                => ccc7,
    oRgb                => ccc34);
 ------------------------------------------------------------
---                                              RGB_SELECTOR
+--                                                RGB_TO_RYB
+------------------------------------------------------------
+rgb_to_ryb_inst  : rgb_to_ryb
+generic map (
+    i_data_width              => 8)
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    iRgb                  => ccc34,
+    oRgb                  => ccc41);
+------------------------------------------------------------
+--                                        SATURATION_EXPOSER
+------------------------------------------------------------
+rgb_saturation_exposer2_inst  : rgb_saturation_exposer
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    P_SAT                 => P_SAT,
+    N_SAT                 => N_SAT,
+    RGB_VAL               => RGB_VAL,
+    CONTRAST_EN           => CONTRAST_EN,
+    N_SAT_VAL             => N_SAT_VAL,
+    N_VAL                 => N_VAL,
+    iRgb                  => ccc8,
+    oRgb                  => ccc44);
+------------------------------------------------------------
+--                                        SATURATION_EXPOSER
+------------------------------------------------------------
+rgb_saturation_exposer3_inst  : rgb_saturation_exposer
+port map(
+    clk                   => ivideo_aclk,
+    reset                 => ivideo_aresetn,
+    P_SAT                 => P_SAT,
+    N_SAT                 => N_SAT,
+    RGB_VAL               => RGB_VAL,
+    CONTRAST_EN           => CONTRAST_EN,
+    N_SAT_VAL             => N_SAT_VAL,
+    N_VAL                 => N_VAL,
+    iRgb                  => ccc31,
+    oRgb                  => ccc45);
+------------------------------------------------------------
+--                                                  SELECTOR
 ------------------------------------------------------------
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
@@ -614,26 +906,23 @@ process (ivideo_aclk)begin
             ccc11           <= ccc38;
         elsif(config_number_16 = 23)then
             ccc11           <= ccy;
+        elsif(config_number_16 = 24)then
+            ccc11           <= ccc41;
+        elsif(config_number_16 = 25)then
+            ccc11           <= ccc44;
+        elsif(config_number_16 = 26)then
+            ccc11           <= ccc45;
+        elsif(config_number_16 = 27)then
+            ccc11           <= ccc46;
+        elsif(config_number_16 = 28)then
+            ccc11           <= ccc47;
+        elsif(config_number_16 = 29)then
+            ccc11           <= ccc48;
         else
             ccc11           <= ccc32;
         end if;
     end if;
 end process;
-------------------------------------------------------------
---                                                      CCM3
-------------------------------------------------------------
-balance_ccm_inst  : ccm
-generic map (
-    data_width              => 8,
-    i_k_config_number       => 8)
-port map(
-    clk                   => ivideo_aclk,
-    rst_l                 => ivideo_aresetn,
-    k_config_number       => k_config_number_3,
-    coefficients_in       => coefficients_in_3,
-    coefficients_out      => coefficients_out_3,
-    iRgb                  => ccc11,
-    oRgb                  => ccc12);
 -- process(config_number_19,ccc12)begin
     -- if(config_number_19=0)then
        -- ccc39.red         <= ccc12.red;
@@ -666,36 +955,24 @@ port map(
 ------------------------------------------------------------
    ovideo_tstrb           <= ivideo_tstrb(2 downto 0);
    ovideo_tkeep           <= ivideo_tkeep(2 downto 0);
-   ovideo_tdata           <= ccc12.red(9 downto 2) & ccc12.green(9 downto 2) & ccc12.blue(9 downto 2);
-   ovideo_tvalid          <= ccc12.valid;
-   ovideo_tuser           <= ccc12.sof;
-   ovideo_tlast           <= ccc12.eol;
+   ovideo_tdata           <= ccc11.red(9 downto 2) & ccc11.green(9 downto 2) & ccc11.blue(9 downto 2);
+   ovideo_tvalid          <= ccc11.valid;
+   ovideo_tuser           <= ccc11.sof;
+   ovideo_tlast           <= ccc11.eol;
    o1video_tstrb          <= ivideo_tstrb(2 downto 0);
    o1video_tkeep          <= ivideo_tkeep(2 downto 0);
-   o1video_tdata          <= ccc12.green(9 downto 2) & ccc12.blue(9 downto 2) & ccc12.red(9 downto 2);
-   o1video_tvalid         <= ccc12.valid;
-   o1video_tuser          <= ccc12.sof;
-   o1video_tlast          <= ccc12.eol;
-   rgb_fr_plw_red         <= "00" & ccc12.red(9 downto 2);
-   rgb_fr_plw_gre         <= "00" & ccc12.green(9 downto 2);
-   rgb_fr_plw_blu         <= "00" & ccc12.blue(9 downto 2);
-   rgb_fr_plw_sof         <= ccc12.sof;
-   rgb_fr_plw_eol         <= ccc12.eol;
-   rgb_fr_plw_eof         <= ccc12.eof;
-   rgb_fr_plw_val         <= ccc12.valid;
+   o1video_tdata          <= ccc11.green(9 downto 2) & ccc11.blue(9 downto 2) & ccc11.red(9 downto 2);
+   o1video_tvalid         <= ccc11.valid;
+   o1video_tuser          <= ccc11.sof;
+   o1video_tlast          <= ccc11.eol;
+   rgb_fr_plw_red         <= "00" & ccc11.red(9 downto 2);
+   rgb_fr_plw_gre         <= "00" & ccc11.green(9 downto 2);
+   rgb_fr_plw_blu         <= "00" & ccc11.blue(9 downto 2);
+   rgb_fr_plw_sof         <= ccc11.sof;
+   rgb_fr_plw_eol         <= ccc11.eol;
+   rgb_fr_plw_eof         <= ccc11.eof;
+   rgb_fr_plw_val         <= ccc11.valid;
 end arch_imp;
-
-
-
-
-
-
-
-
-
-
-
-
 --library ieee;
 --use ieee.std_logic_1164.all;
 --use ieee.numeric_std.all;

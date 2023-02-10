@@ -3016,8 +3016,8 @@ process (clk) begin
         end if;
     end if;
 end process;
-oRgb.valid <= rgbSyncValid(27);
-oRgb.eol   <= rgbSyncEol(27);
-oRgb.sof   <= rgbSyncSof(27);
-oRgb.eof   <= rgbSyncEof(27);
+oRgb.valid <= rgbSyncValid(25);
+oRgb.eol   <= rgbSyncEol(25);
+oRgb.sof   <= rgbSyncSof(25);
+oRgb.eof   <= rgbSyncEof(25);
 end architecture;

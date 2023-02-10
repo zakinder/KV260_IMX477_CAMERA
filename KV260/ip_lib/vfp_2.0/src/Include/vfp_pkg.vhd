@@ -16,6 +16,14 @@ package vfp_pkg is
     function int_sum(l, r: integer)                                 return integer;
     function int_prod(l, r: integer)                                return integer;
     function int_div(l, r: integer)                                 return integer;
+    function max3(a : integer; b : integer; c : integer)            return integer;
+    function mid3(a : integer; b : integer; c : integer)            return integer;
+    function min3(a : integer; b : integer; c : integer)            return integer;
+    function domain(r: integer)                                     return integer;
+    function domain_limits(r: integer)                              return integer;
+    function covert_to_upper_limit(r: integer)                      return integer;
+    function set_range(l, r: integer)                               return integer;
+    function u_to_integer(r: std_logic_vector)                      return integer;
     function max(l, r: integer)                                     return integer;
     function min(l, r: integer)                                     return integer;
     function max_select(l, r: integer)                              return integer;
@@ -375,6 +383,71 @@ package body vfp_pkg is
         end if;
     end;
     ----------------------------------------------------------------------------------------------------
+    function min3(a : integer; b : integer; c : integer) return integer is
+        variable result : integer;
+    begin
+		if a < b then
+            result := a;
+        else
+            result := b;
+        end if;
+        if c < result then
+            result := c;
+        end if;
+        return result;
+    end function min3;
+    function mid3(a : integer; b : integer; c : integer) return integer is
+        variable result : integer;
+    begin
+		if a >= b and a <= c then
+            result := a;
+        elsif a <= b and a >= c then
+            result := a;
+        elsif b >= a and b <= c then
+            result := b;
+        elsif b <= a and b >= c then
+            result := b;
+        elsif c >= a and c <= b then
+            result := c;
+        else
+            result := c;
+        end if;
+        return result;
+    end function mid3;
+    function max3(a : integer; b : integer; c : integer) return integer is
+        variable result : integer;
+    begin
+        if a > b then
+            result := a;
+        else
+            result := b;
+        end if;
+        if c > result then
+            result := c;
+        end if;
+        return result;
+    end function max3;
+    function domain(r: integer) return integer is
+        begin
+        if r > 256 then
+            return 255;
+        elsif r < 0 then
+            return 1;
+        else
+            return r;
+        end if;
+    end;
+    function domain_limits(r: integer) return integer is
+        begin
+        if r >= 255 then
+            return 255;
+        elsif r < 1 then
+            return 0;
+        else
+            return r;
+        end if;
+    end;
+    ----------------------------------------------------------------------------------------------------
     function max(l, r: integer) return integer is
         begin
         if l > r then
@@ -411,6 +484,22 @@ package body vfp_pkg is
         end if;
     end;
     ----------------------------------------------------------------------------------------------------
+    function set_range(l, r: integer) return integer is
+        begin
+        if l > 255 then
+            return abs(l-r);
+        else
+            return (l+r);
+        end if;
+    end;
+    function covert_to_upper_limit(r: integer) return integer is
+        begin
+            return abs(255-r);
+    end;
+    function u_to_integer(r: std_logic_vector) return integer is
+        begin
+            return to_integer(unsigned(r));
+    end;
     function int_delta(l, r: integer) return integer is
         begin
             return (l-r);

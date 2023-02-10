@@ -94,7 +94,7 @@ entity rgb2ycbcr is
     rst_l     : in  std_logic;
     iRgb      : in channel;
     oRgb      : out channel);
-end rgb2ycbcr;
+end rgb2ycbcr; 
 architecture imp of rgb2ycbcr is
   constant C_1_PRE : unsigned(i_precision-1 downto 0) := to_unsigned(1, i_precision);
   -- Coefficients as 0.32 format 32-bit fixeds point numbers

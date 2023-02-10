@@ -1340,6 +1340,19 @@ type channel is record
     green            : std_logic_vector(9 downto 0);
     blue             : std_logic_vector(9 downto 0);
 end record;
+type cmyk_channel is record
+    valid            : std_logic;
+    sof              : std_logic;
+    eol              : std_logic;
+    eof              : std_logic;
+    xcnt             : integer;
+    ycnt             : integer;
+    cyan             : std_logic_vector(9 downto 0);
+    magenta          : std_logic_vector(9 downto 0);
+    yellow           : std_logic_vector(9 downto 0);
+    keyblack         : std_logic_vector(9 downto 0);
+end record;
+
 type channel_8bi is record
     valid            : std_logic;
     sof              : std_logic;
@@ -2248,5 +2261,42 @@ type s_channel is record
     red              : signed(8 downto 0);
     green            : signed(8 downto 0);
     blue             : signed(8 downto 0);
+end record;
+type inteChannel is record
+    red              : integer;
+    green            : integer;
+    blue             : integer;
+    valid            : std_logic;
+end record;
+type inteCmykChannel is record
+    cyan             : integer;
+    magenta          : integer;
+    yellow           : integer;
+    keyblack         : integer;
+    valid            : std_logic;
+end record;
+type intePerChannel is record
+    was              : integer;
+end record;
+type type_intePerChannel is array(natural range <>) of intePerChannel;
+type type_inteChannel is array(natural range <>) of inteChannel;
+type type_inteCmykChannel is array(natural range <>) of inteCmykChannel;
+type contrast1_channel is record
+    valid            : std_logic;
+    red              : signed(16 downto 0);
+    green            : signed(16 downto 0);
+    blue             : signed(16 downto 0);
+end record;
+type contrast2_channel is record
+    valid            : std_logic;
+    red              : signed(33 downto 0);
+    green            : signed(33 downto 0);
+    blue             : signed(33 downto 0);
+end record;
+type hsv_channel is record
+    valid            : std_logic;
+    red              : std_logic_vector(8 downto 0);
+    green            : std_logic_vector(7 downto 0);
+    blue             : std_logic_vector(7 downto 0);
 end record;
 end package;

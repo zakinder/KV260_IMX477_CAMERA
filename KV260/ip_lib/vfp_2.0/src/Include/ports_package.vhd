@@ -1020,6 +1020,14 @@ port (
     iRgb                        : in channel;
     oRgbRemix                   : out channel);
 end component edge_6objects;
+component rgb_contrast_brightness_level is
+port (
+    clk       : in std_logic;
+    rst_l     : in std_logic;
+    contrast  : in integer;
+    iRgb      : in channel;
+    oRgb      : out channel);
+end component rgb_contrast_brightness_level;
 component detect_pixel is
 generic (
     i_data_width                : integer := 8);
@@ -1237,6 +1245,15 @@ port (
     iRgb               : in channel;
     oRgb               : out channel);
 end component ccm_frame;
+component rgb_to_ryb is
+generic (
+    i_data_width   : natural := 8);
+port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    iRgb           : in channel;
+    oRgb           : out channel);
+end component rgb_to_ryb;
 component clustering is
 generic (
     data_width     : integer := 8);
@@ -1324,7 +1341,15 @@ component square_root is
       data_in   : in  std_logic_vector(data_width-1 downto 0);
       data_out  : out std_logic_vector((data_width/2)-1 downto 0)); 
 end component square_root;
-
+component exposer is
+   generic (
+     i_data_width : integer := 32);
+   port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    iRgb           : in channel;
+    oRgb           : out channel);
+end component exposer;
 
 
 component ImageKernel is
@@ -1894,26 +1919,49 @@ port (
 end component;
 component div16_8_8 is
 generic(
-	A_WIDTH			: POSITIVE := 17;
-	B_WIDTH			: POSITIVE := 8;
-	RESULT_WIDTH	: POSITIVE := 9);
+	a_width			: positive := 17;
+	b_width			: positive := 8;
+	result_width	: positive := 9);
 port (
-	clk        : in  STD_LOGIC;
-	en         : in  STD_LOGIC;
-	rstn       : in  STD_LOGIC;
-	a          : in  STD_LOGIC_VECTOR( A_WIDTH-1 downto 0);
-	b          : in  STD_LOGIC_VECTOR( B_WIDTH-1 downto 0);
-	result     : out STD_LOGIC_VECTOR( RESULT_WIDTH-1 downto 0));
+	clk        : in  std_logic;
+	en         : in  std_logic;
+	rstn       : in  std_logic;
+	a          : in  std_logic_vector( a_width-1 downto 0);
+	b          : in  std_logic_vector( b_width-1 downto 0);
+	result     : out std_logic_vector( result_width-1 downto 0));
 end component;
-component divider
+component xil_mul is
+port (
+    CLK : IN STD_LOGIC;
+    A : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    P : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
+end component xil_mul;
+component xil_fixed_val_mul is
+port (
+    CLK : IN STD_LOGIC;
+    A : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    P : OUT STD_LOGIC_VECTOR(23 DOWNTO 0));
+end component xil_fixed_val_mul;
+component xil_div
   port (
     aclk : IN STD_LOGIC;
     s_axis_divisor_tvalid : IN STD_LOGIC;
-    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     s_axis_dividend_tvalid : IN STD_LOGIC;
     s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
-    m_axis_dout_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0));
+end component;
+component xil_fixed_val_div
+  port (
+    aclk : IN STD_LOGIC;
+    s_axis_divisor_tvalid : IN STD_LOGIC;
+    s_axis_divisor_tdata : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    s_axis_dividend_tvalid : IN STD_LOGIC;
+    s_axis_dividend_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    m_axis_dout_tvalid : OUT STD_LOGIC;
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
 end component;
 
@@ -1955,7 +2003,36 @@ component hsv_conv is
 		valid_out : OUT std_logic
 	);
 end component;
-
+component rgb_saturation_exposer is
+port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    P_SAT          : in integer;
+    N_SAT          : in integer;
+    RGB_VAL        : in integer;
+    CONTRAST_EN    : in integer;
+    N_SAT_VAL      : in integer;
+    N_VAL          : in integer;
+    iRgb           : in channel;
+    oRgb           : out channel);
+end component rgb_saturation_exposer;
+component cmyk2rgb is
+port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    iRgb           : in cmyk_channel;
+    oRgb           : out channel);
+end component cmyk2rgb;
+component rgb2cmyk is
+port (
+    clk            : in  std_logic;
+    reset          : in  std_logic;
+    cymk_key_red   : in integer;
+    cymk_key_gre   : in integer;
+    cymk_key_blu   : in integer;
+    iRgb           : in channel;
+    oRgb           : out cmyk_channel);
+end component rgb2cmyk;
 component delta_check is
 port (
     clk            : in std_logic;
