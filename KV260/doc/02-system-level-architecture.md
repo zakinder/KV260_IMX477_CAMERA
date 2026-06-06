@@ -4,17 +4,49 @@
 
 The FPGA Video Color Processing System is organized as a real-time camera-to-output video pipeline. The architecture receives image data from one or more camera sensors, converts the raw sensor stream into RGB video, applies programmable video-processing operations, and forwards the processed video stream to display or network output interfaces.
 
-The system is designed around a **capture–process–output** model:
+The system is designed around a **capture–process–output** model. The updated camera-input sequence is:
 
-Camera Input
-
-↓
-
-MIPI CSI-2 Receiver
+Processing System Camera Configuration
 
 ↓
 
-RAW Pixel Capture
+I2C Camera Register Setup
+
+↓
+
+Camera Sensor Input
+
+↓
+
+Lens and Image Capture
+
+↓
+
+RAW Bayer Pixel Generation
+
+↓
+
+MIPI CSI-2 Transmit from Camera
+
+↓
+
+MIPI D-PHY Lane Reception
+
+↓
+
+MIPI CSI-2 Receiver Packet Decode
+
+↓
+
+RAW10 Pixel Capture
+
+↓
+
+RAW Stream Formatting and Alignment
+
+↓
+
+Frame and Line Boundary Detection
 
 ↓
 
@@ -171,79 +203,71 @@ The PL is optimized for parallelism and pipelining. This allows the design to pr
 
 ## 2.4 High-Level Block Architecture
 
-The system-level architecture can be represented as a set of connected functional blocks:
+The system-level architecture can be represented as a sequence of connected functional blocks. Each block has a specific role in the camera-to-output video path and communicates with adjacent blocks through streaming or control interfaces.
 
-+------------------+
+### 2.4.1 Functional Block List
 
-\| Camera Sensor \|
+1. **Camera Sensor Block**
+   - Captures the external scene and generates raw image data.
+   - Supports MIPI-based camera sensors such as **IMX477** and **AR1335-class** devices.
+   - Provides RAW Bayer pixel data to the video input subsystem.
+   - Receives configuration commands from the Processing System through I2C.
 
-\| IMX477 / AR1335 \|
+2. **MIPI CSI-2 Receiver and MIPI D-PHY Block**
+   - Receives high-speed serialized camera data from the sensor.
+   - Uses the MIPI D-PHY layer for physical lane signaling.
+   - Converts CSI-2 packets into an internal video stream.
+   - Detects frame boundaries, line boundaries, virtual-channel information, and pixel-format metadata.
 
-+--------+---------+
+3. **RAW10 Capture and Stream Formatter Block**
+   - Captures RAW10 Bayer pixel data from the MIPI receiver.
+   - Unpacks, aligns, and formats raw sensor samples for downstream processing.
+   - Preserves pixel ordering, frame timing, and line timing.
+   - Converts the sensor-oriented stream into the internal AXI4-Stream video format.
 
-\|
+4. **Demosaic Processing Block**
+   - Converts the RAW Bayer stream into full RGB pixel values.
+   - Reconstructs red, green, and blue components for each output pixel.
+   - Uses neighboring pixel information and line buffering where required.
+   - Produces a synchronized RGB video stream for the processing pipeline.
 
-v
+5. **Video Color Processing Module Block**
+   - Performs the main programmable pixel-processing functions.
+   - Applies operations such as RGB gain, color correction, filtering, thresholding, color-space conversion, K-means clustering, and programmable color mapping.
+   - Operates directly on the RGB stream after demosaic conversion.
+   - Maintains deterministic throughput through pipelined hardware logic.
 
-+------------------+
+6. **Configuration and Control Block**
+   - Provides AXI4-Lite register access from the Processing System.
+   - Enables or disables processing functions.
+   - Selects active processing modes, palettes, thresholds, gains, and diagnostic settings.
+   - Separates low-speed software control from the high-speed pixel datapath.
 
-\| MIPI CSI-2 RX \|
+7. **Output Routing Block**
+   - Routes processed video to the selected output destination.
+   - Supports DisplayPort output, Ethernet UDP streaming, and VDMA-based memory transfer.
+   - Preserves video timing metadata such as frame start, line end, pixel order, and stream-valid state.
+   - Provides flexibility for display, network transmission, debugging, and memory-backed frame movement.
 
-\| + MIPI D-PHY \|
+### 2.4.2 High-Level Processing Order
 
-+--------+---------+
+The functional order of the video pipeline is:
 
-\|
+Camera Sensor → MIPI CSI-2 RX / D-PHY → RAW10 Capture / Stream Formatter → Demosaic Processing → Video Color Processing Module → Output Routing
 
-v
+### 2.4.3 Block-Level Responsibility Summary
 
-+------------------+
+| **Block** | **Primary Responsibility** | **Main Interface Type** |
+|----------|-----------------------------|--------------------------|
+| Camera Sensor | Captures image data and outputs RAW Bayer pixels | MIPI CSI-2, I2C |
+| MIPI CSI-2 RX / D-PHY | Receives and decodes camera video packets | MIPI CSI-2, AXI4-Stream |
+| RAW10 Capture / Stream Formatter | Aligns and formats RAW10 pixel data | AXI4-Stream |
+| Demosaic Processing | Converts RAW Bayer data into RGB pixels | AXI4-Stream |
+| Video Color Processing Module | Applies enhancement, filtering, conversion, clustering, and color mapping | AXI4-Stream, AXI4-Lite |
+| Configuration and Control | Provides software-controlled register access and diagnostics | AXI4-Lite |
+| Output Routing | Sends processed video to display, network, or memory output | AXI4-Stream, VDMA, Ethernet, DisplayPort |
 
-\| RAW10 Capture \|
-
-\| Stream Formatter \|
-
-+--------+---------+
-
-\|
-
-v
-
-+------------------+
-
-\| Demosaic Module \|
-
-\| RAW to RGB \|
-
-+--------+---------+
-
-\|
-
-v
-
-+------------------------------+
-
-\| Video Color Processing Module\|
-
-\| Filters / Color Conversion \|
-
-\| K-Means / Enhancement \|
-
-+--------+---------------------+
-
-\|
-
-v
-
-+-----------------------------+
-
-\| Output Routing \|
-
-\| DisplayPort / UDP / VDMA \|
-
-+-----------------------------+
-
-Each block performs a defined function and passes data to the next stage using a streaming interface. This structure supports modular development and allows individual processing blocks to be added, removed, or replaced.
+This block-based organization supports modular development. Individual blocks can be added, removed, bypassed, or replaced without redesigning the entire system pipeline.
 
 ## 2.5 AXI4-Stream Video Pipeline
 
