@@ -188,6 +188,28 @@ architecture arch_imp of vfp_v1_0 is
     signal cymk_key_red        : integer;
     signal cymk_key_gre        : integer;
     signal cymk_key_blu        : integer;
+    -- Packed RGB and its AXI sidebands advance together through the FIFO.
+    constant OVIDEO_FIFO_DEPTH : positive := 1024;
+    subtype ovideo_beat_t is std_logic_vector(31 downto 0);
+    type ovideo_fifo_t is array (0 to OVIDEO_FIFO_DEPTH - 1) of ovideo_beat_t;
+    signal ovideo_fifo          : ovideo_fifo_t;
+    signal ovideo_fifo_wr_ptr   : unsigned(9 downto 0) := (others => '0');
+    signal ovideo_fifo_rd_ptr   : unsigned(9 downto 0) := (others => '0');
+    signal ovideo_fifo_used     : natural range 0 to OVIDEO_FIFO_DEPTH := 0;
+    signal ovideo_fifo_in       : ovideo_beat_t;
+    signal ovideo_pending       : ovideo_beat_t;
+    signal ovideo_pending_valid : std_logic := '0';
+    signal ovideo_fifo_push     : std_logic;
+    signal ovideo_fifo_pop      : std_logic;
+    signal ovideo_fifo_resetn   : std_logic;
+    signal ovideo_fifo_overflow : std_logic := '0';
+
+    attribute ram_style : string;
+    attribute ram_style of ovideo_fifo : signal is "block";
+    attribute mark_debug : string;
+    attribute mark_debug of ovideo_fifo_overflow : signal is "true";
+
+
 begin
 ------------------------------------------------------------
 --                                                VFP_CONFIG
@@ -953,12 +975,70 @@ end process;
 ------------------------------------------------------------
 --                                                 VIDEO_OUT
 ------------------------------------------------------------
-   ovideo_tstrb           <= ivideo_tstrb(2 downto 0);
-   ovideo_tkeep           <= ivideo_tkeep(2 downto 0);
-   ovideo_tdata           <= ccc11.red(9 downto 2) & ccc11.green(9 downto 2) & ccc11.blue(9 downto 2);
-   ovideo_tvalid          <= ccc11.valid;
-   ovideo_tuser           <= ccc11.sof;
-   ovideo_tlast           <= ccc11.eol;
+   -- KV260 ties ivideo_aclk and ovideo_aclk to the same PL clock.
+   ovideo_fifo_resetn <= ivideo_aresetn and ovideo_aresetn;
+   ovideo_fifo_in <= ccc11.red(9 downto 2) & ccc11.green(9 downto 2) &
+                     ccc11.blue(9 downto 2) & ccc11.sof & ccc11.eol &
+                     ivideo_tkeep(2 downto 0) & ivideo_tstrb(2 downto 0);
+
+   ovideo_fifo_push <= '1' when ovideo_fifo_resetn = '1' and ccc11.valid = '1'
+                               and ovideo_fifo_used < OVIDEO_FIFO_DEPTH else '0';
+   -- Prefetch into the output register only when it is empty or accepted.
+   ovideo_fifo_pop <= '1' when ovideo_fifo_resetn = '1' and ovideo_fifo_used /= 0
+                              and (ovideo_pending_valid = '0' or ovideo_tready = '1')
+                     else '0';
+
+   ovideo_fifo_memory : process (ovideo_aclk)
+   begin
+       if rising_edge(ovideo_aclk) then
+           if ovideo_fifo_push = '1' then
+               ovideo_fifo(to_integer(ovideo_fifo_wr_ptr)) <= ovideo_fifo_in;
+           end if;
+           if ovideo_fifo_pop = '1' then
+               ovideo_pending <= ovideo_fifo(to_integer(ovideo_fifo_rd_ptr));
+           end if;
+       end if;
+   end process;
+
+   ovideo_fifo_control : process (ovideo_aclk)
+   begin
+       if rising_edge(ovideo_aclk) then
+           if ovideo_fifo_resetn = '0' then
+               ovideo_fifo_wr_ptr   <= (others => '0');
+               ovideo_fifo_rd_ptr   <= (others => '0');
+               ovideo_fifo_used     <= 0;
+               ovideo_pending_valid <= '0';
+               ovideo_fifo_overflow <= '0';
+           else
+               if ovideo_fifo_push = '1' then
+                   ovideo_fifo_wr_ptr <= ovideo_fifo_wr_ptr + 1;
+               elsif ccc11.valid = '1' then
+                   -- The upstream VFP pipeline cannot be paused.
+                   ovideo_fifo_overflow <= '1';
+               end if;
+
+               if ovideo_fifo_pop = '1' then
+                   ovideo_fifo_rd_ptr   <= ovideo_fifo_rd_ptr + 1;
+                   ovideo_pending_valid <= '1';
+               elsif ovideo_tready = '1' then
+                   ovideo_pending_valid <= '0';
+               end if;
+
+               if ovideo_fifo_push = '1' and ovideo_fifo_pop = '0' then
+                   ovideo_fifo_used <= ovideo_fifo_used + 1;
+               elsif ovideo_fifo_push = '0' and ovideo_fifo_pop = '1' then
+                   ovideo_fifo_used <= ovideo_fifo_used - 1;
+               end if;
+           end if;
+       end if;
+   end process;
+
+   ovideo_tvalid <= ovideo_pending_valid and ovideo_fifo_resetn;
+   ovideo_tdata  <= ovideo_pending(31 downto 8);
+   ovideo_tuser  <= ovideo_pending(7);
+   ovideo_tlast  <= ovideo_pending(6);
+   ovideo_tkeep  <= ovideo_pending(5 downto 3);
+   ovideo_tstrb  <= ovideo_pending(2 downto 0);
    o1video_tstrb          <= ivideo_tstrb(2 downto 0);
    o1video_tkeep          <= ivideo_tkeep(2 downto 0);
    o1video_tdata          <= ccc11.green(9 downto 2) & ccc11.blue(9 downto 2) & ccc11.red(9 downto 2);
