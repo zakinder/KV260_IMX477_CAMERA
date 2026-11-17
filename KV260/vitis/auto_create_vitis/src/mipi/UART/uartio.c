@@ -2,13 +2,25 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/unistd.h>
-#include "../menu/config_defines.h"
+#include "xuartps_hw.h"
+#include "../LWIP/lwip_app.h"
+#include "../MENU/config_defines.h"
+static u8 uart_read_byte(u32 uart_address)
+{
+    if (uart_address != UART_BASEADDR)
+        return 0;
+
+    /* Keep every existing prompt, including multi-byte arrow keys, cooperative. */
+    do {
+        lwip_stream_poll();
+    } while (!XUartPs_IsReceiveData(uart_address));
+
+    return (u8)XUartPs_ReadReg(uart_address, XUARTPS_FIFO_OFFSET);
+}
+
 char uart_per_char_read(u32 uart_address)
 {
-	char uart_io;
-    if (uart_address == UART_BASEADDR)
-        read(1, (char*) &uart_io, 1);
-    return (uart_io);
+    return (char)uart_read_byte(uart_address);
 }
 void per_write_reg_3values(u32 offset, u8 index, u8 red, u8 gre, u8 blu)
 {
@@ -98,19 +110,13 @@ char* char_to_uart(char auserinput[])
 	// char uart_s = uart_per_char_read(UART_BASEADDR);
     // return (uart_s);
 // }
-u8 uart_per_byte_read(u32 uart_address) 
+u8 uart_per_byte_read(u32 uart_address)
 {
-    u8 uart_io;
-    if (uart_address == UART_BASEADDR)
-        read(1, (char*) &uart_io, 1);
-    return (uart_io);
+    return uart_read_byte(uart_address);
 }
 u16 uart_two_byte_read(u32 uart_address)
 {
-    u16 uart_io;
-    if (uart_address == UART_BASEADDR)
-        read(1, (char*) &uart_io, 1);
-    return (uart_io);
+    return uart_read_byte(uart_address);
 }
 u8 keypress_to_uart(u32 uart_address)
 {

@@ -1,0 +1,521 @@
+Xilinx Zynq MP First Stage Boot Loader
+Release 2022.1   Nov 15 2026  -  17:12:23
+PMU-FW is not running, certain applications may not be supported.
+
+********************************************
+Test Input Stream: 3840x2160@30Hz (RGB)
+********************************************
+Got IMX477 Camera Sensor ID: 77
+Connected Camera = 477
+HPD event .......... ! Connected.
+Lane count =    2
+Link rate =     20
+
+Starting Training...
+        ! Training succeeded.
+DONE!
+.......... HPD event
+Generating Overlay.....
+Successfully ran DPDMA Video Example Test
+VDMA circular test: MM2S_CR=0x0001018b S2MM_CR=0x0001018b
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA summary: write_seen=0x7 read_seen=0x7 MM2S_SR=0x00011000 S2MM_SR=0x00011000
+Rotating 4K MJPEG test ready.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+>>
+link speed for phy address 5: 1000
+Continuous 4K JPEG started.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+Configuring default IP 192.168.0.10
+Board IP: 192.168.0.10
+Netmask : 255.255.255.0
+Gateway : 192.168.0.1
+JPEG 3840x2160: 1212585 bytes, VDMA capture 58731 us, cache invalidate 1468 us, RGB copy 45811 us, encode 194936 us
+JPEG rotating capture: store=2
+JPEG frame 1 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1213048 bytes, VDMA capture 65954 us, cache invalidate 1469 us, RGB copy 45861 us, encode 194459 us
+JPEG rotating capture: store=1
+JPEG frame 2 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212328 bytes, VDMA capture 49692 us, cache invalidate 1468 us, RGB copy 45851 us, encode 194396 us
+JPEG rotating capture: store=0
+JPEG frame 3 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211638 bytes, VDMA capture 49940 us, cache invalidate 1750 us, RGB copy 45837 us, encode 194412 us
+JPEG rotating capture: store=2
+JPEG frame 4 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212192 bytes, VDMA capture 82993 us, cache invalidate 1468 us, RGB copy 45838 us, encode 194434 us
+JPEG rotating capture: store=1
+JPEG frame 5 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212470 bytes, VDMA capture 49921 us, cache invalidate 1468 us, RGB copy 45833 us, encode 194416 us
+JPEG rotating capture: store=0
+JPEG frame 6 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211595 bytes, VDMA capture 49801 us, cache invalidate 1468 us, RGB copy 45874 us, encode 194409 us
+JPEG rotating capture: store=2
+JPEG frame 7 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211827 bytes, VDMA capture 49899 us, cache invalidate 1468 us, RGB copy 45888 us, encode 194399 us
+JPEG rotating capture: store=1
+JPEG frame 8 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211667 bytes, VDMA capture 83261 us, cache invalidate 1750 us, RGB copy 45801 us, encode 194442 us
+JPEG rotating capture: store=0
+JPEG frame 9 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1213070 bytes, VDMA capture 49670 us, cache invalidate 1468 us, RGB copy 45813 us, encode 194424 us
+JPEG rotating capture: store=2
+JPEG frame 10 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212588 bytes, VDMA capture 49797 us, cache invalidate 1468 us, RGB copy 45886 us, encode 194466 us
+JPEG rotating capture: store=1
+JPEG frame 11 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212187 bytes, VDMA capture 49693 us, cache invalidate 1468 us, RGB copy 45854 us, encode 194501 us
+JPEG rotating capture: store=0
+JPEG frame 12 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212843 bytes, VDMA capture 83184 us, cache invalidate 1750 us, RGB copy 45803 us, encode 194465 us
+JPEG rotating capture: store=2
+JPEG frame 13 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212822 bytes, VDMA capture 49481 us, cache invalidate 1468 us, RGB copy 45871 us, encode 194442 us
+JPEG rotating capture: store=1
+JPEG frame 14 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212856 bytes, VDMA capture 49709 us, cache invalidate 1468 us, RGB copy 45849 us, encode 194482 us
+JPEG rotating capture: store=0
+JPEG frame 15 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217372 bytes, VDMA capture 49675 us, cache invalidate 1468 us, RGB copy 45847 us, encode 194637 us
+JPEG rotating capture: store=2
+JPEG frame 16 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215085 bytes, VDMA capture 82406 us, cache invalidate 1468 us, RGB copy 45842 us, encode 194597 us
+JPEG rotating capture: store=1
+JPEG frame 17 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216308 bytes, VDMA capture 49429 us, cache invalidate 1750 us, RGB copy 45837 us, encode 194766 us
+JPEG rotating capture: store=0
+JPEG frame 18 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216684 bytes, VDMA capture 48845 us, cache invalidate 1468 us, RGB copy 45853 us, encode 194733 us
+JPEG rotating capture: store=2
+JPEG frame 19 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216926 bytes, VDMA capture 48980 us, cache invalidate 1468 us, RGB copy 45917 us, encode 194591 us
+JPEG rotating capture: store=1
+JPEG frame 20 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217885 bytes, VDMA capture 82400 us, cache invalidate 1468 us, RGB copy 45809 us, encode 194803 us
+JPEG rotating capture: store=0
+JPEG frame 21 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217141 bytes, VDMA capture 48922 us, cache invalidate 1750 us, RGB copy 45833 us, encode 194818 us
+JPEG rotating capture: store=2
+JPEG frame 22 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216972 bytes, VDMA capture 48617 us, cache invalidate 1468 us, RGB copy 45894 us, encode 194623 us
+JPEG rotating capture: store=1
+JPEG frame 23 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215068 bytes, VDMA capture 49045 us, cache invalidate 1468 us, RGB copy 45864 us, encode 194564 us
+JPEG rotating capture: store=0
+JPEG frame 24 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216504 bytes, VDMA capture 82803 us, cache invalidate 1750 us, RGB copy 45802 us, encode 194556 us
+JPEG rotating capture: store=2
+JPEG frame 25 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216371 bytes, VDMA capture 49097 us, cache invalidate 1750 us, RGB copy 45867 us, encode 194604 us
+JPEG rotating capture: store=1
+JPEG frame 26 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216762 bytes, VDMA capture 48969 us, cache invalidate 1750 us, RGB copy 45844 us, encode 194591 us
+JPEG rotating capture: store=0
+JPEG frame 27 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217636 bytes, VDMA capture 48844 us, cache invalidate 1750 us, RGB copy 45854 us, encode 194569 us
+JPEG rotating capture: store=2
+JPEG frame 28 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216542 bytes, VDMA capture 82209 us, cache invalidate 1750 us, RGB copy 45858 us, encode 194556 us
+JPEG rotating capture: store=1
+JPEG frame 29 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217900 bytes, VDMA capture 48869 us, cache invalidate 1468 us, RGB copy 45828 us, encode 194622 us
+JPEG rotating capture: store=0
+JPEG frame 30 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217330 bytes, VDMA capture 49147 us, cache invalidate 1750 us, RGB copy 45837 us, encode 194640 us
+JPEG rotating capture: store=2
+JPEG frame 31 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216655 bytes, VDMA capture 82157 us, cache invalidate 1750 us, RGB copy 45828 us, encode 194603 us
+JPEG rotating capture: store=1
+JPEG frame 32 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217286 bytes, VDMA capture 48856 us, cache invalidate 1468 us, RGB copy 45813 us, encode 194607 us
+JPEG rotating capture: store=0
+JPEG frame 33 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217238 bytes, VDMA capture 49158 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194601 us
+JPEG rotating capture: store=2
+JPEG frame 34 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216996 bytes, VDMA capture 49137 us, cache invalidate 1468 us, RGB copy 45889 us, encode 194571 us
+JPEG rotating capture: store=1
+JPEG frame 35 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216509 bytes, VDMA capture 82460 us, cache invalidate 1468 us, RGB copy 45782 us, encode 194587 us
+JPEG rotating capture: store=0
+JPEG frame 36 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1218475 bytes, VDMA capture 49358 us, cache invalidate 1750 us, RGB copy 45802 us, encode 194590 us
+JPEG rotating capture: store=2
+JPEG frame 37 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216213 bytes, VDMA capture 48744 us, cache invalidate 1468 us, RGB copy 45883 us, encode 194781 us
+JPEG rotating capture: store=1
+JPEG frame 38 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216395 bytes, VDMA capture 49078 us, cache invalidate 1750 us, RGB copy 45860 us, encode 194624 us
+JPEG rotating capture: store=0
+JPEG frame 39 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216089 bytes, VDMA capture 82287 us, cache invalidate 1468 us, RGB copy 45779 us, encode 194588 us
+JPEG rotating capture: store=2
+JPEG frame 40 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217253 bytes, VDMA capture 49358 us, cache invalidate 1750 us, RGB copy 45852 us, encode 194601 us
+JPEG rotating capture: store=1
+JPEG frame 41 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217581 bytes, VDMA capture 48834 us, cache invalidate 1468 us, RGB copy 45842 us, encode 194617 us
+JPEG rotating capture: store=0
+JPEG frame 42 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217168 bytes, VDMA capture 49113 us, cache invalidate 1468 us, RGB copy 45849 us, encode 194604 us
+JPEG rotating capture: store=2
+JPEG frame 43 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216419 bytes, VDMA capture 82475 us, cache invalidate 1468 us, RGB copy 45832 us, encode 194604 us
+JPEG rotating capture: store=1
+JPEG frame 44 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215786 bytes, VDMA capture 49308 us, cache invalidate 1750 us, RGB copy 45801 us, encode 194576 us
+JPEG rotating capture: store=0
+JPEG frame 45 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216527 bytes, VDMA capture 49078 us, cache invalidate 1468 us, RGB copy 45821 us, encode 194596 us
+JPEG rotating capture: store=2
+JPEG frame 46 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216595 bytes, VDMA capture 49341 us, cache invalidate 1750 us, RGB copy 45883 us, encode 194572 us
+JPEG rotating capture: store=1
+JPEG frame 47 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217184 bytes, VDMA capture 82171 us, cache invalidate 1468 us, RGB copy 45789 us, encode 194564 us
+JPEG rotating capture: store=0
+JPEG frame 48 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215421 bytes, VDMA capture 49219 us, cache invalidate 1468 us, RGB copy 45811 us, encode 194584 us
+JPEG rotating capture: store=2
+JPEG frame 49 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216411 bytes, VDMA capture 49348 us, cache invalidate 1468 us, RGB copy 45877 us, encode 194591 us
+JPEG rotating capture: store=1
+JPEG frame 50 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216290 bytes, VDMA capture 49245 us, cache invalidate 1750 us, RGB copy 45844 us, encode 194572 us
+JPEG rotating capture: store=0
+JPEG frame 51 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217221 bytes, VDMA capture 82386 us, cache invalidate 1750 us, RGB copy 45790 us, encode 194599 us
+JPEG rotating capture: store=2
+JPEG frame 52 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1214975 bytes, VDMA capture 48903 us, cache invalidate 1750 us, RGB copy 45848 us, encode 194564 us
+JPEG rotating capture: store=1
+JPEG frame 53 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217172 bytes, VDMA capture 49195 us, cache invalidate 1468 us, RGB copy 45842 us, encode 194606 us
+JPEG rotating capture: store=0
+JPEG frame 54 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216750 bytes, VDMA capture 49120 us, cache invalidate 1468 us, RGB copy 45844 us, encode 194579 us
+JPEG rotating capture: store=2
+JPEG frame 55 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217661 bytes, VDMA capture 82504 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194627 us
+JPEG rotating capture: store=1
+JPEG frame 56 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216256 bytes, VDMA capture 49126 us, cache invalidate 1750 us, RGB copy 45801 us, encode 194589 us
+JPEG rotating capture: store=0
+JPEG frame 57 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217482 bytes, VDMA capture 49034 us, cache invalidate 1750 us, RGB copy 45841 us, encode 194583 us
+JPEG rotating capture: store=2
+JPEG frame 58 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215953 bytes, VDMA capture 48874 us, cache invalidate 1750 us, RGB copy 45877 us, encode 194574 us
+JPEG rotating capture: store=1
+JPEG frame 59 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217378 bytes, VDMA capture 82328 us, cache invalidate 1750 us, RGB copy 45783 us, encode 194601 us
+JPEG rotating capture: store=0
+JPEG frame 60 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216303 bytes, VDMA capture 48923 us, cache invalidate 1468 us, RGB copy 45816 us, encode 194593 us
+JPEG rotating capture: store=2
+JPEG frame 61 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217318 bytes, VDMA capture 49334 us, cache invalidate 1750 us, RGB copy 45867 us, encode 194649 us
+JPEG rotating capture: store=1
+JPEG frame 62 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217832 bytes, VDMA capture 48769 us, cache invalidate 1750 us, RGB copy 45864 us, encode 194618 us
+JPEG rotating capture: store=0
+JPEG frame 63 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217525 bytes, VDMA capture 82148 us, cache invalidate 1750 us, RGB copy 45793 us, encode 194634 us
+JPEG rotating capture: store=2
+JPEG frame 64 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217613 bytes, VDMA capture 48888 us, cache invalidate 1468 us, RGB copy 45854 us, encode 194745 us
+JPEG rotating capture: store=1
+JPEG frame 65 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216968 bytes, VDMA capture 48974 us, cache invalidate 1750 us, RGB copy 45839 us, encode 194643 us
+JPEG rotating capture: store=0
+JPEG frame 66 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216807 bytes, VDMA capture 48806 us, cache invalidate 1468 us, RGB copy 45853 us, encode 194637 us
+JPEG rotating capture: store=2
+JPEG frame 67 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217029 bytes, VDMA capture 82419 us, cache invalidate 1468 us, RGB copy 45837 us, encode 194608 us
+JPEG rotating capture: store=1
+JPEG frame 68 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216420 bytes, VDMA capture 49142 us, cache invalidate 1468 us, RGB copy 45810 us, encode 194591 us
+JPEG rotating capture: store=0
+JPEG frame 69 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216301 bytes, VDMA capture 49320 us, cache invalidate 1750 us, RGB copy 45832 us, encode 194566 us
+JPEG rotating capture: store=2
+JPEG frame 70 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216153 bytes, VDMA capture 49056 us, cache invalidate 1750 us, RGB copy 45894 us, encode 194566 us
+JPEG rotating capture: store=1
+JPEG frame 71 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216995 bytes, VDMA capture 82328 us, cache invalidate 1750 us, RGB copy 45783 us, encode 194567 us
+JPEG rotating capture: store=0
+JPEG frame 72 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216780 bytes, VDMA capture 48948 us, cache invalidate 1468 us, RGB copy 45808 us, encode 194741 us
+JPEG rotating capture: store=2
+JPEG frame 73 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217104 bytes, VDMA capture 48995 us, cache invalidate 1468 us, RGB copy 45876 us, encode 194590 us
+JPEG rotating capture: store=1
+JPEG frame 74 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216465 bytes, VDMA capture 49129 us, cache invalidate 1468 us, RGB copy 45850 us, encode 194786 us
+JPEG rotating capture: store=0
+JPEG frame 75 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1217775 bytes, VDMA capture 82455 us, cache invalidate 1750 us, RGB copy 45793 us, encode 194626 us
+JPEG rotating capture: store=2
+JPEG frame 76 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215735 bytes, VDMA capture 48855 us, cache invalidate 1750 us, RGB copy 45849 us, encode 194580 us
+JPEG rotating capture: store=1
+JPEG frame 77 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216797 bytes, VDMA capture 49018 us, cache invalidate 1468 us, RGB copy 45840 us, encode 194592 us
+JPEG rotating capture: store=0
+JPEG frame 78 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1215794 bytes, VDMA capture 49158 us, cache invalidate 1468 us, RGB copy 45833 us, encode 194542 us
+JPEG rotating capture: store=2
+JPEG frame 79 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216944 bytes, VDMA capture 82708 us, cache invalidate 1750 us, RGB copy 45830 us, encode 194581 us
+JPEG rotating capture: store=1
+JPEG frame 80 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216174 bytes, VDMA capture 48902 us, cache invalidate 1468 us, RGB copy 45816 us, encode 194595 us
+JPEG rotating capture: store=0
+JPEG frame 81 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216915 bytes, VDMA capture 49313 us, cache invalidate 1468 us, RGB copy 45838 us, encode 194573 us
+JPEG rotating capture: store=2
+JPEG frame 82 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216661 bytes, VDMA capture 49150 us, cache invalidate 1468 us, RGB copy 45899 us, encode 194596 us
+JPEG rotating capture: store=1
+JPEG frame 83 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1216705 bytes, VDMA capture 82412 us, cache invalidate 1468 us, RGB copy 45793 us, encode 194606 us
+JPEG rotating capture: store=0
+JPEG frame 84 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212592 bytes, VDMA capture 49201 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194450 us
+JPEG rotating capture: store=2
+JPEG frame 85 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211923 bytes, VDMA capture 49761 us, cache invalidate 1468 us, RGB copy 45888 us, encode 194458 us
+JPEG rotating capture: store=1
+JPEG frame 86 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212202 bytes, VDMA capture 49853 us, cache invalidate 1750 us, RGB copy 45837 us, encode 194403 us
+JPEG rotating capture: store=0
+JPEG frame 87 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211071 bytes, VDMA capture 83010 us, cache invalidate 1750 us, RGB copy 45796 us, encode 194433 us
+JPEG rotating capture: store=2
+JPEG frame 88 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211164 bytes, VDMA capture 49711 us, cache invalidate 1468 us, RGB copy 45845 us, encode 194379 us
+JPEG rotating capture: store=1
+JPEG frame 89 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212662 bytes, VDMA capture 49967 us, cache invalidate 1468 us, RGB copy 45850 us, encode 194436 us
+JPEG rotating capture: store=0
+JPEG frame 90 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212743 bytes, VDMA capture 49758 us, cache invalidate 1468 us, RGB copy 45851 us, encode 194410 us
+JPEG rotating capture: store=2
+JPEG frame 91 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211198 bytes, VDMA capture 83105 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194375 us
+JPEG rotating capture: store=1
+JPEG frame 92 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212799 bytes, VDMA capture 49980 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194428 us
+JPEG rotating capture: store=0
+JPEG frame 93 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211610 bytes, VDMA capture 49795 us, cache invalidate 1468 us, RGB copy 45844 us, encode 194435 us
+JPEG rotating capture: store=2
+JPEG frame 94 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211623 bytes, VDMA capture 49900 us, cache invalidate 1468 us, RGB copy 45894 us, encode 194448 us
+JPEG rotating capture: store=1
+JPEG frame 95 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212232 bytes, VDMA capture 83180 us, cache invalidate 1468 us, RGB copy 45783 us, encode 194436 us
+JPEG rotating capture: store=0
+JPEG frame 96 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211400 bytes, VDMA capture 49983 us, cache invalidate 1750 us, RGB copy 45810 us, encode 194382 us
+JPEG rotating capture: store=2
+JPEG frame 97 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210702 bytes, VDMA capture 49715 us, cache invalidate 1468 us, RGB copy 45882 us, encode 194373 us
+JPEG rotating capture: store=1
+JPEG frame 98 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211608 bytes, VDMA capture 50089 us, cache invalidate 1468 us, RGB copy 45857 us, encode 194407 us
+JPEG rotating capture: store=0
+JPEG frame 99 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211391 bytes, VDMA capture 83255 us, cache invalidate 1468 us, RGB copy 45786 us, encode 194391 us
+JPEG rotating capture: store=2
+JPEG frame 100 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1213062 bytes, VDMA capture 50003 us, cache invalidate 1468 us, RGB copy 45856 us, encode 194435 us
+JPEG rotating capture: store=1
+JPEG frame 101 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212469 bytes, VDMA capture 49740 us, cache invalidate 1468 us, RGB copy 45861 us, encode 194410 us
+JPEG rotating capture: store=0
+JPEG frame 102 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212519 bytes, VDMA capture 49769 us, cache invalidate 1468 us, RGB copy 45863 us, encode 194413 us
+JPEG rotating capture: store=2
+JPEG frame 103 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212347 bytes, VDMA capture 83097 us, cache invalidate 1468 us, RGB copy 45835 us, encode 194414 us
+JPEG rotating capture: store=1
+JPEG frame 104 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210284 bytes, VDMA capture 49943 us, cache invalidate 1750 us, RGB copy 45820 us, encode 194354 us
+JPEG rotating capture: store=0
+JPEG frame 105 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1211587 bytes, VDMA capture 49907 us, cache invalidate 1468 us, RGB copy 45853 us, encode 194386 us
+JPEG rotating capture: store=2
+JPEG frame 106 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211761 bytes, VDMA capture 49961 us, cache invalidate 1468 us, RGB copy 45892 us, encode 194405 us
+JPEG rotating capture: store=1
+JPEG frame 107 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211580 bytes, VDMA capture 83220 us, cache invalidate 1468 us, RGB copy 45796 us, encode 194410 us
+JPEG rotating capture: store=0
+JPEG frame 108 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210510 bytes, VDMA capture 49988 us, cache invalidate 1468 us, RGB copy 45823 us, encode 194335 us
+JPEG rotating capture: store=2
+JPEG frame 109 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211528 bytes, VDMA capture 50191 us, cache invalidate 1750 us, RGB copy 45889 us, encode 194381 us
+JPEG rotating capture: store=1
+JPEG frame 110 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210069 bytes, VDMA capture 49645 us, cache invalidate 1468 us, RGB copy 45850 us, encode 194394 us
+JPEG rotating capture: store=0
+JPEG frame 111 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211746 bytes, VDMA capture 83431 us, cache invalidate 1468 us, RGB copy 45796 us, encode 194425 us
+JPEG rotating capture: store=2
+JPEG frame 112 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211313 bytes, VDMA capture 49962 us, cache invalidate 1468 us, RGB copy 45862 us, encode 194384 us
+JPEG rotating capture: store=1
+JPEG frame 113 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211468 bytes, VDMA capture 49941 us, cache invalidate 1468 us, RGB copy 45837 us, encode 194414 us
+JPEG rotating capture: store=0
+JPEG frame 114 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211052 bytes, VDMA capture 49952 us, cache invalidate 1468 us, RGB copy 45854 us, encode 194391 us
+JPEG rotating capture: store=2
+JPEG frame 115 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211411 bytes, VDMA capture 83266 us, cache invalidate 1468 us, RGB copy 45847 us, encode 194474 us
+JPEG rotating capture: store=1
+JPEG frame 116 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210783 bytes, VDMA capture 49864 us, cache invalidate 1468 us, RGB copy 45827 us, encode 194402 us
+JPEG rotating capture: store=0
+JPEG frame 117 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210818 bytes, VDMA capture 50124 us, cache invalidate 1468 us, RGB copy 45849 us, encode 194382 us
+JPEG rotating capture: store=2
+JPEG frame 118 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211219 bytes, VDMA capture 50080 us, cache invalidate 1750 us, RGB copy 45884 us, encode 194435 us
+JPEG rotating capture: store=1
+JPEG frame 119 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211921 bytes, VDMA capture 82926 us, cache invalidate 1468 us, RGB copy 45788 us, encode 194512 us
+JPEG rotating capture: store=0
+JPEG frame 120 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210929 bytes, VDMA capture 49879 us, cache invalidate 1750 us, RGB copy 45821 us, encode 194395 us
+JPEG rotating capture: store=2
+JPEG frame 121 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211546 bytes, VDMA capture 49842 us, cache invalidate 1750 us, RGB copy 45860 us, encode 194422 us
+JPEG rotating capture: store=1
+JPEG frame 122 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210594 bytes, VDMA capture 49622 us, cache invalidate 1468 us, RGB copy 45849 us, encode 194371 us
+JPEG rotating capture: store=0
+JPEG frame 123 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211839 bytes, VDMA capture 83462 us, cache invalidate 1750 us, RGB copy 45794 us, encode 194412 us
+JPEG rotating capture: store=2
+JPEG frame 124 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211011 bytes, VDMA capture 49698 us, cache invalidate 1750 us, RGB copy 45854 us, encode 194368 us
+JPEG rotating capture: store=1
+JPEG frame 125 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210298 bytes, VDMA capture 49697 us, cache invalidate 1468 us, RGB copy 45827 us, encode 194390 us
+JPEG rotating capture: store=0
+JPEG frame 126 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1209330 bytes, VDMA capture 50151 us, cache invalidate 1468 us, RGB copy 45849 us, encode 194313 us
+JPEG rotating capture: store=2
+JPEG frame 127 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1209412 bytes, VDMA capture 83687 us, cache invalidate 1750 us, RGB copy 45844 us, encode 194342 us
+JPEG rotating capture: store=1
+JPEG frame 128 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1209948 bytes, VDMA capture 49984 us, cache invalidate 1468 us, RGB copy 45829 us, encode 194368 us
+JPEG rotating capture: store=0
+JPEG frame 129 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211320 bytes, VDMA capture 50143 us, cache invalidate 1468 us, RGB copy 45838 us, encode 194412 us
+JPEG rotating capture: store=2
+JPEG frame 130 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211588 bytes, VDMA capture 49919 us, cache invalidate 1468 us, RGB copy 45889 us, encode 194433 us
+JPEG rotating capture: store=1
+JPEG frame 131 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212214 bytes, VDMA capture 83217 us, cache invalidate 1468 us, RGB copy 45796 us, encode 194428 us
+JPEG rotating capture: store=0
+JPEG frame 132 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211765 bytes, VDMA capture 49984 us, cache invalidate 1750 us, RGB copy 45832 us, encode 194417 us
+JPEG rotating capture: store=2
+JPEG frame 133 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1211637 bytes, VDMA capture 49650 us, cache invalidate 1468 us, RGB copy 45877 us, encode 194393 us
+JPEG rotating capture: store=1
+JPEG frame 134 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1212070 bytes, VDMA capture 49906 us, cache invalidate 1468 us, RGB copy 45856 us, encode 194369 us
+JPEG rotating capture: store=0
+JPEG frame 135 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210459 bytes, VDMA capture 83305 us, cache invalidate 1750 us, RGB copy 45800 us, encode 194380 us
+JPEG rotating capture: store=2
+JPEG frame 136 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1210818 bytes, VDMA capture 49897 us, cache invalidate 1750 us, RGB copy 45860 us, encode 194418 us
+JPEG rotating capture: store=1
+JPEG frame 137 sent to UDP 8081 in 133 ms.
+JPEG 3840x2160: 1211528 bytes, VDMA capture 49806 us, cache invalidate 1750 us, RGB copy 45854 us, encode 194399 us
+JPEG rotating capture: store=0
+JPEG frame 138 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210662 bytes, VDMA capture 49670 us, cache invalidate 1468 us, RGB copy 45858 us, encode 194389 us
+JPEG rotating capture: store=2
+kJPEG frame 139 sent to UDP 8081 in 134 ms.
+JPEG 3840x2160: 1210648 bytes, VDMA capture 83412 us, cache invalidate 1750 us, RGB copy 45835 us, encode 194387 us
+JPEG rotating capture: store=1
+>>
+Continuous 4K JPEG stopped after current frame.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+JPEG frame 140 sent to UDP 8081 in 167 ms.
+

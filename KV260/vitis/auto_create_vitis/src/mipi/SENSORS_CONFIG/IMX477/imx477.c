@@ -10,6 +10,7 @@
 #include <xil_types.h>
 #include <stdio.h>
 #include <xstatus.h>
+#include <xil_io.h>
 #include "xiicps.h"
 #include "xparameters.h"
 #include "sleep.h"
@@ -86,7 +87,7 @@
 #define IMX477_DIG_GAIN_B_L	            0x0213
 #define IMX477_DIG_GAIN_GB_U	        0x0214
 #define IMX477_DIG_GAIN_GB_L	        0x0215
-#define REG_DLY  0xffff
+#define REG_DLY  SEQUENCE_WAIT_MS
 struct reginfo ONETIME_INIT_REG_SET1[]={
 	{REG_EXCK_FREQ_MSB, 0x18},
 	{REG_EXCK_FREQ_LSB, 0x00},
@@ -3120,13 +3121,19 @@ struct reginfo RGB_COLOR1_SETTINGS[] =
 {
 	/*GAIN SETTING*/
 	{REG_MODE_SEL,                         0x00},
-	{REG_DIG_GAIN_GR_U,                    0x01},
-	{REG_DIG_GAIN_R_U,                     0x04},
-	{REG_DIG_GAIN_B_U,                     0x01},
-	{REG_DIG_GAIN_GB_U,                    0x01},
+	/* Startup digital gains from the per-channel UART readback. */
+	{REG_DIG_GAIN_GR_U,                    0x05},
+	{REG_DIG_GAIN_GR_L,                    0x90},
+	{REG_DIG_GAIN_R_U,                     0x07},
+	{REG_DIG_GAIN_R_L,                     0xB0},
+	{REG_DIG_GAIN_B_U,                     0x07},
+	{REG_DIG_GAIN_B_L,                     0xB0},
+	{REG_DIG_GAIN_GB_U,                    0x04},
+	{REG_DIG_GAIN_GB_L,                    0x00},
+	{REG_DIG_GLOBAL_GAIN,                  0x00},
 	{REG_ANA_GLOBAL_GAIN_U,                0x02},
-	{REG_ANA_GLOBAL_GAIN_L,                0x4B},
-	{REG_COARSE_INTEGRATION_TIME_MSB,      0x7F},
+	{REG_ANA_GLOBAL_GAIN_L,                0xAB},
+	/* Keep the coarse exposure programmed by the selected mode table. */
 	{REG_MODE_SEL,                         0x01},
 	{SEQUENCE_END,                         0x00}
 };
@@ -3258,8 +3265,12 @@ struct reginfo RESOLUTION5_4056X3040_REGS[] =
 	{REG_DIG_GAIN_B_L , 0x00},
 	{REG_DIG_GAIN_GB_U , 0x02},
 	{REG_DIG_GAIN_GB_L, 0x00},
-	{REG_COARSE_INTEGRATION_TIME_MSB , 0x02},
-	{REG_COARSE_INTEGRATION_TIME_LSB, 0x00},
+	/* Verified 4K startup timing and coarse exposure. */
+	{REG_FRAME_LEN_MSB, 0x0C},
+	{REG_FRAME_LEN_LSB, 0x14},
+	{REG_CIT_LSHIFT_LONG_EXP, 0x00},
+	{REG_COARSE_INTEGRATION_TIME_MSB, 0x0A},
+	{REG_COARSE_INTEGRATION_TIME_LSB, 0xCB},
 	{REG_MODE_SEL, 0x01},
 	{SEQUENCE_END, 0x00}
 };
@@ -3454,4 +3465,473 @@ int imx477_write_read_register(XIicPs *IicInstance,u16 addr,u8 data)
 	imx477_write_register(IicInstance,addr,data);
 	imx477_read_register(IicInstance,addr);
 	return 0;
+}
+
+
+static int tuning_wait_idle(XIicPs *iic)
+{
+    for (unsigned int elapsed = 0; elapsed < 200; ++elapsed) {
+        if (!XIicPs_BusIsBusy(iic))
+            return IMX477_TUNING_OK;
+        usleep(10);
+    }
+    return IMX477_TUNING_IO_ERROR;
+}
+
+static int tuning_recover_bus(XIicPs *iic)
+{
+    XIicPs_ClearOptions(iic, XIICPS_REP_START_OPTION);
+    XIicPs_Abort(iic);
+    if (XIicPs_SetSClk(iic, 100000U) != XST_SUCCESS)
+        return IMX477_TUNING_IO_ERROR;
+    return tuning_wait_idle(iic);
+}
+
+static int tuning_read_transfer(XIicPs *iic, u16 device, u16 reg,
+                                u8 *data, int repeated_start)
+{
+    u8 address[] = {(u8)(reg >> 8), (u8)reg};
+
+    for (unsigned int attempt = 0; attempt < 2; ++attempt) {
+        if (tuning_wait_idle(iic) == IMX477_TUNING_OK) {
+            int result;
+
+            usleep(100);
+            if (repeated_start)
+                XIicPs_SetOptions(iic, XIICPS_REP_START_OPTION);
+            result = XIicPs_MasterSendPolled(iic, address, sizeof(address), device);
+            XIicPs_ClearOptions(iic, XIICPS_REP_START_OPTION);
+            if (result == XST_SUCCESS &&
+                XIicPs_MasterRecvPolled(iic, data, 1, device) == XST_SUCCESS &&
+                tuning_wait_idle(iic) == IMX477_TUNING_OK)
+                return IMX477_TUNING_OK;
+        }
+
+        if (tuning_recover_bus(iic) != IMX477_TUNING_OK) {
+            printf("IMX477 I2C recovery failed at 0x%04X.\r\n", (unsigned)reg);
+            break;
+        }
+    }
+    return IMX477_TUNING_IO_ERROR;
+}
+
+static int tuning_read_at(XIicPs *iic, u16 device, u16 reg, u8 *data)
+{
+    return tuning_read_transfer(iic, device, reg, data, 1);
+}
+
+static u16 tuning_device;
+
+static int tuning_identify(XIicPs *iic)
+{
+    static const u16 candidates[] = {0x1A, 0x10};
+
+    tuning_device = 0;
+    for (unsigned int i = 0; i < sizeof(candidates) / sizeof(candidates[0]); ++i) {
+        u8 high, low;
+        u16 device = candidates[i];
+
+        if (tuning_read_at(iic, device, REG_MODEL_ID_MSB, &high) != IMX477_TUNING_OK ||
+            tuning_read_at(iic, device, REG_MODEL_ID_LSB, &low) != IMX477_TUNING_OK) {
+            printf("IMX477 probe at 0x%02X: chip ID read failed.\r\n", (unsigned)device);
+            continue;
+        }
+        if ((((u16)high << 8) | low) == IMX477_CHIP_ID) {
+            tuning_device = device;
+            return IMX477_TUNING_OK;
+        }
+        printf("IMX477 probe at 0x%02X: chip ID %02X %02X (expected 04 77).\r\n",
+               (unsigned)device, (unsigned)high, (unsigned)low);
+    }
+    return IMX477_TUNING_IO_ERROR;
+}
+
+void imx477_tuning_diagnose(XIicPs *iic)
+{
+    static const u16 registers[] = {
+        REG_MODEL_ID_MSB, REG_MODEL_ID_LSB, REG_MODE_SEL,
+        REG_FRAME_LEN_MSB, REG_FRAME_LEN_LSB,
+        REG_LINE_LEN_MSB, REG_LINE_LEN_LSB,
+        REG_X_OUT_SIZE_MSB, REG_X_OUT_SIZE_LSB,
+        REG_Y_OUT_SIZE_MSB, REG_Y_OUT_SIZE_LSB,
+        REG_COARSE_INTEGRATION_TIME_MSB, REG_COARSE_INTEGRATION_TIME_LSB,
+        REG_ANA_GLOBAL_GAIN_U, REG_ANA_GLOBAL_GAIN_L
+    };
+
+    if (tuning_identify(iic) != IMX477_TUNING_OK)
+        return;
+
+    printf("IMX477 I2C 0x%02X | register | repeated START | STOP then START\r\n",
+           (unsigned)tuning_device);
+    for (unsigned int i = 0; i < sizeof(registers) / sizeof(registers[0]); ++i) {
+        u8 repeated_value = 0, stop_value = 0;
+        int repeated_status = tuning_read_transfer(iic, tuning_device, registers[i],
+                                                   &repeated_value, 1);
+        int stop_status = tuning_read_transfer(iic, tuning_device, registers[i],
+                                               &stop_value, 0);
+
+        printf("0x%04X | ", (unsigned)registers[i]);
+        if (repeated_status == IMX477_TUNING_OK)
+            printf("%02X", (unsigned)repeated_value);
+        else
+            printf("ERR");
+        printf(" | ");
+        if (stop_status == IMX477_TUNING_OK)
+            printf("%02X\r\n", (unsigned)stop_value);
+        else
+            printf("ERR\r\n");
+    }
+}
+
+static int tuning_read(XIicPs *iic, u16 reg, u8 *data)
+{
+    int result = tuning_read_at(iic, tuning_device, reg, data);
+
+    if (result != IMX477_TUNING_OK)
+        printf("IMX477 read failed at 0x%04X (device 0x%02X).\r\n",
+               (unsigned)reg, (unsigned)tuning_device);
+    return result;
+}
+
+static int tuning_read_u16(XIicPs *iic, u16 reg, u16 *value)
+{
+    u8 high, low;
+
+    if (tuning_read(iic, reg, &high) != IMX477_TUNING_OK ||
+        tuning_read(iic, reg + 1, &low) != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+    *value = ((u16)high << 8) | low;
+    return IMX477_TUNING_OK;
+}
+
+static int tuning_write_byte(XIicPs *iic, u16 reg, u8 value)
+{
+    u8 bytes[] = {(u8)(reg >> 8), (u8)reg, value};
+
+    if (tuning_wait_idle(iic) == IMX477_TUNING_OK &&
+        XIicPs_MasterSendPolled(iic, bytes, sizeof(bytes), tuning_device) == XST_SUCCESS &&
+        tuning_wait_idle(iic) == IMX477_TUNING_OK)
+        return IMX477_TUNING_OK;
+
+    tuning_recover_bus(iic);
+    printf("IMX477 write failed at 0x%04X (data 0x%02X)\r\n",
+           (unsigned)reg, (unsigned)value);
+    return IMX477_TUNING_IO_ERROR;
+}
+
+static int tuning_check_timing(XIicPs *iic, u16 *frame_lines)
+{
+    u16 output_lines;
+
+    if (tuning_read_u16(iic, REG_FRAME_LEN_MSB, frame_lines) != IMX477_TUNING_OK ||
+        tuning_read_u16(iic, REG_Y_OUT_SIZE_MSB, &output_lines) != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+    if (output_lines != VIDEO1_ROWS || *frame_lines < output_lines) {
+        printf("IMX477 invalid timing readback: frame %u lines, output %u lines (expected output %u).\r\n",
+               (unsigned)*frame_lines, (unsigned)output_lines, (unsigned)VIDEO1_ROWS);
+        return IMX477_TUNING_RANGE_ERROR;
+    }
+    return IMX477_TUNING_OK;
+}
+
+static int tuning_write_register(XIicPs *iic, u16 reg, u16 value, int wide)
+{
+    u16 previous, actual, frame_before, frame_after;
+    u8 mode, byte;
+    int result;
+
+    result = tuning_check_timing(iic, &frame_before);
+    if (result != IMX477_TUNING_OK)
+        return result;
+
+    if (tuning_read(iic, REG_MODE_SEL, &mode) != IMX477_TUNING_OK ||
+        (wide ? tuning_read_u16(iic, reg, &previous) : tuning_read(iic, reg, &byte))
+            != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+
+    if (!wide)
+        previous = byte;
+    result = tuning_write_byte(iic, REG_MODE_SEL, IMX477_MODE_STANDBY);
+    if (result == IMX477_TUNING_OK) {
+        result = tuning_write_byte(iic, reg, (u8)(wide ? value >> 8 : value));
+        if (result == IMX477_TUNING_OK && wide)
+            result = tuning_write_byte(iic, reg + 1, (u8)value);
+        if (result == IMX477_TUNING_OK) {
+            if (wide) {
+                result = tuning_read_u16(iic, reg, &actual);
+            } else {
+                result = tuning_read(iic, reg, &byte);
+                actual = byte;
+            }
+            if (result == IMX477_TUNING_OK && actual != value) {
+                printf("IMX477 readback 0x%04X at 0x%04X, expected 0x%04X\r\n",
+                       (unsigned)actual, (unsigned)reg, (unsigned)value);
+                result = IMX477_TUNING_IO_ERROR;
+            }
+        }
+        if (result == IMX477_TUNING_OK) {
+            result = tuning_read_u16(iic, REG_FRAME_LEN_MSB, &frame_after);
+            if (result == IMX477_TUNING_OK && frame_after != (reg == REG_FRAME_LEN_MSB ? value : frame_before)) {
+                printf("IMX477 unexpected frame-length change: %u to %u lines.\r\n",
+                       (unsigned)frame_before, (unsigned)frame_after);
+                result = IMX477_TUNING_IO_ERROR;
+            }
+        }
+        if (result != IMX477_TUNING_OK) {
+            tuning_write_byte(iic, reg, (u8)(wide ? previous >> 8 : previous));
+            if (wide)
+                tuning_write_byte(iic, reg + 1, (u8)previous);
+        }
+    }
+
+    if (tuning_write_byte(iic, REG_MODE_SEL, mode) != IMX477_TUNING_OK) {
+        printf("IMX477 failed to restore its stream mode.\r\n");
+        return IMX477_TUNING_IO_ERROR;
+    }
+    return result;
+}
+
+int imx477_tuning_read(XIicPs *iic, Imx477TuningStatus *status)
+{
+    int result = tuning_identify(iic);
+
+    if (result != IMX477_TUNING_OK)
+        return result;
+    result = tuning_check_timing(iic, &status->frame_lines);
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (tuning_read_u16(iic, REG_COARSE_INTEGRATION_TIME_MSB,
+                        &status->exposure_lines) != IMX477_TUNING_OK ||
+        tuning_read_u16(iic, REG_ANA_GLOBAL_GAIN_U,
+                        &status->analog_gain_code) != IMX477_TUNING_OK ||
+        tuning_read(iic, REG_CIT_LSHIFT_LONG_EXP, &status->long_exposure_shift) != IMX477_TUNING_OK ||
+        tuning_read(iic, REG_DOL_HDR_EN, &status->dol_enable) != IMX477_TUNING_OK ||
+        tuning_read(iic, REG_DOL_HDR_NUM, &status->dol_mode) != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+    status->i2c_address = (u8)tuning_device;
+    return IMX477_TUNING_OK;
+}
+
+int imx477_tuning_exposure(XIicPs *iic, unsigned int preset)
+{
+    static const u8 percentages[] = {5, 15, 35, 60, 90};
+    Imx477TuningStatus status;
+    unsigned int max_lines;
+    unsigned int lines;
+    int result;
+
+    if (preset >= sizeof(percentages) / sizeof(percentages[0]))
+        return IMX477_TUNING_RANGE_ERROR;
+    result = imx477_tuning_read(iic, &status);
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (status.dol_enable & 1U)
+        return IMX477_TUNING_HDR_ACTIVE;
+    if (status.frame_lines < IMX477_EXPOSURE_MIN + IMX477_EXPOSURE_OFFSET)
+        return IMX477_TUNING_RANGE_ERROR;
+
+    max_lines = status.frame_lines - IMX477_EXPOSURE_OFFSET;
+    lines = max_lines * percentages[preset] / 100U;
+    if (lines < IMX477_EXPOSURE_MIN)
+        lines = IMX477_EXPOSURE_MIN;
+    return tuning_write_register(iic, REG_COARSE_INTEGRATION_TIME_MSB, (u16)lines, 1);
+}
+
+int imx477_tuning_brightness(XIicPs *iic, unsigned int preset)
+{
+    static const u16 gain_codes[] = {0, 341, 512, 683, 768};
+    Imx477TuningStatus status;
+    int result;
+
+    if (preset >= sizeof(gain_codes) / sizeof(gain_codes[0]))
+        return IMX477_TUNING_RANGE_ERROR;
+    result = imx477_tuning_read(iic, &status);
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (status.dol_enable & 1U)
+        return IMX477_TUNING_HDR_ACTIVE;
+    return tuning_write_register(iic, REG_ANA_GLOBAL_GAIN_U, gain_codes[preset], 1);
+}
+
+/* CSI-2 RX 0 AXI-Lite base in the KV260 zusys block design. */
+#define IMX477_CSI_RX_BASE 0xA0000000U
+
+static void tuning_print_csi_rx(const char *label)
+{
+    u32 core = Xil_In32(IMX477_CSI_RX_BASE + 0x10U);
+    u32 irq = Xil_In32(IMX477_CSI_RX_BASE + 0x24U);
+
+    printf("%s: long packets %u, core 0x%08X, ISR 0x%08X\r\n",
+           label, (unsigned)(core >> 16), (unsigned)core, (unsigned)irq);
+    for (unsigned int vc = 0; vc < 4; ++vc) {
+        u32 info1 = Xil_In32(IMX477_CSI_RX_BASE + 0x60U + 8U * vc);
+        u32 info2 = Xil_In32(IMX477_CSI_RX_BASE + 0x64U + 8U * vc);
+
+        printf("VC%u: image info 1 0x%08X, last data type 0x%02X\r\n",
+               vc, (unsigned)info1, (unsigned)(info2 & 0x3fU));
+    }
+}
+
+int imx477_dol_probe(XIicPs *iic)
+{
+    /* Snapshot the affected registers so manual SDR tuning survives the probe. */
+    u8 saved[sizeof(sensor_4k_regs) / sizeof(sensor_4k_regs[0])];
+    Imx477TuningStatus status;
+    u8 stream_mode, enabled, mode;
+    unsigned int index;
+    int result = imx477_tuning_read(iic, &status);
+    int restore_result = IMX477_TUNING_OK;
+
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (status.dol_enable & 1U)
+        return IMX477_TUNING_HDR_ACTIVE;
+    if (tuning_read(iic, REG_MODE_SEL, &stream_mode) != IMX477_TUNING_OK ||
+        stream_mode != IMX477_MODE_STREAMING)
+        return IMX477_TUNING_IO_ERROR;
+
+    for (index = 0; sensor_4k_regs[index].reg != SEQUENCE_END; ++index) {
+        u16 reg = sensor_4k_regs[index].reg;
+
+        if (reg != REG_MODE_SEL && reg != REG_DLY &&
+            tuning_read(iic, reg, &saved[index]) != IMX477_TUNING_OK)
+            return IMX477_TUNING_IO_ERROR;
+    }
+
+    tuning_print_csi_rx("SDR baseline");
+    result = tuning_write_byte(iic, REG_MODE_SEL, IMX477_MODE_STANDBY);
+    if (result == IMX477_TUNING_OK)
+        usleep(32000);
+    for (index = 0; result == IMX477_TUNING_OK &&
+                    sensor_4k_regs[index].reg != SEQUENCE_END; ++index) {
+        u16 reg = sensor_4k_regs[index].reg;
+
+        if (reg != REG_MODE_SEL && reg != REG_DLY)
+            result = tuning_write_byte(iic, reg, sensor_4k_regs[index].val);
+    }
+    if (result == IMX477_TUNING_OK)
+        result = tuning_write_byte(iic, REG_MODE_SEL, IMX477_MODE_STREAMING);
+    if (result == IMX477_TUNING_OK) {
+        usleep(100000);
+        if (tuning_read(iic, REG_DOL_HDR_EN, &enabled) != IMX477_TUNING_OK ||
+            tuning_read(iic, REG_DOL_HDR_NUM, &mode) != IMX477_TUNING_OK ||
+            enabled != 1 || mode != 1) {
+            printf("DOL mode readback failed.\r\n");
+            result = IMX477_TUNING_IO_ERROR;
+        } else {
+            tuning_print_csi_rx("DOL sample 1");
+            usleep(100000);
+            tuning_print_csi_rx("DOL sample 2");
+        }
+    }
+
+    if (tuning_write_byte(iic, REG_MODE_SEL, IMX477_MODE_STANDBY) != IMX477_TUNING_OK) {
+        printf("DOL probe could not stop the sensor for SDR restore. Reboot the board.\r\n");
+        return IMX477_TUNING_IO_ERROR;
+    }
+    usleep(32000);
+    while (index > 0) {
+        u16 reg = sensor_4k_regs[--index].reg;
+
+        if (reg != REG_MODE_SEL && reg != REG_DLY &&
+            tuning_write_byte(iic, reg, saved[index]) != IMX477_TUNING_OK)
+            restore_result = IMX477_TUNING_IO_ERROR;
+    }
+    if (restore_result != IMX477_TUNING_OK ||
+        tuning_write_byte(iic, REG_MODE_SEL, stream_mode) != IMX477_TUNING_OK) {
+        printf("SDR restore failed. Reboot the board.\r\n");
+        return IMX477_TUNING_IO_ERROR;
+    }
+    if (imx477_tuning_read(iic, &status) != IMX477_TUNING_OK || status.dol_enable & 1U) {
+        printf("SDR restore could not be verified. Reboot the board.\r\n");
+        return IMX477_TUNING_IO_ERROR;
+    }
+    printf("SDR timing restored.\r\n");
+    return result;
+}
+
+static const u16 digital_gain_registers[] = {
+    REG_DIG_GAIN_GR_U, REG_DIG_GAIN_R_U, REG_DIG_GAIN_B_U, REG_DIG_GAIN_GB_U
+};
+
+int imx477_digital_gain_read(XIicPs *iic, u16 gains[4], u8 *global)
+{
+    int result = tuning_identify(iic);
+
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (tuning_read(iic, REG_DIG_GLOBAL_GAIN, global) != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+    for (unsigned int channel = 0; channel < 4; ++channel) {
+        if (tuning_read_u16(iic, digital_gain_registers[channel], &gains[channel])
+            != IMX477_TUNING_OK)
+            return IMX477_TUNING_IO_ERROR;
+    }
+    return IMX477_TUNING_OK;
+}
+
+int imx477_digital_gain_set(XIicPs *iic, unsigned int channel, u16 gain)
+{
+    Imx477TuningStatus status;
+    int result;
+
+    /* Channel 4 selects the global-gain control byte. */
+    if (channel > 4 || (channel == 4 && gain > 1) ||
+        (channel < 4 && gain < 0x0100))
+        return IMX477_TUNING_RANGE_ERROR;
+    result = imx477_tuning_read(iic, &status);
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (status.dol_enable & 1U)
+        return IMX477_TUNING_HDR_ACTIVE;
+    if (channel == 4) {
+        u8 global;
+
+        result = tuning_read(iic, REG_DIG_GLOBAL_GAIN, &global);
+        if (result != IMX477_TUNING_OK)
+            return result;
+        return tuning_write_register(iic, REG_DIG_GLOBAL_GAIN,
+                                     (global & ~1U) | gain, 0);
+    }
+    return tuning_write_register(iic, digital_gain_registers[channel], gain, 1);
+}
+
+int imx477_video_timing(XIicPs *iic, u16 *width, u16 *height, u16 *frame_lines)
+{
+    Imx477TuningStatus status;
+    int result = imx477_tuning_read(iic, &status);
+
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if (tuning_read_u16(iic, REG_X_OUT_SIZE_MSB, width) != IMX477_TUNING_OK ||
+        tuning_read_u16(iic, REG_Y_OUT_SIZE_MSB, height) != IMX477_TUNING_OK)
+        return IMX477_TUNING_IO_ERROR;
+    *frame_lines = status.frame_lines;
+    return IMX477_TUNING_OK;
+}
+
+int imx477_video_set_frame_lines(XIicPs *iic, u16 frame_lines)
+{
+    Imx477TuningStatus status;
+    int result = imx477_tuning_read(iic, &status);
+
+    if (result != IMX477_TUNING_OK)
+        return result;
+    if ((status.dol_enable & 1U) || status.long_exposure_shift != 0)
+        return IMX477_TUNING_HDR_ACTIVE;
+    if (frame_lines < VIDEO1_ROWS + 48U || frame_lines > IMX477_FRAME_LENGTH_MAX)
+        return IMX477_TUNING_RANGE_ERROR;
+    if (status.exposure_lines > frame_lines - IMX477_EXPOSURE_OFFSET) {
+        result = tuning_write_register(iic, REG_COARSE_INTEGRATION_TIME_MSB,
+                                       frame_lines - IMX477_EXPOSURE_OFFSET, 1);
+        if (result != IMX477_TUNING_OK)
+            return result;
+        result = tuning_write_register(iic, REG_FRAME_LEN_MSB, frame_lines, 1);
+        if (result != IMX477_TUNING_OK &&
+            tuning_write_register(iic, REG_COARSE_INTEGRATION_TIME_MSB,
+                                  status.exposure_lines, 1) != IMX477_TUNING_OK)
+            printf("Could not restore the previous exposure.\r\n");
+        return result;
+    }
+    return tuning_write_register(iic, REG_FRAME_LEN_MSB, frame_lines, 1);
 }

@@ -6,7 +6,9 @@
 #include "../PLATFORM/platform_config.h"
 #include "xil_printf.h"
 #include "lwipopts.h"
-#include "sleep.h"
+#include "xtime_l.h"
+#include "lwip_app.h"
+#include "jpeg_snapshot.h"
 #include "../config.h"
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
@@ -19,8 +21,10 @@
 #include "../MENU/menu_calls.h"
 #include "../SENSORS_CONFIG/init_camera.h"
 #define UDP_BUFF_SIZE 1400
+/* Pace raw BMP packets to give the receiver time to drain its UDP queue. */
+#define DEFAULT_BMP_PACKET_DELAY_US 60
 u8 bmpbufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
-extern u8 *pFrames1[NUM_FRAMES];
+extern u32 *pFrames1[NUM_FRAMES];
 #define DEFAULT_IP_ADDRESS	"192.168.0.10"
 #define DEFAULT_IP_MASK		"255.255.255.0"
 #define DEFAULT_GW_ADDRESS	"192.168.0.1"
@@ -32,9 +36,9 @@ unsigned char ip_export[4];
 unsigned char mac_export[6];
 int start_udp(unsigned int port);
 int tx_bmp(const char *bmp, int bmp_length, int sn);
-void lwip_init();
+#if LWIP_DHCP
 extern volatile int dhcp_timoutcntr;
-err_t dhcp_start(struct netif *netif);
+#endif
 static struct netif server_netif;
 struct netif *netif;
 int stream_it;
@@ -64,101 +68,334 @@ static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 	if (!err)
 		xil_printf("Invalid default gateway address: %d\r\n", err);
 }
-int lwip_loop()
+static void bmp_write_le32(char field[4], u32 value)
 {
-
-	stream_it = 1;
-	delay     = 12;
-	WriteOneFrameEnd[0] = -1;
-	struct netif *netif;
-	ip_addr_t ipaddr, netmask, gw;
-	unsigned char mac_ethernet_address[] = {0x00,0x0a,0x35,0x00,0x01,0x02};
-	netif = &server_netif;
-	init_platform();
-	ipaddr.addr  = 0;
-	gw.addr      = 0;
-	netmask.addr = 0;
-	//xil_printf("\r\n\r\n");
-	lwip_init();
-	if (!xemac_add(netif, NULL, NULL, NULL, mac_ethernet_address,PLATFORM_EMAC_BASEADDR)) {
-		xil_printf("Error adding N/W interface\r\n");
-		return -1;
-	}
-	netif_set_default(netif);
-	platform_enable_interrupts();
-	netif_set_up(netif);
-	dhcp_start(netif);
-	dhcp_timoutcntr = 24;
-	while(((netif->ip_addr.addr) == 0) && (dhcp_timoutcntr > 0))
-		xemacif_input(netif);
-        if (dhcp_timoutcntr <= 0) {
-            if ((netif->ip_addr.addr) == 0) {
-                //xil_printf("DHCP Timeout\r\n");
-                //xil_printf("Configuring default IP of 192.168.1.10\r\n");
-                IP4_ADDR(&(netif->ip_addr),  192, 168,   0, 10);
-                IP4_ADDR(&(netif->netmask),  255, 255, 255,  0);
-                IP4_ADDR(&(netif->gw),       192, 168,   0,  1);
-            }
-        }
-	ipaddr.addr  = netif->ip_addr.addr;
-	gw.addr      = netif->gw.addr;
-	netmask.addr = netif->netmask.addr;
-	print_ip_settings(&ipaddr, &netmask, &gw);
-	memcpy(ip_export,&ipaddr, 4);
-	memcpy(mac_export,&mac_ethernet_address, 6);
-	start_udp(8080);
-	while (1) {
-		xemacif_input(netif);
-		if((WriteOneFrameEnd[0] >= 0))
-		{
-			int sn = 0;
-
-            memcpy(&bmpbufs,(u32)pFrames1[0],VIDEO2_MAX_FRAME);
-#if P540 == 1
-            tx_bmp((const char *)&BMODE_1920x540, 54,0);
-			for(int i=0;i<=(VIDEO2_MAX_FRAME+(0*UDP_BUFF_SIZE))/2;i+=UDP_BUFF_SIZE)
-			{
-			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
-			      usleep(40);
-			}
-#else
-            tx_bmp((const char *)&BMODE_1920x1080, 54,0);
-			for(int i=0;i<=(VIDEO2_MAX_FRAME-(0*UDP_BUFF_SIZE));i+=UDP_BUFF_SIZE)
-			{
-			      tx_bmp((const char *)&bmpbufs+i,UDP_BUFF_SIZE,sn++);
-			      usleep(delay);
-			}
-#endif
-		}
-		WriteOneFrameEnd[0] = stream_it;
-	}
-	cleanup_platform();
-	return 0;
+    for (unsigned int byte = 0; byte < 4; ++byte)
+        field[byte] = (char)((value >> (8 * byte)) & 0xffU);
 }
+
+#if P540 == 1
+#define STREAM_PIXEL_BYTES (VIDEO2_MAX_FRAME / 2)
+#define STREAM_BMP_TEMPLATE BMODE_1920x540
+#define STREAM_PACKET_DELAY_US 40
+#else
+#define STREAM_PIXEL_BYTES VIDEO2_MAX_FRAME
+#define STREAM_BMP_TEMPLATE BMODE_1920x1080
+#define STREAM_PACKET_DELAY_US DEFAULT_BMP_PACKET_DELAY_US
+#endif
+
+static int network_initialized;
+static int network_init_failed;
+static int address_ready;
+#if LWIP_DHCP
+static int dhcp_pending;
+#endif
+static int frame_active;
+static int frame_offset;
+static ip_addr_t frame_target;
+static XTime next_packet;
+
+#define SNAPSHOT_PORT 8081
+#define SNAPSHOT_HEADER 16U
+#define SNAPSHOT_CHUNK (UDP_BUFF_SIZE - SNAPSHOT_HEADER)
+static const unsigned char *snapshot_data;
+static size_t snapshot_size, snapshot_offset;
+static u32 snapshot_id;
+static XTime snapshot_deadline, snapshot_started;
+static int snapshot_pending;
+static int mjpeg_enabled;
+static XTime mjpeg_next_capture;
+static int snapshot_warmup;
+static int snapshot_target_warmed;
+static ip_addr_t snapshot_target;
+
+static void snapshot_put_u32(unsigned char *out, u32 value)
+{
+    for (unsigned int i = 0; i < 4; ++i)
+        out[i] = (unsigned char)(value >> (24U - 8U * i));
+}
+
+int lwip_jpeg_request(void)
+{
+    if (snapshot_pending || snapshot_size || mjpeg_enabled)
+        return 1;
+    if (!udp8080_pcb) {
+        if (lwip_stream_start() < 0)
+            return -1;
+        /* Initializing Ethernet for a snapshot does not start continuous BMP. */
+        stream_it = -1;
+        WriteOneFrameEnd[0] = -1;
+    }
+    snapshot_target_warmed = 0;
+    snapshot_pending = 1;
+    return 0;
+}
+
+int lwip_mjpeg_toggle(void)
+{
+    if (mjpeg_enabled) {
+        mjpeg_enabled = 0;
+        return 0;
+    }
+    if (snapshot_pending || snapshot_size)
+        return -2;
+    if (lwip_jpeg_request() < 0)
+        return -1;
+    mjpeg_enabled = 1;
+    return 1;
+}
+
+static void snapshot_poll(XTime now)
+{
+    unsigned char payload[UDP_BUFF_SIZE];
+    struct pbuf *packet;
+    size_t chunk;
+    err_t result;
+
+    if (snapshot_pending) {
+        snapshot_pending = 0;
+        if (!ip_addr_cmp(&snapshot_target, &target_addr))
+            snapshot_target_warmed = 0;
+        snapshot_target = target_addr;
+        snapshot_size = jpeg_snapshot_capture(&snapshot_data);
+        mjpeg_next_capture = now + COUNTS_PER_SECOND / 4U;
+        if (snapshot_size == 0) {
+            XTime_GetTime(&mjpeg_next_capture);
+            mjpeg_next_capture += COUNTS_PER_SECOND;
+            return;
+        }
+        ++snapshot_id;
+        snapshot_offset = 0;
+        snapshot_warmup = !snapshot_target_warmed;
+        XTime_GetTime(&snapshot_deadline);
+        return;
+    }
+    if (now < snapshot_deadline)
+        return;
+
+    /* Give ARP time to resolve the destination before sending JPEG data. */
+    if (snapshot_warmup) {
+        result = ERR_MEM;
+        packet = pbuf_alloc(PBUF_TRANSPORT, 1, PBUF_RAM);
+        if (packet != NULL) {
+            unsigned char warmup = 0;
+            if (pbuf_take(packet, &warmup, 1) == ERR_OK)
+                result = udp_sendto(udp8080_pcb, packet, &snapshot_target, SNAPSHOT_PORT);
+            pbuf_free(packet);
+        }
+        snapshot_target_warmed = result == ERR_OK;
+        snapshot_warmup = 0;
+        snapshot_deadline = now + COUNTS_PER_SECOND / 4U;
+        return;
+    }
+    if (snapshot_offset == 0)
+        snapshot_started = now;
+
+    chunk = snapshot_size - snapshot_offset;
+    if (chunk > SNAPSHOT_CHUNK)
+        chunk = SNAPSHOT_CHUNK;
+    memcpy(payload, "KJPG", 4);
+    snapshot_put_u32(payload + 4, snapshot_id);
+    snapshot_put_u32(payload + 8, (u32)snapshot_size);
+    snapshot_put_u32(payload + 12, (u32)snapshot_offset);
+    memcpy(payload + SNAPSHOT_HEADER, snapshot_data + snapshot_offset, chunk);
+    packet = pbuf_alloc(PBUF_TRANSPORT, SNAPSHOT_HEADER + chunk, PBUF_RAM);
+    result = ERR_MEM;
+    if (packet != NULL) {
+        result = pbuf_take(packet, payload, SNAPSHOT_HEADER + chunk);
+        if (result == ERR_OK)
+            result = udp_sendto(udp8080_pcb, packet, &snapshot_target, SNAPSHOT_PORT);
+        pbuf_free(packet);
+    }
+    if (result != ERR_OK) {
+        printf("JPEG UDP failed at byte %lu (lwIP %d). Frame dropped.\r\n",
+               (unsigned long)snapshot_offset, (int)result);
+        snapshot_target_warmed = 0;
+        snapshot_size = 0;
+        return;
+    }
+
+    snapshot_offset += chunk;
+    XTime_GetTime(&now);
+    snapshot_deadline = now + (XTime)COUNTS_PER_SECOND * 150U / 1000000U;
+    if (snapshot_offset == snapshot_size) {
+        printf("JPEG frame %lu sent to UDP 8081 in %lu ms.\r\n",
+               (unsigned long)snapshot_id, (unsigned long)((now - snapshot_started) * 1000U / COUNTS_PER_SECOND));
+        snapshot_size = 0;
+    }
+}
+
+
+static void finish_ip_setup(void)
+{
+    print_ip_settings(&netif->ip_addr, &netif->netmask, &netif->gw);
+    memcpy(ip_export, &netif->ip_addr, sizeof(ip_export));
+    address_ready = 1;
+}
+
+static void use_default_ip(void)
+{
+    ip_addr_t ip, mask, gateway;
+
+    assign_default_ip(&ip, &mask, &gateway);
+    netif_set_addr(netif, &ip, &mask, &gateway);
+    finish_ip_setup();
+}
+
+int lwip_stream_start(void)
+{
+    static unsigned char mac[] = {0x00, 0x0a, 0x35, 0x00, 0x01, 0x02};
+
+    if (network_init_failed)
+        return -1;
+    if (!network_initialized) {
+        init_platform();
+        lwip_init();
+        if (!xemac_add(&server_netif, NULL, NULL, NULL, mac,
+                       PLATFORM_EMAC_BASEADDR)) {
+            network_init_failed = 1;
+            xil_printf("Error adding N/W interface; reset to retry.\r\n");
+            return -1;
+        }
+        netif = &server_netif;
+        netif_set_default(netif);
+        platform_enable_interrupts();
+        netif_set_up(netif);
+        memcpy(mac_export, mac, sizeof(mac_export));
+        network_initialized = 1;
+#if LWIP_DHCP
+        dhcp_timoutcntr = 24;
+        dhcp_pending = dhcp_start(netif) == ERR_OK;
+        if (!dhcp_pending)
+#endif
+            use_default_ip();
+    }
+
+    if (udp8080_pcb != NULL) {
+        if (stream_it >= 0)
+            return 1;
+        stream_it = 1;
+        WriteOneFrameEnd[0] = 1;
+        return 0;
+    }
+    if (start_udp(8080) != 0)
+        return -1;
+
+    delay = STREAM_PACKET_DELAY_US;
+    stream_it = 1;
+    WriteOneFrameEnd[0] = 1;
+    XTime_GetTime(&next_packet);
+    return 0;
+}
+
+void lwip_stream_poll(void)
+{
+    XTime now;
+    int chunk;
+
+    if (!network_initialized)
+        return;
+    xemacif_input(netif);
+
+#if LWIP_DHCP
+    if (dhcp_pending) {
+        if (netif->ip_addr.addr != 0) {
+            dhcp_pending = 0;
+            finish_ip_setup();
+        } else if (dhcp_timoutcntr <= 0) {
+            dhcp_stop(netif);
+            dhcp_pending = 0;
+            use_default_ip();
+        }
+    }
+#endif
+    if (!address_ready || udp8080_pcb == NULL)
+        return;
+
+    XTime_GetTime(&now);
+    if (!frame_active && (snapshot_pending || snapshot_size || mjpeg_enabled)) {
+        if (mjpeg_enabled && !snapshot_size && now >= mjpeg_next_capture)
+            snapshot_pending = 1;
+        if (snapshot_pending || snapshot_size)
+            snapshot_poll(now);
+        return;
+    }
+    if (now < next_packet)
+        return;
+
+    if (!frame_active) {
+        BmpMode header = STREAM_BMP_TEMPLATE;
+
+        if (WriteOneFrameEnd[0] < 0)
+            return;
+        WriteOneFrameEnd[0] = stream_it;
+        frame_target = target_addr;
+        memcpy(bmpbufs, pFrames1[0], STREAM_PIXEL_BYTES);
+        bmp_write_le32(header.bm_len, sizeof(header) + STREAM_PIXEL_BYTES);
+        bmp_write_le32(header.bm_bytes, STREAM_PIXEL_BYTES);
+        frame_offset = 0;
+        frame_active = tx_bmp((const char *)&header, sizeof(header), 0) == ERR_OK;
+        if (frame_active)
+            return;
+    } else {
+        chunk = STREAM_PIXEL_BYTES - frame_offset;
+        if (chunk > UDP_BUFF_SIZE)
+            chunk = UDP_BUFF_SIZE;
+        if (tx_bmp((const char *)bmpbufs + frame_offset, chunk,
+                   frame_offset / UDP_BUFF_SIZE + 1) != ERR_OK) {
+            frame_active = 0;
+        } else {
+            frame_offset += chunk;
+            frame_active = frame_offset < STREAM_PIXEL_BYTES;
+        }
+    }
+
+    XTime_GetTime(&now);
+#if P540 == 1
+    next_packet = now + ((XTime)COUNTS_PER_SECOND * STREAM_PACKET_DELAY_US) / 1000000U;
+#else
+    next_packet = now + ((XTime)COUNTS_PER_SECOND * delay) / 1000000U;
+#endif
+}
+
 int tx_bmp(const char *bmp, int bmp_length, int sn)
 {
-	struct pbuf *q;
-    q = pbuf_alloc(PBUF_TRANSPORT, bmp_length, PBUF_POOL);
-	if(!q)
-	{
-		xil_printf("pbuf_alloc %d fail\n\r", bmp_length+8);
-		return -3;
-	}
-    memcpy(q->payload, bmp, bmp_length);
-	udp_sendto(udp8080_pcb, q, &target_addr, 8080);
-	pbuf_free(q);
-	return 0;
+    struct pbuf *packet = pbuf_alloc(PBUF_TRANSPORT, bmp_length, PBUF_RAM);
+    err_t status;
+
+    if (packet == NULL) {
+        xil_printf("BMP UDP allocation failed for packet %d\r\n", sn);
+        return ERR_MEM;
+    }
+
+    status = pbuf_take(packet, bmp, bmp_length);
+    if (status == ERR_OK)
+        status = udp_sendto(udp8080_pcb, packet, &frame_target, 8080);
+    pbuf_free(packet);
+    if (status != ERR_OK)
+        xil_printf("BMP UDP send failed for packet %d, error %d\r\n", sn, (int)status);
+
+    return status;
 }
 void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr_t *addr, u16_t port) {
-    u16 *pData;
-    int a0=0;
-    if(p_rx != NULL)
-    {
-    pData = (u16 *)p_rx->payload;
-    if(p_rx->len >= 1){
+    u16 pData[22] = {0};
+    static const u8 words_required[] = {
+        0, 0, 11, 2, 21, 2, 0, 0, 22, 0, 5, 10, 10, 10, 22
+    };
+    unsigned int a0;
+    u16 copied;
+
+    (void)arg;
+    (void)pcb;
+    (void)port;
+    if (p_rx == NULL)
+        return;
+    copied = pbuf_copy_partial(p_rx, pData, sizeof(pData), 0);
+    a0 = pData[0];
+    if (a0 < sizeof(words_required) && words_required[a0] != 0 &&
+        copied >= words_required[a0] * sizeof(pData[0])) {
     	stream_it = -1;
     	WriteOneFrameEnd[0] = -1;
-    	a0 = (int)pData[0];
 //        if(a0==1){
 //        	delay = (int)pData[10];
 //            xil_printf("delay= %d\n\r",delay);
@@ -168,19 +405,19 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	if(a0==2){
             delay = (int)pData[10];
             xil_printf("delay= %d\n\r",delay);
-        	per_write_reg(REG11,(int)pData[1]);
-        	per_write_reg(REG12,(int)pData[2]);
-        	per_write_reg(REG13,(int)pData[3]);
-        	per_write_reg(REG14,(int)pData[4]);
-        	per_write_reg(REG15,(int)pData[5]);
-        	per_write_reg(REG16,(int)pData[6]);
-        	per_write_reg(REG17,(int)pData[7]);
-        	per_write_reg(REG44,(int)pData[8]);
-        	//per_write_reg(REG45,((0x0000ff& pData[9])<<16) | (REG45,((0x0000ff& pData[11])<<8))| ((0x0000ff& pData[12])));
+        	per_write_reg(VFP_DARK_CCM_PRESET_SELECT,(int)pData[1]);
+        	per_write_reg(VFP_LIGHT_CCM_PRESET_SELECT,(int)pData[2]);
+        	per_write_reg(VFP_BALANCE_CCM_PRESET_SELECT,(int)pData[3]);
+        	per_write_reg(VFP_RGB_CHANNEL_SELECT,(int)pData[4]);
+        	per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,(int)pData[5]);
+        	per_write_reg(VFP_OUTPUT_CHANNEL_SELECT,(int)pData[6]);
+        	per_write_reg(VFP_SOBEL_CLUSTER_INPUT_SELECT,(int)pData[7]);
+        	per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD,(int)pData[8]);
+        	//per_write_reg(VFP_CENTROID_LUT_DATA,((0x0000ff& pData[9])<<16) | (VFP_CENTROID_LUT_DATA,((0x0000ff& pData[11])<<8))| ((0x0000ff& pData[12])));
         	//per_read_rgb1_reg();
         	//per_read_rgb2_reg();
-        	//per_write_reg(REG20,(int)pData[9]);
-            //xil_printf("REG11= %d REG12= %d REG13= %d REG14= %d REG15= %d REG16= %d REG17= %d\n\r",(int)pData[11],(int)pData[12],(int)pData[13],(int)pData[14],(int)pData[15],(int)pData[16],(int)pData[17]);
+        	//per_write_reg(VFP_CENTROID_LUT_READ_INDEX,(int)pData[9]);
+            //xil_printf("VFP_DARK_CCM_PRESET_SELECT= %d VFP_LIGHT_CCM_PRESET_SELECT= %d VFP_BALANCE_CCM_PRESET_SELECT= %d VFP_RGB_CHANNEL_SELECT= %d VFP_CENTROID_LUT_WRITE_INDEX= %d VFP_OUTPUT_CHANNEL_SELECT= %d VFP_SOBEL_CLUSTER_INPUT_SELECT= %d\n\r",(int)pData[11],(int)pData[12],(int)pData[13],(int)pData[14],(int)pData[15],(int)pData[16],(int)pData[17]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==3){
@@ -193,7 +430,7 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }else if(a0==5){
-        	per_write_reg(REG46,(int)pData[1]);
+        	per_write_reg(VFP_LIGHT_CCM_K1,(int)pData[1]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
 //        }else if(a0==5){
@@ -211,16 +448,16 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
 //        	WriteOneFrameEnd[0] = 1;
 //        	stream_it = 0;
         }else if(a0==8){
-        	per_write_reg(REG43,(int)pData[21]);
+        	per_write_reg(VFP_CENTROID_LUT_SELECT,(int)pData[21]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
 //        }else if(a0==9){
-//        	per_write_rdeg(REG19,(int)pData[21]);
+//        	per_write_rdeg(VFP_FRAME_DIMENSIONS,(int)pData[21]);
 //        	WriteOneFrameEnd[0] = 1;
 //        	stream_it = 0;
         }else if(a0==10){
-        	per_write_reg(REG15,(int)pData[1]);
-        	per_write_reg(REG45,((0x0000ff& pData[2])<<16) | (REG45,((0x0000ff& pData[3])<<8))| ((0x0000ff& pData[4])));
+        	per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,(int)pData[1]);
+        	per_write_reg(VFP_CENTROID_LUT_DATA,((0x0000ff& pData[2])<<16) | ((0x0000ff& pData[3])<<8)| ((0x0000ff& pData[4])));
         	//if(pData[1]<31){
         	per_read_rgb_reg((int)pData[1]);
         	//}
@@ -232,43 +469,43 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }else if(a0==11){
-            per_write_reg(REG1,(int)pData[1]);
-            per_write_reg(REG2,((int)pData[2])+1);
-            per_write_reg(REG3,((int)pData[3])+1);
-            per_write_reg(REG4,((int)pData[4])+1);
-            per_write_reg(REG5,(int)pData[5]);
-            per_write_reg(REG6,((int)pData[6])+1);
-            per_write_reg(REG7,((int)pData[7])+1);
-            per_write_reg(REG8,((int)pData[8])+1);
-            per_write_reg(REG9,(int)pData[9]);
+            per_write_reg(VFP_DARK_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_DARK_CCM_K2,((int)pData[2])+1);
+            per_write_reg(VFP_DARK_CCM_K3,((int)pData[3])+1);
+            per_write_reg(VFP_DARK_CCM_K4,((int)pData[4])+1);
+            per_write_reg(VFP_DARK_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_DARK_CCM_K6,((int)pData[6])+1);
+            per_write_reg(VFP_DARK_CCM_K7,((int)pData[7])+1);
+            per_write_reg(VFP_DARK_CCM_K8,((int)pData[8])+1);
+            per_write_reg(VFP_DARK_CCM_K9,(int)pData[9]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==12){
-            per_write_reg(REG46,(int)pData[1]);
-            per_write_reg(REG47,((int)pData[2])+1);
-            per_write_reg(REG48,((int)pData[3])+1);
-            per_write_reg(REG49,((int)pData[4])+1);
-            per_write_reg(REG50,(int)pData[5]);
-            per_write_reg(REG51,((int)pData[6])+1);
-            per_write_reg(REG52,((int)pData[7])+1);
-            per_write_reg(REG53,((int)pData[8])+1);
-            per_write_reg(REG54,(int)pData[9]);
+            per_write_reg(VFP_LIGHT_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_LIGHT_CCM_K2,((int)pData[2])+1);
+            per_write_reg(VFP_LIGHT_CCM_K3,((int)pData[3])+1);
+            per_write_reg(VFP_LIGHT_CCM_K4,((int)pData[4])+1);
+            per_write_reg(VFP_LIGHT_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_LIGHT_CCM_K6,((int)pData[6])+1);
+            per_write_reg(VFP_LIGHT_CCM_K7,((int)pData[7])+1);
+            per_write_reg(VFP_LIGHT_CCM_K8,((int)pData[8])+1);
+            per_write_reg(VFP_LIGHT_CCM_K9,(int)pData[9]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==13){
-            per_write_reg(REG55,(int)pData[1]);
-            per_write_reg(REG56,(~(int)pData[2])+1);
-            per_write_reg(REG57,(~(int)pData[3])+1);
-            per_write_reg(REG58,(~(int)pData[4])+1);
-            per_write_reg(REG59,(int)pData[5]);
-            per_write_reg(REG60,(~(int)pData[6])+1);
-            per_write_reg(REG61,(~(int)pData[7])+1);
-            per_write_reg(REG62,(~(int)pData[8])+1);
-            per_write_reg(REG63,(int)pData[9]);
+            per_write_reg(VFP_BALANCE_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_BALANCE_CCM_K2,(~(int)pData[2])+1);
+            per_write_reg(VFP_BALANCE_CCM_K3,(~(int)pData[3])+1);
+            per_write_reg(VFP_BALANCE_CCM_K4,(~(int)pData[4])+1);
+            per_write_reg(VFP_BALANCE_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_BALANCE_CCM_K6,(~(int)pData[6])+1);
+            per_write_reg(VFP_BALANCE_CCM_K7,(~(int)pData[7])+1);
+            per_write_reg(VFP_BALANCE_CCM_K8,(~(int)pData[8])+1);
+            per_write_reg(VFP_BALANCE_CCM_K9,(int)pData[9]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==14){
-        	per_write_reg(REG19,(int)pData[21]);
+        	per_write_reg(VFP_FRAME_DIMENSIONS,(int)pData[21]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }
@@ -276,7 +513,6 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
             memcpy(&target_addr, addr, sizeof(target_addr));
     }
     pbuf_free(p_rx);
-    }
 }
 int start_udp(unsigned int port) {
 	err_t err;
@@ -288,6 +524,8 @@ int start_udp(unsigned int port) {
 	err = udp_bind(udp8080_pcb, IP_ADDR_ANY, port);
 	if (err != ERR_OK) {
 		xil_printf("Unable to bind to port %d: err = %d\n\r", port, err);
+		udp_remove(udp8080_pcb);
+		udp8080_pcb = NULL;
 		return -2;
 	}
 	udp_recv(udp8080_pcb, udp_recive, 0);

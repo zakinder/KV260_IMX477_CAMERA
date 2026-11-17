@@ -8,6 +8,7 @@
 #include <xil_printf.h>
 #include <xstatus.h>
 
+#include "../MENU/vfp_registers.h"
 #include "../UART/uartio.h"
 
 const int res = 100 * 100;
@@ -96,7 +97,7 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 {
 	XAxiVdma Vdma;
 	XAxiVdma_Config *Config;
-	XAxiVdma_DmaSetup vdmaDMA;
+	XAxiVdma_DmaSetup vdmaDMA = {0};
 	int Status;
 	Config = XAxiVdma_LookupConfig(DeviceID);
 	if (NULL == Config) {
@@ -144,31 +145,28 @@ int vdma_write_init(short DeviceID,short HoriSizeInput,short VertSizeInput,short
 			xdbg_printf(XDBG_DEBUG_ERROR,"Write channel set buffer address failed %d\r\n", Status);
 			return XST_FAILURE;
 	}
-	Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_WRITE);
-	if (Status != XST_SUCCESS) {
-		   xil_printf("Error Starting XAXIVDMA_WRITE..!");
-		   return Status;
-	}
-	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_WRITE);
-	if (Status != XST_SUCCESS) {
-		   xil_printf("Error Starting XAXIVDMA_WRITE..!");
-		   return Status;
-	}
-	Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_READ);
-	if (Status != XST_SUCCESS) {
-		   xil_printf("Error Starting XAxiVdma_DmaStart..!");
-		   return Status;
-	}
-	Status = XAxiVdma_StartParking(&Vdma, 0, XAXIVDMA_READ);
-	if (Status != XST_SUCCESS) {
-		   xil_printf("Error Starting XAxiVdma_StartParking..!");
-		   return Status;
-	}
-    //sleep(4);
-    //fetch_rgb_data();
-	return XST_SUCCESS;
-}
+    /* PG020: bits 3 and 7 enable Genlock with the internal frame pointer. */
+    const u32 internal_genlock = (1U << 7) | (1U << 3);
+    const u32 read_cr = 0x00U;
+    const u32 write_cr = 0x30U;
+    u32 control = XAxiVdma_ReadReg(Config->BaseAddress, read_cr);
+    XAxiVdma_WriteReg(Config->BaseAddress, read_cr, control | internal_genlock);
+    control = XAxiVdma_ReadReg(Config->BaseAddress, write_cr);
+    XAxiVdma_WriteReg(Config->BaseAddress, write_cr, control | internal_genlock);
 
+    Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_WRITE);
+    if (Status != XST_SUCCESS) {
+        xil_printf("VDMA dynamic write start failed: %d\r\n", Status);
+        return Status;
+    }
+    Status = XAxiVdma_DmaStart(&Vdma, XAXIVDMA_READ);
+    if (Status != XST_SUCCESS) {
+        XAxiVdma_DmaStop(&Vdma, XAXIVDMA_WRITE);
+        xil_printf("VDMA dynamic read start failed: %d\r\n", Status);
+        return Status;
+    }
+    return XST_SUCCESS;
+}
 
 
 int vdma_write(short DeviceID,short HoriSizeInput,short VertSizeInput,short Stride,unsigned int FrameStoreStartAddr0)
@@ -220,6 +218,12 @@ int vdma_write(short DeviceID,short HoriSizeInput,short VertSizeInput,short Stri
 
 
 void fetch_rgb_data() {
+    if (XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET + XAXIVDMA_CR_OFFSET) &
+        XAXIVDMA_CR_TAIL_EN_MASK) {
+        xil_printf("Legacy RGB register dump needs parked VDMA.\r\n");
+        return;
+    }
+
 	Xuint32 parkptr, vdma_S2MM_DMACR, vdma_MM2S_DMACR;
 	int i, j;
 	XAxiVdma Vdma;
@@ -245,7 +249,7 @@ void fetch_rgb_data() {
 	xil_printf("pS2MM_Mem = %X\n\r", pS2MM_Mem);
 	xil_printf("pMM2S_Mem = %X\n\r", pMM2S_Mem);
 	uint32_t Blue = 0, Red = 0, Green = 0;
-	per_write_reg(76,3);
+	per_write_reg(VFP_FRAME_DIMENSIONS,3);
     //Xil_DCacheFlush();
 	for (j = 0; j < 5; j++) {
             for (i = 0; i < res; i++) {
@@ -274,6 +278,6 @@ void fetch_rgb_data() {
 	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_TX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_MM2S_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
 	vdma_S2MM_DMACR = XAxiVdma_ReadReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET);
 	XAxiVdma_WriteReg(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR, XAXIVDMA_RX_OFFSET+XAXIVDMA_CR_OFFSET, vdma_S2MM_DMACR | XAXIVDMA_CR_TAIL_EN_MASK);
-	per_write_reg(76,4);
+	per_write_reg(VFP_FRAME_DIMENSIONS,4);
 	return;
 }

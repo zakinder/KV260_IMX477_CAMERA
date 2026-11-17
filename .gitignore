@@ -16,3 +16,7 @@ KV260/vitis/mipi/mipi.prj
 KV260/capture_bmp/ffmpeg.exe
 KV260/capture_bmp/ffplay.exe
 KV260/capture_bmp/ffprobe.exe
+
+/KV260/capture_bmp/play_mpeg/ffmpeg.exe
+/KV260/capture_bmp/play_mpeg/ffplay.exe
+/KV260/capture_bmp/play_mpeg/ffprobe.exe

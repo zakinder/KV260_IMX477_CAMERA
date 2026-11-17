@@ -107,6 +107,7 @@ void DpPsu_SetupVideoStream(Run_Config *RunCfgPtr);
 void DpPsu_Run(Run_Config *RunCfgPtr);
 void DpPsu_IsrHpdEvent(void *ref);
 void DpPsu_IsrHpdPulse(void *ref);
+extern u8 DpGraphicsFrame[];
 int run_dppsu(u8* Frame,XVidC_VideoMode TestMode);
 
 /************************** Variable Definitions *****************************/

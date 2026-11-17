@@ -19,6 +19,10 @@
    -----------------------------------------------------------------------
 */
 #include <stdio.h>
+#include <string.h>
+#include "xil_cache.h"
+#include "xil_io.h"
+#include "sleep.h"
 #include <xil_printf.h>
 #include <xil_types.h>
 #include <xparameters.h>
@@ -41,7 +45,7 @@ static XGpio axi_gpio;
 #define GPIO_SENSOR_IAS1_RSTN	(0)
 #define GPIO_SENSOR_RPI_RSTN	(1)
 #define GPIO_SENSOR_RPI_LED	    (2)
-u32 frameBuf[DISPLAY_NUM_FRAMES][VIDEO1_MAX_FRAME];
+u32 frameBuf[DISPLAY_NUM_FRAMES][VIDEO1_MAX_FRAME] __attribute__((aligned(64)));
 u32 *pFrames[DISPLAY_NUM_FRAMES];
 u32 frameBuf1[NUM_FRAMES][VIDEO2_MAX_FRAME];
 u32 *pFrames1[NUM_FRAMES];
@@ -56,9 +60,45 @@ void gpio_init()
 		);
 	usleep(5000);
 }
+/* Display-only bring-up. Sample PARK_PTR without changing DMA state. */
+static void report_vdma_rotation(UINTPTR base)
+{
+    const u32 mask = 0x1f1f0000U;
+    const u32 required_control = 0x8bU; /* RS, Circular, GenlockEn, GenlockSrc */
+    u32 read_cr = Xil_In32(base + 0x00U);
+    u32 write_cr = Xil_In32(base + 0x30U);
+    u32 previous = ~0U;
+    u32 write_seen = 0;
+    u32 read_seen = 0;
+
+    printf("VDMA circular test: MM2S_CR=0x%08lx S2MM_CR=0x%08lx\r\n",
+           (unsigned long)read_cr, (unsigned long)write_cr);
+    if ((read_cr & required_control) != required_control ||
+        (write_cr & required_control) != required_control)
+        printf("VDMA test: expected control mask 0x8B on both channels.\r\n");
+
+    for (unsigned int i = 0; i < 100; ++i) {
+        const u32 park = Xil_In32(base + 0x28U);
+        const unsigned int write_store = (park >> 24) & 31U;
+        const unsigned int read_store = (park >> 16) & 31U;
+        write_seen |= 1U << write_store;
+        read_seen |= 1U << read_store;
+        if ((park & mask) != previous) {
+            printf("VDMA stores: write=%u read=%u\r\n", write_store, read_store);
+            previous = park & mask;
+        }
+        usleep(20000);
+    }
+
+    printf("VDMA summary: write_seen=0x%lx read_seen=0x%lx MM2S_SR=0x%08lx S2MM_SR=0x%08lx\r\n",
+           (unsigned long)write_seen, (unsigned long)read_seen,
+           (unsigned long)Xil_In32(base + 0x04U),
+           (unsigned long)Xil_In32(base + 0x34U));
+}
+
 int main()
 {
-	per_write_reg(REG19,((0x00FFFF & VIDEO1_ROWS)<<16) | ((VIDEO1_COLUMNS)));
+	per_write_reg(VFP_FRAME_DIMENSIONS,((0x00FFFF & VIDEO1_ROWS)<<16) | ((VIDEO1_COLUMNS)));
 	XVidC_VideoTiming const *TimingPtr;
 	XVidC_VideoStream VidStream;
 	VidStream.PixPerClk = 1;
@@ -84,6 +124,8 @@ int main()
     gpio_init();
 	int i,connected_camera;
     connected_camera=init_camera();
+    if (connected_camera == 477)
+        per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, VFP_PREVIEW_BYPASS);
     printf("Connected Camera = %i \n\r",connected_camera);
     demosaic2_init();
     demosaic1_init();
@@ -92,11 +134,22 @@ int main()
 	{
 		pFrames[i] = frameBuf[i];
         memset(pFrames[i], 0, VIDEO1_MAX_FRAME);
+        Xil_DCacheFlushRange((UINTPTR)pFrames[i], VIDEO1_MAX_FRAME);
 	}
-    vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID,VIDEO1_STRIDE,VIDEO1_ROWS,VIDEO1_STRIDE,(unsigned int)pFrames[0],(unsigned int)pFrames[1],(unsigned int)pFrames[2]);
-	run_dppsu((unsigned int)pFrames[1],VidStream.VmId);
-     while(1){
-         menu_calls(TRUE,(char *)&BMODE_1920x1080,pFrames1[0], VIDEO2_STRIDE,connected_camera);
-     }
-    return 0;
+    if (vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID, VIDEO1_STRIDE, VIDEO1_ROWS,
+                        VIDEO1_STRIDE, (unsigned int)pFrames[0],
+                        (unsigned int)pFrames[1], (unsigned int)pFrames[2]) != 0) {
+        printf("VDMA circular test could not start.\r\n");
+        return 1;
+    }
+	/* Graphics DMA owns a separate DDR buffer outside the VDMA stores. */
+    memset(DpGraphicsFrame, 0, VIDEO1_MAX_FRAME);
+    Xil_DCacheFlushRange((UINTPTR)DpGraphicsFrame, VIDEO1_MAX_FRAME);
+    run_dppsu(DpGraphicsFrame, VidStream.VmId);
+    report_vdma_rotation(XPAR_PS_VIDEO_V_DMA_AXI_VDMA_0_BASEADDR);
+    printf("Rotating 4K MJPEG test ready.\r\n");
+    for (;;) {
+        menu_calls(TRUE, (char *)&BMODE_1920x1080, pFrames1[0],
+                   VIDEO2_STRIDE, connected_camera);
+    }
 }

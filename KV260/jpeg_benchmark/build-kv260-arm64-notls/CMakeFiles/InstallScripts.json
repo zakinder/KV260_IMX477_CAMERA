@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"R:/KV260/jpeg_benchmark/build-kv260-arm64-notls/cmake_install.cmake",
+		"R:/KV260/jpeg_benchmark/build-kv260-arm64-notls/simd/cmake_install.cmake",
+		"R:/KV260/jpeg_benchmark/build-kv260-arm64-notls/md5/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

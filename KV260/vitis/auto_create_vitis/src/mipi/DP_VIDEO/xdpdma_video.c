@@ -76,7 +76,7 @@
 													be aligned to 256*/
 
 /************************** Variable Declarations ***************************/
-u8 Frame[BUFFERSIZE];
+u8 DpGraphicsFrame[BUFFERSIZE] __attribute__((aligned(256)));
 XDpDma_FrameBuffer FrameBuffer;
 
 
@@ -108,7 +108,7 @@ int run_dppsu(u8* Frame,XVidC_VideoMode TestMode)
 //	Xil_ICacheEnable();
 
 	//xil_printf("DPDMA Generic Video Example Test \r\n");
-	Status = DpdmaVideoExample(&RunCfg,&Frame,TestMode);
+	Status = DpdmaVideoExample(&RunCfg, Frame, TestMode);
 	if (Status != XST_SUCCESS) {
 			xil_printf("DPDMA Video Example Test Failed\r\n");
 			return XST_FAILURE;
