@@ -1,0 +1,205 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'DebayerG'" level="0">
+<item name = "Date">Sat Nov 14 19:12:39 2026
+</item>
+<item name = "Version">2022.1 (Build 3526262 on Mon Apr 18 15:48:16 MDT 2022)</item>
+<item name = "Project">prj</item>
+<item name = "Solution">sol (Vivado IP Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xck26-sfvc784-2LV-c</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">3.33 ns, 2.416 ns, 0.90 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">57, 4296802332, 0.190 us, 14.321 sec, 57, 4296802332, no</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210">DebayerG_Pipeline_VITIS_LOOP_273_4, 25, 65560, 83.325 ns, 0.219 ms, 25, 65560, no</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- VITIS_LOOP_270_3">56, 4296802331, 28 ~ 65563, -, -, 2 ~ 65537, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 164, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">7, 8, 4340, 4959, -</column>
+<column name="Memory">-, -, -, -, 4</column>
+<column name="Multiplexer">-, -, -, 80, -</column>
+<column name="Register">-, -, 492, -, -</column>
+<specialColumn name="Available">288, 1248, 234240, 117120, 64</specialColumn>
+<specialColumn name="Utilization (%)">2, ~0, 2, 4, 6</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
+<column name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210">DebayerG_Pipeline_VITIS_LOOP_273_4, 7, 8, 4340, 4959, 0</column>
+</table>
+</item>
+<item name = "DSP"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="linebuf_yuv_val_V_U">DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W, 0, 0, 0, 1, 2049, 10, 1, 20490</column>
+<column name="linebuf_yuv_val_V_1_U">DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W, 0, 0, 0, 1, 2049, 10, 1, 20490</column>
+<column name="linebuf_yuv_val_V_2_U">DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W, 0, 0, 0, 1, 2049, 10, 1, 20490</column>
+<column name="linebuf_yuv_val_V_3_U">DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W, 0, 0, 0, 1, 2049, 10, 1, 20490</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_add_ln270">+, 0, 0, 24, 17, 2</column>
+<column name="loopHeight_fu_278_p2">+, 0, 0, 24, 17, 2</column>
+<column name="out_y_fu_421_p2">+, 0, 0, 24, 17, 3</column>
+<column name="y_8_fu_321_p2">+, 0, 0, 24, 17, 1</column>
+<column name="cmp170_fu_410_p2">icmp, 0, 0, 13, 17, 1</column>
+<column name="cmp724_fu_400_p2">icmp, 0, 0, 12, 15, 15</column>
+<column name="cmp84_fu_405_p2">icmp, 0, 0, 13, 17, 17</column>
+<column name="icmp_ln270_fu_316_p2">icmp, 0, 0, 13, 17, 17</column>
+<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
+<column name="xor_fu_395_p2">xor, 0, 0, 15, 15, 15</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">26, 5, 1, 5</column>
+<column name="ap_done">9, 2, 1, 2</column>
+<column name="bayerPhase_c9_blk_n">9, 2, 1, 2</column>
+<column name="imgBayer_read">9, 2, 1, 2</column>
+<column name="imgG_write">9, 2, 1, 2</column>
+<column name="real_start">9, 2, 1, 2</column>
+<column name="y_fu_84">9, 2, 17, 34</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">4, 0, 4, 0</column>
+<column name="ap_done_reg">1, 0, 1, 0</column>
+<column name="bayerWindow_val_V_10_fu_128">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_10_load_reg_643">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_11_fu_132">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_11_load_reg_648">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_12_fu_136">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_12_load_reg_653">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_13_fu_140">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_13_load_reg_658">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_14_fu_144">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_14_load_reg_663">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_15_fu_148">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_15_load_reg_668">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_16_fu_152">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_16_load_reg_673">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_17_fu_156">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_17_load_reg_678">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_18_fu_160">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_18_load_reg_683">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_19_fu_164">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_19_load_reg_688">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_1_fu_92">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_1_load_reg_598">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_2_fu_96">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_2_load_reg_603">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_3_fu_100">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_3_load_reg_608">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_4_fu_104">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_4_load_reg_613">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_5_fu_108">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_5_load_reg_618">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_6_fu_112">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_6_load_reg_623">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_7_fu_116">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_7_load_reg_628">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_8_fu_120">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_8_load_reg_633">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_9_fu_124">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_9_load_reg_638">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_fu_88">10, 0, 10, 0</column>
+<column name="bayerWindow_val_V_load_reg_593">10, 0, 10, 0</column>
+<column name="cmp170_reg_708">1, 0, 1, 0</column>
+<column name="cmp724_reg_698">1, 0, 1, 0</column>
+<column name="cmp84_reg_703">1, 0, 1, 0</column>
+<column name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_ap_start_reg">1, 0, 1, 0</column>
+<column name="out_y_reg_713">17, 0, 17, 0</column>
+<column name="start_once_reg">1, 0, 1, 0</column>
+<column name="trunc_ln248_1_reg_574">15, 0, 15, 0</column>
+<column name="x_phase_reg_569">1, 0, 1, 0</column>
+<column name="xor_reg_693">15, 0, 15, 0</column>
+<column name="y_7_reg_585">17, 0, 17, 0</column>
+<column name="y_fu_84">17, 0, 17, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="start_full_n">in, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_continue">in, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="start_out">out, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="start_write">out, 1, ap_ctrl_hs, DebayerG, return value</column>
+<column name="imgBayer_dout">in, 10, ap_fifo, imgBayer, pointer</column>
+<column name="imgBayer_num_data_valid">in, 2, ap_fifo, imgBayer, pointer</column>
+<column name="imgBayer_fifo_cap">in, 2, ap_fifo, imgBayer, pointer</column>
+<column name="imgBayer_empty_n">in, 1, ap_fifo, imgBayer, pointer</column>
+<column name="imgBayer_read">out, 1, ap_fifo, imgBayer, pointer</column>
+<column name="imgG_din">out, 30, ap_fifo, imgG, pointer</column>
+<column name="imgG_num_data_valid">in, 2, ap_fifo, imgG, pointer</column>
+<column name="imgG_fifo_cap">in, 2, ap_fifo, imgG, pointer</column>
+<column name="imgG_full_n">in, 1, ap_fifo, imgG, pointer</column>
+<column name="imgG_write">out, 1, ap_fifo, imgG, pointer</column>
+<column name="height">in, 16, ap_stable, height, scalar</column>
+<column name="width">in, 16, ap_stable, width, scalar</column>
+<column name="p_read">in, 16, ap_none, p_read, scalar</column>
+<column name="bayerPhase_c9_din">out, 16, ap_fifo, bayerPhase_c9, pointer</column>
+<column name="bayerPhase_c9_num_data_valid">in, 2, ap_fifo, bayerPhase_c9, pointer</column>
+<column name="bayerPhase_c9_fifo_cap">in, 2, ap_fifo, bayerPhase_c9, pointer</column>
+<column name="bayerPhase_c9_full_n">in, 1, ap_fifo, bayerPhase_c9, pointer</column>
+<column name="bayerPhase_c9_write">out, 1, ap_fifo, bayerPhase_c9, pointer</column>
+</table>
+</item>
+</section>
+</profile>

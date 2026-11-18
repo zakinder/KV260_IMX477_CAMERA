@@ -1,0 +1,270 @@
+
+*** Running vivado
+    with args -log kv260_video_mipi_csi2_rx_subsyst_1_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source kv260_video_mipi_csi2_rx_subsyst_1_0.tcl
+
+
+
+****** Vivado v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source kv260_video_mipi_csi2_rx_subsyst_1_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1372.953 ; gain = 0.000
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
+Command: synth_design -top kv260_video_mipi_csi2_rx_subsyst_1_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18564
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1875.078 ; gain = 317.516
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/synth/kv260_video_mipi_csi2_rx_subsyst_1_0.vhd:99]
+INFO: [Synth 8-3491] module 'bd_c4a8' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:11' bound to instance 'U0' of component 'bd_c4a8' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/synth/kv260_video_mipi_csi2_rx_subsyst_1_0.vhd:208]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:58]
+INFO: [Synth 8-3491] module 'bd_c4a8_phy_0' declared at 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_phy_0_stub.vhdl:5' bound to instance 'phy' of component 'bd_c4a8_phy_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:543]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8_phy_0' [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_phy_0_stub.vhdl:104]
+INFO: [Synth 8-3491] module 'bd_c4a8_r_sync_0' declared at 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_r_sync_0_stub.vhdl:5' bound to instance 'r_sync' of component 'bd_c4a8_r_sync_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:639]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8_r_sync_0' [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_r_sync_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'bd_c4a8_rx_0' declared at 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_rx_0_stub.vhdl:5' bound to instance 'rx' of component 'bd_c4a8_rx_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:652]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8_rx_0' [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_rx_0_stub.vhdl:102]
+INFO: [Synth 8-3491] module 'bd_c4a8_vfb_0_0' declared at 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_vfb_0_0_stub.vhdl:5' bound to instance 'vfb_0' of component 'bd_c4a8_vfb_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:746]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8_vfb_0_0' [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_vfb_0_0_stub.vhdl:38]
+INFO: [Synth 8-3491] module 'bd_c4a8_vfb_sync_0' declared at 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_vfb_sync_0_stub.vhdl:5' bound to instance 'vfb_sync' of component 'bd_c4a8_vfb_sync_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:776]
+INFO: [Synth 8-638] synthesizing module 'bd_c4a8_vfb_sync_0' [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/.Xil/Vivado-23544-LAPTOP-I3ECBFK4/realtime/bd_c4a8_vfb_sync_0_stub.vhdl:21]
+INFO: [Synth 8-256] done synthesizing module 'bd_c4a8' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/bd_c4a8.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/synth/kv260_video_mipi_csi2_rx_subsyst_1_0.vhd:99]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 1963.695 ; gain = 406.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1981.613 ; gain = 424.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1981.613 ; gain = 424.051
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1981.613 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_0/bd_c4a8_r_sync_0/bd_04f9_r_sync_0_in_context.xdc] for cell 'U0/r_sync'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_0/bd_c4a8_r_sync_0/bd_04f9_r_sync_0_in_context.xdc] for cell 'U0/r_sync'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_1/bd_c4a8_vfb_sync_0/bd_04f9_vfb_sync_0_in_context.xdc] for cell 'U0/vfb_sync'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_1/bd_c4a8_vfb_sync_0/bd_04f9_vfb_sync_0_in_context.xdc] for cell 'U0/vfb_sync'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_2/bd_c4a8_rx_0/bd_c4a8_rx_0_in_context.xdc] for cell 'U0/rx'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_2/bd_c4a8_rx_0/bd_c4a8_rx_0_in_context.xdc] for cell 'U0/rx'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc] for cell 'U0/phy'
+create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2018.098 ; gain = 0.027
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc] for cell 'U0/phy'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/bd_c4a8_vfb_0_0_in_context.xdc] for cell 'U0/vfb_0'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/bd_c4a8_vfb_0_0_in_context.xdc] for cell 'U0/vfb_0'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0_fixed_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0_fixed_ooc.xdc] for cell 'U0'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0_board.xdc] for cell 'U0'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0_board.xdc] for cell 'U0'
+Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2018.098 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 2018.098 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 2018.098 ; gain = 460.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2018.098 ; gain = 460.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_clk_n. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_clk_n. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 6).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_clk_p. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 7).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_clk_p. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 8).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_n[0]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 9).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_n[0]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 10).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_n[1]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 11).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_n[1]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 12).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_n[2]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 13).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_n[2]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 14).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_n[3]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 15).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_n[3]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 16).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_p[0]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 17).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_p[0]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 18).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_p[1]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 19).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_p[1]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 20).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_p[2]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 21).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_p[2]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 22).
+Applied set_property IO_BUFFER_TYPE = NONE for mipi_phy_if_data_p[3]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 23).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for mipi_phy_if_data_p[3]. (constraint file  r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/bd_c4a8_phy_0_in_context.xdc, line 24).
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/r_sync. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/vfb_sync. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/rx. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/phy. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/vfb_0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2018.098 ; gain = 460.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2018.098 ; gain = 460.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2018.098 ; gain = 460.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 2520.371 ; gain = 962.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 2520.371 ; gain = 962.809
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 2539.457 ; gain = 981.895
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+-------------------+----------+
+|      |BlackBox name      |Instances |
++------+-------------------+----------+
+|1     |bd_c4a8_phy_0      |         1|
+|2     |bd_c4a8_r_sync_0   |         1|
+|3     |bd_c4a8_rx_0       |         1|
+|4     |bd_c4a8_vfb_0_0    |         1|
+|5     |bd_c4a8_vfb_sync_0 |         1|
++------+-------------------+----------+
+
+Report Cell Usage: 
++------+------------------------+------+
+|      |Cell                    |Count |
++------+------------------------+------+
+|1     |bd_c4a8_phy_0_bbox      |     1|
+|2     |bd_c4a8_r_sync_0_bbox   |     1|
+|3     |bd_c4a8_rx_0_bbox       |     1|
+|4     |bd_c4a8_vfb_0_0_bbox    |     1|
+|5     |bd_c4a8_vfb_sync_0_bbox |     1|
++------+------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:44 . Memory (MB): peak = 2546.234 ; gain = 952.188
+Synthesis Optimization Complete : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 2546.234 ; gain = 988.672
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2546.234 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2588.836 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 6a41c7bc
+INFO: [Common 17-83] Releasing license: Synthesis
+32 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:58 ; elapsed = 00:01:04 . Memory (MB): peak = 2593.879 ; gain = 1220.926
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/kv260_video_mipi_csi2_rx_subsyst_1_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_mipi_csi2_rx_subsyst_1_0, cache-ID = 7a4b0eb53ad35bb5
+INFO: [Coretcl 2-1174] Renamed 6 cell refs.
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1/kv260_video_mipi_csi2_rx_subsyst_1_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file kv260_video_mipi_csi2_rx_subsyst_1_0_utilization_synth.rpt -pb kv260_video_mipi_csi2_rx_subsyst_1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:05:07 2026...

@@ -1,0 +1,703 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sat Nov 14 19:01:18 2026
+# Process ID: 15140
+# Current directory: R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1
+# Command line: vivado.exe -log bd_c4a8_phy_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_c4a8_phy_0.tcl
+# Log file: R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/bd_c4a8_phy_0.vds
+# Journal file: R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1\vivado.jou
+# Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
+#-----------------------------------------------------------
+source bd_c4a8_phy_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
+Command: synth_design -top bd_c4a8_phy_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18572
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_ppm_fifo' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:3713]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5265]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5266]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5267]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5268]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5269]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5270]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5271]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_calib_cntrl' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:5272]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_tx_rst_logic' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:10872]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_rst_logic' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:11386]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_tx_support_rst_logic' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:12121]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_support_rst_logic' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:12496]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_data_lane' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:14933]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_data_lane' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:14934]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_fab_top' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:27453]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_fab_top' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:27454]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_fab_top' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:27455]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'mipi_dphy_v4_3_4_rx_fab_top' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:27489]
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:33056]
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/d2cb/hdl/mipi_dphy_v4_3_vl_rfs.sv:33714]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1861.922 ; gain = 326.793
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.v:90]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_core' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_core.v:92]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_c1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_c1.v:99]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_support' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:102]
+WARNING: [Synth 8-7071] port 'lane0_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane1_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane2_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane3_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane4_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane5_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane6_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'lane7_tap' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'tap_val_dyn_out' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'alt_skew_calb' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7071] port 'init_periodic_skew_calb' of module 'mipi_dphy_v4_3_4_rx_fab_top' is unconnected for instance 'dphy_rx_fab_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+WARNING: [Synth 8-7023] instance 'dphy_rx_fab_top' of module 'mipi_dphy_v4_3_4_rx_fab_top' has 320 connections declared, but only 309 given [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:747]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_hssio_rx' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/synth/bd_c4a8_phy_0_hssio_rx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:50]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_hssio_rx_hssio_wiz_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_hssio_wiz_top.v:48]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/hdl/bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx.v:49]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS_DPHY' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:55334]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS_DPHY' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:55334]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/hdl/bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx.v:49]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_bs_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:16988]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_tx_bs' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:14387]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_tx_bs' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:14387]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_tx_bs_tri' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:9956]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_tx_bs_tri' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:9956]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_rx_bs' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:10363]
+INFO: [Synth 8-6157] synthesizing module 'RX_BITSLICE' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105844]
+INFO: [Synth 8-6155] done synthesizing module 'RX_BITSLICE' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105844]
+INFO: [Synth 8-6157] synthesizing module 'RX_BITSLICE__parameterized0' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105844]
+INFO: [Synth 8-6155] done synthesizing module 'RX_BITSLICE__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105844]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_rx_bs' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:10363]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_rxtx_bs' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:5372]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_rxtx_bs' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:5372]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_bs_top' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:16988]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_bs_ctrl_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:1624]
+INFO: [Synth 8-6157] synthesizing module 'BITSLICE_CONTROL' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:739]
+INFO: [Synth 8-6155] done synthesizing module 'BITSLICE_CONTROL' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:739]
+INFO: [Synth 8-6157] synthesizing module 'BITSLICE_CONTROL__parameterized0' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:739]
+INFO: [Synth 8-6155] done synthesizing module 'BITSLICE_CONTROL__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:739]
+INFO: [Synth 8-6157] synthesizing module 'RIU_OR' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105644]
+INFO: [Synth 8-6155] done synthesizing module 'RIU_OR' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:105644]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_bs_ctrl_top' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:1624]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_clk_rst_top' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:1409]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_clk_scheme' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:975]
+INFO: [Synth 8-6157] synthesizing module 'PLLE4_ADV' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:89639]
+INFO: [Synth 8-6155] done synthesizing module 'PLLE4_ADV' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:89639]
+INFO: [Synth 8-6157] synthesizing module 'BUFGCE' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1092]
+INFO: [Synth 8-6155] done synthesizing module 'BUFGCE' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1092]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_clk_scheme' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:975]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_rst_scheme' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:332]
+INFO: [Synth 8-6157] synthesizing module 'high_speed_selectio_wiz_v3_6_3_sync_cell' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:49]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_sync_cell' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:49]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_rst_scheme' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:332]
+INFO: [Synth 8-6155] done synthesizing module 'high_speed_selectio_wiz_v3_6_3_clk_rst_top' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:1409]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_hssio_rx_hssio_wiz_top' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_hssio_wiz_top.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:50]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_hssio_rx' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/synth/bd_c4a8_phy_0_hssio_rx.v:53]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1082]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:1082]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_clock_module' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_clock_module.v:87]
+	Parameter C_DPHY_LANES bound to: 4 - type: integer 
+	Parameter MTBF_SYNC_STAGES bound to: 3 - type: integer 
+	Parameter C_HS_LINE_RATE bound to: 2000 - type: integer 
+	Parameter C_STABLE_CLK_PERIOD bound to: 5.000000 - type: double 
+	Parameter C_TXPLL_CLKIN_PERIOD bound to: 4.000000 - type: double 
+	Parameter EN_DPHY_IO bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_clock_module_rx' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.v:68]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_phy_0_clock_module_rx_clk_wiz' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx_clk_wiz.v:68]
+INFO: [Synth 8-6157] synthesizing module 'MMCME4_ADV' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63902]
+	Parameter BANDWIDTH bound to: HIGH - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 15.625000 - type: double 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 5.000000 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 6.250000 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: AUTO - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 2 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME4_ADV' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:63902]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_clock_module_rx_clk_wiz' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx_clk_wiz.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_clock_module_rx' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_clock_module' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_clock_module.v:87]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_support' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0/support/bd_c4a8_phy_0_support.v:102]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_c1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_c1.v:99]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0_core' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_core.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_phy_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.v:90]
+WARNING: [Synth 8-3848] Net data_to_bs_n_out in module/entity bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/hdl/bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx.v:79]
+WARNING: [Synth 8-3848] Net data_to_pins in module/entity bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/hdl/bd_c4a8_phy_0_hssio_rx_mipi_iobuf_rx.v:80]
+WARNING: [Synth 8-3848] Net w_rxtx_rx_fifo_wrclk_out in module/entity high_speed_selectio_wiz_v3_6_3_rxtx_bs does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:8853]
+WARNING: [Synth 8-3848] Net pll1_clkout0_out in module/entity high_speed_selectio_wiz_v3_6_3_clk_scheme does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:1016]
+WARNING: [Synth 8-6014] Unused sequential element wait_bsc_dly_rdy_timeout_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:559]
+WARNING: [Synth 8-6014] Unused sequential element wait_bsc_vtc_rdy_timeout_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/00af/hdl/high_speed_selectio_wiz_v3_6_rfs.v:560]
+WARNING: [Synth 8-3848] Net intf_rdy in module/entity bd_c4a8_phy_0_hssio_rx_hssio_wiz_top does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_hssio_wiz_top.v:505]
+WARNING: [Synth 8-3848] Net pll0_clkout1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:495]
+WARNING: [Synth 8-3848] Net pll1_clkout0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:496]
+WARNING: [Synth 8-3848] Net pll1_locked in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:497]
+WARNING: [Synth 8-3848] Net clk_from_ibuf in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:510]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:522]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:523]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:526]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:527]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc4 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:538]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc4 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:539]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc5 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:542]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc5 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:543]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc6 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:546]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc6 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:547]
+WARNING: [Synth 8-3848] Net dly_rdy_bsc7 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:550]
+WARNING: [Synth 8-3848] Net vtc_rdy_bsc7 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:551]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:558]
+WARNING: [Synth 8-3848] Net riu_valid_bg0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:559]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg0_bs0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:564]
+WARNING: [Synth 8-3848] Net riu_valid_bg0_bs0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:565]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg0_bs1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:570]
+WARNING: [Synth 8-3848] Net riu_valid_bg0_bs1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:571]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:594]
+WARNING: [Synth 8-3848] Net riu_valid_bg2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:595]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg2_bs4 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:600]
+WARNING: [Synth 8-3848] Net riu_valid_bg2_bs4 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:601]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg2_bs5 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:606]
+WARNING: [Synth 8-3848] Net riu_valid_bg2_bs5 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:607]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:612]
+WARNING: [Synth 8-3848] Net riu_valid_bg3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:613]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg3_bs6 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:618]
+WARNING: [Synth 8-3848] Net riu_valid_bg3_bs6 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:619]
+WARNING: [Synth 8-3848] Net riu_rd_data_bg3_bs7 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:624]
+WARNING: [Synth 8-3848] Net riu_valid_bg3_bs7 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:625]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_13 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:649]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_13 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:654]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_13 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:660]
+WARNING: [Synth 8-3848] Net bitslip_error_13 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:669]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_14 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:676]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_14 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:681]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_14 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:687]
+WARNING: [Synth 8-3848] Net bitslip_error_14 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:696]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_15 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:703]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_15 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:708]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_15 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:714]
+WARNING: [Synth 8-3848] Net bitslip_error_15 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:723]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_16 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:730]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_16 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:735]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_16 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:741]
+WARNING: [Synth 8-3848] Net bitslip_error_16 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:750]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_17 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:757]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_17 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:762]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_17 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:768]
+WARNING: [Synth 8-3848] Net bitslip_error_17 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:777]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_18 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:784]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_18 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:789]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_18 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:795]
+WARNING: [Synth 8-3848] Net bitslip_error_18 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:804]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_19 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:811]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_19 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:816]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_19 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:822]
+WARNING: [Synth 8-3848] Net bitslip_error_19 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:831]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_20 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:838]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_20 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:843]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_20 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:849]
+WARNING: [Synth 8-3848] Net bitslip_error_20 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:858]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_21 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:865]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_21 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:870]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_21 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:876]
+WARNING: [Synth 8-3848] Net bitslip_error_21 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:885]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_22 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:892]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_22 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:897]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_22 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:903]
+WARNING: [Synth 8-3848] Net bitslip_error_22 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:912]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:916]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:921]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:927]
+WARNING: [Synth 8-3848] Net fifo_empty_0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:933]
+WARNING: [Synth 8-3848] Net bitslip_error_0 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:936]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:940]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:945]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:951]
+WARNING: [Synth 8-3848] Net fifo_empty_1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:957]
+WARNING: [Synth 8-3848] Net bitslip_error_1 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:960]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:964]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:969]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:975]
+WARNING: [Synth 8-3848] Net fifo_empty_2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:981]
+WARNING: [Synth 8-3848] Net bitslip_error_2 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:984]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:988]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:993]
+WARNING: [Synth 8-3848] Net rx_cntvalueout_ext_3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:999]
+WARNING: [Synth 8-3848] Net fifo_empty_3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:1005]
+WARNING: [Synth 8-3848] Net bitslip_error_3 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:1008]
+WARNING: [Synth 8-3848] Net tx_cntvalueout_4 in module/entity bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3 does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_high_speed_selectio_wiz_v3_6_3.v:1012]
+INFO: [Common 17-14] Message 'Synth 8-3848' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port clkoutphy_out in module bd_c4a8_phy_0_clock_module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll_locked in module bd_c4a8_phy_0_clock_module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port cl_rxclkactivehs in module bd_c4a8_phy_0_clock_module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll_clk_in in module bd_c4a8_phy_0_clock_module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll_reset in module bd_c4a8_phy_0_clock_module is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll0_clkout1 in module high_speed_selectio_wiz_v3_6_3_rst_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fab_clk_pll1_in in module high_speed_selectio_wiz_v3_6_3_rst_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll1_locked_in in module high_speed_selectio_wiz_v3_6_3_rst_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll1_clkout0_out in module high_speed_selectio_wiz_v3_6_3_clk_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll1_rst_in in module high_speed_selectio_wiz_v3_6_3_clk_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pll1_clkoutphy_en_in in module high_speed_selectio_wiz_v3_6_3_clk_scheme is either unconnected or has no load
+WARNING: [Synth 8-7129] Port shared_pll0_clkout0_in in module high_speed_selectio_wiz_v3_6_3_clk_rst_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port shared_pll1_clkout0_in in module high_speed_selectio_wiz_v3_6_3_clk_rst_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port shared_pll0_locked_in in module high_speed_selectio_wiz_v3_6_3_clk_rst_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port shared_pll1_locked_in in module high_speed_selectio_wiz_v3_6_3_clk_rst_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_addr_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_nibble_sel_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[15] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[14] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[13] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[12] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[11] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[10] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[9] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[8] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[7] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[6] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_data_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n0_riu_wr_en_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_addr_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_nibble_sel_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[15] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[14] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[13] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[12] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[11] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[10] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[9] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[8] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[7] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[6] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_data_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n1_riu_wr_en_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_addr_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_nibble_sel_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[15] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[14] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[13] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[12] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[11] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[10] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[9] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[8] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[7] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[6] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_data_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n2_riu_wr_en_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[5] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[4] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[3] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[2] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[1] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_addr_in[0] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_nibble_sel_in in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[15] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[14] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[13] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[12] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[11] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port n3_riu_wr_data_in[10] in module high_speed_selectio_wiz_v3_6_3_bs_ctrl_top is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2021.926 ; gain = 486.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2021.926 ; gain = 486.797
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2021.926 ; gain = 486.797
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.324 . Memory (MB): peak = 2021.926 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_ooc.xdc] for cell 'inst'
+create_clock: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2094.250 ; gain = 2.996
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx.xdc] for cell 'inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx.xdc] for cell 'inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_phy_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_phy_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.xdc] for cell 'inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.xdc] for cell 'inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.xdc] for cell 'inst'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_phy_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_phy_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_phy_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_phy_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_clocks.xdc] for cell 'inst'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_clocks.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_clocks.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_phy_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_phy_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2094.250 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  BUFG => BUFGCE: 3 instances
+  IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 5 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.099 . Memory (MB): peak = 2094.250 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2094.250 ; gain = 559.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2094.250 ; gain = 559.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst/inst/bd_c4a8_phy_0_rx_support_i/\slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i /bd_c4a8_phy_0_clock_module_rx_i/inst. (constraint file  R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc, line 11).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/inst/bd_c4a8_phy_0_rx_support_i/\slave_rx.bd_c4a8_phy_0_rx_hssio_i /inst. (constraint file  R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc, line 16).
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/dont_touch.xdc, line 22).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/inst/bd_c4a8_phy_0_rx_support_i/\slave_rx.bd_c4a8_phy_0_rx_hssio_i . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/inst/bd_c4a8_phy_0_rx_support_i/\slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i /bd_c4a8_phy_0_clock_module_rx_i. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2094.250 ; gain = 559.121
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'rst_blk_state_reg' in module 'mipi_dphy_v4_3_4_rx_rst_logic'
+INFO: [Synth 8-802] inferred FSM for state register 'dl_rx_state_reg' in module 'mipi_dphy_v4_3_4_csi_rx_data_lane_sm'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_hs_high_rates_spec_v1_1.dl_state_reg' in module 'mipi_dphy_v4_3_4_rx_data_lane'
+INFO: [Synth 8-802] inferred FSM for state register 'rst_blk_state_reg' in module 'mipi_dphy_v4_3_4_rx_support_rst_logic'
+INFO: [Synth 8-802] inferred FSM for state register 'GEN_RIU_NOT_FROM_PLL.hssio_state_reg' in module 'high_speed_selectio_wiz_v3_6_3_rst_scheme'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               RST_BEGIN |                              000 |                              000
+       ASSERT_ALL_RESETS |                              001 |                              001
+      RELEASE_MMCM_RESET |                              010 |                              010
+          RESET_FSM_DONE |                              011 |                              101
+         WAIT_FOR_ENABLE |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rst_blk_state_reg' using encoding 'sequential' in module 'mipi_dphy_v4_3_4_rx_rst_logic'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             DL_RX_BEGIN |                             0000 |                             0000
+        DL_WO_INIT_LP_11 |                             0001 |                             0001
+                  iSTATE |                             0010 |                             1111
+*
+         DL_RX_INIT_DONE |                             0011 |                             0010
+              DL_RX_STOP |                             0100 |                             0011
+           DL_RX_HS_RQST |                             0101 |                             0100
+           DL_RX_HS_TERM |                             0110 |                             0101
+           DL_RX_HS_SYNC |                             0111 |                             0110
+            DL_RX_HS_RUN |                             1000 |                             0111
+          DL_RX_HS_ABORT |                             1001 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dl_rx_state_reg' using encoding 'sequential' in module 'mipi_dphy_v4_3_4_csi_rx_data_lane_sm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                DL_START |                               00 |                               00
+                 DL_STOP |                               01 |                               01
+               DL_ACTIVE |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_hs_high_rates_spec_v1_1.dl_state_reg' using encoding 'sequential' in module 'mipi_dphy_v4_3_4_rx_data_lane'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               RST_BEGIN |                              000 |                              000
+       ASSERT_ALL_RESETS |                              001 |                              001
+       RELEASE_PHY_RESET |                              010 |                              010
+          RESET_FSM_DONE |                              011 |                              100
+              CHECK_SRST |                              100 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rst_blk_state_reg' using encoding 'sequential' in module 'mipi_dphy_v4_3_4_rx_support_rst_logic'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+       ASSERT_ALL_RESETS |                        000000001 |                        000000001
+      DEASSERT_PLL_RESET |                        000000010 |                        000000010
+       WAIT_FOR_PLL_LOCK |                        000000100 |                        000000100
+      DEASSERT_BS_RESETS |                        000001000 |                        000001000
+  ASSERT_PLL_CLKOUTPHYEN |                        000010000 |                        000010000
+    WAIT_FOR_BSC_DLY_RDY |                        000100000 |                        000100000
+       ASSERT_BSC_EN_VTC |                        001000000 |                        001000000
+    WAIT_FOR_BSC_VTC_RDY |                        010000000 |                        010000000
+          RESET_SEQ_DONE |                        100000000 |                        100000000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'GEN_RIU_NOT_FROM_PLL.hssio_state_reg' in module 'high_speed_selectio_wiz_v3_6_3_rst_scheme'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2094.250 ; gain = 559.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 5     
+	   2 Input   15 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 4     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 9     
+	   2 Input    4 Bit       Adders := 1     
++---Registers : 
+	               52 Bit    Registers := 1     
+	               32 Bit    Registers := 4     
+	               16 Bit    Registers := 9     
+	               15 Bit    Registers := 1     
+	                8 Bit    Registers := 16    
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 9     
+	                4 Bit    Registers := 13    
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 9     
+	                1 Bit    Registers := 538   
++---Muxes : 
+	   2 Input   15 Bit        Muxes := 1     
+	  10 Input    9 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 15    
+	  18 Input    4 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 2     
+	  12 Input    3 Bit        Muxes := 2     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 6     
+	  10 Input    3 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 4     
+	   3 Input    2 Bit        Muxes := 4     
+	   2 Input    2 Bit        Muxes := 12    
+	   2 Input    1 Bit        Muxes := 212   
+	   5 Input    1 Bit        Muxes := 116   
+	   9 Input    1 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 7     
+	  10 Input    1 Bit        Muxes := 58    
+	   3 Input    1 Bit        Muxes := 21    
+	   4 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 2094.250 ; gain = 559.121
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 2556.117 ; gain = 1020.988
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:12 ; elapsed = 00:01:16 . Memory (MB): peak = 2605.621 ; gain = 1070.492
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:13 ; elapsed = 00:01:18 . Memory (MB): peak = 2609.695 ; gain = 1074.566
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------------+------+
+|      |Cell             |Count |
++------+-----------------+------+
+|1     |BITSLICE_CONTROL |     2|
+|3     |BUFG             |     3|
+|4     |BUFGCE           |     2|
+|5     |CARRY8           |    18|
+|6     |LUT1             |   555|
+|7     |LUT2             |   109|
+|8     |LUT3             |   110|
+|9     |LUT4             |   100|
+|10    |LUT5             |   193|
+|11    |LUT6             |   460|
+|12    |MMCME4_ADV       |     1|
+|13    |MUXF7            |     1|
+|14    |PLLE4_ADV        |     1|
+|15    |RX_BITSLICE      |     5|
+|17    |FDCE             |    65|
+|18    |FDPE             |    14|
+|19    |FDRE             |   937|
+|20    |FDSE             |    57|
+|21    |IBUFDS_DPHY      |     5|
++------+-----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:23 ; elapsed = 00:01:29 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5072 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:53 ; elapsed = 00:01:16 . Memory (MB): peak = 2624.477 ; gain = 1017.023
+Synthesis Optimization Complete : Time (s): cpu = 00:01:23 ; elapsed = 00:01:29 . Memory (MB): peak = 2624.477 ; gain = 1089.348
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.081 . Memory (MB): peak = 2624.477 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 29 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+WARNING: [Constraints 18-5254] DIFF_TERM is not supported in UltraScale devices.  Automatically translating DIFF_TERM of TRUE to DIFF_TERM_ADV=TERM_100.  Refer to UG571: UltraScale Architecture SelectIO User Guide for more detail.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-326] The CLKFBOUT to CLKFBIN net for instance inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcme4_adv_inst with COMPENSATION=INTERNAL is optimized away to aid design routability
+INFO: [Opt 31-326] The CLKFBOUT to CLKFBIN net for instance inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.plle4_adv_pll0_inst with COMPENSATION=INTERNAL is optimized away to aid design routability
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2655.359 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  BUFG => BUFGCE: 3 instances
+  IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 5 instances
+
+Synth Design complete, checksum: a8399dbc
+INFO: [Common 17-83] Releasing license: Synthesis
+102 Infos, 257 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:34 ; elapsed = 00:01:41 . Memory (MB): peak = 2655.359 ; gain = 1282.230
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/bd_c4a8_phy_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP bd_c4a8_phy_0, cache-ID = c807bc56b93dad71
+INFO: [Coretcl 2-1174] Renamed 60 cell refs.
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1/bd_c4a8_phy_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file bd_c4a8_phy_0_utilization_synth.rpt -pb bd_c4a8_phy_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:03:22 2026...

@@ -1,0 +1,272 @@
+
+
+================================================================
+== Vitis HLS Report for 'ZipperRemoval_Pipeline_VITIS_LOOP_1056_2'
+================================================================
+* Date:           Sat Nov 14 19:12:28 2026
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:48:16 MDT 2022)
+* Project:        prj
+* Solution:       sol (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.152 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+----------+-----+-------+---------+
+    |  Latency (cycles) |  Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max   | min |  max  |   Type  |
+    +---------+---------+-----------+----------+-----+-------+---------+
+    |        6|    65541|  19.998 ns|  0.218 ms|    6|  65541|       no|
+    +---------+---------+-----------+----------+-----+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+        |                     |  Latency (cycles) | Iteration|  Initiation Interval  |    Trip   |          |
+        |      Loop Name      |   min   |   max   |  Latency |  achieved |   target  |   Count   | Pipelined|
+        +---------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+        |- VITIS_LOOP_1056_2  |        4|    65539|         5|          1|          1|  1 ~ 65536|       yes|
+        +---------------------+---------+---------+----------+-----------+-----------+-----------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 5
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 5, States = { 1 2 3 4 5 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.52>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%x = alloca i32 1"   --->   Operation 8 'alloca' 'x' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%rhs = alloca i32 1"   --->   Operation 9 'alloca' 'rhs' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%rhs_V = alloca i32 1"   --->   Operation 10 'alloca' 'rhs_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%rhs_V_1 = alloca i32 1"   --->   Operation 11 'alloca' 'rhs_V_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%p_0_0_0497_1904 = alloca i32 1"   --->   Operation 12 'alloca' 'p_0_0_0497_1904' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%zext_ln1040_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %zext_ln1040"   --->   Operation 13 'read' 'zext_ln1040_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%loopWidth_read = read i17 @_ssdm_op_Read.ap_auto.i17, i17 %loopWidth"   --->   Operation 14 'read' 'loopWidth_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%conv2_i_i_lcssa929_read = read i10 @_ssdm_op_Read.ap_auto.i10, i10 %conv2_i_i_lcssa929"   --->   Operation 15 'read' 'conv2_i_i_lcssa929_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%p_0_2_0_0_0894_lcssa906931_read = read i10 @_ssdm_op_Read.ap_auto.i10, i10 %p_0_2_0_0_0894_lcssa906931"   --->   Operation 16 'read' 'p_0_2_0_0_0894_lcssa906931_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%p_0_0_0_0_0890_lcssa908933_read = read i10 @_ssdm_op_Read.ap_auto.i10, i10 %p_0_0_0_0_0890_lcssa908933"   --->   Operation 17 'read' 'p_0_0_0_0_0890_lcssa908933_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%p_0_1_0_0_0892_lcssa910935_read = read i10 @_ssdm_op_Read.ap_auto.i10, i10 %p_0_1_0_0_0892_lcssa910935"   --->   Operation 18 'read' 'p_0_1_0_0_0892_lcssa910935_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%zext_ln1040_cast = zext i16 %zext_ln1040_read"   --->   Operation 19 'zext' 'zext_ln1040_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgRgb, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 20 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgUnzip, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 21 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.42ns)   --->   "%store_ln0 = store i10 %conv2_i_i_lcssa929_read, i10 %p_0_0_0497_1904"   --->   Operation 22 'store' 'store_ln0' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 23 [1/1] (0.42ns)   --->   "%store_ln0 = store i10 %p_0_1_0_0_0892_lcssa910935_read, i10 %rhs_V_1"   --->   Operation 23 'store' 'store_ln0' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 24 [1/1] (0.42ns)   --->   "%store_ln0 = store i10 %p_0_0_0_0_0890_lcssa908933_read, i10 %rhs_V"   --->   Operation 24 'store' 'store_ln0' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 25 [1/1] (0.42ns)   --->   "%store_ln0 = store i10 %p_0_2_0_0_0894_lcssa906931_read, i10 %rhs"   --->   Operation 25 'store' 'store_ln0' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 26 [1/1] (0.42ns)   --->   "%store_ln0 = store i17 0, i17 %x"   --->   Operation 26 'store' 'store_ln0' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%br_ln0 = br void %for.body29"   --->   Operation 27 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%x_1 = load i17 %x" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 28 'load' 'x_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (1.09ns)   --->   "%icmp_ln1056 = icmp_eq  i17 %x_1, i17 %loopWidth_read" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 29 'icmp' 'icmp_ln1056' <Predicate = true> <Delay = 1.09> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.09> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 30 [1/1] (0.86ns)   --->   "%x_2 = add i17 %x_1, i17 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 30 'add' 'x_2' <Predicate = true> <Delay = 0.86> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.86> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%br_ln1056 = br i1 %icmp_ln1056, void %for.body29.split, void %for.inc230.exitStub" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 31 'br' 'br_ln1056' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%specpipeline_ln1059 = specpipeline void @_ssdm_op_SpecPipeline, i32 1, i32 0, i32 0, i32 0, void @empty_11" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1059]   --->   Operation 32 'specpipeline' 'specpipeline_ln1059' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%specloopname_ln1038 = specloopname void @_ssdm_op_SpecLoopName, void @empty_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1038]   --->   Operation 33 'specloopname' 'specloopname_ln1038' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_1 : Operation 34 [1/1] (1.09ns)   --->   "%icmp_ln1062 = icmp_ult  i17 %x_1, i17 %zext_ln1040_cast" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1062]   --->   Operation 34 'icmp' 'icmp_ln1062' <Predicate = (!icmp_ln1056)> <Delay = 1.09> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.09> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%br_ln1062 = br i1 %icmp_ln1062, void %for.body111_ifconv, void %if.then" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1062]   --->   Operation 35 'br' 'br_ln1062' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (1.09ns)   --->   "%icmp_ln1114 = icmp_eq  i17 %x_1, i17 0" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1114]   --->   Operation 36 'icmp' 'icmp_ln1114' <Predicate = (!icmp_ln1056)> <Delay = 1.09> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.09> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%br_ln1114 = br i1 %icmp_ln1114, void %if.then225, void %for.inc227" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1114]   --->   Operation 37 'br' 'br_ln1114' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.42ns)   --->   "%store_ln1056 = store i17 %x_2, i17 %x" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 38 'store' 'store_ln1056' <Predicate = (!icmp_ln1056)> <Delay = 0.42>
+
+State 2 <SV = 1> <Delay = 1.64>
+ST_2 : Operation 39 [1/1] (0.00ns)   --->   "%rhs_1 = load i10 %rhs"   --->   Operation 39 'load' 'rhs_1' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "%rhs_V_2 = load i10 %rhs_V"   --->   Operation 40 'load' 'rhs_V_2' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 41 [1/1] (0.00ns)   --->   "%rhs_V_4 = load i10 %rhs_V_1"   --->   Operation 41 'load' 'rhs_V_4' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 42 [1/1] (1.21ns)   --->   "%imgRgb_read = read i30 @_ssdm_op_Read.ap_fifo.volatile.i30P0A, i30 %imgRgb" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145]   --->   Operation 42 'read' 'imgRgb_read' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 30> <Depth = 2> <FIFO>
+ST_2 : Operation 43 [1/1] (0.00ns)   --->   "%trunc_ln145 = trunc i30 %imgRgb_read" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145]   --->   Operation 43 'trunc' 'trunc_ln145' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.00>
+ST_2 : Operation 44 [1/1] (0.00ns)   --->   "%trunc_ln145_1 = partselect i10 @_ssdm_op_PartSelect.i10.i30.i32.i32, i30 %imgRgb_read, i32 10, i32 19" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145]   --->   Operation 44 'partselect' 'trunc_ln145_1' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.00>
+ST_2 : Operation 45 [1/1] (0.00ns)   --->   "%trunc_ln145_2 = partselect i10 @_ssdm_op_PartSelect.i10.i30.i32.i32, i30 %imgRgb_read, i32 20, i32 29" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145]   --->   Operation 45 'partselect' 'trunc_ln145_2' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.00>
+ST_2 : Operation 46 [1/1] (0.42ns)   --->   "%store_ln1065 = store i10 %trunc_ln145_1, i10 %rhs_V_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1065]   --->   Operation 46 'store' 'store_ln1065' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.42>
+ST_2 : Operation 47 [1/1] (0.42ns)   --->   "%store_ln1065 = store i10 %trunc_ln145, i10 %rhs_V" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1065]   --->   Operation 47 'store' 'store_ln1065' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.42>
+ST_2 : Operation 48 [1/1] (0.42ns)   --->   "%store_ln1065 = store i10 %trunc_ln145_2, i10 %rhs" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1065]   --->   Operation 48 'store' 'store_ln1065' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.42>
+ST_2 : Operation 49 [1/1] (0.00ns)   --->   "%br_ln1065 = br void %for.body111_ifconv" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1065]   --->   Operation 49 'br' 'br_ln1065' <Predicate = (!icmp_ln1056 & icmp_ln1062)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.15>
+ST_3 : Operation 50 [1/1] (0.00ns)   --->   "%p_0_0_0497_1904_load = load i10 %p_0_0_0497_1904"   --->   Operation 50 'load' 'p_0_0_0497_1904_load' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 51 [1/1] (0.00ns)   --->   "%empty = speclooptripcount i32 @_ssdm_op_SpecLoopTripCount, i64 1, i64 65536, i64 0"   --->   Operation 51 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%rhs_load_1 = load i10 %rhs"   --->   Operation 52 'load' 'rhs_load_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 53 [1/1] (0.00ns)   --->   "%rhs_V_load_1 = load i10 %rhs_V"   --->   Operation 53 'load' 'rhs_V_load_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 54 [1/1] (0.00ns)   --->   "%rhs_V_1_load_1 = load i10 %rhs_V_1"   --->   Operation 54 'load' 'rhs_V_1_load_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 55 [1/1] (0.00ns)   --->   "%trunc_ln1 = partselect i8 @_ssdm_op_PartSelect.i8.i10.i32.i32, i10 %rhs_load_1, i32 2, i32 9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 55 'partselect' 'trunc_ln1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 56 [1/1] (0.00ns)   --->   "%zext_ln1084 = zext i8 %trunc_ln1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 56 'zext' 'zext_ln1084' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 57 [1/1] (0.00ns)   --->   "%lshr_ln1084_1 = partselect i9 @_ssdm_op_PartSelect.i9.i10.i32.i32, i10 %rhs_V_load_1, i32 1, i32 9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 57 'partselect' 'lshr_ln1084_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 58 [1/1] (0.00ns)   --->   "%zext_ln1084_3 = zext i9 %lshr_ln1084_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 58 'zext' 'zext_ln1084_3' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 59 [1/1] (0.00ns)   --->   "%lshr_ln1084_2 = partselect i7 @_ssdm_op_PartSelect.i7.i10.i32.i32, i10 %rhs_V_load_1, i32 3, i32 9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 59 'partselect' 'lshr_ln1084_2' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 60 [1/1] (0.00ns)   --->   "%zext_ln1084_4 = zext i7 %lshr_ln1084_2" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 60 'zext' 'zext_ln1084_4' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 61 [1/1] (0.00ns)   --->   "%trunc_ln1084_1 = partselect i7 @_ssdm_op_PartSelect.i7.i10.i32.i32, i10 %rhs_V_1_load_1, i32 3, i32 9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 61 'partselect' 'trunc_ln1084_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 62 [1/1] (0.00ns)   --->   "%zext_ln1084_1 = zext i7 %trunc_ln1084_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 62 'zext' 'zext_ln1084_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 63 [1/1] (0.76ns)   --->   "%add_ln1084 = add i9 %zext_ln1084, i9 %zext_ln1084_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 63 'add' 'add_ln1084' <Predicate = (!icmp_ln1056)> <Delay = 0.76> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.76> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 64 [1/1] (0.00ns)   --->   "%zext_ln1084_2 = zext i9 %add_ln1084" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 64 'zext' 'zext_ln1084_2' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 65 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%add_ln1084_1 = add i10 %zext_ln1084_2, i10 %zext_ln1084_3" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 65 'add' 'add_ln1084_1' <Predicate = (!icmp_ln1056)> <Delay = 0.00> <CoreInst = "TAddSub">   --->   Core 10 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.48> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_3 : Operation 66 [1/1] (0.96ns) (root node of TernaryAdder)   --->   "%lum = add i10 %add_ln1084_1, i10 %zext_ln1084_4" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084]   --->   Operation 66 'add' 'lum' <Predicate = (!icmp_ln1056)> <Delay = 0.96> <CoreInst = "TAddSub">   --->   Core 10 'TAddSub' <Latency = 0> <II = 1> <Delay = 0.48> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_3 : Operation 67 [1/1] (0.00ns)   --->   "%val_assign = partselect i7 @_ssdm_op_PartSelect.i7.i10.i32.i32, i10 %lum, i32 3, i32 9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1087]   --->   Operation 67 'partselect' 'val_assign' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 68 [1/1] (0.00ns)   --->   "%zext_ln1087 = zext i7 %val_assign" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1087]   --->   Operation 68 'zext' 'zext_ln1087' <Predicate = (!icmp_ln1056)> <Delay = 0.00>
+ST_3 : Operation 69 [1/1] (0.42ns)   --->   "%store_ln1056 = store i10 %zext_ln1087, i10 %p_0_0_0497_1904" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 69 'store' 'store_ln1056' <Predicate = (!icmp_ln1056)> <Delay = 0.42>
+
+State 4 <SV = 3> <Delay = 1.98>
+ST_4 : Operation 70 [1/1] (0.00ns)   --->   "%p_0_0_0497895_out_load = load i10 %p_0_0_0497895_out"   --->   Operation 70 'load' 'p_0_0_0497895_out_load' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 71 [1/1] (0.00ns)   --->   "%p_0_0_0496898_out_load = load i10 %p_0_0_0496898_out"   --->   Operation 71 'load' 'p_0_0_0496898_out_load' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 72 [1/1] (0.00ns)   --->   "%p_0_0_0495900_out_load = load i10 %p_0_0_0495900_out"   --->   Operation 72 'load' 'p_0_0_0495900_out_load' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 73 [1/1] (0.00ns)   --->   "%p_0_0_0494902_out_load = load i10 %p_0_0_0494902_out"   --->   Operation 73 'load' 'p_0_0_0494902_out_load' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 74 [1/1] (0.91ns)   --->   "%icmp_ln1073 = icmp_ult  i10 %p_0_0_0497895_out_load, i10 %p_0_0_0497_1904_load"   --->   Operation 74 'icmp' 'icmp_ln1073' <Predicate = true> <Delay = 0.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.91> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 75 [1/1] (0.91ns)   --->   "%icmp_ln1077 = icmp_ult  i10 %p_0_0_0497_1904_load, i10 %zext_ln1087"   --->   Operation 75 'icmp' 'icmp_ln1077' <Predicate = true> <Delay = 0.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.91> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 76 [1/1] (0.00ns) (grouped into LUT with out node or_ln1099)   --->   "%xor_ln1077 = xor i1 %icmp_ln1077, i1 1"   --->   Operation 76 'xor' 'xor_ln1077' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 77 [1/1] (0.00ns) (grouped into LUT with out node or_ln1099)   --->   "%and_ln1099 = and i1 %icmp_ln1073, i1 %xor_ln1077" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 77 'and' 'and_ln1099' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 78 [1/1] (0.91ns)   --->   "%icmp_ln1077_1 = icmp_ult  i10 %p_0_0_0497895_out_load, i10 %p_0_0_0497_1904_load"   --->   Operation 78 'icmp' 'icmp_ln1077_1' <Predicate = true> <Delay = 0.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.91> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 79 [1/1] (0.00ns) (grouped into LUT with out node or_ln1099)   --->   "%xor_ln1077_1 = xor i1 %icmp_ln1077_1, i1 1"   --->   Operation 79 'xor' 'xor_ln1077_1' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 80 [1/1] (0.91ns)   --->   "%icmp_ln1073_1 = icmp_ult  i10 %p_0_0_0497_1904_load, i10 %zext_ln1087"   --->   Operation 80 'icmp' 'icmp_ln1073_1' <Predicate = true> <Delay = 0.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.91> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 81 [1/1] (0.00ns) (grouped into LUT with out node or_ln1099)   --->   "%and_ln1099_1 = and i1 %xor_ln1077_1, i1 %icmp_ln1073_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 81 'and' 'and_ln1099_1' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 82 [1/1] (0.00ns)   --->   "%ret_V_6 = bitconcatenate i11 @_ssdm_op_BitConcatenate.i11.i10.i1, i10 %rhs_1, i1 0"   --->   Operation 82 'bitconcatenate' 'ret_V_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 83 [1/1] (0.00ns)   --->   "%zext_ln1541_1 = zext i10 %rhs_load_1"   --->   Operation 83 'zext' 'zext_ln1541_1' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 84 [1/1] (0.00ns)   --->   "%zext_ln1541 = zext i11 %ret_V_6"   --->   Operation 84 'zext' 'zext_ln1541' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 85 [1/1] (0.00ns)   --->   "%zext_ln1541_3 = zext i10 %p_0_0_0496898_out_load"   --->   Operation 85 'zext' 'zext_ln1541_3' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 86 [1/1] (0.78ns)   --->   "%add_ln1541 = add i11 %zext_ln1541_1, i11 %zext_ln1541_3"   --->   Operation 86 'add' 'add_ln1541' <Predicate = true> <Delay = 0.78> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 87 [1/1] (0.00ns)   --->   "%zext_ln1541_5 = zext i11 %add_ln1541"   --->   Operation 87 'zext' 'zext_ln1541_5' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 88 [1/1] (0.79ns)   --->   "%ret_V = add i12 %zext_ln1541_5, i12 %zext_ln1541"   --->   Operation 88 'add' 'ret_V' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 89 [1/1] (0.00ns)   --->   "%r_V = partselect i10 @_ssdm_op_PartSelect.i10.i12.i32.i32, i12 %ret_V, i32 2, i32 11"   --->   Operation 89 'partselect' 'r_V' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 90 [1/1] (0.00ns)   --->   "%ret_V_7 = bitconcatenate i11 @_ssdm_op_BitConcatenate.i11.i10.i1, i10 %rhs_V_2, i1 0"   --->   Operation 90 'bitconcatenate' 'ret_V_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 91 [1/1] (0.00ns)   --->   "%zext_ln1541_6 = zext i10 %rhs_V_load_1"   --->   Operation 91 'zext' 'zext_ln1541_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 92 [1/1] (0.00ns)   --->   "%zext_ln1541_2 = zext i11 %ret_V_7"   --->   Operation 92 'zext' 'zext_ln1541_2' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 93 [1/1] (0.00ns)   --->   "%zext_ln1541_7 = zext i10 %p_0_0_0495900_out_load"   --->   Operation 93 'zext' 'zext_ln1541_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 94 [1/1] (0.78ns)   --->   "%add_ln1541_2 = add i11 %zext_ln1541_6, i11 %zext_ln1541_7"   --->   Operation 94 'add' 'add_ln1541_2' <Predicate = true> <Delay = 0.78> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 95 [1/1] (0.00ns)   --->   "%zext_ln1541_8 = zext i11 %add_ln1541_2"   --->   Operation 95 'zext' 'zext_ln1541_8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 96 [1/1] (0.79ns)   --->   "%ret_V_3 = add i12 %zext_ln1541_8, i12 %zext_ln1541_2"   --->   Operation 96 'add' 'ret_V_3' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 97 [1/1] (0.00ns)   --->   "%g_V = partselect i10 @_ssdm_op_PartSelect.i10.i12.i32.i32, i12 %ret_V_3, i32 2, i32 11"   --->   Operation 97 'partselect' 'g_V' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 98 [1/1] (0.00ns)   --->   "%ret_V_8 = bitconcatenate i11 @_ssdm_op_BitConcatenate.i11.i10.i1, i10 %rhs_V_4, i1 0"   --->   Operation 98 'bitconcatenate' 'ret_V_8' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 99 [1/1] (0.00ns)   --->   "%zext_ln1541_9 = zext i10 %rhs_V_1_load_1"   --->   Operation 99 'zext' 'zext_ln1541_9' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 100 [1/1] (0.00ns)   --->   "%zext_ln1541_4 = zext i11 %ret_V_8"   --->   Operation 100 'zext' 'zext_ln1541_4' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 101 [1/1] (0.00ns)   --->   "%zext_ln1541_10 = zext i10 %p_0_0_0494902_out_load"   --->   Operation 101 'zext' 'zext_ln1541_10' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 102 [1/1] (0.78ns)   --->   "%add_ln1541_4 = add i11 %zext_ln1541_9, i11 %zext_ln1541_10"   --->   Operation 102 'add' 'add_ln1541_4' <Predicate = true> <Delay = 0.78> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.78> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 103 [1/1] (0.00ns)   --->   "%zext_ln1541_11 = zext i11 %add_ln1541_4"   --->   Operation 103 'zext' 'zext_ln1541_11' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 104 [1/1] (0.79ns)   --->   "%ret_V_5 = add i12 %zext_ln1541_11, i12 %zext_ln1541_4"   --->   Operation 104 'add' 'ret_V_5' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 105 [1/1] (0.00ns)   --->   "%b_V = partselect i10 @_ssdm_op_PartSelect.i10.i12.i32.i32, i12 %ret_V_5, i32 2, i32 11"   --->   Operation 105 'partselect' 'b_V' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 106 [1/1] (0.28ns) (out node of the LUT)   --->   "%or_ln1099 = or i1 %and_ln1099, i1 %and_ln1099_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 106 'or' 'or_ln1099' <Predicate = true> <Delay = 0.28> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 107 [1/1] (0.40ns)   --->   "%select_ln1099 = select i1 %or_ln1099, i10 %b_V, i10 %rhs_V_4" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 107 'select' 'select_ln1099' <Predicate = true> <Delay = 0.40> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.40> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 108 [1/1] (0.40ns)   --->   "%select_ln1099_1 = select i1 %or_ln1099, i10 %g_V, i10 %rhs_V_2" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 108 'select' 'select_ln1099_1' <Predicate = true> <Delay = 0.40> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.40> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 109 [1/1] (0.40ns)   --->   "%select_ln1099_2 = select i1 %or_ln1099, i10 %r_V, i10 %rhs_1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099]   --->   Operation 109 'select' 'select_ln1099_2' <Predicate = true> <Delay = 0.40> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.40> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_4 : Operation 110 [1/1] (0.00ns)   --->   "%store_ln1056 = store i10 %rhs_V_4, i10 %p_0_0_0494902_out" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 110 'store' 'store_ln1056' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 111 [1/1] (0.00ns)   --->   "%store_ln1056 = store i10 %rhs_V_2, i10 %p_0_0_0495900_out" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 111 'store' 'store_ln1056' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 112 [1/1] (0.00ns)   --->   "%store_ln1056 = store i10 %rhs_1, i10 %p_0_0_0496898_out" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 112 'store' 'store_ln1056' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 113 [1/1] (0.00ns)   --->   "%store_ln1056 = store i10 %p_0_0_0497_1904_load, i10 %p_0_0_0497895_out" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 113 'store' 'store_ln1056' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 114 [1/1] (0.00ns)   --->   "%br_ln1056 = br void %for.body29" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056]   --->   Operation 114 'br' 'br_ln1056' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 118 [1/1] (0.00ns)   --->   "%store_ln0 = store i10 %rhs_V_4, i10 %rhs_V_2_out"   --->   Operation 118 'store' 'store_ln0' <Predicate = (icmp_ln1056)> <Delay = 0.00>
+ST_4 : Operation 119 [1/1] (0.00ns)   --->   "%store_ln0 = store i10 %rhs_V_2, i10 %rhs_V_out"   --->   Operation 119 'store' 'store_ln0' <Predicate = (icmp_ln1056)> <Delay = 0.00>
+ST_4 : Operation 120 [1/1] (0.00ns)   --->   "%store_ln0 = store i10 %rhs_1, i10 %rhs_out"   --->   Operation 120 'store' 'store_ln0' <Predicate = (icmp_ln1056)> <Delay = 0.00>
+ST_4 : Operation 121 [1/1] (0.00ns)   --->   "%store_ln1077 = store i10 %p_0_0_0497_1904_load, i10 %p_0_0_0497_1904_out"   --->   Operation 121 'store' 'store_ln1077' <Predicate = (icmp_ln1056)> <Delay = 0.00>
+ST_4 : Operation 122 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 122 'ret' 'ret_ln0' <Predicate = (icmp_ln1056)> <Delay = 0.00>
+
+State 5 <SV = 4> <Delay = 1.21>
+ST_5 : Operation 115 [1/1] (0.00ns)   --->   "%p_0 = bitconcatenate i30 @_ssdm_op_BitConcatenate.i30.i10.i10.i10, i10 %select_ln1099_2, i10 %select_ln1099, i10 %select_ln1099_1" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174]   --->   Operation 115 'bitconcatenate' 'p_0' <Predicate = (!icmp_ln1114)> <Delay = 0.00>
+ST_5 : Operation 116 [1/1] (1.21ns)   --->   "%write_ln174 = write void @_ssdm_op_Write.ap_fifo.volatile.i30P0A, i30 %imgUnzip, i30 %p_0" [C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174]   --->   Operation 116 'write' 'write_ln174' <Predicate = (!icmp_ln1114)> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 30> <Depth = 2> <FIFO>
+ST_5 : Operation 117 [1/1] (0.00ns)   --->   "%br_ln1117 = br void %for.inc227" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1117]   --->   Operation 117 'br' 'br_ln1117' <Predicate = (!icmp_ln1114)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.9ns.
+
+ <State 1>: 1.52ns
+The critical path consists of the following:
+	'alloca' operation ('x') [17]  (0 ns)
+	'load' operation ('x', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056) on local variable 'x' [38]  (0 ns)
+	'add' operation ('x', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056) [45]  (0.863 ns)
+	'store' operation ('store_ln1056', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056) of variable 'x', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056 on local variable 'x' [131]  (0.427 ns)
+	blocking operation 0.232 ns on control path)
+
+ <State 2>: 1.64ns
+The critical path consists of the following:
+	fifo read operation ('imgRgb_read', C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145) on port 'imgRgb' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145) [53]  (1.22 ns)
+	'store' operation ('store_ln1065', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1065) of variable 'trunc_ln145_1', C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:145 on local variable 'rhs.V' [57]  (0.427 ns)
+
+ <State 3>: 2.15ns
+The critical path consists of the following:
+	'load' operation ('rhs_load_1') on local variable 'rhs' [66]  (0 ns)
+	'add' operation ('add_ln1084', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084) [77]  (0.765 ns)
+	'add' operation ('add_ln1084_1', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084) [79]  (0 ns)
+	'add' operation ('lum', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084) [80]  (0.96 ns)
+	'store' operation ('store_ln1056', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1056) of variable 'zext_ln1087', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1087 on local variable 'p_0_0_0497_1904' [126]  (0.427 ns)
+
+ <State 4>: 1.99ns
+The critical path consists of the following:
+	'load' operation ('p_0_0_0494902_out_load') on local variable 'p_0_0_0494902_out' [65]  (0 ns)
+	'add' operation ('add_ln1541_4') [111]  (0.787 ns)
+	'add' operation ('ret.V') [113]  (0.798 ns)
+	'select' operation ('select_ln1099', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1099) [116]  (0.403 ns)
+
+ <State 5>: 1.22ns
+The critical path consists of the following:
+	fifo write operation ('write_ln174', C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174) on port 'imgUnzip' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot/hls_stream_39.h:174) [123]  (1.22 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

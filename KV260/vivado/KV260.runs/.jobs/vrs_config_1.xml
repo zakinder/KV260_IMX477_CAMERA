@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="kv260_video_clk_wiz_1_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_clk_wiz_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_04f9_rx_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_04f9_rx_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_04f9_r_sync_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_04f9_r_sync_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_04f9_phy_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_04f9_phy_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_ila_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_ila_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_04f9_rx_0_synth_1"/>
+		<Parent Id="bd_04f9_r_sync_0_synth_1"/>
+		<Parent Id="bd_04f9_phy_0_synth_1"/>
+		<Parent Id="bd_04f9_vfb_sync_0_synth_1"/>
+		<Parent Id="bd_04f9_vfb_0_0_synth_1"/>
+	</Run>
+	<Run Id="bd_04f9_vfb_sync_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_04f9_vfb_sync_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_clk_wiz_ila_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_clk_wiz_ila_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_xbar_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_c4a8_rx_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_c4a8_rx_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_c4a8_phy_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_c4a8_phy_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_c4a8_r_sync_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_c4a8_r_sync_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_c4a8_rx_0_synth_1"/>
+		<Parent Id="bd_c4a8_phy_0_synth_1"/>
+		<Parent Id="bd_c4a8_r_sync_0_synth_1"/>
+		<Parent Id="bd_c4a8_vfb_sync_0_synth_1"/>
+		<Parent Id="bd_c4a8_vfb_0_0_synth_1"/>
+	</Run>
+	<Run Id="bd_c4a8_vfb_sync_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_sync_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_04f9_vfb_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_04f9_vfb_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_rst_ps8_0_249M_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_rst_ps8_0_249M_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_ila_0_1_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_ila_0_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_zynq_ultra_ps_e_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_zynq_ultra_ps_e_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_ila_1_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_ila_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_v_axi4s_vid_out_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_v_axi4s_vid_out_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_axi_smc_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_axi_smc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_v_tc_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_v_tc_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_v_demosaic_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_c4a8_vfb_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_v_demosaic_1_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_vfp_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_axi_gpio_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_axi_gpio_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_clk_wiz_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_clk_wiz_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_axi_vdma_0_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_axi_vdma_1_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_auto_pc_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_auto_pc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_auto_ds_1_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_auto_ds_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_auto_ds_0_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_auto_ds_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="kv260_video_auto_pc_1_synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/kv260_video_auto_pc_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="R:/KV260/vivado/KV260.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="kv260_video_clk_wiz_1_0_synth_1"/>
+		<Parent Id="kv260_video_ila_0_0_synth_1"/>
+		<Parent Id="kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1"/>
+		<Parent Id="kv260_video_clk_wiz_ila_0_synth_1"/>
+		<Parent Id="kv260_video_xbar_0_synth_1"/>
+		<Parent Id="kv260_video_mipi_csi2_rx_subsyst_1_0_synth_1"/>
+		<Parent Id="kv260_video_rst_ps8_0_249M_0_synth_1"/>
+		<Parent Id="kv260_video_ila_0_1_synth_1"/>
+		<Parent Id="kv260_video_zynq_ultra_ps_e_0_0_synth_1"/>
+		<Parent Id="kv260_video_ila_1_0_synth_1"/>
+		<Parent Id="kv260_video_v_axi4s_vid_out_0_0_synth_1"/>
+		<Parent Id="kv260_video_axi_smc_0_synth_1"/>
+		<Parent Id="kv260_video_v_tc_0_0_synth_1"/>
+		<Parent Id="kv260_video_v_demosaic_0_0_synth_1"/>
+		<Parent Id="kv260_video_v_demosaic_1_0_synth_1"/>
+		<Parent Id="kv260_video_vfp_0_0_synth_1"/>
+		<Parent Id="kv260_video_axi_gpio_0_synth_1"/>
+		<Parent Id="kv260_video_clk_wiz_0_0_synth_1"/>
+		<Parent Id="kv260_video_axi_vdma_0_0_synth_1"/>
+		<Parent Id="kv260_video_axi_vdma_1_0_synth_1"/>
+		<Parent Id="kv260_video_auto_pc_0_synth_1"/>
+		<Parent Id="kv260_video_auto_ds_1_synth_1"/>
+		<Parent Id="kv260_video_auto_ds_0_synth_1"/>
+		<Parent Id="kv260_video_auto_pc_1_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sat Nov 14 19:06:44 2026
+# Process ID: 21600
+# Current directory: R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1
+# Command line: vivado.exe -log kv260_video_mipi_csi2_rx_subsyst_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kv260_video_mipi_csi2_rx_subsyst_0_0.tcl
+# Log file: R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1/kv260_video_mipi_csi2_rx_subsyst_0_0.vds
+# Journal file: R:/KV260/vivado/KV260.runs/kv260_video_mipi_csi2_rx_subsyst_0_0_synth_1\vivado.jou
+# Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
+#-----------------------------------------------------------
+source kv260_video_mipi_csi2_rx_subsyst_0_0.tcl -notrace

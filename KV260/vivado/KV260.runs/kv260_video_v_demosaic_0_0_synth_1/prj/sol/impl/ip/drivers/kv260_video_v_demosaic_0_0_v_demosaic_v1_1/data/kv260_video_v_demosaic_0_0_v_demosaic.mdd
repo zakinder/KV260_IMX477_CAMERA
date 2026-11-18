@@ -1,0 +1,17 @@
+# ==============================================================
+# Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.1 (64-bit)
+# Tool Version Limit: 2022.04
+# Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+# ==============================================================
+OPTION psf_version = 2.1;
+
+BEGIN driver kv260_video_v_demosaic_0_0_v_demosaic
+
+ OPTION supported_peripherals = (kv260_video_v_demosaic_0_0_v_demosaic_v1_1 );
+ OPTION driver_state = ACTIVE;
+ OPTION copyfiles = all;
+ OPTION name = kv260_video_v_demosaic_0_0_v_demosaic;
+ OPTION version = 1.1;
+
+END driver
+

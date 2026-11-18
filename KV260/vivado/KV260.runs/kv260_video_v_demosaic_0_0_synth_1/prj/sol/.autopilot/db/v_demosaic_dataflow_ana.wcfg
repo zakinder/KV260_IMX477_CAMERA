@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="v_demosaic.wdb" id="1">
+         <top_modules>
+            <top_module name="apa_v_demosaic_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0ns"></ZoomStartTime>
+      <ZoomEndTime time="2000ns"></ZoomEndTime>
+      <Cursor1Time time="0ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="257"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wvobject type="group" fp_name="HLS Process Summary Group">
+      <obj_property name="label">HLS Process Summary</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic//AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity">
+         <obj_property name="label">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="UseFullPath">true</obj_property>
+         <obj_property name="ElementShortName">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity</obj_property>
+         <obj_property name="ObjectShortName">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+         <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">turquoise</obj_property>
+         <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+         <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic//AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity.dataflowTxWaveData.Cycles</obj_property>
+         <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic//AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity.dataflowTxWaveData.OutStanding</obj_property>
+         <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic//AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity.dataflowTxTooltipData</obj_property>
+         <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/Block_entry1_proc_U0_activity">
+            <obj_property name="label">Block_entry1_proc_U0_activity</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="UseFullPath">true</obj_property>
+            <obj_property name="ElementShortName">Block_entry1_proc_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">Block_entry1_proc_U0_activity</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+            <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="CustomSignalColor">turquoise</obj_property>
+            <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+            <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/Block_entry1_proc_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/Block_entry1_proc_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/Block_entry1_proc_U0_activity.dataflowTxTooltipData</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/AXIvideo2MultiBayer_U0_activity">
+            <obj_property name="label">AXIvideo2MultiBayer_U0_activity</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="UseFullPath">true</obj_property>
+            <obj_property name="ElementShortName">AXIvideo2MultiBayer_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">AXIvideo2MultiBayer_U0_activity</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+            <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="CustomSignalColor">turquoise</obj_property>
+            <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+            <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/AXIvideo2MultiBayer_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/AXIvideo2MultiBayer_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/AXIvideo2MultiBayer_U0_activity.dataflowTxTooltipData</obj_property>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity">
+               <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity.dataflowTxTooltipData</obj_property>
+            </wvobject>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity">
+               <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity.dataflowTxTooltipData</obj_property>
+            </wvobject>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity">
+               <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity.dataflowTxTooltipData</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/Debayer_U0_activity">
+            <obj_property name="label">Debayer_U0_activity</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="UseFullPath">true</obj_property>
+            <obj_property name="ElementShortName">Debayer_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">Debayer_U0_activity</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+            <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="CustomSignalColor">turquoise</obj_property>
+            <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+            <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/Debayer_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/Debayer_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/Debayer_U0_activity.dataflowTxTooltipData</obj_property>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DebayerG_U0_activity">
+               <obj_property name="label">DebayerG_U0_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">DebayerG_U0_activity</obj_property>
+               <obj_property name="ObjectShortName">DebayerG_U0_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DebayerG_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DebayerG_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DebayerG_U0_activity.dataflowTxTooltipData</obj_property>
+               <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity">
+                  <obj_property name="label">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="UseFullPath">true</obj_property>
+                  <obj_property name="ElementShortName">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity</obj_property>
+                  <obj_property name="ObjectShortName">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity</obj_property>
+                  <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                  <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+                  <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+                  <obj_property name="UseCustomSignalColor">true</obj_property>
+                  <obj_property name="CustomSignalColor">turquoise</obj_property>
+                  <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+                  <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity.dataflowTxWaveData.Cycles</obj_property>
+                  <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity.dataflowTxWaveData.OutStanding</obj_property>
+                  <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity.dataflowTxTooltipData</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/DebayerRatBorBatR_U0_activity">
+               <obj_property name="label">DebayerRatBorBatR_U0_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">DebayerRatBorBatR_U0_activity</obj_property>
+               <obj_property name="ObjectShortName">DebayerRatBorBatR_U0_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/DebayerRatBorBatR_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/DebayerRatBorBatR_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/DebayerRatBorBatR_U0_activity.dataflowTxTooltipData</obj_property>
+               <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity">
+                  <obj_property name="label">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="UseFullPath">true</obj_property>
+                  <obj_property name="ElementShortName">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity</obj_property>
+                  <obj_property name="ObjectShortName">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity</obj_property>
+                  <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                  <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+                  <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+                  <obj_property name="UseCustomSignalColor">true</obj_property>
+                  <obj_property name="CustomSignalColor">turquoise</obj_property>
+                  <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+                  <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity.dataflowTxWaveData.Cycles</obj_property>
+                  <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity.dataflowTxWaveData.OutStanding</obj_property>
+                  <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity.dataflowTxTooltipData</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/DebayerRandBatG_U0_activity">
+               <obj_property name="label">DebayerRandBatG_U0_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">DebayerRandBatG_U0_activity</obj_property>
+               <obj_property name="ObjectShortName">DebayerRandBatG_U0_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/DebayerRandBatG_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/DebayerRandBatG_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/DebayerRandBatG_U0_activity.dataflowTxTooltipData</obj_property>
+               <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity">
+                  <obj_property name="label">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <obj_property name="UseFullPath">true</obj_property>
+                  <obj_property name="ElementShortName">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity</obj_property>
+                  <obj_property name="ObjectShortName">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity</obj_property>
+                  <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                  <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+                  <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+                  <obj_property name="UseCustomSignalColor">true</obj_property>
+                  <obj_property name="CustomSignalColor">turquoise</obj_property>
+                  <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+                  <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity.dataflowTxWaveData.Cycles</obj_property>
+                  <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity.dataflowTxWaveData.OutStanding</obj_property>
+                  <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity.dataflowTxTooltipData</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ZipperRemoval_U0_activity">
+            <obj_property name="label">ZipperRemoval_U0_activity</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="UseFullPath">true</obj_property>
+            <obj_property name="ElementShortName">ZipperRemoval_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">ZipperRemoval_U0_activity</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+            <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="CustomSignalColor">turquoise</obj_property>
+            <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+            <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ZipperRemoval_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ZipperRemoval_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ZipperRemoval_U0_activity.dataflowTxTooltipData</obj_property>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity">
+               <obj_property name="label">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity.dataflowTxTooltipData</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/MultiPixStream2AXIvideo_U0_activity">
+            <obj_property name="label">MultiPixStream2AXIvideo_U0_activity</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="UseFullPath">true</obj_property>
+            <obj_property name="ElementShortName">MultiPixStream2AXIvideo_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">MultiPixStream2AXIvideo_U0_activity</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+            <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="CustomSignalColor">turquoise</obj_property>
+            <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+            <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/MultiPixStream2AXIvideo_U0_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/MultiPixStream2AXIvideo_U0_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/MultiPixStream2AXIvideo_U0_activity.dataflowTxTooltipData</obj_property>
+            <wvobject type="group" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity">
+               <obj_property name="label">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="UseFullPath">true</obj_property>
+               <obj_property name="ElementShortName">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+               <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+               <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+               <obj_property name="CustomSignalColor">turquoise</obj_property>
+               <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
+               <obj_property name="Render_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity.dataflowTxWaveData.Cycles</obj_property>
+               <obj_property name="Value_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity.dataflowTxWaveData.OutStanding</obj_property>
+               <obj_property name="Detail_Data">/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity.dataflowTxTooltipData</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic//AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity">
+      <obj_property name="ElementShortName">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity</obj_property>
+      <obj_property name="ObjectShortName">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_activity</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_group">
+      <obj_property name="label">AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/Block_entry1_proc_U0_activity">
+         <obj_property name="ElementShortName">Block_entry1_proc_U0_activity</obj_property>
+         <obj_property name="ObjectShortName">Block_entry1_proc_U0_activity</obj_property>
+      </wvobject>
+      <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/AXIvideo2MultiBayer_U0_activity">
+         <obj_property name="ElementShortName">AXIvideo2MultiBayer_U0_activity</obj_property>
+         <obj_property name="ObjectShortName">AXIvideo2MultiBayer_U0_activity</obj_property>
+      </wvobject>
+      <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/Debayer_U0_activity">
+         <obj_property name="ElementShortName">Debayer_U0_activity</obj_property>
+         <obj_property name="ObjectShortName">Debayer_U0_activity</obj_property>
+      </wvobject>
+      <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ZipperRemoval_U0_activity">
+         <obj_property name="ElementShortName">ZipperRemoval_U0_activity</obj_property>
+         <obj_property name="ObjectShortName">ZipperRemoval_U0_activity</obj_property>
+      </wvobject>
+      <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/MultiPixStream2AXIvideo_U0_activity">
+         <obj_property name="ElementShortName">MultiPixStream2AXIvideo_U0_activity</obj_property>
+         <obj_property name="ObjectShortName">MultiPixStream2AXIvideo_U0_activity</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic_Handshake_group">
+         <obj_property name="label">Block-level handshake</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ap_start">
+            <obj_property name="ElementShortName">ap_start</obj_property>
+            <obj_property name="ObjectShortName">ap_start</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ap_ready">
+            <obj_property name="ElementShortName">ap_ready</obj_property>
+            <obj_property name="ObjectShortName">ap_ready</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ap_done">
+            <obj_property name="ElementShortName">ap_done</obj_property>
+            <obj_property name="ObjectShortName">ap_done</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="Block_entry1_proc_U0_group">
+         <obj_property name="label">Block_entry1_proc_U0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="group" fp_name="Block_entry1_proc_U0_Input_group">
+            <obj_property name="label">Input Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="Block_entry1_proc_U0_Handshake_group">
+            <obj_property name="label">Block-level handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/ap_start">
+               <obj_property name="ElementShortName">ap_start</obj_property>
+               <obj_property name="ObjectShortName">ap_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/ap_ready">
+               <obj_property name="ElementShortName">ap_ready</obj_property>
+               <obj_property name="ObjectShortName">ap_ready</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/ap_done">
+               <obj_property name="ElementShortName">ap_done</obj_property>
+               <obj_property name="ObjectShortName">ap_done</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Block_entry1_proc_U0/ap_continue">
+               <obj_property name="ElementShortName">ap_continue</obj_property>
+               <obj_property name="ObjectShortName">ap_continue</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="Block_entry1_proc_U0_Output_group">
+            <obj_property name="label">Output Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="AXIvideo2MultiBayer_U0_group">
+         <obj_property name="label">AXIvideo2MultiBayer_U0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity">
+            <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_activity</obj_property>
+         </wvobject>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity">
+            <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_activity</obj_property>
+         </wvobject>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity">
+            <obj_property name="ElementShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_activity</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="AXIvideo2MultiBayer_U0_Input_group">
+            <obj_property name="label">Input Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="AXIvideo2MultiBayer_U0_Handshake_group">
+            <obj_property name="label">Block-level handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/ap_start">
+               <obj_property name="ElementShortName">ap_start</obj_property>
+               <obj_property name="ObjectShortName">ap_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/ap_ready">
+               <obj_property name="ElementShortName">ap_ready</obj_property>
+               <obj_property name="ObjectShortName">ap_ready</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/ap_done">
+               <obj_property name="ElementShortName">ap_done</obj_property>
+               <obj_property name="ObjectShortName">ap_done</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/ap_continue">
+               <obj_property name="ElementShortName">ap_continue</obj_property>
+               <obj_property name="ObjectShortName">ap_continue</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="AXIvideo2MultiBayer_U0_Output_group">
+            <obj_property name="label">Output Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgBayer_group">
+               <obj_property name="label">imgBayer(imgBayer_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/imgBayer_din">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/imgBayer_full_n">
+                  <obj_property name="ElementShortName">imgBayer_full_n</obj_property>
+                  <obj_property name="ObjectShortName">imgBayer_full_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/imgBayer_write">
+                  <obj_property name="ElementShortName">imgBayer_write</obj_property>
+                  <obj_property name="ObjectShortName">imgBayer_write</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_group">
+            <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_start_fu_161/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_group">
+            <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_width_fu_181/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_group">
+            <obj_property name="label">grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/AXIvideo2MultiBayer_U0/grp_AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol_fu_208/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="Debayer_U0_group">
+         <obj_property name="label">Debayer_U0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DebayerG_U0_activity">
+            <obj_property name="ElementShortName">DebayerG_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">DebayerG_U0_activity</obj_property>
+         </wvobject>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/DebayerRatBorBatR_U0_activity">
+            <obj_property name="ElementShortName">DebayerRatBorBatR_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">DebayerRatBorBatR_U0_activity</obj_property>
+         </wvobject>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/DebayerRandBatG_U0_activity">
+            <obj_property name="ElementShortName">DebayerRandBatG_U0_activity</obj_property>
+            <obj_property name="ObjectShortName">DebayerRandBatG_U0_activity</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="Debayer_U0_Input_group">
+            <obj_property name="label">Input Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgBayer_group">
+               <obj_property name="label">imgBayer(imgBayer_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgBayer_dout">
+                  <obj_property name="ElementShortName">imgBayer_dout[9:0]</obj_property>
+                  <obj_property name="ObjectShortName">imgBayer_dout[9:0]</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgBayer_empty_n">
+                  <obj_property name="ElementShortName">imgBayer_empty_n</obj_property>
+                  <obj_property name="ObjectShortName">imgBayer_empty_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgBayer_read">
+                  <obj_property name="ElementShortName">imgBayer_read</obj_property>
+                  <obj_property name="ObjectShortName">imgBayer_read</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DIV1_TABLE_group">
+               <obj_property name="label">DIV1_TABLE(PIPO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV1_TABLE_address0">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV1_TABLE_q0">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV1_TABLE_ce0">
+                  <obj_property name="ElementShortName">DIV1_TABLE_ce0</obj_property>
+                  <obj_property name="ObjectShortName">DIV1_TABLE_ce0</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+                  <obj_property name="label">ap_ready(t_read)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DIV2_TABLE_group">
+               <obj_property name="label">DIV2_TABLE(PIPO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV2_TABLE_address0">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV2_TABLE_q0">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DIV2_TABLE_ce0">
+                  <obj_property name="ElementShortName">DIV2_TABLE_ce0</obj_property>
+                  <obj_property name="ObjectShortName">DIV2_TABLE_ce0</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+                  <obj_property name="label">ap_ready(t_read)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="Debayer_U0_Handshake_group">
+            <obj_property name="label">Block-level handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_start">
+               <obj_property name="ElementShortName">ap_start</obj_property>
+               <obj_property name="ObjectShortName">ap_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/real_start">
+               <obj_property name="ElementShortName">real_start</obj_property>
+               <obj_property name="ObjectShortName">real_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_ready">
+               <obj_property name="ElementShortName">ap_ready</obj_property>
+               <obj_property name="ObjectShortName">ap_ready</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_done">
+               <obj_property name="ElementShortName">ap_done</obj_property>
+               <obj_property name="ObjectShortName">ap_done</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/ap_continue">
+               <obj_property name="ElementShortName">ap_continue</obj_property>
+               <obj_property name="ObjectShortName">ap_continue</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="Debayer_U0_Output_group">
+            <obj_property name="label">Output Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgRgb_group">
+               <obj_property name="label">imgRgb(imgRgb_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgRgb_din">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgRgb_full_n">
+                  <obj_property name="ElementShortName">imgRgb_full_n</obj_property>
+                  <obj_property name="ObjectShortName">imgRgb_full_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/imgRgb_write">
+                  <obj_property name="ElementShortName">imgRgb_write</obj_property>
+                  <obj_property name="ObjectShortName">imgRgb_write</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="DebayerG_U0_group">
+            <obj_property name="label">DebayerG_U0</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity">
+               <obj_property name="ElementShortName">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_activity</obj_property>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerG_U0_Input_group">
+               <obj_property name="label">Input Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgBayer_group">
+                  <obj_property name="label">imgBayer(imgBayer_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgBayer_dout">
+                     <obj_property name="ElementShortName">imgBayer_dout[9:0]</obj_property>
+                     <obj_property name="ObjectShortName">imgBayer_dout[9:0]</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgBayer_empty_n">
+                     <obj_property name="ElementShortName">imgBayer_empty_n</obj_property>
+                     <obj_property name="ObjectShortName">imgBayer_empty_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgBayer_read">
+                     <obj_property name="ElementShortName">imgBayer_read</obj_property>
+                     <obj_property name="ObjectShortName">imgBayer_read</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="DIV1_TABLE_group">
+                  <obj_property name="label">DIV1_TABLE(PIPO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV1_TABLE_address0">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV1_TABLE_q0">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV1_TABLE_ce0">
+                     <obj_property name="ElementShortName">DIV1_TABLE_ce0</obj_property>
+                     <obj_property name="ObjectShortName">DIV1_TABLE_ce0</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_ready">
+                     <obj_property name="ElementShortName">ap_ready</obj_property>
+                     <obj_property name="ObjectShortName">ap_ready</obj_property>
+                     <obj_property name="label">ap_ready(t_read)</obj_property>
+                     <obj_property name="DisplayName">label</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="DIV2_TABLE_group">
+                  <obj_property name="label">DIV2_TABLE(PIPO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV2_TABLE_address0">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV2_TABLE_q0">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/DIV2_TABLE_ce0">
+                     <obj_property name="ElementShortName">DIV2_TABLE_ce0</obj_property>
+                     <obj_property name="ObjectShortName">DIV2_TABLE_ce0</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_ready">
+                     <obj_property name="ElementShortName">ap_ready</obj_property>
+                     <obj_property name="ObjectShortName">ap_ready</obj_property>
+                     <obj_property name="label">ap_ready(t_read)</obj_property>
+                     <obj_property name="DisplayName">label</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerG_U0_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/real_start">
+                  <obj_property name="ElementShortName">real_start</obj_property>
+                  <obj_property name="ObjectShortName">real_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/ap_continue">
+                  <obj_property name="ElementShortName">ap_continue</obj_property>
+                  <obj_property name="ObjectShortName">ap_continue</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerG_U0_Output_group">
+               <obj_property name="label">Output Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgG_group">
+                  <obj_property name="label">imgG(imgG_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgG_din">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgG_full_n">
+                     <obj_property name="ElementShortName">imgG_full_n</obj_property>
+                     <obj_property name="ObjectShortName">imgG_full_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/imgG_write">
+                     <obj_property name="ElementShortName">imgG_write</obj_property>
+                     <obj_property name="ObjectShortName">imgG_write</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="bayerPhase_c9_group">
+                  <obj_property name="label">bayerPhase_c9(bayerPhase_c9_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/bayerPhase_c9_blk_n">
+                     <obj_property name="ElementShortName">bayerPhase_c9_blk_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_blk_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/bayerPhase_c9_din">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/bayerPhase_c9_full_n">
+                     <obj_property name="ElementShortName">bayerPhase_c9_full_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_full_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/bayerPhase_c9_write">
+                     <obj_property name="ElementShortName">bayerPhase_c9_write</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_write</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_group">
+               <obj_property name="label">grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210_Handshake_group">
+                  <obj_property name="label">Block-level handshake</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/ap_start">
+                     <obj_property name="ElementShortName">ap_start</obj_property>
+                     <obj_property name="ObjectShortName">ap_start</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/ap_ready">
+                     <obj_property name="ElementShortName">ap_ready</obj_property>
+                     <obj_property name="ObjectShortName">ap_ready</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/ap_done">
+                     <obj_property name="ElementShortName">ap_done</obj_property>
+                     <obj_property name="ObjectShortName">ap_done</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="DebayerRatBorBatR_U0_group">
+            <obj_property name="label">DebayerRatBorBatR_U0</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity">
+               <obj_property name="ElementShortName">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_activity</obj_property>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRatBorBatR_U0_Input_group">
+               <obj_property name="label">Input Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgG_group">
+                  <obj_property name="label">imgG(imgG_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgG_dout">
+                     <obj_property name="ElementShortName">imgG_dout[29:0]</obj_property>
+                     <obj_property name="ObjectShortName">imgG_dout[29:0]</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgG_empty_n">
+                     <obj_property name="ElementShortName">imgG_empty_n</obj_property>
+                     <obj_property name="ObjectShortName">imgG_empty_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgG_read">
+                     <obj_property name="ElementShortName">imgG_read</obj_property>
+                     <obj_property name="ObjectShortName">imgG_read</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="bayerPhase_c9_group">
+                  <obj_property name="label">bayerPhase_c9(bayerPhase_c9_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c9_blk_n">
+                     <obj_property name="ElementShortName">bayerPhase_c9_blk_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_blk_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c9_dout">
+                     <obj_property name="ElementShortName">bayerPhase_c9_dout[15:0]</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_dout[15:0]</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c9_empty_n">
+                     <obj_property name="ElementShortName">bayerPhase_c9_empty_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_empty_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c9_read">
+                     <obj_property name="ElementShortName">bayerPhase_c9_read</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c9_read</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRatBorBatR_U0_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/real_start">
+                  <obj_property name="ElementShortName">real_start</obj_property>
+                  <obj_property name="ObjectShortName">real_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/ap_continue">
+                  <obj_property name="ElementShortName">ap_continue</obj_property>
+                  <obj_property name="ObjectShortName">ap_continue</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRatBorBatR_U0_Output_group">
+               <obj_property name="label">Output Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgRB_group">
+                  <obj_property name="label">imgRB(imgRB_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgRB_din">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgRB_full_n">
+                     <obj_property name="ElementShortName">imgRB_full_n</obj_property>
+                     <obj_property name="ObjectShortName">imgRB_full_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/imgRB_write">
+                     <obj_property name="ElementShortName">imgRB_write</obj_property>
+                     <obj_property name="ObjectShortName">imgRB_write</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="bayerPhase_c_group">
+                  <obj_property name="label">bayerPhase_c(bayerPhase_c_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c_blk_n">
+                     <obj_property name="ElementShortName">bayerPhase_c_blk_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_blk_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c_din">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c_full_n">
+                     <obj_property name="ElementShortName">bayerPhase_c_full_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_full_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/bayerPhase_c_write">
+                     <obj_property name="ElementShortName">bayerPhase_c_write</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_write</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_group">
+               <obj_property name="label">grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184_Handshake_group">
+                  <obj_property name="label">Block-level handshake</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/ap_start">
+                     <obj_property name="ElementShortName">ap_start</obj_property>
+                     <obj_property name="ObjectShortName">ap_start</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/ap_ready">
+                     <obj_property name="ElementShortName">ap_ready</obj_property>
+                     <obj_property name="ObjectShortName">ap_ready</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRatBorBatR_U0/grp_DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2_fu_184/ap_done">
+                     <obj_property name="ElementShortName">ap_done</obj_property>
+                     <obj_property name="ObjectShortName">ap_done</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="DebayerRandBatG_U0_group">
+            <obj_property name="label">DebayerRandBatG_U0</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity">
+               <obj_property name="ElementShortName">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity</obj_property>
+               <obj_property name="ObjectShortName">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_activity</obj_property>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRandBatG_U0_Input_group">
+               <obj_property name="label">Input Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgRB_group">
+                  <obj_property name="label">imgRB(imgRB_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRB_dout">
+                     <obj_property name="ElementShortName">imgRB_dout[29:0]</obj_property>
+                     <obj_property name="ObjectShortName">imgRB_dout[29:0]</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRB_empty_n">
+                     <obj_property name="ElementShortName">imgRB_empty_n</obj_property>
+                     <obj_property name="ObjectShortName">imgRB_empty_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRB_read">
+                     <obj_property name="ElementShortName">imgRB_read</obj_property>
+                     <obj_property name="ObjectShortName">imgRB_read</obj_property>
+                  </wvobject>
+               </wvobject>
+               <wvobject type="group" fp_name="bayerPhase_c_group">
+                  <obj_property name="label">bayerPhase_c(bayerPhase_c_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/bayerPhase_c_blk_n">
+                     <obj_property name="ElementShortName">bayerPhase_c_blk_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_blk_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/bayerPhase_c_dout">
+                     <obj_property name="ElementShortName">bayerPhase_c_dout[15:0]</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_dout[15:0]</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/bayerPhase_c_empty_n">
+                     <obj_property name="ElementShortName">bayerPhase_c_empty_n</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_empty_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/bayerPhase_c_read">
+                     <obj_property name="ElementShortName">bayerPhase_c_read</obj_property>
+                     <obj_property name="ObjectShortName">bayerPhase_c_read</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRandBatG_U0_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/ap_continue">
+                  <obj_property name="ElementShortName">ap_continue</obj_property>
+                  <obj_property name="ObjectShortName">ap_continue</obj_property>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="DebayerRandBatG_U0_Output_group">
+               <obj_property name="label">Output Channels</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="imgRgb_group">
+                  <obj_property name="label">imgRgb(imgRgb_U, FIFO)</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRgb_din">
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRgb_full_n">
+                     <obj_property name="ElementShortName">imgRgb_full_n</obj_property>
+                     <obj_property name="ObjectShortName">imgRgb_full_n</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/imgRgb_write">
+                     <obj_property name="ElementShortName">imgRgb_write</obj_property>
+                     <obj_property name="ObjectShortName">imgRgb_write</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+            <wvobject type="group" fp_name="grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_group">
+               <obj_property name="label">grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="group" fp_name="grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156_Handshake_group">
+                  <obj_property name="label">Block-level handshake</obj_property>
+                  <obj_property name="DisplayName">label</obj_property>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/ap_start">
+                     <obj_property name="ElementShortName">ap_start</obj_property>
+                     <obj_property name="ObjectShortName">ap_start</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/ap_ready">
+                     <obj_property name="ElementShortName">ap_ready</obj_property>
+                     <obj_property name="ObjectShortName">ap_ready</obj_property>
+                  </wvobject>
+                  <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/Debayer_U0/DebayerRandBatG_U0/grp_DebayerRandBatG_Pipeline_VITIS_LOOP_836_2_fu_156/ap_done">
+                     <obj_property name="ElementShortName">ap_done</obj_property>
+                     <obj_property name="ObjectShortName">ap_done</obj_property>
+                  </wvobject>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="ZipperRemoval_U0_group">
+         <obj_property name="label">ZipperRemoval_U0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity">
+            <obj_property name="ElementShortName">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_activity</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="ZipperRemoval_U0_Input_group">
+            <obj_property name="label">Input Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgRgb_group">
+               <obj_property name="label">imgRgb(imgRgb_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgRgb_dout">
+                  <obj_property name="ElementShortName">imgRgb_dout[29:0]</obj_property>
+                  <obj_property name="ObjectShortName">imgRgb_dout[29:0]</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgRgb_empty_n">
+                  <obj_property name="ElementShortName">imgRgb_empty_n</obj_property>
+                  <obj_property name="ObjectShortName">imgRgb_empty_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgRgb_read">
+                  <obj_property name="ElementShortName">imgRgb_read</obj_property>
+                  <obj_property name="ObjectShortName">imgRgb_read</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="ZipperRemoval_U0_Handshake_group">
+            <obj_property name="label">Block-level handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ap_start">
+               <obj_property name="ElementShortName">ap_start</obj_property>
+               <obj_property name="ObjectShortName">ap_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/real_start">
+               <obj_property name="ElementShortName">real_start</obj_property>
+               <obj_property name="ObjectShortName">real_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ap_ready">
+               <obj_property name="ElementShortName">ap_ready</obj_property>
+               <obj_property name="ObjectShortName">ap_ready</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ap_done">
+               <obj_property name="ElementShortName">ap_done</obj_property>
+               <obj_property name="ObjectShortName">ap_done</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/ap_continue">
+               <obj_property name="ElementShortName">ap_continue</obj_property>
+               <obj_property name="ObjectShortName">ap_continue</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="ZipperRemoval_U0_Output_group">
+            <obj_property name="label">Output Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgUnzip_group">
+               <obj_property name="label">imgUnzip(imgUnzip_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgUnzip_din">
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgUnzip_full_n">
+                  <obj_property name="ElementShortName">imgUnzip_full_n</obj_property>
+                  <obj_property name="ObjectShortName">imgUnzip_full_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/imgUnzip_write">
+                  <obj_property name="ElementShortName">imgUnzip_write</obj_property>
+                  <obj_property name="ObjectShortName">imgUnzip_write</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_group">
+            <obj_property name="label">grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/ZipperRemoval_U0/grp_ZipperRemoval_Pipeline_VITIS_LOOP_1056_2_fu_100/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="MultiPixStream2AXIvideo_U0_group">
+         <obj_property name="label">MultiPixStream2AXIvideo_U0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="protoinst" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity">
+            <obj_property name="ElementShortName">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_activity</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="MultiPixStream2AXIvideo_U0_Input_group">
+            <obj_property name="label">Input Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="imgUnzip_group">
+               <obj_property name="label">imgUnzip(imgUnzip_U, FIFO)</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/imgUnzip_dout">
+                  <obj_property name="ElementShortName">imgUnzip_dout[29:0]</obj_property>
+                  <obj_property name="ObjectShortName">imgUnzip_dout[29:0]</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/imgUnzip_empty_n">
+                  <obj_property name="ElementShortName">imgUnzip_empty_n</obj_property>
+                  <obj_property name="ObjectShortName">imgUnzip_empty_n</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/imgUnzip_read">
+                  <obj_property name="ElementShortName">imgUnzip_read</obj_property>
+                  <obj_property name="ObjectShortName">imgUnzip_read</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="MultiPixStream2AXIvideo_U0_Handshake_group">
+            <obj_property name="label">Block-level handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/ap_start">
+               <obj_property name="ElementShortName">ap_start</obj_property>
+               <obj_property name="ObjectShortName">ap_start</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/ap_ready">
+               <obj_property name="ElementShortName">ap_ready</obj_property>
+               <obj_property name="ObjectShortName">ap_ready</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/ap_done">
+               <obj_property name="ElementShortName">ap_done</obj_property>
+               <obj_property name="ObjectShortName">ap_done</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/ap_continue">
+               <obj_property name="ElementShortName">ap_continue</obj_property>
+               <obj_property name="ObjectShortName">ap_continue</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="MultiPixStream2AXIvideo_U0_Output_group">
+            <obj_property name="label">Output Channels</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_group">
+            <obj_property name="label">grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="group" fp_name="grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92_Handshake_group">
+               <obj_property name="label">Block-level handshake</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/ap_start">
+                  <obj_property name="ElementShortName">ap_start</obj_property>
+                  <obj_property name="ObjectShortName">ap_start</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/ap_ready">
+                  <obj_property name="ElementShortName">ap_ready</obj_property>
+                  <obj_property name="ObjectShortName">ap_ready</obj_property>
+               </wvobject>
+               <wvobject type="logic" fp_name="/apatb_v_demosaic_top/AESL_inst_kv260_video_v_demosaic_0_0_v_demosaic/MultiPixStream2AXIvideo_U0/grp_MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2_fu_92/ap_done">
+                  <obj_property name="ElementShortName">ap_done</obj_property>
+                  <obj_property name="ObjectShortName">ap_done</obj_property>
+               </wvobject>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>

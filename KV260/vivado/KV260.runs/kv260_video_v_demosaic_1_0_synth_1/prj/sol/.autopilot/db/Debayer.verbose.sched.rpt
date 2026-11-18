@@ -1,0 +1,172 @@
+
+
+================================================================
+== Vitis HLS Report for 'Debayer'
+================================================================
+* Date:           Sat Nov 14 19:12:26 2026
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:48:16 MDT 2022)
+* Project:        prj
+* Solution:       sol (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+------------+----------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval     | Pipeline |
+    |   min   |   max   |    min   |    max   | min |     max    |   Type   |
+    +---------+---------+----------+----------+-----+------------+----------+
+    |    65603|  2292446|  0.219 ms|  7.641 ms|   58|  4296802333|  dataflow|
+    +---------+---------+----------+----------+-----+------------+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 6
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 6, States = { 1 2 3 4 5 6 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.43>
+ST_1 : Operation 7 [1/1] (1.21ns)   --->   "%p_read_2 = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %p_read" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 7 'read' 'p_read_2' <Predicate = true> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = -1> <Depth = -1> <FIFO>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%width_read = read i16 @_ssdm_op_Read.ap_stable.i16, i16 %width" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 8 'read' 'width_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%height_read = read i16 @_ssdm_op_Read.ap_stable.i16, i16 %height" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 9 'read' 'height_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%trunc_ln1025 = trunc i16 %width_read" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 10 'trunc' 'trunc_ln1025' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%trunc_ln1025_1 = trunc i16 %height_read" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 11 'trunc' 'trunc_ln1025_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%bayerPhase_c9 = alloca i64 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 12 'alloca' 'bayerPhase_c9' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%bayerPhase_c = alloca i64 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 13 'alloca' 'bayerPhase_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%imgG = alloca i64 1"   --->   Operation 14 'alloca' 'imgG' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 30> <Depth = 2> <FIFO>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%imgRB = alloca i64 1"   --->   Operation 15 'alloca' 'imgRB' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 30> <Depth = 2> <FIFO>
+ST_1 : Operation 16 [2/2] (1.21ns)   --->   "%call_ln1026 = call void @DebayerG, i10 %imgBayer, i30 %imgG, i16 %height_read, i16 %width_read, i16 %p_read_2, i16 %bayerPhase_c9, i10 %DIV1_TABLE, i18 %DIV2_TABLE" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1026]   --->   Operation 16 'call' 'call_ln1026' <Predicate = true> <Delay = 1.21> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 17 [1/2] (0.00ns)   --->   "%call_ln1026 = call void @DebayerG, i10 %imgBayer, i30 %imgG, i16 %height_read, i16 %width_read, i16 %p_read_2, i16 %bayerPhase_c9, i10 %DIV1_TABLE, i18 %DIV2_TABLE" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1026]   --->   Operation 17 'call' 'call_ln1026' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 2.02>
+ST_3 : Operation 18 [2/2] (2.02ns)   --->   "%call_ln1027 = call void @DebayerRatBorBatR, i30 %imgG, i30 %imgRB, i11 %trunc_ln1025_1, i12 %trunc_ln1025, i16 %bayerPhase_c9, i16 %bayerPhase_c" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 18 'call' 'call_ln1027' <Predicate = true> <Delay = 2.02> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 19 [1/2] (0.00ns)   --->   "%call_ln1027 = call void @DebayerRatBorBatR, i30 %imgG, i30 %imgRB, i11 %trunc_ln1025_1, i12 %trunc_ln1025, i16 %bayerPhase_c9, i16 %bayerPhase_c" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 19 'call' 'call_ln1027' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 2.02>
+ST_5 : Operation 20 [2/2] (2.02ns)   --->   "%call_ln1028 = call void @DebayerRandBatG, i30 %imgRB, i30 %imgRgb, i11 %trunc_ln1025_1, i12 %trunc_ln1025, i16 %bayerPhase_c" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1028]   --->   Operation 20 'call' 'call_ln1028' <Predicate = true> <Delay = 2.02> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 21 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @bayerPhase_c9_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i16 %bayerPhase_c9, i16 %bayerPhase_c9" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 21 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 22 [1/1] (0.00ns)   --->   "%specinterface_ln1025 = specinterface void @_ssdm_op_SpecInterface, i16 %bayerPhase_c9, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 22 'specinterface' 'specinterface_ln1025' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 23 [1/1] (0.00ns)   --->   "%empty_129 = specchannel i32 @_ssdm_op_SpecChannel, void @bayerPhase_c_str, i32 1, void @p_str, void @p_str, i32 2, i32 0, i16 %bayerPhase_c, i16 %bayerPhase_c" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 23 'specchannel' 'empty_129' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 24 [1/1] (0.00ns)   --->   "%specinterface_ln1025 = specinterface void @_ssdm_op_SpecInterface, i16 %bayerPhase_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 24 'specinterface' 'specinterface_ln1025' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 25 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln1025 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32 4294967295, i32 0, void @empty_11" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025]   --->   Operation 25 'specdataflowpipeline' 'specdataflowpipeline_ln1025' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 26 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %width, void @ap_stable_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0"   --->   Operation 26 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 27 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %height, void @ap_stable_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0"   --->   Operation 27 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 28 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgRgb, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 28 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 29 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i10 %imgBayer, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 29 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 30 [1/1] (0.00ns)   --->   "%empty_130 = specchannel i32 @_ssdm_op_SpecChannel, void @imgG_str, i32 1, void @p_str, void @p_str, i32 2, i32 2, i30 %imgG, i30 %imgG"   --->   Operation 30 'specchannel' 'empty_130' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 31 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgG, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 31 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 32 [1/1] (0.00ns)   --->   "%empty_131 = specchannel i32 @_ssdm_op_SpecChannel, void @imgRB_str, i32 1, void @p_str, void @p_str, i32 2, i32 2, i30 %imgRB, i30 %imgRB"   --->   Operation 32 'specchannel' 'empty_131' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 33 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgRB, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 33 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 34 [1/2] (0.00ns)   --->   "%call_ln1028 = call void @DebayerRandBatG, i30 %imgRB, i30 %imgRgb, i11 %trunc_ln1025_1, i12 %trunc_ln1025, i16 %bayerPhase_c" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1028]   --->   Operation 34 'call' 'call_ln1028' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_6 : Operation 35 [1/1] (0.00ns)   --->   "%ret_ln1029 = ret" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1029]   --->   Operation 35 'ret' 'ret_ln1029' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.9ns.
+
+ <State 1>: 2.43ns
+The critical path consists of the following:
+	wire read operation ('p_read_2', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025) on port 'p_read' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1025) [8]  (1.22 ns)
+	'call' operation ('call_ln1026', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1026) to 'DebayerG' [30]  (1.22 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 2.03ns
+The critical path consists of the following:
+	'call' operation ('call_ln1027', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027) to 'DebayerRatBorBatR' [31]  (2.03 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 2.03ns
+The critical path consists of the following:
+	'call' operation ('call_ln1028', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1028) to 'DebayerRandBatG' [32]  (2.03 ns)
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

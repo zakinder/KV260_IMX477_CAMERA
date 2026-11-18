@@ -1,0 +1,211 @@
+
+
+================================================================
+== Vitis HLS Report for 'DebayerRatBorBatR'
+================================================================
+* Date:           Sat Nov 14 19:12:23 2026
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:48:16 MDT 2022)
+* Project:        prj
+* Solution:       sol (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xck26-sfvc784-2LV-c
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  3.33 ns|  2.433 ns|     0.90 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+----------+-----+---------+---------+
+    |  Latency (cycles) |  Latency (absolute)  |    Interval   | Pipeline|
+    |   min   |   max   |    min    |    max   | min |   max   |   Type  |
+    +---------+---------+-----------+----------+-----+---------+---------+
+    |       13|  2226861|  43.329 ns|  7.422 ms|   13|  2226861|       no|
+    +---------+---------+-----------+----------+-----+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+-----------+-----------+-----------+----------+----------+
+        |                    |  Latency (cycles) | Iteration |  Initiation Interval  |   Trip   |          |
+        |      Loop Name     |   min   |   max   |  Latency  |  achieved |   target  |   Count  | Pipelined|
+        +--------------------+---------+---------+-----------+-----------+-----------+----------+----------+
+        |- VITIS_LOOP_585_1  |       12|  2226860|  12 ~ 2060|          -|          -|  1 ~ 1081|        no|
+        +--------------------+---------+---------+-----------+-----------+-----------+----------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 4
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 2 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.43>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%y = alloca i32 1"   --->   Operation 5 'alloca' 'y' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V = alloca i32 1"   --->   Operation 6 'alloca' 'pixWindow_val_val_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_60 = alloca i32 1"   --->   Operation 7 'alloca' 'pixWindow_val_val_V_60' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_61 = alloca i32 1"   --->   Operation 8 'alloca' 'pixWindow_val_val_V_61' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_62 = alloca i32 1"   --->   Operation 9 'alloca' 'pixWindow_val_val_V_62' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_63 = alloca i32 1"   --->   Operation 10 'alloca' 'pixWindow_val_val_V_63' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_64 = alloca i32 1"   --->   Operation 11 'alloca' 'pixWindow_val_val_V_64' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_65 = alloca i32 1"   --->   Operation 12 'alloca' 'pixWindow_val_val_V_65' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_66 = alloca i32 1"   --->   Operation 13 'alloca' 'pixWindow_val_val_V_66' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_67 = alloca i32 1"   --->   Operation 14 'alloca' 'pixWindow_val_val_V_67' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_68 = alloca i32 1"   --->   Operation 15 'alloca' 'pixWindow_val_val_V_68' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_69 = alloca i32 1"   --->   Operation 16 'alloca' 'pixWindow_val_val_V_69' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_70 = alloca i32 1"   --->   Operation 17 'alloca' 'pixWindow_val_val_V_70' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_71 = alloca i32 1"   --->   Operation 18 'alloca' 'pixWindow_val_val_V_71' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_72 = alloca i32 1"   --->   Operation 19 'alloca' 'pixWindow_val_val_V_72' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_73 = alloca i32 1"   --->   Operation 20 'alloca' 'pixWindow_val_val_V_73' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (1.21ns)   --->   "%width_read = read i12 @_ssdm_op_Read.ap_auto.i12, i12 %width"   --->   Operation 21 'read' 'width_read' <Predicate = true> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = -1> <Depth = -1> <FIFO>
+ST_1 : Operation 22 [1/1] (1.21ns)   --->   "%height_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %height"   --->   Operation 22 'read' 'height_read' <Predicate = true> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = -1> <Depth = -1> <FIFO>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%lineBuffer_val_V = alloca i64 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:569->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 23 'alloca' 'lineBuffer_val_V' <Predicate = true> <Delay = 0.00> <CoreInst = "XPM_MEMORY_Ultra">   --->   Core 115 'XPM_MEMORY_Ultra' <Latency = 1> <II = 1> <Delay = 1.23> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 30> <Depth = 2049> <RAM>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%lineBuffer_val_V_1 = alloca i64 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:569->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 24 'alloca' 'lineBuffer_val_V_1' <Predicate = true> <Delay = 0.00> <CoreInst = "XPM_MEMORY_Ultra">   --->   Core 115 'XPM_MEMORY_Ultra' <Latency = 1> <II = 1> <Delay = 1.23> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 30> <Depth = 2049> <RAM>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %bayerPhase_c9, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @ScalarProp_str, i32 4294967295, i32 0"   --->   Operation 25 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (1.21ns)   --->   "%bayerPhase_c9_read = read i16 @_ssdm_op_Read.ap_fifo.i16P0A, i16 %bayerPhase_c9"   --->   Operation 26 'read' 'bayerPhase_c9_read' <Predicate = true> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %bayerPhase_c, void @ap_fifo_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @ScalarProp_str, i32 4294967295, i32 0"   --->   Operation 27 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (1.21ns)   --->   "%write_ln0 = write void @_ssdm_op_Write.ap_fifo.i16P0A, i16 %bayerPhase_c, i16 %bayerPhase_c9_read"   --->   Operation 28 'write' 'write_ln0' <Predicate = true> <Delay = 1.21> <CoreInst = "FIFO_SRL">   --->   Core 81 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i12 %width_read, void @ap_stable_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0"   --->   Operation 29 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %height_read, void @ap_stable_str, i32 0, i32 0, void @p_str, i32 0, i32 0, void @p_str, void @p_str, void @p_str, i32 2, i32 2, i32 16, i32 16, void @p_str, void @p_str, i32 4294967295, i32 0"   --->   Operation 30 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgRB, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 31 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i30 %imgG, void @empty_20, i32 0, i32 0, void @empty_11, i32 0, i32 0, void @empty_11, void @empty_11, void @empty_11, i32 0, i32 0, i32 0, i32 0, void @empty_11, void @empty_11, i32 4294967295, i32 0"   --->   Operation 32 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (0.79ns)   --->   "%loopHeight = add i11 %height_read, i11 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:561->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 33 'add' 'loopHeight' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%specmemcore_ln572 = specmemcore void @_ssdm_op_SpecMemCore, i30 %lineBuffer_val_V_1, i64 666, i64 164, i64 18446744073709551615" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:572->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 34 'specmemcore' 'specmemcore_ln572' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%specmemcore_ln572 = specmemcore void @_ssdm_op_SpecMemCore, i30 %lineBuffer_val_V, i64 666, i64 164, i64 18446744073709551615" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:572->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 35 'specmemcore' 'specmemcore_ln572' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%x_phase = trunc i16 %bayerPhase_c9_read" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 36 'trunc' 'x_phase' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%trunc_ln577_1_i = partselect i15 @_ssdm_op_PartSelect.i15.i16.i32.i32, i16 %bayerPhase_c9_read, i32 1, i32 15" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 37 'partselect' 'trunc_ln577_1_i' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.80ns)   --->   "%add_ln585 = add i12 %width_read, i12 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 38 'add' 'add_ln585' <Predicate = true> <Delay = 0.80> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.80> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 39 [1/1] (0.42ns)   --->   "%store_ln585 = store i11 0, i11 %y" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 39 'store' 'store_ln585' <Predicate = true> <Delay = 0.42>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%br_ln585 = br void %VITIS_LOOP_588_2.i" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 40 'br' 'br_ln585' <Predicate = true> <Delay = 0.00>
+
+State 2 <SV = 1> <Delay = 1.37>
+ST_2 : Operation 41 [1/1] (0.00ns)   --->   "%y_3 = load i11 %y"   --->   Operation 41 'load' 'y_3' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 42 [1/1] (0.00ns)   --->   "%zext_ln585 = zext i11 %y_3" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 42 'zext' 'zext_ln585' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 43 [1/1] (0.94ns)   --->   "%icmp_ln585 = icmp_eq  i11 %y_3, i11 %loopHeight" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 43 'icmp' 'icmp_ln585' <Predicate = true> <Delay = 0.94> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.94> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 44 [1/1] (0.00ns)   --->   "%empty = speclooptripcount i32 @_ssdm_op_SpecLoopTripCount, i64 1, i64 1081, i64 0"   --->   Operation 44 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 45 [1/1] (0.79ns)   --->   "%y_4 = add i11 %y_3, i11 1" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 45 'add' 'y_4' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 46 [1/1] (0.00ns)   --->   "%br_ln585 = br i1 %icmp_ln585, void %VITIS_LOOP_588_2.split.i, void %DebayerRatBorBatR.exit" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 46 'br' 'br_ln585' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 47 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_load = load i10 %pixWindow_val_val_V"   --->   Operation 47 'load' 'pixWindow_val_val_V_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 48 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_60_load = load i10 %pixWindow_val_val_V_60"   --->   Operation 48 'load' 'pixWindow_val_val_V_60_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 49 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_61_load = load i10 %pixWindow_val_val_V_61"   --->   Operation 49 'load' 'pixWindow_val_val_V_61_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 50 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_62_load = load i10 %pixWindow_val_val_V_62"   --->   Operation 50 'load' 'pixWindow_val_val_V_62_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 51 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_63_load = load i10 %pixWindow_val_val_V_63"   --->   Operation 51 'load' 'pixWindow_val_val_V_63_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 52 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_64_load = load i10 %pixWindow_val_val_V_64"   --->   Operation 52 'load' 'pixWindow_val_val_V_64_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 53 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_65_load = load i10 %pixWindow_val_val_V_65"   --->   Operation 53 'load' 'pixWindow_val_val_V_65_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 54 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_66_load = load i10 %pixWindow_val_val_V_66"   --->   Operation 54 'load' 'pixWindow_val_val_V_66_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 55 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_67_load = load i10 %pixWindow_val_val_V_67"   --->   Operation 55 'load' 'pixWindow_val_val_V_67_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 56 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_68_load = load i10 %pixWindow_val_val_V_68"   --->   Operation 56 'load' 'pixWindow_val_val_V_68_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 57 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_69_load = load i10 %pixWindow_val_val_V_69"   --->   Operation 57 'load' 'pixWindow_val_val_V_69_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 58 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_70_load = load i10 %pixWindow_val_val_V_70"   --->   Operation 58 'load' 'pixWindow_val_val_V_70_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 59 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_71_load = load i10 %pixWindow_val_val_V_71"   --->   Operation 59 'load' 'pixWindow_val_val_V_71_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 60 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_72_load = load i10 %pixWindow_val_val_V_72"   --->   Operation 60 'load' 'pixWindow_val_val_V_72_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 61 [1/1] (0.00ns)   --->   "%pixWindow_val_val_V_73_load = load i10 %pixWindow_val_val_V_73"   --->   Operation 61 'load' 'pixWindow_val_val_V_73_load' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 62 [1/1] (0.00ns)   --->   "%empty_123 = trunc i11 %y_3"   --->   Operation 62 'trunc' 'empty_123' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 63 [1/1] (0.28ns)   --->   "%out_y_cast_i = xor i1 %empty_123, i1 1"   --->   Operation 63 'xor' 'out_y_cast_i' <Predicate = (!icmp_ln585)> <Delay = 0.28> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 64 [1/1] (0.00ns)   --->   "%and311_cast_i = zext i1 %out_y_cast_i"   --->   Operation 64 'zext' 'and311_cast_i' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 65 [1/1] (0.26ns)   --->   "%xor_i = xor i15 %trunc_ln577_1_i, i15 %and311_cast_i" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 65 'xor' 'xor_i' <Predicate = (!icmp_ln585)> <Delay = 0.26> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.26> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 66 [1/1] (1.07ns)   --->   "%red_i = icmp_eq  i15 %and311_cast_i, i15 %trunc_ln577_1_i" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 66 'icmp' 'red_i' <Predicate = (!icmp_ln585)> <Delay = 1.07> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.07> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 67 [1/1] (0.94ns)   --->   "%cmp60_i = icmp_ult  i11 %y_3, i11 %height_read"   --->   Operation 67 'icmp' 'cmp60_i' <Predicate = (!icmp_ln585)> <Delay = 0.94> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.94> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 68 [1/1] (0.94ns)   --->   "%cmp204_i = icmp_ne  i11 %y_3, i11 0"   --->   Operation 68 'icmp' 'cmp204_i' <Predicate = (!icmp_ln585)> <Delay = 0.94> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 0.94> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 69 [1/1] (0.00ns)   --->   "%empty_124 = wait i32 @_ssdm_op_Wait"   --->   Operation 69 'wait' 'empty_124' <Predicate = (!icmp_ln585)> <Delay = 0.00>
+ST_2 : Operation 70 [1/1] (0.42ns)   --->   "%store_ln585 = store i11 %y_4, i11 %y" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 70 'store' 'store_ln585' <Predicate = (!icmp_ln585)> <Delay = 0.42>
+ST_2 : Operation 71 [1/1] (0.00ns)   --->   "%ret_ln1027 = ret" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 71 'ret' 'ret_ln1027' <Predicate = (icmp_ln585)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.20>
+ST_3 : Operation 72 [1/1] (0.79ns)   --->   "%out_y_i = add i12 %zext_ln585, i12 4095" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 72 'add' 'out_y_i' <Predicate = true> <Delay = 0.79> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.79> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 73 [1/1] (0.17ns)   --->   "%cond_cast_cast_i = select i1 %red_i, i2 0, i2 2" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 73 'select' 'cond_cast_cast_i' <Predicate = true> <Delay = 0.17> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.17> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 74 [1/1] (0.17ns)   --->   "%cond479_cast_cast_i = select i1 %red_i, i2 2, i2 0" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 74 'select' 'cond479_cast_cast_i' <Predicate = true> <Delay = 0.17> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 0.17> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_3 : Operation 75 [2/2] (1.40ns)   --->   "%call_ln585 = call void @DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2, i10 %pixWindow_val_val_V_73_load, i10 %pixWindow_val_val_V_72_load, i10 %pixWindow_val_val_V_71_load, i10 %pixWindow_val_val_V_70_load, i10 %pixWindow_val_val_V_69_load, i10 %pixWindow_val_val_V_68_load, i10 %pixWindow_val_val_V_67_load, i10 %pixWindow_val_val_V_66_load, i10 %pixWindow_val_val_V_65_load, i10 %pixWindow_val_val_V_64_load, i10 %pixWindow_val_val_V_63_load, i10 %pixWindow_val_val_V_62_load, i10 %pixWindow_val_val_V_61_load, i10 %pixWindow_val_val_V_60_load, i10 %pixWindow_val_val_V_load, i12 %add_ln585, i12 %out_y_i, i1 %x_phase, i15 %xor_i, i30 %lineBuffer_val_V_1, i30 %lineBuffer_val_V, i12 %width_read, i1 %cmp204_i, i1 %cmp60_i, i30 %imgG, i2 %cond479_cast_cast_i, i1 %red_i, i2 %cond_cast_cast_i, i30 %imgRB, i10 %pixWindow_val_val_V_73, i10 %pixWindow_val_val_V_72, i10 %pixWindow_val_val_V_71, i10 %pixWindow_val_val_V_70, i10 %pixWindow_val_val_V_69, i10 %pixWindow_val_val_V_68, i10 %pixWindow_val_val_V_67, i10 %pixWindow_val_val_V_66, i10 %pixWindow_val_val_V_65, i10 %pixWindow_val_val_V_64, i10 %pixWindow_val_val_V_63, i10 %pixWindow_val_val_V_62, i10 %pixWindow_val_val_V_61, i10 %pixWindow_val_val_V_60, i10 %pixWindow_val_val_V" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 75 'call' 'call_ln585' <Predicate = true> <Delay = 1.40> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 76 [1/1] (0.00ns)   --->   "%specloopname_ln564 = specloopname void @_ssdm_op_SpecLoopName, void @empty_7" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:564->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 76 'specloopname' 'specloopname_ln564' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 77 [1/2] (0.00ns)   --->   "%call_ln585 = call void @DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2, i10 %pixWindow_val_val_V_73_load, i10 %pixWindow_val_val_V_72_load, i10 %pixWindow_val_val_V_71_load, i10 %pixWindow_val_val_V_70_load, i10 %pixWindow_val_val_V_69_load, i10 %pixWindow_val_val_V_68_load, i10 %pixWindow_val_val_V_67_load, i10 %pixWindow_val_val_V_66_load, i10 %pixWindow_val_val_V_65_load, i10 %pixWindow_val_val_V_64_load, i10 %pixWindow_val_val_V_63_load, i10 %pixWindow_val_val_V_62_load, i10 %pixWindow_val_val_V_61_load, i10 %pixWindow_val_val_V_60_load, i10 %pixWindow_val_val_V_load, i12 %add_ln585, i12 %out_y_i, i1 %x_phase, i15 %xor_i, i30 %lineBuffer_val_V_1, i30 %lineBuffer_val_V, i12 %width_read, i1 %cmp204_i, i1 %cmp60_i, i30 %imgG, i2 %cond479_cast_cast_i, i1 %red_i, i2 %cond_cast_cast_i, i30 %imgRB, i10 %pixWindow_val_val_V_73, i10 %pixWindow_val_val_V_72, i10 %pixWindow_val_val_V_71, i10 %pixWindow_val_val_V_70, i10 %pixWindow_val_val_V_69, i10 %pixWindow_val_val_V_68, i10 %pixWindow_val_val_V_67, i10 %pixWindow_val_val_V_66, i10 %pixWindow_val_val_V_65, i10 %pixWindow_val_val_V_64, i10 %pixWindow_val_val_V_63, i10 %pixWindow_val_val_V_62, i10 %pixWindow_val_val_V_61, i10 %pixWindow_val_val_V_60, i10 %pixWindow_val_val_V" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 77 'call' 'call_ln585' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_4 : Operation 78 [1/1] (0.00ns)   --->   "%br_ln585 = br void %VITIS_LOOP_588_2.i" [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027]   --->   Operation 78 'br' 'br_ln585' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 3.33ns, clock uncertainty: 0.9ns.
+
+ <State 1>: 2.43ns
+The critical path consists of the following:
+	fifo read operation ('bayerPhase_c9_read') on port 'bayerPhase_c9' [28]  (1.22 ns)
+	fifo write operation ('write_ln0') on port 'bayerPhase_c' [30]  (1.22 ns)
+
+ <State 2>: 1.37ns
+The critical path consists of the following:
+	'load' operation ('y') on local variable 'y' [44]  (0 ns)
+	'xor' operation ('out_y_cast_i') [69]  (0.287 ns)
+	'icmp' operation ('red_i', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:577->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027) [72]  (1.07 ns)
+	blocking operation 0.0135 ns on control path)
+
+ <State 3>: 2.2ns
+The critical path consists of the following:
+	'add' operation ('out_y_i', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027) [68]  (0.798 ns)
+	'call' operation ('call_ln585', R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:585->R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_1_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1027) to 'DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2' [78]  (1.4 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

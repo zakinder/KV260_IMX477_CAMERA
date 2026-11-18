@@ -1,0 +1,761 @@
+
+*** Running vivado
+    with args -log bd_c4a8_vfb_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_c4a8_vfb_0_0.tcl
+
+
+
+****** Vivado v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source bd_c4a8_vfb_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
+Command: synth_design -top bd_c4a8_vfb_0_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 22476
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1844.660 ; gain = 318.973
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0.v:52]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0_core' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0_core.v:52]
+INFO: [Synth 8-6157] synthesizing module 'vfb_v1_0_20_reorder' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:915]
+	Parameter AXIS_TDATA_WIDTH bound to: 64 - type: integer 
+	Parameter AXIS_TUSER_WIDTH bound to: 96 - type: integer 
+	Parameter AXIS_TDEST_WIDTH bound to: 4 - type: integer 
+	Parameter VFB_TU_WIDTH bound to: 1 - type: integer 
+	Parameter VFB_TSB0_WIDTH bound to: 32 - type: integer 
+	Parameter VFB_TSB1_WIDTH bound to: 0 - type: integer 
+	Parameter VFB_TSB2_WIDTH bound to: 3 - type: integer 
+	Parameter VFB_OP_DWIDTH bound to: 16 - type: integer 
+	Parameter VFB_DATA_TYPE bound to: 43 - type: integer 
+	Parameter VFB_VC bound to: 0 - type: integer 
+	Parameter VFB_FILTER_VC bound to: 0 - type: integer 
+	Parameter VFB_REQ_BUFFER bound to: 1 - type: integer 
+	Parameter VFB_REQ_REORDER bound to: 1 - type: integer 
+	Parameter VFB_FIFO_WIDTH bound to: 64 - type: integer 
+	Parameter VFB_DCONV_TUW bound to: 24 - type: integer 
+	Parameter VFB_4PXL_W bound to: 40 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'vfb_v1_0_20_reorder' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:915]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0_fifo' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:47]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_axis' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2342]
+	Parameter CLOCKING_MODE bound to: independent_clock - type: string 
+	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
+	Parameter PACKET_FIFO bound to: false - type: string 
+	Parameter FIFO_DEPTH bound to: 4096 - type: integer 
+	Parameter TDATA_WIDTH bound to: 64 - type: integer 
+	Parameter TID_WIDTH bound to: 32 - type: integer 
+	Parameter TDEST_WIDTH bound to: 32 - type: integer 
+	Parameter TUSER_WIDTH bound to: 24 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 1008 - type: string 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 1 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 1 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 4091 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 10 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_sync_rst' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1058]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_sync_rst' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1058]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1884]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1884]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_vec__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1884]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_vec__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1884]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_gray__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_gray__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:283]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1206]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1273]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1295]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1906]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1906]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1618]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1618]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized3' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized3' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_axis' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2342]
+WARNING: [Synth 8-7071] port 's_axis_tstrb' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'm_axis_tstrb' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'prog_full_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'wr_data_count_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'prog_empty_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'rd_data_count_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'almost_empty_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'injectsbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'injectdbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'sbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7071] port 'dbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+WARNING: [Synth 8-7023] instance 'fifo_async_asym' of module 'xpm_fifo_axis' has 31 connections declared, but only 20 given [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:88]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0_fifo' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo.v:47]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0_fifo_sb' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:47]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_axis__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2342]
+	Parameter CLOCKING_MODE bound to: independent_clock - type: string 
+	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
+	Parameter PACKET_FIFO bound to: false - type: string 
+	Parameter FIFO_DEPTH bound to: 4096 - type: integer 
+	Parameter TDATA_WIDTH bound to: 64 - type: integer 
+	Parameter TID_WIDTH bound to: 1 - type: integer 
+	Parameter TDEST_WIDTH bound to: 10 - type: integer 
+	Parameter TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter RELATED_CLOCKS bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 1008 - type: string 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 1 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 1 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 4091 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 10 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1206]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1273]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1295]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_axis__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:2342]
+WARNING: [Synth 8-7071] port 's_axis_tstrb' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'm_axis_tstrb' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'prog_full_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'wr_data_count_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'prog_empty_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'rd_data_count_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'almost_empty_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'injectsbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'injectdbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'sbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7071] port 'dbiterr_axis' of module 'xpm_fifo_axis' is unconnected for instance 'fifo_async_asym' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+WARNING: [Synth 8-7023] instance 'fifo_async_asym' of module 'xpm_fifo_axis' has 31 connections declared, but only 20 given [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:88]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0_fifo_sb' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_fifo_sb.v:47]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0_axis_dconverter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_axis_dconverter.v:47]
+INFO: [Synth 8-6157] synthesizing module 'bd_c4a8_vfb_0_0_axis_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/ip_0/synth/bd_c4a8_vfb_0_0_axis_converter.v:53]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_v1_1_25_axis_dwidth_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/90b0/hdl/axis_dwidth_converter_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6157] synthesizing module 'axis_dwidth_converter_v1_1_25_axisc_downsizer' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/90b0/hdl/axis_dwidth_converter_v1_1_vl_rfs.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_v1_1_25_axisc_downsizer' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/90b0/hdl/axis_dwidth_converter_v1_1_vl_rfs.v:61]
+INFO: [Synth 8-6157] synthesizing module 'axis_register_slice_v1_1_26_axis_register_slice' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:2837]
+INFO: [Synth 8-6157] synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6155] done synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6157] synthesizing module 'axis_register_slice_v1_1_26_axisc_register_slice' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:1935]
+INFO: [Synth 8-6155] done synthesizing module 'axis_register_slice_v1_1_26_axisc_register_slice' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:1935]
+INFO: [Synth 8-6157] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:991]
+INFO: [Synth 8-6155] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:991]
+INFO: [Synth 8-6155] done synthesizing module 'axis_register_slice_v1_1_26_axis_register_slice' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:2837]
+INFO: [Synth 8-6157] synthesizing module 'axis_register_slice_v1_1_26_axis_register_slice__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:2837]
+INFO: [Synth 8-6157] synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6155] done synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6157] synthesizing module 'axis_register_slice_v1_1_26_axisc_register_slice__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:1935]
+INFO: [Synth 8-6155] done synthesizing module 'axis_register_slice_v1_1_26_axisc_register_slice__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:1935]
+INFO: [Synth 8-6157] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:991]
+INFO: [Synth 8-6155] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v:991]
+INFO: [Synth 8-6155] done synthesizing module 'axis_register_slice_v1_1_26_axis_register_slice__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/aca3/hdl/axis_register_slice_v1_1_vl_rfs.v:2837]
+INFO: [Synth 8-6155] done synthesizing module 'axis_dwidth_converter_v1_1_25_axis_dwidth_converter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/90b0/hdl/axis_dwidth_converter_v1_1_vl_rfs.v:809]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0_axis_converter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/ip_0/synth/bd_c4a8_vfb_0_0_axis_converter.v:53]
+WARNING: [Synth 8-689] width (3) of port connection 'm_axis_tuser' does not match port width (6) of module 'bd_c4a8_vfb_0_0_axis_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_axis_dconverter.v:75]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0_axis_dconverter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0/src/verilog/bd_c4a8_vfb_0_0_axis_dconverter.v:47]
+INFO: [Synth 8-6157] synthesizing module 'vfb_v1_0_20_op_inf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:3771]
+	Parameter VFB_TU_WIDTH bound to: 1 - type: integer 
+	Parameter VFB_TSB0_WIDTH bound to: 32 - type: integer 
+	Parameter VFB_TSB1_WIDTH bound to: 0 - type: integer 
+	Parameter VFB_TSB2_WIDTH bound to: 3 - type: integer 
+	Parameter AXIS_TDATA_WIDTH bound to: 64 - type: integer 
+	Parameter VFB_PXL_W bound to: 10 - type: integer 
+	Parameter VFB_PXL_W_BB bound to: 16 - type: integer 
+	Parameter VFB_DCONV_OWIDTH bound to: 16 - type: integer 
+	Parameter VFB_OP_DWIDTH bound to: 16 - type: integer 
+	Parameter VFB_OP_PIXELS bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'vfb_v1_0_20_op_inf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:3771]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0_core' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0_core.v:52]
+INFO: [Synth 8-6155] done synthesizing module 'bd_c4a8_vfb_0_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0.v:52]
+WARNING: [Synth 8-6014] Unused sequential element REQ_BUFFER_RAW10.buff_tk_i_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:2157]
+WARNING: [Synth 8-6014] Unused sequential element REQ_BUFFER_RAW10.liv_tk_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:2158]
+WARNING: [Synth 8-6014] Unused sequential element first_beat_rcvd_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/edf4/hdl/vfb_v1_0_syn_rfs.v:3603]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element dest_out_bin_ff_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:417]
+WARNING: [Synth 8-6014] Unused sequential element dest_out_bin_ff_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:417]
+WARNING: [Synth 8-6014] Unused sequential element dest_out_bin_ff_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:417]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
+WARNING: [Synth 8-3848] Net m_axis_tdest in module/entity bd_c4a8_vfb_0_0_core does not have driver. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0_core.v:138]
+WARNING: [Synth 8-7129] Port s_axis_tdata[15] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdata[14] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdata[13] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdata[12] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdata[11] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdata[10] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[31] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[30] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[29] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[28] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[27] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[26] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[25] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[24] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[23] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[22] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[21] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[20] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[19] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[18] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[17] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[16] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[15] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[14] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[13] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[12] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[11] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tid[10] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[31] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[30] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[29] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[28] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[27] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[26] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[25] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[24] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[23] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[22] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[21] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[20] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[19] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[18] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[17] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[16] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[15] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[14] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[13] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[12] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[11] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[10] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[9] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[8] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[7] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[6] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[5] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[4] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[3] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[2] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[1] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tdest[0] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tuser[2] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tuser[1] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tkeep[1] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tkeep[0] in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sband_te in module vfb_v1_0_20_op_inf is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK in module axis_register_slice_v1_1_26_axisc_register_slice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK2X in module axis_register_slice_v1_1_26_axisc_register_slice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESET in module axis_register_slice_v1_1_26_axisc_register_slice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLKEN in module axis_register_slice_v1_1_26_axisc_register_slice__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[1] in module axis_infrastructure_v1_1_0_util_axis2vector__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[0] in module axis_infrastructure_v1_1_0_util_axis2vector__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TDEST[0] in module axis_infrastructure_v1_1_0_util_axis2vector__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK in module axis_register_slice_v1_1_26_axisc_register_slice is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK2X in module axis_register_slice_v1_1_26_axisc_register_slice is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESET in module axis_register_slice_v1_1_26_axisc_register_slice is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLKEN in module axis_register_slice_v1_1_26_axisc_register_slice is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[7] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[6] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[5] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[4] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[3] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[2] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[1] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TSTRB[0] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port TDEST[0] in module axis_infrastructure_v1_1_0_util_axis2vector is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sleep in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsta in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[92] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[91] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[90] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[89] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[88] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[87] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[86] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[85] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[84] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[83] in module xpm_memory_base__parameterized0 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1967.555 ; gain = 441.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1967.555 ; gain = 441.867
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1967.555 ; gain = 441.867
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 1967.555 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0_ooc.xdc] for cell 'inst'
+create_clock: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2026.871 ; gain = 4.586
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_4/bd_c4a8_vfb_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_vfb_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_vfb_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst_axis.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_c4a8_vfb_0_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_c4a8_vfb_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1714] 16 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2026.871 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.076 . Memory (MB): peak = 2026.875 ; gain = 0.004
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2026.875 ; gain = 501.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2026.875 ; gain = 501.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1/dont_touch.xdc, line 20).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/axis_dconverter/axis_conv_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.rd_pntr_cdc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.rd_pntr_cdc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.wr_pntr_cdc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.wr_pntr_cdc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.rd_pntr_cdc_dc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.rd_pntr_cdc_dc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.wr_pntr_cdc_dc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/\gen_cdc_pntr.wr_pntr_cdc_dc_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/\gaxis_rst_sync.xpm_cdc_sync_rst_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/\gaxis_rst_sync.xpm_cdc_sync_rst_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/xpm_fifo_rst_inst/\gen_rst_ic.rrst_wr_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/xpm_fifo_rst_inst/\gen_rst_ic.rrst_wr_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym/xpm_fifo_base_inst/xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym/xpm_fifo_base_inst/xpm_fifo_rst_inst/\gen_rst_ic.wrst_rd_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asym /fifo_async_asym. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\VFB_MAX.async_asymsb /fifo_async_asym. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2026.875 ; gain = 501.188
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized0'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'state_reg' through user attribute
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 7 for RAM "xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               WRST_IDLE |                            00001 |                              000
+                 WRST_IN |                            00010 |                              010
+                WRST_OUT |                            00100 |                              111
+               WRST_EXIT |                            01000 |                              110
+            WRST_GO2IDLE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_wrst_state_reg' using encoding 'one-hot' in module 'xpm_fifo_rst__xdcDup__1'
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               RRST_IDLE |                               00 |                               00
+                 RRST_IN |                               01 |                               10
+                RRST_OUT |                               10 |                               11
+               RRST_EXIT |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_rrst_state_reg' using encoding 'sequential' in module 'xpm_fifo_rst__xdcDup__1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base'
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 3 for RAM "xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               WRST_IDLE |                            00001 |                              000
+                 WRST_IN |                            00010 |                              010
+                WRST_OUT |                            00100 |                              111
+               WRST_EXIT |                            01000 |                              110
+            WRST_GO2IDLE |                            10000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_wrst_state_reg' using encoding 'one-hot' in module 'xpm_fifo_rst'
+INFO: [Synth 8-5552] Implemented safe state 'default_state' for state register 'gen_rst_ic.curr_rrst_state_reg' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+               RRST_IDLE |                               00 |                               00
+                 RRST_IN |                               01 |                               10
+                RRST_OUT |                               10 |                               11
+               RRST_EXIT |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_rst_ic.curr_rrst_state_reg' using encoding 'sequential' in module 'xpm_fifo_rst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized0'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2026.875 ; gain = 501.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   13 Bit       Adders := 4     
+	   2 Input   13 Bit       Adders := 4     
+	   4 Input   12 Bit       Adders := 8     
+	   2 Input    8 Bit       Adders := 1     
+	  10 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   8 Input    4 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
+	   4 Input    2 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input     13 Bit         XORs := 4     
+	   2 Input     12 Bit         XORs := 4     
+	   2 Input      1 Bit         XORs := 92    
++---Registers : 
+	              180 Bit    Registers := 2     
+	              169 Bit    Registers := 2     
+	               93 Bit    Registers := 2     
+	               64 Bit    Registers := 6     
+	               41 Bit    Registers := 2     
+	               32 Bit    Registers := 4     
+	               24 Bit    Registers := 2     
+	               16 Bit    Registers := 1     
+	               13 Bit    Registers := 24    
+	               12 Bit    Registers := 24    
+	               10 Bit    Registers := 3     
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 15    
+	                1 Bit    Registers := 53    
++---RAMs : 
+	             676K Bit	(4096 X 169 bit)          RAMs := 1     
+	             372K Bit	(4096 X 93 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input  180 Bit        Muxes := 4     
+	   4 Input  176 Bit        Muxes := 2     
+	   4 Input   64 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 3     
+	   2 Input   41 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 1     
+	   4 Input   24 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 3     
+	   4 Input   10 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   6 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 16    
+	   4 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 72    
+	   5 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 14    
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 49    
+	   6 Input    1 Bit        Muxes := 4     
+	   5 Input    1 Bit        Muxes := 6     
+	   4 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 7 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 3 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:45 . Memory (MB): peak = 2026.875 ; gain = 501.188
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                                                                                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst    | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 169(NO_CHANGE)   | W |   | 4 K x 169(NO_CHANGE)   |   | R | Port A and B     | 0      | 19     | 4,4,4,4,2,1     | 
+|inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 93(NO_CHANGE)    | W |   | 4 K x 93(NO_CHANGE)    |   | R | Port A and B     | 1      | 10     | 4,4,2,1         | 
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:57 ; elapsed = 00:01:00 . Memory (MB): peak = 2541.359 ; gain = 1015.672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5556] The block RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 7 for RAM "inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5556] The block RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 36 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 18 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 3 for RAM "inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 2588.535 ; gain = 1062.848
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                                                                                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst/\VFB_MAX.async_asym/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst    | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 169(NO_CHANGE)   | W |   | 4 K x 169(NO_CHANGE)   |   | R | Port A and B     | 0      | 19     | 4,4,4,4,2,1     | 
+|inst/\VFB_MAX.async_asymsb/fifo_async_asym /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 93(NO_CHANGE)    | W |   | 4 K x 93(NO_CHANGE)    |   | R | Port A and B     | 1      | 10     | 4,4,2,1         | 
++-------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 2598.152 ; gain = 1072.465
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[7] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[6] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[5] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[4] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[3] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asym/fifo_async_asym:s_axis_tstrb[0] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[7] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[6] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[5] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[4] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[3] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[2] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[1] to constant 0
+INFO: [Synth 8-3295] tying undriven pin VFB_MAX.async_asymsb/fifo_async_asym:s_axis_tstrb[0] to constant 0
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY8   |     4|
+|2     |LUT1     |    23|
+|3     |LUT2     |   177|
+|4     |LUT3     |   258|
+|5     |LUT4     |    83|
+|6     |LUT5     |   149|
+|7     |LUT6     |   379|
+|8     |MUXF7    |    40|
+|9     |RAMB18E2 |     1|
+|10    |RAMB36E2 |    29|
+|16    |FDRE     |  1305|
+|17    |FDSE     |    19|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 276 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:01:03 . Memory (MB): peak = 2599.309 ; gain = 1014.301
+Synthesis Optimization Complete : Time (s): cpu = 00:01:08 ; elapsed = 00:01:13 . Memory (MB): peak = 2599.309 ; gain = 1073.621
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 2612.297 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 44 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2635.410 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: fb7b422d
+INFO: [Common 17-83] Releasing license: Synthesis
+196 Infos, 140 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:19 ; elapsed = 00:01:26 . Memory (MB): peak = 2635.410 ; gain = 1263.215
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1/bd_c4a8_vfb_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP bd_c4a8_vfb_0_0, cache-ID = b80d4e18f9672178
+INFO: [Coretcl 2-1174] Renamed 46 cell refs.
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/bd_c4a8_vfb_0_0_synth_1/bd_c4a8_vfb_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file bd_c4a8_vfb_0_0_utilization_synth.rpt -pb bd_c4a8_vfb_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:02:34 2026...

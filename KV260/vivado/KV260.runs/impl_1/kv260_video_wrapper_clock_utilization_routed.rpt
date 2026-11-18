@@ -1,0 +1,685 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date              : Sun Nov 15 21:57:04 2026
+| Host              : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
+| Command           : report_clock_utilization -file kv260_video_wrapper_clock_utilization_routed.rpt
+| Design            : kv260_video_wrapper
+| Device            : xck26-sfvc784
+| Speed File        : -2LV  PRODUCTION 1.29 08-03-2020
+| Temperature Grade : C
+| Design State      : Routed
+------------------------------------------------------------------------------------------------------
+
+Clock Utilization Report
+
+Table of Contents
+-----------------
+1. Clock Primitive Utilization
+2. Global Clock Resources
+3. Global Clock Source Details
+4. Clock Regions : Clock Primitives
+5. Clock Regions : Load Primitives
+6. Clock Regions : Global Clock Summary
+7. Clock Regions : Routing Resource Utilization
+8. Device Cell Placement Summary for Global Clock g0
+9. Device Cell Placement Summary for Global Clock g1
+10. Device Cell Placement Summary for Global Clock g2
+11. Device Cell Placement Summary for Global Clock g3
+12. Device Cell Placement Summary for Global Clock g4
+13. Device Cell Placement Summary for Global Clock g5
+14. Device Cell Placement Summary for Global Clock g6
+15. Device Cell Placement Summary for Global Clock g7
+16. Device Cell Placement Summary for Global Clock g8
+17. Device Cell Placement Summary for Global Clock g9
+18. Device Cell Placement Summary for Global Clock g10
+19. Clock Region Cell Placement per Global Clock: Region X0Y0
+20. Clock Region Cell Placement per Global Clock: Region X1Y0
+21. Clock Region Cell Placement per Global Clock: Region X2Y0
+22. Clock Region Cell Placement per Global Clock: Region X0Y1
+23. Clock Region Cell Placement per Global Clock: Region X1Y1
+24. Clock Region Cell Placement per Global Clock: Region X2Y1
+25. Clock Region Cell Placement per Global Clock: Region X0Y2
+26. Clock Region Cell Placement per Global Clock: Region X1Y2
+27. Clock Region Cell Placement per Global Clock: Region X2Y2
+28. Clock Region Cell Placement per Global Clock: Region X0Y3
+29. Clock Region Cell Placement per Global Clock: Region X1Y3
+30. Clock Region Cell Placement per Global Clock: Region X2Y3
+
+1. Clock Primitive Utilization
+------------------------------
+
++------------+------+-----------+-----+--------------+--------+
+| Type       | Used | Available | LOC | Clock Region | Pblock |
++------------+------+-----------+-----+--------------+--------+
+| BUFGCE     |   10 |       112 |   0 |            0 |      0 |
+| BUFGCE_DIV |    0 |        16 |   0 |            0 |      0 |
+| BUFGCTRL   |    0 |        32 |   0 |            0 |      0 |
+| BUFG_GT    |    0 |        96 |   0 |            0 |      0 |
+| MMCM       |    4 |         4 |   0 |            0 |      0 |
+| PLL        |    2 |         8 |   0 |            0 |      0 |
++------------+------+-----------+-----+--------------+--------+
+
+
+2. Global Clock Resources
+-------------------------
+
++-----------+-----------+-----------------+------------+---------------+--------------+------+-------------------+-------------------+-------------+-----------------+--------------+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Source Id | Driver Type/Pin | Constraint | Site          | Clock Region | Root | Clock Delay Group | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock                                                                                               | Driver Pin                                                                                                                                                                                                               | Net                                                                                                                                                                                                    |
++-----------+-----------+-----------------+------------+---------------+--------------+------+-------------------+-------------------+-------------+-----------------+--------------+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | src0      | BUFGCE/O        | None       | BUFGCE_X0Y48  | X1Y2         | X1Y2 |                   |                12 |       89656 |               0 |        3.333 | clk_out2_kv260_video_clk_wiz_1_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clkout2_buf/O                                                                                                                                                                | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                   |
+| g1        | src1      | BUFGCE/O        | None       | BUFGCE_X0Y2   | X1Y0         | X1Y1 |                   |                10 |        3124 |               0 |        3.367 | clk_out1_kv260_video_clk_wiz_0_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clkout1_buf/O                                                                                                                                        | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                           |
+| g2        | src2      | BUFGCE/O        | None       | BUFGCE_X0Y75  | X1Y3         | X1Y1 |                   |                 8 |        2627 |               0 |        3.200 | GEN_PLL_IN_IP_USP.pll0_clkout0                                                                      | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.pll0_clkout0_buf/O | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g3        | src3      | BUFGCE/O        | None       | BUFGCE_X0Y87  | X1Y3         | X1Y1 |                   |                 7 |        2625 |               0 |        4.000 | GEN_PLL_IN_IP_USP.pll0_clkout0_1                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.pll0_clkout0_buf/O | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g4        | src4      | BUFGCE/O        | None       | BUFGCE_X0Y57  | X1Y2         | X1Y2 |                   |                 9 |         903 |               2 |        5.000 | clk_out1_kv260_video_clk_wiz_1_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clkout1_buf/O                                                                                                                                                                | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                   |
+| g5        | src5      | BUFGCE/O        | None       | BUFGCE_X0Y76  | X1Y3         | X1Y2 |                   |                 7 |         818 |               3 |        3.200 | mipi_phy_if_clk_p_FIFO_WRCLK_OUT                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.rxbyteclkhs_buf/O                                                                                            | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g6        | src6      | BUFGCE/O        | None       | BUFGCE_X0Y78  | X1Y3         | X1Y1 |                   |                 7 |         659 |               5 |        4.000 | mipi_rx_ias_clk_p_FIFO_WRCLK_OUT                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.rxbyteclkhs_buf/O                                                                                            | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g7        | src7      | BUFGCE/O        | None       | BUFGCE_X0Y29  | X1Y1         | X1Y2 |                   |                 4 |         477 |               0 |       50.000 | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.u_bufg_icon_tck/O                                                                                                                                                     | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                                 |
+| g8        | src8      | BUFGCE/O        | None       | BUFGCE_X0Y95  | X1Y3         | X1Y3 | n/a               |                 1 |           0 |               1 |        3.200 | mmcm_clk_out0_bd_04f9_phy_0_clock_module_rx                                                         | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/clkout1_buf/O                   | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g9        | src9      | BUFGCE/O        | None       | BUFGCE_X0Y32  | X1Y1         | X1Y3 | n/a               |                 1 |           0 |               1 |        4.000 | mmcm_clk_out0_bd_c4a8_phy_0_clock_module_rx                                                         | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/clkout1_buf/O                   | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g10       | src10     | BUFG_PS/O       | None       | BUFG_PS_X0Y85 | X0Y3         | X1Y1 | n/a               |                 2 |           0 |               2 |       10.000 | clk_pl_0                                                                                            | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/buffer_pl_clk_0.PL_CLK_0_BUFG/O                                                                                                                                        | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                              |
++-----------+-----------+-----------------+------------+---------------+--------------+------+-------------------+-------------------+-------------+-----------------+--------------+-----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+
+
+3. Global Clock Source Details
+------------------------------
+
++-----------+-----------+----------------------------+-----------------------+-----------------------+--------------+-------------+-----------------+---------------------+-----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source Id | Global Id | Driver Type/Pin            | Constraint            | Site                  | Clock Region | Clock Loads | Non-Clock Loads | Source Clock Period | Source Clock                                                                                        | Driver Pin                                                                                                                                                                                                                        | Net                                                                                                                                                                                                                                  |
++-----------+-----------+----------------------------+-----------------------+-----------------------+--------------+-------------+-----------------+---------------------+-----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| src0      | g0        | MMCME4_ADV/CLKOUT1         | None                  | MMCM_X0Y2             | X1Y2         |           1 |               0 |               3.333 | clk_out2_kv260_video_clk_wiz_1_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT1                                                                                                                                                               | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2_kv260_video_clk_wiz_1_0                                                                                                                                                         |
+| src1      | g1        | MMCME4_ADV/CLKOUT0         | None                  | MMCM_X0Y0             | X1Y0         |           1 |               0 |               3.367 | clk_out1_kv260_video_clk_wiz_0_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/mmcme4_adv_inst/CLKOUT0                                                                                                                                       | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1_kv260_video_clk_wiz_0_0                                                                                                                                 |
+| src2      | g2        | PLLE4_ADV/CLKOUT0          | None                  | PLL_X0Y6              | X1Y3         |           1 |               0 |               3.200 | GEN_PLL_IN_IP_USP.pll0_clkout0                                                                      | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.plle4_adv_pll0_inst/CLKOUT0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.pll0_clkout0                   |
+| src3      | g3        | PLLE4_ADV/CLKOUT0          | None                  | PLL_X0Y7              | X1Y3         |           1 |               0 |               4.000 | GEN_PLL_IN_IP_USP.pll0_clkout0_1                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.plle4_adv_pll0_inst/CLKOUT0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/GEN_PLL_IN_IP_USP.pll0_clkout0                   |
+| src4      | g4        | MMCME4_ADV/CLKOUT0         | None                  | MMCM_X0Y2             | X1Y2         |           1 |               0 |               5.000 | clk_out1_kv260_video_clk_wiz_1_0                                                                    | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/mmcme4_adv_inst/CLKOUT0                                                                                                                                                               | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1_kv260_video_clk_wiz_1_0                                                                                                                                                         |
+| src5      | g5        | RX_BITSLICE/FIFO_WRCLK_OUT | BITSLICE_RX_TX_X0Y182 | BITSLICE_RX_TX_X0Y182 | X1Y3         |           1 |               0 |               3.200 | mipi_phy_if_clk_p_FIFO_WRCLK_OUT                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/bs_top_inst/u_rx_bs/RX_BS[26].rx_bitslice_if_bs/FIFO_WRCLK_OUT                 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/bs_top_inst/u_rx_bs/fifo_wr_clk_26                                                |
+| src6      | g6        | RX_BITSLICE/FIFO_WRCLK_OUT | BITSLICE_RX_TX_X0Y169 | BITSLICE_RX_TX_X0Y169 | X1Y3         |           1 |               0 |               4.000 | mipi_rx_ias_clk_p_FIFO_WRCLK_OUT                                                                    | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/bs_top_inst/u_rx_bs/RX_BS[13].rx_bitslice_if_bs/FIFO_WRCLK_OUT                 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/bs_top_inst/u_rx_bs/fifo_wr_clk_13                                                |
+| src7      | g7        | BSCANE2/TCK                | None                  | CONFIG_SITE_X0Y0      | X2Y2         |           1 |               0 |              50.000 | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK                                                                                                                                        | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/TCK                                                                                                                                                                    |
+| src8      | g8        | MMCME4_ADV/CLKOUT0         | None                  | MMCM_X0Y3             | X1Y3         |           1 |               0 |               3.200 | mmcm_clk_out0_bd_04f9_phy_0_clock_module_rx                                                         | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/mmcme4_adv_inst/CLKOUT0                  | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/mmcm_clk_out0_bd_04f9_phy_0_clock_module_rx |
+| src9      | g9        | MMCME4_ADV/CLKOUT0         | None                  | MMCM_X0Y1             | X1Y1         |           1 |               0 |               4.000 | mmcm_clk_out0_bd_c4a8_phy_0_clock_module_rx                                                         | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcme4_adv_inst/CLKOUT0                  | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0_bd_c4a8_phy_0_clock_module_rx |
+| src10     | g10       | PS8/PLCLK[0]               | None                  | PS8_X0Y0              | X0Y1         |           1 |               0 |              10.000 | clk_pl_0                                                                                            | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/PS8_i/PLCLK[0]                                                                                                                                                                  | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk_unbuffered[0]                                                                                                                                                               |
++-----------+-----------+----------------------------+-----------------------+-----------------------+--------------+-------------+-----------------+---------------------+-----------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+
+
+4. Clock Regions : Clock Primitives
+-----------------------------------
+
++-------------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+
+|                   |  Global Clock |     BUFGCE    |   BUFGCE_DIV  |    BUFGCTRL   |    BUFG_GT    |      MMCM     |      PLL      |
++-------------------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Clock Region Name | Used  | Avail | Used  | Avail | Used  | Avail | Used  | Avail | Used  | Avail | Used  | Avail | Used  | Avail |
++-------------------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| X0Y0              |     3 |    24 |     0 |     4 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |
+| X1Y0              |     6 |    24 |     1 |    24 |     0 |     4 |     0 |     8 |     0 |     0 |     1 |     1 |     0 |     2 |
+| X2Y0              |     3 |    24 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |    24 |     0 |     0 |     0 |     0 |
+| X0Y1              |     4 |    24 |     0 |     4 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |
+| X1Y1              |     8 |    24 |     2 |    24 |     0 |     4 |     0 |     8 |     0 |     0 |     1 |     1 |     0 |     2 |
+| X2Y1              |     8 |    24 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |    24 |     0 |     0 |     0 |     0 |
+| X0Y2              |     3 |    24 |     0 |     4 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |
+| X1Y2              |     9 |    24 |     2 |    24 |     0 |     4 |     0 |     8 |     0 |     0 |     1 |     1 |     0 |     2 |
+| X2Y2              |     7 |    24 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |    24 |     0 |     0 |     0 |     0 |
+| X0Y3              |     7 |    24 |     0 |     4 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |
+| X1Y3              |    10 |    24 |     5 |    24 |     0 |     4 |     0 |     8 |     0 |     0 |     1 |     1 |     2 |     2 |
+| X2Y3              |     6 |    24 |     0 |     0 |     0 |     0 |     0 |     0 |     0 |    24 |     0 |     0 |     0 |     0 |
++-------------------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+* Global Clock column represents track count; while other columns represents cell counts
+
+
+5. Clock Regions : Load Primitives
+----------------------------------
+
++-------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+
+|                   |   Global Clock   |        FF        |      LUTRAM      |  Block RAM (18K) |       URAM       |        DSP       |        GT        |      HARD IP     |
++-------------------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+
+| Clock Region Name | Used   | Avail   | Used   | Avail   | Used   | Avail   | Used   | Avail   | Used   | Avail   | Used   | Avail   | Used   | Avail   | Used   | Avail   |
++-------------------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+
+| X0Y0              |      3 |      24 |   9037 |   22080 |    638 |    6240 |      0 |       0 |      0 |       0 |     35 |     144 |      0 |       0 |      0 |       0 |
+| X1Y0              |      6 |      24 |   7778 |   17280 |    566 |    5280 |     17 |      24 |      0 |       0 |     33 |     144 |      0 |       0 |      0 |       0 |
+| X2Y0              |      3 |      24 |   9538 |   19200 |    603 |    2880 |     44 |      48 |     16 |      16 |      0 |      24 |      0 |       4 |      0 |       1 |
+| X0Y1              |      4 |      24 |  10348 |   22080 |    804 |    6240 |      0 |       0 |      0 |       0 |     11 |     144 |      0 |       0 |      0 |       0 |
+| X1Y1              |      8 |      24 |   7337 |   17280 |    567 |    5280 |     24 |      24 |      0 |       0 |     31 |     144 |      0 |       0 |      0 |       0 |
+| X2Y1              |      8 |      24 |   8390 |   19200 |    431 |    2880 |     47 |      48 |     12 |      16 |      3 |      24 |      0 |       4 |      0 |       1 |
+| X0Y2              |      3 |      24 |   8671 |   22080 |    600 |    6240 |      0 |       0 |      0 |       0 |     27 |     144 |      0 |       0 |      0 |       0 |
+| X1Y2              |      9 |      24 |   4732 |   17280 |    357 |    5280 |     22 |      24 |      0 |       0 |     46 |     144 |      0 |       0 |      0 |       0 |
+| X2Y2              |      7 |      24 |   6759 |   19200 |    362 |    2880 |     46 |      48 |      2 |      16 |     19 |      24 |      0 |       4 |      0 |       0 |
+| X0Y3              |      7 |      24 |   7553 |   22080 |    607 |    6240 |      0 |       0 |      0 |       0 |     78 |     144 |      0 |       0 |      0 |       0 |
+| X1Y3              |     10 |      24 |   5233 |   17280 |    376 |    5280 |     12 |      24 |      0 |       0 |     87 |     144 |      0 |       0 |      0 |       0 |
+| X2Y3              |      6 |      24 |   8131 |   19200 |    362 |    2880 |     45 |      48 |      0 |      16 |     15 |      24 |      0 |       4 |      0 |       0 |
++-------------------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+--------+---------+
+* Global Clock column represents track count; while other columns represents cell counts
+
+
+6. Clock Regions : Global Clock Summary
+---------------------------------------
+
+All Modules
++----+----+----+----+
+|    | X0 | X1 | X2 |
++----+----+----+----+
+| Y3 |  8 | 11 |  6 |
+| Y2 |  3 | 10 |  7 |
+| Y1 |  4 | 10 |  8 |
+| Y0 |  3 |  6 |  3 |
++----+----+----+----+
+
+
+7. Clock Regions : Routing Resource Utilization
+-----------------------------------------------
+
+All Modules
++-------------------+----------------------+----------------------+----------------------+----------------------+
+|                   |        HROUTES       |        HDISTRS       |        VROUTES       |        VDISTRS       |
++-------------------+------+-------+-------+------+-------+-------+------+-------+-------+------+-------+-------+
+| Clock Region Name | Used | Avail | Util% | Used | Avail | Util% | Used | Avail | Util% | Used | Avail | Util% |
++-------------------+------+-------+-------+------+-------+-------+------+-------+-------+------+-------+-------+
+| X0Y0              |    0 |    24 |  0.00 |    3 |    24 | 12.50 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X1Y0              |    1 |    24 |  4.17 |    6 |    24 | 25.00 |    0 |    24 |  0.00 |    6 |    24 | 25.00 |
+| X2Y0              |    0 |    24 |  0.00 |    3 |    24 | 12.50 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X0Y1              |    0 |    24 |  0.00 |    4 |    24 | 16.67 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X1Y1              |    2 |    24 |  8.33 |    8 |    24 | 33.33 |    5 |    24 | 20.83 |    9 |    24 | 37.50 |
+| X2Y1              |    0 |    24 |  0.00 |    8 |    24 | 33.33 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X0Y2              |    0 |    24 |  0.00 |    3 |    24 | 12.50 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X1Y2              |    0 |    24 |  0.00 |    9 |    24 | 37.50 |    7 |    24 | 29.17 |    8 |    24 | 33.33 |
+| X2Y2              |    0 |    24 |  0.00 |    7 |    24 | 29.17 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X0Y3              |    2 |    24 |  8.33 |    7 |    24 | 29.17 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
+| X1Y3              |    8 |    24 | 33.33 |   10 |    24 | 41.67 |    6 |    24 | 25.00 |    1 |    24 |  4.17 |
+| X2Y3              |    0 |    24 |  0.00 |    6 |    24 | 25.00 |    0 |    24 |  0.00 |    0 |    24 |  0.00 |
++-------------------+------+-------+-------+------+-------+-------+------+-------+-------+------+-------+-------+
+
+
+8. Device Cell Placement Summary for Global Clock g0
+----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                  |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+| g0        | BUFGCE/O        | X1Y2              | clk_out2_kv260_video_clk_wiz_1_0 |       3.333 | {0.000 1.667} | X1Y2     |       89134 |        0 |              1 |        0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2 |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+--------+--------------+-------+-----------------------+
+|    | X0     | X1           | X2    | HORIZONTAL PROG DELAY |
++----+--------+--------------+-------+-----------------------+
+| Y3 |   7978 |         5357 |  7470 |                     2 |
+| Y2 |   7069 | (R) (D) 4943 |  6538 |                     2 |
+| Y1 |  10836 |         5653 |  6437 |                     1 |
+| Y0 |   9705 |         8178 |  8971 |                     0 |
++----+--------+--------------+-------+-----------------------+
+
+
+9. Device Cell Placement Summary for Global Clock g1
+----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                          |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------+
+| g1        | BUFGCE/O        | X1Y0              | clk_out1_kv260_video_clk_wiz_0_0 |       3.367 | {0.000 1.684} | X1Y1     |        3124 |        0 |              0 |        0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1 |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-------+---------+------+-----------------------+
+|    | X0    | X1      | X2   | HORIZONTAL PROG DELAY |
++----+-------+---------+------+-----------------------+
+| Y3 |    73 |       3 |  306 |                     0 |
+| Y2 |  2190 |      42 |   74 |                     1 |
+| Y1 |   264 | (R) 167 |    2 |                     1 |
+| Y0 |     3 |   (D) 0 |    0 |                     0 |
++----+-------+---------+------+-----------------------+
+
+
+10. Device Cell Placement Summary for Global Clock g2
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+--------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                          | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                                                                                                                  |
++-----------+-----------------+-------------------+--------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g2        | BUFGCE/O        | X1Y3              | GEN_PLL_IN_IP_USP.pll0_clkout0 |       3.200 | {0.000 1.600} | X1Y1     |        2627 |        0 |              0 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
++-----------+-----------------+-------------------+--------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----+---------+-------+-----------------------+
+|    | X0  | X1      | X2    | HORIZONTAL PROG DELAY |
++----+-----+---------+-------+-----------------------+
+| Y3 |  10 |   (D) 8 |   106 |                     0 |
+| Y2 |   0 |      86 |   192 |                     1 |
+| Y1 |   0 | (R) 228 |  1838 |                     1 |
+| Y0 |   0 |       0 |   159 |                     0 |
++----+-----+---------+-------+-----------------------+
+
+
+11. Device Cell Placement Summary for Global Clock g3
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                                                                                                                  |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g3        | BUFGCE/O        | X1Y3              | GEN_PLL_IN_IP_USP.pll0_clkout0_1 |       4.000 | {0.000 2.000} | X1Y1     |        2625 |        0 |              0 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----+----------+-------+-----------------------+
+|    | X0  | X1       | X2    | HORIZONTAL PROG DELAY |
++----+-----+----------+-------+-----------------------+
+| Y3 |  10 |    (D) 0 |     0 |                     0 |
+| Y2 |   0 |        1 |     0 |                     1 |
+| Y1 |  29 | (R) 1247 |    76 |                     1 |
+| Y0 |   0 |      210 |  1052 |                     0 |
++----+-----+----------+-------+-----------------------+
+
+
+12. Device Cell Placement Summary for Global Clock g4
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                  |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+| g4        | BUFGCE/O        | X1Y2              | clk_out1_kv260_video_clk_wiz_1_0 |       5.000 | {0.000 2.500} | X1Y2     |         903 |        0 |              2 |        0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1 |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+------+------------+------+-----------------------+
+|    | X0   | X1         | X2   | HORIZONTAL PROG DELAY |
++----+------+------------+------+-----------------------+
+| Y3 |  135 |        110 |  216 |                     1 |
+| Y2 |   39 | (R) (D) 24 |  150 |                     1 |
+| Y1 |   36 |        152 |   43 |                     0 |
+| Y0 |    0 |          0 |    0 |                     - |
++----+------+------------+------+-----------------------+
+
+
+13. Device Cell Placement Summary for Global Clock g5
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                            |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+| g5        | BUFGCE/O        | X1Y3              | mipi_phy_if_clk_p_FIFO_WRCLK_OUT |       3.200 | {0.000 1.600} | X1Y2     |         818 |        0 |              0 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----+----------+------+-----------------------+
+|    | X0  | X1       | X2   | HORIZONTAL PROG DELAY |
++----+-----+----------+------+-----------------------+
+| Y3 |  16 |  (D) 201 |   59 |                     1 |
+| Y2 |   0 |   (R) 10 |  135 |                     1 |
+| Y1 |   0 |      120 |  277 |                     0 |
+| Y0 |   0 |        0 |    0 |                     - |
++----+-----+----------+------+-----------------------+
+
+
+14. Device Cell Placement Summary for Global Clock g6
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                            | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                            |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+| g6        | BUFGCE/O        | X1Y3              | mipi_rx_ias_clk_p_FIFO_WRCLK_OUT |       4.000 | {0.000 2.000} | X1Y1     |         664 |        0 |              0 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs |
++-----------+-----------------+-------------------+----------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+----------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+-----+---------+------+-----------------------+
+|    | X0  | X1      | X2   | HORIZONTAL PROG DELAY |
++----+-----+---------+------+-----------------------+
+| Y3 |  16 |  (D) 16 |    0 |                     0 |
+| Y2 |   0 |      40 |   23 |                     1 |
+| Y1 |   0 | (R) 385 |  182 |                     1 |
+| Y0 |   2 |       0 |    0 |                     0 |
++----+-----+---------+------+-----------------------+
+
+
+15. Device Cell Placement Summary for Global Clock g7
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+-----------------------------------------------------------------------------------------------------+-------------+----------------+----------+-------------+----------+----------------+----------+----------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                                                                                               | Period (ns) | Waveform (ns)  | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                    |
++-----------+-----------------+-------------------+-----------------------------------------------------------------------------------------------------+-------------+----------------+----------+-------------+----------+----------------+----------+----------------------------------------+
+| g7        | BUFGCE/O        | X1Y1              | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/INTERNAL_TCK |      50.000 | {0.000 25.000} | X1Y2     |         477 |        0 |              0 |        0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i |
++-----------+-----------------+-------------------+-----------------------------------------------------------------------------------------------------+-------------+----------------+----------+-------------+----------+----------------+----------+----------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+----+--------+------+-----------------------+
+|    | X0 | X1     | X2   | HORIZONTAL PROG DELAY |
++----+----+--------+------+-----------------------+
+| Y3 |  0 |     19 |  387 |                     1 |
+| Y2 |  0 |  (R) 0 |   63 |                     1 |
+| Y1 |  0 |  (D) 0 |    8 |                     0 |
+| Y0 |  0 |      0 |    0 |                     - |
++----+----+--------+------+-----------------------+
+
+
+16. Device Cell Placement Summary for Global Clock g8
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                                       | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                                                                                                                    |
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g8        | BUFGCE/O        | X1Y3              | mmcm_clk_out0_bd_04f9_phy_0_clock_module_rx |       3.200 | {0.000 1.600} | X1Y3     |           0 |        0 |              1 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+----+-----------+----+-----------------------+
+|    | X0 | X1        | X2 | HORIZONTAL PROG DELAY |
++----+----+-----------+----+-----------------------+
+| Y3 |  0 | (R) (D) 1 |  0 |                     0 |
+| Y2 |  0 |         0 |  0 |                     - |
+| Y1 |  0 |         0 |  0 |                     - |
+| Y0 |  0 |         0 |  0 |                     - |
++----+----+-----------+----+-----------------------+
+
+
+17. Device Cell Placement Summary for Global Clock g9
+-----------------------------------------------------
+
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock                                       | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                                                                                                                                                                    |
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g9        | BUFGCE/O        | X1Y1              | mmcm_clk_out0_bd_c4a8_phy_0_clock_module_rx |       4.000 | {0.000 2.000} | X1Y3     |           0 |        0 |              1 |        0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
++-----------+-----------------+-------------------+---------------------------------------------+-------------+---------------+----------+-------------+----------+----------------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+----+--------+----+-----------------------+
+|    | X0 | X1     | X2 | HORIZONTAL PROG DELAY |
++----+----+--------+----+-----------------------+
+| Y3 |  0 |  (R) 1 |  0 |                     0 |
+| Y2 |  0 |      0 |  0 |                     - |
+| Y1 |  0 |  (D) 0 |  0 |                     - |
+| Y0 |  0 |      0 |  0 |                     - |
++----+----+--------+----+-----------------------+
+
+
+18. Device Cell Placement Summary for Global Clock g10
+------------------------------------------------------
+
++-----------+-----------------+-------------------+----------+-------------+---------------+----------+-------------+----------+----------------+----------+-----------------------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock    | Period (ns) | Waveform (ns) | Root (R) | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                                       |
++-----------+-----------------+-------------------+----------+-------------+---------------+----------+-------------+----------+----------------+----------+-----------------------------------------------------------+
+| g10       | BUFG_PS/O       | X0Y3              | clk_pl_0 |      10.000 | {0.000 5.000} | X1Y1     |           0 |        0 |              2 |        0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0 |
++-----------+-----------------+-------------------+----------+-------------+---------------+----------+-------------+----------+----------------+----------+-----------------------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+--------+-------+----+-----------------------+
+|    | X0     | X1    | X2 | HORIZONTAL PROG DELAY |
++----+--------+-------+----+-----------------------+
+| Y3 |  (D) 0 |     0 |  0 |                     - |
+| Y2 |      0 |     1 |  0 |                     1 |
+| Y1 |      0 | (R) 0 |  0 |                     - |
+| Y0 |      0 |     1 |  0 |                     0 |
++----+--------+-------+----+-----------------------+
+
+
+19. Clock Region Cell Placement per Global Clock: Region X0Y0
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+----------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                            |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+----------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        9705 |               0 | 9032 |         638 |    0 |    0 |  35 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                           |
+| g1        | 2     | BUFGCE/O        | None       |           3 |               0 |    3 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                   |
+| g6        | 6     | BUFGCE/O        | None       |           2 |               0 |    2 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+----------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+20. Clock Region Cell Placement per Global Clock: Region X1Y0
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        8178 |               0 | 7568 |         566 |   10 |    0 |  33 |  0 |    1 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1+       | 2     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g2+       | 3     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g3        | 15    | BUFGCE/O        | None       |         210 |               0 |  210 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g6+       | 6     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g10       | 13    | BUFG_PS/O       | None       |           0 |               1 |    0 |           0 |    0 |    0 |   0 |  0 |    1 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                            |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+**** In Global Id column, sympbol '+' indicates that global clock was used only to route through the clock region.
+
+
+21. Clock Region Cell Placement per Global Clock: Region X2Y0
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        8971 |               0 | 8348 |         601 |   22 |   16 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g2        | 3     | BUFGCE/O        | None       |         159 |               0 |  158 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g3        | 15    | BUFGCE/O        | None       |        1052 |               0 | 1032 |           1 |   19 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+22. Clock Region Cell Placement per Global Clock: Region X0Y1
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+-------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF    | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+-------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |       10836 |               0 | 10020 |         804 |    0 |    0 |  11 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1        | 2     | BUFGCE/O        | None       |         264 |               0 |   263 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g3        | 15    | BUFGCE/O        | None       |          29 |               0 |    29 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g4        | 9     | BUFGCE/O        | None       |          36 |               0 |    36 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                 |
++-----------+-------+-----------------+------------+-------------+-----------------+-------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+23. Clock Region Cell Placement per Global Clock: Region X1Y1
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                    |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        5653 |               0 | 5060 |         549 |   13 |    0 |  31 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                   |
+| g1        | 2     | BUFGCE/O        | None       |         167 |               0 |  164 |           0 |    3 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                           |
+| g2        | 3     | BUFGCE/O        | None       |         228 |               0 |  227 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g3        | 15    | BUFGCE/O        | None       |        1247 |               0 | 1240 |           7 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g4        | 9     | BUFGCE/O        | None       |         151 |               1 |  151 |           0 |    0 |    0 |   0 |  0 |    1 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                   |
+| g5        | 4     | BUFGCE/O        | None       |         120 |               0 |  117 |           3 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g6        | 6     | BUFGCE/O        | None       |         385 |               0 |  378 |           7 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g7+       | 5     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                                 |
+| g9+       | 8     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g10+      | 13    | BUFG_PS/O       | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                              |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+**** In Global Id column, sympbol '+' indicates that global clock was used only to route through the clock region.
+
+
+24. Clock Region Cell Placement per Global Clock: Region X2Y1
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        6437 |               0 | 5987 |         423 |   24 |   12 |   3 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1        | 2     | BUFGCE/O        | None       |           2 |               0 |    2 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g2        | 3     | BUFGCE/O        | None       |        1838 |               0 | 1826 |           4 |    8 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g3        | 15    | BUFGCE/O        | None       |          76 |               0 |   69 |           0 |    7 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g4        | 9     | BUFGCE/O        | None       |          43 |               0 |   43 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                 |
+| g5        | 4     | BUFGCE/O        | None       |         277 |               0 |  274 |           3 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g6        | 6     | BUFGCE/O        | None       |         182 |               0 |  181 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g7        | 5     | BUFGCE/O        | None       |           8 |               0 |    8 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+25. Clock Region Cell Placement per Global Clock: Region X0Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                          |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        7069 |               0 | 6448 |         594 |    0 |    0 |  27 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                         |
+| g1        | 2     | BUFGCE/O        | None       |        2190 |               0 | 2185 |           5 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1 |
+| g4        | 9     | BUFGCE/O        | None       |          39 |               0 |   38 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                         |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+26. Clock Region Cell Placement per Global Clock: Region X1Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                    |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        4943 |               0 | 4529 |         357 |   11 |    0 |  46 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                   |
+| g1        | 2     | BUFGCE/O        | None       |          42 |               0 |   42 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                           |
+| g2        | 3     | BUFGCE/O        | None       |          86 |               0 |   86 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g3        | 15    | BUFGCE/O        | None       |           1 |               0 |    1 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g4        | 9     | BUFGCE/O        | None       |          24 |               0 |   24 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                   |
+| g5        | 4     | BUFGCE/O        | None       |          10 |               0 |   10 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g6        | 6     | BUFGCE/O        | None       |          40 |               0 |   40 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g7+       | 5     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                                 |
+| g9+       | 8     | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g10       | 13    | BUFG_PS/O       | None       |           0 |               1 |    0 |           0 |    0 |    0 |   0 |  0 |    1 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                              |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+**** In Global Id column, sympbol '+' indicates that global clock was used only to route through the clock region.
+
+
+27. Clock Region Cell Placement per Global Clock: Region X2Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        6538 |               0 | 6168 |         326 |   25 |    2 |  19 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1        | 2     | BUFGCE/O        | None       |          74 |               0 |   40 |          32 |    2 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g2        | 3     | BUFGCE/O        | None       |         192 |               0 |  182 |           2 |    8 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g4        | 9     | BUFGCE/O        | None       |         150 |               0 |  150 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                 |
+| g5        | 4     | BUFGCE/O        | None       |         135 |               0 |  134 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g6        | 6     | BUFGCE/O        | None       |          23 |               0 |   23 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g7        | 5     | BUFGCE/O        | None       |          63 |               0 |   62 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+28. Clock Region Cell Placement per Global Clock: Region X0Y3
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        7978 |               0 | 7293 |         607 |    0 |    0 |  78 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1        | 2     | BUFGCE/O        | None       |          73 |               0 |   73 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g2        | 3     | BUFGCE/O        | None       |          10 |               0 |   10 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g3        | 15    | BUFGCE/O        | None       |          10 |               0 |   10 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g4        | 9     | BUFGCE/O        | None       |         135 |               0 |  135 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                 |
+| g5        | 4     | BUFGCE/O        | None       |          16 |               0 |   16 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g6        | 6     | BUFGCE/O        | None       |          16 |               0 |   16 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g10+      | 13    | BUFG_PS/O       | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                            |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+**** In Global Id column, sympbol '+' indicates that global clock was used only to route through the clock region.
+
+
+29. Clock Region Cell Placement per Global Clock: Region X1Y3
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                    |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        5357 |               0 | 4888 |         376 |    6 |    0 |  87 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                   |
+| g1        | 2     | BUFGCE/O        | None       |           3 |               0 |    3 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                           |
+| g2        | 3     | BUFGCE/O        | None       |           8 |               0 |    8 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g3+       | 15    | BUFGCE/O        | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out   |
+| g4        | 9     | BUFGCE/O        | None       |         109 |               1 |  106 |           0 |    0 |    0 |   0 |  0 |    1 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                   |
+| g5        | 4     | BUFGCE/O        | None       |         201 |               0 |  198 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g6        | 6     | BUFGCE/O        | None       |          11 |               5 |   11 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/rxbyteclkhs                                                                                         |
+| g7        | 5     | BUFGCE/O        | None       |          19 |               0 |   19 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                                 |
+| g8        | 23    | BUFGCE/O        | None       |           0 |               1 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   1 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_clock_module_support_i/bd_04f9_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g9        | 8     | BUFGCE/O        | None       |           0 |               1 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   1 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/U0/phy/inst/inst/bd_c4a8_phy_0_rx_support_i/slave_rx.bd_c4a8_phy_0_rx_clock_module_support_i/bd_c4a8_phy_0_clock_module_rx_i/inst/mmcm_clk_out0 |
+| g10+      | 13    | BUFG_PS/O       | None       |           0 |               0 |    0 |           0 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/U0/pl_clk0                                                                                                                                              |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+**** In Global Id column, sympbol '+' indicates that global clock was used only to route through the clock region.
+
+
+30. Clock Region Cell Placement per Global Clock: Region X2Y3
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF   | Memory LUTs | RAMB | URAM | DSP | GT | MMCM | PLL | Hard IP | Net                                                                                                                                                                                                  |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| g0        | 0     | BUFGCE/O        | None       |        7470 |               0 | 7081 |         351 |   23 |    0 |  15 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out2                                                                                                                                                 |
+| g1        | 2     | BUFGCE/O        | None       |         306 |               0 |  296 |           7 |    3 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0/inst/CLK_CORE_DRP_I/clk_inst/clk_out1                                                                                                                         |
+| g2        | 3     | BUFGCE/O        | None       |         106 |               0 |   96 |           0 |   10 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/slave_rx.bd_04f9_phy_0_rx_hssio_i/inst/top_inst/clk_rst_top_inst/clk_scheme_inst/pll0_clkout0_out |
+| g4        | 9     | BUFGCE/O        | None       |         216 |               0 |  215 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_1/inst/clk_out1                                                                                                                                                 |
+| g5        | 4     | BUFGCE/O        | None       |          59 |               0 |   58 |           1 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/U0/phy/inst/inst/bd_04f9_phy_0_rx_support_i/rxbyteclkhs                                                                                       |
+| g7        | 5     | BUFGCE/O        | None       |         387 |               0 |  385 |           2 |    0 |    0 |   0 |  0 |    0 |   0 |       0 | dbg_hub/inst/BSCANID.u_xsdbm_id/itck_i                                                                                                                                                               |
++-----------+-------+-----------------+------------+-------------+-----------------+------+-------------+------+------+-----+----+------+-----+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+* Clock Loads column represents the clock pin loads (pin count). Internal cell leaf pins are not counted
+** Non-Clock Loads column represents the non-clock pin loads (pin count)
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+

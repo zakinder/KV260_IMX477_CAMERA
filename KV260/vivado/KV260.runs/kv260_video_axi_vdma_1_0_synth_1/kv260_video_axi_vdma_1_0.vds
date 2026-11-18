@@ -1,0 +1,1221 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sat Nov 14 19:05:17 2026
+# Process ID: 24540
+# Current directory: R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1
+# Command line: vivado.exe -log kv260_video_axi_vdma_1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kv260_video_axi_vdma_1_0.tcl
+# Log file: R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/kv260_video_axi_vdma_1_0.vds
+# Journal file: R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1\vivado.jou
+# Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
+#-----------------------------------------------------------
+source kv260_video_axi_vdma_1_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
+Command: synth_design -top kv260_video_axi_vdma_1_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 8840
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1843.074 ; gain = 318.637
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/synth/kv260_video_axi_vdma_1_0.vhd:108]
+	Parameter C_S_AXI_LITE_ADDR_WIDTH bound to: 9 - type: integer 
+	Parameter C_S_AXI_LITE_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_DLYTMR_RESOLUTION bound to: 125 - type: integer 
+	Parameter C_PRMRY_IS_ACLK_ASYNC bound to: 0 - type: integer 
+	Parameter C_ENABLE_VIDPRMTR_READS bound to: 1 - type: integer 
+	Parameter C_DYNAMIC_RESOLUTION bound to: 1 - type: integer 
+	Parameter C_NUM_FSTORES bound to: 1 - type: integer 
+	Parameter C_USE_FSYNC bound to: 1 - type: integer 
+	Parameter C_USE_MM2S_FSYNC bound to: 0 - type: integer 
+	Parameter C_USE_S2MM_FSYNC bound to: 2 - type: integer 
+	Parameter C_FLUSH_ON_FSYNC bound to: 1 - type: integer 
+	Parameter C_INCLUDE_INTERNAL_GENLOCK bound to: 1 - type: integer 
+	Parameter C_INCLUDE_SG bound to: 0 - type: integer 
+	Parameter C_M_AXI_SG_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_SG_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_INCLUDE_MM2S bound to: 0 - type: integer 
+	Parameter C_MM2S_GENLOCK_MODE bound to: 0 - type: integer 
+	Parameter C_MM2S_GENLOCK_NUM_MASTERS bound to: 1 - type: integer 
+	Parameter C_MM2S_GENLOCK_REPEAT_EN bound to: 0 - type: integer 
+	Parameter C_MM2S_SOF_ENABLE bound to: 1 - type: integer 
+	Parameter C_INCLUDE_MM2S_DRE bound to: 0 - type: integer 
+	Parameter C_INCLUDE_MM2S_SF bound to: 0 - type: integer 
+	Parameter C_MM2S_LINEBUFFER_DEPTH bound to: 512 - type: integer 
+	Parameter C_MM2S_LINEBUFFER_THRESH bound to: 4 - type: integer 
+	Parameter C_MM2S_MAX_BURST_LENGTH bound to: 8 - type: integer 
+	Parameter C_M_AXI_MM2S_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_MM2S_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_M_AXIS_MM2S_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXIS_MM2S_TUSER_BITS bound to: 1 - type: integer 
+	Parameter C_INCLUDE_S2MM bound to: 1 - type: integer 
+	Parameter C_S2MM_GENLOCK_MODE bound to: 0 - type: integer 
+	Parameter C_S2MM_GENLOCK_NUM_MASTERS bound to: 1 - type: integer 
+	Parameter C_S2MM_GENLOCK_REPEAT_EN bound to: 1 - type: integer 
+	Parameter C_S2MM_SOF_ENABLE bound to: 1 - type: integer 
+	Parameter C_INCLUDE_S2MM_DRE bound to: 1 - type: integer 
+	Parameter C_INCLUDE_S2MM_SF bound to: 1 - type: integer 
+	Parameter C_S2MM_LINEBUFFER_DEPTH bound to: 4096 - type: integer 
+	Parameter C_S2MM_LINEBUFFER_THRESH bound to: 4 - type: integer 
+	Parameter C_S2MM_MAX_BURST_LENGTH bound to: 256 - type: integer 
+	Parameter C_M_AXI_S2MM_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_S2MM_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_S_AXIS_S2MM_TDATA_WIDTH bound to: 24 - type: integer 
+	Parameter C_S_AXIS_S2MM_TUSER_BITS bound to: 1 - type: integer 
+	Parameter C_ENABLE_DEBUG_ALL bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_0 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_1 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_2 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_3 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_4 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_5 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_6 bound to: 1 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_7 bound to: 1 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_8 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_9 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_10 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_11 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_12 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_13 bound to: 0 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_14 bound to: 1 - type: integer 
+	Parameter C_ENABLE_DEBUG_INFO_15 bound to: 1 - type: integer 
+	Parameter C_INSTANCE bound to: axi_vdma - type: string 
+	Parameter C_SELECT_XPM bound to: 0 - type: integer 
+	Parameter C_ENABLE_VERT_FLIP bound to: 0 - type: integer 
+	Parameter C_FAMILY bound to: zynquplus - type: string 
+INFO: [Synth 8-3491] module 'axi_vdma' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69488' bound to instance 'U0' of component 'axi_vdma' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/synth/kv260_video_axi_vdma_1_0.vhd:343]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69927]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_rst_module' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:16461]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_reset' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:14866]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_P_IN_cdc_from' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:219]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_P_IN2_cdc_to' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:232]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:269]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:279]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:289]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:299]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:309]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d7' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:320]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_scndry_out' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:330]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d1' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:339]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:347]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:355]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:364]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:374]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:383]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d7' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:392]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_PLEVEL_IN_cdc_from' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:491]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:514]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:545]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:554]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:564]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:574]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:584]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_reset' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:14866]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_rst_module' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:16461]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_reg_if' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:39917]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_lite_if' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:16956]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_P_IN_cdc_from' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:219]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_P_IN2_cdc_to' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:232]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:269]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:279]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:289]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:299]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:309]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_s_out_d7' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:320]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'P_IN_CROSS2SCNDRY_scndry_out' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:330]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d1' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:339]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:347]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:355]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:364]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:374]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:383]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 's_rst_d7' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:392]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_lite_if' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:16956]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync__parameterized2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'REG_PLEVEL_IN_cdc_from' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:491]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:514]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:545]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d3' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:554]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:564]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:574]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6' to cell 'FDR' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:584]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync__parameterized2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_reg_if' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:39917]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_intrpt' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:40643]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_intrpt' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:40643]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_skid_buf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:41500]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_skid_buf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:41500]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_s2mm_axis_dwidth_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69110]
+	Parameter C_S_AXIS_TDATA_WIDTH bound to: 24 - type: integer 
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_AXIS_TID_WIDTH bound to: 1 - type: integer 
+	Parameter C_AXIS_TDEST_WIDTH bound to: 1 - type: integer 
+	Parameter C_S_AXIS_TUSER_WIDTH bound to: 3 - type: integer 
+	Parameter C_M_AXIS_TUSER_WIDTH bound to: 4 - type: integer 
+	Parameter C_FAMILY bound to: zynquplus - type: string 
+INFO: [Synth 8-3491] module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axis_dwidth_converter' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1937' bound to instance 'S2MM_AXIS_DWIDTH_CONVERTER_I' of component 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axis_dwidth_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69241]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axis_dwidth_converter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1937]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_upsizer' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1190]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_upsizer' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1190]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_downsizer' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1557]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_downsizer' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1557]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axis_register_slice' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:978]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_axis2vector' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_axis2vector' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axisc_register_slice' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:390]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axisc_register_slice' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:390]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_vector2axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:227]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_vector2axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:227]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axis_register_slice' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:978]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axis_register_slice__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:978]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_axis2vector__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_axis2vector__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:62]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axisc_register_slice__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:390]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axisc_register_slice__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:390]
+INFO: [Synth 8-6157] synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_vector2axis__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:227]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_infrastructure_v1_0_util_vector2axis__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:227]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_register_slice_v1_0_axis_register_slice__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:978]
+INFO: [Synth 8-6155] done synthesizing module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axis_dwidth_converter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.v:1937]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_s2mm_axis_dwidth_converter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69110]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_reg_module' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:39071]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_register' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:18717]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_register' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:18717]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_regdirect' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:20533]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_regdirect' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:20533]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_reg_mux' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:29596]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_reg_mux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:29596]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_reg_module' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:39071]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_mngr' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64248]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_sm' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:61909]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_sm' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:61909]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_cmdsts_if' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:63125]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_cmdsts_if' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:63125]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_sts_mngr' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:63632]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_sts_mngr' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:63632]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_vidreg_module' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:56087]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_vregister' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:53973]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vregister' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:53973]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_vaddrreg_mux' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:55564]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vaddrreg_mux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:55564]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vidreg_module' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:56087]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_genlock_mngr' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58630]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_genlock_mngr' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58630]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_mngr' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64248]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_fsync_gen' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:53102]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_fsync_gen' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:53102]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_vid_cdc' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:13253]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vid_cdc' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:13253]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_sof_gen' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:41253]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_sof_gen' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:41253]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_s2mm_linebuf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:49284]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_sfifo' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:42057]
+	Parameter FIFO_MEMORY_TYPE bound to: auto - type: string 
+	Parameter FIFO_WRITE_DEPTH bound to: 4096 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 37 - type: integer 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 0 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 0 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 1717 - type: string 
+	Parameter READ_DATA_WIDTH bound to: 37 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 13 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 10 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 13 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 10 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_fifo_sync' declared at 'C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950' bound to instance 'xpm_fifo_sync_inst' of component 'xpm_fifo_sync' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:42264]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:493]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1206]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1273]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1295]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1906]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1906]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1618]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1618]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_sfifo' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:42057]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_s2mm_linebuf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:49284]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mm2s_omit_wrap' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:53209]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mm2s_omit_wrap' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:53209]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_full_wrap' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:49997]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_reset' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_reset' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_cmd_status' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:2698]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_cmd_status' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:2698]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_status_cntl' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:17704]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_status_cntl' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:17704]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_ibttcc' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:25731]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_ibttcc' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:25731]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_realign' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:47011]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized3' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized3' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized3' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized3' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized3' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized3' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized3' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized3' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_dre' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:36563]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:41821]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_dre_mux2_1_x_n' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:29950]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:29966]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_dre_mux2_1_x_n' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:29950]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_dre_mux4_1_x_n' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:30097]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:30113]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_dre_mux4_1_x_n' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:30097]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:42049]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:42096]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:42143]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_dre' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:36563]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_scatter' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:45117]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mssai_skid_buf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:44167]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_ms_strb_set' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:42603]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_ms_strb_set' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:42603]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mssai_skid_buf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:44167]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_slice' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:44856]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_slice' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:44856]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized4' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized4' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized4' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized4' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized4' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized4' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized4' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized4' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_scatter' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:45117]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_realign' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:47011]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_indet_btt' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:28430]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_stbs_set' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:23410]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_stbs_set' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:23410]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_sfifo_autord' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1295]
+INFO: [Synth 8-638] synthesizing module 'sync_fifo_fg' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2250]
+	Parameter FIFO_MEMORY_TYPE bound to: auto - type: string 
+	Parameter FIFO_WRITE_DEPTH bound to: 16 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 14 - type: integer 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 0 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 1 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 1F1F - type: string 
+	Parameter READ_DATA_WIDTH bound to: 14 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 5 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 10 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 10 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_fifo_sync' declared at 'C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950' bound to instance 'xpm_fifo_sync_inst' of component 'xpm_fifo_sync' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2627]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized3' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized3' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized4' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized4' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:493]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1206]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1273]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1295]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized5' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized5' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized6' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized6' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-256] done synthesizing module 'sync_fifo_fg' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2250]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_sfifo_autord' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1295]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_sfifo_autord__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1295]
+INFO: [Synth 8-638] synthesizing module 'sync_fifo_fg__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2250]
+	Parameter FIFO_MEMORY_TYPE bound to: block - type: string 
+	Parameter FIFO_WRITE_DEPTH bound to: 2048 - type: integer 
+	Parameter WRITE_DATA_WIDTH bound to: 74 - type: integer 
+	Parameter READ_MODE bound to: fwft - type: string 
+	Parameter FIFO_READ_LATENCY bound to: 0 - type: integer 
+	Parameter FULL_RESET_VALUE bound to: 1 - type: integer 
+	Parameter USE_ADV_FEATURES bound to: 1F1F - type: string 
+	Parameter READ_DATA_WIDTH bound to: 74 - type: integer 
+	Parameter WR_DATA_COUNT_WIDTH bound to: 12 - type: integer 
+	Parameter PROG_FULL_THRESH bound to: 10 - type: integer 
+	Parameter RD_DATA_COUNT_WIDTH bound to: 4 - type: integer 
+	Parameter PROG_EMPTY_THRESH bound to: 10 - type: integer 
+	Parameter DOUT_RESET_VALUE bound to: 0 - type: string 
+	Parameter ECC_MODE bound to: no_ecc - type: string 
+	Parameter WAKEUP_TIME bound to: 0 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_fifo_sync' declared at 'C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950' bound to instance 'xpm_fifo_sync_inst' of component 'xpm_fifo_sync' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2627]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync__parameterized3' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized7' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized7' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized8' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized8' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized1' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1206]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1273]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1295]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized9' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized9' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized10' [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized10' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1858]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync__parameterized3' (0#1) [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1950]
+INFO: [Synth 8-256] done synthesizing module 'sync_fifo_fg__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c82/hdl/lib_fifo_v1_0_rfs.vhd:2250]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_sfifo_autord__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1295]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_stbs_set__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:23410]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_stbs_set__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:23410]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid_buf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:19500]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid_buf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:19500]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_indet_btt' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:28430]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_addr_cntl' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_addr_cntl' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wrdata_cntl' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:15674]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized6' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized6' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized6' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized6' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized6' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized6' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized6' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized6' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wrdata_cntl' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:15674]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid2mm_buf' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:18998]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_demux' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:14117]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_demux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:14117]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid2mm_buf' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:18998]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_full_wrap' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:49997]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69927]
+INFO: [Synth 8-256] done synthesizing module 'kv260_video_axi_vdma_1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/synth/kv260_video_axi_vdma_1_0.vhd:108]
+WARNING: [Synth 8-6014] Unused sequential element GEN_FRMSTORE_EXTFSYNC.all_idle_d1_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64434]
+WARNING: [Synth 8-6014] Unused sequential element GEN_FRMSTORE_EXTFSYNC.late_idle_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64450]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
+WARNING: [Synth 8-6014] Unused sequential element s_axis_fifo_ainit_nosync_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:49421]
+WARNING: [Synth 8-6014] Unused sequential element sig_cmd_stat_rst_int_reg_n_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:191]
+WARNING: [Synth 8-6014] Unused sequential element sig_mmap_rst_reg_n_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:194]
+WARNING: [Synth 8-6014] Unused sequential element sig_stream_rst_reg_n_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:197]
+WARNING: [Synth 8-6014] Unused sequential element sig_input_reg_full_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:26374]
+WARNING: [Synth 8-6014] Unused sequential element sig_psm_ld_calc2_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:26578]
+WARNING: [Synth 8-6014] Unused sequential element sig_child_cmd_reg_empty_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:27034]
+WARNING: [Synth 8-6014] Unused sequential element sig_first_child_xfer_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:27579]
+WARNING: [Synth 8-6014] Unused sequential element sig_xfer_is_seq_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:28078]
+WARNING: [Synth 8-6014] Unused sequential element sig_xfer_reg_empty_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:28171]
+WARNING: [Synth 8-6014] Unused sequential element sig_xfer_reg_full_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:28172]
+WARNING: [Synth 8-6014] Unused sequential element sig_flush_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:37078]
+WARNING: [Synth 8-6014] Unused sequential element GEN_DELAY_REG[3].sig_delay_data_reg_reg[3] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:37395]
+WARNING: [Synth 8-6014] Unused sequential element GEN_INCLUDE_DRE.lsig_pushreg_empty_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:47765]
+WARNING: [Synth 8-6014] Unused sequential element GEN_INCLUDE_DRE.lsig_pullreg_full_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:47821]
+WARNING: [Synth 8-6014] Unused sequential element sig_sm_ld_scatter_cmd_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:47510]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_pntr_flags_cc.gae_cc_std.ram_aempty_i_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:968]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
+WARNING: [Synth 8-6014] Unused sequential element hold_ff_q_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1513]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_pntr_flags_cc.gae_cc_std.ram_aempty_i_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:968]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
+WARNING: [Synth 8-6014] Unused sequential element hold_ff_q_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:1513]
+WARNING: [Synth 8-6014] Unused sequential element INCLUDE_PACKING.lsig_packer_empty_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:29317]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_tag_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:10410]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_cmd_cmplt_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:10417]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_last_strb_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:16965]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_eof_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:16970]
+WARNING: [Synth 8-6014] Unused sequential element GEN_SPRT_FOR_S2MM.GEN_FLUSH_SOF_TREADY.d_tready_after_fsize_less_err_flag_00_01_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:72860]
+WARNING: [Synth 8-6014] Unused sequential element GEN_SPRT_FOR_S2MM.GEN_FLUSH_SOF_TREADY.after_vcount_flag_sel_00_01_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:72878]
+WARNING: [Synth 8-6014] Unused sequential element GEN_SPRT_FOR_S2MM.GEN_FLUSH_SOF_TREADY.d_tready_before_fsync_sel_00_01_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:72890]
+WARNING: [Synth 8-6014] Unused sequential element GEN_SPRT_FOR_S2MM.GEN_FLUSH_SOF_TREADY.d_tready_before_fsync_clrd_sel_00_01_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:72919]
+WARNING: [Synth 8-6014] Unused sequential element GEN_SPRT_FOR_S2MM.GEN_FLUSH_SOF_TREADY.s2mm_fsize_less_err_flag_00_01_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:72948]
+WARNING: [Synth 8-7129] Port debeat_saddr_lsb[2] in module axi_datamover_wr_demux is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debeat_saddr_lsb[1] in module axi_datamover_wr_demux is either unconnected or has no load
+WARNING: [Synth 8-7129] Port debeat_saddr_lsb[0] in module axi_datamover_wr_demux is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_async_rd_reset in module axi_datamover_fifo__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_async_rd_clk in module axi_datamover_fifo__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port end_addr_offset[2] in module axi_datamover_strb_gen2__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port end_addr_offset[1] in module axi_datamover_strb_gen2__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port end_addr_offset[0] in module axi_datamover_strb_gen2__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port realign2wdc_eop_error in module axi_datamover_wrdata_cntl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_async_rd_reset in module axi_datamover_fifo__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port fifo_async_rd_clk in module axi_datamover_fifo__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data2addr_data_rdy in module axi_datamover_addr_cntl is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rd_clk in module xpm_fifo_rst is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sleep in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsta in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clkb in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[73] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[72] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[71] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[70] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[69] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[68] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[67] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[66] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[65] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[64] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[63] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[62] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[61] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[60] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[59] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[58] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[57] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[56] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[55] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[54] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[53] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[52] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[51] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[50] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[49] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[48] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[47] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[46] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[45] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[44] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[43] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[42] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[41] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[40] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[39] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[38] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[37] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[36] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[35] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[34] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[33] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[32] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[31] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[30] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[29] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[28] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[27] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[26] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[25] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[24] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[23] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[22] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[21] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[20] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[19] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[18] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[17] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[16] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[15] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[14] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[13] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[12] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[11] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[10] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[9] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[8] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[7] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[6] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[5] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[4] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[3] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[2] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[1] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[0] in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterrb in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterrb in module xpm_memory_base__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port SFIFO_Clr_Rd_Data_Valid in module axi_datamover_sfifo_autord__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sleep in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rsta in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base__parameterized0 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 2150.090 ; gain = 625.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 2150.090 ; gain = 625.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 2150.090 ; gain = 625.652
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.193 . Memory (MB): peak = 2150.090 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 129 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0_ooc.xdc] for cell 'U0'
+create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2201.605 ; gain = 0.402
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0.xdc] for cell 'U0'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0.xdc] for cell 'U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/kv260_video_axi_vdma_1_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/kv260_video_axi_vdma_1_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/dont_touch.xdc]
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0_clocks.xdc] for cell 'U0'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0_clocks.xdc] for cell 'U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/kv260_video_axi_vdma_1_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/kv260_video_axi_vdma_1_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1714] 3 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2201.605 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 129 instances were transformed.
+  FDR => FDRE: 129 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.123 . Memory (MB): peak = 2201.648 ; gain = 0.043
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:44 ; elapsed = 00:00:49 . Memory (MB): peak = 2201.648 ; gain = 677.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:44 ; elapsed = 00:00:49 . Memory (MB): peak = 2201.648 ; gain = 677.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/dont_touch.xdc, line 9).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO /xpm_fifo_sync_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_DATA_FIFO/\BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_XD_FIFO/\NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:49 . Memory (MB): peak = 2201.648 ; gain = 677.211
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_upsizer'
+INFO: [Synth 8-802] inferred FSM for state register 'dmacntrl_cs_reg' in module 'axi_vdma_sm'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base'
+INFO: [Synth 8-802] inferred FSM for state register 'sig_psm_state_reg' in module 'axi_datamover_ibttcc'
+INFO: [Synth 8-802] inferred FSM for state register 'sig_csm_state_reg' in module 'axi_datamover_ibttcc'
+INFO: [Synth 8-802] inferred FSM for state register 'sig_cmdcntl_sm_state_reg' in module 'axi_datamover_s2mm_realign'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                SM_RESET |                            10000 |                              000
+                 SM_IDLE |                            00001 |                              001
+               SM_ACTIVE |                            00100 |                              101
+                  SM_END |                            01000 |                              011
+        SM_END_TO_ACTIVE |                            00010 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_upsizer'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              000 |                              000
+              wait_pipe1 |                              001 |                              001
+              wait_pipe2 |                              010 |                              010
+            execute_xfer |                              011 |                              100
+              check_done |                              100 |                              101
+           calc_cmd_addr |                              101 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dmacntrl_cs_reg' using encoding 'sequential' in module 'axi_vdma_sm'
+INFO: [Synth 8-6794] RAM ("xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg") will be automatically implemented using URAM. 
+INFO: [Synth 8-6794] RAM ("xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg") will be automatically implemented using URAM. 
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"'.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 ch_init |                          0000001 |                              000
+           wait_for_pcmd |                          0000010 |                              001
+          ch_error_trap1 |                          0000100 |                              101
+          ch_error_trap2 |                          0001000 |                              110
+      ch_wait_for_sf_cmd |                          0010000 |                              010
+         ch_ld_child_cmd |                          0100000 |                              011
+          ch_chk_if_done |                          1000000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sig_csm_state_reg' using encoding 'one-hot' in module 'axi_datamover_ibttcc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  p_init |                              000 |                              000
+          p_wait_for_cmd |                              001 |                              001
+          p_ld_first_cmd |                              010 |                              010
+          p_ld_child_cmd |                              011 |                              011
+            p_error_trap |                              100 |                              111
+           p_ld_last_cmd |                              101 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sig_psm_state_reg' using encoding 'sequential' in module 'axi_datamover_ibttcc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    init |                              000 |                              000
+    ld_dre_scatter_first |                              001 |                              001
+           chk_pop_first |                              010 |                              010
+   ld_dre_scatter_second |                              011 |                              011
+              error_trap |                              100 |                              101
+          chk_pop_second |                              101 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sig_cmdcntl_sm_state_reg' using encoding 'sequential' in module 'axi_datamover_s2mm_realign'
+INFO: [Synth 8-6904] The RAM "xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg" of size (depth=16 x width=14) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized0'
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "xpm_memory_base__parameterized1:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "xpm_memory_base__parameterized1:/gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 2 for RAM "xpm_memory_base__parameterized1:/gen_wr_a.gen_word_narrow.mem_reg"
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized1'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 2201.648 ; gain = 677.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 2     
+	   3 Input   16 Bit       Adders := 1     
+	   2 Input   13 Bit       Adders := 4     
+	   4 Input   13 Bit       Adders := 4     
+	   4 Input   12 Bit       Adders := 7     
+	   3 Input   12 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 5     
+	   4 Input   11 Bit       Adders := 5     
+	   3 Input   11 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 5     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 4     
+	   3 Input    5 Bit       Adders := 1     
+	   4 Input    5 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 6     
+	   3 Input    4 Bit       Adders := 4     
+	   4 Input    4 Bit       Adders := 5     
+	   3 Input    3 Bit       Adders := 6     
+	   2 Input    3 Bit       Adders := 3     
+	   2 Input    2 Bit       Adders := 3     
+	   4 Input    2 Bit       Adders := 3     
+	   2 Input    1 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 10    
++---Registers : 
+	               96 Bit    Registers := 1     
+	               74 Bit    Registers := 2     
+	               72 Bit    Registers := 4     
+	               64 Bit    Registers := 2     
+	               37 Bit    Registers := 2     
+	               32 Bit    Registers := 18    
+	               24 Bit    Registers := 7     
+	               16 Bit    Registers := 15    
+	               14 Bit    Registers := 2     
+	               13 Bit    Registers := 11    
+	               12 Bit    Registers := 13    
+	               11 Bit    Registers := 6     
+	               10 Bit    Registers := 11    
+	                9 Bit    Registers := 6     
+	                8 Bit    Registers := 11    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 6     
+	                5 Bit    Registers := 19    
+	                4 Bit    Registers := 41    
+	                3 Bit    Registers := 32    
+	                2 Bit    Registers := 19    
+	                1 Bit    Registers := 425   
++---RAMs : 
+	             148K Bit	(4096 X 37 bit)          RAMs := 1     
+	             148K Bit	(2048 X 74 bit)          RAMs := 1     
+	              224 Bit	(16 X 14 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   72 Bit        Muxes := 3     
+	   2 Input   64 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 8     
+	  11 Input   32 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 1     
+	   4 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 7     
+	   3 Input   16 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 5     
+	   2 Input   12 Bit        Muxes := 4     
+	   3 Input   12 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 5     
+	   4 Input   10 Bit        Muxes := 3     
+	   2 Input    9 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 14    
+	   8 Input    8 Bit        Muxes := 2     
+	   7 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 6     
+	   5 Input    5 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 17    
+	   2 Input    4 Bit        Muxes := 10    
+	  11 Input    4 Bit        Muxes := 1     
+	   5 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 2     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 25    
+	   4 Input    3 Bit        Muxes := 3     
+	   6 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 3     
+	   3 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 106   
+	   4 Input    2 Bit        Muxes := 21    
+	  16 Input    2 Bit        Muxes := 1     
+	   6 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 234   
+	  11 Input    1 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 12    
+	   4 Input    1 Bit        Muxes := 9     
+	   7 Input    1 Bit        Muxes := 3     
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+INFO: [Synth 8-6904] The RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /\I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg" of size (depth=16 x width=14) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-6794] RAM ("U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg") will be automatically implemented using URAM. 
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"'.
+INFO: [Synth 8-6904] The RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg" of size (depth=16 x width=14) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 2 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-6794] RAM ("U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg") will be automatically implemented using URAM. 
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"'.
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_MIN_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_MIN_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.LITE_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_IDLE_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_MIN_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_MIN_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_MIN_FOR_ASYNC.AXIS_CLR_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d7) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_RESET_FOR_ASYNC.HARD_RESET_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_RESET_FOR_ASYNC.HARD_RESET_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_RESET_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_RESET_FOR_S2MM.RESET_I/GEN_RESET_FOR_ASYNC.AXIS_RESET_CDC_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_rst_module.
+INFO: [Synth 8-3332] Sequential element (GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.LITE_WVALID_S2MM_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d6) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.LITE_WVALID_S2MM_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.P_IN_CROSS2SCNDRY_s_out_d7) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.LITE_WVALID_S2MM_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d6) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.LITE_WVALID_S2MM_CDC_I/GENERATE_PULSE_P_S_CDC_OPEN_ENDED.s_rst_d7) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_S2MM_LITE_CROSSINGS.GEN_S2MM_CROSSINGS_ASYNC.S2MM_INTRPT_CROSSING_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_S2MM_LITE_CROSSINGS.GEN_S2MM_CROSSINGS_ASYNC.S2MM_INTRPT_CROSSING_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_S2MM_LITE_CROSSINGS.GEN_S2MM_CROSSINGS_ASYNC.S2MM_INTRPT_CROSSING_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_reg_if.
+INFO: [Synth 8-3332] Sequential element (GEN_INCLUDE_IBTTCC.I_S2MM_MSTR_IBTTCC/FSM_onehot_sig_csm_state_reg[3]) is unused and will be removed from module axi_datamover_s2mm_full_wrap.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:12 . Memory (MB): peak = 2201.648 ; gain = 677.211
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst " implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Ultra RAM: Preliminary Mapping Report (see note below)
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name                                                                                                                                                                                                    | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 37               |   | R | 4 K x 37               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Ultra RAMs at the current stage of the synthesis flow. Some Ultra RAMs may be reimplemented as non Ultra RAM primitives later in the synthesis flow. Multiple instantiated Ultra RAMs are reported only once. Fields "FF provided for Pipeline" and "FF absorbed" respectively indicate number of registers available for pipelining and number of registers absorbed in the URAM matrix for pipelining. 
+
+Block RAM: Preliminary Mapping Report (see note below)
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                                                                                                                                                                                                                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 74(NO_CHANGE)    | W |   | 2 K x 74(NO_CHANGE)    |   | R | Port A and B     | 1      | 4      | 2,2,1           | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|Module Name                                                                                                                                                                                                                        | RTL Object                       | Inference | Size (Depth x Width) | Primitives    | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 14              | RAM32M16 x 1  | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:23 ; elapsed = 00:01:30 . Memory (MB): peak = 2558.230 ; gain = 1033.793
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
+INFO: [Synth 8-5556] The block RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg" may be mapped as a cascade chain, because it is not timing critical.
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 2 for RAM "U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:37 . Memory (MB): peak = 2649.484 ; gain = 1125.047
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst " implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Ultra RAM: Final Mapping Report (see note below)
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name                                                                                                                                                                                                    | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 4 K x 37               |   | R | 4 K x 37               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+
+
+Block RAM: Final Mapping Report
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                                                                                                                                                                                                                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 74(NO_CHANGE)    | W |   | 2 K x 74(NO_CHANGE)    |   | R | Port A and B     | 1      | 4      | 2,2,1           | 
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+
+Distributed RAM: Final Mapping Report
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|Module Name                                                                                                                                                                                                                        | RTL Object                       | Inference | Size (Depth x Width) | Primitives    | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+|U0/\I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 14              | RAM32M16 x 1  | 
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+-----------+----------------------+---------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance U0/GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I/GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:33 ; elapsed = 00:01:41 . Memory (MB): peak = 2659.527 ; gain = 1135.090
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:42 ; elapsed = 00:01:49 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:42 ; elapsed = 00:01:49 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:42 ; elapsed = 00:01:50 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:42 ; elapsed = 00:01:50 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:43 ; elapsed = 00:01:50 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:43 ; elapsed = 00:01:50 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                                                                                                | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|axi_vdma    | AXI_LITE_REG_INTERFACE_I/GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.prepare_wrce_pulse_lite_d6_reg | 6      | 1     | NO           | NO                 | NO                | 1      | 0       | 
+|axi_vdma    | AXI_LITE_REG_INTERFACE_I/GEN_AXI_LITE_IF.AXI_LITE_IF_I/GEN_LITE_IS_ASYNC.GEN_S2MM_ONLY_ASYNC_LITE_ACCESS.sig_arvalid_arrived_d4_reg     | 3      | 1     | NO           | NO                 | NO                | 1      | 0       | 
++------------+-----------------------------------------------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+
+Dynamic Shift Register Report:
++------------+---------------------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name                  | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+---------------------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | INFERRED_GEN.data_reg[3]  | 68     | 68         | 68     | 0       | 0      | 0      | 0      | 
+|dsrl__1     | INFERRED_GEN.data_reg[3]  | 32     | 32         | 32     | 0       | 0      | 0      | 0      | 
+|dsrl__2     | INFERRED_GEN.data_reg[5]  | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__3     | INFERRED_GEN.data_reg[5]  | 23     | 23         | 23     | 0       | 0      | 0      | 0      | 
+|dsrl__4     | INFERRED_GEN.data_reg[3]  | 29     | 29         | 29     | 0       | 0      | 0      | 0      | 
+|dsrl__5     | INFERRED_GEN.data_reg[15] | 9      | 9          | 9      | 0       | 0      | 0      | 0      | 
+|dsrl__6     | INFERRED_GEN.data_reg[3]  | 59     | 59         | 59     | 0       | 0      | 0      | 0      | 
+|dsrl__7     | INFERRED_GEN.data_reg[3]  | 36     | 36         | 36     | 0       | 0      | 0      | 0      | 
++------------+---------------------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY8   |    21|
+|2     |LUT1     |   251|
+|3     |LUT2     |   269|
+|4     |LUT3     |   396|
+|5     |LUT4     |   297|
+|6     |LUT5     |   417|
+|7     |LUT6     |   441|
+|8     |RAM32M16 |     1|
+|9     |RAMB18E2 |     1|
+|10    |RAMB36E2 |     4|
+|12    |SRL16E   |   182|
+|13    |URAM288  |     1|
+|14    |FDR      |    94|
+|15    |FDRE     |  2391|
+|16    |FDSE     |    77|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:43 ; elapsed = 00:01:50 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 584 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:07 ; elapsed = 00:01:40 . Memory (MB): peak = 2659.625 ; gain = 1083.629
+Synthesis Optimization Complete : Time (s): cpu = 00:01:43 ; elapsed = 00:01:51 . Memory (MB): peak = 2659.625 ; gain = 1135.188
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.142 . Memory (MB): peak = 2668.641 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 116 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2697.141 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 95 instances were transformed.
+  FDR => FDRE: 94 instances
+  RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 1 instance 
+
+Synth Design complete, checksum: fbaeb2df
+INFO: [Common 17-83] Releasing license: Synthesis
+436 Infos, 145 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:55 ; elapsed = 00:02:05 . Memory (MB): peak = 2697.141 ; gain = 1324.418
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/kv260_video_axi_vdma_1_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_axi_vdma_1_0, cache-ID = f6ce64865959aa6b
+INFO: [Coretcl 2-1174] Renamed 128 cell refs.
+INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_1_0_synth_1/kv260_video_axi_vdma_1_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file kv260_video_axi_vdma_1_0_utilization_synth.rpt -pb kv260_video_axi_vdma_1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:07:42 2026...

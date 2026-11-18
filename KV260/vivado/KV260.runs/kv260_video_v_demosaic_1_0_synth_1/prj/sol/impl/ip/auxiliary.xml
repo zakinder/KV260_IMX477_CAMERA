@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="v_demosaic" xd:componentRef="v_demosaic" xd:initiationInterval="x" xd:clockPeriod="3.333" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_CTRL" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="width" xd:originalName="width" xd:direction="in" xd:interfaceRef="s_axi_CTRL" xd:busTypeRef="axilite" xd:offset="0x10" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="height" xd:originalName="height" xd:direction="in" xd:interfaceRef="s_axi_CTRL" xd:busTypeRef="axilite" xd:offset="0x18" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="bayer_phase" xd:originalName="bayer_phase" xd:direction="in" xd:interfaceRef="s_axi_CTRL" xd:busTypeRef="axilite" xd:offset="0x28" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="s_axis_video" xd:originalName="s_axis_video" xd:direction="in" xd:interfaceRef="s_axis_video" xd:busTypeRef="axis" xd:dataWidth="16"/>
+  <xd:arg xd:name="m_axis_video" xd:originalName="m_axis_video" xd:direction="out" xd:interfaceRef="m_axis_video" xd:busTypeRef="axis" xd:dataWidth="32"/>
+  <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
+  <xd:resourceEstimates xd:LUT="11861" xd:FF="11167" xd:BRAM="0" xd:DSP="8"/>
+</xd:acceleratorMap>
