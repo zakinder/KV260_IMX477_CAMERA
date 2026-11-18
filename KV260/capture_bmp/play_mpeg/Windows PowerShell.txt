@@ -1,0 +1,72 @@
+Windows PowerShell 5.1
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS R:\KV260\capture_bmp\play_record_camera\Windows> Get-NetAdapter | Format-Table Name, Status, LinkSpeed, InterfaceDescription
+
+Name                         Status       LinkSpeed  InterfaceDescription
+----                         ------       ---------  --------------------
+Ethernet                     Up           1 Gbps     Realtek USB GbE Family Controller
+Wi-Fi                        Up           433.3 Mbps MediaTek Wi-Fi MT7902 Wireless LAN Card
+Bluetooth Network Connection Disconnected 3 Mbps     Bluetooth Device (Personal Area Network)
+
+
+PS R:\KV260\capture_bmp\play_record_camera\Windows> Get-NetIPAddress -AddressFamily IPv4 |
+>>     Where-Object { $_.IPAddress -like "192.168.0.*" } |
+>>     Format-Table InterfaceAlias, IPAddress
+
+InterfaceAlias IPAddress
+-------------- ---------
+Ethernet       192.168.0.42
+
+
+PS R:\KV260\capture_bmp\play_record_camera\Windows> $kv260Adapter = "Ethernet"
+PS R:\KV260\capture_bmp\play_record_camera\Windows>
+PS R:\KV260\capture_bmp\play_record_camera\Windows> Get-NetAdapterStatistics -Name $kv260Adapter |
+>>     Format-List Name, ReceivedUnicastPackets, ReceivedDiscardedPackets, ReceivedPacketErrors
+
+
+Name                     : Ethernet
+ReceivedUnicastPackets   : 5604533
+ReceivedDiscardedPackets : 0
+ReceivedPacketErrors     : 0
+
+
+
+PS R:\KV260\capture_bmp\play_record_camera\Windows>
+PS R:\KV260\capture_bmp\play_record_camera\Windows> netstat -s -p udp
+
+UDP Statistics for IPv4
+
+  Datagrams Received    = 6466542
+  No Ports              = 960433
+  Receive Errors        = 0
+  Datagrams Sent        = 354359
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+PS R:\KV260\capture_bmp\play_record_camera\Windows> Get-NetAdapterStatistics -Name $kv260Adapter |
+>>     Format-List Name, ReceivedUnicastPackets, ReceivedDiscardedPackets, ReceivedPacketErrors
+
+
+Name                     : Ethernet
+ReceivedUnicastPackets   : 5673687
+ReceivedDiscardedPackets : 0
+ReceivedPacketErrors     : 0
+
+
+
+PS R:\KV260\capture_bmp\play_record_camera\Windows>
+PS R:\KV260\capture_bmp\play_record_camera\Windows> netstat -s -p udp
+
+UDP Statistics for IPv4
+
+  Datagrams Received    = 6471997
+  No Ports              = 1019948
+  Receive Errors        = 0
+  Datagrams Sent        = 355081
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+PS R:\KV260\capture_bmp\play_record_camera\Windows>

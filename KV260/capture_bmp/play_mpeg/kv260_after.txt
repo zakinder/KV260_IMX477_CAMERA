@@ -1,0 +1,52 @@
+﻿
+UDP Statistics for IPv4
+
+  Datagrams Received    = 124611897
+  No Ports              = 6751368
+  Receive Errors        = 0
+  Datagrams Sent        = 3508732
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+
+
+ifAlias                  : Ethernet
+InterfaceAlias           : Ethernet
+ifDesc                   : Realtek USB GbE Family Controller
+Caption                  : MSFT_NetAdapterStatisticsSettingData 'Realtek USB GbE Family Controller'
+Description              : Realtek USB GbE Family Controller
+ElementName              : Realtek USB GbE Family Controller
+InstanceID               : {CAC41936-2DBA-4097-8DFD-22F41100FD1F}
+InterfaceDescription     : Realtek USB GbE Family Controller
+Name                     : Ethernet
+Source                   : 2
+SystemName               : LAPTOP-I3ECBFK4
+OutboundDiscardedPackets : 0
+OutboundPacketErrors     : 0
+RdmaStatistics           : MSFT_NetAdapter_RdmaStatistics
+ReceivedBroadcastBytes   : 27550
+ReceivedBroadcastPackets : 174
+ReceivedBytes            : 177204842347
+ReceivedDiscardedPackets : 0
+ReceivedMulticastBytes   : 0
+ReceivedMulticastPackets : 0
+ReceivedPacketErrors     : 0
+ReceivedUnicastBytes     : 177204814797
+ReceivedUnicastPackets   : 123016284
+RscStatistics            : MSFT_NetAdapter_RscStatistics
+SentBroadcastBytes       : 3182484
+SentBroadcastPackets     : 61890
+SentBytes                : 14357040
+SentMulticastBytes       : 11172204
+SentMulticastPackets     : 101811
+SentUnicastBytes         : 2352
+SentUnicastPackets       : 56
+SupportedStatistics      : 4163583
+PSComputerName           : 
+CimClass                 : ROOT/StandardCimv2:MSFT_NetAdapterStatisticsSettingData
+CimInstanceProperties    : {Caption, Description, ElementName, InstanceID...}
+CimSystemProperties      : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+

@@ -1,0 +1,733 @@
+Xilinx Zynq MP First Stage Boot Loader
+Release 2022.1   Nov 16 2026  -  22:31:34
+PMU-FW is not running, certain applications may not be supported.
+
+********************************************
+Test Input Stream: 3840x2160@30Hz (RGB)
+********************************************
+Got IMX477 Camera Sensor ID: 77
+Connected Camera = 477
+HPD event .......... ! Connected.
+Lane count =    2
+Link rate =     20
+
+Starting Training...
+        ! Training succeeded.
+DONE!
+.......... HPD event
+Generating Overlay.....
+Successfully ran DPDMA Video Example Test
+VDMA circular test: MM2S_CR=0x0001018b S2MM_CR=0x0001018b
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA stores: write=0 read=2
+VDMA stores: write=1 read=2
+VDMA stores: write=1 read=0
+VDMA stores: write=2 read=0
+VDMA stores: write=2 read=1
+VDMA summary: write_seen=0x7 read_seen=0x7 MM2S_SR=0x00011000 S2MM_SR=0x00011000
+Rotating 4K MJPEG test ready.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+>>
+link speed for phy address 5: 1000
+JPEG pipeline: staged-output test, TX buffer 8388608 bytes.
+JPEG guarded recent-store test enabled=1 age=30 ms.
+JPEG TX diagnostic enabled; interval=5s.
+JPEG GEM start: bd_done=1 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+Continuous 4K JPEG started.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+Configuring default IP 192.168.0.10
+Board IP: 192.168.0.10
+Netmask : 255.255.255.0
+Gateway : 192.168.0.1
+JPEG TX window: ms=11997 try=0 ok=0 alloc=0 take=0 udp=0 done=0 drop=0 warm=0/0 ids=0-0
+JPEG GEM window: bd_done=4 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=0 abort=0 check=0 timeout=0
+JPEG slots: cap=0 enc=0 ready=0 error=0 tx_pct=0
+JPEG timing: wait_us=0 copy_us=0 stage_us=0
+JPEG cadence: ms=12021 samples=1 read=0 write=0
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=12021556 over5ms=1 sample_max_us=12021556
+JPEG wait: lt20=0 20_40=0 40_80=0 ge80=0 max_us=0
+JPEG candidate: starts=1 known=0 diff_not_writer=0
+JPEG recent: start=0 ok=0 cancel=0
+JPEG TX window: ms=5000 try=31001 ok=31001 alloc=0 take=0 udp=0 done=42 drop=0 warm=1/0 ids=1-43
+JPEG GEM window: bd_done=31007 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=45 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=74 ready=5 error=0 tx_pct=73
+JPEG timing: wait_us=25816 copy_us=18636 stage_us=531
+JPEG cadence: ms=5000 samples=4835 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=36979 over5ms=2 sample_max_us=36979
+JPEG wait: lt20=26 20_40=1 40_80=18 ge80=0 max_us=75771
+JPEG candidate: starts=45 known=45 diff_not_writer=33
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33563 ok=33563 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=43-90
+JPEG GEM window: bd_done=64570 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=79 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=25771 copy_us=18714 stage_us=529
+JPEG cadence: ms=5000 samples=4827 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34481 over5ms=2 sample_max_us=34815
+JPEG wait: lt20=27 20_40=2 40_80=16 ge80=1 max_us=80038
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33421 ok=33421 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=90-136
+JPEG GEM window: bd_done=97991 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=28889 copy_us=19279 stage_us=531
+JPEG cadence: ms=5000 samples=4829 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34563 over5ms=2 sample_max_us=35158
+JPEG wait: lt20=25 20_40=2 40_80=20 ge80=0 max_us=78824
+JPEG candidate: starts=46 known=46 diff_not_writer=34
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33103 ok=33103 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=137-182
+JPEG GEM window: bd_done=131094 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27768 copy_us=18723 stage_us=532
+JPEG cadence: ms=5000 samples=4823 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34649 over5ms=2 sample_max_us=34970
+JPEG wait: lt20=26 20_40=1 40_80=19 ge80=0 max_us=79962
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=34158 ok=34158 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=182-229
+JPEG GEM window: bd_done=165252 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=0 error=0 tx_pct=76
+JPEG timing: wait_us=25080 copy_us=18739 stage_us=539
+JPEG cadence: ms=5000 samples=4826 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34826 over5ms=2 sample_max_us=34975
+JPEG wait: lt20=28 20_40=2 40_80=17 ge80=0 max_us=77849
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=34139 ok=34139 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=229-275
+JPEG GEM window: bd_done=199391 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=1 error=0 tx_pct=75
+JPEG timing: wait_us=25420 copy_us=18744 stage_us=542
+JPEG cadence: ms=5000 samples=4831 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34826 over5ms=2 sample_max_us=34978
+JPEG wait: lt20=27 20_40=3 40_80=16 ge80=0 max_us=77853
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=34047 ok=34047 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=276-322
+JPEG GEM window: bd_done=233438 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=75
+JPEG timing: wait_us=26396 copy_us=18782 stage_us=540
+JPEG cadence: ms=5000 samples=4829 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34829 over5ms=2 sample_max_us=34975
+JPEG wait: lt20=27 20_40=1 40_80=18 ge80=0 max_us=76619
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=34030 ok=34030 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=322-368
+JPEG GEM window: bd_done=267468 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=75
+JPEG timing: wait_us=27900 copy_us=19518 stage_us=538
+JPEG cadence: ms=5000 samples=4822 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34776 over5ms=2 sample_max_us=35203
+JPEG wait: lt20=25 20_40=2 40_80=20 ge80=0 max_us=76943
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=33579 ok=33579 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=369-414
+JPEG GEM window: bd_done=301047 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=27729 copy_us=18753 stage_us=541
+JPEG cadence: ms=5000 samples=4829 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34768 over5ms=2 sample_max_us=34971
+JPEG wait: lt20=26 20_40=0 40_80=20 ge80=0 max_us=79116
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=34140 ok=34140 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=414-461
+JPEG GEM window: bd_done=335187 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=0 error=0 tx_pct=76
+JPEG timing: wait_us=24740 copy_us=18833 stage_us=540
+JPEG cadence: ms=5000 samples=4829 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34771 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=28 20_40=3 40_80=16 ge80=0 max_us=76954
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=34024 ok=34024 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=461-507
+JPEG GEM window: bd_done=369211 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=1 error=0 tx_pct=75
+JPEG timing: wait_us=25820 copy_us=18749 stage_us=535
+JPEG cadence: ms=5000 samples=4828 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34778 over5ms=2 sample_max_us=34974
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=0 max_us=76032
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=33455 ok=33455 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=508-554
+JPEG GEM window: bd_done=402666 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=26401 copy_us=18722 stage_us=529
+JPEG cadence: ms=5000 samples=4827 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34775 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=28 20_40=1 40_80=18 ge80=0 max_us=78240
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=33932 ok=33932 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=554-601
+JPEG GEM window: bd_done=436598 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=75
+JPEG timing: wait_us=25857 copy_us=18693 stage_us=537
+JPEG cadence: ms=5000 samples=4828 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34775 over5ms=2 sample_max_us=34975
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=0 max_us=79368
+JPEG candidate: starts=47 known=47 diff_not_writer=37
+JPEG recent: start=27 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33390 ok=33390 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=601-646
+JPEG GEM window: bd_done=469988 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=28148 copy_us=18655 stage_us=538
+JPEG cadence: ms=5000 samples=4825 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34695 over5ms=2 sample_max_us=34899
+JPEG wait: lt20=26 20_40=1 40_80=17 ge80=2 max_us=95859
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=1
+JPEG TX window: ms=5000 try=33886 ok=33886 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=646-693
+JPEG GEM window: bd_done=503874 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=0 error=0 tx_pct=75
+JPEG timing: wait_us=25037 copy_us=18711 stage_us=538
+JPEG cadence: ms=5000 samples=4821 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34691 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=28 20_40=3 40_80=16 ge80=0 max_us=78879
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33391 ok=33391 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=693-739
+JPEG GEM window: bd_done=537265 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=26063 copy_us=18734 stage_us=530
+JPEG cadence: ms=5000 samples=4831 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34689 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=26 20_40=3 40_80=17 ge80=0 max_us=79739
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33910 ok=33910 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=740-786
+JPEG GEM window: bd_done=571175 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=75
+JPEG timing: wait_us=26103 copy_us=18721 stage_us=537
+JPEG cadence: ms=5000 samples=4830 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34686 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=28 20_40=1 40_80=18 ge80=0 max_us=77422
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=33442 ok=33442 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=786-833
+JPEG GEM window: bd_done=604617 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=74
+JPEG timing: wait_us=25578 copy_us=18921 stage_us=529
+JPEG cadence: ms=5001 samples=4830 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=34691 over5ms=2 sample_max_us=34973
+JPEG wait: lt20=28 20_40=1 40_80=18 ge80=0 max_us=76981
+JPEG candidate: starts=47 known=47 diff_not_writer=37
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=33336 ok=33336 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=833-879
+JPEG GEM window: bd_done=637953 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=79 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=26746 copy_us=18696 stage_us=525
+JPEG cadence: ms=5000 samples=4828 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33448 over5ms=2 sample_max_us=33448
+JPEG wait: lt20=26 20_40=1 40_80=19 ge80=0 max_us=77119
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33695 ok=33695 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=879-926
+JPEG GEM window: bd_done=671648 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=79 ready=0 error=0 tx_pct=75
+JPEG timing: wait_us=25762 copy_us=18758 stage_us=532
+JPEG cadence: ms=5000 samples=4827 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33445 over5ms=2 sample_max_us=33975
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=78979
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33688 ok=33688 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=926-972
+JPEG GEM window: bd_done=705336 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=19 enc=79 ready=1 error=0 tx_pct=74
+JPEG timing: wait_us=25618 copy_us=18787 stage_us=532
+JPEG cadence: ms=5000 samples=4830 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33442 over5ms=2 sample_max_us=33969
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=0 max_us=79449
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33389 ok=33389 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=973-1019
+JPEG GEM window: bd_done=738725 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=74
+JPEG timing: wait_us=26656 copy_us=18577 stage_us=528
+JPEG cadence: ms=5000 samples=4824 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33449 over5ms=2 sample_max_us=33970
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=78058
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=33698 ok=33698 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1019-1066
+JPEG GEM window: bd_done=772423 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=75
+JPEG timing: wait_us=26426 copy_us=18758 stage_us=530
+JPEG cadence: ms=5000 samples=4832 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33534 over5ms=2 sample_max_us=33972
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=77527
+JPEG candidate: starts=47 known=47 diff_not_writer=37
+JPEG recent: start=27 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33127 ok=33127 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=1066-1111
+JPEG GEM window: bd_done=805550 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=28142 copy_us=18660 stage_us=531
+JPEG cadence: ms=5000 samples=4835 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33600 over5ms=2 sample_max_us=33831
+JPEG wait: lt20=26 20_40=1 40_80=17 ge80=2 max_us=96090
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=1
+JPEG TX window: ms=5000 try=33241 ok=33241 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1111-1158
+JPEG GEM window: bd_done=838791 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=79 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=26079 copy_us=18661 stage_us=527
+JPEG cadence: ms=5000 samples=4825 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33606 over5ms=2 sample_max_us=33971
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=78968
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=33046 ok=33046 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1158-1204
+JPEG GEM window: bd_done=871837 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27134 copy_us=18645 stage_us=525
+JPEG cadence: ms=5000 samples=4830 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33604 over5ms=2 sample_max_us=33972
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=78077
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32959 ok=32959 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=1205-1251
+JPEG GEM window: bd_done=904796 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27016 copy_us=18617 stage_us=523
+JPEG cadence: ms=5000 samples=4827 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33603 over5ms=2 sample_max_us=33973
+JPEG wait: lt20=27 20_40=1 40_80=18 ge80=1 max_us=80244
+JPEG candidate: starts=46 known=46 diff_not_writer=34
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32926 ok=32926 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1251-1298
+JPEG GEM window: bd_done=937722 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27191 copy_us=18612 stage_us=519
+JPEG cadence: ms=5000 samples=4834 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33608 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=79686
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32293 ok=32293 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=1298-1343
+JPEG GEM window: bd_done=970015 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=71
+JPEG timing: wait_us=28928 copy_us=18553 stage_us=522
+JPEG cadence: ms=5000 samples=4831 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33570 over5ms=2 sample_max_us=33788
+JPEG wait: lt20=26 20_40=1 40_80=16 ge80=3 max_us=96312
+JPEG candidate: starts=46 known=46 diff_not_writer=34
+JPEG recent: start=24 ok=24 cancel=1
+JPEG TX window: ms=5000 try=32817 ok=32817 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1343-1390
+JPEG GEM window: bd_done=1002832 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=79 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=26076 copy_us=18643 stage_us=522
+JPEG cadence: ms=5000 samples=4827 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33569 over5ms=2 sample_max_us=33976
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=1 max_us=80620
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32994 ok=32994 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1390-1436
+JPEG GEM window: bd_done=1035826 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27232 copy_us=18612 stage_us=522
+JPEG cadence: ms=5000 samples=4823 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33662 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=79534
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33119 ok=33119 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=1437-1483
+JPEG GEM window: bd_done=1068945 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27249 copy_us=18567 stage_us=528
+JPEG cadence: ms=5000 samples=4824 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33661 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=27 20_40=1 40_80=19 ge80=0 max_us=78028
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=32734 ok=32734 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1483-1530
+JPEG GEM window: bd_done=1101679 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27161 copy_us=18533 stage_us=518
+JPEG cadence: ms=5000 samples=4825 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33659 over5ms=2 sample_max_us=33970
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=79072
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32114 ok=32114 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=1530-1575
+JPEG GEM window: bd_done=1133793 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=71
+JPEG timing: wait_us=29390 copy_us=18475 stage_us=516
+JPEG cadence: ms=5000 samples=4834 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33645 over5ms=2 sample_max_us=33923
+JPEG wait: lt20=26 20_40=0 40_80=18 ge80=2 max_us=96435
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=1
+JPEG TX window: ms=5000 try=32856 ok=32856 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1575-1622
+JPEG GEM window: bd_done=1166649 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=26839 copy_us=18563 stage_us=521
+JPEG cadence: ms=5000 samples=4827 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33641 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=79209
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32984 ok=32984 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1622-1668
+JPEG GEM window: bd_done=1199633 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27205 copy_us=18479 stage_us=519
+JPEG cadence: ms=5000 samples=4825 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33639 over5ms=2 sample_max_us=33977
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=0 max_us=79165
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32688 ok=32688 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=1669-1715
+JPEG GEM window: bd_done=1232321 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27515 copy_us=18590 stage_us=518
+JPEG cadence: ms=5000 samples=4828 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33639 over5ms=2 sample_max_us=33971
+JPEG wait: lt20=27 20_40=0 40_80=19 ge80=1 max_us=80029
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=32648 ok=32648 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1715-1762
+JPEG GEM window: bd_done=1264969 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27220 copy_us=18612 stage_us=518
+JPEG cadence: ms=5000 samples=4833 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33635 over5ms=2 sample_max_us=33971
+JPEG wait: lt20=26 20_40=2 40_80=17 ge80=1 max_us=80311
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32368 ok=32368 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=1762-1807
+JPEG GEM window: bd_done=1297337 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=28592 copy_us=18636 stage_us=521
+JPEG cadence: ms=5000 samples=4825 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33581 over5ms=2 sample_max_us=33878
+JPEG wait: lt20=26 20_40=1 40_80=17 ge80=2 max_us=96673
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=1
+JPEG TX window: ms=5000 try=33240 ok=33240 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1807-1854
+JPEG GEM window: bd_done=1330577 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=74
+JPEG timing: wait_us=26216 copy_us=18682 stage_us=524
+JPEG cadence: ms=5000 samples=4824 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33586 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=78362
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=33327 ok=33327 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1854-1900
+JPEG GEM window: bd_done=1363904 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=26739 copy_us=18718 stage_us=526
+JPEG cadence: ms=5000 samples=4831 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33585 over5ms=2 sample_max_us=33974
+JPEG wait: lt20=27 20_40=2 40_80=17 ge80=0 max_us=79661
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=33441 ok=33441 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=1901-1947
+JPEG GEM window: bd_done=1397345 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=26654 copy_us=18695 stage_us=528
+JPEG cadence: ms=5000 samples=4826 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33584 over5ms=2 sample_max_us=33970
+JPEG wait: lt20=27 20_40=1 40_80=19 ge80=0 max_us=77806
+JPEG candidate: starts=46 known=46 diff_not_writer=36
+JPEG recent: start=27 ok=27 cancel=0
+JPEG TX window: ms=5000 try=33369 ok=33369 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=1947-1994
+JPEG GEM window: bd_done=1430714 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=74
+JPEG timing: wait_us=26520 copy_us=18646 stage_us=527
+JPEG cadence: ms=5000 samples=4827 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33580 over5ms=2 sample_max_us=33972
+JPEG wait: lt20=26 20_40=2 40_80=18 ge80=0 max_us=76464
+JPEG candidate: starts=47 known=47 diff_not_writer=37
+JPEG recent: start=27 ok=26 cancel=0
+JPEG TX window: ms=5000 try=32597 ok=32597 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=1994-2039
+JPEG GEM window: bd_done=1463311 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=28334 copy_us=18676 stage_us=524
+JPEG cadence: ms=5000 samples=4833 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33613 over5ms=2 sample_max_us=33851
+JPEG wait: lt20=26 20_40=1 40_80=17 ge80=2 max_us=96884
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=1
+JPEG TX window: ms=5000 try=32743 ok=32743 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2039-2086
+JPEG GEM window: bd_done=1496054 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=72
+JPEG timing: wait_us=26746 copy_us=18517 stage_us=520
+JPEG cadence: ms=5000 samples=4829 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33607 over5ms=2 sample_max_us=33973
+JPEG wait: lt20=27 20_40=1 40_80=19 ge80=0 max_us=79402
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32494 ok=32494 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=2086-2132
+JPEG GEM window: bd_done=1528548 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=1 error=0 tx_pct=71
+JPEG timing: wait_us=27751 copy_us=18550 stage_us=515
+JPEG cadence: ms=5000 samples=4831 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33605 over5ms=2 sample_max_us=33973
+JPEG wait: lt20=26 20_40=0 40_80=19 ge80=1 max_us=80557
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32439 ok=32439 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2132-2179
+JPEG GEM window: bd_done=1560987 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27402 copy_us=18492 stage_us=515
+JPEG cadence: ms=5000 samples=4830 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33352 over5ms=2 sample_max_us=34210
+JPEG wait: lt20=27 20_40=0 40_80=19 ge80=1 max_us=80737
+JPEG candidate: starts=46 known=46 diff_not_writer=34
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=33064 ok=33064 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2179-2226
+JPEG GEM window: bd_done=1594051 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=27217 copy_us=18649 stage_us=525
+JPEG cadence: ms=5000 samples=4830 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33350 over5ms=2 sample_max_us=34208
+JPEG wait: lt20=26 20_40=1 40_80=19 ge80=0 max_us=79891
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=26 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32057 ok=32057 alloc=0 take=0 udp=0 done=45 drop=0 warm=0/0 ids=2226-2271
+JPEG GEM window: bd_done=1626108 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=1 check=0 timeout=0
+JPEG slots: cap=21 enc=77 ready=0 error=0 tx_pct=71
+JPEG timing: wait_us=29817 copy_us=18425 stage_us=514
+JPEG cadence: ms=5000 samples=4836 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33406 over5ms=2 sample_max_us=33982
+JPEG wait: lt20=26 20_40=0 40_80=17 ge80=3 max_us=96826
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=1
+JPEG TX window: ms=5000 try=32437 ok=32437 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2271-2318
+JPEG GEM window: bd_done=1658545 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27096 copy_us=18572 stage_us=514
+JPEG cadence: ms=5000 samples=4830 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33351 over5ms=2 sample_max_us=34202
+JPEG wait: lt20=27 20_40=1 40_80=19 ge80=0 max_us=79985
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32858 ok=32858 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=2318-2364
+JPEG GEM window: bd_done=1691403 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=27729 copy_us=18556 stage_us=519
+JPEG cadence: ms=5000 samples=4829 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33349 over5ms=2 sample_max_us=34190
+JPEG wait: lt20=26 20_40=0 40_80=20 ge80=0 max_us=79425
+JPEG candidate: starts=47 known=47 diff_not_writer=36
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32896 ok=32896 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2364-2411
+JPEG GEM window: bd_done=1724299 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=73
+JPEG timing: wait_us=26781 copy_us=18639 stage_us=519
+JPEG cadence: ms=5000 samples=4824 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33348 over5ms=2 sample_max_us=33348
+JPEG wait: lt20=27 20_40=2 40_80=18 ge80=0 max_us=78742
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=26 ok=26 cancel=0
+JPEG TX window: ms=5000 try=32272 ok=32272 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2411-2458
+JPEG GEM window: bd_done=1756571 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=71
+JPEG timing: wait_us=27051 copy_us=18824 stage_us=512
+JPEG cadence: ms=5000 samples=4827 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33346 over5ms=2 sample_max_us=33520
+JPEG wait: lt20=27 20_40=1 40_80=19 ge80=0 max_us=79214
+JPEG candidate: starts=47 known=47 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32701 ok=32701 alloc=0 take=0 udp=0 done=46 drop=0 warm=0/0 ids=2458-2504
+JPEG GEM window: bd_done=1789272 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=72
+JPEG timing: wait_us=28220 copy_us=18493 stage_us=520
+JPEG cadence: ms=5000 samples=4828 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33351 over5ms=2 sample_max_us=33632
+JPEG wait: lt20=26 20_40=0 40_80=20 ge80=0 max_us=79663
+JPEG candidate: starts=46 known=46 diff_not_writer=35
+JPEG recent: start=25 ok=25 cancel=0
+JPEG TX window: ms=5000 try=32055 ok=32055 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2504-2551
+JPEG GEM window: bd_done=1821327 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=47 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=71
+JPEG timing: wait_us=27285 copy_us=18514 stage_us=510
+JPEG cadence: ms=5000 samples=4833 read=56 write=56
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33349 over5ms=2 sample_max_us=33475
+JPEG wait: lt20=27 20_40=1 40_80=17 ge80=2 max_us=80678
+JPEG candidate: starts=47 known=47 diff_not_writer=34
+JPEG recent: start=24 ok=24 cancel=0
+JPEG TX window: ms=5000 try=32104 ok=32104 alloc=0 take=0 udp=0 done=47 drop=0 warm=0/0 ids=2551-2597
+JPEG GEM window: bd_done=1853431 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+JPEG diag: ok=46 abort=0 check=0 timeout=0
+JPEG slots: cap=20 enc=78 ready=0 error=0 tx_pct=70
+JPEG timing: wait_us=28140 copy_us=18540 stage_us=513
+JPEG cadence: ms=5000 samples=4828 read=57 write=57
+JPEG invalid: read=0 write=0
+JPEG poll: max_us=33348 over5ms=2 sample_max_us=33474
+JPEG wait: lt20=26 20_40=0 40_80=19 ge80=1 max_us=80601
+JPEG candidate: starts=47 known=47 diff_not_writer=34
+JPEG recent: start=23 ok=23 cancel=0
+>>
+Continuous 4K JPEG stopped after current frame.
+
+|--------------------------------|
+| d5mr exposer      |            |
+|--------------------------------|
+
+>> f + Enter   Live video filters
+lwip + Enter   Start UDP video and return to this menu
+j + Enter   Send one 4K JPEG to UDP port 8081
+k + Enter   Start or stop continuous 4K JPEG over UDP 8081
+t + Enter   IMX477 exposure, brightness, and DOL status
+JPEG TX final: ms=4337 try=27622 ok=27622 alloc=0 take=0 udp=0 done=40 drop=0 warm=0/0 ids=2598-2637
+JPEG GEM final: bd_done=1881053 bd_err=0 bd_mask=0x00000000 txsr_err=0 txsr_mask=0x00000000 tx_reset=0 dma_reset=0
+
