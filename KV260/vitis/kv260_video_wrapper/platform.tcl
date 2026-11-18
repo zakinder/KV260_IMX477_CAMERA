@@ -61,3 +61,6 @@ platform generate
 platform clean
 platform generate
 platform generate -domains standalone_domain,jpeg_worker1,jpeg_worker2,zynqmp_fsbl,zynqmp_pmufw 
+platform generate -domains standalone_domain 
+platform generate -domains standalone_domain 
+platform generate -domains standalone_domain 
