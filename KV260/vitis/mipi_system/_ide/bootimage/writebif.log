@@ -1,0 +1,14 @@
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Found the complete platform R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm
+TRACE::2026-11-12.18:49:52::SCWBifWriter::hardware databse : kv260_video_wrapper_0
+TRACE::2026-11-12.18:49:52::SCWBifWriter::bitstream found in the design
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Found a baremetal domain, proc: psu_cortexa53_0
+TRACE::2026-11-12.18:49:52::SCWBifWriter::proc type : 
+TRACE::2026-11-12.18:49:52::SCWBifWriter::proc[0] : psu_cortexa53_0
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Device type is : zynqMP
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Writing BIF to file : R:/KV260/vitis/mipi_system/_ide/bootimage/template_mipi_system.bif
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Writing the ZynqMP baremetal bif 
+TRACE::2026-11-12.18:49:52::SCWBifWriter::System Command Ran  C:/Xilinx/Vitis/2022.1/gnu/aarch64/nt/aarch64-none/bin/aarch64-none-elf-readelf -A  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/boot/fsbl.elf
+TRACE::2026-11-12.18:49:52::SCWBifWriter:: Command Ran  C:/Xilinx/Vitis/2022.1/gnu/aarch64/nt/aarch64-none/bin/aarch64-none-elf-readelf -A  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/boot/fsbl.elf
+TRACE::2026-11-12.18:49:52::SCWBifWriter::FSBL processor, command ran C:/Xilinx/Vitis/2022.1/gnu/aarch64/nt/aarch64-none/bin/aarch64-none-elf-readelf -A  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/boot/fsbl.elf
+TRACE::2026-11-12.18:49:52::SCWBifWriter::FSBL target processor is a53-0
+TRACE::2026-11-12.18:49:52::SCWBifWriter::Boot processor is :a53-0

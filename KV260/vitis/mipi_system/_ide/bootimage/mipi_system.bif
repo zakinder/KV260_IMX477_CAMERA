@@ -1,0 +1,9 @@
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader, destination_cpu = a53-0]R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/boot/fsbl.elf
+	[destination_device = pl]R:/KV260/vitis/mipi/_ide/bitstream/kv260_video_wrapper.bit
+	[destination_cpu = a53-1]R:/KV260/vitis/jpeg_encoder1/Debug/jpeg_encoder1.elf
+	[destination_cpu = a53-2]R:/KV260/vitis/jpeg_encoder2/Debug/jpeg_encoder2.elf
+	[destination_cpu = a53-0]R:/KV260/vitis/mipi/Debug/mipi.elf
+}
