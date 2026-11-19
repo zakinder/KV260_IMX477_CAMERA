@@ -51,7 +51,8 @@ static const struct {
     {"Color clustering", FILTER_COLOR_CLUSTER},
     {"Sobel edges", FILTER_SOBEL},
     {"Color clustering with edges", FILTER_CLUSTER_WITH_EDGES},
-    {"Test pattern", FILTER_TEST_PATTERN}
+    {"Test pattern", FILTER_TEST_PATTERN},
+    {"Refined portrait", VFP_PREVIEW_REFINED_PORTRAIT}
 };
 
 #define FILTER_PREVIEW_COUNT (sizeof(filter_previews) / sizeof(filter_previews[0]))
@@ -136,7 +137,7 @@ static void filter_menu(struct filter_settings *settings, unsigned int startup_p
                 continue;
             }
         } else {
-            printf("Use 1-7, the arrow keys, W/A/S/D, R, or Q.\r\n");
+            printf("Use 1-8, the arrow keys, W/A/S/D, R, or Q.\r\n");
             continue;
         }
         filter_apply(settings);

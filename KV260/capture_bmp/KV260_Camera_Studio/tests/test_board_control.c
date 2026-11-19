@@ -84,6 +84,9 @@ int main(void)
     writes=0;
     command("KVC1 24 OUT 18", "KVR1 24 OK VFP_WRITTEN");
     assert(writes==1 && offsets[0]==VFP_OUTPUT_CHANNEL_SELECT && values[0]==18);
+    writes=0;
+    command("KVC1 25 OUT 30", "KVR1 25 OK VFP_WRITTEN");
+    assert(writes==1 && offsets[0]==0x40 && values[0]==30);
     assert(gui_control_start()==0 && port_bound==8082);
     ip_addr_t peer={0x1234};
     char raw[]="KVC1 101 PING";
