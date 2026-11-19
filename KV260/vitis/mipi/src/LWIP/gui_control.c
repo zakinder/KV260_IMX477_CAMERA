@@ -287,7 +287,7 @@ static int valid_preview(long n)
 {
     switch (n) {
     case 0: case 1: case 2: case 6: case 9: case 13:
-    case 15: case 16: case 18: case 22: case 25: case 26: case 27:
+    case 15: case 16: case 18: case 22: case 25: case 26: case 27: case VFP_PREVIEW_REFINED_PORTRAIT:
         return 1;
     default:
         return 0;
@@ -371,7 +371,7 @@ static void execute(char *line, char *reply, size_t reply_size)
             (void)snprintf(payload, sizeof(payload), result == IMX477_TUNING_OK ?
                 "OK GAIN" : "ERR %s", sensor_error(result));
         }
-    } else if (!strcmp(op, "OUT") && next_number(0, 27, &a) &&
+    } else if (!strcmp(op, "OUT") && next_number(0, VFP_PREVIEW_REFINED_PORTRAIT, &a) &&
                no_more_tokens() && valid_preview(a)) {
         const char *error = switch_begin(seq, VFP_OUTPUT_CHANNEL_SELECT, (u32)a);
         if (error) (void)snprintf(payload, sizeof(payload), "ERR %s", error);

@@ -31,6 +31,7 @@ OUTPUTS = {
     "25  Saturation: cluster path": 25,
     "26  Saturation: edge path": 26,
     "27  CMYK-to-RGB path": 27,
+    "30  Refined portrait": 30,
 }
 INPUTS = {
     "0  Camera RGB": 0,

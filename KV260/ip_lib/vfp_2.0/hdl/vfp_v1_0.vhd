@@ -140,6 +140,16 @@ architecture arch_imp of vfp_v1_0 is
     signal ccc8                : channel;
     signal ccc9                : channel;
     signal ccc10               : channel;
+    signal portrait, legacy_rgb : channel;
+    signal portrait_input_rgb, portrait_data : std_logic_vector(23 downto 0);
+    signal portrait_rst_n, portrait_input_valid, portrait_synced : std_logic := '0';
+    signal portrait_width : natural range 0 to FRAME_WIDTH := 0;
+    signal portrait_height : natural range 0 to FRAME_HEIGHT := 0;
+    signal portrait_selected, frame_active : boolean := false;
+    signal legacy_select, saved_select : integer := 0;
+    signal output_line : natural range 0 to FRAME_HEIGHT := 0;
+    signal switching, use_portrait : boolean;
+    signal selected_rgb : channel;
     signal ccc11               : channel;
     signal ccc12               : channel;
     signal ccc13               : channel;
@@ -878,104 +888,139 @@ port map(
 ------------------------------------------------------------
 --                                                  SELECTOR
 ------------------------------------------------------------
+-- Register 16 = 30 selects the refined portrait on the existing raster.
+-- Start counting on an accepted SOF after reset or a geometry change.
+portrait_rst_n <= '1' when ivideo_aresetn='1' and portrait_width>=15 and portrait_height>=15
+                       and portrait_width=config_frame_width and portrait_height=config_frame_height else '0';
+portrait_input_valid <= ivideo_tvalid and (portrait_synced or ivideo_tuser);
+process(ivideo_aclk)
+begin
+    if rising_edge(ivideo_aclk) then
+        if config_frame_width>=0 and config_frame_width<=FRAME_WIDTH then
+            portrait_width<=config_frame_width;
+        else portrait_width<=0; end if;
+        if config_frame_height>=0 and config_frame_height<=FRAME_HEIGHT then
+            portrait_height<=config_frame_height;
+        else portrait_height<=0; end if;
+        if portrait_rst_n='0' then portrait_synced<='0';
+        elsif ivideo_tvalid='1' and ivideo_tuser='1' then portrait_synced<='1'; end if;
+    end if;
+end process;
+portrait_input_rgb <= ivideo_tdata(29 downto 22) & ivideo_tdata(19 downto 12) & ivideo_tdata(9 downto 2);
+portrait_path : entity work.portrait_renderer
+    generic map(FRAME_WIDTH,FRAME_HEIGHT)
+    port map(portrait_width,portrait_height,ivideo_aclk,portrait_rst_n,portrait_input_valid,
+             portrait_input_rgb,
+             portrait.sof,portrait.eol,portrait.eof,portrait.valid,portrait_data);
+portrait.red <= portrait_data(23 downto 16) & "00";
+portrait.green <= portrait_data(15 downto 8) & "00";
+portrait.blue <= portrait_data(7 downto 0) & "00";
+portrait.xcnt <= 0;
+portrait.ycnt <= 0;
+
+-- Hold the former channel while finishing its frame on entry to portrait.
+process(ivideo_aclk)
+begin
+    if rising_edge(ivideo_aclk) then
+        if config_number_16/=30 then saved_select<=config_number_16; end if;
+    end if;
+end process;
+legacy_select <= saved_select when config_number_16=30 else config_number_16;
 process (ivideo_aclk)begin
     if rising_edge(ivideo_aclk) then
-        if(config_number_16 = 0) then
-            ccc11           <= ccc1;
-        elsif(config_number_16 = 1)then
-            ccc11           <= ccc2;
-        elsif(config_number_16 = 2)then
-            ccc11           <= ccc3;
-        elsif(config_number_16 = 3)then
-            ccc11           <= ccc4;
-        elsif(config_number_16 = 4)then
-            ccc11           <= ccc5;
-        elsif(config_number_16 = 5)then
-            ccc11           <= ccc6;
-        elsif(config_number_16 = 6)then
-            ccc11           <= ccc4;
-        elsif(config_number_16 = 7)then
-            ccc11           <= ccc8;
-        elsif(config_number_16 = 8)then
-            ccc11           <= ccc9;
-        elsif(config_number_16 = 9)then
-            ccc11           <= ccc10;
-        elsif(config_number_16 = 10)then
-            ccc11           <= ccc13;
-        elsif(config_number_16 = 11)then
-            ccc11           <= ccc14;
-        elsif(config_number_16 = 12)then
-            ccc11           <= ccc16;
-        elsif(config_number_16 = 13)then
-            ccc11           <= ccc15;
-        elsif(config_number_16 = 14)then
-            ccc11           <= ccc17;
-        elsif(config_number_16 = 15)then
-            ccc11           <= ccc18;
-        elsif(config_number_16 = 16)then
-            ccc11           <= ccc31;
-        elsif(config_number_16 = 17)then
-            ccc11           <= ccc33;
-        elsif(config_number_16 = 18)then
-            ccc11           <= ccc34;
-        elsif(config_number_16 = 19)then
-            ccc11           <= ccc35;
-        elsif(config_number_16 = 20)then
-            ccc11           <= ccc36;
-        elsif(config_number_16 = 21)then
-            ccc11           <= ccc37;
-        elsif(config_number_16 = 22)then
-            ccc11           <= ccc38;
-        elsif(config_number_16 = 23)then
-            ccc11           <= ccy;
-        elsif(config_number_16 = 24)then
-            ccc11           <= ccc41;
-        elsif(config_number_16 = 25)then
-            ccc11           <= ccc44;
-        elsif(config_number_16 = 26)then
-            ccc11           <= ccc45;
-        elsif(config_number_16 = 27)then
-            ccc11           <= ccc46;
-        elsif(config_number_16 = 28)then
-            ccc11           <= ccc47;
-        elsif(config_number_16 = 29)then
-            ccc11           <= ccc48;
+        if(legacy_select = 0) then
+            legacy_rgb           <= ccc1;
+        elsif(legacy_select = 1)then
+            legacy_rgb           <= ccc2;
+        elsif(legacy_select = 2)then
+            legacy_rgb           <= ccc3;
+        elsif(legacy_select = 3)then
+            legacy_rgb           <= ccc4;
+        elsif(legacy_select = 4)then
+            legacy_rgb           <= ccc5;
+        elsif(legacy_select = 5)then
+            legacy_rgb           <= ccc6;
+        elsif(legacy_select = 6)then
+            legacy_rgb           <= ccc4;
+        elsif(legacy_select = 7)then
+            legacy_rgb           <= ccc8;
+        elsif(legacy_select = 8)then
+            legacy_rgb           <= ccc9;
+        elsif(legacy_select = 9)then
+            legacy_rgb           <= ccc10;
+        elsif(legacy_select = 10)then
+            legacy_rgb           <= ccc13;
+        elsif(legacy_select = 11)then
+            legacy_rgb           <= ccc14;
+        elsif(legacy_select = 12)then
+            legacy_rgb           <= ccc16;
+        elsif(legacy_select = 13)then
+            legacy_rgb           <= ccc15;
+        elsif(legacy_select = 14)then
+            legacy_rgb           <= ccc17;
+        elsif(legacy_select = 15)then
+            legacy_rgb           <= ccc18;
+        elsif(legacy_select = 16)then
+            legacy_rgb           <= ccc31;
+        elsif(legacy_select = 17)then
+            legacy_rgb           <= ccc33;
+        elsif(legacy_select = 18)then
+            legacy_rgb           <= ccc34;
+        elsif(legacy_select = 19)then
+            legacy_rgb           <= ccc35;
+        elsif(legacy_select = 20)then
+            legacy_rgb           <= ccc36;
+        elsif(legacy_select = 21)then
+            legacy_rgb           <= ccc37;
+        elsif(legacy_select = 22)then
+            legacy_rgb           <= ccc38;
+        elsif(legacy_select = 23)then
+            legacy_rgb           <= ccy;
+        elsif(legacy_select = 24)then
+            legacy_rgb           <= ccc41;
+        elsif(legacy_select = 25)then
+            legacy_rgb           <= ccc44;
+        elsif(legacy_select = 26)then
+            legacy_rgb           <= ccc45;
+        elsif(legacy_select = 27)then
+            legacy_rgb           <= ccc46;
+        elsif(legacy_select = 28)then
+            legacy_rgb           <= ccc47;
+        elsif(legacy_select = 29)then
+            legacy_rgb           <= ccc48;
         else
-            ccc11           <= ccc32;
+            legacy_rgb           <= ccc32;
         end if;
     end if;
 end process;
--- process(config_number_19,ccc12)begin
-    -- if(config_number_19=0)then
-       -- ccc39.red         <= ccc12.red;
-       -- ccc39.green       <= ccc12.green;
-       -- ccc39.blue        <= ccc12.blue;
-    -- elsif(config_number_19=1) then
-       -- ccc39.red         <= ccc12.red;
-       -- ccc39.green       <= ccc12.blue;
-       -- ccc39.blue        <= ccc12.green;
-    -- elsif(config_number_19=2)then
-       -- ccc39.red         <= ccc12.green;
-       -- ccc39.green       <= ccc12.blue;
-       -- ccc39.blue        <= ccc12.red;
-    -- elsif(config_number_19=3)then
-       -- ccc39.red         <= ccc12.green;
-       -- ccc39.green       <= ccc12.red;
-       -- ccc39.blue        <= ccc12.blue;
-    -- elsif(config_number_19=4)then
-       -- ccc39.red         <= ccc12.blue;
-       -- ccc39.green       <= ccc12.red;
-       -- ccc39.blue        <= ccc12.green;
-    -- else
-       -- ccc39.red         <= ccc12.blue;
-       -- ccc39.green       <= ccc12.green;
-       -- ccc39.blue        <= ccc12.red;
-    -- end if;
--- end process;
-------------------------------------------------------------
---                                                 VIDEO_OUT
-------------------------------------------------------------
-   -- KV260 ties ivideo_aclk and ovideo_aclk to the same PL clock.
+-- Preserve the legacy mux latency. Change sources only between whole frames.
+switching <= not frame_active and ((config_number_16=30) /= portrait_selected);
+use_portrait <= (config_number_16=30) when switching else portrait_selected;
+selected_rgb <= portrait when use_portrait else legacy_rgb;
+process(selected_rgb,switching)
+    variable pixel : channel;
+begin
+    pixel:=selected_rgb;
+    if switching and pixel.sof/='1' then pixel.valid:='0'; end if;
+    ccc11<=pixel;
+end process;
+process(ivideo_aclk)
+begin
+    if rising_edge(ivideo_aclk) then
+        if ivideo_aresetn='0' or (portrait_selected and portrait_rst_n='0') then
+            frame_active<=false; portrait_selected<=false; output_line<=0;
+        elsif ccc11.valid='1' then
+            portrait_selected<=use_portrait;
+            frame_active<=true;
+            if ccc11.sof='1' then output_line<=0; end if;
+            if ccc11.eol='1' then
+                if output_line+1>=portrait_height then
+                    output_line<=0; frame_active<=false;
+                else output_line<=output_line+1; end if;
+            end if;
+        end if;
+    end if;
+end process;
    ovideo_fifo_resetn <= ivideo_aresetn and ovideo_aresetn;
    ovideo_fifo_in <= ccc11.red(9 downto 2) & ccc11.green(9 downto 2) &
                      ccc11.blue(9 downto 2) & ccc11.sof & ccc11.eol &

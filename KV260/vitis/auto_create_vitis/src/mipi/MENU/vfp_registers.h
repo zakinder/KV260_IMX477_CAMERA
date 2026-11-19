@@ -21,6 +21,7 @@
 #define VFP_BALANCE_CCM_PRESET_SELECT            0x34
 #define VFP_RGB_CHANNEL_SELECT                   0x38
 #define VFP_CENTROID_LUT_WRITE_INDEX             0x3C
+#define VFP_PREVIEW_REFINED_PORTRAIT             30U
 #define VFP_OUTPUT_CHANNEL_SELECT                0x40
 #define VFP_SOBEL_CLUSTER_INPUT_SELECT           0x44
 #define VFP_UNUSED_18                            0x48
