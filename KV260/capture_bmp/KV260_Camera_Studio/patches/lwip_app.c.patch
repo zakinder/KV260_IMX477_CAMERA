@@ -1,0 +1,45 @@
+--- a/mipi/src/LWIP/lwip_app.c
++++ b/mipi/src/LWIP/lwip_app.c
+@@ -10,6 +10,7 @@
+ #include "lwip_app.h"
+ #include "jpeg_snapshot.h"
+ #include "jpeg_pipeline.h"
++#include "gui_control.h"
+ #include "../config.h"
+ #include "lwip/priv/tcp_priv.h"
+ #include "lwip/init.h"
+@@ -224,6 +225,13 @@
+     return 1;
+ }
+ 
++int lwip_mjpeg_set(int enable)
++{
++    if (!!enable == !!mjpeg_enabled)
++        return 0;
++    return lwip_mjpeg_toggle() < 0 ? -1 : 0;
++}
++
+ static void snapshot_poll(XTime now)
+ {
+     unsigned char payload[UDP_BUFF_SIZE];
+@@ -411,6 +419,12 @@
+ #endif
+     if (!address_ready || udp8080_pcb == NULL)
+         return;
++
++    /* Finish sending the current frame before processing camera I2C/VFP
++     * commands. The I2C tuning routines can briefly pause the sensor. */
++    if (!frame_active && !snapshot_pending && snapshot_size == 0U &&
++        !pipeline_tx_active)
++        gui_control_poll();
+ 
+     XTime_GetTime(&now);
+     jpeg_tx_diag_poll(now);
+@@ -653,5 +667,7 @@
+ 	}
+ 	udp_recv(udp8080_pcb, udp_recive, 0);
+ 	IP4_ADDR(&target_addr, 192,168,0,42);
++	if (gui_control_start() != 0)
++	    printf("Camera Studio control unavailable on UDP 8082.\r\n");
+ 	return 0;
+ }

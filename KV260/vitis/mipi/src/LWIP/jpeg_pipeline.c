@@ -525,8 +525,9 @@ void jpeg_pipeline_stop(void)
     running = 0;
     cancel_capture();
     for (unsigned int i = 0; i < WORKERS; ++i)
-        if (slots[i].state == SLOT_READY || slots[i].state == SLOT_ERROR ||
-            slots[i].state == SLOT_PROBE)
+        /* A submitted probe owns its mailbox until the response or timeout.
+         * Leave it pending so busy() does not report drained too early. */
+        if (slots[i].state == SLOT_READY || slots[i].state == SLOT_ERROR)
             slots[i].state = SLOT_EMPTY;
 }
 

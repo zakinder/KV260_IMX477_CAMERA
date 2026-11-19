@@ -1,0 +1,16 @@
+Repository: https://github.com/zakinder/KV260_IMX477_CAMERA
+Branch: jpeg
+Commit: 51bfa98fd1241446c4e780dbebd5d63101708851
+
+Original Git blob SHA-1 values (before this package's modifications):
+  KV260/vitis/mipi/src/LWIP/lwip_app.c                         27d39344b13c6607b918a48d3fc1345e6ba49421
+  KV260/vitis/mipi/src/LWIP/lwip_app.h                         92a9cacce6663c54f4e6de8f9976117e67a0d419
+  KV260/vitis/mipi/src/SENSORS_CONFIG/IMX477/imx477.c          3befd329dd9f4de109aeea0fd9e0d709edd51e01
+  KV260/vitis/mipi/src/SENSORS_CONFIG/IMX477/imx477.h          2938fe96a59ad95ec50c9136e5477e60dec98c39
+  KV260/vitis/mipi/src/MENU/vfp_registers.h                     048ee9614f49e55d5ff46bdf4578abb10df59167
+  KV260/ip_lib/vfp_2.0/hdl/vfp_v1_0.vhd                       7b710cf0ad6351ae59db32ed9d8954a879f23a5a
+  KV260/ip_lib/vfp_2.0/hdl/ccm.vhd                            a3e4e94335d5bbc3172338d05cc573ed78f0c1b4
+
+The available host viewer was the previously supplied play_4k_mjpeg_compare.py;
+it was not present at the expected Windows path on the pinned repository branch.
+The new GUI includes its own compatible KJPG receiver.

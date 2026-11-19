@@ -39,6 +39,7 @@
 #include "xgpio.h"
 #include <xclk_wiz.h>
 #include "DP_CLOCK/clk_wiz.h"
+#include "imx477_startup_settings.h"
 XClk_Wiz ClkWizInst;
 VideoMode video;
 static XGpio axi_gpio;
@@ -124,6 +125,10 @@ int main()
     gpio_init();
 	int i,connected_camera;
     connected_camera=init_camera();
+    if (connected_camera == 477) {
+        extern XIicPs iic_cam;
+        (void)imx477_apply_startup_settings(&iic_cam);
+    }
     if (connected_camera == 477)
         per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, VFP_PREVIEW_BYPASS);
     printf("Connected Camera = %i \n\r",connected_camera);

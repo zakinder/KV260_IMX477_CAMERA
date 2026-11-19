@@ -52,7 +52,9 @@ src/main.o src/main.o: ../src/main.c \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xclk_wiz.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xil_cache.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xclk_wiz_hw.h \
- ../src/DP_CLOCK/clk_wiz.h
+ ../src/DP_CLOCK/clk_wiz.h ../src/imx477_startup_settings.h \
+ ../src/SENSORS_CONFIG/IMX477/imx477.h \
+ R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xbasic_types.h
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xil_cache.h:
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xil_types.h:
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xil_io.h:
@@ -113,3 +115,6 @@ R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wra
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xil_cache.h:
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xclk_wiz_hw.h:
 ../src/DP_CLOCK/clk_wiz.h:
+../src/imx477_startup_settings.h:
+../src/SENSORS_CONFIG/IMX477/imx477.h:
+R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xbasic_types.h:

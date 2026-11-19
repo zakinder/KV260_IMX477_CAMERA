@@ -4,16 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/LWIP/gui_control.c \
 ../src/LWIP/jpeg_pipeline.c \
 ../src/LWIP/jpeg_snapshot.c \
 ../src/LWIP/lwip_app.c 
 
 OBJS += \
+./src/LWIP/gui_control.o \
 ./src/LWIP/jpeg_pipeline.o \
 ./src/LWIP/jpeg_snapshot.o \
 ./src/LWIP/lwip_app.o 
 
 C_DEPS += \
+./src/LWIP/gui_control.d \
 ./src/LWIP/jpeg_pipeline.d \
 ./src/LWIP/jpeg_snapshot.d \
 ./src/LWIP/lwip_app.d 

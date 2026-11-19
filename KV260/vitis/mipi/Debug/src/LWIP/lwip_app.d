@@ -39,7 +39,8 @@ src/LWIP/lwip_app.o src/LWIP/lwip_app.o: ../src/LWIP/lwip_app.c \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/bspconfig.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/xtime_l.h \
  ../src/LWIP/lwip_app.h ../src/LWIP/jpeg_snapshot.h \
- ../src/LWIP/jpeg_pipeline.h ../src/LWIP/../config.h \
+ ../src/LWIP/jpeg_pipeline.h ../src/LWIP/gui_control.h \
+ ../src/LWIP/../config.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/lwip/priv/tcp_priv.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/lwip/init.h \
  R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/lwip/inet.h \
@@ -108,6 +109,7 @@ R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wra
 ../src/LWIP/lwip_app.h:
 ../src/LWIP/jpeg_snapshot.h:
 ../src/LWIP/jpeg_pipeline.h:
+../src/LWIP/gui_control.h:
 ../src/LWIP/../config.h:
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/lwip/priv/tcp_priv.h:
 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/standalone_domain/bspinclude/include/lwip/init.h:

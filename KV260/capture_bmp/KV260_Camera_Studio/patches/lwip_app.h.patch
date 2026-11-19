@@ -1,0 +1,12 @@
+--- a/mipi/src/LWIP/lwip_app.h
++++ b/mipi/src/LWIP/lwip_app.h
+@@ -10,6 +10,9 @@
+ /* Toggle continuous 4K JPEG. Returns 1 on, 0 off, -1 on error, -2 if busy. */
+ int lwip_mjpeg_toggle(void);
+ 
++/* Idempotently start/stop continuous JPEG after network initialization. */
++int lwip_mjpeg_set(int enable);
++
+ /* Call from the foreground, including while waiting for UART input. */
+ void lwip_stream_poll(void);
+ 

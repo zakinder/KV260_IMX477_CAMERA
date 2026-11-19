@@ -10,6 +10,7 @@
 #include "lwip_app.h"
 #include "jpeg_snapshot.h"
 #include "jpeg_pipeline.h"
+#include "gui_control.h"
 #include "../config.h"
 #include "lwip/priv/tcp_priv.h"
 #include "lwip/init.h"
@@ -183,6 +184,8 @@ static void snapshot_put_u32(unsigned char *out, u32 value)
 
 int lwip_jpeg_request(void)
 {
+    if (gui_control_transition_active())
+        return 1;
     if (snapshot_pending || snapshot_size || mjpeg_enabled || jpeg_pipeline_busy())
         return 1;
     if (!udp8080_pcb) {
@@ -200,6 +203,8 @@ int lwip_jpeg_request(void)
 
 int lwip_mjpeg_toggle(void)
 {
+    if (gui_control_transition_active())
+        return -2;
     if (mjpeg_enabled) {
         mjpeg_enabled = 0;
         jpeg_pipeline_stop();
@@ -222,6 +227,40 @@ int lwip_mjpeg_toggle(void)
     mjpeg_enabled = 1;
     jpeg_tx_diag_start();
     return 1;
+}
+
+int lwip_mjpeg_set(int enable)
+{
+    if (!!enable == !!mjpeg_enabled)
+        return 0;
+    return lwip_mjpeg_toggle() < 0 ? -1 : 0;
+}
+
+int lwip_gui_pause_for_path(int *was_running)
+{
+    if (!was_running || frame_active || snapshot_pending || snapshot_size || pipeline_tx_active)
+        return -1;
+    *was_running = mjpeg_enabled;
+    if (mjpeg_enabled) {
+        mjpeg_enabled = 0;
+        jpeg_pipeline_stop();
+    }
+    return 0;
+}
+
+int lwip_gui_resume_after_path(int was_running)
+{
+    if (!was_running)
+        return 0;
+    if (mjpeg_enabled || snapshot_pending || snapshot_size || jpeg_pipeline_busy())
+        return -1;
+    if (!jpeg_pipeline_start())
+        return -1;
+    snapshot_target_warmed = 0;
+    XTime_GetTime(&snapshot_deadline);
+    mjpeg_enabled = 1;
+    jpeg_tx_diag_start();
+    return 0;
 }
 
 static void snapshot_poll(XTime now)
@@ -412,6 +451,12 @@ void lwip_stream_poll(void)
     if (!address_ready || udp8080_pcb == NULL)
         return;
 
+    /* Finish sending the current frame before processing camera I2C/VFP
+     * commands. The I2C tuning routines can briefly pause the sensor. */
+    if (!frame_active && !snapshot_pending && snapshot_size == 0U &&
+        !pipeline_tx_active)
+        gui_control_poll();
+
     XTime_GetTime(&now);
     jpeg_tx_diag_poll(now);
     if (!frame_active && (snapshot_pending || snapshot_size || mjpeg_enabled ||
@@ -443,6 +488,9 @@ void lwip_stream_poll(void)
         }
         return;
     }
+    /* Do not begin a legacy BMP frame while a VFP transition is settling. */
+    if (gui_control_transition_active())
+        return;
     if (now < next_packet)
         return;
 
@@ -653,5 +701,7 @@ int start_udp(unsigned int port) {
 	}
 	udp_recv(udp8080_pcb, udp_recive, 0);
 	IP4_ADDR(&target_addr, 192,168,0,42);
+	if (gui_control_start() != 0)
+	    printf("Camera Studio control unavailable on UDP 8082.\r\n");
 	return 0;
 }
