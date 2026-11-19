@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Sat Nov 14 00:01:08 2026
+# Process ID: 28712
+# Current directory: R:/KV260/v_log
+# Command line: vivado.exe -source ../scripts/script_main.tcl -mode batch -notrace -tclargs --run 1 --gui 1 --clean 2 --boardpart 1
+# Log file: R:/KV260/v_log/vivado.log
+# Journal file: R:/KV260/v_log\vivado.jou
+# Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
+#-----------------------------------------------------------
+source ../scripts/script_main.tcl -notrace
+update_compile_order -fileset sources_1
+current_bd_instance
+close_bd_design [get_bd_designs kv260_video]
+export_ip_user_files -of_objects  [get_files R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd] -no_script -reset -force -quiet
+remove_files  R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd
+file delete -force R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video
+file delete -force r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video

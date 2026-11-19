@@ -70,11 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {HDL 9-1061} -limit 100000
-set_msg_config -id {HDL 9-1654} -limit 100000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
 
@@ -228,6 +223,12 @@ set_property used_in_synthesis false [get_files -all r:/KV260/vivado/KV260.gen/s
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_1/kv260_video_auto_ds_1_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_1/kv260_video_auto_ds_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1_ooc.xdc]
+set_property used_in_synthesis false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_board.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/kv260_video_ooc.xdc]
 
 OPTRACE "Adding files" END { }

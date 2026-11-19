@@ -1090,40 +1090,40 @@ architecture arch of color_k5_clustering is
     signal rgb_std2sync          : channel;
     signal rgb_std3sync          : channel;
     signal rgb_std4sync          : channel;
-    signal rgb_sync1             : intChannel;
-    signal rgb_sync2             : intChannel;
-    signal rgb_sync3             : intChannel;
-    signal rgb_sync4             : intChannel;
-    signal rgb_sync5             : intChannel;
-    signal rgb_sync6             : intChannel;
-    signal rgb_sync7             : intChannel;
-    signal rgb_sync8             : intChannel;
-    signal rgb_sync9             : intChannel;
-    signal rgb_sync10            : intChannel;
-    signal rgb_sync11            : intChannel;
-    signal rgb_sync12            : intChannel;
-    signal rgb_sync13            : intChannel;
-    signal rgb_sync14            : intChannel;
-    signal rgb_sync15            : intChannel;
-    signal rgb_sync16            : intChannel;
-    signal rgb_sync17            : intChannel;
-    signal rgb_sync18            : intChannel;
-    signal rgb_sync19            : intChannel;
-    signal rgb_sync20            : intChannel;
-    signal rgb_sync21            : intChannel;
-    signal rgb_sync22            : intChannel;
-    signal rgb_sync23            : intChannel;
-    signal rgb_max               : integer;
-    signal rgb_mid               : integer;
-    signal rgb_min               : integer;
+    type pixel8_t is record
+        red, green, blue : natural range 0 to 255;
+    end record;
+    signal rgb_sync1             : pixel8_t;
+    signal rgb_sync2             : pixel8_t;
+    signal rgb_sync3             : pixel8_t;
+    signal rgb_sync4             : pixel8_t;
+    signal rgb_sync5             : pixel8_t;
+    signal rgb_sync6             : pixel8_t;
+    signal rgb_sync7             : pixel8_t;
+    signal rgb_sync8             : pixel8_t;
+    signal rgb_sync9             : pixel8_t;
+    signal rgb_sync10            : pixel8_t;
+    signal rgb_sync11            : pixel8_t;
+    signal rgb_sync12            : pixel8_t;
+    signal rgb_sync13            : pixel8_t;
+    signal rgb_sync14            : pixel8_t;
+    signal rgb_sync15            : pixel8_t;
+    signal rgb_sync16            : pixel8_t;
+    signal rgb_sync17            : pixel8_t;
+    signal rgb_sync18            : pixel8_t;
+    signal rgb_sync19            : pixel8_t;
+    signal rgb_sync20            : pixel8_t;
+    signal rgb_sync21            : pixel8_t;
+    signal rgb_sync22            : pixel8_t;
+    signal rgb_sync23            : pixel8_t;
+    type thresholds_t is array (0 to 2) of natural;
+    constant thresholds : thresholds_t := (8,20,40);
+    signal close_rg, close_rb, close_gb, top_pair_close : std_logic_vector(0 to 2);
     signal rgb_red               : std_logic_vector(7 downto 0);
     signal rgb_gre               : std_logic_vector(7 downto 0);
     signal rgb_blu               : std_logic_vector(7 downto 0);
     constant K_VALUE             : integer := 11;
     attribute keep : string;
-    attribute keep of rgb_max : signal is "true";
-    attribute keep of rgb_mid : signal is "true";
-    attribute keep of rgb_min : signal is "true";
 
 begin
 
@@ -1212,35 +1212,22 @@ process (clk) begin
     end if;
 end process;
 
-process (clk) begin
-    if rising_edge(clk) then
-        if (rgb_sync2.red = rgb_max1) and (rgb_sync2.green = rgb_min1) then
-            rgb_max <= rgb_sync2.red;
-            rgb_mid <= rgb_sync2.blue;
-            rgb_min <= rgb_sync2.green;
-        elsif(rgb_sync2.red = rgb_max1) and (rgb_sync2.blue = rgb_min1)then
-            rgb_max <= rgb_sync2.red;
-            rgb_mid <= rgb_sync2.green;
-            rgb_min <= rgb_sync2.blue;
-        elsif(rgb_sync2.green = rgb_max1) and (rgb_sync2.blue = rgb_min1)then
-            rgb_max <= rgb_sync2.green;
-            rgb_mid <= rgb_sync2.red;
-            rgb_min <= rgb_sync2.blue;
-        elsif(rgb_sync2.green = rgb_max1) and (rgb_sync2.red = rgb_min1)then
-            rgb_max <= rgb_sync2.green;
-            rgb_mid <= rgb_sync2.blue;
-            rgb_min <= rgb_sync2.red;
-        elsif(rgb_sync2.blue = rgb_max1) and (rgb_sync2.red = rgb_min1)then
-            rgb_max <= rgb_sync2.blue;
-            rgb_mid <= rgb_sync2.green;
-            rgb_min <= rgb_sync2.red;
-        elsif(rgb_sync2.blue = rgb_max1) and (rgb_sync2.green = rgb_min1)then
-            rgb_max <= rgb_sync2.blue;
-            rgb_mid <= rgb_sync2.red;
-            rgb_min <= rgb_sync2.green;
+-- For sorted max >= mid >= min, max-min <= T implies max-mid <= T.
+-- Compute each pair's distance on the previous pixel stage. Once min is
+-- known, the other two components are precisely the top pair, ties included.
+threshold_flags : for t in thresholds'range generate
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if abs(rgb_sync1.red-rgb_sync1.green)<=thresholds(t) then close_rg(t)<='1'; else close_rg(t)<='0'; end if;
+            if abs(rgb_sync1.red-rgb_sync1.blue)<=thresholds(t) then close_rb(t)<='1'; else close_rb(t)<='0'; end if;
+            if abs(rgb_sync1.green-rgb_sync1.blue)<=thresholds(t) then close_gb(t)<='1'; else close_gb(t)<='0'; end if;
+            if rgb_sync2.red=rgb_min1 then top_pair_close(t)<=close_gb(t);
+            elsif rgb_sync2.green=rgb_min1 then top_pair_close(t)<=close_rb(t);
+            else top_pair_close(t)<=close_rg(t); end if;
         end if;
-    end if;
-end process;
+    end process;
+end generate;
 
 process (clk)begin
     if rising_edge(clk) then
@@ -2092,7 +2079,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
                         end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 20) or (abs(rgb_max - rgb_min) <= 20))then
+                        if (top_pair_close(1)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
                             end loop;
@@ -2110,7 +2097,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
                         end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 40) or (abs(rgb_max - rgb_min) <= 40))then
+                        if (top_pair_close(2)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
                             end loop;
@@ -2128,7 +2115,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
                           end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 8) or (abs(rgb_max - rgb_min) <= 8))then
+                        if (top_pair_close(0)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  abs(k_rgb_lut_2_l(i).mid - 30);   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
                             end loop;
@@ -2229,7 +2216,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_3_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).max;
                         end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 20) or (abs(rgb_max - rgb_min) <= 20))then
+                        if (top_pair_close(1)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_3_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_3_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_3_l(i).min;
                             end loop;
@@ -2247,7 +2234,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_4_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).max;
                         end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 40) or (abs(rgb_max - rgb_min) <= 40))then
+                        if (top_pair_close(2)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_4_l(i).max;   k_rgb(i).gre <=  k_rgb_lut_4_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_4_l(i).min;
                             end loop;
@@ -2265,7 +2252,7 @@ process (clk)begin
                             k_rgb(i).red <=   k_rgb_lut_2_l(i).min;   k_rgb(i).gre <=  k_rgb_lut_2_l(i).mid;   k_rgb(i).blu <=  k_rgb_lut_2_l(i).max;
                           end loop;
                     else
-                        if ((abs(rgb_max - rgb_mid) <= 8) or (abs(rgb_max - rgb_min) <= 8))then
+                        if (top_pair_close(0)='1')then
                             for i in 0 to 30 loop
                                 k_rgb(i).red <=   k_rgb_lut_2_l(i).max;   k_rgb(i).gre <=  abs(k_rgb_lut_2_l(i).mid - 30);   k_rgb(i).blu <=  k_rgb_lut_2_l(i).min;
                             end loop;

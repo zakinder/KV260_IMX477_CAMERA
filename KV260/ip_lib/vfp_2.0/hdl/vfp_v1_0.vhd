@@ -122,12 +122,12 @@ architecture arch_imp of vfp_v1_0 is
     signal config_number_44    : integer := 100;
     signal config_number_45    : integer := 0;
     signal config_number_20    : integer := 0;
-    signal config_contrast_val : integer := 0;
+    signal config_contrast_val : natural range 0 to 65535 := 0;
     signal config_contrast_num : integer := 0;
-    signal config_contrast_1   : integer := 0;
-    signal config_contrast_2   : integer := 0;
-    signal config_contrast_3   : integer := 0;
-    signal config_contrast_4   : integer := 0;
+    signal config_contrast_1   : natural range 0 to 65535 := 0;
+    signal config_contrast_2   : natural range 0 to 65535 := 0;
+    signal config_contrast_3   : natural range 0 to 65535 := 0;
+    signal config_contrast_4   : natural range 0 to 65535 := 0;
     signal ccx                 : channel;
     signal ccy                 : channel;
     signal ccc1                : channel;

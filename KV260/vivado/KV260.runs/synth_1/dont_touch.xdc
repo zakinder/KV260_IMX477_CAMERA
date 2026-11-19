@@ -87,4 +87,10 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==kv260_video
 # IP: bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==kv260_video_auto_pc_1 || ORIG_REF_NAME==kv260_video_auto_pc_1} -quiet] -quiet
 
+# IP: bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==kv260_video_auto_cc_0 || ORIG_REF_NAME==kv260_video_auto_cc_0} -quiet] -quiet
+
+# IP: bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==kv260_video_rst_clk_wiz_ctrl_0 || ORIG_REF_NAME==kv260_video_rst_clk_wiz_ctrl_0} -quiet] -quiet
+
 # XDC: r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/kv260_video_ooc.xdc

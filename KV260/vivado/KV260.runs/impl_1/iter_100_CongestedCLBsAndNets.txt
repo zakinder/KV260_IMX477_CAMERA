@@ -1,7 +1,0 @@
-List of CLB Tiles
-CLEM_X22Y184
-
-List of Congested Nets
-kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[2][red][7]
-kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/color_k5_clustering_inst/rgb_mid[7]_i_10_n_0
-

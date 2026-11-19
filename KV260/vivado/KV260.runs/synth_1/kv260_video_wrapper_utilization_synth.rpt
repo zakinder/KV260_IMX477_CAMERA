@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sun Nov 15 20:30:59 2026
+| Date         : Wed Nov 18 23:30:33 2026
 | Host         : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kv260_video_wrapper_utilization_synth.rpt -pb kv260_video_wrapper_utilization_synth.pb
 | Design       : kv260_video_wrapper
@@ -179,6 +179,7 @@ Table of Contents
 | kv260_video_v_axi4s_vid_out_0_0      |    1 |
 | kv260_video_system_ila_0_0           |    1 |
 | kv260_video_rst_ps8_0_249M_0         |    1 |
+| kv260_video_rst_clk_wiz_ctrl_0       |    1 |
 | kv260_video_mipi_csi2_rx_subsyst_1_0 |    1 |
 | kv260_video_mipi_csi2_rx_subsyst_0_0 |    1 |
 | kv260_video_ila_1_0                  |    1 |
@@ -195,6 +196,7 @@ Table of Contents
 | kv260_video_auto_pc_0                |    1 |
 | kv260_video_auto_ds_1                |    1 |
 | kv260_video_auto_ds_0                |    1 |
+| kv260_video_auto_cc_0                |    1 |
 +--------------------------------------+------+
 
 

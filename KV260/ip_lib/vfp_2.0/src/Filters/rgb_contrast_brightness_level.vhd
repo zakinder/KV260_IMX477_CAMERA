@@ -34,7 +34,33 @@ architecture Behavioral of rgb_contrast_brightness_level is
   signal rgb3_crt               : contrast2_channel;
   signal rgb4_crt               : contrast1_channel;
   signal rgb5_crt               : contrast1_channel;
-  signal contrast_val           : integer;
+  -- Split the constant division into byte-indexed ROMs. Each entry is
+  -- floor(byte * weight / 5) modulo 2^17 plus its Euclidean remainder.
+  type coefficient_part is record
+    q : unsigned(16 downto 0);
+    r : natural range 0 to 4;
+  end record;
+  type coefficient_table is array (0 to 255) of coefficient_part;
+  function make_table(weight : positive; signed_byte : boolean)
+    return coefficient_table is
+    variable t : coefficient_table;
+    variable n, rem5 : integer;
+  begin
+    for i in t'range loop
+      n := i;
+      if signed_byte and i >= 128 then n := i - 256; end if;
+      n := n * weight;
+      rem5 := n mod 5;
+      t(i).q := to_unsigned(((n-rem5)/5) mod 131072, 17);
+      t(i).r := rem5;
+    end loop;
+    return t;
+  end function;
+  constant lo_table : coefficient_table := make_table(128,false);
+  constant mid_table : coefficient_table := make_table(32768,false);
+  constant hi_table : coefficient_table := make_table(8388608,true);
+  signal lo, mid, hi : coefficient_part;
+  signal rounding : natural range 0 to 4;
   signal contrast_val_sign      : signed(16 downto 0);
   signal contrast_constant_val1 : signed(15 downto 0):= x"8000";--32768=256*128
   signal contrast_constant_val2 : signed(15 downto 0):= x"0080";--128
@@ -73,14 +99,20 @@ process (clk) begin
     end if;
 end process;
 -- red = alpha(red-128)+128+b
-process (clk)begin
+process(clk)
+    variable bits : signed(23 downto 0);
+    variable carry : natural range 0 to 3;
+begin
     if rising_edge(clk) then
-        contrast_val  <= (contrast*256)/10;
-    end if;
-end process;
-process (clk)begin
-    if rising_edge(clk) then
-        contrast_val_sign <= to_signed(contrast_val,contrast_val_sign'length);
+        -- The original integer product contrast*256 fits for signed 24-bit inputs.
+        bits := to_signed(contrast,24);
+        lo <= lo_table(to_integer(unsigned(bits(7 downto 0))));
+        mid <= mid_table(to_integer(unsigned(bits(15 downto 8))));
+        hi <= hi_table(to_integer(unsigned(bits(23 downto 16))));
+        if bits(23)='1' then rounding<=4; else rounding<=0; end if;
+        -- Adding four for negative numerators implements truncation toward zero.
+        carry := (lo.r+mid.r+hi.r+rounding)/5;
+        contrast_val_sign <= signed(lo.q+mid.q+hi.q+to_unsigned(carry,17));
     end if;
 end process;
 process (clk)begin
