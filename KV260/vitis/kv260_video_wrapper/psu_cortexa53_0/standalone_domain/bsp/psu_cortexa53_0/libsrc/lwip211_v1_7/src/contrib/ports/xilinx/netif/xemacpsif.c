@@ -793,6 +793,3 @@ void xemacpsif_resetrx_on_no_rxdata(struct netif *netif)
 
 	resetrx_on_no_rxdata(xemacpsif);
 }
-
-
-

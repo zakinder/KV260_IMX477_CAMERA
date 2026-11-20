@@ -1,6 +1,6 @@
-15:15:54 **** Incremental Build of configuration Debug for project jpeg_encoder1 ****
+11:03:21 **** Incremental Build of configuration Debug for project jpeg_encoder1 ****
 make all 
 make: Nothing to be done for 'all'.
 
-15:15:54 Build Finished (took 247ms)
+11:03:21 Build Finished (took 285ms)
 

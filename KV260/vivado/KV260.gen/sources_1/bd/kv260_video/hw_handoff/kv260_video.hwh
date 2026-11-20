@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov 20 09:13:05 2026" VIVADOVERSION="2022.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov 20 11:19:42 2026" VIVADOVERSION="2022.1">
 
   <SYSTEMINFO ARCH="zynquplus" BOARD="xilinx.com:kv260_som:part0:1.3" DEVICE="xck26" NAME="kv260_video" PACKAGE="sfvc784" SPEEDGRADE="-2LV"/>
 
@@ -4647,7 +4647,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="159" FULLNAME="/PS_VIDEO/RX_VIDEO/vfp_0" HWVERSION="2.0" INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="vfp" VLNV="xilinx.com:user:vfp:2.0">
+    <MODULE COREREVISION="162" FULLNAME="/PS_VIDEO/RX_VIDEO/vfp_0" HWVERSION="2.0" INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="vfp" VLNV="xilinx.com:user:vfp:2.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="vfpconfig" NAME="vfpconfig_reg" RANGE="4096" USAGE="register"/>
@@ -6096,14 +6096,14 @@
         <PARAMETER NAME="C_HIGHADDR" VALUE="0xA008FFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="299997000" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_1_clk_out2">
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="s_axi_aclk" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_1" PORT="clk_out2"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_rst_ps8_0_249M_peripheral_aresetn">
+        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" PORT="peripheral_aresetn"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awaddr">
@@ -6210,7 +6210,7 @@
         <BUSINTERFACE BUSNAME="PS_VIDEO_TO_PS_ps8_0_axi_periph_M09_AXI" DATAWIDTH="32" NAME="s_axi_lite" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="299997000"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
@@ -6233,7 +6233,7 @@
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="kv260_video_clk_wiz_1_0_clk_out1"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="kv260_video_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
           <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
           <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
@@ -6861,10 +6861,10 @@
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_mipi_csi2_rx_subsyst_1" PORT="video_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_v_demosaic_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_v_demosaic_1" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ivideo_aclk"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="o1video_aclk"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ovideo_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="vfpconfig_aclk"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ovideo_aclk"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="o1video_aclk"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ivideo_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="video2_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_VIDEO_PIPELINE_ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="PS_VIDEO_VIDEO_PIPELINE_v_axi4s_vid_out_0" PORT="aclk"/>
@@ -6879,8 +6879,6 @@
             <CONNECTION INSTANCE="PS_VIDEO_V_DMA_axi_vdma_1" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_V_DMA_axi_vdma_1" PORT="s_axis_s2mm_aclk"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_axi_gpio" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_ila" PORT="clk"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M01_ACLK"/>
@@ -6891,7 +6889,6 @@
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M06_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M07_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M08_ACLK"/>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M09_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="S01_ACLK"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" PORT="slowest_sync_clk"/>
@@ -10044,9 +10041,9 @@
         <PARAMETER NAME="EDK_SPECIAL" VALUE="MONITOR"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="299997000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_1_clk_out2">
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_1" PORT="clk_out2"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef"/>
@@ -10073,7 +10070,7 @@
         <BUSINTERFACE BUSNAME="PS_VIDEO_TO_PS_ps8_0_axi_periph_M09_AXI" DATAWIDTH="32" NAME="SLOT_0_AXI" TYPE="MONITOR" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="299997000"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99999001"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
@@ -10096,7 +10093,7 @@
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
           <PARAMETER NAME="PHASE" VALUE="0.0"/>
-          <PARAMETER NAME="CLK_DOMAIN" VALUE="kv260_video_clk_wiz_1_0_clk_out1"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="kv260_video_zynq_ultra_ps_e_0_0_pl_clk0"/>
           <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
           <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
           <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
@@ -10569,14 +10566,101 @@
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M09_ACLK" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_1_clk_out2">
+        <PORT DIR="I" NAME="M09_ACLK" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_1" PORT="clk_out2"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M09_ARESETN" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_rst_ps8_0_249M_peripheral_aresetn">
+        <PORT DIR="I" NAME="M09_ARESETN" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" PORT="peripheral_aresetn"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="M09_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M09_AXI_awprot" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M09_AXI_awvalid" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M09_AXI_awready" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M09_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M09_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M09_AXI_wvalid" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M09_AXI_wready" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M09_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M09_AXI_bvalid" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M09_AXI_bready" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="M09_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="M09_AXI_arprot" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M09_AXI_arvalid" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M09_AXI_arready" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M09_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M09_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M09_AXI_rvalid" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M09_AXI_rready" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_ps8_0_axi_periph_S00_AXI_awid">
@@ -11736,93 +11820,6 @@
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_v_demosaic_1" PORT="s_axi_CTRL_RREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="39" NAME="M09_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M09_AXI_awprot" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M09_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M09_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M09_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M09_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M09_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M09_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M09_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M09_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M09_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="39" NAME="M09_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M09_AXI_arprot" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M09_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M09_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M09_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M09_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M09_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M09_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="PS_VIDEO_TO_PS_clk_wiz_0_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_M_AXI_HPM0_FPD" DATAWIDTH="128" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -12143,6 +12140,52 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="13" FULLNAME="/PS_VIDEO/TO_PS/rst_clk_wiz_ctrl" HWVERSION="5.0" INSTANCE="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=proc_sys_reset;v=v5_0;d=pg164-proc-sys-reset.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_FAMILY" VALUE="zynquplus"/>
+        <PARAMETER NAME="C_EXT_RST_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_AUX_RST_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="C_EXT_RESET_HIGH" VALUE="0"/>
+        <PARAMETER NAME="C_AUX_RESET_HIGH" VALUE="0"/>
+        <PARAMETER NAME="C_NUM_BUS_RST" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_PERP_RST" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_INTERCONNECT_ARESETN" VALUE="1"/>
+        <PARAMETER NAME="C_NUM_PERP_ARESETN" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="kv260_video_rst_clk_wiz_ctrl_0"/>
+        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="false"/>
+        <PARAMETER NAME="RESET_BOARD_INTERFACE" VALUE="Custom"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="99999001" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ext_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_resetn0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0" PORT="pl_resetn0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="aux_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="I" NAME="mb_debug_sys_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
+        <PORT DIR="I" NAME="dcm_locked" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M09_ARESETN"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="13" FULLNAME="/PS_VIDEO/TO_PS/rst_ps8_0_249M" HWVERSION="5.0" INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=proc_sys_reset;v=v5_0;d=pg164-proc-sys-reset.pdf"/>
@@ -12188,10 +12231,10 @@
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_mipi_csi2_rx_subsyst_1" PORT="video_aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_v_demosaic_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_v_demosaic_1" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ivideo_aresetn"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="o1video_aresetn"/>
-            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ovideo_aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="vfpconfig_aresetn"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ovideo_aresetn"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="o1video_aresetn"/>
+            <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="ivideo_aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_RX_VIDEO_vfp_0" PORT="video2_aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_VIDEO_PIPELINE_v_axi4s_vid_out_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_VIDEO_PIPELINE_v_tc_0" PORT="s_axi_aresetn"/>
@@ -12199,7 +12242,6 @@
             <CONNECTION INSTANCE="PS_VIDEO_V_DMA_axi_vdma_0" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_V_DMA_axi_vdma_1" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_axi_gpio" PORT="s_axi_aresetn"/>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M01_ARESETN"/>
@@ -12210,7 +12252,6 @@
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M06_ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M07_ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M08_ARESETN"/>
-            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M09_ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="S01_ARESETN"/>
           </CONNECTIONS>
@@ -14600,12 +14641,17 @@
         <PORT DIR="O" NAME="pl_resetn0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_resetn0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_ps8_0_249M" PORT="ext_reset_in"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl" PORT="ext_reset_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="99999001" DIR="O" NAME="pl_clk0" SIGIS="clk" SIGNAME="PS_VIDEO_TO_PS_zynq_ultra_ps_e_0_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="clk_in1"/>
             <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_1" PORT="clk_in1"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_rst_clk_wiz_ctrl" PORT="slowest_sync_clk"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_ps8_0_axi_periph" PORT="M09_ACLK"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_0" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="PS_VIDEO_TO_PS_clk_wiz_ila" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

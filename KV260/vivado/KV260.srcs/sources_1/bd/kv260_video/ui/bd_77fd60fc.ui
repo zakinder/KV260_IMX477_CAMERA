@@ -1,0 +1,45 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.627848",
+   "Default View_TopLeft":"-182,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port gpio -pg 1 -lvl 5 -x 1610 -y 240 -defaultsOSRD
+preplace port iic -pg 1 -lvl 5 -x 1610 -y 260 -defaultsOSRD
+preplace port mipi_phy_if -pg 1 -lvl 0 -x 0 -y 550 -defaultsOSRD
+preplace port mipi_rx_ias -pg 1 -lvl 0 -x 0 -y 570 -defaultsOSRD
+preplace inst RX_VIDEO -pg 1 -lvl 1 -x 200 -y 600 -defaultsOSRD
+preplace inst TO_PS -pg 1 -lvl 3 -x 930 -y 210 -defaultsOSRD
+preplace inst VIDEO_PIPELINE -pg 1 -lvl 4 -x 1420 -y 410 -defaultsOSRD
+preplace inst V_DMA -pg 1 -lvl 2 -x 530 -y 560 -defaultsOSRD
+preplace netloc V_DMA_s2mm_introut 1 2 1 690 260n
+preplace netloc clk_wiz_0_clk_out1 1 3 1 1210 300n
+preplace netloc dphy_clk_200M_1 1 0 4 50 770 NJ 770 NJ 770 1130
+preplace netloc rst_ps8_0_249M_peripheral_aresetn 1 0 4 60 750 360 430 NJ 430 1190
+preplace netloc v_axi4s_vid_out_0_vid_active_video 1 2 3 700 510 NJ 510 1580
+preplace netloc v_axi4s_vid_out_0_vid_data 1 2 3 730 500 NJ 500 1550
+preplace netloc v_axi4s_vid_out_0_vid_hsync 1 2 3 710 520 NJ 520 1570
+preplace netloc v_axi4s_vid_out_0_vid_vsync 1 2 3 720 530 NJ 530 1560
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 4 40 760 380 660 NJ 660 1180
+preplace netloc Conn1 1 3 2 NJ 240 NJ
+preplace netloc S_AXIS_S2MM1_1 1 1 1 350 530n
+preplace netloc S_AXIS_S2MM_1 1 1 1 340 510n
+preplace netloc TO_PS_M05_AXI1 1 1 3 380 410 NJ 410 1160
+preplace netloc TO_PS_M07_AXI 1 0 4 60 400 NJ 400 NJ 400 1120
+preplace netloc TO_PS_M08_AXI 1 0 4 30 740 NJ 740 NJ 740 1140
+preplace netloc axi_smc_M00_AXI 1 2 1 680 160n
+preplace netloc mipi_phy_if_0_1 1 0 1 NJ 550
+preplace netloc mipi_rx_ias1_1 1 0 1 NJ 570
+preplace netloc ps8_0_axi_periph_M01_AXI 1 1 3 370 10 NJ 10 1220
+preplace netloc ps8_0_axi_periph_M02_AXI 1 0 4 30 390 NJ 390 NJ 390 1150
+preplace netloc ps8_0_axi_periph_M03_AXI 1 0 4 20 20 NJ 20 NJ 20 1210
+preplace netloc ps8_0_axi_periph_M05_AXI 1 3 1 1220 140n
+preplace netloc ps8_0_axi_periph_M06_AXI 1 0 4 20 780 NJ 780 NJ 780 1170
+preplace netloc video_in_1 1 2 2 720 540 1200J
+preplace netloc zynq_ultra_ps_e_0_IIC_0 1 3 2 NJ 260 NJ
+levelinfo -pg 1 0 200 530 930 1420 1610
+pagesize -pg 1 -db -bbox -sgen -130 0 1690 790
+"
+}
+0

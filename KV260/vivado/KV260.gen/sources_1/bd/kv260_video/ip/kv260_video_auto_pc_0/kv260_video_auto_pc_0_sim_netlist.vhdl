@@ -1,11 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
--- Date        : Fri Nov 20 09:39:43 2026
+-- Date        : Fri Nov 20 09:38:34 2026
 -- Host        : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0_sim_netlist.vhdl
--- Design      : kv260_video_auto_pc_0
+-- Command     : write_vhdl -force -mode funcsim -rename_top kv260_video_auto_pc_0 -prefix
+--               kv260_video_auto_pc_0_ kv260_video_auto_pc_1_sim_netlist.vhdl
+-- Design      : kv260_video_auto_pc_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xck26-sfvc784-2LV-c
@@ -49,8 +49,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_incr_cmd is
     \axlen_cnt_reg[6]_1\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \axaddr_incr_reg[11]_1\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_26_b2s_incr_cmd";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_incr_cmd;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_incr_cmd is
@@ -1236,8 +1234,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_rd_cmd_fsm is
     m_valid_i_reg_1 : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_26_b2s_rd_cmd_fsm";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_rd_cmd_fsm is
@@ -1575,8 +1571,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_simple_fifo is
     \in\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_26_b2s_simple_fifo";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_simple_fifo;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_simple_fifo is
@@ -3110,8 +3104,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wr_cmd_fsm is
     \FSM_sequential_state_reg[0]_1\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_26_b2s_wr_cmd_fsm";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wr_cmd_fsm is
@@ -3475,8 +3467,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wrap_cmd is
     \wrap_cnt_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_26_b2s_wrap_cmd";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wrap_cmd;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_wrap_cmd is
@@ -5514,8 +5504,6 @@ entity kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axic_register_slice is
     aresetn : in STD_LOGIC;
     \m_payload_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axic_register_slice : entity is "axi_register_slice_v2_1_26_axic_register_slice";
 end kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axic_register_slice;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axic_register_slice is
@@ -11343,8 +11331,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_b_channel is
     m_axi_bvalid : in STD_LOGIC;
     \in\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_b_channel : entity is "axi_protocol_converter_v2_1_26_b2s_b_channel";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_b_channel;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_b_channel is
@@ -11689,8 +11675,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_cmd_translator i
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \axaddr_incr_reg[11]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_26_b2s_cmd_translator";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_cmd_translator;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_cmd_translator is
@@ -12064,8 +12048,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_r_channel is
     \in\ : in STD_LOGIC_VECTOR ( 33 downto 0 );
     areset_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_r_channel : entity is "axi_protocol_converter_v2_1_26_b2s_r_channel";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_r_channel;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_r_channel is
@@ -12240,8 +12222,6 @@ entity kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axi_register_slice is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \m_payload_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axi_register_slice : entity is "axi_register_slice_v2_1_26_axi_register_slice";
 end kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axi_register_slice;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_register_slice_v2_1_26_axi_register_slice is
@@ -12458,8 +12438,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_ar_channel is
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 );
     \axaddr_incr_reg[9]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_26_b2s_ar_channel";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_ar_channel;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_ar_channel is
@@ -12683,8 +12661,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_aw_channel is
     \wrap_cnt_r_reg[1]\ : in STD_LOGIC;
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_26_b2s_aw_channel";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_aw_channel;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s_aw_channel is
@@ -12945,8 +12921,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s is
     s_axi_arvalid : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s : entity is "axi_protocol_converter_v2_1_26_b2s";
 end kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s;
 
 architecture STRUCTURE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_b2s is
@@ -13586,8 +13560,6 @@ entity kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_axi_protocol_convert
   attribute C_TRANSLATION_MODE of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_26_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of kv260_video_auto_pc_0_axi_protocol_converter_v2_1_26_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;
@@ -13801,7 +13773,7 @@ entity kv260_video_auto_pc_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of kv260_video_auto_pc_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of kv260_video_auto_pc_0 : entity is "kv260_video_auto_pc_0,axi_protocol_converter_v2_1_26_axi_protocol_converter,{}";
+  attribute CHECK_LICENSE_TYPE of kv260_video_auto_pc_0 : entity is "kv260_video_auto_pc_1,axi_protocol_converter_v2_1_26_axi_protocol_converter,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of kv260_video_auto_pc_0 : entity is "yes";
   attribute X_CORE_INFO : string;

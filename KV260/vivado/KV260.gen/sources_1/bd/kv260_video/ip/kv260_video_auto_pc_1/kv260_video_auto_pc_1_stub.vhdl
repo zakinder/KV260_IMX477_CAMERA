@@ -1,10 +1,10 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
--- Date        : Fri Nov 20 09:38:35 2026
+-- Date        : Fri Nov 20 09:38:33 2026
 -- Host        : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top kv260_video_auto_pc_1 -prefix
+--               kv260_video_auto_pc_1_ kv260_video_auto_pc_1_stub.vhdl
 -- Design      : kv260_video_auto_pc_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xck26-sfvc784-2LV-c

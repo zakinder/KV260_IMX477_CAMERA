@@ -1,12 +1,12 @@
 Nothing to build in platform 'kv260_video_wrapper'
 
-22:14:40 **** Incremental Build of configuration Debug for project mipi ****
+11:18:10 **** Incremental Build of configuration Debug for project mipi ****
 make all 
 make: Nothing to be done for 'all'.
-22:14:41 **** Incremental Build of configuration Debug for project mipi_system ****
+11:18:14 **** Incremental Build of configuration Debug for project mipi_system ****
 make all 
 Generating bif file for the system project
-generate_system_bif.bat 58473 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm standalone_domain R:/KV260/vitis/mipi_system/Debug/system.bif
+generate_system_bif.bat 55251 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm standalone_domain R:/KV260/vitis/mipi_system/Debug/system.bif
 sdcard_gen --xpfm R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm --sys_config kv260_video_wrapper --bif R:/KV260/vitis/mipi_system/Debug/system.bif --bitstream R:/KV260/vitis/mipi/_ide/bitstream/kv260_video_wrapper.bit --elf R:/KV260/vitis/mipi/Debug/mipi.elf,psu_cortexa53_0
 creating BOOT.BIN using R:/KV260/vitis/mipi/_ide/bitstream/kv260_video_wrapper.bit
 Running C:/Xilinx/Vitis/2022.1/bin/bootgen -arch zynqmp -image R:/KV260/vitis/mipi_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

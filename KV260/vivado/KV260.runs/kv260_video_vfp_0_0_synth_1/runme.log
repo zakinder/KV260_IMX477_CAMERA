@@ -10,7 +10,7 @@
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source kv260_video_vfp_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 1403.594 ; gain = 0.000
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1371.980 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
@@ -21,10 +21,10 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 22072
+INFO: [Synth 8-7075] Helper process launched with PID 23860
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:38 . Memory (MB): peak = 1838.898 ; gain = 320.070
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:22 . Memory (MB): peak = 1836.902 ; gain = 318.172
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:129]
 	Parameter revision_number bound to: 32'b00010010000000110010000000100010 
@@ -36,66 +36,86 @@ INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [r:/KV260/vivado/K
 	Parameter FRAME_WIDTH bound to: 4096 - type: integer 
 	Parameter FRAME_HEIGHT bound to: 3040 - type: integer 
 	Parameter FRAME_PIXEL_DEPTH bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'vfp_v1_0' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_v1_0.vhd:11' bound to instance 'U0' of component 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:297]
-INFO: [Synth 8-638] synthesizing module 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_v1_0.vhd:92]
-INFO: [Synth 8-638] synthesizing module 'vfp_config' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_config.vhd:47]
-INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_config.vhd:194]
-INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_config.vhd:703]
-INFO: [Synth 8-256] done synthesizing module 'vfp_config' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_config.vhd:47]
-INFO: [Synth 8-638] synthesizing module 'surface_contour_select' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:19]
-INFO: [Synth 8-638] synthesizing module 'pic2_filter_axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:30]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_window5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_window5.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_tone_contour' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:23]
-INFO: [Synth 8-256] done synthesizing module 'axis_tone_contour' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:23]
-INFO: [Synth 8-638] synthesizing module 'axis_contour_finish' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:20]
-INFO: [Synth 8-256] done synthesizing module 'axis_contour_finish' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:20]
-INFO: [Synth 8-256] done synthesizing module 'pic2_filter_axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:30]
-INFO: [Synth 8-256] done synthesizing module 'surface_contour_select' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:19]
-INFO: [Synth 8-256] done synthesizing module 'vfp_v1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/hdl/vfp_v1_0.vhd:92]
+INFO: [Synth 8-3491] module 'vfp_v1_0' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_v1_0.vhd:11' bound to instance 'U0' of component 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:297]
+INFO: [Synth 8-638] synthesizing module 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_v1_0.vhd:92]
+INFO: [Synth 8-638] synthesizing module 'vfp_config' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_config.vhd:47]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_config.vhd:194]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_config.vhd:703]
+INFO: [Synth 8-256] done synthesizing module 'vfp_config' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_config.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'surface_contour_select' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'pic2_filter_axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_tone_contour' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'axis_tone_contour' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_contour_finish' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'axis_contour_finish' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'pic2_filter_axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'surface_contour_select' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'vfp_v1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/hdl/vfp_v1_0.vhd:92]
 INFO: [Synth 8-256] done synthesizing module 'kv260_video_vfp_0_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:129]
-WARNING: [Synth 8-5856] 3D RAM colors_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  colors_reg 
-WARNING: [Synth 8-5858] RAM strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  strips_reg 
-WARNING: [Synth 8-5858] RAM regions2_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions2_reg 
-WARNING: [Synth 8-5858] RAM regions3_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions3_reg 
-WARNING: [Synth 8-5856] 3D RAM colors_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  colors_reg 
-WARNING: [Synth 8-5858] RAM strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  strips_reg 
-WARNING: [Synth 8-5858] RAM regions2_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions2_reg 
-WARNING: [Synth 8-5858] RAM regions3_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions3_reg 
-WARNING: [Synth 8-5856] 3D RAM colors_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  colors_reg 
-WARNING: [Synth 8-5858] RAM strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  strips_reg 
-WARNING: [Synth 8-5858] RAM regions2_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions2_reg 
-WARNING: [Synth 8-5858] RAM regions3_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  regions3_reg 
-WARNING: [Synth 8-5856] 3D RAM rows_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  rows_reg 
-WARNING: [Synth 8-7129] Port s_sof in module axis_window5 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port s_eol in module axis_window5 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port s_sof in module axis_window5__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port s_eol in module axis_window5__parameterized1 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port s_sof in module axis_window5__parameterized0 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port s_eol in module axis_window5__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
+WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
+WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s3_means_reg 
+WARNING: [Synth 8-5858] RAM slots_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  slots_reg 
+WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
+WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
+WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s3_means_reg 
+WARNING: [Synth 8-5858] RAM slots_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  slots_reg 
+WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
+WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
+WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s3_means_reg 
+WARNING: [Synth 8-5858] RAM slots_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  slots_reg 
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[1] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[3] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[5] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[9] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[15] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[19] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[21] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[23] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:244]
+WARNING: [Synth 8-5858] RAM s1_row_sums_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_row_sums_reg 
+WARNING: [Synth 8-7129] Port s_axis_tuser in module axis_window5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tlast in module axis_window5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tuser in module axis_window5__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tlast in module axis_window5__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tuser in module axis_window5__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axis_tlast in module axis_window5__parameterized0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module vfp_config is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module vfp_config is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module vfp_config is either unconnected or has no load
@@ -151,32 +171,32 @@ WARNING: [Synth 8-7129] Port video2_tlast in module vfp_v1_0 is either unconnect
 WARNING: [Synth 8-7129] Port video2_tuser in module vfp_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port video2_tvalid in module vfp_v1_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:30 ; elapsed = 00:01:15 . Memory (MB): peak = 2186.141 ; gain = 667.312
+Finished RTL Elaboration : Time (s): cpu = 00:00:28 ; elapsed = 00:00:42 . Memory (MB): peak = 2152.004 ; gain = 633.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:01:17 . Memory (MB): peak = 2186.141 ; gain = 667.312
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:43 . Memory (MB): peak = 2165.750 ; gain = 647.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:31 ; elapsed = 00:01:17 . Memory (MB): peak = 2186.141 ; gain = 667.312
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:43 . Memory (MB): peak = 2165.750 ; gain = 647.020
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2186.141 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.906 . Memory (MB): peak = 2165.750 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 2264.820 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2288.344 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2288.219 ; gain = 23.398
+Constraint Validation Runtime : Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2305.152 ; gain = 16.809
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:58 ; elapsed = 00:01:56 . Memory (MB): peak = 2288.219 ; gain = 769.391
+Finished Constraint Validation : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 2305.152 ; gain = 786.422
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -184,14 +204,15 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:58 ; elapsed = 00:01:56 . Memory (MB): peak = 2288.219 ; gain = 769.391
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 2305.152 ; gain = 786.422
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:58 ; elapsed = 00:01:56 . Memory (MB): peak = 2288.219 ; gain = 769.391
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 2305.152 ; gain = 786.422
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'surface_contour_select'
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5:/banks[0].ram_reg"'.
 WARNING: [Synth 8-5790] Small sized RAM "axis_window5:/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
 WARNING: [Synth 8-5790] Small sized RAM "axis_window5:/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
@@ -208,74 +229,85 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_wi
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5__parameterized1:/banks[5].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5__parameterized1:/banks[6].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5__parameterized1:/banks[7].ram_reg"'.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               st_bypass |                              010 |                               00
+                 st_feed |                              100 |                               01
+                st_drain |                              001 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'surface_contour_select'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:31 ; elapsed = 00:02:43 . Memory (MB): peak = 2288.219 ; gain = 769.391
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:17 ; elapsed = 00:01:33 . Memory (MB): peak = 2305.152 ; gain = 786.422
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   3 Input   32 Bit       Adders := 1     
-	   2 Input   32 Bit       Adders := 3     
-	   4 Input   32 Bit       Adders := 1     
-	   2 Input   31 Bit       Adders := 122   
-	   3 Input   31 Bit       Adders := 1     
-	   2 Input   19 Bit       Adders := 1     
-	   2 Input   18 Bit       Adders := 4     
-	   2 Input   16 Bit       Adders := 3     
+	   3 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 6     
+	   5 Input   32 Bit       Adders := 2     
+	   2 Input   31 Bit       Adders := 2     
+	   2 Input   19 Bit       Adders := 3     
+	   2 Input   17 Bit       Adders := 13    
+	   2 Input   16 Bit       Adders := 4     
 	   2 Input   15 Bit       Adders := 1     
 	   2 Input   14 Bit       Adders := 1     
-	   2 Input   13 Bit       Adders := 10    
-	   2 Input   12 Bit       Adders := 15    
+	   2 Input   13 Bit       Adders := 5     
+	   2 Input   12 Bit       Adders := 8     
 	   4 Input   12 Bit       Adders := 36    
-	   2 Input   11 Bit       Adders := 3     
-	   6 Input   11 Bit       Adders := 1     
-	   7 Input   11 Bit       Adders := 2     
-	   4 Input   11 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 6     
+	   5 Input   11 Bit       Adders := 1     
 	   3 Input   10 Bit       Adders := 90    
 	   5 Input   10 Bit       Adders := 9     
 	   2 Input   10 Bit       Adders := 4     
 	   4 Input   10 Bit       Adders := 1     
-	   3 Input    9 Bit       Adders := 205   
+	   3 Input    9 Bit       Adders := 217   
 	   2 Input    9 Bit       Adders := 1     
-	   3 Input    8 Bit       Adders := 12    
-	   2 Input    8 Bit       Adders := 7     
+	   2 Input    8 Bit       Adders := 124   
 +---Registers : 
 	               72 Bit    Registers := 22    
 	               32 Bit    Registers := 130   
 	               24 Bit    Registers := 378   
-	               16 Bit    Registers := 5     
-	               13 Bit    Registers := 6     
-	               12 Bit    Registers := 13    
-	               11 Bit    Registers := 28    
-	               10 Bit    Registers := 90    
-	                9 Bit    Registers := 3     
-	                8 Bit    Registers := 194   
-	                4 Bit    Registers := 12    
+	               16 Bit    Registers := 9     
+	               13 Bit    Registers := 5     
+	               12 Bit    Registers := 46    
+	               11 Bit    Registers := 40    
+	               10 Bit    Registers := 91    
+	                9 Bit    Registers := 16    
+	                8 Bit    Registers := 360   
+	                6 Bit    Registers := 3     
 	                3 Bit    Registers := 2     
-	                2 Bit    Registers := 6     
+	                2 Bit    Registers := 5     
 	                1 Bit    Registers := 34    
 +---RAMs : 
 	             288K Bit	(4096 X 72 bit)          RAMs := 22    
 	              96K Bit	(4096 X 24 bit)          RAMs := 2     
++---ROMs : 
+	                    ROMs := 1     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 72    
-	   2 Input   31 Bit        Muxes := 191   
-	   2 Input   24 Bit        Muxes := 557   
-	   2 Input   18 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 252   
+	   2 Input   31 Bit        Muxes := 2     
+	   2 Input   24 Bit        Muxes := 559   
+	   2 Input   19 Bit        Muxes := 3     
 	   2 Input   17 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 4     
-	   2 Input   15 Bit        Muxes := 1     
+	   3 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 3     
+	   2 Input   15 Bit        Muxes := 2     
 	   2 Input   14 Bit        Muxes := 1     
-	   2 Input   12 Bit        Muxes := 3     
-	   2 Input   11 Bit        Muxes := 26    
-	   2 Input   10 Bit        Muxes := 4     
-	   2 Input    9 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 350   
-	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 44    
-	   3 Input    1 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 17    
+	   3 Input   10 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 3     
+	   2 Input    9 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 353   
+	   4 Input    8 Bit        Muxes := 9     
+	   5 Input    8 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 6     
+	   2 Input    1 Bit        Muxes := 40    
+	   3 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -291,27 +323,27 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP relative3_reg[2]3, operation Mode is: (C:0x80)+(D'-A2)*B2.
-DSP Report: register center2_reg[2] is absorbed into DSP relative3_reg[2]3.
-DSP Report: register relative3_reg[2]3 is absorbed into DSP relative3_reg[2]3.
-DSP Report: register minimum2_reg is absorbed into DSP relative3_reg[2]3.
-DSP Report: operator relative3_reg[2]3 is absorbed into DSP relative3_reg[2]3.
-DSP Report: operator relative3_reg[2]4 is absorbed into DSP relative3_reg[2]3.
-DSP Report: operator relative3_reg[2]5 is absorbed into DSP relative3_reg[2]3.
-DSP Report: Generating DSP a3, operation Mode is: (C:0x80)+(D'-A2)*B2.
-DSP Report: register center2_reg[1] is absorbed into DSP a3.
-DSP Report: register a3 is absorbed into DSP a3.
-DSP Report: register minimum2_reg is absorbed into DSP a3.
-DSP Report: operator a3 is absorbed into DSP a3.
-DSP Report: operator a4 is absorbed into DSP a3.
-DSP Report: operator a5 is absorbed into DSP a3.
-DSP Report: Generating DSP a3, operation Mode is: (C:0x80)+(D'-A2)*B2.
-DSP Report: register center2_reg[0] is absorbed into DSP a3.
-DSP Report: register a3 is absorbed into DSP a3.
-DSP Report: register minimum2_reg is absorbed into DSP a3.
-DSP Report: operator a3 is absorbed into DSP a3.
-DSP Report: operator a4 is absorbed into DSP a3.
-DSP Report: operator a5 is absorbed into DSP a3.
+DSP Report: Generating DSP s3_rel_rgb_reg[r]3, operation Mode is: (C:0x80)+(D'-A'')*B.
+DSP Report: register s2_center_reg[r] is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: register min_delay_reg is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: operator s3_rel_rgb_reg[r]3 is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: operator s3_rel_rgb_reg[r]4 is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: operator s3_rel_rgb_reg[r]5 is absorbed into DSP s3_rel_rgb_reg[r]3.
+DSP Report: Generating DSP s3_rel_rgb_reg[b]3, operation Mode is: (C:0x80)+(D'-A'')*B.
+DSP Report: register s2_center_reg[b] is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: register min_delay_reg is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: operator s3_rel_rgb_reg[b]3 is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: operator s3_rel_rgb_reg[b]4 is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: operator s3_rel_rgb_reg[b]5 is absorbed into DSP s3_rel_rgb_reg[b]3.
+DSP Report: Generating DSP s3_rel_rgb_reg[g]3, operation Mode is: (C:0x80)+(D'-A'')*B.
+DSP Report: register s2_center_reg[g] is absorbed into DSP s3_rel_rgb_reg[g]3.
+DSP Report: register min_delay_reg is absorbed into DSP s3_rel_rgb_reg[g]3.
+DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[g]3.
+DSP Report: operator s3_rel_rgb_reg[g]3 is absorbed into DSP s3_rel_rgb_reg[g]3.
+DSP Report: operator s3_rel_rgb_reg[g]4 is absorbed into DSP s3_rel_rgb_reg[g]3.
+DSP Report: operator s3_rel_rgb_reg[g]5 is absorbed into DSP s3_rel_rgb_reg[g]3.
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_red[9] driven by constant 0
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_red[8] driven by constant 0
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_gre[9] driven by constant 0
@@ -375,56 +407,175 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_wi
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[5].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[6].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[7].ram_reg"'.
-INFO: [Synth 8-4471] merging register 'center2_reg[2][7:0]' into 'center2_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[0][7:0]' into 'center2_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[1][7:0]' into 'center2_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center3_reg[2][7:0]' into 'center3_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[0][7:0]' into 'center3_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[1][7:0]' into 'center3_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center2_reg[2][7:0]' into 'center2_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[0][7:0]' into 'center2_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[1][7:0]' into 'center2_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center3_reg[2][7:0]' into 'center3_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[0][7:0]' into 'center3_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[1][7:0]' into 'center3_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[0].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[1].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[2].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[3].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[0].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[1].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[2].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[3].ram_reg"'.
-INFO: [Synth 8-4471] merging register 'center2_reg[2][7:0]' into 'center2_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[0][7:0]' into 'center2_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center2_reg[1][7:0]' into 'center2_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:97]
-INFO: [Synth 8-4471] merging register 'center3_reg[2][7:0]' into 'center3_reg[2][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[0][7:0]' into 'center3_reg[0][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-4471] merging register 'center3_reg[1][7:0]' into 'center3_reg[1][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/6c3a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:104]
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\surfaces[0].stage /window_source/banks[0].ram_reg"'.
-WARNING: [Synth 8-5790] Small sized RAM "\surfaces[0].stage /window_source/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\surfaces[0].stage /window_source/banks[1].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\surfaces[0].stage /window_source/banks[0].ram_reg"'.
-WARNING: [Synth 8-5790] Small sized RAM "\surfaces[0].stage /window_source/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\surfaces[0].stage /window_source/banks[1].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[0].ram_reg"'.
-WARNING: [Synth 8-5790] Small sized RAM "window_source/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[1].ram_reg"'.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[0].ram_reg"'.
-WARNING: [Synth 8-5790] Small sized RAM "window_source/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"window_source/banks[1].ram_reg"'.
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
+DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
+DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
+DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
+DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
+DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
+DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
+DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
+DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
+DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
+DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
+DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
+DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[2].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[3].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[2].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[3].ram_reg"'.
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:298]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/eb0b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:318]
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
+DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
+DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
+DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
+DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
+DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
+DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+WARNING: [Synth 8-5790] Small sized RAM "u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+WARNING: [Synth 8-5790] Small sized RAM "u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+WARNING: [Synth 8-5790] Small sized RAM "u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[0].ram_reg"'.
+WARNING: [Synth 8-5790] Small sized RAM "u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"u_win/banks[1].ram_reg"'.
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (vfpConfigInst/aw_en_reg)
 INFO: [Synth 8-3886] merging instance 'vfpConfigInst/axi_rresp_reg[0]' (FDRE) to 'vfpConfigInst/axi_rresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (vfpConfigInst/\axi_rresp_reg[1] )
 INFO: [Synth 8-3886] merging instance 'vfpConfigInst/axi_bresp_reg[0]' (FDRE) to 'vfpConfigInst/axi_bresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (vfpConfigInst/\axi_bresp_reg[1] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:05:21 ; elapsed = 00:10:04 . Memory (MB): peak = 2288.219 ; gain = 769.391
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:59 ; elapsed = 00:03:52 . Memory (MB): peak = 2305.152 ; gain = 786.422
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[3].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[3].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -433,44 +584,42 @@ WARNING: [Synth 8-6057] Memory: "banks[4].ram_reg" defined in module: "axis_wind
 WARNING: [Synth 8-6057] Memory: "banks[5].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[6].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[7].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "\surfaces[0].stage /window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "\surfaces[0].stage /window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 ROM: Preliminary Mapping Report
-+--------------------+------------+---------------+----------------+
-|Module Name         | RTL Object | Depth x Width | Implemented As | 
-+--------------------+------------+---------------+----------------+
-|axis_tone_contour   | ANCHORS[1] | 32x9          | LUT            | 
-|kv260_video_vfp_0_0 | ANCHORS[1] | 32x9          | LUT            | 
-+--------------------+------------+---------------+----------------+
++--------------------+-----------------+---------------+----------------+
+|Module Name         | RTL Object      | Depth x Width | Implemented As | 
++--------------------+-----------------+---------------+----------------+
+|kv260_video_vfp_0_0 | s1_y_center_reg | 256x8         | Block RAM      | 
+|kv260_video_vfp_0_0 | s1_y_center_reg | 256x8         | Block RAM      | 
++--------------------+-----------------+---------------+----------------+
 
 
 Ultra RAM: Preliminary Mapping Report (see note below)
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|Module Name                       | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|window_source                     | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|\surfaces[0].stage /window_source | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|\surfaces[0].stage /window_source | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name  | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 
 Note: The table above is a preliminary report that shows the Ultra RAMs at the current stage of the synthesis flow. Some Ultra RAMs may be reimplemented as non Ultra RAM primitives later in the synthesis flow. Multiple instantiated Ultra RAMs are reported only once. Fields "FF provided for Pipeline" and "FF absorbed" respectively indicate number of registers available for pipelining and number of registers absorbed in the URAM matrix for pipelining. 
 
@@ -478,9 +627,45 @@ DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding R
 +------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name       | DSP Mapping         | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|axis_tone_contour | (C:0x80)+(D'-A2)*B2 | 8      | 10     | 9      | 8      | 18     | 1    | 1    | 0    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | (C:0x80)+(D'-A2)*B2 | 8      | 10     | 9      | 8      | 18     | 1    | 1    | 0    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | (C:0x80)+(D'-A2)*B2 | 8      | 10     | 9      | 8      | 18     | 1    | 1    | 0    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | (C:0x80)+(D'-A'')*B | 8      | 11     | 9      | 8      | 19     | 2    | 0    | 0    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | (C:0x80)+(D'-A'')*B | 8      | 11     | 9      | 8      | 19     | 2    | 0    | 0    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | (C:0x80)+(D'-A'')*B | 8      | 11     | 9      | 8      | 19     | 2    | 0    | 0    | 1    | 0     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)        | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
 +------------------+---------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
@@ -491,18 +676,20 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:05:46 ; elapsed = 00:10:54 . Memory (MB): peak = 2653.746 ; gain = 1134.918
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:15 ; elapsed = 00:04:10 . Memory (MB): peak = 2637.609 ; gain = 1118.879
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:05:57 ; elapsed = 00:11:12 . Memory (MB): peak = 2689.930 ; gain = 1171.102
+Finished Timing Optimization : Time (s): cpu = 00:03:20 ; elapsed = 00:04:16 . Memory (MB): peak = 2697.297 ; gain = 1178.566
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[3].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[3].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[2].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -519,43 +706,41 @@ WARNING: [Synth 8-6057] Memory: "banks[4].ram_reg" defined in module: "axis_wind
 WARNING: [Synth 8-6057] Memory: "banks[5].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[6].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[7].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "\surfaces[0].stage /window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
-WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "\surfaces[0].stage /window_source" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
+WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "u_win" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Ultra RAM: Final Mapping Report (see note below)
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|Module Name                       | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|window_source                     | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|axis_window5                      | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|window_source                     | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|\surfaces[0].stage /window_source | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-|\surfaces[0].stage /window_source | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
-+----------------------------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|Module Name  | RTL Object       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[1].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[2].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[3].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[4].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[5].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[6].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|axis_window5 | banks[7].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[0].ram_reg | 4 K x 72               |   | R | 4 K x 72               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|u_win        | banks[1].ram_reg | 4 K x 24               |   | R | 4 K x 24               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
++-------------+------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -563,32 +748,32 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance corei_2/U0/surface_contour/core/surfaces[0].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance corei_2/U0/surface_contour/core/surfaces[0].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[0].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[0].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:06:20 ; elapsed = 00:12:51 . Memory (MB): peak = 2718.879 ; gain = 1200.051
+Finished Technology Mapping : Time (s): cpu = 00:03:29 ; elapsed = 00:04:39 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -602,65 +787,80 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[1].stage/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[2].stage/window_source/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/window_source/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[0].stage/window_source/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/surfaces[0].stage/window_source/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[0].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[0].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[1].surfaces/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/gen_surfaces[2].surfaces/u_win/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[2].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[3].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[4].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[5].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[6].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/finish_pixel/u_win/banks[7].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antialias/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:06:49 ; elapsed = 00:13:37 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished IO Insertion : Time (s): cpu = 00:03:39 ; elapsed = 00:04:50 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:06:49 ; elapsed = 00:13:37 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:40 ; elapsed = 00:04:50 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:06:57 ; elapsed = 00:13:53 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:45 ; elapsed = 00:04:55 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:06:57 ; elapsed = 00:13:53 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:45 ; elapsed = 00:04:56 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:07:01 ; elapsed = 00:14:01 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:49 ; elapsed = 00:04:59 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:07:01 ; elapsed = 00:14:01 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:49 ; elapsed = 00:05:00 . Memory (MB): peak = 2725.211 ; gain = 1206.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name         | RTL Name                                                                | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[0].surfaces/mean_center_reg[r][7]  | 3      | 72    | NO           | NO                 | YES               | 72     | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[0].surfaces/blend_center_reg[b][7] | 4      | 72    | NO           | NO                 | YES               | 72     | 0       | 
++--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -670,9 +870,45 @@ DSP Final Report (the ' indicates corresponding REG is set)
 +------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name       | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|axis_tone_contour | C+D'-A'*B'  | 8      | 9      | 8      | 8      | 18     | 1    | 1    | 1    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | C+D'-A'*B'  | 8      | 9      | 8      | 8      | 18     | 1    | 1    | 1    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | C+D'-A'*B'  | 8      | 9      | 8      | 8      | 18     | 1    | 1    | 1    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | C+D'-A''*B' | 8      | 9      | 8      | 8      | 19     | 2    | 1    | 1    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | C+D'-A''*B' | 8      | 9      | 8      | 8      | 19     | 2    | 1    | 1    | 1    | 0     | 0    | 0    | 
+|axis_tone_contour | C+D'-A''*B' | 8      | 9      | 8      | 8      | 19     | 2    | 1    | 1    | 1    | 0     | 0    | 0    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
 +------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
@@ -686,56 +922,53 @@ Report Cell Usage:
 +------+----------------+------+
 |      |Cell            |Count |
 +------+----------------+------+
-|1     |CARRY8          |  1232|
-|2     |DSP_ALU         |     3|
-|3     |DSP_A_B_DATA    |     3|
-|4     |DSP_C_DATA      |     3|
-|5     |DSP_MULTIPLIER  |     3|
-|6     |DSP_M_DATA      |     3|
-|7     |DSP_OUTPUT      |     3|
-|8     |DSP_PREADD      |     3|
-|9     |DSP_PREADD_DATA |     3|
-|10    |LUT1            |    50|
-|11    |LUT2            |  6423|
-|12    |LUT3            |  5196|
-|13    |LUT4            |  3670|
-|14    |LUT5            |  6254|
-|15    |LUT6            |  7350|
-|16    |MUXF7           |     1|
-|17    |URAM288         |    24|
-|18    |FDRE            |  7024|
-|19    |FDSE            |  5196|
+|1     |CARRY8          |  1251|
+|2     |DSP_ALU         |    39|
+|3     |DSP_A_B_DATA    |    39|
+|5     |DSP_C_DATA      |    39|
+|7     |DSP_MULTIPLIER  |    39|
+|9     |DSP_M_DATA      |    39|
+|10    |DSP_OUTPUT      |    39|
+|12    |DSP_PREADD      |    39|
+|13    |DSP_PREADD_DATA |    39|
+|15    |LUT1            |    46|
+|16    |LUT2            |  1378|
+|17    |LUT3            |  4782|
+|18    |LUT4            |  3745|
+|19    |LUT5            | 11305|
+|20    |LUT6            |  6629|
+|21    |MUXF7           |     1|
+|22    |RAMB18E2        |     1|
+|23    |SRL16E          |   144|
+|24    |URAM288         |    24|
+|25    |FDRE            | 13150|
+|26    |FDSE            |    13|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:07:02 ; elapsed = 00:14:02 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:49 ; elapsed = 00:05:00 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 108 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:06:16 ; elapsed = 00:14:19 . Memory (MB): peak = 2724.301 ; gain = 1103.395
-Synthesis Optimization Complete : Time (s): cpu = 00:07:02 ; elapsed = 00:14:39 . Memory (MB): peak = 2724.301 ; gain = 1205.473
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:07 ; elapsed = 00:04:54 . Memory (MB): peak = 2725.211 ; gain = 1067.078
+Synthesis Optimization Complete : Time (s): cpu = 00:03:49 ; elapsed = 00:05:05 . Memory (MB): peak = 2725.211 ; gain = 1206.480
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 2735.766 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1236 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.367 . Memory (MB): peak = 2743.473 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1291 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.047 . Memory (MB): peak = 2780.777 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2802.270 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 3 instances were transformed.
-  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 3 instances
+  A total of 39 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 39 instances
 
-Synth Design complete, checksum: fea50baf
+Synth Design complete, checksum: 5e621f51
 INFO: [Common 17-83] Releasing license: Synthesis
-172 Infos, 173 Warnings, 0 Critical Warnings and 0 Errors encountered.
+183 Infos, 193 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:07:32 ; elapsed = 00:15:40 . Memory (MB): peak = 2780.777 ; gain = 1377.184
+synth_design: Time (s): cpu = 00:04:09 ; elapsed = 00:05:42 . Memory (MB): peak = 2802.270 ; gain = 1430.289
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1/kv260_video_vfp_0_0.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 2780.777 ; gain = 0.000
-write_verilog: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2780.777 ; gain = 0.000
-write_vhdl: Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 2780.777 ; gain = 0.000
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_vfp_0_0, cache-ID = 6da7f1faf69d0e91
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_vfp_0_0, cache-ID = 4e583ef59a555a1e
 INFO: [Coretcl 2-1174] Renamed 14 cell refs.
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1/kv260_video_vfp_0_0.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2780.777 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file kv260_video_vfp_0_0_utilization_synth.rpt -pb kv260_video_vfp_0_0_utilization_synth.pb
-write_vhdl: Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 2780.777 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 09:30:56 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 11:26:26 2026...

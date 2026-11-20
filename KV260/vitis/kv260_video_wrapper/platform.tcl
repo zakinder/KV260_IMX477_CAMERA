@@ -64,3 +64,6 @@ platform generate -domains standalone_domain,jpeg_worker1,jpeg_worker2,zynqmp_fs
 platform generate -domains standalone_domain 
 platform generate -domains standalone_domain 
 platform generate -domains standalone_domain 
+platform active {kv260_video_wrapper}
+platform config -updatehw {R:/KV260/vitis/kv260_video_wrapper.xsa}
+platform generate -domains 

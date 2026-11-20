@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "kv260_video_vfp_0_0_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 2
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c

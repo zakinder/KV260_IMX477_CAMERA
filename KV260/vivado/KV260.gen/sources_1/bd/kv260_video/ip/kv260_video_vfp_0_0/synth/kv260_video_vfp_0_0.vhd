@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:vfp:2.0
--- IP Revision: 159
+-- IP Revision: 162
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -217,7 +217,7 @@ ARCHITECTURE kv260_video_vfp_0_0_arch OF kv260_video_vfp_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF kv260_video_vfp_0_0_arch : ARCHITECTURE IS "kv260_video_vfp_0_0,vfp_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF kv260_video_vfp_0_0_arch: ARCHITECTURE IS "kv260_video_vfp_0_0,vfp_v1_0,{x_ipProduct=Vivado 2022.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=vfp,x_ipVersion=2.0,x_ipCoreRevision=159,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,revision_number=0x12032022,C_vfpConfig_DATA_WIDTH=32,C_vfpConfig_ADDR_WIDTH=8,C_oVideo_TDATA_WIDTH=32,C_oVideo_START_COUNT=32,C_iVideo_TDATA_WIDTH=32,FRAME_WIDTH=4096,FRAME_HEIGHT=3040,FRAME_PIXEL_DEPTH=10}";
+  ATTRIBUTE CORE_GENERATION_INFO OF kv260_video_vfp_0_0_arch: ARCHITECTURE IS "kv260_video_vfp_0_0,vfp_v1_0,{x_ipProduct=Vivado 2022.1,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=vfp,x_ipVersion=2.0,x_ipCoreRevision=162,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,revision_number=0x12032022,C_vfpConfig_DATA_WIDTH=32,C_vfpConfig_ADDR_WIDTH=8,C_oVideo_TDATA_WIDTH=32,C_oVideo_START_COUNT=32,C_iVideo_TDATA_WIDTH=32,FRAME_WIDTH=4096,FRAME_HEIGHT=3040,FRAME_PIXEL_DEPTH=10}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF ivideo_aclk: SIGNAL IS "XIL_INTERFACENAME ivideo_aclk, ASSOCIATED_BUSIF ivideo, ASSOCIATED_RESET ivideo_aresetn, FREQ_HZ 299997000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN kv260_video_clk_wiz_1_0_clk_out1, INSERT_VIP 0";

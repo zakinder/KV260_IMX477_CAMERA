@@ -928,6 +928,3 @@ void emac_enable_intr(void)
 {
 	XScuGic_EnableIntr(INTC_DIST_BASE_ADDR, emac_intr_num);
 }
-
-
-

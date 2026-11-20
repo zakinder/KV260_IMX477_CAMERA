@@ -13,51 +13,56 @@ source kv260_video_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
-add_files: Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1373.109 ; gain = 0.000
+add_files: Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1372.930 ; gain = 0.000
+Command: read_checkpoint -auto_incremental -incremental R:/KV260/vivado/KV260.srcs/utils_1/imports/synth_1/kv260_video_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from R:/KV260/vivado/KV260.srcs/utils_1/imports/synth_1/kv260_video_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top kv260_video_wrapper -part xck26-sfvc784-2LV-c
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23452
+INFO: [Synth 8-7075] Helper process launched with PID 24640
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1956.758 ; gain = 319.551
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1964.793 ; gain = 320.836
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kv260_video_wrapper' [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:30]
 INFO: [Synth 8-3491] module 'IOBUF' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:59734' bound to instance 'iic_scl_iobuf' of component 'IOBUF' [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:65]
 INFO: [Synth 8-6157] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:59734]
 INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (0#1) [C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:59734]
 INFO: [Synth 8-3491] module 'IOBUF' declared at 'C:/Xilinx/Vivado/2022.1/scripts/rt/data/unisim_comp.v:59734' bound to instance 'iic_sda_iobuf' of component 'IOBUF' [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:72]
-INFO: [Synth 8-3491] module 'kv260_video' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7913' bound to instance 'kv260_video_i' of component 'kv260_video' [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:79]
-INFO: [Synth 8-638] synthesizing module 'kv260_video' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7937]
-INFO: [Synth 8-638] synthesizing module 'PS_VIDEO_imp_YI3F7Y' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7258]
+INFO: [Synth 8-3491] module 'kv260_video' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:8111' bound to instance 'kv260_video_i' of component 'kv260_video' [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:79]
+INFO: [Synth 8-638] synthesizing module 'kv260_video' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:8135]
+INFO: [Synth 8-638] synthesizing module 'PS_VIDEO_imp_YI3F7Y' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7456]
 INFO: [Synth 8-638] synthesizing module 'RX_VIDEO_imp_QQ232Y' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:129]
-INFO: [Synth 8-3491] module 'kv260_video_ila_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_0_stub.vhdl:5' bound to instance 'ila_0' of component 'kv260_video_ila_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:664]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'kv260_video_mipi_csi2_rx_subsyst_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_0_0_stub.vhdl:5' bound to instance 'mipi_csi2_rx_subsyst_0' of component 'kv260_video_mipi_csi2_rx_subsyst_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:679]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_0_0_stub.vhdl:49]
-INFO: [Synth 8-3491] module 'kv260_video_mipi_csi2_rx_subsyst_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_1_0_stub.vhdl:5' bound to instance 'mipi_csi2_rx_subsyst_1' of component 'kv260_video_mipi_csi2_rx_subsyst_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:720]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_1_0_stub.vhdl:49]
-INFO: [Synth 8-3491] module 'kv260_video_v_demosaic_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_0_0_stub.vhdl:5' bound to instance 'v_demosaic_0' of component 'kv260_video_v_demosaic_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:761]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_v_demosaic_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_0_0_stub.vhdl:49]
-INFO: [Synth 8-3491] module 'kv260_video_v_demosaic_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_1_0_stub.vhdl:5' bound to instance 'v_demosaic_1' of component 'kv260_video_v_demosaic_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:802]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_v_demosaic_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_1_0_stub.vhdl:49]
-INFO: [Synth 8-3491] module 'kv260_video_vfp_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_vfp_0_0_stub.vhdl:5' bound to instance 'vfp_0' of component 'kv260_video_vfp_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:843]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_vfp_0_0_stub.vhdl:79]
+INFO: [Synth 8-3491] module 'kv260_video_ila_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_0_stub.vhdl:5' bound to instance 'ila_0' of component 'kv260_video_ila_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:664]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'kv260_video_mipi_csi2_rx_subsyst_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_0_0_stub.vhdl:5' bound to instance 'mipi_csi2_rx_subsyst_0' of component 'kv260_video_mipi_csi2_rx_subsyst_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:679]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_0_0_stub.vhdl:49]
+INFO: [Synth 8-3491] module 'kv260_video_mipi_csi2_rx_subsyst_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_1_0_stub.vhdl:5' bound to instance 'mipi_csi2_rx_subsyst_1' of component 'kv260_video_mipi_csi2_rx_subsyst_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:720]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_mipi_csi2_rx_subsyst_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_mipi_csi2_rx_subsyst_1_0_stub.vhdl:49]
+INFO: [Synth 8-3491] module 'kv260_video_v_demosaic_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_0_0_stub.vhdl:5' bound to instance 'v_demosaic_0' of component 'kv260_video_v_demosaic_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:761]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_v_demosaic_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_0_0_stub.vhdl:49]
+INFO: [Synth 8-3491] module 'kv260_video_v_demosaic_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_1_0_stub.vhdl:5' bound to instance 'v_demosaic_1' of component 'kv260_video_v_demosaic_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:802]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_v_demosaic_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_demosaic_1_0_stub.vhdl:49]
+INFO: [Synth 8-3491] module 'kv260_video_vfp_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_vfp_0_0_stub.vhdl:5' bound to instance 'vfp_0' of component 'kv260_video_vfp_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:843]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_vfp_0_0_stub.vhdl:79]
 INFO: [Synth 8-256] done synthesizing module 'RX_VIDEO_imp_QQ232Y' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:129]
-INFO: [Synth 8-638] synthesizing module 'TO_PS_imp_PC26XI' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:5978]
-INFO: [Synth 8-3491] module 'kv260_video_axi_gpio_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_gpio_0_stub.vhdl:5' bound to instance 'axi_gpio' of component 'kv260_video_axi_gpio_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6721]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_gpio_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_gpio_0_stub.vhdl:31]
-INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_0_0_stub.vhdl:5' bound to instance 'clk_wiz_0' of component 'kv260_video_clk_wiz_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6744]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_0_0_stub.vhdl:33]
-INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_1_0_stub.vhdl:5' bound to instance 'clk_wiz_1' of component 'kv260_video_clk_wiz_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6769]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_1_0_stub.vhdl:14]
-INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_ila_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_ila_0_stub.vhdl:5' bound to instance 'clk_wiz_ila' of component 'kv260_video_clk_wiz_ila_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6775]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_ila_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_ila_0_stub.vhdl:31]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_ps8_0_axi_periph_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:4267]
+INFO: [Synth 8-638] synthesizing module 'TO_PS_imp_PC26XI' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6144]
+INFO: [Synth 8-3491] module 'kv260_video_axi_gpio_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_gpio_0_stub.vhdl:5' bound to instance 'axi_gpio' of component 'kv260_video_axi_gpio_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6906]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_gpio_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_gpio_0_stub.vhdl:31]
+INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_0_0_stub.vhdl:5' bound to instance 'clk_wiz_0' of component 'kv260_video_clk_wiz_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6929]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_0_0_stub.vhdl:33]
+INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_1_0_stub.vhdl:5' bound to instance 'clk_wiz_1' of component 'kv260_video_clk_wiz_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6954]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_1_0_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'kv260_video_clk_wiz_ila_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_ila_0_stub.vhdl:5' bound to instance 'clk_wiz_ila' of component 'kv260_video_clk_wiz_ila_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6960]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_clk_wiz_ila_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_clk_wiz_ila_0_stub.vhdl:31]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_ps8_0_axi_periph_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:4385]
 INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_SG6IWI' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2009]
 INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_SG6IWI' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2009]
 INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1X6EAI4' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2107]
@@ -77,36 +82,40 @@ INFO: [Synth 8-256] done synthesizing module 'm07_couplers_imp_4A60RU' (0#1) [r:
 INFO: [Synth 8-638] synthesizing module 'm08_couplers_imp_IQ13YC' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2819]
 INFO: [Synth 8-256] done synthesizing module 'm08_couplers_imp_IQ13YC' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2819]
 INFO: [Synth 8-638] synthesizing module 'm09_couplers_imp_1P7ROII' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2924]
+INFO: [Synth 8-3491] module 'kv260_video_auto_cc_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_cc_0_stub.vhdl:5' bound to instance 'auto_cc' of component 'kv260_video_auto_cc_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3056]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_cc_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_cc_0_stub.vhdl:53]
 INFO: [Synth 8-256] done synthesizing module 'm09_couplers_imp_1P7ROII' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:2924]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_12FSI76' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3053]
-INFO: [Synth 8-3491] module 'kv260_video_auto_ds_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_0_stub.vhdl:5' bound to instance 'auto_ds' of component 'kv260_video_auto_ds_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3346]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_ds_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_0_stub.vhdl:87]
-INFO: [Synth 8-3491] module 'kv260_video_auto_pc_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'kv260_video_auto_pc_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3425]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_pc_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_0_stub.vhdl:67]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_12FSI76' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3053]
-INFO: [Synth 8-638] synthesizing module 's01_couplers_imp_5X0UYK' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3554]
-INFO: [Synth 8-3491] module 'kv260_video_auto_ds_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_1_stub.vhdl:5' bound to instance 'auto_ds' of component 'kv260_video_auto_ds_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3847]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_ds_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_1_stub.vhdl:87]
-INFO: [Synth 8-3491] module 'kv260_video_auto_pc_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'kv260_video_auto_pc_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3926]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_pc_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_1_stub.vhdl:67]
-INFO: [Synth 8-256] done synthesizing module 's01_couplers_imp_5X0UYK' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3554]
-INFO: [Synth 8-3491] module 'kv260_video_xbar_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'kv260_video_xbar_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:5562]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_xbar_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_xbar_0_stub.vhdl:51]
-INFO: [Synth 8-256] done synthesizing module 'kv260_video_ps8_0_axi_periph_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:4267]
-INFO: [Synth 8-3491] module 'kv260_video_rst_ps8_0_249M_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_ps8_0_249M_0_stub.vhdl:5' bound to instance 'rst_ps8_0_249M' of component 'kv260_video_rst_ps8_0_249M_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7073]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_rst_ps8_0_249M_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_ps8_0_249M_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'kv260_video_zynq_ultra_ps_e_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_zynq_ultra_ps_e_0_0_stub.vhdl:5' bound to instance 'zynq_ultra_ps_e_0' of component 'kv260_video_zynq_ultra_ps_e_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7086]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_zynq_ultra_ps_e_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_zynq_ultra_ps_e_0_0_stub.vhdl:155]
-INFO: [Synth 8-256] done synthesizing module 'TO_PS_imp_PC26XI' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:5978]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_12FSI76' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3171]
+INFO: [Synth 8-3491] module 'kv260_video_auto_ds_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_0_stub.vhdl:5' bound to instance 'auto_ds' of component 'kv260_video_auto_ds_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3464]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_ds_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_0_stub.vhdl:87]
+INFO: [Synth 8-3491] module 'kv260_video_auto_pc_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'kv260_video_auto_pc_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3543]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_pc_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_0_stub.vhdl:67]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_12FSI76' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3171]
+INFO: [Synth 8-638] synthesizing module 's01_couplers_imp_5X0UYK' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3672]
+INFO: [Synth 8-3491] module 'kv260_video_auto_ds_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_1_stub.vhdl:5' bound to instance 'auto_ds' of component 'kv260_video_auto_ds_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3965]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_ds_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_ds_1_stub.vhdl:87]
+INFO: [Synth 8-3491] module 'kv260_video_auto_pc_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'kv260_video_auto_pc_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:4044]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_auto_pc_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_auto_pc_1_stub.vhdl:67]
+INFO: [Synth 8-256] done synthesizing module 's01_couplers_imp_5X0UYK' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:3672]
+INFO: [Synth 8-3491] module 'kv260_video_xbar_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'kv260_video_xbar_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:5728]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_xbar_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_xbar_0_stub.vhdl:51]
+INFO: [Synth 8-256] done synthesizing module 'kv260_video_ps8_0_axi_periph_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:4385]
+INFO: [Synth 8-3491] module 'kv260_video_rst_clk_wiz_ctrl_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_clk_wiz_ctrl_0_stub.vhdl:5' bound to instance 'rst_clk_wiz_ctrl' of component 'kv260_video_rst_clk_wiz_ctrl_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7258]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_rst_clk_wiz_ctrl_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_clk_wiz_ctrl_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'kv260_video_rst_ps8_0_249M_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_ps8_0_249M_0_stub.vhdl:5' bound to instance 'rst_ps8_0_249M' of component 'kv260_video_rst_ps8_0_249M_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7271]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_rst_ps8_0_249M_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_rst_ps8_0_249M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'kv260_video_zynq_ultra_ps_e_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_zynq_ultra_ps_e_0_0_stub.vhdl:5' bound to instance 'zynq_ultra_ps_e_0' of component 'kv260_video_zynq_ultra_ps_e_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7284]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_zynq_ultra_ps_e_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_zynq_ultra_ps_e_0_0_stub.vhdl:155]
+INFO: [Synth 8-256] done synthesizing module 'TO_PS_imp_PC26XI' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6144]
 INFO: [Synth 8-638] synthesizing module 'VIDEO_PIPELINE_imp_U9ZAJD' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:953]
-INFO: [Synth 8-3491] module 'kv260_video_ila_0_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_1_stub.vhdl:5' bound to instance 'ila_0' of component 'kv260_video_ila_0_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1132]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_0_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_1_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'kv260_video_ila_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_1_0_stub.vhdl:5' bound to instance 'ila_1' of component 'kv260_video_ila_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1145]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_1_0_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'kv260_video_v_axi4s_vid_out_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_axi4s_vid_out_0_0_stub.vhdl:5' bound to instance 'v_axi4s_vid_out_0' of component 'kv260_video_v_axi4s_vid_out_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1153]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_v_axi4s_vid_out_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_axi4s_vid_out_0_0_stub.vhdl:43]
-INFO: [Synth 8-3491] module 'kv260_video_v_tc_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_tc_0_0_stub.vhdl:5' bound to instance 'v_tc_0' of component 'kv260_video_v_tc_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1188]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_v_tc_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_v_tc_0_0_stub.vhdl:44]
+INFO: [Synth 8-3491] module 'kv260_video_ila_0_1' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_1_stub.vhdl:5' bound to instance 'ila_0' of component 'kv260_video_ila_0_1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1132]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_0_1' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_0_1_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'kv260_video_ila_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_1_0_stub.vhdl:5' bound to instance 'ila_1' of component 'kv260_video_ila_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1145]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_ila_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_ila_1_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'kv260_video_v_axi4s_vid_out_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_axi4s_vid_out_0_0_stub.vhdl:5' bound to instance 'v_axi4s_vid_out_0' of component 'kv260_video_v_axi4s_vid_out_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1153]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_v_axi4s_vid_out_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_axi4s_vid_out_0_0_stub.vhdl:43]
+INFO: [Synth 8-3491] module 'kv260_video_v_tc_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_tc_0_0_stub.vhdl:5' bound to instance 'v_tc_0' of component 'kv260_video_v_tc_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1188]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_v_tc_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_v_tc_0_0_stub.vhdl:44]
 INFO: [Synth 8-3491] module 'kv260_video_xlconstant_0_0' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_xlconstant_0_0/synth/kv260_video_xlconstant_0_0.v:53' bound to instance 'xlconstant_0' of component 'kv260_video_xlconstant_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1224]
 INFO: [Synth 8-6157] synthesizing module 'kv260_video_xlconstant_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_xlconstant_0_0/synth/kv260_video_xlconstant_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
@@ -114,18 +123,18 @@ INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (0#
 INFO: [Synth 8-6155] done synthesizing module 'kv260_video_xlconstant_0_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_xlconstant_0_0/synth/kv260_video_xlconstant_0_0.v:53]
 INFO: [Synth 8-256] done synthesizing module 'VIDEO_PIPELINE_imp_U9ZAJD' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:953]
 INFO: [Synth 8-638] synthesizing module 'V_DMA_imp_18YRF98' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1324]
-INFO: [Synth 8-3491] module 'kv260_video_axi_smc_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'kv260_video_axi_smc_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1757]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_smc_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_smc_0_stub.vhdl:97]
-INFO: [Synth 8-3491] module 'kv260_video_axi_vdma_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_0_0_stub.vhdl:5' bound to instance 'axi_vdma_0' of component 'kv260_video_axi_vdma_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1846]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_0_0_stub.vhdl:78]
-INFO: [Synth 8-3491] module 'kv260_video_axi_vdma_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_1_0_stub.vhdl:5' bound to instance 'axi_vdma_1' of component 'kv260_video_axi_vdma_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1916]
-INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-1928-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_1_0_stub.vhdl:55]
+INFO: [Synth 8-3491] module 'kv260_video_axi_smc_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'kv260_video_axi_smc_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1757]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_smc_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_smc_0_stub.vhdl:97]
+INFO: [Synth 8-3491] module 'kv260_video_axi_vdma_0_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_0_0_stub.vhdl:5' bound to instance 'axi_vdma_0' of component 'kv260_video_axi_vdma_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1846]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_0_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_0_0_stub.vhdl:78]
+INFO: [Synth 8-3491] module 'kv260_video_axi_vdma_1_0' declared at 'R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_1_0_stub.vhdl:5' bound to instance 'axi_vdma_1' of component 'kv260_video_axi_vdma_1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1916]
+INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_1_0' [R:/KV260/vivado/KV260.runs/synth_1/.Xil/Vivado-27248-LAPTOP-I3ECBFK4/realtime/kv260_video_axi_vdma_1_0_stub.vhdl:55]
 INFO: [Synth 8-256] done synthesizing module 'V_DMA_imp_18YRF98' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:1324]
-INFO: [Synth 8-256] done synthesizing module 'PS_VIDEO_imp_YI3F7Y' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7258]
-INFO: [Synth 8-256] done synthesizing module 'kv260_video' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7937]
+INFO: [Synth 8-256] done synthesizing module 'PS_VIDEO_imp_YI3F7Y' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7456]
+INFO: [Synth 8-256] done synthesizing module 'kv260_video' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:8135]
 INFO: [Synth 8-256] done synthesizing module 'kv260_video_wrapper' (0#1) [R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd:30]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ps8_0_axi_periph'. This will prevent further optimization [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6798]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'VIDEO_PIPELINE'. This will prevent further optimization [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7787]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ps8_0_axi_periph'. This will prevent further optimization [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:6983]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'VIDEO_PIPELINE'. This will prevent further optimization [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd:7985]
 WARNING: [Synth 8-7129] Port S_AXI_LITE1_araddr[39] in module V_DMA_imp_18YRF98 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S_AXI_LITE1_araddr[38] in module V_DMA_imp_18YRF98 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S_AXI_LITE1_araddr[37] in module V_DMA_imp_18YRF98 is either unconnected or has no load
@@ -228,18 +237,18 @@ WARNING: [Synth 8-7129] Port S_AXI_LITE_awaddr[34] in module V_DMA_imp_18YRF98 i
 WARNING: [Synth 8-7129] Port S_AXI_LITE_awaddr[33] in module V_DMA_imp_18YRF98 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2069.316 ; gain = 432.109
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2078.828 ; gain = 434.871
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2087.238 ; gain = 450.031
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2096.742 ; gain = 452.785
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2087.238 ; gain = 450.031
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2096.742 ; gain = 452.785
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.072 . Memory (MB): peak = 2099.285 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 2108.801 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -268,18 +277,22 @@ Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_vi
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_ila_0/kv260_video_clk_wiz_ila_0/kv260_video_clk_wiz_ila_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_ila'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_xbar_0/kv260_video_xbar_0/kv260_video_xbar_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/xbar'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_xbar_0/kv260_video_xbar_0/kv260_video_xbar_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/xbar'
-Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0/kv260_video_auto_ds_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds'
-Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0/kv260_video_auto_ds_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds'
-Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0/kv260_video_auto_pc_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc'
-Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0/kv260_video_auto_pc_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0/kv260_video_auto_ds_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0/kv260_video_auto_ds_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0/kv260_video_auto_pc_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0/kv260_video_auto_pc_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_1/kv260_video_auto_ds_1/kv260_video_auto_ds_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_1/kv260_video_auto_ds_1/kv260_video_auto_ds_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1/kv260_video_auto_pc_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_pc'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1/kv260_video_auto_pc_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_pc'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0/kv260_video_auto_cc_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0/kv260_video_auto_cc_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_ps8_0_249M_0/kv260_video_rst_ps8_0_249M_0/kv260_video_rst_ps8_0_249M_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/rst_ps8_0_249M'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_ps8_0_249M_0/kv260_video_rst_ps8_0_249M_0/kv260_video_rst_ps8_0_249M_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/rst_ps8_0_249M'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0'
+Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/rst_clk_wiz_ctrl'
+Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/rst_clk_wiz_ctrl'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_0_1/kv260_video_ila_0_1/kv260_video_ila_0_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_0'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_0_1/kv260_video_ila_0_1/kv260_video_ila_0_1_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_0'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_1_0/kv260_video_ila_1_0/kv260_video_ila_1_0_in_context.xdc] for cell 'kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_1'
@@ -302,18 +315,19 @@ Parsing XDC File [R:/KV260/vivado/KV260.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2160.062 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2169.570 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 2 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2160.062 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2169.570 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0' at clock pin 'lite_aclk' is different from the actual clock period '3.333', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'kv260_video_i/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1' at clock pin 'lite_aclk' is different from the actual clock period '3.333', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'kv260_video_i/PS_VIDEO/TO_PS/axi_gpio' at clock pin 's_axi_aclk' is different from the actual clock period '3.333', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_0' at clock pin 's_axi_aclk' is different from the actual clock period '3.333', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2160.062 ; gain = 522.855
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2169.570 ; gain = 525.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -321,7 +335,7 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2160.062 ; gain = 522.855
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2169.570 ; gain = 525.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -374,9 +388,11 @@ Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_pc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/rst_ps8_0_249M. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/TO_PS/rst_clk_wiz_ctrl. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0. (constraint file  auto generated constraint).
@@ -386,10 +402,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/V_DMA/axi_
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_1. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2160.062 ; gain = 522.855
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2169.570 ; gain = 525.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2160.062 ; gain = 522.855
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2169.570 ; gain = 525.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -412,25 +428,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 2160.062 ; gain = 522.855
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2169.570 ; gain = 525.613
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2607.121 ; gain = 969.914
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2620.098 ; gain = 976.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2608.336 ; gain = 971.129
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2621.391 ; gain = 977.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2628.172 ; gain = 990.965
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 2641.223 ; gain = 997.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -448,37 +464,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished IO Insertion : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -499,75 +515,79 @@ Report BlackBoxes:
 |9     |kv260_video_v_demosaic_1_0           |         1|
 |10    |kv260_video_vfp_0_0                  |         1|
 |11    |kv260_video_xbar_0                   |         1|
-|12    |kv260_video_auto_ds_0                |         1|
-|13    |kv260_video_auto_pc_0                |         1|
-|14    |kv260_video_auto_ds_1                |         1|
-|15    |kv260_video_auto_pc_1                |         1|
-|16    |kv260_video_axi_gpio_0               |         1|
-|17    |kv260_video_clk_wiz_0_0              |         1|
-|18    |kv260_video_clk_wiz_1_0              |         1|
-|19    |kv260_video_clk_wiz_ila_0            |         1|
-|20    |kv260_video_rst_ps8_0_249M_0         |         1|
-|21    |kv260_video_zynq_ultra_ps_e_0_0      |         1|
-|22    |kv260_video_axi_smc_0                |         1|
-|23    |kv260_video_axi_vdma_0_0             |         1|
-|24    |kv260_video_axi_vdma_1_0             |         1|
+|12    |kv260_video_auto_cc_0                |         1|
+|13    |kv260_video_auto_ds_0                |         1|
+|14    |kv260_video_auto_pc_0                |         1|
+|15    |kv260_video_auto_ds_1                |         1|
+|16    |kv260_video_auto_pc_1                |         1|
+|17    |kv260_video_axi_gpio_0               |         1|
+|18    |kv260_video_clk_wiz_0_0              |         1|
+|19    |kv260_video_clk_wiz_1_0              |         1|
+|20    |kv260_video_clk_wiz_ila_0            |         1|
+|21    |kv260_video_rst_clk_wiz_ctrl_0       |         1|
+|22    |kv260_video_rst_ps8_0_249M_0         |         1|
+|23    |kv260_video_zynq_ultra_ps_e_0_0      |         1|
+|24    |kv260_video_axi_smc_0                |         1|
+|25    |kv260_video_axi_vdma_0_0             |         1|
+|26    |kv260_video_axi_vdma_1_0             |         1|
 +------+-------------------------------------+----------+
 
 Report Cell Usage: 
 +------+------------------------------------------+------+
 |      |Cell                                      |Count |
 +------+------------------------------------------+------+
-|1     |kv260_video_auto_ds_0_bbox                |     1|
-|2     |kv260_video_auto_ds_1_bbox                |     1|
-|3     |kv260_video_auto_pc_0_bbox                |     1|
-|4     |kv260_video_auto_pc_1_bbox                |     1|
-|5     |kv260_video_axi_gpio_0_bbox               |     1|
-|6     |kv260_video_axi_smc_0_bbox                |     1|
-|7     |kv260_video_axi_vdma_0_0_bbox             |     1|
-|8     |kv260_video_axi_vdma_1_0_bbox             |     1|
-|9     |kv260_video_clk_wiz_0_0_bbox              |     1|
-|10    |kv260_video_clk_wiz_1_0_bbox              |     1|
-|11    |kv260_video_clk_wiz_ila_0_bbox            |     1|
-|12    |kv260_video_ila_0_0_bbox                  |     1|
-|13    |kv260_video_ila_0_1_bbox                  |     1|
-|14    |kv260_video_ila_1_0_bbox                  |     1|
-|15    |kv260_video_mipi_csi2_rx_subsyst_0_0_bbox |     1|
-|16    |kv260_video_mipi_csi2_rx_subsyst_1_0_bbox |     1|
-|17    |kv260_video_rst_ps8_0_249M_0_bbox         |     1|
-|18    |kv260_video_v_axi4s_vid_out_0_0_bbox      |     1|
-|19    |kv260_video_v_demosaic_0_0_bbox           |     1|
-|20    |kv260_video_v_demosaic_1_0_bbox           |     1|
-|21    |kv260_video_v_tc_0_0_bbox                 |     1|
-|22    |kv260_video_vfp_0_0_bbox                  |     1|
-|23    |kv260_video_xbar_0_bbox                   |     1|
-|24    |kv260_video_zynq_ultra_ps_e_0_0_bbox      |     1|
-|25    |LUT1                                      |     8|
-|26    |IOBUF                                     |     2|
-|27    |OBUF                                      |     3|
+|1     |kv260_video_auto_cc_0_bbox                |     1|
+|2     |kv260_video_auto_ds_0_bbox                |     1|
+|3     |kv260_video_auto_ds_1_bbox                |     1|
+|4     |kv260_video_auto_pc_0_bbox                |     1|
+|5     |kv260_video_auto_pc_1_bbox                |     1|
+|6     |kv260_video_axi_gpio_0_bbox               |     1|
+|7     |kv260_video_axi_smc_0_bbox                |     1|
+|8     |kv260_video_axi_vdma_0_0_bbox             |     1|
+|9     |kv260_video_axi_vdma_1_0_bbox             |     1|
+|10    |kv260_video_clk_wiz_0_0_bbox              |     1|
+|11    |kv260_video_clk_wiz_1_0_bbox              |     1|
+|12    |kv260_video_clk_wiz_ila_0_bbox            |     1|
+|13    |kv260_video_ila_0_0_bbox                  |     1|
+|14    |kv260_video_ila_0_1_bbox                  |     1|
+|15    |kv260_video_ila_1_0_bbox                  |     1|
+|16    |kv260_video_mipi_csi2_rx_subsyst_0_0_bbox |     1|
+|17    |kv260_video_mipi_csi2_rx_subsyst_1_0_bbox |     1|
+|18    |kv260_video_rst_clk_wiz_ctrl_0_bbox       |     1|
+|19    |kv260_video_rst_ps8_0_249M_0_bbox         |     1|
+|20    |kv260_video_v_axi4s_vid_out_0_0_bbox      |     1|
+|21    |kv260_video_v_demosaic_0_0_bbox           |     1|
+|22    |kv260_video_v_demosaic_1_0_bbox           |     1|
+|23    |kv260_video_v_tc_0_0_bbox                 |     1|
+|24    |kv260_video_vfp_0_0_bbox                  |     1|
+|25    |kv260_video_xbar_0_bbox                   |     1|
+|26    |kv260_video_zynq_ultra_ps_e_0_0_bbox      |     1|
+|27    |LUT1                                      |     8|
+|28    |IOBUF                                     |     2|
+|29    |OBUF                                      |     3|
 +------+------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 87 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:39 . Memory (MB): peak = 2632.680 ; gain = 922.648
-Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:47 . Memory (MB): peak = 2632.680 ; gain = 995.473
+Synthesis finished with 0 errors, 0 critical warnings and 81 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 2645.684 ; gain = 928.898
+Synthesis Optimization Complete : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 2645.684 ; gain = 1001.727
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 2632.680 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 2645.684 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2683.418 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2697.453 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 2 instances
 
-Synth Design complete, checksum: 3a5bea3d
+Synth Design complete, checksum: 55809a84
 INFO: [Common 17-83] Releasing license: Synthesis
-122 Infos, 106 Warnings, 0 Critical Warnings and 0 Errors encountered.
+132 Infos, 105 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:57 . Memory (MB): peak = 2683.418 ; gain = 1310.309
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 2697.453 ; gain = 1324.523
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/synth_1/kv260_video_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kv260_video_wrapper_utilization_synth.rpt -pb kv260_video_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 09:41:50 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 11:30:33 2026...

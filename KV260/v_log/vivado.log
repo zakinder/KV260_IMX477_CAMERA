@@ -342,3 +342,8 @@ WARNING: [IP_Flow 19-4318] IP-XACT file does not exist: r:/KV260/vivado/KV260.sr
 launch_runs impl_1 -jobs 8
 [Fri Nov 20 09:53:00 2026] Launched impl_1...
 Run output will be captured here: R:/KV260/vivado/KV260.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Fri Nov 20 10:31:32 2026] Launched impl_1...
+Run output will be captured here: R:/KV260/vivado/KV260.runs/impl_1/runme.log
+close_bd_design [get_bd_designs kv260_video]
+close_bd_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 2159.301 ; gain = 48.906
