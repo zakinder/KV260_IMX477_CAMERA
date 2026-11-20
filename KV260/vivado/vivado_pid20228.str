@@ -1307,3 +1307,2398 @@ dismissDialog("Export Hardware Platform"); // bA
 // WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 12027 ms. Increasing delay to 36081 ms.
 // WARNING: HSwingWorker (Update Runs Swing Worker) is taking 16777 ms. Increasing delay to 10000 ms.
 // WARNING: HSwingWorker (Update Runs Swing Worker) is taking 8259 ms. Increasing delay to 10000 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 349 ms. Decreasing delay to 2349 ms.
+// Tcl Command: 'rdi::info_commands bd::match_path'
+// Tcl Command: 'bd::match_path {source} {R:/KV260/block_design/} {apply_contour_timing.tcl}'
+// Elapsed time: 1411 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source R:/KV260/block_design/apply_contour_timing.tcl", true); // l
+// Tcl Command: 'source R:/KV260/block_design/apply_contour_timing.tcl'
+// Tcl Command: 'source R:/KV260/block_design/apply_contour_timing.tcl'
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: source R:/KV260/block_design/apply_contour_timing.tcl 
+// Tcl Message: # set bd [get_files -quiet */kv260_video.bd] # if {[llength $bd] != 1} {error "Open the KV260 project containing kv260_video.bd first"} # open_bd_design $bd 
+// Tcl Message: Reading block design file <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd>... Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_0 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/RX_VIDEO/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_0 Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_1 Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_0 Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_1 Adding component instance block -- xilinx.com:user:vfp:2.0 - vfp_0 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0 Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_1 Adding component instance block -- xilinx.com:ip:ila:6.2 - clk_wiz_ila 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/TO_PS/clk_wiz_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_1 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_1: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:v_axi4s_vid_out:4.0 - v_axi4s_vid_out_0 Adding component instance block -- xilinx.com:ip:v_tc:6.2 - v_tc_0 Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0 Adding component instance block -- xilinx.com:ip:smartconnect:1.0 - axi_smc 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  6935 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2596 ms.
+// Elapsed time: 12 seconds
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// Tcl Message: open_bd_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:10 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// TclEventType: RSB_CONNECTION_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  4123 ms.
+// Tcl Message: # source [file join [file dirname [info script]] contour_control_clock.tcl] ## proc timing_move_sink {source sink} { ##     set src [get_bd_pins $source] ##     set dst [get_bd_pins $sink] ##     set new [get_bd_nets -of_objects $src] ##     set old [get_bd_nets -quiet -of_objects $dst] ##     if {[llength $old] && $old eq $new} {return} ##     if {[llength $old]} {disconnect_bd_net $old $dst} ##     connect_bd_net $src $dst ## } ## set previous [current_bd_instance .] ## current_bd_instance [get_bd_cells /PS_VIDEO/TO_PS] ## if {![llength [get_bd_cells -quiet rst_clk_wiz_ctrl]]} { ##     create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_clk_wiz_ctrl ## } 
+// Tcl Message: INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI 
+// Tcl Message: ## set_property CONFIG.C_EXT_RESET_HIGH 0 [get_bd_cells rst_clk_wiz_ctrl] 
+// Tcl Message: ## foreach sink {rst_clk_wiz_ctrl/slowest_sync_clk ps8_0_axi_periph/M09_ACLK clk_wiz_0/s_axi_aclk clk_wiz_ila/clk} { ##     timing_move_sink zynq_ultra_ps_e_0/pl_clk0 $sink ## } ## timing_move_sink zynq_ultra_ps_e_0/pl_resetn0 rst_clk_wiz_ctrl/ext_reset_in ## foreach sink {ps8_0_axi_periph/M09_ARESETN clk_wiz_0/s_axi_aresetn} { ##     timing_move_sink rst_clk_wiz_ctrl/peripheral_aresetn $sink ## } 
+// Tcl Message: ## current_bd_instance $previous # update_ip_catalog -rebuild 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'. 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  2741 ms.
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// WARNING: HEventQueue.dispatchEvent() is taking  3286 ms.
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: update_ip_catalog: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: # set vfp [get_bd_cells -quiet /PS_VIDEO/RX_VIDEO/vfp_0] # if {![llength $vfp]} {error "No VFP IP found. Check the project's IP repository path."} # upgrade_bd_cells $vfp 
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  2452 ms.
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded kv260_video_vfp_0_0 (vfp_v2.0 2.0) from revision 159 to revision 161 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: RSB_VALIDATE_DIAGRAM
+// TclEventType: MSGMGR_REFRESH_MSG
+// TclEventType: RSB_PARAM_PROP
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  
+// Tcl Message: upgrade_bd_cells: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// Tcl Message: # validate_bd_design 
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 162 MB. Current time: 11/20/26, 11:12:50 AM EST
+// TclEventType: RSB_SCRIPT_TASK
+// Elapsed time: 20 seconds
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: INFO: [Common 17-365] Interrupt caught but 'source' cannot be canceled. Please wait for command to finish. 
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// Tcl Message: INFO: [xilinx.com:ip:smartconnect:1.0-1] kv260_video_axi_smc_0: SmartConnect kv260_video_axi_smc_0 is in High-performance Mode. INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PARAM_PROP
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: STOP_PROGRESS_DIALOG
+// Tcl Message: validate_bd_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// Tcl Message: INFO: [Common 17-681] Processing pending cancel. 
+// Elapsed time: 20 seconds
+dismissDialog("Tcl Command Line"); // bA
+// JavaFX intialization before: 1795191193818
+// JavaFX initialization after: 1795191193818
+// WARNING: HTimer (Open addressing views timer) is taking 61ms to process. Increasing delay to 1300 ms.
+selectButton(PAResourceCommand.PACommandNames_REGENERATE_LAYOUT, "System_regenerate_rsb_layout"); // D
+selectButton(PAResourceCommand.PACommandNames_REGENERATE_LAYOUT, "System_regenerate_rsb_layout"); // D
+// Run Command: PAResourceCommand.PACommandNames_REGENERATE_LAYOUT
+// Tcl Command: 'regenerate_bd_layout'
+// TclEventType: RSB_LAYOUT_STATE
+// TclEventType: RSB_REGENERATE_LAYOUT
+// Tcl Message: regenerate_bd_layout 
+// Run Command: PAResourceCommand.PACommandNames_SAVE_RSB_DESIGN
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: save_bd_design 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  
+dismissDialog("Save Design"); // bA
+selectButton(PAResourceCommand.PACommandNames_VALIDATE_RSB_DESIGN, "System_validate_bd_design_rsb"); // D
+// Run Command: PAResourceCommand.PACommandNames_VALIDATE_RSB_DESIGN
+selectButton("OptionPane.button", "Rerun Validate Design"); // JButton
+// Tcl Command: 'validate_bd_design -force'
+// TclEventType: RSB_VALIDATE_DIAGRAM
+// TclEventType: MSGMGR_REFRESH_MSG
+// TclEventType: RSB_PARAM_PROP
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: validate_bd_design -force 
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// Tcl Message: INFO: [xilinx.com:ip:smartconnect:1.0-1] kv260_video_axi_smc_0: SmartConnect kv260_video_axi_smc_0 is in High-performance Mode. INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PARAM_PROP
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: validate_bd_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// Elapsed time: 23 seconds
+dismissDialog("Validate Design"); // bA
+selectButton("OptionPane.button", "OK"); // JButton
+// Run Command: PAResourceCommand.PACommandNames_SAVE_RSB_DESIGN
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: save_bd_design 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_77fd60fc.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_69bb5a75.ui>  
+// Elapsed time: 13 seconds
+dismissDialog("Save Design"); // bA
+selectButton(PAResourceTtoZ.TaskBanner_CLOSE, (String) null); // j
+closeTask("IP Integrator", "Block Design", "DesignTask.IP_INTEGRATOR");
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// TclEventType: RSB_CLOSE_DIAGRAM
+dismissDialog("Confirm Close"); // A
+// WARNING: HEventQueue.dispatchEvent() is taking  4641 ms.
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// Tcl Message: close_bd_design [get_bd_designs kv260_video] 
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  1792 ms.
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: close_bd_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+dismissDialog("Close Block Designs"); // bA
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, kv260_video_wrapper(STRUCTURE) (kv260_video_wrapper.vhd), kv260_video_i : kv260_video (kv260_video.bd)]", 2, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, kv260_video_wrapper(STRUCTURE) (kv260_video_wrapper.vhd), kv260_video_i : kv260_video (kv260_video.bd)]", 2, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, kv260_video_wrapper(STRUCTURE) (kv260_video_wrapper.vhd), kv260_video_i : kv260_video (kv260_video.bd), kv260_video_auto_ds_0 (kv260_video_auto_ds_0.xci)]", 4, false, false, false, false, false, true); // D - Double Click
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// Tcl Message: open_bd_design {R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd} 
+// Tcl Message: Reading block design file <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd>... Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_0 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/RX_VIDEO/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_0 Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_1 Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_0 Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_1 Adding component instance block -- xilinx.com:user:vfp:2.0 - vfp_0 Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0 Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_1 Adding component instance block -- xilinx.com:ip:ila:6.2 - clk_wiz_ila 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/TO_PS/clk_wiz_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_1 
+// Tcl Message: INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_1: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details. 
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  4387 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1928 ms.
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// Tcl Message: open_bd_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 2333.406 ; gain = 0.000 
+// JavaFX intialization before: 1795191277797
+// JavaFX initialization after: 1795191277797
+dismissDialog("Open Block Design"); // bA
+selectTab((HResource) null, (HResource) null, "Log", 2); // aL
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aL
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aL
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aL
+// WARNING: HEventQueue.dispatchEvent() is taking  1907 ms.
+selectTab((HResource) null, (HResource) null, "Log", 2); // aL
+selectTab(PAResourceItoN.LogView_TABBED_PANE, (HResource) null, "Synthesis", 0); // i
+// Tcl Command: 'set_property location {1 129 76} [get_bd_cells PS_VIDEO]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {1 129 76} [get_bd_cells PS_VIDEO] 
+// Elapsed time: 11 seconds
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 746, 350, 1210, 530, false, false, false, true, false); // hw - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // ao
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // ao
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // ao
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // ao
+selectMenuItem(PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER, "Edit in IP Packager"); // ar
+// Run Command: PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: ipx::edit_ip_in_project -upgrade true -name vfp_v2_0_project -directory R:/KV260/vivado/KV260.tmp/vfp_v2_0_project r:/KV260/ip_lib/vfp_2.0/component.xml 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 251 MB (+2392kb) [02:08:05]
+// WARNING: HEventQueue.dispatchEvent() is taking  2054 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [GUI Memory]: 264 MB (+700kb) [02:08:07]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2343.426 ; gain = 5.824 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'. INFO: [IP_Flow 19-795] Syncing license key meta-data 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// WARNING: HEventQueue.dispatchEvent() is taking  1425 ms.
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::edit_ip_in_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2353.051 ; gain = 15.449 
+// 'i' command handler elapsed time: 9 seconds
+dismissDialog("Edit in IP Packager"); // bA
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Customization Parameters", 3); // aq
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_VIVADO_PROJECT_THAT, "Merge changes from Customization Parameters Wizard"); // g
+// TclEventType: PACKAGER_COMPONENT_RESET
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  1418 ms.
+// Tcl Message: ipx::merge_project_changes hdl_parameters [ipx::current_core] 
+// Tcl Message: INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'C_vfpConfig_ADDR_WIDTH' by 8 for port or parameter 'vfpconfig_awaddr' INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'C_vfpConfig_DATA_WIDTH' by 32 for port or parameter 'vfpconfig_wdata' INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'C_vfpConfig_DATA_WIDTH' by 32 for port or parameter 'vfpconfig_wstrb' INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'C_vfpConfig_ADDR_WIDTH' by 8 for port or parameter 'vfpconfig_araddr' INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'C_vfpConfig_DATA_WIDTH' by 32 for port or parameter 'vfpconfig_rdata' INFO: [IP_Flow 19-3166] Bus Interface 'vfpconfig': References existing memory map 'vfpconfig'. 
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "File Groups", 2); // aq
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_VIVADO_PROJECT_THAT, "Merge changes from File Groups Wizard"); // g
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_VIVADO_PROJECT_THAT, "Merge changes from File Groups Wizard"); // g
+// TclEventType: PACKAGER_COMPONENT_RESET
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: ipx::merge_project_changes files [ipx::current_core] 
+// [GUI Memory]: 279 MB (+2404kb) [02:08:27]
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Review and Package", 7); // aq
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Customization GUI", 6); // aq
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Review and Package", 7); // aq
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vfp_v1_0(arch_imp) (vfp_v1_0.vhd)]", 1); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vfp_v1_0(arch_imp) (vfp_v1_0.vhd)]", 1, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vfp_v1_0(arch_imp) (vfp_v1_0.vhd)]", 1, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, vfp_v1_0(arch_imp) (vfp_v1_0.vhd)]", 1, true, false, false, false, false, true); // D - Double Click - Node
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 202 MB. Current time: 11/20/26, 11:16:16 AM EST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 200 MB. Current time: 11/20/26, 11:16:46 AM EST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 201 MB. Current time: 11/20/26, 11:17:16 AM EST
+// Elapsed time: 96 seconds
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a
+dismissDialog("Opening Editor"); // bA
+selectButton(PAResourceQtoS.ReviewContentPanel_RE_PACKAGE_IP, "Re-Package IP"); // a
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: set_property core_revision 162 [ipx::current_core] 
+// Tcl Message: ipx::update_source_project_archive -component [ipx::current_core] 
+// Tcl Message: ipx::create_xgui_files [ipx::current_core] 
+// Tcl Message: ipx::update_checksums [ipx::current_core] 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::check_integrity [ipx::current_core] 
+// Tcl Message: INFO: [IP_Flow 19-2181] Payment Required is not set for this core. INFO: [IP_Flow 19-2187] The Product Guide file is missing. INFO: [Ipptcl 7-1486] check_integrity: Integrity check passed. 
+// Tcl Message: ipx::save_core [ipx::current_core] 
+// TclEventType: FILE_SET_CHANGE
+selectButton("OptionPane.button", "Yes"); // JButton
+// Tcl Message: ipx::move_temp_component_back -component [ipx::current_core] 
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 197 MB. Current time: 11/20/26, 11:17:31 AM EST
+// Tcl Message: close_project -delete 
+dismissDialog("Package IP"); // bA
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  3530 ms.
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// Tcl Message: update_ip_catalog -rebuild -repo_path r:/KV260/ip_lib 
+// Tcl Message: INFO: [IP_Flow 19-725] Reloaded user IP repository 'r:/KV260/ip_lib' 
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  2416 ms.
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// WARNING: HEventQueue.dispatchEvent() is taking  3837 ms.
+// Tcl Message: update_ip_catalog: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2376.645 ; gain = 0.000 
+// Elapsed time: 10 seconds
+selectButton(PAResourceQtoS.SystemTab_REPORT_IP_STATUS, "Report IP Status"); // g
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// WARNING: HEventQueue.dispatchEvent() is taking  2100 ms.
+selectButton(PAResourceQtoS.SystemTab_REPORT_IP_STATUS, "Report IP Status"); // g
+// TclEventType: IP_SUMMARY_RESULTS
+// HOptionPane Warning: 'A background task is running. Please wait until it completes and try again. (Background Task)'
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bA
+selectButton("OptionPane.button", "OK"); // JButton
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: upgrade_ip -vlnv xilinx.com:user:vfp:2.0 [get_ips  kv260_video_vfp_0_0] -log ip_upgrade.log 
+// TclEventType: RUN_RESET
+// Tcl Message: Upgrading 'R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd' 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded kv260_video_vfp_0_0 (vfp_v2.0 2.0) from revision 161 to revision 162 
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// [GUI Memory]: 294 MB (+880kb) [02:10:44]
+// Tcl Message: Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_77fd60fc.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_69bb5a75.ui>  
+// Tcl Message: INFO: [Coretcl 2-1525] Wrote upgrade log to 'R:/KV260/vivado/ip_upgrade.log'. 
+// TclEventType: STOP_PROGRESS_DIALOG
+// Tcl Message: export_ip_user_files -of_objects [get_ips kv260_video_vfp_0_0] -no_script -sync -force -quiet 
+selectButton("OptionPane.button", "OK"); // JButton
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: generate_target all [get_files  R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd] 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 216 MB. Current time: 11/20/26, 11:18:23 AM EST
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 194 MB. Current time: 11/20/26, 11:18:53 AM EST
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// Tcl Message: INFO: [xilinx.com:ip:smartconnect:1.0-1] kv260_video_axi_smc_0: SmartConnect kv260_video_axi_smc_0 is in High-performance Mode. INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 194 MB. Current time: 11/20/26, 11:19:23 AM EST
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_77fd60fc.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_69bb5a75.ui>  
+// Tcl Message: VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/sim/kv260_video.vhd VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_77fd60fc.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_69bb5a75.ui>  
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_0_0/bd_0/hw_handoff/kv260_video_mipi_csi2_rx_subsyst_0_0.hwh Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_0_0/bd_0/synth/kv260_video_mipi_csi2_rx_subsyst_0_0.hwdef Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/hw_handoff/kv260_video_mipi_csi2_rx_subsyst_1_0.hwh Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/kv260_video_mipi_csi2_rx_subsyst_1_0.hwdef 
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/vfp_0 . 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/clk_wiz_ila . 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/hw_handoff/kv260_video_axi_smc_0.hwh Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/synth/kv260_video_axi_smc_0.hwdef 
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/V_DMA/axi_smc . INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/rst_clk_wiz_ctrl . 
+// Tcl Message: INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created. INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created. INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds . 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc . 
+// Tcl Message: INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created. INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created. 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds . 
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_pc . 
+// Tcl Message: INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created. INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created. INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc . 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hw_handoff/kv260_video.hwh Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.hwdef 
+// Tcl Message: generate_target: Time (s): cpu = 00:01:42 ; elapsed = 00:01:50 . Memory (MB): peak = 2393.086 ; gain = 16.441 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_vfp_0_0] } 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_clk_wiz_ila_0] } 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_axi_smc_0] } 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP kv260_video_axi_smc_0, cache-ID = ce1bdce1600d8dd7; cache size = 141.587 MB. 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_DELETE
+// Tcl Message: catch { [ delete_ip_run [get_ips -all kv260_video_axi_smc_0] ] } 
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: OOC_IP_CACHE_USED
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_rst_clk_wiz_ctrl_0] } 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_auto_ds_0] } 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: OOC_IP_CACHE_USED
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP kv260_video_auto_ds_0, cache-ID = b6286e27ae51298c; cache size = 141.587 MB. 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_auto_pc_0] } 
+// TclEventType: OOC_IP_CACHE_USED
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP kv260_video_auto_pc_0, cache-ID = 4c30ab62d5deb224; cache size = 141.587 MB. 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_auto_ds_1] } 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: OOC_IP_CACHE_USED
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP kv260_video_auto_ds_1, cache-ID = b6286e27ae51298c; cache size = 141.587 MB. 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_auto_pc_1] } 
+// TclEventType: OOC_IP_CACHE_USED
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP kv260_video_auto_pc_1, cache-ID = 4c30ab62d5deb224; cache size = 141.587 MB. 
+// TclEventType: PROJ_DESIGN_MODE_SET
+// Tcl Message: catch { config_ip_cache -export [get_ips -all kv260_video_auto_cc_0] } 
+// TclEventType: PROJ_DESIGN_MODE_SET
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  1973 ms.
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: export_ip_user_files -of_objects [get_files R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd] -no_script -sync -force -quiet 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 224 MB. Current time: 11/20/26, 11:19:53 AM EST
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// Tcl Message: create_ip_run [get_files -of_objects [get_fileset sources_1] R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd] 
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// Tcl Message: launch_runs kv260_video_clk_wiz_ila_0_synth_1 kv260_video_vfp_0_0_synth_1 kv260_video_rst_clk_wiz_ctrl_0_synth_1 kv260_video_auto_cc_0_synth_1 -jobs 8 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Fri Nov 20 11:19:58 2026] Launched kv260_video_clk_wiz_ila_0_synth_1, kv260_video_vfp_0_0_synth_1, kv260_video_rst_clk_wiz_ctrl_0_synth_1, kv260_video_auto_cc_0_synth_1... Run output will be captured here: kv260_video_clk_wiz_ila_0_synth_1: R:/KV260/vivado/KV260.runs/kv260_video_clk_wiz_ila_0_synth_1/runme.log kv260_video_vfp_0_0_synth_1: R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1/runme.log kv260_video_rst_clk_wiz_ctrl_0_synth_1: R:/KV260/vivado/KV260.runs/kv260_video_rst_clk_wiz_ctrl_0_synth_1/runme.log kv260_video_auto_cc_0_synth_1: R:/KV260/vivado/KV260.runs/kv260_video_auto_cc_0_synth_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: export_simulation -of_objects [get_files R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd] -directory R:/KV260/vivado/KV260.ip_user_files/sim_scripts -ip_user_files_dir R:/KV260/vivado/KV260.ip_user_files -ipstatic_source_dir R:/KV260/vivado/KV260.ip_user_files/ipstatic -lib_map_path [list {modelsim=R:/KV260/vivado/KV260.cache/compile_simlib/modelsim} {questa=R:/KV260/vivado/KV260.cache/compile_simlib/questa} {riviera=R:/KV260/vivado/KV260.cache/compile_simlib/riviera} {activehdl=R:/KV260/vivado/KV260.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: STOP_PROGRESS_DIALOG
+// TclEventType: PROJECT_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: PROJECT_CHANGE
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 1099 ms. Increasing delay to 3000 ms.
+// TclEventType: PROJECT_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 216 MB. Current time: 11/20/26, 11:20:23 AM EST
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 1819 ms. Increasing delay to 4000 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 216 MB. Current time: 11/20/26, 11:20:53 AM EST
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 9679 ms. Increasing delay to 5000 ms.
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 2599 ms. Increasing delay to 6000 ms.
+// Elapsed time: 247 seconds
+selectButton("OptionPane.button", "OK"); // JButton
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // g
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bA
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 148 seconds
+selectTab((HResource) null, (HResource) null, "Log", 2); // aL
+selectTree(PAResourceItoN.LogPanel_LOG_NAVIGATOR, "[Out-of-Context Module Runs, kv260_video]", 35, false); // a
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 245 seconds
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aL
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source R:/KV260/block_design/apply_contour_timing.tcl", true); // l
+// Tcl Command: 'source R:/KV260/block_design/apply_contour_timing.tcl'
+// Tcl Command: 'source R:/KV260/block_design/apply_contour_timing.tcl'
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// WARNING: HEventQueue.dispatchEvent() is taking  1815 ms.
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// Tcl Message: source R:/KV260/block_design/apply_contour_timing.tcl 
+// Tcl Message: ## foreach sink {rst_clk_wiz_ctrl/slowest_sync_clk ps8_0_axi_periph/M09_ACLK clk_wiz_0/s_axi_aclk clk_wiz_ila/clk} { ##     timing_move_sink zynq_ultra_ps_e_0/pl_clk0 $sink ## } ## timing_move_sink zynq_ultra_ps_e_0/pl_resetn0 rst_clk_wiz_ctrl/ext_reset_in ## foreach sink {ps8_0_axi_periph/M09_ARESETN clk_wiz_0/s_axi_aresetn} { ##     timing_move_sink rst_clk_wiz_ctrl/peripheral_aresetn $sink ## } ## current_bd_instance $previous # update_ip_catalog -rebuild 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'. 
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// WARNING: HEventQueue.dispatchEvent() is taking  1194 ms.
+// TclEventType: RSB_BITABEN_IPREPODATA_REFRESH
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_VALIDATE_DIAGRAM
+// TclEventType: RSB_SAVE_DIAGRAM
+// [GUI Memory]: 313 MB (+4207kb) [02:21:41]
+// WARNING: HEventQueue.dispatchEvent() is taking  2038 ms.
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: # set vfp [get_bd_cells -quiet /PS_VIDEO/RX_VIDEO/vfp_0] # if {![llength $vfp]} {error "No VFP IP found. Check the project's IP repository path."} # upgrade_bd_cells $vfp 
+// Tcl Message: INFO: [BD 41-1162] The cell '/PS_VIDEO/RX_VIDEO/vfp_0' is already at its latest version. 
+// Tcl Message: # validate_bd_design 
+// Tcl Message: INFO: [BD 5-320] Validate design is not run, since the design is already validated. 
+// Tcl Message: # save_bd_design 
+// TclEventType: RSB_SAVE_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  1213 ms.
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_fc7e84bd.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_77fd60fc.ui>  Wrote  : <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ui/bd_69bb5a75.ui>  
+// Tcl Message: # generate_target all $bd 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: STOP_PROGRESS_DIALOG
+// Tcl Message: Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/hw_handoff/kv260_video_axi_smc_0.hwh Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/synth/kv260_video_axi_smc_0.hwdef 
+// Elapsed time: 12 seconds
+dismissDialog("Tcl Command Line"); // bA
+// Elapsed time: 17 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source R:/KV260/block_design/check_contour_synthesis.tcl", true); // l
+// Tcl Command: 'source R:/KV260/block_design/check_contour_synthesis.tcl'
+// Tcl Command: 'source R:/KV260/block_design/check_contour_synthesis.tcl'
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: source R:/KV260/block_design/check_contour_synthesis.tcl 
+// Tcl Message: # set run [get_runs synth_1] # if {[get_property NEEDS_REFRESH $run] || ![string match "*Complete*" [get_property STATUS $run]]} { #     reset_run $run #     launch_runs $run #     wait_on_run $run # } 
+// Tcl Message: INFO: [Project 1-1160] Copying file R:/KV260/vivado/KV260.runs/synth_1/kv260_video_wrapper.dcp to R:/KV260/vivado/KV260.srcs/utils_1/imports/synth_1 and adding it to utils fileset 
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Fri Nov 20 11:29:14 2026] Launched synth_1... Run output will be captured here: R:/KV260/vivado/KV260.runs/synth_1/runme.log [Fri Nov 20 11:29:14 2026] Waiting for synth_1 to finish... 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Fri Nov 20 11:29:19 2026] Waiting for synth_1 to finish... 
+// Tcl Message: [Fri Nov 20 11:29:24 2026] Waiting for synth_1 to finish... 
+// Tcl Message: [Fri Nov 20 11:29:30 2026] Waiting for synth_1 to finish... 
+// Tcl Message: [Fri Nov 20 11:29:40 2026] Waiting for synth_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 218 MB. Current time: 11/20/26, 11:29:43 AM EST
+// Tcl Message: [Fri Nov 20 11:29:50 2026] Waiting for synth_1 to finish... 
+// Tcl Message: [Fri Nov 20 11:30:01 2026] Waiting for synth_1 to finish... 
+// Tcl Message: [Fri Nov 20 11:30:11 2026] Waiting for synth_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 216 MB. Current time: 11/20/26, 11:30:13 AM EST
+// Tcl Message: [Fri Nov 20 11:30:32 2026] Waiting for synth_1 to finish... 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_RELOAD_IPS
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Fri Nov 20 11:30:37 2026] synth_1 finished 
+// Tcl Message: wait_on_runs: Time (s): cpu = 00:00:06 ; elapsed = 00:01:23 . Memory (MB): peak = 2464.344 ; gain = 20.113 
+// Tcl Message: # if {![string match "*Complete*" [get_property STATUS $run]]} {error "Top-level synthesis did not complete"} # open_run $run 
+// Tcl Message: Design is defaulting to impl run constrset: constrs_1 Design is defaulting to synth run part: xck26-sfvc784-2LV-c 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,975 MB. GUI used memory: 218 MB. Current time: 11/20/26, 11:30:43 AM EST
+// HMemoryUtils.trashcanNow. Engine heap size: 2,042 MB. GUI used memory: 217 MB. Current time: 11/20/26, 11:31:00 AM EST
+// HMemoryUtils.trashcanNow. Engine heap size: 2,769 MB. GUI used memory: 217 MB. Current time: 11/20/26, 11:31:15 AM EST
+// [Engine Memory]: 2,769 MB (+738403kb) [02:24:16]
+// TclEventType: DEBUG_PORT_ADD
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// HMemoryUtils.trashcanNow. Engine heap size: 2,834 MB. GUI used memory: 217 MB. Current time: 11/20/26, 11:31:35 AM EST
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// [Engine Memory]: 3,104 MB (+206105kb) [02:24:33]
+// HMemoryUtils.trashcanNow. Engine heap size: 3,327 MB. GUI used memory: 217 MB. Current time: 11/20/26, 11:31:50 AM EST
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: DEBUG_CORE_CONFIG_CHANGE
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// [Engine Memory]: 3,348 MB (+92930kb) [02:24:51]
+// TclEventType: TIMING_RESULTS_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 3,348 MB. GUI used memory: 217 MB. Current time: 11/20/26, 11:32:04 AM EST
+// TclEventType: DESIGN_NEW
+// Xgd.load filename: C:/Xilinx/Vivado/2022.1/data/parts/xilinx/zynquplus/devint/zynquplus/xck26/xck26.xgd; ZipEntry: xck26_detail.xgd elapsed time: 1.5s
+// DeviceModel: Load Xgds SwingWorker Join Forever elapsed time: 1.8s
+// [GUI Memory]: 362 MB (+35087kb) [02:25:02]
+// [Engine Memory]: 3,516 MB (+883kb) [02:25:02]
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgdAndInitRouteStorage elapsed time: 4.7s
+// DeviceView Instantiated
+// WARNING: HEventQueue.dispatchEvent() is taking  6095 ms.
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 3462.867 ; gain = 0.000 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 3303 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2022.1 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: INFO: [Chipscope 16-324] Core: kv260_video_i/PS_VIDEO/RX_VIDEO/ila_0 UUID: eb89e04e-17cf-5269-939d-cbc68abf30cd  INFO: [Chipscope 16-324] Core: kv260_video_i/PS_VIDEO/TO_PS/clk_wiz_ila UUID: 42c16364-51e9-5a20-9b5c-fd0f7db61c89  INFO: [Chipscope 16-324] Core: kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_0 UUID: 83ff1994-b0bd-5c73-a40b-e67af589cbde  INFO: [Chipscope 16-324] Core: kv260_video_i/PS_VIDEO/VIDEO_PIPELINE/ila_1 UUID: f1637c3e-6a03-58ae-96f9-a5263df64743  
+// Tcl Message: INFO: [Timing 38-35] Done setting XDC timing constraints. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_1_0/kv260_video_clk_wiz_1_0.xdc:57] INFO: [Timing 38-2] Deriving generated clocks [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_1_0/kv260_video_clk_wiz_1_0.xdc:57] 
+// Tcl Message: Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0.xdc] for cell 'kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_0/U0' Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0.xdc] for cell 'kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_1/U0' 
+// Tcl Message: INFO: [Timing 38-2] Deriving generated clocks [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_tc_0_0/kv260_video_v_tc_0_0_clocks.xdc:2] 
+// Tcl Message: Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc/inst' 
+// Tcl Message: INFO: [Project 1-1714] 567 XPM XDC files have been applied to the design. INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). INFO: [Project 1-1687] 2 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design. 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.059 . Memory (MB): peak = 4791.750 ; gain = 0.000 
+// Tcl Message: INFO: [Project 1-111] Unisim Transformation Summary:   A total of 587 instances were transformed.   CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 384 instances   DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 55 instances   IBUFDS_DPHY => IBUFDS_DPHY (DPHY_DIFFINBUF, IBUFCTRL): 8 instances   IOBUF => IOBUF (IBUFCTRL, INBUF, OBUFT): 2 instances   RAM16X1D => RAM32X1D (RAMD32(x2)): 2 instances   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 2 instances   RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 130 instances   RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances  
+// WARNING: HEventQueue.dispatchEvent() is taking  1167 ms.
+// Device view-level: 0.0
+// Tcl Message: open_run: Time (s): cpu = 00:02:05 ; elapsed = 00:01:35 . Memory (MB): peak = 4880.289 ; gain = 2415.945 
+// HMemoryUtils.trashcanNow. Engine heap size: 3,684 MB. GUI used memory: 310 MB. Current time: 11/20/26, 11:32:20 AM EST
+// Tcl Message: # set vclk [get_clocks -quiet clk_out2_kv260_video_clk_wiz_1_0] # if {[llength $vclk] != 1 || abs([get_property PERIOD $vclk]-3.333)>0.01} {error "Expected 300 MHz video clock"} # set regs [get_cells -hier -filter {IS_SEQUENTIAL && NAME =~ */surface_contour/core/*}] # if {![llength $regs]} {error "Synthesized VFP datapath missing. Check IP output products and OOC checkpoints."} # set out [get_property DIRECTORY $run] 
+// HMemoryUtils.trashcanNow. Engine heap size: 4,208 MB. GUI used memory: 310 MB. Current time: 11/20/26, 11:32:35 AM EST
+// [Engine Memory]: 4,441 MB (+785456kb) [02:25:32]
+// HMemoryUtils.trashcanNow. Engine heap size: 4,719 MB. GUI used memory: 310 MB. Current time: 11/20/26, 11:32:43 AM EST
+// Tcl Message: get_timing_paths: Time (s): cpu = 00:00:47 ; elapsed = 00:00:33 . Memory (MB): peak = 6393.152 ; gain = 1207.422 
+// Tcl Message: # set paths [get_timing_paths -from $vclk -to $regs -max_paths 1] # if {![llength $paths]} {error "No constrained video path into the contour filter"} # report_timing -from $vclk -to $regs -max_paths 50 -file [file join $out contour_setup_paths.rpt] 
+// Tcl Message: INFO: [Timing 38-78] ReportTimingParams: -from_pins  -to_pins  -max_paths 50 -nworst 1 -delay_type max -sort_by slack. 
+// [Engine Memory]: 4,880 MB (+226774kb) [02:25:49]
+// TclEventType: STOP_PROGRESS_DIALOG
+// Tcl Message: report_timing_summary: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 6393.152 ; gain = 0.000 
+// Tcl Message: # set summary [report_timing_summary -report_unconstrained -max_paths 20 -return_string] # set fd [open [file join $out contour_synth_summary.rpt] w] # puts $fd $summary # close $fd # if {![regexp -line {^\s*(-?[0-9]+\.[0-9]+)\s+\S+\s+\d+\s+\d+\s+(-?[0-9]+\.[0-9]+)\s+\S+\s+\d+\s+\d+\s+(-?[0-9]+\.[0-9]+)\s+} $summary -> wns whs wpws]} {error "Inspect contour_synth_summary.rpt: no timing summary row"} # puts "Post-synthesis WNS $wns ns, WHS $whs ns, WPWS $wpws ns. Reports in $out" 
+// Tcl Message: Post-synthesis WNS -2.523 ns, WHS -0.423 ns, WPWS -0.579 ns. Reports in R:/KV260/vivado/KV260.runs/synth_1 
+// Tcl Message: # if {$wns < 0 || $whs < 0 || $wpws < 0} {error "Post-synthesis timing fails. Review reports before implementation."} 
+// Tcl Message: Post-synthesis timing fails. Review reports before implementation.     while executing "error "Post-synthesis timing fails. Review reports before implementation.""     invoked from within "if {$wns < 0 || $whs < 0 || $wpws < 0} {error "Post-synthesis timing fails. Review reports before implementation."}"     (file "R:/KV260/block_design/check_contour_synthesis.tcl" line 25) 
+// Elapsed time: 232 seconds
+dismissDialog("Tcl Command Line"); // bA
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// Elapsed time: 100 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 258, 48); // dT
+// Elapsed time: 23 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 597, 107, false, false, false, true, false); // dT - Popup Trigger
+selectMenuItem(RDIResource.TclConsoleView_CLEAR_ALL_OUTPUT, "Clear All Output"); // ar
+selectButton("OptionPane.button", "Yes"); // JButton
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source R:/KV260/block_design/check_contour_synthesis.tcl", true); // l
+// Tcl Command: 'source R:/KV260/block_design/check_contour_synthesis.tcl'
+// Tcl Command: 'source R:/KV260/block_design/check_contour_synthesis.tcl'
+// TclEventType: DESIGN_REFRESH
+// HMemoryUtils.trashcanNow. Engine heap size: 4,880 MB. GUI used memory: 300 MB. Current time: 11/20/26, 11:35:24 AM EST
+// Engine heap size: 4,880 MB. GUI used memory: 301 MB. Current time: 11/20/26, 11:35:24 AM EST
+// WARNING: HEventQueue.dispatchEvent() is taking  2828 ms.
+// Tcl Message: source R:/KV260/block_design/check_contour_synthesis.tcl 
+// Tcl Message: # set run [get_runs synth_1] # if {[get_property NEEDS_REFRESH $run] || ![string match "*Complete*" [get_property STATUS $run]]} { #     reset_run $run #     launch_runs $run #     wait_on_run $run # } # if {![string match "*Complete*" [get_property STATUS $run]]} {error "Top-level synthesis did not complete"} # open_run $run 
+// Tcl Message: Design is defaulting to impl run constrset: constrs_1 Design is defaulting to synth run part: xck26-sfvc784-2LV-c 
+// WARNING: HEventQueue.dispatchEvent() is taking  1208 ms.
+// TclEventType: DEBUG_GRAPH_STALE
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// HMemoryUtils.trashcanNow. Engine heap size: 4,880 MB. GUI used memory: 218 MB. Current time: 11/20/26, 11:35:51 AM EST
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: LOC_CONSTRAINT_REMOVE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: PLACEDB_MODIFIY_PRE
+// TclEventType: LOC_CONSTRAINT_ADD
+// TclEventType: SIGNAL_MODIFY
+// TclEventType: DEBUG_CORE_CONFIG_CHANGE
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: TIMING_RESULTS_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: READ_XDC_FILE_START
+// TclEventType: READ_XDC_FILE_END
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_REFRESH
+// HMemoryUtils.trashcanNow. Engine heap size: 4,880 MB. GUI used memory: 218 MB. Current time: 11/20/26, 11:36:09 AM EST
+// Xgd.load filename: C:/Xilinx/Vivado/2022.1/data/parts/xilinx/zynquplus/devint/zynquplus/xck26/xck26.xgd; ZipEntry: xck26_detail.xgd elapsed time: 1s
+// DeviceModel: Load Xgds SwingWorker Join Forever elapsed time: 1.1s
+// DeviceView Instantiated
+// WARNING: HEventQueue.dispatchEvent() is taking  6197 ms.
+// Tcl Message: INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: INFO: [Timing 38-35] Done setting XDC timing constraints. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_1_0/kv260_video_clk_wiz_1_0.xdc:57] INFO: [Timing 38-2] Deriving generated clocks [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_1_0/kv260_video_clk_wiz_1_0.xdc:57] 
+// Tcl Message: Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0.xdc] for cell 'kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_0/U0' Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0.xdc] for cell 'kv260_video_i/PS_VIDEO/V_DMA/axi_vdma_1/U0' 
+// Tcl Message: INFO: [Timing 38-2] Deriving generated clocks [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_tc_0_0/kv260_video_v_tc_0_0_clocks.xdc:2] 
+// Tcl Message: Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc] for cell 'kv260_video_i/PS_VIDEO/TO_PS/ps8_0_axi_periph/m09_couplers/auto_cc/inst' 
+// Tcl Message: INFO: [Project 1-1714] 567 XPM XDC files have been applied to the design. INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). 
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgdAndInitRouteStorage elapsed time: 4.9s
+// Device view-level: 0.0
+// WARNING: HEventQueue.dispatchEvent() is taking  1726 ms.
+// Tcl Message: INFO: [Project 1-1687] 2 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design. 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 6393.152 ; gain = 0.000 
+// Tcl Message: INFO: [Project 1-111] Unisim Transformation Summary: No Unisim elements were transformed.  
+// Tcl Message: open_run: Time (s): cpu = 00:01:20 ; elapsed = 00:00:55 . Memory (MB): peak = 6393.152 ; gain = 0.000 
+// WARNING: HEventQueue.dispatchEvent() is taking  1467 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 4,880 MB. GUI used memory: 320 MB. Current time: 11/20/26, 11:36:21 AM EST
+// Elapsed time: 61 seconds
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a
+// Tcl Message: # set vclk [get_clocks -quiet clk_out2_kv260_video_clk_wiz_1_0] # if {[llength $vclk] != 1 || abs([get_property PERIOD $vclk]-3.333)>0.01} {error "Expected 300 MHz video clock"} # set regs [get_cells -hier -filter {IS_SEQUENTIAL && NAME =~ */surface_contour/core/*}] # if {![llength $regs]} {error "Synthesized VFP datapath missing. Check IP output products and OOC checkpoints."} # set out [get_property DIRECTORY $run] 
+// Tcl Message: get_timing_paths: Time (s): cpu = 00:00:25 ; elapsed = 00:00:14 . Memory (MB): peak = 6393.152 ; gain = 0.000 
+// Tcl Message: # set paths [get_timing_paths -from $vclk -to $regs -max_paths 1] # if {![llength $paths]} {error "No constrained video path into the contour filter"} # report_timing -from $vclk -to $regs -max_paths 50 -file [file join $out contour_setup_paths.rpt] 
+// Tcl Message: INFO: [Timing 38-78] ReportTimingParams: -from_pins  -to_pins  -max_paths 50 -nworst 1 -delay_type max -sort_by slack. 
+// TclEventType: STOP_PROGRESS_DIALOG
+// Tcl Message: report_timing_summary: Time (s): cpu = 00:00:13 ; elapsed = 00:00:09 . Memory (MB): peak = 6393.152 ; gain = 0.000 
+// Tcl Message: # set summary [report_timing_summary -report_unconstrained -max_paths 20 -return_string] # set fd [open [file join $out contour_synth_summary.rpt] w] # puts $fd $summary # close $fd # if {![regexp -line {^\s*(-?[0-9]+\.[0-9]+)\s+\S+\s+\d+\s+\d+\s+(-?[0-9]+\.[0-9]+)\s+\S+\s+\d+\s+\d+\s+(-?[0-9]+\.[0-9]+)\s+} $summary -> wns whs wpws]} {error "Inspect contour_synth_summary.rpt: no timing summary row"} # puts "Post-synthesis WNS $wns ns, WHS $whs ns, WPWS $wpws ns. Reports in $out" 
+// Tcl Message: Post-synthesis WNS -2.523 ns, WHS -0.423 ns, WPWS -0.579 ns. Reports in R:/KV260/vivado/KV260.runs/synth_1 
+// Tcl Message: # if {$wns < 0 || $whs < 0 || $wpws < 0} {error "Post-synthesis timing fails. Review reports before implementation."} 
+// Tcl Message: Post-synthesis timing fails. Review reports before implementation.     while executing "error "Post-synthesis timing fails. Review reports before implementation.""     invoked from within "if {$wns < 0 || $whs < 0 || $wpws < 0} {error "Post-synthesis timing fails. Review reports before implementation."}"     (file "R:/KV260/block_design/check_contour_synthesis.tcl" line 25) 
+// Elapsed time: 26 seconds
+dismissDialog("Tcl Command Line"); // bA
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// WARNING: HEventQueue.dispatchEvent() is taking  1135 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 4,896 MB. GUI used memory: 309 MB. Current time: 11/20/26, 11:36:56 AM EST

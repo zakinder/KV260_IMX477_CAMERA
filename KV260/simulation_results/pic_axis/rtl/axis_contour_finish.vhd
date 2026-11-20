@@ -4,7 +4,7 @@
 --               pic2_filter_axis. Replaces neighbor taps whose max channel
 --               distance from center tap 12 exceeds 28 with their midpoint,
 --               then applies separable [1, 4, 6, 4, 1] binomial weights across
---               a 2-cycle stalled-ready arithmetic pipeline.
+--               a 7-cycle stalled-ready arithmetic pipeline.
 -- =============================================================================
 
 library ieee;
@@ -52,18 +52,11 @@ architecture rtl of axis_contour_finish is
     b : integer range 0 to 255;
   end record rgb8_t;
 
-  type rgb_sum_t is record
-    r : integer range 0 to 65535;
-    g : integer range 0 to 65535;
-    b : integer range 0 to 65535;
-  end record rgb_sum_t;
-
-  type tap_array_t  is array (0 to 24) of rgb8_t;
-  type row5_sum_t   is array (0 to 4)  of rgb_sum_t;
-  type weight5_t    is array (0 to 4)  of integer range 1 to 6;
-
-  -- Separable 1-D binomial kernel weights (sum = 16; 2-D sum = 16 * 16 = 256)
-  constant C_BINOM_W : weight5_t := (1, 4, 6, 4, 1);
+  type tap_array_t is array (0 to 24) of rgb8_t;
+  type delta_array_t is array (0 to 24, 0 to 2) of integer range -255 to 255;
+  signal delta : delta_array_t;
+  signal original, midpoint, limited : tap_array_t;
+  constant PIPE_DEPTH : positive := 7;
 
   -- Unpack 24-bit vector into RGB integer record
   function to_rgb8(v : std_logic_vector(23 downto 0)) return rgb8_t is
@@ -75,37 +68,6 @@ architecture rtl of axis_contour_finish is
     );
   end function to_rgb8;
 
-  -- Maximum channel difference: D(A,B) = max(|Ar-Br|, |Ag-Bg|, |Ab-Bb|)
-  function chan_dist(a, b : rgb8_t) return integer is
-    variable dr, dg, db, m : integer;
-  begin
-    dr := abs(a.r - b.r);
-    dg := abs(a.g - b.g);
-    db := abs(a.b - b.b);
-    m  := dr;
-    if dg > m then m := dg; end if;
-    if db > m then m := db; end if;
-    return m;
-  end function chan_dist;
-
-  -- Function: limit_tap
-  -- Replaces sample with (sample + center + 1) div 2 when D(sample, center) > 28
-  function limit_tap(sample, center : rgb8_t; thresh : natural) return rgb8_t is
-  begin
-    if chan_dist(sample, center) > thresh then
-      return (
-        r => (sample.r + center.r + 1) / 2,
-        g => (sample.g + center.g + 1) / 2,
-        b => (sample.b + center.b + 1) / 2
-      );
-    else
-      return sample;
-    end if;
-  end function limit_tap;
-
-  -- ---------------------------------------------------------------------------
-  -- Window Generator & 2-Stage Pipeline Register Signals
-  -- ---------------------------------------------------------------------------
   signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
   signal win_taps      : tap_array_t;
   signal win_valid     : std_logic;
@@ -115,15 +77,10 @@ architecture rtl of axis_contour_finish is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 2) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 2) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 2) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to PIPE_DEPTH) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to PIPE_DEPTH) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to PIPE_DEPTH) := (others => '0');
 
-  -- Stage 1 Registers: Five [1, 4, 6, 4, 1] horizontal weighted row sums
-  signal s1_row_sums   : row5_sum_t;
-
-  -- Stage 2 Register: Final packed RGB888 output pixel
-  signal s2_tdata      : std_logic_vector(23 downto 0) := (others => '0');
 
 begin
 
@@ -159,78 +116,93 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable
-  advance       <= (not v_pipe(2)) or m_axis_tready;
+  advance       <= (not v_pipe(PIPE_DEPTH)) or m_axis_tready;
   win_ready     <= advance;
 
-  m_axis_tdata  <= s2_tdata;
-  m_axis_tvalid <= v_pipe(2);
-  m_axis_tuser  <= sof_pipe(2);
-  m_axis_tlast  <= eol_pipe(2);
+  m_axis_tvalid <= v_pipe(PIPE_DEPTH);
+  m_axis_tuser  <= sof_pipe(PIPE_DEPTH);
+  m_axis_tlast  <= eol_pipe(PIPE_DEPTH);
 
   -- ---------------------------------------------------------------------------
-  -- Process     : average
-  -- Description : 2-stage synchronous arithmetic pipeline that clamps distant
-  --               samples (D > 28), accumulates 5 horizontal [1,4,6,4,1] row
-  --               sums in Stage 1, and combines rows vertically with rounded
-  --               division by 256 in Stage 2.
-  -- ---------------------------------------------------------------------------
-  average : process (aclk)
-    variable v_center   : rgb8_t;
-    variable v_limited  : rgb8_t;
-    variable v_rsum     : rgb_sum_t;
-    variable v_total    : rgb_sum_t;
-    variable v_out_rgb  : rgb8_t;
+  -- Register the differences and both clamp choices before threshold selection.
+  process (aclk)
+    variable center, sample : rgb8_t;
   begin
     if rising_edge(aclk) then
       if aresetn = '0' then
         v_pipe   <= (others => '0');
         sof_pipe <= (others => '0');
         eol_pipe <= (others => '0');
-        s2_tdata <= (others => '0');
-
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across both pipeline stages
-        v_pipe   <= win_valid & v_pipe(1);
-        sof_pipe <= win_sof   & sof_pipe(1);
-        eol_pipe <= win_eol   & eol_pipe(1);
-
-        -- ---------------------------------------------------------------------
-        -- STAGE 1: Limit distant taps against center (tap 12) and register
-        --          five horizontal [1, 4, 6, 4, 1] binomial-weighted row sums
-        -- ---------------------------------------------------------------------
-        v_center := win_taps(12);
-
-        for r in 0 to 4 loop
-          v_rsum := (r => 0, g => 0, b => 0);
-          for c in 0 to 4 loop
-            v_limited := limit_tap(win_taps(r * 5 + c), v_center, G_DIFF_THRESH);
-            v_rsum.r  := v_rsum.r + (C_BINOM_W(c) * v_limited.r);
-            v_rsum.g  := v_rsum.g + (C_BINOM_W(c) * v_limited.g);
-            v_rsum.b  := v_rsum.b + (C_BINOM_W(c) * v_limited.b);
-          end loop;
-          s1_row_sums(r) <= v_rsum;
+        v_pipe   <= win_valid & v_pipe(1 to PIPE_DEPTH-1);
+        sof_pipe <= win_sof & sof_pipe(1 to PIPE_DEPTH-1);
+        eol_pipe <= win_eol & eol_pipe(1 to PIPE_DEPTH-1);
+        center := win_taps(12);
+        for i in 0 to 24 loop
+          sample := win_taps(i);
+          delta(i,0) <= sample.r - center.r;
+          delta(i,1) <= sample.g - center.g;
+          delta(i,2) <= sample.b - center.b;
+          original(i) <= sample;
+          midpoint(i) <= ((sample.r + center.r + 1)/2,
+                          (sample.g + center.g + 1)/2,
+                          (sample.b + center.b + 1)/2);
+          if delta(i,0) > G_DIFF_THRESH or delta(i,0) < -G_DIFF_THRESH or
+             delta(i,1) > G_DIFF_THRESH or delta(i,1) < -G_DIFF_THRESH or
+             delta(i,2) > G_DIFF_THRESH or delta(i,2) < -G_DIFF_THRESH then
+            limited(i) <= midpoint(i);
+          else
+            limited(i) <= original(i);
+          end if;
         end loop;
-
-        -- ---------------------------------------------------------------------
-        -- STAGE 2: Combine five weighted row sums vertically with [1,4,6,4,1],
-        --          round (+ 128), divide by 256, and pack RGB888 output
-        -- ---------------------------------------------------------------------
-        v_total := (r => 0, g => 0, b => 0);
-        for r in 0 to 4 loop
-          v_total.r := v_total.r + (C_BINOM_W(r) * s1_row_sums(r).r);
-          v_total.g := v_total.g + (C_BINOM_W(r) * s1_row_sums(r).g);
-          v_total.b := v_total.b + (C_BINOM_W(r) * s1_row_sums(r).b);
-        end loop;
-
-        v_out_rgb.r := (v_total.r + 128) / 256;
-        v_out_rgb.g := (v_total.g + 128) / 256;
-        v_out_rgb.b := (v_total.b + 128) / 256;
-
-        s2_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
-                    std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &
-                    std_logic_vector(to_unsigned(v_out_rgb.b, 8));
       end if;
     end if;
-  end process average;
+  end process;
+
+  -- Each channel uses the same exact [1,4,6,4,1] kernel in both dimensions.
+  -- Factor it as (a+e) + 4*(b+d+c) + 2*c. Round only after the vertical sum.
+  channels : for ch in 0 to 2 generate
+    type pixels_t is array (0 to 24) of integer range 0 to 255;
+    type pair_t is array (0 to 4) of integer range 0 to 510;
+    type triple_t is array (0 to 4) of integer range 0 to 765;
+    type centers_t is array (0 to 4) of integer range 0 to 255;
+    type rows_t is array (0 to 4) of integer range 0 to 4080;
+    signal pixels : pixels_t;
+    signal outer_pair : pair_t;
+    signal inner_three : triple_t;
+    signal centers : centers_t;
+    signal rows : rows_t;
+    signal vertical_outer : integer range 0 to 8160;
+    signal vertical_inner : integer range 0 to 12240;
+    signal vertical_center : integer range 0 to 4080;
+    signal total : integer range 0 to 65280;
+  begin
+    unpack : for i in 0 to 24 generate
+      pixels(i) <= limited(i).b when ch = 0 else
+                   limited(i).g when ch = 1 else limited(i).r;
+    end generate;
+
+    process (aclk)
+    begin
+      if rising_edge(aclk) then
+        if aresetn = '0' then
+          m_axis_tdata(8*ch+7 downto 8*ch) <= (others => '0');
+        elsif advance = '1' then
+          for r in 0 to 4 loop
+            outer_pair(r) <= pixels(5*r) + pixels(5*r+4);
+            inner_three(r) <= pixels(5*r+1) + pixels(5*r+3) + pixels(5*r+2);
+            centers(r) <= pixels(5*r+2);
+            rows(r) <= outer_pair(r) + 4*inner_three(r) + 2*centers(r);
+          end loop;
+          vertical_outer <= rows(0) + rows(4);
+          vertical_inner <= rows(1) + rows(3) + rows(2);
+          vertical_center <= rows(2);
+          total <= vertical_outer + 4*vertical_inner + 2*vertical_center;
+          m_axis_tdata(8*ch+7 downto 8*ch) <=
+            std_logic_vector(to_unsigned((total+128)/256, 8));
+        end if;
+      end if;
+    end process;
+  end generate;
 
 end architecture rtl;
