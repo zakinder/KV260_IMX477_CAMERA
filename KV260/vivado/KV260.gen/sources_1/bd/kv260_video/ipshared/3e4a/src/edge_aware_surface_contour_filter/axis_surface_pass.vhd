@@ -4,7 +4,7 @@
 --               Evaluates four overlapping 3x3 sub-regions anchored at center
 --               tap 12, selects regions within a homogeneity tolerance of the
 --               best-matching surface, and blends the resulting surface mean
---               with the center pixel across a 9-cycle stalled-ready pipeline.
+--               with the center pixel across a 10-cycle stalled-ready pipeline.
 -- =============================================================================
 
 library ieee;
@@ -122,6 +122,9 @@ architecture rtl of axis_surface_pass is
   type totals_t is array (0 to 3, 0 to 2) of integer range 0 to 2299;
   signal totals : totals_t;
   signal spans, mean_spans, score_spans, distances : int4_array_t;
+  signal abs_delta, distance_colors : rgb4_array_t;
+  signal distance_center : rgb8_t;
+  signal distance_spans : int4_array_t;
   signal means, score_colors : rgb4_array_t;
   signal sum_center, mean_center, score_center, blend_center, blend_mean : rgb8_t;
 
@@ -141,9 +144,9 @@ architecture rtl of axis_surface_pass is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 10) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 10) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 10) := (others => '0');
 
   -- Stage 1 Registers: Center pixel and 10 row strips
   signal s1_center     : rgb8_t;
@@ -198,17 +201,17 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable: advances whenever output is empty or accepted
-  advance       <= (not v_pipe(9)) or m_axis_tready;
+  advance       <= (not v_pipe(10)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(9);
-  m_axis_tuser  <= sof_pipe(9);
-  m_axis_tlast  <= eol_pipe(9);
+  m_axis_tvalid <= v_pipe(10);
+  m_axis_tuser  <= sof_pipe(10);
+  m_axis_tlast  <= eol_pipe(10);
 
   -- ---------------------------------------------------------------------------
   -- Process     : compute
-  -- Description : 9-stage synchronous arithmetic pipeline executing strip
+  -- Description : 10-stage synchronous arithmetic pipeline executing strip
   --               reduction, 3x3 candidate scoring, tolerance gating, and
   --               center-preserving surface blending.
   -- ---------------------------------------------------------------------------
@@ -230,10 +233,10 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 9 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 8);
-        sof_pipe <= win_sof   & sof_pipe(1 to 8);
-        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+        -- Shift valid and frame/line sidebands across all 10 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 9);
+        sof_pipe <= win_sof   & sof_pipe(1 to 9);
+        eol_pipe <= win_eol   & eol_pipe(1 to 9);
 
         -- ---------------------------------------------------------------------
         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
@@ -274,14 +277,22 @@ begin
         -- Stages 3-5: rounded mean, channel distance, then final score.
         mean_center <= sum_center; mean_spans <= spans;
         score_center <= mean_center; score_colors <= means; score_spans <= mean_spans;
-        s2_center <= score_center;
+        distance_center <= score_center;
+        distance_colors <= score_colors;
+        distance_spans <= score_spans;
+        s2_center <= distance_center;
         for q in 0 to 3 loop
           means(q).r <= (totals(q,0) * 3641) / 32768;
           means(q).g <= (totals(q,1) * 3641) / 32768;
           means(q).b <= (totals(q,2) * 3641) / 32768;
-          distances(q) <= chan_dist(means(q),mean_center);
-          s2_means(q) <= score_colors(q);
-          s2_scores(q) <= 2*score_spans(q)+3*distances(q);
+          -- Register absolute channel differences before the max comparison.
+          abs_delta(q).r <= abs(means(q).r - mean_center.r);
+          abs_delta(q).g <= abs(means(q).g - mean_center.g);
+          abs_delta(q).b <= abs(means(q).b - mean_center.b);
+          distances(q) <= work.pic2_types.largest(abs_delta(q).r,
+            work.pic2_types.largest(abs_delta(q).g, abs_delta(q).b));
+          s2_means(q) <= distance_colors(q);
+          s2_scores(q) <= 2*distance_spans(q)+3*distances(q);
         end loop;
 
         -- ---------------------------------------------------------------------

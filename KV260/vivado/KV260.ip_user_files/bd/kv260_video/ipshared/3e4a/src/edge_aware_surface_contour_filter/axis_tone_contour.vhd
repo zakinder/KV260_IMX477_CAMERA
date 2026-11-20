@@ -2,7 +2,7 @@
 -- Module      : axis_tone_contour
 -- Description : Stage 4 tone-mapping, contour detection, and RGB color
 --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
---               window at spacing s=6 (25x25 footprint) across a 9-cycle
+--               window at spacing s=6 (25x25 footprint) across a 11-cycle
 --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
 --               expand chroma saturation.
 -- =============================================================================
@@ -115,7 +115,8 @@ architecture rtl of axis_tone_contour is
   signal y_tap : tap_luma_array_t;
   signal center0, center_delay : rgb8_t;
   signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
-  signal ink_part, ridge_part, light_part : integer range 0 to 255;
+  signal ink_part, ridge_part : integer range 0 to 255;
+  signal light_part : integer range 0 to 19;
   signal curve_part, min_part, max_part : integer range 0 to 255;
   signal center_part, offset_rgb, output_rgb : rgb8_t;
   signal offset_y, offset_target, offset_room, output_offset : integer range 0 to 255;
@@ -134,9 +135,9 @@ architecture rtl of axis_tone_contour is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 11) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 11) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 11) := (others => '0');
 
   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
   signal s1_center     : rgb8_t;
@@ -153,6 +154,13 @@ architecture rtl of axis_tone_contour is
   signal s2_gain_q8    : integer range 256 to 512;
 
   -- Stage 3 Registers: Scaled relative RGB channels and delayed target luma
+  type products_t is record
+    r, g, b : integer range 0 to 255 * 512;
+  end record;
+  signal channel_delta : rgb8_t;
+  signal chroma_product : products_t;
+  signal product_gain : integer range 256 to 512;
+  signal delta_target, product_target : integer range 0 to 255;
   signal s3_rel_rgb    : rgb8_t;
   signal s3_target     : integer range 0 to 255;
 
@@ -193,13 +201,13 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable
-  advance       <= (not v_pipe(9)) or m_axis_tready;
+  advance       <= (not v_pipe(11)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(9);
-  m_axis_tuser  <= sof_pipe(9);
-  m_axis_tlast  <= eol_pipe(9);
+  m_axis_tvalid <= v_pipe(11);
+  m_axis_tuser  <= sof_pipe(11);
+  m_axis_tlast  <= eol_pipe(11);
 
   -- ---------------------------------------------------------------------------
   -- Process     : render
@@ -218,7 +226,6 @@ begin
     variable v_soft      : integer;
     variable v_ink       : integer;
     variable v_ridge     : integer;
-    variable v_light     : integer;
     variable v_c_min     : integer;
     variable v_c_max     : integer;
     variable v_span      : integer;
@@ -235,9 +242,9 @@ begin
 
       elsif advance = '1' then
         -- Shift valid and frame/line sidebands across all 6 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 8);
-        sof_pipe <= win_sof   & sof_pipe(1 to 8);
-        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+        v_pipe   <= win_valid & v_pipe(1 to 10);
+        sof_pipe <= win_sof   & sof_pipe(1 to 10);
+        eol_pipe <= win_eol   & eol_pipe(1 to 10);
 
         -- ---------------------------------------------------------------------
         -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
@@ -309,7 +316,7 @@ begin
           v_ink := clamp_int((clamp_int((s1_grad / 4) - 5, 0, 2040) / 4) + (s1_dark_d / 4), 0, 12);
         end if;
 
-        v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
+
 
         ink_part <= v_ink;
         ridge_part <= clamp_int(s1_rd - 2, 0, 255);
@@ -320,8 +327,9 @@ begin
           ink_delay <= v_ridge;
         end if;
 
-        light_part <= v_light;
-        light_delay <= light_part;
+        -- floor(3*x/4) reaches the light limit of 14 at x=19.
+        light_part <= clamp_int(s1_rl - 3, 0, 19);
+        light_delay <= (3 * light_part) / 4;
         -- Find center RGB min, max, and chroma span
         v_c_min := s1_center.r;
         v_c_max := s1_center.r;
@@ -339,18 +347,29 @@ begin
         gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
 
         -- ---------------------------------------------------------------------
-        -- STAGES 5-6: Register target and scale channel differences by Q8 chroma gain
+        -- STAGES 5-8: Register target and scale channel differences by Q8 chroma gain
         -- ---------------------------------------------------------------------
         s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
         s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
 
-        s3_rel_rgb.r <= ((s2_center.r - s2_c_min) * s2_gain_q8 + 128) / 256;
-        s3_rel_rgb.g <= ((s2_center.g - s2_c_min) * s2_gain_q8 + 128) / 256;
-        s3_rel_rgb.b <= ((s2_center.b - s2_c_min) * s2_gain_q8 + 128) / 256;
-        s3_target    <= s2_target;
+        -- Register the subtract, unsigned product and Q8 rounding separately.
+        product_gain <= s2_gain_q8;
+        delta_target <= s2_target;
+        product_target <= delta_target;
+        s3_target <= product_target;
+        channel_delta.r <= s2_center.r - s2_c_min;
+        channel_delta.g <= s2_center.g - s2_c_min;
+        channel_delta.b <= s2_center.b - s2_c_min;
+        chroma_product.r <= channel_delta.r * product_gain;
+        chroma_product.g <= channel_delta.g * product_gain;
+        chroma_product.b <= channel_delta.b * product_gain;
+        s3_rel_rgb.r <= (chroma_product.r + 128) / 256;
+        s3_rel_rgb.g <= (chroma_product.g + 128) / 256;
+        s3_rel_rgb.b <= (chroma_product.b + 128) / 256;
+
 
         -- ---------------------------------------------------------------------
-        -- STAGES 7-9: Compute common luma offset, add to relative RGB, and pack
+        -- STAGES 9-11: Compute common luma offset, add to relative RGB, and pack
         -- ---------------------------------------------------------------------
         v_rel_max := s3_rel_rgb.r;
         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;

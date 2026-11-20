@@ -20,10 +20,10 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 20744
+INFO: [Synth 8-7075] Helper process launched with PID 32532
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1838.023 ; gain = 318.809
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1837.195 ; gain = 318.145
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:129]
 	Parameter revision_number bound to: 32'b00010010000000110010000000100010 
@@ -35,33 +35,33 @@ INFO: [Synth 8-638] synthesizing module 'kv260_video_vfp_0_0' [r:/KV260/vivado/K
 	Parameter FRAME_WIDTH bound to: 4096 - type: integer 
 	Parameter FRAME_HEIGHT bound to: 3040 - type: integer 
 	Parameter FRAME_PIXEL_DEPTH bound to: 10 - type: integer 
-INFO: [Synth 8-3491] module 'vfp_v1_0' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_v1_0.vhd:11' bound to instance 'U0' of component 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:297]
-INFO: [Synth 8-638] synthesizing module 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_v1_0.vhd:92]
-INFO: [Synth 8-638] synthesizing module 'vfp_config' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_config.vhd:47]
-INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_config.vhd:194]
-INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_config.vhd:703]
-INFO: [Synth 8-256] done synthesizing module 'vfp_config' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_config.vhd:47]
-INFO: [Synth 8-638] synthesizing module 'surface_contour_select' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'pic2_filter_axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_window5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_tone_contour' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
-INFO: [Synth 8-256] done synthesizing module 'axis_tone_contour' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
-INFO: [Synth 8-638] synthesizing module 'axis_contour_finish' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
-INFO: [Synth 8-256] done synthesizing module 'axis_contour_finish' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
-INFO: [Synth 8-256] done synthesizing module 'pic2_filter_axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
-INFO: [Synth 8-256] done synthesizing module 'surface_contour_select' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
-INFO: [Synth 8-256] done synthesizing module 'vfp_v1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/hdl/vfp_v1_0.vhd:92]
+INFO: [Synth 8-3491] module 'vfp_v1_0' declared at 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_v1_0.vhd:11' bound to instance 'U0' of component 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:297]
+INFO: [Synth 8-638] synthesizing module 'vfp_v1_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_v1_0.vhd:92]
+INFO: [Synth 8-638] synthesizing module 'vfp_config' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_config.vhd:47]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_config.vhd:194]
+INFO: [Synth 8-226] default block is never used [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_config.vhd:703]
+INFO: [Synth 8-256] done synthesizing module 'vfp_config' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_config.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'surface_contour_select' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'pic2_filter_axis' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_surface_pass__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_window5__parameterized1' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_window5__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'axis_surface_pass__parameterized1' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_tone_contour' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'axis_tone_contour' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:44]
+INFO: [Synth 8-638] synthesizing module 'axis_contour_finish' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'axis_contour_finish' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'pic2_filter_axis' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'surface_contour_select' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/surface_contour_select.vhd:44]
+INFO: [Synth 8-256] done synthesizing module 'vfp_v1_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/hdl/vfp_v1_0.vhd:92]
 INFO: [Synth 8-256] done synthesizing module 'kv260_video_vfp_0_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_vfp_0_0/synth/kv260_video_vfp_0_0.vhd:129]
 WARNING: [Synth 8-5858] RAM strip_rgb_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  strip_rgb_reg 
@@ -69,8 +69,12 @@ WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
 WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM distance_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  distance_colors_reg 
 WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM abs_delta_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  abs_delta_reg 
 WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
 WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
@@ -83,8 +87,12 @@ WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
 WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM distance_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  distance_colors_reg 
 WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM abs_delta_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  abs_delta_reg 
 WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
 WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
@@ -97,22 +105,26 @@ WARNING: [Synth 8-5858] RAM s1_strips_reg from Abstract Data Type (record/struct
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s1_strips_reg 
 WARNING: [Synth 8-5858] RAM score_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  score_colors_reg 
+WARNING: [Synth 8-5858] RAM distance_colors_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  distance_colors_reg 
 WARNING: [Synth 8-5858] RAM means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  means_reg 
+WARNING: [Synth 8-5858] RAM abs_delta_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  abs_delta_reg 
 WARNING: [Synth 8-5858] RAM s2_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s2_means_reg 
 WARNING: [Synth 8-5858] RAM s3_means_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  s3_means_reg 
 WARNING: [Synth 8-5858] RAM slots_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  slots_reg 
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[1] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[3] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[5] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[9] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[15] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[19] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[21] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
-WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[23] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:247]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[1] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[3] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[5] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[9] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[15] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[19] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[21] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
+WARNING: [Synth 8-6014] Unused sequential element y_tap_reg[23] was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:254]
 WARNING: [Synth 8-5858] RAM original_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  original_reg 
 WARNING: [Synth 8-5858] RAM midpoint_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
@@ -180,32 +192,32 @@ WARNING: [Synth 8-7129] Port video2_tlast in module vfp_v1_0 is either unconnect
 WARNING: [Synth 8-7129] Port video2_tuser in module vfp_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port video2_tvalid in module vfp_v1_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2231.918 ; gain = 712.703
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2234.746 ; gain = 715.695
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2249.812 ; gain = 730.598
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2234.746 ; gain = 715.695
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2249.812 ; gain = 730.598
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2234.746 ; gain = 715.695
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.762 . Memory (MB): peak = 2250.055 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.698 . Memory (MB): peak = 2234.746 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2377.469 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2320.582 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2394.305 ; gain = 16.836
+Constraint Validation Runtime : Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.818 . Memory (MB): peak = 2345.273 ; gain = 24.691
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2394.305 ; gain = 875.090
+Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2345.273 ; gain = 826.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -213,13 +225,13 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2394.305 ; gain = 875.090
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2345.273 ; gain = 826.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2394.305 ; gain = 875.090
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2345.273 ; gain = 826.223
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'surface_contour_select'
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5:/banks[0].ram_reg"'.
@@ -247,17 +259,15 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_wi
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'surface_contour_select'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:58 ; elapsed = 00:01:00 . Memory (MB): peak = 2394.305 ; gain = 875.090
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:58 ; elapsed = 00:01:03 . Memory (MB): peak = 2345.273 ; gain = 826.223
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 1     
 	   5 Input   32 Bit       Adders := 2     
-	   2 Input   31 Bit       Adders := 1     
-	   2 Input   19 Bit       Adders := 3     
 	   2 Input   17 Bit       Adders := 10    
 	   2 Input   16 Bit       Adders := 7     
 	   2 Input   15 Bit       Adders := 1     
@@ -274,7 +284,8 @@ Detailed RTL Component Info :
 	   4 Input   10 Bit       Adders := 1     
 	   3 Input    9 Bit       Adders := 219   
 	   2 Input    9 Bit       Adders := 16    
-	   2 Input    8 Bit       Adders := 52    
+	   2 Input    8 Bit       Adders := 49    
+	   3 Input    8 Bit       Adders := 3     
 +---Registers : 
 	               72 Bit    Registers := 22    
 	               32 Bit    Registers := 130   
@@ -283,11 +294,12 @@ Detailed RTL Component Info :
 	               14 Bit    Registers := 3     
 	               13 Bit    Registers := 8     
 	               12 Bit    Registers := 49    
-	               11 Bit    Registers := 40    
-	               10 Bit    Registers := 106   
+	               11 Bit    Registers := 55    
+	               10 Bit    Registers := 115   
 	                9 Bit    Registers := 118   
-	                8 Bit    Registers := 913   
+	                8 Bit    Registers := 1000  
 	                7 Bit    Registers := 3     
+	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 2     
 	                2 Bit    Registers := 2     
 	                1 Bit    Registers := 49    
@@ -297,24 +309,23 @@ Detailed RTL Component Info :
 +---ROMs : 
 	                    ROMs := 1     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 172   
-	   2 Input   31 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 159   
 	   2 Input   24 Bit        Muxes := 561   
-	   2 Input   19 Bit        Muxes := 3     
 	   3 Input   16 Bit        Muxes := 2     
 	   2 Input   16 Bit        Muxes := 3     
 	   2 Input   14 Bit        Muxes := 1     
 	   2 Input   12 Bit        Muxes := 1     
-	   2 Input   11 Bit        Muxes := 17    
+	   2 Input   11 Bit        Muxes := 5     
 	   3 Input   10 Bit        Muxes := 1     
-	   2 Input   10 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 1     
 	   2 Input    9 Bit        Muxes := 3     
-	   2 Input    8 Bit        Muxes := 284   
+	   2 Input    8 Bit        Muxes := 305   
 	   4 Input    8 Bit        Muxes := 9     
-	   5 Input    8 Bit        Muxes := 1     
+	   3 Input    8 Bit        Muxes := 1     
 	   6 Input    8 Bit        Muxes := 1     
+	   4 Input    5 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 1     
-	   4 Input    4 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 6     
 	   2 Input    1 Bit        Muxes := 55    
 	   3 Input    1 Bit        Muxes := 5     
@@ -333,26 +344,27 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP s3_rel_rgb_reg[r]3, operation Mode is: (C:0x80)+(D'-A'')*B.
-DSP Report: register s2_center_reg[r] is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: register min_delay_reg is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: operator s3_rel_rgb_reg[r]3 is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: operator s3_rel_rgb_reg[r]4 is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: operator s3_rel_rgb_reg[r]5 is absorbed into DSP s3_rel_rgb_reg[r]3.
-DSP Report: Generating DSP s3_rel_rgb_reg[b]3, operation Mode is: (C:0x80)+(D'-ACIN2)*B.
-DSP Report: register s2_center_reg[b] is absorbed into DSP s3_rel_rgb_reg[b]3.
-DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[b]3.
-DSP Report: operator s3_rel_rgb_reg[b]3 is absorbed into DSP s3_rel_rgb_reg[b]3.
-DSP Report: operator s3_rel_rgb_reg[b]4 is absorbed into DSP s3_rel_rgb_reg[b]3.
-DSP Report: operator s3_rel_rgb_reg[b]5 is absorbed into DSP s3_rel_rgb_reg[b]3.
-DSP Report: Generating DSP s3_rel_rgb_reg[g]3, operation Mode is: (C:0x80)+(D'-A'')*B.
-DSP Report: register s2_center_reg[g] is absorbed into DSP s3_rel_rgb_reg[g]3.
-DSP Report: register min_delay_reg is absorbed into DSP s3_rel_rgb_reg[g]3.
-DSP Report: register s2_c_min_reg is absorbed into DSP s3_rel_rgb_reg[g]3.
-DSP Report: operator s3_rel_rgb_reg[g]3 is absorbed into DSP s3_rel_rgb_reg[g]3.
-DSP Report: operator s3_rel_rgb_reg[g]4 is absorbed into DSP s3_rel_rgb_reg[g]3.
-DSP Report: operator s3_rel_rgb_reg[g]5 is absorbed into DSP s3_rel_rgb_reg[g]3.
+WARNING: [Synth 8-3936] Found unconnected internal register 'chroma_product_reg[g]' and it is trimmed from '17' to '16' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:363]
+WARNING: [Synth 8-3936] Found unconnected internal register 'chroma_product_reg[b]' and it is trimmed from '17' to '16' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:363]
+WARNING: [Synth 8-3936] Found unconnected internal register 'chroma_product_reg[r]' and it is trimmed from '17' to '16' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd:363]
+DSP Report: Generating DSP s3_rel_rgb_reg[r]1, operation Mode is: (C:0x80)+(A2*B2)'.
+DSP Report: register channel_delta_reg[r] is absorbed into DSP s3_rel_rgb_reg[r]1.
+DSP Report: register product_gain_reg is absorbed into DSP s3_rel_rgb_reg[r]1.
+DSP Report: register chroma_product_reg[r] is absorbed into DSP s3_rel_rgb_reg[r]1.
+DSP Report: operator chroma_product_reg[r]0 is absorbed into DSP s3_rel_rgb_reg[r]1.
+DSP Report: operator s3_rel_rgb_reg[r]1 is absorbed into DSP s3_rel_rgb_reg[r]1.
+DSP Report: Generating DSP s3_rel_rgb_reg[b]1, operation Mode is: (C:0x80)+(A2*B2)'.
+DSP Report: register channel_delta_reg[b] is absorbed into DSP s3_rel_rgb_reg[b]1.
+DSP Report: register product_gain_reg is absorbed into DSP s3_rel_rgb_reg[b]1.
+DSP Report: register chroma_product_reg[b] is absorbed into DSP s3_rel_rgb_reg[b]1.
+DSP Report: operator chroma_product_reg[b]0 is absorbed into DSP s3_rel_rgb_reg[b]1.
+DSP Report: operator s3_rel_rgb_reg[b]1 is absorbed into DSP s3_rel_rgb_reg[b]1.
+DSP Report: Generating DSP s3_rel_rgb_reg[g]1, operation Mode is: (C:0x80)+(A2*B2)'.
+DSP Report: register channel_delta_reg[g] is absorbed into DSP s3_rel_rgb_reg[g]1.
+DSP Report: register product_gain_reg is absorbed into DSP s3_rel_rgb_reg[g]1.
+DSP Report: register chroma_product_reg[g] is absorbed into DSP s3_rel_rgb_reg[g]1.
+DSP Report: operator chroma_product_reg[g]0 is absorbed into DSP s3_rel_rgb_reg[g]1.
+DSP Report: operator s3_rel_rgb_reg[g]1 is absorbed into DSP s3_rel_rgb_reg[g]1.
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_red[9] driven by constant 0
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_red[8] driven by constant 0
 INFO: [Synth 8-3917] design kv260_video_vfp_0_0 has port rgb_fr_plw_gre[9] driven by constant 0
@@ -416,96 +428,108 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_wi
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[5].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[6].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"axis_window5/banks[7].ram_reg"'.
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
-DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
-DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
-DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
 DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
 DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
-DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
-DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
-DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
-DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
-DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
-DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
-DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
-DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
-DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
-DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
-DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
-DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
-DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
-DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
-DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
-DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
-DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
-DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
-DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
 DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
 DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
-DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
-DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
-DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
-DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
-DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
-DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
 DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
 DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
-DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
-DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
-DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
-DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
 DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
 DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
-DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
-DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
-DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
-DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
 DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
 DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
+INFO: [Synth 8-3886] merging instance 'distances_reg[3][10]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[3][9]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[3][8]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[2][10]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[2][9]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[2][8]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[1][10]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[1][9]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[1][8]' (FDRE) to 'distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[0][10]' (FDRE) to 'distances_reg[0][9]'
+INFO: [Synth 8-3886] merging instance 'distances_reg[0][9]' (FDRE) to 'distances_reg[0][8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\distances_reg[0][8] )
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
+DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
+DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
+DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
+DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
+DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
+DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
+DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
+DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
+DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[0].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[1].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[2].ram_reg"'.
@@ -514,75 +538,99 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_su
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[1].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[2].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[1].surfaces /u_win/banks[3].ram_reg"'.
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:303]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:323]
-DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
-DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
-DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
-DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[3][10]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[3][9]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[3][8]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[2][10]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[2][9]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[2][8]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[1][10]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[1][9]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[1][8]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[0][10]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][9]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[1].surfaces/distances_reg[0][9]' (FDRE) to 'gen_surfaces[1].surfaces/distances_reg[0][8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\gen_surfaces[1].surfaces /\distances_reg[0][8] )
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[b][7:0]' into 'blend_mean_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[b][7:0]' into 's3_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[g][7:0]' into 'blend_mean_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[g][7:0]' into 's3_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_mean_reg[r][7:0]' into 'blend_mean_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 's3_center_reg[r][7:0]' into 's3_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:314]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[b][7:0]' into 'blend_center_reg[b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[g][7:0]' into 'blend_center_reg[g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
+INFO: [Synth 8-4471] merging register 'blend_center_reg[r][7:0]' into 'blend_center_reg[r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd:334]
 DSP Report: Generating DSP means_reg[0][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[0,2] is absorbed into DSP means_reg[0][b]1.
 DSP Report: operator means_reg[0][b]1 is absorbed into DSP means_reg[0][b]1.
-DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
-DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
-DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
-DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[0][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,1] is absorbed into DSP means_reg[0][g]1.
+DSP Report: operator means_reg[0][g]1 is absorbed into DSP means_reg[0][g]1.
+DSP Report: Generating DSP means_reg[0][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[0,0] is absorbed into DSP means_reg[0][r]1.
+DSP Report: operator means_reg[0][r]1 is absorbed into DSP means_reg[0][r]1.
 DSP Report: Generating DSP means_reg[1][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[1,2] is absorbed into DSP means_reg[1][b]1.
 DSP Report: operator means_reg[1][b]1 is absorbed into DSP means_reg[1][b]1.
-DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
-DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
-DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
-DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[1][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,1] is absorbed into DSP means_reg[1][g]1.
+DSP Report: operator means_reg[1][g]1 is absorbed into DSP means_reg[1][g]1.
+DSP Report: Generating DSP means_reg[1][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[1,0] is absorbed into DSP means_reg[1][r]1.
+DSP Report: operator means_reg[1][r]1 is absorbed into DSP means_reg[1][r]1.
 DSP Report: Generating DSP means_reg[2][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[2,2] is absorbed into DSP means_reg[2][b]1.
 DSP Report: operator means_reg[2][b]1 is absorbed into DSP means_reg[2][b]1.
-DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
-DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
-DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
-DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
-DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[2][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,1] is absorbed into DSP means_reg[2][g]1.
+DSP Report: operator means_reg[2][g]1 is absorbed into DSP means_reg[2][g]1.
+DSP Report: Generating DSP means_reg[2][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[2,0] is absorbed into DSP means_reg[2][r]1.
+DSP Report: operator means_reg[2][r]1 is absorbed into DSP means_reg[2][r]1.
 DSP Report: Generating DSP means_reg[3][b]1, operation Mode is: A2*(B:0xe39).
 DSP Report: register totals_reg[3,2] is absorbed into DSP means_reg[3][b]1.
 DSP Report: operator means_reg[3][b]1 is absorbed into DSP means_reg[3][b]1.
+DSP Report: Generating DSP means_reg[3][g]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,1] is absorbed into DSP means_reg[3][g]1.
+DSP Report: operator means_reg[3][g]1 is absorbed into DSP means_reg[3][g]1.
+DSP Report: Generating DSP means_reg[3][r]1, operation Mode is: A2*(B:0xe39).
+DSP Report: register totals_reg[3,0] is absorbed into DSP means_reg[3][r]1.
+DSP Report: operator means_reg[3][r]1 is absorbed into DSP means_reg[3][r]1.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[0].surfaces /u_win/banks[0].ram_reg"'.
 WARNING: [Synth 8-5790] Small sized RAM "\gen_surfaces[0].surfaces /u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[0].surfaces /u_win/banks[1].ram_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[0].surfaces /u_win/banks[0].ram_reg"'.
 WARNING: [Synth 8-5790] Small sized RAM "\gen_surfaces[0].surfaces /u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"\gen_surfaces[0].surfaces /u_win/banks[1].ram_reg"'.
-INFO: [Synth 8-4471] merging register 'midpoint_reg[12][b][7:0]' into 'original_reg[12][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
-INFO: [Synth 8-4471] merging register 'limited_reg[12][b][7:0]' into 'limited_reg[12][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[17][b][7:0]' into 'limited_reg[17][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[7][b][7:0]' into 'limited_reg[7][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[22][b][7:0]' into 'limited_reg[22][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[2][b][7:0]' into 'limited_reg[2][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'midpoint_reg[12][g][7:0]' into 'original_reg[12][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
-INFO: [Synth 8-4471] merging register 'limited_reg[12][g][7:0]' into 'limited_reg[12][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[17][g][7:0]' into 'limited_reg[17][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[7][g][7:0]' into 'limited_reg[7][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[22][g][7:0]' into 'limited_reg[22][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[2][g][7:0]' into 'limited_reg[2][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'midpoint_reg[12][r][7:0]' into 'original_reg[12][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
-INFO: [Synth 8-4471] merging register 'limited_reg[12][r][7:0]' into 'limited_reg[12][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[17][r][7:0]' into 'limited_reg[17][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[7][r][7:0]' into 'limited_reg[7][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[22][r][7:0]' into 'limited_reg[22][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
-INFO: [Synth 8-4471] merging register 'limited_reg[2][r][7:0]' into 'limited_reg[2][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/31ba/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[3][10]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[3][9]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[3][8]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[2][10]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[2][9]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[2][8]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[1][10]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[1][9]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[1][8]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][10]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[0][10]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][9]'
+INFO: [Synth 8-3886] merging instance 'gen_surfaces[0].surfaces/distances_reg[0][9]' (FDRE) to 'gen_surfaces[0].surfaces/distances_reg[0][8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\gen_surfaces[0].surfaces /\distances_reg[0][8] )
+INFO: [Synth 8-4471] merging register 'midpoint_reg[12][b][7:0]' into 'original_reg[12][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
+INFO: [Synth 8-4471] merging register 'limited_reg[12][b][7:0]' into 'limited_reg[12][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[17][b][7:0]' into 'limited_reg[17][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[7][b][7:0]' into 'limited_reg[7][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[22][b][7:0]' into 'limited_reg[22][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[2][b][7:0]' into 'limited_reg[2][b][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'midpoint_reg[12][g][7:0]' into 'original_reg[12][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
+INFO: [Synth 8-4471] merging register 'limited_reg[12][g][7:0]' into 'limited_reg[12][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[17][g][7:0]' into 'limited_reg[17][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[7][g][7:0]' into 'limited_reg[7][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[22][g][7:0]' into 'limited_reg[22][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[2][g][7:0]' into 'limited_reg[2][g][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'midpoint_reg[12][r][7:0]' into 'original_reg[12][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:147]
+INFO: [Synth 8-4471] merging register 'limited_reg[12][r][7:0]' into 'limited_reg[12][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[17][r][7:0]' into 'limited_reg[17][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[7][r][7:0]' into 'limited_reg[7][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[22][r][7:0]' into 'limited_reg[22][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
+INFO: [Synth 8-4471] merging register 'limited_reg[2][r][7:0]' into 'limited_reg[2][r][7:0]' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd:153]
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"antialias/u_win/banks[0].ram_reg"'.
 WARNING: [Synth 8-5790] Small sized RAM "antialias/u_win/banks[1].ram_reg" will be implemented using URAM because of explicit ram_style = "ultra" attribute.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"antialias/u_win/banks[1].ram_reg"'.
@@ -595,7 +643,7 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (vfpConfig
 INFO: [Synth 8-3886] merging instance 'vfpConfigInst/axi_bresp_reg[0]' (FDRE) to 'vfpConfigInst/axi_bresp_reg[1]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (vfpConfigInst/\axi_bresp_reg[1] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:03 ; elapsed = 00:03:07 . Memory (MB): peak = 2394.305 ; gain = 875.090
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:02:46 . Memory (MB): peak = 2345.273 ; gain = 826.223
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -651,49 +699,49 @@ Ultra RAM: Preliminary Mapping Report (see note below)
 Note: The table above is a preliminary report that shows the Ultra RAMs at the current stage of the synthesis flow. Some Ultra RAMs may be reimplemented as non Ultra RAM primitives later in the synthesis flow. Multiple instantiated Ultra RAMs are reported only once. Fields "FF provided for Pipeline" and "FF absorbed" respectively indicate number of registers available for pipelining and number of registers absorbed in the URAM matrix for pipelining. 
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+------------------+-----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name       | DSP Mapping           | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------------+-----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|axis_tone_contour | (C:0x80)+(D'-A'')*B   | 8      | 11     | 9      | 8      | 19     | 2    | 0    | 0    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | (C:0x80)+(D'-ACIN2)*B | 8      | 11     | 9      | 8      | 19     | 1    | 0    | 0    | 1    | 0     | 0    | 0    | 
-|axis_tone_contour | (C:0x80)+(D'-A'')*B   | 8      | 11     | 9      | 8      | 19     | 2    | 0    | 0    | 1    | 0     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-|axis_surface_pass | A2*(B:0xe39)          | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
-+------------------+-----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name       | DSP Mapping       | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|axis_tone_contour | (C:0x80)+(A2*B2)' | 10     | 8      | 8      | -      | 16     | 1    | 1    | 0    | -    | -     | 1    | 0    | 
+|axis_tone_contour | (C:0x80)+(A2*B2)' | 10     | 8      | 8      | -      | 16     | 1    | 1    | 0    | -    | -     | 1    | 0    | 
+|axis_tone_contour | (C:0x80)+(A2*B2)' | 10     | 8      | 8      | -      | 16     | 1    | 1    | 0    | -    | -     | 1    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|axis_surface_pass | A2*(B:0xe39)      | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 0    | 
++------------------+-------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -703,13 +751,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:17 ; elapsed = 00:03:22 . Memory (MB): peak = 2647.656 ; gain = 1128.441
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:17 ; elapsed = 00:03:02 . Memory (MB): peak = 2653.258 ; gain = 1134.207
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:23 ; elapsed = 00:03:28 . Memory (MB): peak = 2713.340 ; gain = 1194.125
+Finished Timing Optimization : Time (s): cpu = 00:02:22 ; elapsed = 00:03:08 . Memory (MB): peak = 2715.832 ; gain = 1196.781
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "banks[0].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "banks[1].ram_reg" defined in module: "axis_window5" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -800,7 +848,7 @@ INFO: [Synth 8-7052] The timing for the instance corei_3/U0/surface_contour/core
 INFO: [Synth 8-7052] The timing for the instance corei_4/U0/surface_contour/core/antialias/u_win/banks[0].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance corei_4/U0/surface_contour/core/antialias/u_win/banks[1].ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:33 ; elapsed = 00:03:55 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Technology Mapping : Time (s): cpu = 00:02:32 ; elapsed = 00:03:34 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -842,52 +890,55 @@ INFO: [Synth 8-7052] The timing for the instance U0/surface_contour/core/antiali
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:44 ; elapsed = 00:04:06 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished IO Insertion : Time (s): cpu = 00:02:43 ; elapsed = 00:03:46 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:44 ; elapsed = 00:04:06 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:44 ; elapsed = 00:03:46 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:50 ; elapsed = 00:04:12 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:49 ; elapsed = 00:03:51 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:50 ; elapsed = 00:04:12 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:49 ; elapsed = 00:03:51 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:54 ; elapsed = 00:04:16 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:53 ; elapsed = 00:03:56 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:54 ; elapsed = 00:04:16 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:53 ; elapsed = 00:03:56 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 Static Shift Register Report:
-+--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name         | RTL Name                                                                | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[2].surfaces/mean_center_reg[r][7]  | 3      | 72    | NO           | NO                 | YES               | 72     | 0       | 
-|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[2].surfaces/blend_center_reg[b][7] | 4      | 72    | NO           | NO                 | YES               | 72     | 0       | 
-|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/v_pipe_reg[7]                         | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/sof_pipe_reg[7]                       | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/eol_pipe_reg[7]                       | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-+--------------------+-------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
++--------------------+------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name         | RTL Name                                                                           | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++--------------------+------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[2].surfaces/mean_center_reg[b][7]             | 3      | 360   | NO           | NO                 | YES               | 360    | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[2].surfaces/s2_scores_reg[0]1[-1111111103]__0 | 4      | 108   | NO           | YES                | YES               | 108    | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/gen_surfaces[2].surfaces/blend_center_reg[b][7]            | 5      | 72    | NO           | NO                 | YES               | 72     | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/finish_pixel/s2_center_reg[r][7]                           | 3      | 24    | NO           | NO                 | YES               | 24     | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/finish_pixel/offset_target_reg[7]                          | 4      | 8     | NO           | NO                 | YES               | 8      | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/v_pipe_reg[7]                                    | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/sof_pipe_reg[7]                                  | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|kv260_video_vfp_0_0 | U0/surface_contour/core/antialias/eol_pipe_reg[7]                                  | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++--------------------+------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -897,49 +948,49 @@ Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 DSP Final Report (the ' indicates corresponding REG is set)
-+------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name       | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|axis_tone_contour | C+D'-A''*B  | 8      | 9      | 8      | 8      | 19     | 2    | 0    | 0    | 0    | 0     | 0    | 0    | 
-|axis_tone_contour | C+D'-A'*B   | 0      | 9      | 8      | 8      | 19     | 1    | 0    | 0    | 0    | 0     | 0    | 0    | 
-|axis_tone_contour | C+D'-A''*B  | 8      | 9      | 8      | 8      | 19     | 2    | 0    | 0    | 0    | 0     | 0    | 0    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-|axis_surface_pass | (A'*B)'     | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
-+------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name       | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|axis_tone_contour | (C+(A'*B')')' | 9      | 8      | 8      | -      | 16     | 1    | 1    | 1    | -    | -     | 1    | 1    | 
+|axis_tone_contour | (C+(A'*B')')' | 9      | 8      | 8      | -      | 16     | 1    | 1    | 1    | -    | -     | 1    | 1    | 
+|axis_tone_contour | (C+(A'*B')')' | 9      | 8      | 8      | -      | 16     | 1    | 1    | 1    | -    | -     | 1    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|axis_surface_pass | (A'*B)'       | 12     | 12     | -      | -      | 24     | 1    | 0    | -    | -    | -     | 0    | 1    | 
++------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
 Report BlackBoxes: 
@@ -952,53 +1003,53 @@ Report Cell Usage:
 +------+----------------+------+
 |      |Cell            |Count |
 +------+----------------+------+
-|1     |CARRY8          |  1328|
+|1     |CARRY8          |  1349|
 |2     |DSP_ALU         |    39|
-|3     |DSP_A_B_DATA    |    39|
-|7     |DSP_C_DATA      |    39|
-|9     |DSP_MULTIPLIER  |    39|
-|11    |DSP_M_DATA      |    39|
-|12    |DSP_OUTPUT      |    39|
-|14    |DSP_PREADD      |    39|
-|15    |DSP_PREADD_DATA |    39|
-|17    |LUT1            |    23|
-|18    |LUT2            |  1920|
-|19    |LUT3            |  4832|
-|20    |LUT4            |  3285|
-|21    |LUT5            | 11151|
-|22    |LUT6            |  4787|
-|23    |MUXF7           |     2|
-|24    |RAMB18E2        |     1|
-|25    |SRL16E          |   147|
-|26    |URAM288         |    24|
-|27    |FDRE            | 18795|
-|28    |FDSE            |    13|
+|4     |DSP_A_B_DATA    |    39|
+|6     |DSP_C_DATA      |    39|
+|8     |DSP_MULTIPLIER  |    39|
+|9     |DSP_M_DATA      |    39|
+|11    |DSP_OUTPUT      |    39|
+|12    |DSP_PREADD      |    39|
+|13    |DSP_PREADD_DATA |    39|
+|14    |LUT1            |    71|
+|15    |LUT2            |  2128|
+|16    |LUT3            |  4825|
+|17    |LUT4            |  3192|
+|18    |LUT5            | 11013|
+|19    |LUT6            |  4769|
+|20    |MUXF7           |     2|
+|21    |RAMB18E2        |     1|
+|22    |SRL16E          |   575|
+|23    |URAM288         |    24|
+|24    |FDRE            | 18646|
+|25    |FDSE            |    13|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:54 ; elapsed = 00:04:16 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:54 ; elapsed = 00:03:56 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 108 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:24 ; elapsed = 00:04:11 . Memory (MB): peak = 2742.277 ; gain = 1078.570
-Synthesis Optimization Complete : Time (s): cpu = 00:02:54 ; elapsed = 00:04:21 . Memory (MB): peak = 2742.277 ; gain = 1223.062
+Synthesis finished with 0 errors, 0 critical warnings and 111 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:26 ; elapsed = 00:03:52 . Memory (MB): peak = 2744.711 ; gain = 1115.133
+Synthesis Optimization Complete : Time (s): cpu = 00:02:54 ; elapsed = 00:04:00 . Memory (MB): peak = 2744.711 ; gain = 1225.660
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.433 . Memory (MB): peak = 2765.125 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1369 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.666 . Memory (MB): peak = 2764.465 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1390 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2827.609 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 2827.012 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 39 instances were transformed.
   DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 39 instances
 
-Synth Design complete, checksum: 147e8206
+Synth Design complete, checksum: dd56aa8f
 INFO: [Common 17-83] Releasing license: Synthesis
-201 Infos, 203 Warnings, 0 Critical Warnings and 0 Errors encountered.
+237 Infos, 218 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:10 ; elapsed = 00:04:40 . Memory (MB): peak = 2827.609 ; gain = 1455.949
+synth_design: Time (s): cpu = 00:03:12 ; elapsed = 00:04:20 . Memory (MB): peak = 2827.012 ; gain = 1454.152
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1/kv260_video_vfp_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_vfp_0_0, cache-ID = c07a7a8c6e29ed74
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_vfp_0_0, cache-ID = 076b58b09417b6c1
 INFO: [Coretcl 2-1174] Renamed 14 cell refs.
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_vfp_0_0_synth_1/kv260_video_vfp_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kv260_video_vfp_0_0_utilization_synth.rpt -pb kv260_video_vfp_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 12:29:08 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 12:50:08 2026...
