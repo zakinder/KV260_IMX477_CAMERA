@@ -1,0 +1,6 @@
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/jpeg_reader_pkg.vhd:327:5:@40ns:(report note): JPEG decoded: /workspace/scratch/e9aef5c90f3f/pic2_axis/images/PIC1.JPG (2048 x 1152)
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:72:7:@34479125ns:(report note): Input frame 1 accepted: 2359296 pixels
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:123:11:@35471595ns:(report note): Output frame 1: 2359296 pixels, 1152 EOL, 1 SOF; first/last cycles 78706/3547156
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:136:11:@35471985ns:(report note): PASS: 1 frame(s), 2359296 accepted output pixels, 1010373 stalled output cycles
+simulation finished @35471985ns
+RTL output: /workspace/scratch/e9aef5c90f3f/pic2_axis/results/PIC1_filtered.bmp

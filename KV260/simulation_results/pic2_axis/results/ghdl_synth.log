@@ -1,0 +1,18 @@
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_tone_contour.vhd:27:32:note: found ROM "n14555", width: 9 bits, depth: 17
+    return smallest(255,ANCHORS(i)+((y mod 16)*(ANCHORS(i+1)-ANCHORS(i))+8)/16);
+                               ^
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_tone_contour.vhd:27:56:note: found ROM "n14568", width: 9 bits, depth: 17
+    return smallest(255,ANCHORS(i)+((y mod 16)*(ANCHORS(i+1)-ANCHORS(i))+8)/16);
+                                                       ^
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_tone_contour.vhd:27:69:note: found ROM "n14575", width: 9 bits, depth: 17
+    return smallest(255,ANCHORS(i)+((y mod 16)*(ANCHORS(i+1)-ANCHORS(i))+8)/16);
+                                                                    ^
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_window5.vhd:25:10:note: found RAM "line_ram", width: 96 bits, depth: 2048
+  signal line_ram : line_ram_t;
+         ^
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_window5.vhd:25:10:note: found RAM "line_ram", width: 288 bits, depth: 2048
+  signal line_ram : line_ram_t;
+         ^
+/workspace/scratch/e9aef5c90f3f/pic2_axis/rtl/axis_window5.vhd:25:10:note: found RAM "line_ram", width: 576 bits, depth: 2048
+  signal line_ram : line_ram_t;
+         ^
