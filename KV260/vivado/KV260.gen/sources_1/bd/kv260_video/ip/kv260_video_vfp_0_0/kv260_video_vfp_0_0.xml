@@ -1783,11 +1783,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:08:39 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:31:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8cb72b75</spirit:value>
+            <spirit:value>9:2607e379</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1798,7 +1798,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8cb72b75</spirit:value>
+            <spirit:value>9:2607e379</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1814,11 +1814,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:08:39 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:31:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8cb72b75</spirit:value>
+            <spirit:value>9:2607e379</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1834,11 +1834,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:08:39 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:31:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33191ebc</spirit:value>
+            <spirit:value>9:99a9d6b0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1854,11 +1854,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:08:39 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:31:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:33191ebc</spirit:value>
+            <spirit:value>9:99a9d6b0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1872,11 +1872,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:08:39 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:31:08 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8cb72b75</spirit:value>
+            <spirit:value>9:2607e379</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1890,11 +1890,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Nov 20 18:13:48 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 18:36:05 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8cb72b75</spirit:value>
+            <spirit:value>9:2607e379</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2965,63 +2965,63 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_types.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/pic2_types.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_window5.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_window5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/constants_package.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/constants_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/fixed_float_types_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/fixed_float_types_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/fixed_pkg_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/fixed_pkg_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/float_pkg_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/float_pkg_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/vpf_records.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/vpf_records.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/ports_package.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/ports_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/hdl/vfp_config.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/hdl/vfp_config.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/hdl/vfp_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/hdl/vfp_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -3036,63 +3036,63 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_types.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/pic2_types.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_window5.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_window5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/constants_package.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/constants_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/fixed_float_types_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/fixed_float_types_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/fixed_pkg_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/fixed_pkg_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/float_and_fixed_pkg/float_pkg_c.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/float_and_fixed_pkg/float_pkg_c.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/vpf_records.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/vpf_records.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/Include/ports_package.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/Include/ports_package.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/hdl/vfp_config.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/hdl/vfp_config.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/fb1b/hdl/vfp_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/cb2b/hdl/vfp_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -3247,7 +3247,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>vfp_v2.0</xilinx:displayName>
-      <xilinx:coreRevision>167</xilinx:coreRevision>
+      <xilinx:coreRevision>168</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.IVIDEO.CLK_DOMAIN" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.IVIDEO.FREQ_HZ" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>

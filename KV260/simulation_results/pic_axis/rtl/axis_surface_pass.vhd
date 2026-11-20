@@ -4,7 +4,7 @@
 --               Evaluates four overlapping 3x3 sub-regions anchored at center
 --               tap 12, selects regions within a homogeneity tolerance of the
 --               best-matching surface, and blends the resulting surface mean
---               with the center pixel across a 11-cycle stalled-ready pipeline.
+--               with the center pixel across a 12-cycle stalled-ready pipeline.
 -- =============================================================================
 
 library ieee;
@@ -83,19 +83,6 @@ architecture rtl of axis_surface_pass is
     return (5 * c.r + 9 * c.g + 2 * c.b + 8) / 16;
   end function luma_y;
 
-  -- Maximum channel difference: D(A,B) = max(|Ar-Br|, |Ag-Bg|, |Ab-Bb|)
-  function chan_dist(a, b : rgb8_t) return integer is
-    variable dr, dg, db, m : integer;
-  begin
-    dr := abs(a.r - b.r);
-    dg := abs(a.g - b.g);
-    db := abs(a.b - b.b);
-    m  := dr;
-    if dg > m then m := dg; end if;
-    if db > m then m := db; end if;
-    return m;
-  end function chan_dist;
-
   -- Function: strip
   -- Reduces 3 horizontal taps into RGB sums and luma min/max extrema
   function strip(t0, t1, t2 : rgb8_t; y0, y1, y2 : integer) return strip_t is
@@ -144,9 +131,9 @@ architecture rtl of axis_surface_pass is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 11) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 11) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 11) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 12) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 12) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 12) := (others => '0');
 
   -- Stage 1 Registers: Center pixel and 10 row strips
   signal s1_center     : rgb8_t;
@@ -172,6 +159,8 @@ architecture rtl of axis_surface_pass is
   signal s3_best_score : integer range 0 to 1275;
 
   -- Stage 4 Register: Packed output RGB888 pixel
+  signal half_blend, surface_blend : rgb8_t;
+  signal edge_r, edge_g, edge_b : boolean;
   signal s4_tdata      : std_logic_vector(23 downto 0) := (others => '0');
 
 begin
@@ -208,17 +197,17 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable: advances whenever output is empty or accepted
-  advance       <= (not v_pipe(11)) or m_axis_tready;
+  advance       <= (not v_pipe(12)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(11);
-  m_axis_tuser  <= sof_pipe(11);
-  m_axis_tlast  <= eol_pipe(11);
+  m_axis_tvalid <= v_pipe(12);
+  m_axis_tuser  <= sof_pipe(12);
+  m_axis_tlast  <= eol_pipe(12);
 
   -- ---------------------------------------------------------------------------
   -- Process     : compute
-  -- Description : 11-stage synchronous arithmetic pipeline executing strip
+  -- Description : 12-stage synchronous arithmetic pipeline executing strip
   --               reduction, 3x3 candidate scoring, tolerance gating, and
   --               center-preserving surface blending.
   -- ---------------------------------------------------------------------------
@@ -238,10 +227,10 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 11 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 10);
-        sof_pipe <= win_sof   & sof_pipe(1 to 10);
-        eol_pipe <= win_eol   & eol_pipe(1 to 10);
+        -- Shift valid and frame/line sidebands across all 12 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 11);
+        sof_pipe <= win_sof   & sof_pipe(1 to 11);
+        eol_pipe <= win_eol   & eol_pipe(1 to 11);
 
         -- ---------------------------------------------------------------------
         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
@@ -349,19 +338,23 @@ begin
 
         blend_mean <= v_m_avg; blend_center <= s3_center;
 
-        -- Stage 8: edge-preserving blend.
-        if chan_dist(blend_mean, blend_center) > 24 then
-          -- Half-center branch: preserves isolated single-pixel details
-          v_out_rgb.r := (blend_mean.r + blend_center.r + 1) / 2;
-          v_out_rgb.g := (blend_mean.g + blend_center.g + 1) / 2;
-          v_out_rgb.b := (blend_mean.b + blend_center.b + 1) / 2;
-        else
-          -- Surface branch: 7/8 surface mean + 1/8 original center
-          v_out_rgb.r := (7 * blend_mean.r + blend_center.r + 4) / 8;
-          v_out_rgb.g := (7 * blend_mean.g + blend_center.g + 4) / 8;
-          v_out_rgb.b := (7 * blend_mean.b + blend_center.b + 4) / 8;
-        end if;
+        -- Compute both rounded blends and the three edge tests in parallel.
+        -- A difference of exactly 24 takes the surface blend.
+        edge_r <= abs(blend_mean.r - blend_center.r) > 24;
+        edge_g <= abs(blend_mean.g - blend_center.g) > 24;
+        edge_b <= abs(blend_mean.b - blend_center.b) > 24;
+        half_blend.r <= (blend_mean.r + blend_center.r + 1) / 2;
+        half_blend.g <= (blend_mean.g + blend_center.g + 1) / 2;
+        half_blend.b <= (blend_mean.b + blend_center.b + 1) / 2;
+        surface_blend.r <= (7 * blend_mean.r + blend_center.r + 4) / 8;
+        surface_blend.g <= (7 * blend_mean.g + blend_center.g + 4) / 8;
+        surface_blend.b <= (7 * blend_mean.b + blend_center.b + 4) / 8;
 
+        if edge_r or edge_g or edge_b then
+          v_out_rgb := half_blend;
+        else
+          v_out_rgb := surface_blend;
+        end if;
         s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
                     std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &
                     std_logic_vector(to_unsigned(v_out_rgb.b, 8));
