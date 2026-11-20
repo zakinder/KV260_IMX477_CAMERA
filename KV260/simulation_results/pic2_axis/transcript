@@ -1,12 +1,12 @@
 # do sim/run_questa.do
-# C:/Users/Ali/Downloads/PIC2_NoPalette_VHDL/pic2_axis/build/questa
+# K:/KV260/simulation_results/pic2_axis/build/questa
 # QuestaSim-64 vmap 2024.1 Lib Mapping Utility 2024.02 Feb  1 2024
-# vmap work C:/Users/Ali/Downloads/PIC2_NoPalette_VHDL/pic2_axis/build/questa 
+# vmap work K:/KV260/simulation_results/pic2_axis/build/questa 
 # Modifying modelsim.ini
-# filee087600
+# filedde6830
 # rtl/pic2_types.vhd rtl/axis_window5.vhd rtl/axis_surface_pass.vhd rtl/axis_tone_contour.vhd rtl/axis_contour_finish.vhd rtl/pic2_filter_axis.vhd tb/jpeg_reader_pkg.vhd tb/bmp_writer_pkg.vhd tb/tb_pic2.vhd
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:50 on Nov 20,2026
+# Start time: 01:30:17 on Nov 20,2026
 # vcom -2008 -work work rtl/pic2_types.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -14,10 +14,10 @@
 # -- Compiling package pic2_types
 # -- Compiling package body pic2_types
 # -- Loading package pic2_types
-# End time: 00:14:50 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:17 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:51 on Nov 20,2026
+# Start time: 01:30:17 on Nov 20,2026
 # vcom -2008 -work work rtl/axis_window5.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -25,10 +25,10 @@
 # -- Loading package pic2_types
 # -- Compiling entity axis_window5
 # -- Compiling architecture rtl of axis_window5
-# End time: 00:14:51 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:17 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:51 on Nov 20,2026
+# Start time: 01:30:18 on Nov 20,2026
 # vcom -2008 -work work rtl/axis_surface_pass.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -37,10 +37,10 @@
 # -- Compiling entity axis_surface_pass
 # -- Compiling architecture rtl of axis_surface_pass
 # -- Loading entity axis_window5
-# End time: 00:14:51 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:18 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:51 on Nov 20,2026
+# Start time: 01:30:18 on Nov 20,2026
 # vcom -2008 -work work rtl/axis_tone_contour.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -49,10 +49,10 @@
 # -- Compiling entity axis_tone_contour
 # -- Compiling architecture rtl of axis_tone_contour
 # -- Loading entity axis_window5
-# End time: 00:14:51 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:18 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:51 on Nov 20,2026
+# Start time: 01:30:18 on Nov 20,2026
 # vcom -2008 -work work rtl/axis_contour_finish.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -61,10 +61,10 @@
 # -- Compiling entity axis_contour_finish
 # -- Compiling architecture rtl of axis_contour_finish
 # -- Loading entity axis_window5
-# End time: 00:14:51 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:18 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:52 on Nov 20,2026
+# Start time: 01:30:18 on Nov 20,2026
 # vcom -2008 -work work rtl/pic2_filter_axis.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -76,10 +76,10 @@
 # -- Loading entity axis_surface_pass
 # -- Loading entity axis_tone_contour
 # -- Loading entity axis_contour_finish
-# End time: 00:14:52 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:18 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:52 on Nov 20,2026
+# Start time: 01:30:18 on Nov 20,2026
 # vcom -2008 -work work tb/jpeg_reader_pkg.vhd 
 # -- Loading package STANDARD
 # -- Loading package MATH_REAL
@@ -89,10 +89,10 @@
 # -- Compiling package jpeg_reader_pkg
 # -- Compiling package body jpeg_reader_pkg
 # -- Loading package jpeg_reader_pkg
-# End time: 00:14:52 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:19 on Nov 20,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:52 on Nov 20,2026
+# Start time: 01:30:19 on Nov 20,2026
 # vcom -2008 -work work tb/bmp_writer_pkg.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -104,10 +104,10 @@
 # -- Compiling package bmp_writer_pkg
 # -- Compiling package body bmp_writer_pkg
 # -- Loading package bmp_writer_pkg
-# End time: 00:14:53 on Nov 20,2026, Elapsed time: 0:00:01
+# End time: 01:30:19 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
-# Start time: 00:14:53 on Nov 20,2026
+# Start time: 01:30:19 on Nov 20,2026
 # vcom -2008 -work work tb/tb_pic2.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -121,11 +121,11 @@
 # -- Compiling entity tb_pic2
 # -- Compiling architecture bench of tb_pic2
 # -- Loading entity pic2_filter_axis
-# End time: 00:14:53 on Nov 20,2026, Elapsed time: 0:00:00
+# End time: 01:30:19 on Nov 20,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -onfinish stop -voptargs="+acc" work.tb_pic2 -gG_STALLS=true 
-# Start time: 00:14:53 on Nov 20,2026
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 01:30:19 on Nov 20,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
 # //  Questa Sim-64
 # //  Version 2024.1 win64 Feb  1 2024
 # //
@@ -140,36 +140,3 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading std.env(body)
-# Loading work.pic2_types(body)
-# Loading ieee.math_real(body)
-# Loading work.jpeg_reader_pkg(body)
-# Loading work.bmp_writer_pkg(body)
-# Loading work.tb_pic2(bench)#1
-# Loading work.pic2_filter_axis(rtl)#1
-# Loading work.axis_surface_pass(rtl)#1
-# Loading work.axis_window5(rtl)#2
-# Loading work.axis_surface_pass(rtl)#2
-# Loading work.axis_window5(rtl)#3
-# Loading work.axis_surface_pass(rtl)#3
-# Loading work.axis_window5(rtl)#1
-# Loading work.axis_tone_contour(rtl)#1
-# Loading work.axis_contour_finish(rtl)#1
-# 2
-# ** Note: JPEG decoded: images/PIC1.JPG (2048 x 1152)
-#    Time: 40 ns  Iteration: 0  Instance: /tb_pic2
-# ** Note: Input frame 1 accepted: 2359296 pixels
-#    Time: 34479125 ns  Iteration: 0  Instance: /tb_pic2
-# ** Note: Output frame 1: 2359296 pixels, 1152 EOL, 1 SOF; first/last cycles 78706/3547156
-#    Time: 35471595 ns  Iteration: 0  Instance: /tb_pic2
-# ** Note: PASS: 1 frame(s), 2359296 accepted output pixels, 1010373 stalled output cycles
-#    Time: 35471985 ns  Iteration: 0  Instance: /tb_pic2
-# Break in Process capture at tb/tb_pic2.vhd line 140
-# Stopped at tb/tb_pic2.vhd line 140
-# PASS: results/PIC1_filtered.bmp
-# End time: 00:18:07 on Nov 20,2026, Elapsed time: 0:03:14
-# Errors: 0, Warnings: 0
