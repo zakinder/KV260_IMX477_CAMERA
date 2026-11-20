@@ -65,6 +65,9 @@ architecture rtl of pic2_filter_axis is
   signal sof : std_logic_vector(0 to 5);     -- Start-of-Frame sidebands sof(0)..sof(5)
   signal eol : std_logic_vector(0 to 5);     -- End-of-Line sidebands eol(0)..eol(5)
 
+  signal stage_data : pixel_bus_t;
+  signal stage_valid, stage_ready, stage_sof, stage_eol : std_logic_vector(0 to 4);
+
 begin
 
   -- ---------------------------------------------------------------------------
@@ -83,6 +86,37 @@ begin
   m_axis_tlast  <= eol(5);
 
   -- ---------------------------------------------------------------------------
+  -- An empty skid buffer forwards the current beat. When the receiver stalls,
+  -- store the accepted beat and block upstream until the receiver consumes it.
+  -- Each upstream READY depends only on its local occupancy register.
+  stage_inputs : for i in 0 to 4 generate
+    signal occupied : std_logic := '0';
+    signal saved_data : std_logic_vector(23 downto 0);
+    signal saved_sof, saved_eol : std_logic;
+  begin
+    r(i) <= not occupied;
+    stage_valid(i) <= occupied or v(i);
+    stage_data(i) <= saved_data when occupied = '1' else p(i);
+    stage_sof(i) <= saved_sof when occupied = '1' else sof(i);
+    stage_eol(i) <= saved_eol when occupied = '1' else eol(i);
+
+    process (aclk)
+    begin
+      if rising_edge(aclk) then
+        if aresetn = '0' then
+          occupied <= '0';
+        elsif stage_ready(i) = '1' then
+          occupied <= '0';
+        elsif occupied = '0' and v(i) = '1' then
+          occupied <= '1';
+          saved_data <= p(i);
+          saved_sof <= sof(i);
+          saved_eol <= eol(i);
+        end if;
+      end if;
+    end process;
+  end generate;
+
   -- Generate    : gen_surfaces
   -- Description : Instantiates the three cascaded edge-aware surface passes
   --               (Stages 1, 2, and 3) with progressively wider tap spacings
@@ -101,11 +135,11 @@ begin
         aresetn       => aresetn,
         active_width  => active_width,
         active_height => active_height,
-        s_axis_tdata  => p(idx),
-        s_axis_tvalid => v(idx),
-        s_axis_tready => r(idx),
-        s_axis_tuser  => sof(idx),
-        s_axis_tlast  => eol(idx),
+        s_axis_tdata  => stage_data(idx),
+        s_axis_tvalid => stage_valid(idx),
+        s_axis_tready => stage_ready(idx),
+        s_axis_tuser  => stage_sof(idx),
+        s_axis_tlast  => stage_eol(idx),
         m_axis_tdata  => p(idx + 1),
         m_axis_tvalid => v(idx + 1),
         m_axis_tready => r(idx + 1),
@@ -132,11 +166,11 @@ begin
       aresetn       => aresetn,
       active_width  => active_width,
       active_height => active_height,
-      s_axis_tdata  => p(3),
-      s_axis_tvalid => v(3),
-      s_axis_tready => r(3),
-      s_axis_tuser  => sof(3),
-      s_axis_tlast  => eol(3),
+      s_axis_tdata  => stage_data(3),
+      s_axis_tvalid => stage_valid(3),
+      s_axis_tready => stage_ready(3),
+      s_axis_tuser  => stage_sof(3),
+      s_axis_tlast  => stage_eol(3),
       m_axis_tdata  => p(4),
       m_axis_tvalid => v(4),
       m_axis_tready => r(4),
@@ -161,11 +195,11 @@ begin
       aresetn       => aresetn,
       active_width  => active_width,
       active_height => active_height,
-      s_axis_tdata  => p(4),
-      s_axis_tvalid => v(4),
-      s_axis_tready => r(4),
-      s_axis_tuser  => sof(4),
-      s_axis_tlast  => eol(4),
+      s_axis_tdata  => stage_data(4),
+      s_axis_tvalid => stage_valid(4),
+      s_axis_tready => stage_ready(4),
+      s_axis_tuser  => stage_sof(4),
+      s_axis_tlast  => stage_eol(4),
       m_axis_tdata  => p(5),
       m_axis_tvalid => v(5),
       m_axis_tready => r(5),
