@@ -140,3 +140,36 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading std.env(body)
+# Loading work.pic2_types(body)
+# Loading ieee.math_real(body)
+# Loading work.jpeg_reader_pkg(body)
+# Loading work.bmp_writer_pkg(body)
+# Loading work.tb_pic2(bench)#1
+# Loading work.pic2_filter_axis(rtl)#1
+# Loading work.axis_surface_pass(rtl)#1
+# Loading work.axis_window5(rtl)#2
+# Loading work.axis_surface_pass(rtl)#2
+# Loading work.axis_window5(rtl)#3
+# Loading work.axis_surface_pass(rtl)#3
+# Loading work.axis_window5(rtl)#1
+# Loading work.axis_tone_contour(rtl)#1
+# Loading work.axis_contour_finish(rtl)#1
+# 2
+# ** Note: JPEG decoded: images/PIC1.JPG (2048 x 1152)
+#    Time: 40 ns  Iteration: 0  Instance: /tb_pic2
+# ** Note: Input frame 1 accepted: 2359296 pixels
+#    Time: 34479125 ns  Iteration: 0  Instance: /tb_pic2
+# ** Note: Output frame 1: 2359296 pixels, 1152 EOL, 1 SOF; first/last cycles 78706/3547156
+#    Time: 35471595 ns  Iteration: 0  Instance: /tb_pic2
+# ** Note: PASS: 1 frame(s), 2359296 accepted output pixels, 1010373 stalled output cycles
+#    Time: 35471985 ns  Iteration: 0  Instance: /tb_pic2
+# Break in Process capture at tb/tb_pic2.vhd line 140
+# Stopped at tb/tb_pic2.vhd line 140
+# PASS: results/PIC1_filtered.bmp
+# End time: 01:32:26 on Nov 20,2026, Elapsed time: 0:02:07
+# Errors: 0, Warnings: 0
