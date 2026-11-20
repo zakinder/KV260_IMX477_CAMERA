@@ -2,7 +2,7 @@
 -- Module      : axis_tone_contour
 -- Description : Stage 4 tone-mapping, contour detection, and RGB color
 --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
---               window at spacing s=6 (25x25 footprint) across a 6-cycle
+--               window at spacing s=6 (25x25 footprint) across a 9-cycle
 --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
 --               expand chroma saturation.
 -- =============================================================================
@@ -115,6 +115,10 @@ architecture rtl of axis_tone_contour is
   signal y_tap : tap_luma_array_t;
   signal center0, center_delay : rgb8_t;
   signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
+  signal ink_part, ridge_part, light_part : integer range 0 to 255;
+  signal curve_part, min_part, max_part : integer range 0 to 255;
+  signal center_part, offset_rgb, output_rgb : rgb8_t;
+  signal offset_y, offset_target, offset_room, output_offset : integer range 0 to 255;
   signal gain_delay : integer range 256 to 384;
 
 
@@ -130,9 +134,9 @@ architecture rtl of axis_tone_contour is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 6) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 6) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 6) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
 
   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
   signal s1_center     : rgb8_t;
@@ -189,13 +193,13 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable
-  advance       <= (not v_pipe(6)) or m_axis_tready;
+  advance       <= (not v_pipe(9)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(6);
-  m_axis_tuser  <= sof_pipe(6);
-  m_axis_tlast  <= eol_pipe(6);
+  m_axis_tvalid <= v_pipe(9);
+  m_axis_tuser  <= sof_pipe(9);
+  m_axis_tlast  <= eol_pipe(9);
 
   -- ---------------------------------------------------------------------------
   -- Process     : render
@@ -220,7 +224,6 @@ begin
     variable v_span      : integer;
 
     variable v_rel_max   : integer;
-    variable v_offset    : integer;
     variable v_out_rgb   : rgb8_t;
   begin
     if rising_edge(aclk) then
@@ -232,9 +235,9 @@ begin
 
       elsif advance = '1' then
         -- Shift valid and frame/line sidebands across all 6 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 5);
-        sof_pipe <= win_sof   & sof_pipe(1 to 5);
-        eol_pipe <= win_eol   & eol_pipe(1 to 5);
+        v_pipe   <= win_valid & v_pipe(1 to 8);
+        sof_pipe <= win_sof   & sof_pipe(1 to 8);
+        eol_pipe <= win_eol   & eol_pipe(1 to 8);
 
         -- ---------------------------------------------------------------------
         -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
@@ -295,9 +298,10 @@ begin
         s1_rl       <= yc - min_p_max;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 3: Compute tone target luma and center channel span / Q8 gain
+        -- STAGES 3-4: Compute tone target luma and center channel span / Q8 gain
         -- ---------------------------------------------------------------------
-        soft_delay <= CURVE(s1_y_center);
+        curve_part <= CURVE(s1_y_center);
+        soft_delay <= curve_part;
 
         if s1_dark_d <= 1 then
           v_ink := 0;
@@ -305,16 +309,19 @@ begin
           v_ink := clamp_int((clamp_int((s1_grad / 4) - 5, 0, 2040) / 4) + (s1_dark_d / 4), 0, 12);
         end if;
 
-        v_ridge := clamp_int((3 * clamp_int(s1_rd - 2, 0, 255)) / 2, 0, 42);
         v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
 
-        if v_ink >= v_ridge then
-          ink_delay <= v_ink;
+        ink_part <= v_ink;
+        ridge_part <= clamp_int(s1_rd - 2, 0, 255);
+        v_ridge := clamp_int((3 * ridge_part) / 2, 0, 42);
+        if ink_part >= v_ridge then
+          ink_delay <= ink_part;
         else
           ink_delay <= v_ridge;
         end if;
 
-        light_delay <= v_light;
+        light_part <= v_light;
+        light_delay <= light_part;
         -- Find center RGB min, max, and chroma span
         v_c_min := s1_center.r;
         v_c_max := s1_center.r;
@@ -323,13 +330,16 @@ begin
         if s1_center.g > v_c_max then v_c_max := s1_center.g; end if;
         if s1_center.b > v_c_max then v_c_max := s1_center.b; end if;
 
-        v_span     := v_c_max - v_c_min;
-        center_delay <= s1_center;
-        min_delay <= v_c_min;
+        min_part <= v_c_min;
+        max_part <= v_c_max;
+        center_part <= s1_center;
+        v_span := max_part - min_part;
+        center_delay <= center_part;
+        min_delay <= min_part;
         gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
 
         -- ---------------------------------------------------------------------
-        -- STAGES 4-5: Register target and scale channel differences by Q8 chroma gain
+        -- STAGES 5-6: Register target and scale channel differences by Q8 chroma gain
         -- ---------------------------------------------------------------------
         s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
         s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
@@ -340,16 +350,23 @@ begin
         s3_target    <= s2_target;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 6: Compute common luma offset, add to relative RGB, and pack
+        -- STAGES 7-9: Compute common luma offset, add to relative RGB, and pack
         -- ---------------------------------------------------------------------
         v_rel_max := s3_rel_rgb.r;
         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;
         if s3_rel_rgb.b > v_rel_max then v_rel_max := s3_rel_rgb.b; end if;
 
-        v_offset    := clamp_int(s3_target - luma_y(s3_rel_rgb), 0, 255 - v_rel_max);
-        v_out_rgb.r := clamp_int(s3_rel_rgb.r + v_offset, 0, 255);
-        v_out_rgb.g := clamp_int(s3_rel_rgb.g + v_offset, 0, 255);
-        v_out_rgb.b := clamp_int(s3_rel_rgb.b + v_offset, 0, 255);
+        offset_y <= luma_y(s3_rel_rgb);
+        offset_room <= 255 - v_rel_max;
+        offset_target <= s3_target;
+        offset_rgb <= s3_rel_rgb;
+
+        output_offset <= clamp_int(offset_target - offset_y, 0, offset_room);
+        output_rgb <= offset_rgb;
+        -- The registered offset is bounded by the brightest channel's headroom.
+        v_out_rgb.r := output_rgb.r + output_offset;
+        v_out_rgb.g := output_rgb.g + output_offset;
+        v_out_rgb.b := output_rgb.b + output_offset;
 
         s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
                     std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &

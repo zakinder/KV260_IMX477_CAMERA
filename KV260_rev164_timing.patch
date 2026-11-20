@@ -1,0 +1,583 @@
+diff --git a/KV260/ip_lib/vfp_2.0/component.xml b/KV260/ip_lib/vfp_2.0/component.xml
+index 09412e3..887adc3 100644
+--- a/KV260/ip_lib/vfp_2.0/component.xml
++++ b/KV260/ip_lib/vfp_2.0/component.xml
+@@ -2137,7 +2137,7 @@
+         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
+       </xilinx:taxonomies>
+       <xilinx:displayName>vfp_v2.0</xilinx:displayName>
+-      <xilinx:coreRevision>163</xilinx:coreRevision>
++      <xilinx:coreRevision>164</xilinx:coreRevision>
+       <xilinx:upgrades>
+         <xilinx:canUpgradeFrom>xilinx.com:user:vfp:1.0</xilinx:canUpgradeFrom>
+       </xilinx:upgrades>
+diff --git a/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd b/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd
+index 2279978..f539c0b 100644
+--- a/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd
++++ b/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd
+@@ -4,7 +4,7 @@
+ --               Evaluates four overlapping 3x3 sub-regions anchored at center
+ --               tap 12, selects regions within a homogeneity tolerance of the
+ --               best-matching surface, and blends the resulting surface mean
+---               with the center pixel across a 8-cycle stalled-ready pipeline.
++--               with the center pixel across a 9-cycle stalled-ready pipeline.
+ -- =============================================================================
+ 
+ library ieee;
+@@ -98,12 +98,9 @@ architecture rtl of axis_surface_pass is
+ 
+   -- Function: strip
+   -- Reduces 3 horizontal taps into RGB sums and luma min/max extrema
+-  function strip(t0, t1, t2 : rgb8_t) return strip_t is
+-    variable y0, y1, y2, ymin, ymax : integer;
++  function strip(t0, t1, t2 : rgb8_t; y0, y1, y2 : integer) return strip_t is
++    variable ymin, ymax : integer;
+   begin
+-    y0   := luma_y(t0);
+-    y1   := luma_y(t1);
+-    y2   := luma_y(t2);
+     ymin := y0;
+     ymax := y0;
+     if y1 < ymin then ymin := y1; end if;
+@@ -134,6 +131,9 @@ architecture rtl of axis_surface_pass is
+   -- ---------------------------------------------------------------------------
+   signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
+   signal win_taps      : tap_array_t;
++  type tap_lumas_t is array (0 to 24) of integer range 0 to 255;
++  signal strip_rgb : tap_array_t;
++  signal strip_luma : tap_lumas_t;
+   signal win_valid     : std_logic;
+   signal win_ready     : std_logic;
+   signal win_sof       : std_logic;
+@@ -141,9 +141,9 @@ architecture rtl of axis_surface_pass is
+ 
+   -- Pipeline Flow Control
+   signal advance       : std_logic;
+-  signal v_pipe        : std_logic_vector(1 to 8) := (others => '0');
+-  signal sof_pipe      : std_logic_vector(1 to 8) := (others => '0');
+-  signal eol_pipe      : std_logic_vector(1 to 8) := (others => '0');
++  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
++  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
++  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+ 
+   -- Stage 1 Registers: Center pixel and 10 row strips
+   signal s1_center     : rgb8_t;
+@@ -198,17 +198,17 @@ begin
+   end generate gen_unpack;
+ 
+   -- Backpressure advance enable: advances whenever output is empty or accepted
+-  advance       <= (not v_pipe(8)) or m_axis_tready;
++  advance       <= (not v_pipe(9)) or m_axis_tready;
+   win_ready     <= advance;
+ 
+   m_axis_tdata  <= s4_tdata;
+-  m_axis_tvalid <= v_pipe(8);
+-  m_axis_tuser  <= sof_pipe(8);
+-  m_axis_tlast  <= eol_pipe(8);
++  m_axis_tvalid <= v_pipe(9);
++  m_axis_tuser  <= sof_pipe(9);
++  m_axis_tlast  <= eol_pipe(9);
+ 
+   -- ---------------------------------------------------------------------------
+   -- Process     : compute
+-  -- Description : 8-stage synchronous arithmetic pipeline executing strip
++  -- Description : 9-stage synchronous arithmetic pipeline executing strip
+   --               reduction, 3x3 candidate scoring, tolerance gating, and
+   --               center-preserving surface blending.
+   -- ---------------------------------------------------------------------------
+@@ -230,27 +230,32 @@ begin
+         s4_tdata <= (others => '0');
+ 
+       elsif advance = '1' then
+-        -- Shift valid and frame/line sidebands across all 8 pipeline stages
+-        v_pipe   <= win_valid & v_pipe(1 to 7);
+-        sof_pipe <= win_sof   & sof_pipe(1 to 7);
+-        eol_pipe <= win_eol   & eol_pipe(1 to 7);
++        -- Shift valid and frame/line sidebands across all 9 pipeline stages
++        v_pipe   <= win_valid & v_pipe(1 to 8);
++        sof_pipe <= win_sof   & sof_pipe(1 to 8);
++        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
+         --          covering TL (0..2,5..7,10..12), TR (2..4,7..9,12..14),
+         --          BL (10..12,15..17,20..22), and BR (12..14,17..19,22..24)
+         -- ---------------------------------------------------------------------
+-        s1_center    <= win_taps(12);
+-        s1_strips(0) <= strip(win_taps(0),  win_taps(1),  win_taps(2));  -- Row 0 Left
+-        s1_strips(1) <= strip(win_taps(2),  win_taps(3),  win_taps(4));  -- Row 0 Right
+-        s1_strips(2) <= strip(win_taps(5),  win_taps(6),  win_taps(7));  -- Row 1 Left
+-        s1_strips(3) <= strip(win_taps(7),  win_taps(8),  win_taps(9));  -- Row 1 Right
+-        s1_strips(4) <= strip(win_taps(10), win_taps(11), win_taps(12)); -- Row 2 Left
+-        s1_strips(5) <= strip(win_taps(12), win_taps(13), win_taps(14)); -- Row 2 Right
+-        s1_strips(6) <= strip(win_taps(15), win_taps(16), win_taps(17)); -- Row 3 Left
+-        s1_strips(7) <= strip(win_taps(17), win_taps(18), win_taps(19)); -- Row 3 Right
+-        s1_strips(8) <= strip(win_taps(20), win_taps(21), win_taps(22)); -- Row 4 Left
+-        s1_strips(9) <= strip(win_taps(22), win_taps(23), win_taps(24)); -- Row 4 Right
++        -- Register RGB and rounded luma before the strip extrema comparisons.
++        strip_rgb <= win_taps;
++        for i in 0 to 24 loop
++          strip_luma(i) <= luma_y(win_taps(i));
++        end loop;
++        s1_center    <= strip_rgb(12);
++        s1_strips(0) <= strip(strip_rgb(0), strip_rgb(1), strip_rgb(2), strip_luma(0), strip_luma(1), strip_luma(2));  -- Row 0 Left
++        s1_strips(1) <= strip(strip_rgb(2), strip_rgb(3), strip_rgb(4), strip_luma(2), strip_luma(3), strip_luma(4));  -- Row 0 Right
++        s1_strips(2) <= strip(strip_rgb(5), strip_rgb(6), strip_rgb(7), strip_luma(5), strip_luma(6), strip_luma(7));  -- Row 1 Left
++        s1_strips(3) <= strip(strip_rgb(7), strip_rgb(8), strip_rgb(9), strip_luma(7), strip_luma(8), strip_luma(9));  -- Row 1 Right
++        s1_strips(4) <= strip(strip_rgb(10), strip_rgb(11), strip_rgb(12), strip_luma(10), strip_luma(11), strip_luma(12)); -- Row 2 Left
++        s1_strips(5) <= strip(strip_rgb(12), strip_rgb(13), strip_rgb(14), strip_luma(12), strip_luma(13), strip_luma(14)); -- Row 2 Right
++        s1_strips(6) <= strip(strip_rgb(15), strip_rgb(16), strip_rgb(17), strip_luma(15), strip_luma(16), strip_luma(17)); -- Row 3 Left
++        s1_strips(7) <= strip(strip_rgb(17), strip_rgb(18), strip_rgb(19), strip_luma(17), strip_luma(18), strip_luma(19)); -- Row 3 Right
++        s1_strips(8) <= strip(strip_rgb(20), strip_rgb(21), strip_rgb(22), strip_luma(20), strip_luma(21), strip_luma(22)); -- Row 4 Left
++        s1_strips(9) <= strip(strip_rgb(22), strip_rgb(23), strip_rgb(24), strip_luma(22), strip_luma(23), strip_luma(24)); -- Row 4 Right
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGE 2: Form 4 overlapping 3x3 region means and homogeneity scores
+diff --git a/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd b/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd
+index 2fc398e..a5c3465 100644
+--- a/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd
++++ b/KV260/ip_lib/vfp_2.0/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd
+@@ -2,7 +2,7 @@
+ -- Module      : axis_tone_contour
+ -- Description : Stage 4 tone-mapping, contour detection, and RGB color
+ --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
+---               window at spacing s=6 (25x25 footprint) across a 6-cycle
++--               window at spacing s=6 (25x25 footprint) across a 9-cycle
+ --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
+ --               expand chroma saturation.
+ -- =============================================================================
+@@ -115,6 +115,10 @@ architecture rtl of axis_tone_contour is
+   signal y_tap : tap_luma_array_t;
+   signal center0, center_delay : rgb8_t;
+   signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
++  signal ink_part, ridge_part, light_part : integer range 0 to 255;
++  signal curve_part, min_part, max_part : integer range 0 to 255;
++  signal center_part, offset_rgb, output_rgb : rgb8_t;
++  signal offset_y, offset_target, offset_room, output_offset : integer range 0 to 255;
+   signal gain_delay : integer range 256 to 384;
+ 
+ 
+@@ -130,9 +134,9 @@ architecture rtl of axis_tone_contour is
+ 
+   -- Pipeline Flow Control
+   signal advance       : std_logic;
+-  signal v_pipe        : std_logic_vector(1 to 6) := (others => '0');
+-  signal sof_pipe      : std_logic_vector(1 to 6) := (others => '0');
+-  signal eol_pipe      : std_logic_vector(1 to 6) := (others => '0');
++  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
++  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
++  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+ 
+   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
+   signal s1_center     : rgb8_t;
+@@ -189,13 +193,13 @@ begin
+   end generate gen_unpack;
+ 
+   -- Backpressure advance enable
+-  advance       <= (not v_pipe(6)) or m_axis_tready;
++  advance       <= (not v_pipe(9)) or m_axis_tready;
+   win_ready     <= advance;
+ 
+   m_axis_tdata  <= s4_tdata;
+-  m_axis_tvalid <= v_pipe(6);
+-  m_axis_tuser  <= sof_pipe(6);
+-  m_axis_tlast  <= eol_pipe(6);
++  m_axis_tvalid <= v_pipe(9);
++  m_axis_tuser  <= sof_pipe(9);
++  m_axis_tlast  <= eol_pipe(9);
+ 
+   -- ---------------------------------------------------------------------------
+   -- Process     : render
+@@ -220,7 +224,6 @@ begin
+     variable v_span      : integer;
+ 
+     variable v_rel_max   : integer;
+-    variable v_offset    : integer;
+     variable v_out_rgb   : rgb8_t;
+   begin
+     if rising_edge(aclk) then
+@@ -232,9 +235,9 @@ begin
+ 
+       elsif advance = '1' then
+         -- Shift valid and frame/line sidebands across all 6 pipeline stages
+-        v_pipe   <= win_valid & v_pipe(1 to 5);
+-        sof_pipe <= win_sof   & sof_pipe(1 to 5);
+-        eol_pipe <= win_eol   & eol_pipe(1 to 5);
++        v_pipe   <= win_valid & v_pipe(1 to 8);
++        sof_pipe <= win_sof   & sof_pipe(1 to 8);
++        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
+@@ -295,9 +298,10 @@ begin
+         s1_rl       <= yc - min_p_max;
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGE 3: Compute tone target luma and center channel span / Q8 gain
++        -- STAGES 3-4: Compute tone target luma and center channel span / Q8 gain
+         -- ---------------------------------------------------------------------
+-        soft_delay <= CURVE(s1_y_center);
++        curve_part <= CURVE(s1_y_center);
++        soft_delay <= curve_part;
+ 
+         if s1_dark_d <= 1 then
+           v_ink := 0;
+@@ -305,16 +309,19 @@ begin
+           v_ink := clamp_int((clamp_int((s1_grad / 4) - 5, 0, 2040) / 4) + (s1_dark_d / 4), 0, 12);
+         end if;
+ 
+-        v_ridge := clamp_int((3 * clamp_int(s1_rd - 2, 0, 255)) / 2, 0, 42);
+         v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
+ 
+-        if v_ink >= v_ridge then
+-          ink_delay <= v_ink;
++        ink_part <= v_ink;
++        ridge_part <= clamp_int(s1_rd - 2, 0, 255);
++        v_ridge := clamp_int((3 * ridge_part) / 2, 0, 42);
++        if ink_part >= v_ridge then
++          ink_delay <= ink_part;
+         else
+           ink_delay <= v_ridge;
+         end if;
+ 
+-        light_delay <= v_light;
++        light_part <= v_light;
++        light_delay <= light_part;
+         -- Find center RGB min, max, and chroma span
+         v_c_min := s1_center.r;
+         v_c_max := s1_center.r;
+@@ -323,13 +330,16 @@ begin
+         if s1_center.g > v_c_max then v_c_max := s1_center.g; end if;
+         if s1_center.b > v_c_max then v_c_max := s1_center.b; end if;
+ 
+-        v_span     := v_c_max - v_c_min;
+-        center_delay <= s1_center;
+-        min_delay <= v_c_min;
++        min_part <= v_c_min;
++        max_part <= v_c_max;
++        center_part <= s1_center;
++        v_span := max_part - min_part;
++        center_delay <= center_part;
++        min_delay <= min_part;
+         gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGES 4-5: Register target and scale channel differences by Q8 chroma gain
++        -- STAGES 5-6: Register target and scale channel differences by Q8 chroma gain
+         -- ---------------------------------------------------------------------
+         s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
+         s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
+@@ -340,16 +350,23 @@ begin
+         s3_target    <= s2_target;
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGE 6: Compute common luma offset, add to relative RGB, and pack
++        -- STAGES 7-9: Compute common luma offset, add to relative RGB, and pack
+         -- ---------------------------------------------------------------------
+         v_rel_max := s3_rel_rgb.r;
+         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;
+         if s3_rel_rgb.b > v_rel_max then v_rel_max := s3_rel_rgb.b; end if;
+ 
+-        v_offset    := clamp_int(s3_target - luma_y(s3_rel_rgb), 0, 255 - v_rel_max);
+-        v_out_rgb.r := clamp_int(s3_rel_rgb.r + v_offset, 0, 255);
+-        v_out_rgb.g := clamp_int(s3_rel_rgb.g + v_offset, 0, 255);
+-        v_out_rgb.b := clamp_int(s3_rel_rgb.b + v_offset, 0, 255);
++        offset_y <= luma_y(s3_rel_rgb);
++        offset_room <= 255 - v_rel_max;
++        offset_target <= s3_target;
++        offset_rgb <= s3_rel_rgb;
++
++        output_offset <= clamp_int(offset_target - offset_y, 0, offset_room);
++        output_rgb <= offset_rgb;
++        -- The registered offset is bounded by the brightest channel's headroom.
++        v_out_rgb.r := output_rgb.r + output_offset;
++        v_out_rgb.g := output_rgb.g + output_offset;
++        v_out_rgb.b := output_rgb.b + output_offset;
+ 
+         s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
+                     std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &
+diff --git a/KV260/simulation_results/pic_axis/rtl/axis_surface_pass.vhd b/KV260/simulation_results/pic_axis/rtl/axis_surface_pass.vhd
+index 2279978..f539c0b 100644
+--- a/KV260/simulation_results/pic_axis/rtl/axis_surface_pass.vhd
++++ b/KV260/simulation_results/pic_axis/rtl/axis_surface_pass.vhd
+@@ -4,7 +4,7 @@
+ --               Evaluates four overlapping 3x3 sub-regions anchored at center
+ --               tap 12, selects regions within a homogeneity tolerance of the
+ --               best-matching surface, and blends the resulting surface mean
+---               with the center pixel across a 8-cycle stalled-ready pipeline.
++--               with the center pixel across a 9-cycle stalled-ready pipeline.
+ -- =============================================================================
+ 
+ library ieee;
+@@ -98,12 +98,9 @@ architecture rtl of axis_surface_pass is
+ 
+   -- Function: strip
+   -- Reduces 3 horizontal taps into RGB sums and luma min/max extrema
+-  function strip(t0, t1, t2 : rgb8_t) return strip_t is
+-    variable y0, y1, y2, ymin, ymax : integer;
++  function strip(t0, t1, t2 : rgb8_t; y0, y1, y2 : integer) return strip_t is
++    variable ymin, ymax : integer;
+   begin
+-    y0   := luma_y(t0);
+-    y1   := luma_y(t1);
+-    y2   := luma_y(t2);
+     ymin := y0;
+     ymax := y0;
+     if y1 < ymin then ymin := y1; end if;
+@@ -134,6 +131,9 @@ architecture rtl of axis_surface_pass is
+   -- ---------------------------------------------------------------------------
+   signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
+   signal win_taps      : tap_array_t;
++  type tap_lumas_t is array (0 to 24) of integer range 0 to 255;
++  signal strip_rgb : tap_array_t;
++  signal strip_luma : tap_lumas_t;
+   signal win_valid     : std_logic;
+   signal win_ready     : std_logic;
+   signal win_sof       : std_logic;
+@@ -141,9 +141,9 @@ architecture rtl of axis_surface_pass is
+ 
+   -- Pipeline Flow Control
+   signal advance       : std_logic;
+-  signal v_pipe        : std_logic_vector(1 to 8) := (others => '0');
+-  signal sof_pipe      : std_logic_vector(1 to 8) := (others => '0');
+-  signal eol_pipe      : std_logic_vector(1 to 8) := (others => '0');
++  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
++  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
++  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+ 
+   -- Stage 1 Registers: Center pixel and 10 row strips
+   signal s1_center     : rgb8_t;
+@@ -198,17 +198,17 @@ begin
+   end generate gen_unpack;
+ 
+   -- Backpressure advance enable: advances whenever output is empty or accepted
+-  advance       <= (not v_pipe(8)) or m_axis_tready;
++  advance       <= (not v_pipe(9)) or m_axis_tready;
+   win_ready     <= advance;
+ 
+   m_axis_tdata  <= s4_tdata;
+-  m_axis_tvalid <= v_pipe(8);
+-  m_axis_tuser  <= sof_pipe(8);
+-  m_axis_tlast  <= eol_pipe(8);
++  m_axis_tvalid <= v_pipe(9);
++  m_axis_tuser  <= sof_pipe(9);
++  m_axis_tlast  <= eol_pipe(9);
+ 
+   -- ---------------------------------------------------------------------------
+   -- Process     : compute
+-  -- Description : 8-stage synchronous arithmetic pipeline executing strip
++  -- Description : 9-stage synchronous arithmetic pipeline executing strip
+   --               reduction, 3x3 candidate scoring, tolerance gating, and
+   --               center-preserving surface blending.
+   -- ---------------------------------------------------------------------------
+@@ -230,27 +230,32 @@ begin
+         s4_tdata <= (others => '0');
+ 
+       elsif advance = '1' then
+-        -- Shift valid and frame/line sidebands across all 8 pipeline stages
+-        v_pipe   <= win_valid & v_pipe(1 to 7);
+-        sof_pipe <= win_sof   & sof_pipe(1 to 7);
+-        eol_pipe <= win_eol   & eol_pipe(1 to 7);
++        -- Shift valid and frame/line sidebands across all 9 pipeline stages
++        v_pipe   <= win_valid & v_pipe(1 to 8);
++        sof_pipe <= win_sof   & sof_pipe(1 to 8);
++        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
+         --          covering TL (0..2,5..7,10..12), TR (2..4,7..9,12..14),
+         --          BL (10..12,15..17,20..22), and BR (12..14,17..19,22..24)
+         -- ---------------------------------------------------------------------
+-        s1_center    <= win_taps(12);
+-        s1_strips(0) <= strip(win_taps(0),  win_taps(1),  win_taps(2));  -- Row 0 Left
+-        s1_strips(1) <= strip(win_taps(2),  win_taps(3),  win_taps(4));  -- Row 0 Right
+-        s1_strips(2) <= strip(win_taps(5),  win_taps(6),  win_taps(7));  -- Row 1 Left
+-        s1_strips(3) <= strip(win_taps(7),  win_taps(8),  win_taps(9));  -- Row 1 Right
+-        s1_strips(4) <= strip(win_taps(10), win_taps(11), win_taps(12)); -- Row 2 Left
+-        s1_strips(5) <= strip(win_taps(12), win_taps(13), win_taps(14)); -- Row 2 Right
+-        s1_strips(6) <= strip(win_taps(15), win_taps(16), win_taps(17)); -- Row 3 Left
+-        s1_strips(7) <= strip(win_taps(17), win_taps(18), win_taps(19)); -- Row 3 Right
+-        s1_strips(8) <= strip(win_taps(20), win_taps(21), win_taps(22)); -- Row 4 Left
+-        s1_strips(9) <= strip(win_taps(22), win_taps(23), win_taps(24)); -- Row 4 Right
++        -- Register RGB and rounded luma before the strip extrema comparisons.
++        strip_rgb <= win_taps;
++        for i in 0 to 24 loop
++          strip_luma(i) <= luma_y(win_taps(i));
++        end loop;
++        s1_center    <= strip_rgb(12);
++        s1_strips(0) <= strip(strip_rgb(0), strip_rgb(1), strip_rgb(2), strip_luma(0), strip_luma(1), strip_luma(2));  -- Row 0 Left
++        s1_strips(1) <= strip(strip_rgb(2), strip_rgb(3), strip_rgb(4), strip_luma(2), strip_luma(3), strip_luma(4));  -- Row 0 Right
++        s1_strips(2) <= strip(strip_rgb(5), strip_rgb(6), strip_rgb(7), strip_luma(5), strip_luma(6), strip_luma(7));  -- Row 1 Left
++        s1_strips(3) <= strip(strip_rgb(7), strip_rgb(8), strip_rgb(9), strip_luma(7), strip_luma(8), strip_luma(9));  -- Row 1 Right
++        s1_strips(4) <= strip(strip_rgb(10), strip_rgb(11), strip_rgb(12), strip_luma(10), strip_luma(11), strip_luma(12)); -- Row 2 Left
++        s1_strips(5) <= strip(strip_rgb(12), strip_rgb(13), strip_rgb(14), strip_luma(12), strip_luma(13), strip_luma(14)); -- Row 2 Right
++        s1_strips(6) <= strip(strip_rgb(15), strip_rgb(16), strip_rgb(17), strip_luma(15), strip_luma(16), strip_luma(17)); -- Row 3 Left
++        s1_strips(7) <= strip(strip_rgb(17), strip_rgb(18), strip_rgb(19), strip_luma(17), strip_luma(18), strip_luma(19)); -- Row 3 Right
++        s1_strips(8) <= strip(strip_rgb(20), strip_rgb(21), strip_rgb(22), strip_luma(20), strip_luma(21), strip_luma(22)); -- Row 4 Left
++        s1_strips(9) <= strip(strip_rgb(22), strip_rgb(23), strip_rgb(24), strip_luma(22), strip_luma(23), strip_luma(24)); -- Row 4 Right
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGE 2: Form 4 overlapping 3x3 region means and homogeneity scores
+diff --git a/KV260/simulation_results/pic_axis/rtl/axis_tone_contour.vhd b/KV260/simulation_results/pic_axis/rtl/axis_tone_contour.vhd
+index 2fc398e..a5c3465 100644
+--- a/KV260/simulation_results/pic_axis/rtl/axis_tone_contour.vhd
++++ b/KV260/simulation_results/pic_axis/rtl/axis_tone_contour.vhd
+@@ -2,7 +2,7 @@
+ -- Module      : axis_tone_contour
+ -- Description : Stage 4 tone-mapping, contour detection, and RGB color
+ --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
+---               window at spacing s=6 (25x25 footprint) across a 6-cycle
++--               window at spacing s=6 (25x25 footprint) across a 9-cycle
+ --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
+ --               expand chroma saturation.
+ -- =============================================================================
+@@ -115,6 +115,10 @@ architecture rtl of axis_tone_contour is
+   signal y_tap : tap_luma_array_t;
+   signal center0, center_delay : rgb8_t;
+   signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
++  signal ink_part, ridge_part, light_part : integer range 0 to 255;
++  signal curve_part, min_part, max_part : integer range 0 to 255;
++  signal center_part, offset_rgb, output_rgb : rgb8_t;
++  signal offset_y, offset_target, offset_room, output_offset : integer range 0 to 255;
+   signal gain_delay : integer range 256 to 384;
+ 
+ 
+@@ -130,9 +134,9 @@ architecture rtl of axis_tone_contour is
+ 
+   -- Pipeline Flow Control
+   signal advance       : std_logic;
+-  signal v_pipe        : std_logic_vector(1 to 6) := (others => '0');
+-  signal sof_pipe      : std_logic_vector(1 to 6) := (others => '0');
+-  signal eol_pipe      : std_logic_vector(1 to 6) := (others => '0');
++  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
++  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
++  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
+ 
+   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
+   signal s1_center     : rgb8_t;
+@@ -189,13 +193,13 @@ begin
+   end generate gen_unpack;
+ 
+   -- Backpressure advance enable
+-  advance       <= (not v_pipe(6)) or m_axis_tready;
++  advance       <= (not v_pipe(9)) or m_axis_tready;
+   win_ready     <= advance;
+ 
+   m_axis_tdata  <= s4_tdata;
+-  m_axis_tvalid <= v_pipe(6);
+-  m_axis_tuser  <= sof_pipe(6);
+-  m_axis_tlast  <= eol_pipe(6);
++  m_axis_tvalid <= v_pipe(9);
++  m_axis_tuser  <= sof_pipe(9);
++  m_axis_tlast  <= eol_pipe(9);
+ 
+   -- ---------------------------------------------------------------------------
+   -- Process     : render
+@@ -220,7 +224,6 @@ begin
+     variable v_span      : integer;
+ 
+     variable v_rel_max   : integer;
+-    variable v_offset    : integer;
+     variable v_out_rgb   : rgb8_t;
+   begin
+     if rising_edge(aclk) then
+@@ -232,9 +235,9 @@ begin
+ 
+       elsif advance = '1' then
+         -- Shift valid and frame/line sidebands across all 6 pipeline stages
+-        v_pipe   <= win_valid & v_pipe(1 to 5);
+-        sof_pipe <= win_sof   & sof_pipe(1 to 5);
+-        eol_pipe <= win_eol   & eol_pipe(1 to 5);
++        v_pipe   <= win_valid & v_pipe(1 to 8);
++        sof_pipe <= win_sof   & sof_pipe(1 to 8);
++        eol_pipe <= win_eol   & eol_pipe(1 to 8);
+ 
+         -- ---------------------------------------------------------------------
+         -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
+@@ -295,9 +298,10 @@ begin
+         s1_rl       <= yc - min_p_max;
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGE 3: Compute tone target luma and center channel span / Q8 gain
++        -- STAGES 3-4: Compute tone target luma and center channel span / Q8 gain
+         -- ---------------------------------------------------------------------
+-        soft_delay <= CURVE(s1_y_center);
++        curve_part <= CURVE(s1_y_center);
++        soft_delay <= curve_part;
+ 
+         if s1_dark_d <= 1 then
+           v_ink := 0;
+@@ -305,16 +309,19 @@ begin
+           v_ink := clamp_int((clamp_int((s1_grad / 4) - 5, 0, 2040) / 4) + (s1_dark_d / 4), 0, 12);
+         end if;
+ 
+-        v_ridge := clamp_int((3 * clamp_int(s1_rd - 2, 0, 255)) / 2, 0, 42);
+         v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
+ 
+-        if v_ink >= v_ridge then
+-          ink_delay <= v_ink;
++        ink_part <= v_ink;
++        ridge_part <= clamp_int(s1_rd - 2, 0, 255);
++        v_ridge := clamp_int((3 * ridge_part) / 2, 0, 42);
++        if ink_part >= v_ridge then
++          ink_delay <= ink_part;
+         else
+           ink_delay <= v_ridge;
+         end if;
+ 
+-        light_delay <= v_light;
++        light_part <= v_light;
++        light_delay <= light_part;
+         -- Find center RGB min, max, and chroma span
+         v_c_min := s1_center.r;
+         v_c_max := s1_center.r;
+@@ -323,13 +330,16 @@ begin
+         if s1_center.g > v_c_max then v_c_max := s1_center.g; end if;
+         if s1_center.b > v_c_max then v_c_max := s1_center.b; end if;
+ 
+-        v_span     := v_c_max - v_c_min;
+-        center_delay <= s1_center;
+-        min_delay <= v_c_min;
++        min_part <= v_c_min;
++        max_part <= v_c_max;
++        center_part <= s1_center;
++        v_span := max_part - min_part;
++        center_delay <= center_part;
++        min_delay <= min_part;
+         gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGES 4-5: Register target and scale channel differences by Q8 chroma gain
++        -- STAGES 5-6: Register target and scale channel differences by Q8 chroma gain
+         -- ---------------------------------------------------------------------
+         s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
+         s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
+@@ -340,16 +350,23 @@ begin
+         s3_target    <= s2_target;
+ 
+         -- ---------------------------------------------------------------------
+-        -- STAGE 6: Compute common luma offset, add to relative RGB, and pack
++        -- STAGES 7-9: Compute common luma offset, add to relative RGB, and pack
+         -- ---------------------------------------------------------------------
+         v_rel_max := s3_rel_rgb.r;
+         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;
+         if s3_rel_rgb.b > v_rel_max then v_rel_max := s3_rel_rgb.b; end if;
+ 
+-        v_offset    := clamp_int(s3_target - luma_y(s3_rel_rgb), 0, 255 - v_rel_max);
+-        v_out_rgb.r := clamp_int(s3_rel_rgb.r + v_offset, 0, 255);
+-        v_out_rgb.g := clamp_int(s3_rel_rgb.g + v_offset, 0, 255);
+-        v_out_rgb.b := clamp_int(s3_rel_rgb.b + v_offset, 0, 255);
++        offset_y <= luma_y(s3_rel_rgb);
++        offset_room <= 255 - v_rel_max;
++        offset_target <= s3_target;
++        offset_rgb <= s3_rel_rgb;
++
++        output_offset <= clamp_int(offset_target - offset_y, 0, offset_room);
++        output_rgb <= offset_rgb;
++        -- The registered offset is bounded by the brightest channel's headroom.
++        v_out_rgb.r := output_rgb.r + output_offset;
++        v_out_rgb.g := output_rgb.g + output_offset;
++        v_out_rgb.b := output_rgb.b + output_offset;
+ 
+         s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
+                     std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &

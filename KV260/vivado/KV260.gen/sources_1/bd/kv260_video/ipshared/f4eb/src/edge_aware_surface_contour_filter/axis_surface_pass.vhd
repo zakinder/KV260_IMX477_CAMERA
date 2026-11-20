@@ -4,7 +4,7 @@
 --               Evaluates four overlapping 3x3 sub-regions anchored at center
 --               tap 12, selects regions within a homogeneity tolerance of the
 --               best-matching surface, and blends the resulting surface mean
---               with the center pixel across a 8-cycle stalled-ready pipeline.
+--               with the center pixel across a 9-cycle stalled-ready pipeline.
 -- =============================================================================
 
 library ieee;
@@ -98,12 +98,9 @@ architecture rtl of axis_surface_pass is
 
   -- Function: strip
   -- Reduces 3 horizontal taps into RGB sums and luma min/max extrema
-  function strip(t0, t1, t2 : rgb8_t) return strip_t is
-    variable y0, y1, y2, ymin, ymax : integer;
+  function strip(t0, t1, t2 : rgb8_t; y0, y1, y2 : integer) return strip_t is
+    variable ymin, ymax : integer;
   begin
-    y0   := luma_y(t0);
-    y1   := luma_y(t1);
-    y2   := luma_y(t2);
     ymin := y0;
     ymax := y0;
     if y1 < ymin then ymin := y1; end if;
@@ -134,6 +131,9 @@ architecture rtl of axis_surface_pass is
   -- ---------------------------------------------------------------------------
   signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
   signal win_taps      : tap_array_t;
+  type tap_lumas_t is array (0 to 24) of integer range 0 to 255;
+  signal strip_rgb : tap_array_t;
+  signal strip_luma : tap_lumas_t;
   signal win_valid     : std_logic;
   signal win_ready     : std_logic;
   signal win_sof       : std_logic;
@@ -141,9 +141,9 @@ architecture rtl of axis_surface_pass is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 8) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 8) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 8) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 9) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 9) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 9) := (others => '0');
 
   -- Stage 1 Registers: Center pixel and 10 row strips
   signal s1_center     : rgb8_t;
@@ -198,17 +198,17 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable: advances whenever output is empty or accepted
-  advance       <= (not v_pipe(8)) or m_axis_tready;
+  advance       <= (not v_pipe(9)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(8);
-  m_axis_tuser  <= sof_pipe(8);
-  m_axis_tlast  <= eol_pipe(8);
+  m_axis_tvalid <= v_pipe(9);
+  m_axis_tuser  <= sof_pipe(9);
+  m_axis_tlast  <= eol_pipe(9);
 
   -- ---------------------------------------------------------------------------
   -- Process     : compute
-  -- Description : 8-stage synchronous arithmetic pipeline executing strip
+  -- Description : 9-stage synchronous arithmetic pipeline executing strip
   --               reduction, 3x3 candidate scoring, tolerance gating, and
   --               center-preserving surface blending.
   -- ---------------------------------------------------------------------------
@@ -230,27 +230,32 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 8 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 7);
-        sof_pipe <= win_sof   & sof_pipe(1 to 7);
-        eol_pipe <= win_eol   & eol_pipe(1 to 7);
+        -- Shift valid and frame/line sidebands across all 9 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 8);
+        sof_pipe <= win_sof   & sof_pipe(1 to 8);
+        eol_pipe <= win_eol   & eol_pipe(1 to 8);
 
         -- ---------------------------------------------------------------------
         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
         --          covering TL (0..2,5..7,10..12), TR (2..4,7..9,12..14),
         --          BL (10..12,15..17,20..22), and BR (12..14,17..19,22..24)
         -- ---------------------------------------------------------------------
-        s1_center    <= win_taps(12);
-        s1_strips(0) <= strip(win_taps(0),  win_taps(1),  win_taps(2));  -- Row 0 Left
-        s1_strips(1) <= strip(win_taps(2),  win_taps(3),  win_taps(4));  -- Row 0 Right
-        s1_strips(2) <= strip(win_taps(5),  win_taps(6),  win_taps(7));  -- Row 1 Left
-        s1_strips(3) <= strip(win_taps(7),  win_taps(8),  win_taps(9));  -- Row 1 Right
-        s1_strips(4) <= strip(win_taps(10), win_taps(11), win_taps(12)); -- Row 2 Left
-        s1_strips(5) <= strip(win_taps(12), win_taps(13), win_taps(14)); -- Row 2 Right
-        s1_strips(6) <= strip(win_taps(15), win_taps(16), win_taps(17)); -- Row 3 Left
-        s1_strips(7) <= strip(win_taps(17), win_taps(18), win_taps(19)); -- Row 3 Right
-        s1_strips(8) <= strip(win_taps(20), win_taps(21), win_taps(22)); -- Row 4 Left
-        s1_strips(9) <= strip(win_taps(22), win_taps(23), win_taps(24)); -- Row 4 Right
+        -- Register RGB and rounded luma before the strip extrema comparisons.
+        strip_rgb <= win_taps;
+        for i in 0 to 24 loop
+          strip_luma(i) <= luma_y(win_taps(i));
+        end loop;
+        s1_center    <= strip_rgb(12);
+        s1_strips(0) <= strip(strip_rgb(0), strip_rgb(1), strip_rgb(2), strip_luma(0), strip_luma(1), strip_luma(2));  -- Row 0 Left
+        s1_strips(1) <= strip(strip_rgb(2), strip_rgb(3), strip_rgb(4), strip_luma(2), strip_luma(3), strip_luma(4));  -- Row 0 Right
+        s1_strips(2) <= strip(strip_rgb(5), strip_rgb(6), strip_rgb(7), strip_luma(5), strip_luma(6), strip_luma(7));  -- Row 1 Left
+        s1_strips(3) <= strip(strip_rgb(7), strip_rgb(8), strip_rgb(9), strip_luma(7), strip_luma(8), strip_luma(9));  -- Row 1 Right
+        s1_strips(4) <= strip(strip_rgb(10), strip_rgb(11), strip_rgb(12), strip_luma(10), strip_luma(11), strip_luma(12)); -- Row 2 Left
+        s1_strips(5) <= strip(strip_rgb(12), strip_rgb(13), strip_rgb(14), strip_luma(12), strip_luma(13), strip_luma(14)); -- Row 2 Right
+        s1_strips(6) <= strip(strip_rgb(15), strip_rgb(16), strip_rgb(17), strip_luma(15), strip_luma(16), strip_luma(17)); -- Row 3 Left
+        s1_strips(7) <= strip(strip_rgb(17), strip_rgb(18), strip_rgb(19), strip_luma(17), strip_luma(18), strip_luma(19)); -- Row 3 Right
+        s1_strips(8) <= strip(strip_rgb(20), strip_rgb(21), strip_rgb(22), strip_luma(20), strip_luma(21), strip_luma(22)); -- Row 4 Left
+        s1_strips(9) <= strip(strip_rgb(22), strip_rgb(23), strip_rgb(24), strip_luma(22), strip_luma(23), strip_luma(24)); -- Row 4 Right
 
         -- ---------------------------------------------------------------------
         -- STAGE 2: Form 4 overlapping 3x3 region means and homogeneity scores
