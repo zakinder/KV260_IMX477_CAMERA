@@ -1,0 +1,140 @@
+
+#include <stddef.h>
+#include <stdint.h>
+#include <setjmp.h>
+#include <string.h>
+#include <stdio.h>
+#include <jpeglib.h>
+#include <jerror.h>
+#include "xtime_l.h"
+#define WIDTH 3840U
+#define HEIGHT 2160U
+#define ROW_BYTES (WIDTH * 3U)
+#define OUTPUT_CAPACITY (8U * 1024U * 1024U)
+#define TEST_ITERATIONS 30U
+#define JPEG_QUALITY 65
+
+/* Each ELF owns these buffers in its own 128 MB linker region. */
+static unsigned char pixels[ROW_BYTES * HEIGHT] __attribute__((aligned(64)));
+static unsigned char output[OUTPUT_CAPACITY] __attribute__((aligned(64)));
+static struct jpeg_compress_struct encoder;
+static struct jpeg_error_mgr error_manager;
+static struct jpeg_destination_mgr destination;
+static jmp_buf recovery;
+static char error_text[JMSG_LENGTH_MAX];
+
+/* Inspect these symbols with the debugger after worker_test_done(). */
+volatile uint32_t worker_test_state = 0; /* 1 = running, 2 = done, 3 = error */
+volatile uint32_t worker_frames_encoded = 0;
+volatile uint32_t worker_last_jpeg_bytes = 0;
+volatile uint32_t worker_last_encode_us = 0;
+volatile uint32_t worker_min_encode_us = UINT32_MAX;
+volatile uint32_t worker_max_encode_us = 0;
+volatile uint64_t worker_total_encode_us = 0;
+
+static void fail(j_common_ptr cinfo)
+{
+    (*cinfo->err->format_message)(cinfo, error_text);
+    longjmp(recovery, 1);
+}
+
+static void init_destination(j_compress_ptr cinfo)
+{
+    cinfo->dest->next_output_byte = output;
+    cinfo->dest->free_in_buffer = sizeof(output);
+}
+
+static boolean output_full(j_compress_ptr cinfo)
+{
+    ERREXIT(cinfo, JERR_BUFFER_SIZE);
+    return FALSE;
+}
+
+static void finish_destination(j_compress_ptr cinfo)
+{
+    (void)cinfo;
+}
+
+static void fill_test_image(void)
+{
+    uint32_t noise = 0x71324951U;
+    for (size_t i = 0; i < sizeof(pixels); i += 3U) {
+        noise = noise * 1664525U + 1013904223U;
+        pixels[i] = (unsigned char)(noise >> 24);
+        pixels[i + 1U] = (unsigned char)(noise >> 16);
+        pixels[i + 2U] = (unsigned char)(noise >> 8);
+    }
+}
+
+static int encode_frame(void)
+{
+    XTime started, finished;
+    uint32_t duration_us;
+
+    memset(&encoder, 0, sizeof(encoder));
+    encoder.err = jpeg_std_error(&error_manager);
+    error_manager.error_exit = fail;
+    if (setjmp(recovery)) {
+        if (encoder.mem != NULL)
+            jpeg_destroy_compress(&encoder);
+        return 0;
+    }
+
+    XTime_GetTime(&started);
+    jpeg_create_compress(&encoder);
+    destination.init_destination = init_destination;
+    destination.empty_output_buffer = output_full;
+    destination.term_destination = finish_destination;
+    encoder.dest = &destination;
+    encoder.image_width = WIDTH;
+    encoder.image_height = HEIGHT;
+    encoder.input_components = 3;
+    encoder.in_color_space = JCS_RGB;
+    jpeg_set_defaults(&encoder);
+    jpeg_set_quality(&encoder, JPEG_QUALITY, TRUE);
+    encoder.dct_method = JDCT_IFAST;
+    encoder.optimize_coding = FALSE;
+    jpeg_start_compress(&encoder, TRUE);
+    while (encoder.next_scanline < encoder.image_height) {
+        JSAMPROW row = pixels + (size_t)encoder.next_scanline * ROW_BYTES;
+        if (jpeg_write_scanlines(&encoder, &row, 1) != 1)
+            ERREXIT(&encoder, JERR_CANT_SUSPEND);
+    }
+    jpeg_finish_compress(&encoder);
+    worker_last_jpeg_bytes = (uint32_t)(sizeof(output) - encoder.dest->free_in_buffer);
+    jpeg_destroy_compress(&encoder);
+    XTime_GetTime(&finished);
+
+    duration_us = (uint32_t)((finished - started) * 1000000ULL / COUNTS_PER_SECOND);
+    worker_last_encode_us = duration_us;
+    worker_total_encode_us += duration_us;
+    if (duration_us < worker_min_encode_us)
+        worker_min_encode_us = duration_us;
+    if (duration_us > worker_max_encode_us)
+        worker_max_encode_us = duration_us;
+    ++worker_frames_encoded;
+    return 1;
+}
+
+/* Set a debugger breakpoint here, or inspect worker_test_state. */
+__attribute__((noinline)) void worker_test_done(void)
+{
+    for (;;) {
+        __asm__ volatile ("wfe");
+    }
+}
+
+int main(void)
+{
+    fill_test_image();
+    worker_test_state = 1;
+    for (unsigned int i = 0; i < TEST_ITERATIONS; ++i) {
+        if (!encode_frame()) {
+            worker_test_state = 3;
+            worker_test_done();
+        }
+    }
+    worker_test_state = 2;
+    worker_test_done();
+    return 0;
+}

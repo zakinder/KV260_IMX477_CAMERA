@@ -1,0 +1,1 @@
+vsim -c -do sim/run_questa.do

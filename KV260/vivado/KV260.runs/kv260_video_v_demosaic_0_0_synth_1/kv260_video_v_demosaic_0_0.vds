@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sat Nov 14 19:02:34 2026
-# Process ID: 2828
+# Start of session at: Fri Nov 20 09:13:35 2026
+# Process ID: 11492
 # Current directory: R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1
 # Command line: vivado.exe -log kv260_video_v_demosaic_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kv260_video_v_demosaic_0_0.tcl
 # Log file: R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/kv260_video_v_demosaic_0_0.vds
@@ -11,6 +11,7 @@
 # Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
 #-----------------------------------------------------------
 source kv260_video_v_demosaic_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:10 . Memory (MB): peak = 1397.828 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
@@ -22,7 +23,7 @@ INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/dat
 
 source C:/Xilinx/Vitis_HLS/2022.1/scripts/vitis_hls/hls.tcl -notrace
 INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2022.1/bin/unwrapped/win64.o/vitis_hls.exe'
-INFO: [HLS 200-10] For user 'Ali' on host 'laptop-i3ecbfk4' (Windows NT_amd64 version 6.2) on Sat Nov 14 19:02:56 -0500 2026
+INFO: [HLS 200-10] For user 'Ali' on host 'laptop-i3ecbfk4' (Windows NT_amd64 version 6.2) on Fri Nov 20 09:14:36 -0500 2026
 INFO: [HLS 200-10] In directory 'R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1'
 Sourcing Tcl script 'R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/runhls.tcl'
 INFO: [HLS 200-1510] Running: open_project -reset prj 
@@ -80,7 +81,7 @@ INFO: [SYN 201-201] Setting up clock 'ap_clk' with a period of 3.333ns.
 INFO: [HLS 200-1510] Running: config_rtl -module_prefix kv260_video_v_demosaic_0_0_ 
 INFO: [HLS 200-1510] Running: config_export -vendor xilinx.com -library ip -version 1.1 
 INFO: [HLS 200-1510] Running: csynth_design 
-INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.063 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] Analyzing design file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/src/v_demosaic.cpp' ... 
 WARNING: [HLS 207-5526] 'Ap_stable' in '#pragma HLS INTERFACE' is deprecated, use 'Stable Pragma' instead (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:57:23)
 WARNING: [HLS 207-5526] 'Ap_stable' in '#pragma HLS INTERFACE' is deprecated, use 'Stable Pragma' instead (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:59:23)
@@ -92,7 +93,7 @@ WARNING: [HLS 207-5526] 'xpm_memory' in '#pragma HLS Resource' is deprecated, us
 WARNING: [HLS 207-5525] 'Resource pragma' is deprecated, use 'bind_op/bind_storage pragma' instead (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:820:9)
 WARNING: [HLS 207-5526] 'xpm_memory' in '#pragma HLS Resource' is deprecated, use 'Bind_Storage Pragma' instead (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:820:63)
 WARNING: [HLS 207-5529] extra token before variable expression is ignored (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:820:31)
-INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 5 seconds. CPU system time: 0 seconds. Elapsed time: 63.521 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 6 seconds. CPU system time: 1 seconds. Elapsed time: 117.079 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
 INFO: [HLS 214-131] Inlining function 'hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>::get_user_ptr()' into 'hls::stream<hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>, 0>::read(hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>&)' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot\ap_axi_sdata.h:283:50)
 INFO: [HLS 214-131] Inlining function 'hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>::get_dest_ptr()' into 'hls::stream<hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>, 0>::read(hls::axis<ap_uint<10>, 1ul, 1ul, 1ul>&)' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot\ap_axi_sdata.h:286:25)
@@ -862,12 +863,12 @@ INFO: [HLS 214-131] Inlining function '_llvm.fpga.unpack.bits.s_class.hls::Scala
 INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i1.s_struct.ap_uint<1>s' into 'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<3, ap_uint<10> >, 0>&, hls::stream<hls::axis<ap_uint<30>, 1ul, 1ul, 1ul>, 0>&, unsigned short&, unsigned short&) (.1)' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot\ap_axi_sdata.h:304:5)
 INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i4.s_struct.ap_uint<4>s' into 'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<3, ap_uint<10> >, 0>&, hls::stream<hls::axis<ap_uint<30>, 1ul, 1ul, 1ul>, 0>&, unsigned short&, unsigned short&) (.1)' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot\ap_axi_sdata.h:304:5)
 INFO: [HLS 214-131] Inlining function '_llvm.fpga.pack.none.i30.s_struct.ap_uint<30>s' into 'MultiPixStream2AXIvideo(hls::stream<hls::Scalar<3, ap_uint<10> >, 0>&, hls::stream<hls::axis<ap_uint<30>, 1ul, 1ul, 1ul>, 0>&, unsigned short&, unsigned short&) (.1)' (C:/Xilinx/Vitis_HLS/2022.1/common/technology/autopilot\ap_axi_sdata.h:304:5)
-INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 15 seconds. CPU system time: 2 seconds. Elapsed time: 79.283 seconds; current allocated memory: 1.207 GB.
-INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.003 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 17 seconds. CPU system time: 2 seconds. Elapsed time: 94.968 seconds; current allocated memory: 1.119 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.481 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.672 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.662 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.011 seconds; current allocated memory: 1.119 GB.
 WARNING: [HLS 200-805] An internal stream 'imgG' with default size can result in deadlock. Please consider resizing the stream using the directive 'set_directive_stream' or the 'HLS stream' pragma.
 WARNING: [HLS 200-805] An internal stream 'imgRB' with default size can result in deadlock. Please consider resizing the stream using the directive 'set_directive_stream' or the 'HLS stream' pragma.
 WARNING: [HLS 200-805] An internal stream 'imgBayer' with default size can result in deadlock. Please consider resizing the stream using the directive 'set_directive_stream' or the 'HLS stream' pragma.
@@ -888,7 +889,7 @@ INFO: [XFORM 203-712] Applying dataflow to function 'v_demosaic' (R:/KV260/vivad
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1084:51) to (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1114:17) in function 'ZipperRemoval'... converting 4 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:812:66) to (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:1007:27) in function 'DebayerRandBatG'... converting 7 basic blocks.
 INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:232:18) to (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:540:27) in function 'DebayerG'... converting 4 basic blocks.
-INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.302 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 3.173 seconds; current allocated memory: 1.119 GB.
 WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'linebuf_yuv.val.V.3' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:238).
 WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'linebuf_yuv.val.V.2' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:238).
 WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'linebuf_yuv.val.V.1' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:238).
@@ -921,7 +922,7 @@ WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'lineBuffer
 WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'lineBuffer.val.V.i' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:817).
 WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'lineBuffer.val.V.2.i' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:817).
 WARNING: [ANALYSIS 214-52] Found false intra dependency for variable 'lineBuffer.val.V.i' (R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/prj/sol/.autopilot/db/v_demosaic.cpp:817).
-INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.981 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 5.873 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO: [HLS 200-10] Synthesizing 'v_demosaic' ...
 WARNING: [SYN 201-103] Legalizing function name 'reg<unsigned short>' to 'reg_unsigned_short_s'.
@@ -930,13 +931,13 @@ INFO: [HLS 200-42] -- Implementing module 'Block_entry1_proc'
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.563 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 1.043 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.162 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.364 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'reg_unsigned_short_s' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -944,13 +945,13 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining function 'reg<unsigned short>'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, function 'reg<unsigned short>'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.229 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.49 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.189 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.338 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_start' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -958,13 +959,13 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'loop_wait_for_start'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'loop_wait_for_start'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.253 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.494 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.161 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.273 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'AXIvideo2MultiBayer_Pipeline_loop_width' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -972,13 +973,13 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'loop_width'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'loop_width'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.245 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.481 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.206 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.364 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -986,25 +987,25 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'loop_wait_for_eol'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'loop_wait_for_eol'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.253 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.608 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.174 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.43 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'AXIvideo2MultiBayer' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.196 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.601 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.254 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.849 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerG_Pipeline_VITIS_LOOP_273_4' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1020,25 +1021,25 @@ INFO: [HLS 200-486] Changing DSP latency (root=mul_ln456) to 3 in order to utili
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_273_4'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 23, loop 'VITIS_LOOP_273_4'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.394 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 5.006 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.858 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 3.035 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerG' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.299 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 4.686 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.508 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.084 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1046,25 +1047,25 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_588_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 8, loop 'VITIS_LOOP_588_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.306 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 3.096 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.431 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.153 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerRatBorBatR' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.594 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.917 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.322 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.911 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerRandBatG_Pipeline_VITIS_LOOP_836_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1072,37 +1073,37 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_836_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'VITIS_LOOP_836_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.91 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.336 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.546 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.686 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'DebayerRandBatG' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.794 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.367 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.412 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.858 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'Debayer' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.639 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.095 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.701 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.078 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'ZipperRemoval_Pipeline_VITIS_LOOP_1056_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1110,25 +1111,25 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_1056_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 5, loop 'VITIS_LOOP_1056_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 2.458 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 3.965 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.426 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.728 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'ZipperRemoval' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.472 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.232 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.329 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.807 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1136,68 +1137,68 @@ INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_185_2'.
 INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_185_2'
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.44 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.386 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.224 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.533 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'MultiPixStream2AXIvideo' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.227 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.911 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.24 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.981 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'v_demosaic' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.256 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.797 seconds; current allocated memory: 1.119 GB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.82 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.267 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Block_entry1_proc' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Block_entry1_proc'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.862 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 6.031 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'reg_unsigned_short_s' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'reg_unsigned_short_s'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.212 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.76 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_start' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_start'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.207 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.546 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'AXIvideo2MultiBayer_Pipeline_loop_width' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'AXIvideo2MultiBayer_Pipeline_loop_width' pipeline 'loop_width' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Finished creating RTL model for 'AXIvideo2MultiBayer_Pipeline_loop_width'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.258 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.759 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'AXIvideo2MultiBayer_Pipeline_loop_wait_for_eol'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.315 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.098 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'AXIvideo2MultiBayer' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'AXIvideo2MultiBayer'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.206 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.813 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerG_Pipeline_VITIS_LOOP_273_4' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1208,62 +1209,62 @@ INFO: [RTGEN 206-100] Generating core module 'mul_mul_14s_10ns_24_4_1': 2 instan
 INFO: [RTGEN 206-100] Generating core module 'mul_mul_18s_8ns_18_4_1': 2 instance(s).
 INFO: [RTGEN 206-100] Generating core module 'mul_mul_18s_9ns_18_4_1': 2 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerG_Pipeline_VITIS_LOOP_273_4'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.761 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.037 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerG' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerG'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 3.772 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 4 seconds. CPU system time: 1 seconds. Elapsed time: 9.706 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2' pipeline 'VITIS_LOOP_588_2' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Generating core module 'mux_32_10_1_1': 5 instance(s).
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerRatBorBatR_Pipeline_VITIS_LOOP_588_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.133 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 2.373 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerRatBorBatR' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerRatBorBatR'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.776 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 4.27 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerRandBatG_Pipeline_VITIS_LOOP_836_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'DebayerRandBatG_Pipeline_VITIS_LOOP_836_2' pipeline 'VITIS_LOOP_836_2' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerRandBatG_Pipeline_VITIS_LOOP_836_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.748 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.983 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'DebayerRandBatG' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'DebayerRandBatG'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.829 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 4.711 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'Debayer' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'Debayer'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.614 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.502 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'ZipperRemoval_Pipeline_VITIS_LOOP_1056_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'ZipperRemoval_Pipeline_VITIS_LOOP_1056_2' pipeline 'VITIS_LOOP_1056_2' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Finished creating RTL model for 'ZipperRemoval_Pipeline_VITIS_LOOP_1056_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.53 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 3.776 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'ZipperRemoval' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'ZipperRemoval'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 0.695 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.529 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2' pipeline 'VITIS_LOOP_185_2' pipeline type 'loop pipeline'
 INFO: [RTGEN 206-100] Finished creating RTL model for 'MultiPixStream2AXIvideo_Pipeline_VITIS_LOOP_185_2'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.408 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.92 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'MultiPixStream2AXIvideo' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [RTGEN 206-100] Finished creating RTL model for 'MultiPixStream2AXIvideo'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.281 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.698 seconds; current allocated memory: 1.119 GB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'v_demosaic' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -1290,7 +1291,7 @@ INFO: [RTGEN 206-100] Bundling port 'width', 'height', 'bayer_phase' and 'return
 WARNING: [RTGEN 206-101] RTL name 'fifo_w16_d2_S' is changed to 'fifo_w16_d2_S_x' due to conflict.
 WARNING: [RTGEN 206-101] RTL name 'fifo_w30_d2_S' is changed to 'fifo_w30_d2_S_x' due to conflict.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'v_demosaic'.
-INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.195 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 2.558 seconds; current allocated memory: 1.119 GB.
 INFO: [RTMG 210-279] Implementing memory 'kv260_video_v_demosaic_0_0_DebayerG_Pipeline_VITIS_LOOP_273_4_DIV1_TABLE_ROM_AUTO_1R' using auto ROMs.
 INFO: [RTMG 210-279] Implementing memory 'kv260_video_v_demosaic_0_0_DebayerG_Pipeline_VITIS_LOOP_273_4_DIV2_TABLE_ROM_AUTO_1R' using auto ROMs.
 INFO: [RTMG 210-278] Implementing memory 'kv260_video_v_demosaic_0_0_DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W_ram (XPM_MEMORY_Ultra)' using uram RAMs.
@@ -1307,13 +1308,13 @@ INFO: [RTMG 210-285] Implementing FIFO 'imgRgb_U(kv260_video_v_demosaic_0_0_fifo
 INFO: [RTMG 210-285] Implementing FIFO 'imgUnzip_U(kv260_video_v_demosaic_0_0_fifo_w30_d2_S_x)' using Shift Registers.
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_ZipperRemoval_U0_U(kv260_video_v_demosaic_0_0_start_for_ZipperRemoval_U0)' using Shift Registers.
 INFO: [RTMG 210-285] Implementing FIFO 'start_for_MultiPixStream2AXIvideo_U0_U(kv260_video_v_demosaic_0_0_start_for_MultiPixStream2AXIvideo_U0)' using Shift Registers.
-INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 6 seconds. CPU system time: 1 seconds. Elapsed time: 7.921 seconds; current allocated memory: 1.207 GB.
-INFO: [HLS 200-111] Finished Updating report files: CPU user time: 4 seconds. CPU system time: 1 seconds. Elapsed time: 6.206 seconds; current allocated memory: 1.207 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 8 seconds. CPU system time: 1 seconds. Elapsed time: 16.468 seconds; current allocated memory: 1.119 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 6 seconds. CPU system time: 2 seconds. Elapsed time: 14.162 seconds; current allocated memory: 1.119 GB.
 INFO: [VHDL 208-304] Generating VHDL RTL for v_demosaic with prefix kv260_video_v_demosaic_0_0_.
 INFO: [VLOG 209-307] Generating Verilog RTL for v_demosaic with prefix kv260_video_v_demosaic_0_0_.
 INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
 INFO: [HLS 200-789] **** Estimated Fmax: 411.00 MHz
-INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 64 seconds. CPU system time: 9 seconds. Elapsed time: 200.837 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 85 seconds. CPU system time: 12 seconds. Elapsed time: 358.871 seconds; current allocated memory: 0.000 MB.
 INFO: [HLS 200-1510] Running: export_design -format ip_catalog 
 INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
 
@@ -1323,16 +1324,16 @@ INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source run_ippack.tcl -notrace
-ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1372.141 ; gain = 0.000
+ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1402.379 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:06:51 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 09:21:54 2026...
 INFO: [HLS 200-802] Generated output file prj/sol/impl/export.zip
-INFO: [HLS 200-111] Finished Command export_design CPU user time: 7 seconds. CPU system time: 1 seconds. Elapsed time: 29.853 seconds; current allocated memory: 0.000 MB.
-INFO: [HLS 200-112] Total CPU user time: 75 seconds. Total CPU system time: 12 seconds. Total elapsed time: 237.315 seconds; peak allocated memory: 1.207 GB.
-INFO: [Common 17-206] Exiting vitis_hls at Sat Nov 14 19:06:52 2026...
-compile_c: Time (s): cpu = 00:00:00 ; elapsed = 00:04:01 . Memory (MB): peak = 1373.055 ; gain = 0.000
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 10 seconds. CPU system time: 1 seconds. Elapsed time: 69.015 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 101 seconds. Total CPU system time: 16 seconds. Total elapsed time: 442.534 seconds; peak allocated memory: 1.119 GB.
+INFO: [Common 17-206] Exiting vitis_hls at Fri Nov 20 09:21:55 2026...
+compile_c: Time (s): cpu = 00:00:00 ; elapsed = 00:07:31 . Memory (MB): peak = 1397.828 ; gain = 0.000
 Command: synth_design -top kv260_video_v_demosaic_0_0 -part xck26-sfvc784-2LV-c -incremental_mode off -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
@@ -1340,7 +1341,7 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 6164
+INFO: [Synth 8-7075] Helper process launched with PID 10428
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 WARNING: [Synth 8-9887] parameter declaration becomes local in 'kv260_video_v_demosaic_0_0_DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W_ram' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/hdl/verilog/kv260_video_v_demosaic_0_0_DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W.v:41]
 WARNING: [Synth 8-9887] parameter declaration becomes local in 'kv260_video_v_demosaic_0_0_DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W_ram' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/hdl/verilog/kv260_video_v_demosaic_0_0_DebayerG_linebuf_yuv_val_V_XPM_MEMORY_URAM_1R1W.v:42]
@@ -1363,7 +1364,7 @@ WARNING: [Synth 8-9887] parameter declaration becomes local in 'kv260_video_v_de
 WARNING: [Synth 8-9887] parameter declaration becomes local in 'kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W_ram' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/hdl/verilog/kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W.v:49]
 WARNING: [Synth 8-9887] parameter declaration becomes local in 'kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W_ram' with formal parameter declaration list [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/hdl/verilog/kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W.v:50]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1842.262 ; gain = 319.539
+Starting RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:23 . Memory (MB): peak = 1839.777 ; gain = 319.559
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'kv260_video_v_demosaic_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/synth/kv260_video_v_demosaic_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'kv260_video_v_demosaic_0_0_v_demosaic' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/hdl/verilog/kv260_video_v_demosaic_0_0_v_demosaic.v:10]
@@ -1598,24 +1599,24 @@ WARNING: [Synth 8-7129] Port imgRB_fifo_cap[0] in module kv260_video_v_demosaic_
 WARNING: [Synth 8-7129] Port imgG_num_data_valid[1] in module kv260_video_v_demosaic_0_0_DebayerRatBorBatR is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2030.031 ; gain = 507.309
+Finished RTL Elaboration : Time (s): cpu = 00:00:20 ; elapsed = 00:00:42 . Memory (MB): peak = 2026.352 ; gain = 506.133
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2048.949 ; gain = 526.227
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:43 . Memory (MB): peak = 2044.285 ; gain = 524.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2048.949 ; gain = 526.227
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:43 . Memory (MB): peak = 2044.285 ; gain = 524.066
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.352 . Memory (MB): peak = 2048.949 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.522 . Memory (MB): peak = 2044.285 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/kv260_video_v_demosaic_0_0_ooc.xdc] for cell 'inst'
-create_clock: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2170.293 ; gain = 0.070
+create_clock: Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2165.578 ; gain = 0.047
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_0_0/kv260_video_v_demosaic_0_0_ooc.xdc] for cell 'inst'
 Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/dont_touch.xdc]
 Finished Parsing XDC File [R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/dont_touch.xdc]
@@ -1634,14 +1635,14 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/kv260_video_
 INFO: [Project 1-1714] 8 XPM XDC files have been applied to the design.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2170.293 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2165.578 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.243 . Memory (MB): peak = 2170.293 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.533 . Memory (MB): peak = 2165.578 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2170.293 ; gain = 647.570
+Finished Constraint Validation : Time (s): cpu = 00:00:48 ; elapsed = 00:01:26 . Memory (MB): peak = 2165.578 ; gain = 645.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -1649,7 +1650,7 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2170.293 ; gain = 647.570
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:01:26 . Memory (MB): peak = 2165.578 ; gain = 645.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -1664,7 +1665,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for inst/Debayer_U0/DebayerRatBorBatR
 Applied set_property KEEP_HIERARCHY = SOFT for inst/Debayer_U0/DebayerRandBatG_U0/lineBuffer_val_V_U/kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W_ram_U/xpm_memory_sdpram_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for inst/Debayer_U0/DebayerRandBatG_U0/lineBuffer_val_V_2_U/kv260_video_v_demosaic_0_0_DebayerRatBorBatR_lineBuffer_val_V_XPM_MEMORY_URAM_1R1W_ram_U/xpm_memory_sdpram_inst. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2170.293 ; gain = 647.570
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:01:27 . Memory (MB): peak = 2165.578 ; gain = 645.359
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'kv260_video_v_demosaic_0_0_CTRL_s_axi'
 INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'kv260_video_v_demosaic_0_0_CTRL_s_axi'
@@ -1700,7 +1701,7 @@ WARNING: [Synth 8-5790] Small sized RAM "xpm_memory_base:/gen_wr_a.gen_word_narr
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"xpm_memory_base:/gen_wr_a.gen_word_narrow.mem_reg"'.
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"xpm_memory_base__parameterized0:/gen_wr_a.gen_word_narrow.mem_reg"'.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2170.293 ; gain = 647.570
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:56 ; elapsed = 00:01:43 . Memory (MB): peak = 2165.578 ; gain = 645.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -1870,7 +1871,7 @@ INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"xpm_mem
 WARNING: [Synth 8-3332] Sequential element (CTRL_s_axi_U/FSM_onehot_wstate_reg[0]) is unused and will be removed from module kv260_video_v_demosaic_0_0_v_demosaic.
 WARNING: [Synth 8-3332] Sequential element (CTRL_s_axi_U/FSM_onehot_rstate_reg[0]) is unused and will be removed from module kv260_video_v_demosaic_0_0_v_demosaic.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:24 ; elapsed = 00:01:28 . Memory (MB): peak = 2170.293 ; gain = 647.570
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:53 ; elapsed = 00:03:14 . Memory (MB): peak = 2165.578 ; gain = 645.359
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "xpm_memory_sdpram:/xpm_memory_base_inst" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "xpm_memory_sdpram:/xpm_memory_base_inst" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -1939,13 +1940,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:41 ; elapsed = 00:01:46 . Memory (MB): peak = 2623.230 ; gain = 1100.508
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:17 ; elapsed = 00:03:58 . Memory (MB): peak = 2624.883 ; gain = 1104.664
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:46 ; elapsed = 00:01:50 . Memory (MB): peak = 2680.398 ; gain = 1157.676
+Finished Timing Optimization : Time (s): cpu = 00:02:23 ; elapsed = 00:04:09 . Memory (MB): peak = 2682.449 ; gain = 1162.230
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "xpm_memory_sdpram:/xpm_memory_base_inst" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "xpm_memory_sdpram:/xpm_memory_base_inst" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
@@ -1982,7 +1983,7 @@ Start Technology Mapping
 INFO: [Synth 8-7052] The timing for the instance inst/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/DIV2_TABLE_U/q0_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance inst/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/DIV2_TABLE_U/q0_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:53 ; elapsed = 00:01:58 . Memory (MB): peak = 2734.148 ; gain = 1211.426
+Finished Technology Mapping : Time (s): cpu = 00:02:34 ; elapsed = 00:04:27 . Memory (MB): peak = 2735.332 ; gain = 1215.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -2000,37 +2001,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:01 ; elapsed = 00:02:06 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished IO Insertion : Time (s): cpu = 00:02:54 ; elapsed = 00:05:12 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:01 ; elapsed = 00:02:06 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:54 ; elapsed = 00:05:12 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:03 ; elapsed = 00:02:08 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:57 ; elapsed = 00:05:17 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:04 ; elapsed = 00:02:08 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:57 ; elapsed = 00:05:18 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:04 ; elapsed = 00:02:09 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:58 ; elapsed = 00:05:19 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:04 ; elapsed = 00:02:09 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:58 ; elapsed = 00:05:19 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -2155,20 +2156,20 @@ Report Cell Usage:
 |28    |FDSE            |    41|
 +------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:04 ; elapsed = 00:02:09 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:58 ; elapsed = 00:05:19 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 172 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:34 ; elapsed = 00:01:57 . Memory (MB): peak = 2745.918 ; gain = 1101.852
-Synthesis Optimization Complete : Time (s): cpu = 00:02:04 ; elapsed = 00:02:09 . Memory (MB): peak = 2745.918 ; gain = 1223.195
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:22 ; elapsed = 00:04:58 . Memory (MB): peak = 2747.094 ; gain = 1105.582
+Synthesis Optimization Complete : Time (s): cpu = 00:02:58 ; elapsed = 00:05:20 . Memory (MB): peak = 2747.094 ; gain = 1226.875
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.189 . Memory (MB): peak = 2758.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.611 . Memory (MB): peak = 2760.109 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 287 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell inst/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/var_quant_3_reg_4547_reg has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
 INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell inst/Debayer_U0/DebayerG_U0/grp_DebayerG_Pipeline_VITIS_LOOP_273_4_fu_210/var_quant_reg_4532_reg has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2773.789 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2774.039 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 8 instances were transformed.
   DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 8 instances
@@ -2177,10 +2178,10 @@ Synth Design complete, checksum: 16bf8d78
 INFO: [Common 17-83] Releasing license: Synthesis
 172 Infos, 163 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:17 ; elapsed = 00:02:25 . Memory (MB): peak = 2773.789 ; gain = 1400.734
+synth_design: Time (s): cpu = 00:03:16 ; elapsed = 00:05:59 . Memory (MB): peak = 2774.039 ; gain = 1376.211
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/kv260_video_v_demosaic_0_0.dcp' has been generated.
 INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_v_demosaic_0_0, cache-ID = 86ac1d1b540399e3
 INFO: [Coretcl 2-1174] Renamed 16 cell refs.
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_v_demosaic_0_0_synth_1/kv260_video_v_demosaic_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kv260_video_v_demosaic_0_0_utilization_synth.rpt -pb kv260_video_v_demosaic_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Nov 14 19:09:25 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 09:28:13 2026...

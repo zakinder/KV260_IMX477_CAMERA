@@ -1,25 +1,21 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-348,-128",
+   "Default View_TopLeft":"-498,-193",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
-preplace port gpio -pg 1 -lvl 3 -x 570 -y 60 -defaultsOSRD
-preplace port iic -pg 1 -lvl 3 -x 570 -y 80 -defaultsOSRD
-preplace port mipi_phy_if -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
-preplace port mipi_rx_ias -pg 1 -lvl 0 -x -10 -y 110 -defaultsOSRD
-preplace inst PS_VIDEO -pg 1 -lvl 1 -x 170 -y 100 -defaultsOSRD
-preplace inst system_ila_0 -pg 1 -lvl 2 -x 450 -y 160 -defaultsOSRD
-preplace netloc PS_VIDEO_peripheral_aresetn 1 1 1 320 140n
-preplace netloc PS_VIDEO_pl_clk0 1 1 1 330 120n
-preplace netloc Conn 1 1 1 340 100n
-preplace netloc PS_VIDEO_gpio_rtl 1 1 2 NJ 60 NJ
-preplace netloc mipi_phy_if_0_1 1 0 1 NJ 90
-preplace netloc mipi_rx_ias1_0_1 1 0 1 NJ 110
-preplace netloc zynq_ultra_ps_e_0_IIC_0 1 1 2 NJ 80 NJ
-levelinfo -pg 1 -10 170 450 570
-pagesize -pg 1 -db -bbox -sgen -140 0 650 240
+preplace port gpio -pg 1 -lvl 2 -x 260 -y 50 -defaultsOSRD
+preplace port iic -pg 1 -lvl 2 -x 260 -y 70 -defaultsOSRD
+preplace port mipi_phy_if -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port mipi_rx_ias -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace inst PS_VIDEO -pg 1 -lvl 1 -x 130 -y 60 -defaultsOSRD
+preplace netloc PS_VIDEO_gpio_rtl 1 1 1 NJ 50
+preplace netloc mipi_phy_if_0_1 1 0 1 NJ 50
+preplace netloc mipi_rx_ias1_0_1 1 0 1 NJ 70
+preplace netloc zynq_ultra_ps_e_0_IIC_0 1 1 1 NJ 70
+levelinfo -pg 1 0 130 260
+pagesize -pg 1 -db -bbox -sgen -130 -10 340 120
 "
 }
-0
+

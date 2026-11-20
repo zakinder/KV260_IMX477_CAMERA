@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sun Nov 15 20:29:09 2026
+| Date         : Fri Nov 20 09:34:34 2026
 | Host         : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kv260_video_axi_vdma_0_0_utilization_synth.rpt -pb kv260_video_axi_vdma_0_0_utilization_synth.pb
 | Design       : kv260_video_axi_vdma_0_0
@@ -32,13 +32,13 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*                  | 3372 |     0 |          0 |    117120 |  2.88 |
-|   LUT as Logic             | 3052 |     0 |          0 |    117120 |  2.61 |
+| CLB LUTs*                  | 3391 |     0 |          0 |    117120 |  2.90 |
+|   LUT as Logic             | 3071 |     0 |          0 |    117120 |  2.62 |
 |   LUT as Memory            |  320 |     0 |          0 |     57600 |  0.56 |
 |     LUT as Distributed RAM |    8 |     0 |            |           |       |
 |     LUT as Shift Register  |  312 |     0 |            |           |       |
-| CLB Registers              | 4539 |     0 |          0 |    234240 |  1.94 |
-|   Register as Flip Flop    | 4539 |     0 |          0 |    234240 |  1.94 |
+| CLB Registers              | 4536 |     0 |          0 |    234240 |  1.94 |
+|   Register as Flip Flop    | 4536 |     0 |          0 |    234240 |  1.94 |
 |   Register as Latch        |    0 |     0 |          0 |    234240 |  0.00 |
 | CARRY8                     |   35 |     0 |          0 |     14640 |  0.24 |
 | F7 Muxes                   |    7 |     0 |          0 |     58560 |  0.01 |
@@ -62,8 +62,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 137   |          Yes |         Set |            - |
-| 4402  |          Yes |       Reset |            - |
+| 138   |          Yes |         Set |            - |
+| 4398  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -160,15 +160,15 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 4402 |            Register |
-| LUT6     |  853 |                 CLB |
-| LUT5     |  728 |                 CLB |
-| LUT3     |  646 |                 CLB |
-| LUT4     |  560 |                 CLB |
-| LUT2     |  448 |                 CLB |
+| FDRE     | 4398 |            Register |
+| LUT6     |  878 |                 CLB |
+| LUT5     |  710 |                 CLB |
+| LUT3     |  638 |                 CLB |
+| LUT4     |  566 |                 CLB |
+| LUT2     |  460 |                 CLB |
 | SRL16E   |  312 |                 CLB |
-| LUT1     |  253 |                 CLB |
-| FDSE     |  137 |            Register |
+| LUT1     |  256 |                 CLB |
+| FDSE     |  138 |            Register |
 | CARRY8   |   35 |                 CLB |
 | RAMD32   |   14 |                 CLB |
 | RAMB36E2 |    9 |            BLOCKRAM |

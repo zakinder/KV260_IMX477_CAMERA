@@ -92,7 +92,7 @@ set_property ip_output_repo r:/KV260/vivado/KV260.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet r:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0.xci
+read_ip -quiet R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0.xci
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_zynq_ultra_ps_e_0_0/kv260_video_zynq_ultra_ps_e_0_0.xdc]
 

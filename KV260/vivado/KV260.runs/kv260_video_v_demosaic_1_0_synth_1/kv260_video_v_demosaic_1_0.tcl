@@ -92,7 +92,7 @@ set_property ip_output_repo r:/KV260/vivado/KV260.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet r:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0.xci
+read_ip -quiet R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0.xci
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0_ooc.xdc]
 
@@ -108,7 +108,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 OPTRACE "compile_c" START { }
-compile_c [get_files r:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0.xci
+compile_c [get_files R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_v_demosaic_1_0/kv260_video_v_demosaic_1_0.xci
 ]
 OPTRACE "compile_c" END { }
 set_param ips.enableIPCacheLiteLoad 1

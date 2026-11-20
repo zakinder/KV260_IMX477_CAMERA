@@ -1,0 +1,356 @@
+#include <stdint.h>
+#include <stddef.h>
+#include <stdio.h>
+#include "xil_cache.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include "xaxivdma.h"
+#include "xtime_l.h"
+#include "../config.h"
+#include "jpeg_worker_mailbox.h"
+#include "jpeg_pipeline.h"
+#if defined(__ARM_NEON)
+#include <arm_neon.h>
+#endif
+
+#define WORKERS 2U
+#define CAPTURE_ROWS_PER_POLL 8U
+#define WORKER_TIMEOUT_SECONDS 3U
+#define PARK_PTR 0x28U
+#define MM2S_CONTROL 0x00U
+#define MM2S_STATUS 0x04U
+#define S2MM_CONTROL 0x30U
+#define S2MM_STATUS 0x34U
+#define S2MM_ERROR_BITS 0xC9F0U
+#define VDMA_HALTED 1U
+#define CIRCULAR_GENLOCK_CONTROL 0x8bU
+#define WRITE_STORE(value) (((value) >> 24) & 31U)
+#define READ_STORE(value) (((value) >> 16) & 31U)
+#define OUTPUT_CAPACITY (8U * 1024U * 1024U)
+
+extern u32 *pFrames[DISPLAY_NUM_FRAMES];
+/* Each buffer stays owned by its worker until its JPEG has been sent. */
+static unsigned char rgb_frames[WORKERS][VIDEO1_MAX_FRAME]
+    __attribute__((aligned(64)));
+typedef char jpeg_frame_alignment_check[(VIDEO1_MAX_FRAME % 64U == 0U) ? 1 : -1];
+
+enum slot_state { SLOT_EMPTY, SLOT_PROBE, SLOT_CAPTURE, SLOT_ENCODING,
+                  SLOT_READY, SLOT_ERROR, SLOT_SENDING };
+struct worker_slot {
+    enum slot_state state;
+    uint32_t sequence;
+    uint64_t order;
+    XTime deadline;
+    const unsigned char *jpeg;
+    size_t jpeg_size;
+    uint32_t encode_us;
+};
+static struct worker_slot slots[WORKERS];
+static XAxiVdma_Config *vdma_config;
+static int active, running, fault_latched, error_event;
+static int capture_slot = -1;
+static int capture_copying;
+static uint32_t capture_previous, capture_store, capture_rows;
+static XTime capture_started;
+static uint64_t next_order, next_send;
+
+static volatile struct jpeg_worker_mailbox *worker_mailbox(unsigned int slot)
+{
+    return (volatile struct jpeg_worker_mailbox *)(JPEG_MAILBOX_BASE +
+           slot * JPEG_MAILBOX_STRIDE);
+}
+
+static void submit(unsigned int slot, uint32_t command, XTime now)
+{
+    volatile struct jpeg_worker_mailbox *mailbox = worker_mailbox(slot);
+    uint32_t sequence;
+    Xil_DCacheInvalidateRange((UINTPTR)&mailbox->request, JPEG_MAILBOX_LINE);
+    jpeg_worker_barrier();
+    sequence = mailbox->request.sequence + 1U;
+    if (sequence == 0U)
+        sequence = 1U;
+    mailbox->request.command = command;
+    mailbox->request.input_address = command == JPEG_COMMAND_ENCODE ?
+        (uint64_t)(UINTPTR)rgb_frames[slot] : 0U;
+    mailbox->request.input_size = command == JPEG_COMMAND_ENCODE ? VIDEO1_MAX_FRAME : 0U;
+    jpeg_worker_barrier();
+    mailbox->request.sequence = sequence;
+    Xil_DCacheFlushRange((UINTPTR)&mailbox->request, JPEG_MAILBOX_LINE);
+    jpeg_worker_barrier();
+    slots[slot].sequence = sequence;
+    slots[slot].deadline = now + (XTime)COUNTS_PER_SECOND * WORKER_TIMEOUT_SECONDS;
+    slots[slot].state = command == JPEG_COMMAND_PROBE ? SLOT_PROBE : SLOT_ENCODING;
+}
+
+static void worker_fault(unsigned int slot, const char *reason)
+{
+    if (slots[slot].state == SLOT_PROBE) {
+        printf("JPEG pipeline: worker %u %s. Start both workers and retry.\r\n",
+               slot + 1U, reason);
+        running = 0;
+        active = 0;
+        error_event = 1;
+        for (unsigned int i = 0; i < WORKERS; ++i)
+            slots[i].state = SLOT_EMPTY;
+        return;
+    }
+    printf("JPEG pipeline: worker %u %s. Restart application and both workers.\r\n",
+           slot + 1U, reason);
+    fault_latched = 1;
+    error_event = 1;
+    running = 0;
+}
+
+static void poll_workers(XTime now)
+{
+    for (unsigned int i = 0; i < WORKERS; ++i) {
+        struct worker_slot *slot = &slots[i];
+        volatile struct jpeg_worker_mailbox *mailbox = worker_mailbox(i);
+        if (slot->state != SLOT_PROBE && slot->state != SLOT_ENCODING)
+            continue;
+        Xil_DCacheInvalidateRange((UINTPTR)&mailbox->response, JPEG_MAILBOX_LINE);
+        jpeg_worker_barrier();
+        if (mailbox->response.sequence == slot->sequence) {
+            uint32_t status = mailbox->response.status;
+            if (slot->state == SLOT_PROBE) {
+                if (status != JPEG_RESPONSE_OK) {
+                    worker_fault(i, "probe failed");
+                    return;
+                }
+                slot->state = SLOT_EMPTY;
+            } else if (!running) {
+                slot->state = SLOT_EMPTY;
+            } else if (status != JPEG_RESPONSE_OK) {
+                slot->state = SLOT_ERROR;
+            } else {
+                uint64_t address = mailbox->response.output_address;
+                uint32_t size = mailbox->response.output_size;
+                uint64_t begin = i == 0U ? 0x40000000ULL : 0x48000000ULL;
+                uint64_t end = begin + 0x08000000ULL;
+                if (address < begin || address >= end || size == 0U ||
+                    size > OUTPUT_CAPACITY || (uint64_t)size > end - address) {
+                    slot->state = SLOT_ERROR;
+                } else {
+                    Xil_DCacheInvalidateRange((UINTPTR)address, size);
+                    jpeg_worker_barrier();
+                    slot->jpeg = (const unsigned char *)(UINTPTR)address;
+                    slot->jpeg_size = size;
+                    slot->encode_us = mailbox->response.elapsed_us;
+                    slot->state = SLOT_READY;
+                }
+            }
+        } else if (!fault_latched && now >= slot->deadline) {
+            worker_fault(i, "timed out");
+            return;
+        }
+    }
+}
+
+/* Match the optimized RGB-copy path used by the working snapshot build. */
+#if defined(__GNUC__)
+__attribute__((optimize("O2")))
+#endif
+static void copy_row(unsigned int slot, unsigned int row)
+{
+    /* JPEG_FLIP_VERTICAL is 0 in the validated upright preview. */
+    const unsigned char *source = (const unsigned char *)pFrames[capture_store] +
+                                  (size_t)row * VIDEO1_STRIDE;
+    unsigned char *destination = rgb_frames[slot] + (size_t)row * VIDEO1_STRIDE;
+    unsigned int x = 0;
+#if defined(__ARM_NEON)
+    for (; x + 16U <= VIDEO1_COLUMNS; x += 16U) {
+        uint8x16x3_t input = vld3q_u8(source);
+        uint8x16x3_t output;
+        output.val[0] = input.val[1];
+        output.val[1] = input.val[0];
+        output.val[2] = input.val[2];
+        vst3q_u8(destination, output);
+        source += 48U;
+        destination += 48U;
+    }
+#endif
+    for (; x < VIDEO1_COLUMNS; ++x) {
+        destination[0] = source[1];
+        destination[1] = source[0];
+        destination[2] = source[2];
+        source += 3;
+        destination += 3;
+    }
+}
+
+static void cancel_capture(void)
+{
+    if (capture_slot >= 0)
+        slots[(unsigned int)capture_slot].state = SLOT_EMPTY;
+    capture_slot = -1;
+    capture_copying = 0;
+}
+
+static void poll_capture(XTime now)
+{
+    const UINTPTR base = vdma_config->BaseAddress;
+    u32 park;
+    if (capture_slot < 0) {
+        for (unsigned int i = 0; i < WORKERS; ++i) {
+            if (slots[i].state == SLOT_EMPTY) {
+                capture_slot = (int)i;
+                slots[i].state = SLOT_CAPTURE;
+                capture_previous = READ_STORE(Xil_In32(base + PARK_PTR));
+                capture_started = now;
+                capture_copying = 0;
+                break;
+            }
+        }
+        if (capture_slot < 0)
+            return;
+    }
+    park = Xil_In32(base + PARK_PTR);
+    if (!capture_copying) {
+        uint32_t store = READ_STORE(park);
+        if (store == capture_previous || store >= DISPLAY_NUM_FRAMES ||
+            WRITE_STORE(park) == store) {
+            if (now - capture_started >= COUNTS_PER_SECOND / 2U) {
+                printf("JPEG pipeline: timed out waiting for a display store.\r\n");
+                cancel_capture();
+            }
+            return;
+        }
+        capture_store = store;
+        capture_rows = 0;
+        Xil_DCacheInvalidateRange((UINTPTR)pFrames[store], VIDEO1_MAX_FRAME);
+        capture_copying = 1;
+    }
+    for (unsigned int n = 0; n < CAPTURE_ROWS_PER_POLL &&
+         capture_rows < VIDEO1_ROWS; ++n) {
+        park = Xil_In32(base + PARK_PTR);
+        if (READ_STORE(park) != capture_store || WRITE_STORE(park) == capture_store) {
+            cancel_capture();
+            return;
+        }
+        copy_row((unsigned int)capture_slot, capture_rows);
+        ++capture_rows;
+    }
+    if (capture_rows == VIDEO1_ROWS) {
+        unsigned int slot = (unsigned int)capture_slot;
+        u32 status = Xil_In32(base + S2MM_STATUS);
+        park = Xil_In32(base + PARK_PTR);
+        if (READ_STORE(park) != capture_store || WRITE_STORE(park) == capture_store ||
+            (status & (S2MM_ERROR_BITS | VDMA_HALTED)) != 0U ||
+            (Xil_In32(base + MM2S_STATUS) & VDMA_HALTED) != 0U) {
+            printf("JPEG pipeline: discarded an unstable VDMA capture.\r\n");
+            cancel_capture();
+            return;
+        }
+        Xil_DCacheFlushRange((UINTPTR)rgb_frames[slot], VIDEO1_MAX_FRAME);
+        jpeg_worker_barrier();
+        slots[slot].order = next_order++;
+        XTime_GetTime(&now);
+        submit(slot, JPEG_COMMAND_ENCODE, now);
+        capture_slot = -1;
+        capture_copying = 0;
+    }
+}
+
+int jpeg_pipeline_start(void)
+{
+    XTime now;
+    if (active || fault_latched || VIDEO1_COLUMNS != 3840 || VIDEO1_ROWS != 2160)
+        return 0;
+    vdma_config = XAxiVdma_LookupConfig(XPAR_AXIVDMA_0_DEVICE_ID);
+    if (!vdma_config ||
+        (Xil_In32(vdma_config->BaseAddress + MM2S_CONTROL) & CIRCULAR_GENLOCK_CONTROL) != CIRCULAR_GENLOCK_CONTROL ||
+        (Xil_In32(vdma_config->BaseAddress + S2MM_CONTROL) & CIRCULAR_GENLOCK_CONTROL) != CIRCULAR_GENLOCK_CONTROL) {
+        printf("JPEG pipeline requires the working 4K circular VDMA.\r\n");
+        return 0;
+    }
+    for (unsigned int i = 0; i < WORKERS; ++i)
+        slots[i].state = SLOT_EMPTY;
+    capture_slot = -1;
+    capture_copying = 0;
+    next_order = 1;
+    next_send = 1;
+    active = 1;
+    running = 1;
+    error_event = 0;
+    XTime_GetTime(&now);
+    for (unsigned int i = 0; i < WORKERS; ++i)
+        submit(i, JPEG_COMMAND_PROBE, now);
+    return 1;
+}
+
+void jpeg_pipeline_stop(void)
+{
+    running = 0;
+    cancel_capture();
+    for (unsigned int i = 0; i < WORKERS; ++i)
+        if (slots[i].state == SLOT_READY || slots[i].state == SLOT_ERROR ||
+            slots[i].state == SLOT_PROBE)
+            slots[i].state = SLOT_EMPTY;
+}
+
+void jpeg_pipeline_poll(void)
+{
+    XTime now;
+    if (!active)
+        return;
+    XTime_GetTime(&now);
+    poll_workers(now);
+    if (running && !fault_latched && slots[0].state != SLOT_PROBE && slots[1].state != SLOT_PROBE)
+        poll_capture(now);
+    if (!running && !fault_latched) {
+        unsigned int i;
+        for (i = 0; i < WORKERS && slots[i].state == SLOT_EMPTY; ++i) { }
+        if (i == WORKERS)
+            active = 0;
+    }
+}
+
+int jpeg_pipeline_busy(void)
+{
+    return active || fault_latched;
+}
+
+int jpeg_pipeline_failed(void)
+{
+    return error_event;
+}
+
+int jpeg_pipeline_claim(const unsigned char **data, size_t *size, unsigned int *token)
+{
+    if (!running || fault_latched)
+        return 0;
+    for (;;) {
+        unsigned int i;
+        for (i = 0; i < WORKERS; ++i) {
+            struct worker_slot *slot = &slots[i];
+            if (slot->order != next_send)
+                continue;
+            if (slot->state == SLOT_ERROR) {
+                printf("JPEG pipeline: worker %u failed to encode frame.\r\n", i + 1U);
+                slot->state = SLOT_EMPTY;
+                ++next_send;
+                break;
+            }
+            if (slot->state == SLOT_READY) {
+                slot->state = SLOT_SENDING;
+                *data = slot->jpeg;
+                *size = slot->jpeg_size;
+                *token = i;
+                printf("JPEG pipeline: worker %u, %lu bytes, encode %lu us.\r\n",
+                       i + 1U, (unsigned long)slot->jpeg_size,
+                       (unsigned long)slot->encode_us);
+                return 1;
+            }
+        }
+        if (i == WORKERS)
+            return 0;
+    }
+}
+
+void jpeg_pipeline_release(unsigned int slot)
+{
+    if (slot < WORKERS && slots[slot].state == SLOT_SENDING) {
+        slots[slot].state = SLOT_EMPTY;
+        ++next_send;
+    }
+}

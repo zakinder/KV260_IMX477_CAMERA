@@ -1,11 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
--- Date        : Sat Nov 14 18:58:48 2026
+-- Date        : Fri Nov 20 09:34:51 2026
 -- Host        : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top bd_c4a8_vfb_sync_0 -prefix
---               bd_c4a8_vfb_sync_0_ bd_04f9_vfb_sync_0_sim_netlist.vhdl
--- Design      : bd_04f9_vfb_sync_0
+-- Command     : write_vhdl -force -mode funcsim
+--               r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_1/bd_c4a8_vfb_sync_0_sim_netlist.vhdl
+-- Design      : bd_c4a8_vfb_sync_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xck26-sfvc784-2LV-c
@@ -25,6 +25,8 @@ entity bd_c4a8_vfb_sync_0_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of bd_c4a8_vfb_sync_0_cdc_sync : entity is "cdc_sync";
 end bd_c4a8_vfb_sync_0_cdc_sync;
 
 architecture STRUCTURE of bd_c4a8_vfb_sync_0_cdc_sync is
@@ -245,6 +247,8 @@ entity bd_c4a8_vfb_sync_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of bd_c4a8_vfb_sync_0_upcnt_n : entity is "upcnt_n";
 end bd_c4a8_vfb_sync_0_upcnt_n;
 
 architecture STRUCTURE of bd_c4a8_vfb_sync_0_upcnt_n is
@@ -409,6 +413,8 @@ entity bd_c4a8_vfb_sync_0_lpf is
     ext_reset_in : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of bd_c4a8_vfb_sync_0_lpf : entity is "lpf";
 end bd_c4a8_vfb_sync_0_lpf;
 
 architecture STRUCTURE of bd_c4a8_vfb_sync_0_lpf is
@@ -597,6 +603,8 @@ entity bd_c4a8_vfb_sync_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of bd_c4a8_vfb_sync_0_sequence_psr : entity is "sequence_psr";
 end bd_c4a8_vfb_sync_0_sequence_psr;
 
 architecture STRUCTURE of bd_c4a8_vfb_sync_0_sequence_psr is
@@ -935,6 +943,8 @@ entity bd_c4a8_vfb_sync_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of bd_c4a8_vfb_sync_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of bd_c4a8_vfb_sync_0_proc_sys_reset : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of bd_c4a8_vfb_sync_0_proc_sys_reset : entity is "proc_sys_reset";
 end bd_c4a8_vfb_sync_0_proc_sys_reset;
 
 architecture STRUCTURE of bd_c4a8_vfb_sync_0_proc_sys_reset is
@@ -1061,7 +1071,7 @@ entity bd_c4a8_vfb_sync_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of bd_c4a8_vfb_sync_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of bd_c4a8_vfb_sync_0 : entity is "bd_04f9_vfb_sync_0,proc_sys_reset,{}";
+  attribute CHECK_LICENSE_TYPE of bd_c4a8_vfb_sync_0 : entity is "bd_c4a8_vfb_sync_0,proc_sys_reset,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of bd_c4a8_vfb_sync_0 : entity is "yes";
   attribute x_core_info : string;

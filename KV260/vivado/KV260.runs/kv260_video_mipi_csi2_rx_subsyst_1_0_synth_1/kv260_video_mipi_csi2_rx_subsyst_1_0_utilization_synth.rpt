@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sat Nov 14 19:05:07 2026
+| Date         : Fri Nov 20 09:38:12 2026
 | Host         : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kv260_video_mipi_csi2_rx_subsyst_1_0_utilization_synth.rpt -pb kv260_video_mipi_csi2_rx_subsyst_1_0_utilization_synth.pb
 | Design       : kv260_video_mipi_csi2_rx_subsyst_1_0

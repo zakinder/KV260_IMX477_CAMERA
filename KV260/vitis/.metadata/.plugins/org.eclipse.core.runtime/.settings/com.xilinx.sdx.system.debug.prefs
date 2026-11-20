@@ -1,0 +1,16 @@
+com.xilinx.sdk.linkgen.prefs.mipi\:.bss=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.data=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.data1=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.fixup=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.rodata=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.rodata1=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.sbss=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.sbss2=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.sdata=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.sdata2=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:.text=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:heap=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:heap-size=8192
+com.xilinx.sdk.linkgen.prefs.mipi\:stack=psu_ddr_0_MEM_0
+com.xilinx.sdk.linkgen.prefs.mipi\:stack-size=32768
+eclipse.preferences.version=1

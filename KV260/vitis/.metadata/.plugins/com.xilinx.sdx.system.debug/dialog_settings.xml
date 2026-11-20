@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="mipi_system-imgFile" value="R:/KV260/vitis/mipi_system/_ide/bootimage/BOOT.bin"/>
+	<item key="mipi_system-offSet" value="0x200000"/>
+	<item key="mipi_system-initFile" value="R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/sw/kv260_video_wrapper/boot/fsbl.elf"/>
+	<item key="mipi_system-flashType" value="qspi-x4-single"/>
+	<item key="mipi_system-verifyFlash" value="false"/>
+	<item key="mipi_system-blankCheck" value="false"/>
+	<item key="mipi_system-device" value="Auto Detect"/>
+	<item key="mipi_system-target" value="Local"/>
+	<item key="programflash.hwplatform" value="mipi_system"/>
+</section>

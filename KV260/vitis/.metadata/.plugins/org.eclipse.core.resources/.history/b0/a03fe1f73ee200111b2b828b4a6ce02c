@@ -1,0 +1,381 @@
+#include "jpeg_snapshot.h"
+#include "../config.h"
+#include "xil_cache.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include "xaxivdma.h"
+#include "xtime_l.h"
+#include <stdio.h>
+#include <string.h>
+#include "jpeg_worker_mailbox.h"
+#if defined(__ARM_NEON)
+#include <arm_neon.h>
+#endif
+/* 0 = STB, 1 = libjpeg-turbo, 2 = compare both on identical pixels. */
+#ifndef KV260_JPEG_MODE
+#define KV260_JPEG_MODE 0
+#endif
+#if KV260_JPEG_MODE < 0 || KV260_JPEG_MODE > 2
+#error "KV260_JPEG_MODE must be 0, 1, or 2"
+#endif
+#if KV260_JPEG_MODE != 0
+#include <setjmp.h>
+#include <jpeglib.h>
+#include <jerror.h>
+#endif
+#if KV260_JPEG_MODE != 1
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_STATIC
+#define STBI_WRITE_NO_STDIO
+#include "stb_image_write.h"
+#endif
+
+#define JPEG_WORKER1_TEST 1
+#define JPEG_CAPACITY (8U * 1024U * 1024U)
+#define JPEG_QUALITY 65
+/* VFP ovideo packs B:R:G from MSB to LSB, so DDR byte order is G,R,B.
+ * Adjust these indices if the deployed bitstream uses a different packing. */
+#define JPEG_RED_BYTE 1
+#define JPEG_GREEN_BYTE 0
+#define JPEG_BLUE_BYTE 2
+#define JPEG_FLIP_VERTICAL 1
+
+#define MM2S_STATUS 0x04U
+#define PARK_PTR 0x28U
+#define S2MM_CONTROL 0x30U
+#define S2MM_STATUS 0x34U
+#define S2MM_ERROR_BITS 0xC9F0U
+#define CIRCULAR_GENLOCK_CONTROL 0x8bU
+#define VDMA_HALTED 1U
+#define WRITE_STORE(value) (((value) >> 24) & 31U)
+#define READ_STORE(value) (((value) >> 16) & 31U)
+
+extern u32 *pFrames[DISPLAY_NUM_FRAMES];
+static unsigned char pixels[VIDEO1_MAX_FRAME] __attribute__((aligned(64)));
+static unsigned char jpeg[JPEG_CAPACITY];
+
+#if KV260_JPEG_MODE != 1
+struct jpeg_output {
+    size_t size;
+    int overflow;
+};
+
+static void collect_jpeg(void *context, void *data, int length)
+{
+    struct jpeg_output *out = context;
+    if (out->overflow || length < 0 || (size_t)length > sizeof(jpeg) - out->size) {
+        out->overflow = 1;
+        return;
+    }
+    memcpy(jpeg + out->size, data, (size_t)length);
+    out->size += (size_t)length;
+}
+
+static size_t encode_stb(void)
+{
+    struct jpeg_output out = {0, 0};
+    if (!stbi_write_jpg_to_func(collect_jpeg, &out, VIDEO1_COLUMNS, VIDEO1_ROWS,
+                               3, pixels, JPEG_QUALITY) || out.overflow)
+        return 0;
+    return out.size;
+}
+#endif
+
+#if KV260_JPEG_MODE != 0
+/* One encoder is used synchronously by the foreground capture path. */
+static struct jpeg_compress_struct turbo;
+static struct jpeg_error_mgr turbo_error;
+static struct jpeg_destination_mgr turbo_destination;
+static jmp_buf turbo_recovery;
+static char turbo_message[JMSG_LENGTH_MAX];
+
+static void turbo_fail(j_common_ptr cinfo)
+{
+    (*cinfo->err->format_message)(cinfo, turbo_message);
+    longjmp(turbo_recovery, 1);
+}
+
+static void turbo_init_destination(j_compress_ptr cinfo)
+{
+    cinfo->dest->next_output_byte = jpeg;
+    cinfo->dest->free_in_buffer = sizeof(jpeg);
+}
+
+static boolean turbo_full(j_compress_ptr cinfo)
+{
+    ERREXIT(cinfo, JERR_BUFFER_SIZE);
+    return FALSE;
+}
+
+static void turbo_finish_destination(j_compress_ptr cinfo)
+{
+    (void)cinfo;
+}
+
+static size_t encode_turbo(void)
+{
+    size_t size;
+    memset(&turbo, 0, sizeof(turbo));
+    turbo.err = jpeg_std_error(&turbo_error);
+    turbo_error.error_exit = turbo_fail;
+    if (setjmp(turbo_recovery)) {
+        jpeg_destroy_compress(&turbo);
+        printf("libjpeg-turbo: %s\r\n", turbo_message);
+        return 0;
+    }
+    jpeg_create_compress(&turbo);
+    turbo_destination.init_destination = turbo_init_destination;
+    turbo_destination.empty_output_buffer = turbo_full;
+    turbo_destination.term_destination = turbo_finish_destination;
+    turbo.dest = &turbo_destination;
+    turbo.image_width = VIDEO1_COLUMNS;
+    turbo.image_height = VIDEO1_ROWS;
+    turbo.input_components = 3;
+    turbo.in_color_space = JCS_RGB;
+    jpeg_set_defaults(&turbo);
+    jpeg_set_quality(&turbo, JPEG_QUALITY, TRUE);
+    turbo.dct_method = JDCT_IFAST;
+    turbo.optimize_coding = FALSE;
+    jpeg_start_compress(&turbo, TRUE);
+    while (turbo.next_scanline < turbo.image_height) {
+        JSAMPROW row = pixels + (size_t)turbo.next_scanline * VIDEO1_STRIDE;
+        if (jpeg_write_scanlines(&turbo, &row, 1) != 1)
+            ERREXIT(&turbo, JERR_CANT_SUSPEND);
+    }
+    jpeg_finish_compress(&turbo);
+    size = sizeof(jpeg) - turbo.dest->free_in_buffer;
+    jpeg_destroy_compress(&turbo);
+    return size;
+}
+#endif
+
+static unsigned long elapsed_us(XTime start, XTime end)
+{
+    return (unsigned long)((end - start) * 1000000ULL / COUNTS_PER_SECOND);
+}
+
+static void copy_rgb_row(const unsigned char *frame, unsigned int y)
+{
+    const unsigned int source_y =
+        JPEG_FLIP_VERTICAL ? VIDEO1_ROWS - 1U - y : y;
+    const unsigned char *source =
+        frame + (size_t)source_y * VIDEO1_STRIDE;
+    unsigned char *destination = pixels + (size_t)y * VIDEO1_STRIDE;
+    unsigned int x = 0;
+
+#if defined(__ARM_NEON)
+    for (; x + 16U <= VIDEO1_COLUMNS; x += 16U) {
+        const uint8x16x3_t input = vld3q_u8(source);
+        uint8x16x3_t output;
+
+        output.val[0] = input.val[JPEG_RED_BYTE];
+        output.val[1] = input.val[JPEG_GREEN_BYTE];
+        output.val[2] = input.val[JPEG_BLUE_BYTE];
+        vst3q_u8(destination, output);
+
+        source += 16U * 3U;
+        destination += 16U * 3U;
+    }
+#endif
+
+    for (; x < VIDEO1_COLUMNS; ++x) {
+        destination[0] = source[JPEG_RED_BYTE];
+        destination[1] = source[JPEG_GREEN_BYTE];
+        destination[2] = source[JPEG_BLUE_BYTE];
+        source += 3;
+        destination += 3;
+    }
+}
+
+/* The rotating-mode trial samples ownership around each row. Genlock
+ * arbitrates the DMA channels; these observations do not pin a CPU buffer. */
+static int copy_rotating_frame(UINTPTR base, unsigned int *selected,
+                               XTime *copy_start, XTime *invalidate_end)
+{
+    XTime start, now;
+    u32 park = Xil_In32(base + PARK_PTR);
+    const unsigned int previous = READ_STORE(park);
+    unsigned int store;
+    unsigned int rows = 0;
+
+    XTime_GetTime(&start);
+    do {
+        park = Xil_In32(base + PARK_PTR);
+        store = READ_STORE(park);
+        XTime_GetTime(&now);
+        if (store != previous && store < DISPLAY_NUM_FRAMES && WRITE_STORE(park) != store)
+            break;
+    } while (now - start < COUNTS_PER_SECOND / 2U);
+
+    if (store == previous || store >= DISPLAY_NUM_FRAMES || WRITE_STORE(park) == store) {
+        printf("JPEG rotating capture: timeout waiting for a new display store\r\n");
+        return 0;
+    }
+
+    *copy_start = now;
+    Xil_DCacheInvalidateRange((UINTPTR)pFrames[store], VIDEO1_MAX_FRAME);
+    XTime_GetTime(invalidate_end);
+    while (rows < VIDEO1_ROWS) {
+        park = Xil_In32(base + PARK_PTR);
+        if (READ_STORE(park) != store || WRITE_STORE(park) == store)
+            break;
+        copy_rgb_row((const unsigned char *)pFrames[store], rows);
+        ++rows;
+    }
+    park = Xil_In32(base + PARK_PTR);
+    const u32 status = Xil_In32(base + S2MM_STATUS);
+    if (rows != VIDEO1_ROWS || READ_STORE(park) != store || WRITE_STORE(park) == store ||
+        (status & (S2MM_ERROR_BITS | VDMA_HALTED)) != 0U ||
+        (Xil_In32(base + MM2S_STATUS) & VDMA_HALTED) != 0U) {
+        printf("JPEG rotating capture: skipped store=%u rows=%u write=%u read=%u S2MM_SR=0x%08lx\r\n",
+               store, rows, (unsigned int)WRITE_STORE(park),
+               (unsigned int)READ_STORE(park), (unsigned long)status);
+        return 0;
+    }
+
+    *selected = store;
+    return 1;
+}
+
+/* The request and response occupy separate cache lines and have one writer each. */
+static int worker_encode_timed_out;
+
+static int worker_request(uint32_t command, const unsigned char *input,
+                          const unsigned char **out, size_t *out_size,
+                          unsigned long *encode_time_us)
+{
+    volatile struct jpeg_worker_mailbox *mailbox =
+        (volatile struct jpeg_worker_mailbox *)JPEG_MAILBOX_BASE;
+    XTime started, now;
+    uint32_t sequence;
+
+    Xil_DCacheInvalidateRange((UINTPTR)&mailbox->request, JPEG_MAILBOX_LINE);
+    jpeg_worker_barrier();
+    sequence = mailbox->request.sequence + 1U;
+    if (sequence == 0U)
+        sequence = 1U;
+    mailbox->request.command = command;
+    mailbox->request.input_address = (uint64_t)(UINTPTR)input;
+    mailbox->request.input_size = input ? VIDEO1_MAX_FRAME : 0U;
+    jpeg_worker_barrier();
+    mailbox->request.sequence = sequence;
+    Xil_DCacheFlushRange((UINTPTR)&mailbox->request, JPEG_MAILBOX_LINE);
+    jpeg_worker_barrier();
+
+    XTime_GetTime(&started);
+    do {
+        Xil_DCacheInvalidateRange((UINTPTR)&mailbox->response, JPEG_MAILBOX_LINE);
+        jpeg_worker_barrier();
+        if (mailbox->response.sequence == sequence) {
+            uint64_t address = mailbox->response.output_address;
+            uint32_t length = mailbox->response.output_size;
+            if (mailbox->response.status != JPEG_RESPONSE_OK)
+                return 0;
+            if (command == JPEG_COMMAND_ENCODE) {
+                if (address < 0x40000000ULL || address >= 0x48000000ULL ||
+                    length == 0U || length > JPEG_CAPACITY ||
+                    (uint64_t)length > 0x48000000ULL - address)
+                    return 0;
+                Xil_DCacheInvalidateRange((UINTPTR)address, length);
+                jpeg_worker_barrier();
+                *out = (const unsigned char *)(UINTPTR)address;
+                *out_size = length;
+                *encode_time_us = mailbox->response.elapsed_us;
+            }
+            return 1;
+        }
+        XTime_GetTime(&now);
+    } while (now - started < (XTime)COUNTS_PER_SECOND * 3U);
+
+    if (command == JPEG_COMMAND_ENCODE)
+        worker_encode_timed_out = 1;
+    return 0;
+}
+
+size_t jpeg_snapshot_capture(const unsigned char **data)
+{
+    size_t jpeg_size;
+    XAxiVdma_Config *config = XAxiVdma_LookupConfig(XPAR_AXIVDMA_0_DEVICE_ID);
+    unsigned int store;
+    XTime capture_start, capture_end, invalidate_end, copy_end, encode_start, encode_end;
+
+    if (!config || VIDEO1_COLUMNS != 3840 || VIDEO1_ROWS != 2160) {
+        printf("JPEG requires the 4K platform.\r\n");
+        return 0;
+    }
+    UINTPTR base = config->BaseAddress;
+    if ((Xil_In32(base) & CIRCULAR_GENLOCK_CONTROL) != CIRCULAR_GENLOCK_CONTROL ||
+        (Xil_In32(base + S2MM_CONTROL) & CIRCULAR_GENLOCK_CONTROL) != CIRCULAR_GENLOCK_CONTROL) {
+        printf("JPEG requires both VDMA channels in circular internal Genlock.\r\n");
+        return 0;
+    }
+
+    if (JPEG_WORKER1_TEST && worker_encode_timed_out) {
+        printf("JPEG worker timed out: restart the application and worker.\r\n");
+        return 0;
+    }
+    if (JPEG_WORKER1_TEST &&
+        !worker_request(JPEG_COMMAND_PROBE, NULL, NULL, NULL, NULL)) {
+        printf("JPEG worker 1 did not respond to probe.\r\n");
+        return 0;
+    }
+
+    XTime_GetTime(&capture_start);
+    if (!copy_rotating_frame(base, &store, &capture_end, &invalidate_end))
+        return 0;
+    XTime_GetTime(&copy_end);
+    if (JPEG_WORKER1_TEST) {
+        unsigned long worker_encode_us = 0;
+        const unsigned char *worker_jpeg = NULL;
+        size_t worker_size = 0;
+        Xil_DCacheFlushRange((UINTPTR)pixels, VIDEO1_MAX_FRAME);
+        jpeg_worker_barrier();
+        if (!worker_request(JPEG_COMMAND_ENCODE, pixels, &worker_jpeg,
+                            &worker_size, &worker_encode_us)) {
+            printf("JPEG worker 1 encode failed or timed out.\r\n");
+            return 0;
+        }
+        printf("JPEG worker 1: %lu bytes, VDMA capture %lu us, "
+               "cache invalidate %lu us, RGB copy %lu us, encode %lu us\r\n",
+               (unsigned long)worker_size,
+               elapsed_us(capture_start, capture_end),
+               elapsed_us(capture_end, invalidate_end),
+               elapsed_us(invalidate_end, copy_end), worker_encode_us);
+        printf("JPEG rotating capture: store=%u\r\n", store);
+        *data = worker_jpeg;
+        return worker_size;
+    }
+    XTime_GetTime(&encode_start);
+#if KV260_JPEG_MODE == 2
+    XTime stb_start = encode_start, stb_end;
+    size_t stb_size = encode_stb();
+    XTime_GetTime(&stb_end);
+#endif
+#if KV260_JPEG_MODE == 0
+    jpeg_size = encode_stb();
+#else
+    XTime_GetTime(&encode_start);
+    jpeg_size = encode_turbo();
+#endif
+    XTime_GetTime(&encode_end);
+    if (jpeg_size == 0) {
+        printf("JPEG encoding failed or exceeded the output buffer.\r\n");
+        return 0;
+    }
+#if KV260_JPEG_MODE == 2
+    printf("JPEG same-frame comparison: STB %lu bytes / %lu us, "
+           "turbo %lu bytes / %lu us\r\n",
+           (unsigned long)stb_size, elapsed_us(stb_start, stb_end),
+           (unsigned long)jpeg_size, elapsed_us(encode_start, encode_end));
+#endif
+    printf("JPEG 3840x2160: %lu bytes, VDMA capture %lu us, cache invalidate %lu us, "
+           "RGB copy %lu us, encode %lu us\r\n",
+           (unsigned long)jpeg_size,
+           elapsed_us(capture_start, capture_end),
+           elapsed_us(capture_end, invalidate_end),
+           elapsed_us(invalidate_end, copy_end),
+           elapsed_us(encode_start, encode_end));
+    printf("JPEG rotating capture: store=%u\r\n", store);
+    *data = jpeg;
+    return jpeg_size;
+}

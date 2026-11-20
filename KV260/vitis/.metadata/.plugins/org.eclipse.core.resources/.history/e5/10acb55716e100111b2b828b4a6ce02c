@@ -1,0 +1,123 @@
+{
+    u32 park = Xil_In32(base + PARK_PTR);
+    unsigned int original = (park >> 8) & 31U;
+    unsigned int video_read = park & 31U;
+    unsigned int spare;
+    u32 status;
+
+    /* This firmware parks both VDMA channels. Don't borrow the DP graphics
+     * buffer (store 1), or the active video read/write stores. */
+    if ((Xil_In32(base + S2MM_CONTROL) & 3U) != 1U ||
+        (Xil_In32(base) & 3U) != 1U ||
+        original >= DISPLAY_NUM_FRAMES || WRITE_STORE(park) != original)
+        return 0;
+    for (spare = 0; spare < DISPLAY_NUM_FRAMES; ++spare)
+        if (spare != original && spare != video_read && spare != 1)
+            break;
+    if (spare == DISPLAY_NUM_FRAMES)
+        return 0;
+
+    /* Clear only documented W1C frame/error bits to observe this capture. */
+    Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ | S2MM_CLEARABLE_ERRORS);
+    Xil_DCacheFlushRange((UINTPTR)pFrames[spare], VIDEO1_MAX_FRAME);
+    print_csi_status("before capture");
+    park_write(base, spare);
+    int switched = wait_register(base + PARK_PTR, 31U << 24, spare << 24);
+    int completed = 0;
+    unsigned int clean = 0;
+    unsigned int attempts = 0;
+    if (switched) {
+        /* Discard the transition interval. Require two fresh, clean
+         * frame events so at least one full interval is in the spare store. */
+        Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ);
+        if (wait_register(base + S2MM_STATUS, S2MM_FRAME_IRQ, S2MM_FRAME_IRQ)) {
+            for (attempts = 0; attempts < 6 && clean < 2; ++attempts) {
+                Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ | S2MM_CLEARABLE_ERRORS);
+                if (!wait_register(base + S2MM_STATUS, S2MM_FRAME_IRQ, S2MM_FRAME_IRQ))
+                    break;
+                if (Xil_In32(base + S2MM_STATUS) & S2MM_ERROR_BITS)
+                    clean = 0;
+                else
+                    ++clean;
+            }
+        }
+        completed = clean == 2;
+    }
+    /* A latched error can freeze WrFrmStore. Preserve the capture status,
+     * but clear W1C errors before waiting for the original park reference. */
+    status = Xil_In32(base + S2MM_STATUS);
+    park_write(base, original);
+    Xil_Out32(base + S2MM_STATUS, status & S2MM_CLEARABLE_ERRORS);
+    int restored = wait_register(base + PARK_PTR, 31U << 24, original << 24);
+    u32 restore_status = Xil_In32(base + S2MM_STATUS);
+    if (!restored && (restore_status & S2MM_CLEARABLE_ERRORS)) {
+        Xil_Out32(base + S2MM_STATUS, restore_status & S2MM_CLEARABLE_ERRORS);
+        restored = wait_register(base + PARK_PTR, 31U << 24, original << 24);
+        restore_status = Xil_In32(base + S2MM_STATUS);
+    }
+
+    if (!completed || !restored || ((status | restore_status) & S2MM_ERROR_BITS)) {
+        printf("JPEG VDMA: switched=%d complete=%d restored=%d capture=%08lX restore=%08lX PARK=%08lX clean=%u attempts=%u\r\n",
+               switched, completed, restored, (unsigned long)status,
+               (unsigned long)restore_status, (unsigned long)Xil_In32(base + PARK_PTR), clean, attempts);
+        printf("JPEG VDMA S2MM: HSIZE=%lu bytes VSIZE=%lu lines STRIDE=%lu bytes\r\n",
+               (unsigned long)(Xil_In32(base + S2MM_HSIZE) & 0xFFFFU),
+               (unsigned long)(Xil_In32(base + S2MM_VSIZE) & 0x1FFFU),
+               (unsigned long)(Xil_In32(base + S2MM_STRIDE) & 0xFFFFU));
+        if ((status | restore_status) & S2MM_EOL_EARLY)
+            printf("VDMA saw TLAST before the programmed line width.\r\n");
+        print_csi_status("after capture failure");
+        return 0;
+    }
+    *store = spare;
+    return 1;
+}
+
+size_t jpeg_snapshot_capture(const unsigned char **data)
+{
+    struct jpeg_output out = {0, 0};
+    XAxiVdma_Config *config = XAxiVdma_LookupConfig(XPAR_AXIVDMA_0_DEVICE_ID);
+    unsigned int store;
+    XTime capture_start, capture_end, invalidate_end, encode_start, encode_end;
+
+    XTime_GetTime(&capture_start);
+
+    if (VIDEO1_COLUMNS != 3840 || VIDEO1_ROWS != 2160 ||
+        !config || !snapshot_store(config->BaseAddress, &store)) {
+        printf("JPEG requires the working 4K parked VDMA configuration.\r\n");
+        return 0;
+    }
+    XTime_GetTime(&capture_end);
+    Xil_DCacheInvalidateRange((UINTPTR)pFrames[store], VIDEO1_MAX_FRAME);
+    XTime_GetTime(&invalidate_end);
+    const unsigned char *frame = (const unsigned char *)pFrames[store];
+    for (unsigned int y = 0; y < VIDEO1_ROWS; ++y) {
+        unsigned int source_y = JPEG_FLIP_VERTICAL ? VIDEO1_ROWS - 1U - y : y;
+        const unsigned char *source = frame + source_y * VIDEO1_STRIDE;
+        unsigned char *destination = pixels + y * VIDEO1_STRIDE;
+        for (unsigned int x = 0; x < VIDEO1_COLUMNS; ++x) {
+            destination[0] = source[JPEG_RED_BYTE];
+            destination[1] = source[JPEG_GREEN_BYTE];
+            destination[2] = source[JPEG_BLUE_BYTE];
+            source += 3;
+            destination += 3;
+        }
+    }
+
+    XTime_GetTime(&encode_start);
+    if (!stbi_write_jpg_to_func(collect_jpeg, &out, VIDEO1_COLUMNS, VIDEO1_ROWS,
+                               3, pixels, JPEG_QUALITY) || out.overflow) {
+        printf("JPEG encoding failed or exceeded the output buffer.\r\n");
+        return 0;
+    }
+    XTime_GetTime(&encode_end);
+    printf("JPEG 3840x2160: %lu bytes, VDMA capture %lu us, cache invalidate %lu us, "
+           "RGB copy %lu us, encode %lu us\r\n",
+           (unsigned long)out.size,
+           (unsigned long)((capture_end - capture_start) * 1000000ULL / COUNTS_PER_SECOND),
+           (unsigned long)((invalidate_end - capture_end) * 1000000ULL / COUNTS_PER_SECOND),
+           (unsigned long)((encode_start - invalidate_end) * 1000000ULL / COUNTS_PER_SECOND),
+           (unsigned long)((encode_end - encode_start) * 1000000ULL / COUNTS_PER_SECOND));
+    *data = jpeg;
+    return out.size;
+}

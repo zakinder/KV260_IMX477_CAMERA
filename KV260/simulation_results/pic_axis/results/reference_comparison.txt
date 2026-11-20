@@ -1,0 +1,10 @@
+Comparison at the 1280 x 720 PIC2 raster. Source and RTL RGB images reduced using Lanczos.
+Y' = 0.299 R' + 0.587 G' + 0.114 B' on 8-bit gamma-encoded channels.
+Mean absolute luma difference (0 to 255), measured on this one image pair:
+IMX477 PIC1 vs PIC2: 50.054
+VHDL output vs PIC2: 4.664
+This measures brightness agreement; it does not measure hue, local texture or artistic quality.
+The two input files have the same field of view. No crop or registration was applied.
+Input JPEG SHA-256: bcb80f70eef9a9c1b69184e34be8253ef2d954edf220c6bfd1c8825cb3b724aa
+VHDL output BMP SHA-256: ada77167094507eed7124d96117a93bd60f9f6189df8136bfa2b58f478443f8e
+PNG decoded RGB bytes equal VHDL BMP RGB bytes: PASS

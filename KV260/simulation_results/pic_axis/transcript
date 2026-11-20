@@ -1,0 +1,60 @@
+# do sim/run_questa.do
+# R:/pic2_axis/build/questa
+# QuestaSim-64 vmap 2024.1 Lib Mapping Utility 2024.02 Feb  1 2024
+# vmap work R:/pic2_axis/build/questa 
+# Modifying modelsim.ini
+# filee115a70
+# rtl/pic2_types.vhd rtl/axis_window5.vhd rtl/axis_surface_pass.vhd rtl/axis_tone_contour.vhd rtl/axis_contour_finish.vhd rtl/pic2_filter_axis.vhd rtl/surface_contour_select.vhd tb/jpeg_reader_pkg.vhd tb/bmp_writer_pkg.vhd tb/tb_pic2.vhd
+# QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
+# Start time: 10:22:40 on Nov 20,2026
+# vcom -2008 -work work rtl/pic2_types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package pic2_types
+# -- Compiling package body pic2_types
+# -- Loading package pic2_types
+# End time: 10:22:40 on Nov 20,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
+# Start time: 10:22:40 on Nov 20,2026
+# vcom -2008 -work work rtl/axis_window5.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package pic2_types
+# -- Compiling entity axis_window5
+# -- Compiling architecture rtl of axis_window5
+# End time: 10:22:40 on Nov 20,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2024.1 Compiler 2024.02 Feb  1 2024
+# Start time: 10:22:40 on Nov 20,2026
+# vcom -2008 -work work rtl/axis_surface_pass.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity axis_surface_pass
+# -- Compiling architecture rtl of axis_surface_pass
+# -- Loading package pic2_types
+# -- Loading entity axis_window5
+# ** Error: rtl/axis_surface_pass.vhd(200): (vcom-1484) Unknown formal identifier "aclk".
+# ** Error: rtl/axis_surface_pass.vhd(201): (vcom-1484) Unknown formal identifier "aresetn".
+# ** Error: rtl/axis_surface_pass.vhd(204): (vcom-1484) Unknown formal identifier "s_axis_tdata".
+# ** Error: rtl/axis_surface_pass.vhd(205): (vcom-1484) Unknown formal identifier "s_axis_tvalid".
+# ** Error: rtl/axis_surface_pass.vhd(206): (vcom-1484) Unknown formal identifier "s_axis_tready".
+# ** Error: rtl/axis_surface_pass.vhd(207): (vcom-1484) Unknown formal identifier "s_axis_tuser".
+# ** Error: rtl/axis_surface_pass.vhd(208): (vcom-1484) Unknown formal identifier "s_axis_tlast".
+# ** Error: rtl/axis_surface_pass.vhd(209): (vcom-1484) Unknown formal identifier "m_window_data".
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "clk" has OPEN or no actual associated with it.
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "rst_n" has OPEN or no actual associated with it.
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "s_valid" has OPEN or no actual associated with it.
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "s_pixel" has OPEN or no actual associated with it.
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "s_sof" has OPEN or no actual associated with it.
+# ** Error: rtl/axis_surface_pass.vhd(214): (vcom-1035) Formal port "s_eol" has OPEN or no actual associated with it.
+# ** Note: rtl/axis_surface_pass.vhd(339): VHDL Compiler exiting
+# End time: 10:22:40 on Nov 20,2026, Elapsed time: 0:00:00
+# Errors: 14, Warnings: 0
+# ** Error: C:/questasim64_2024.1/win64/vcom failed.
+# Executing ONERROR command at macro ./sim/run_questa.do line 20

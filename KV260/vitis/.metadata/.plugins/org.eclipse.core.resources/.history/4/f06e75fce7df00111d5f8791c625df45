@@ -1,0 +1,331 @@
+#include <stdio.h>
+#include "xparameters.h"
+#include "netif/xadapter.h"
+#include "lwip/udp.h"
+#include "../PLATFORM/platform.h"
+#include "../PLATFORM/platform_config.h"
+#include "xil_printf.h"
+#include "lwipopts.h"
+#include "sleep.h"
+#include "../config.h"
+#include "lwip/priv/tcp_priv.h"
+#include "lwip/init.h"
+#include "lwip/inet.h"
+#include "xil_cache.h"
+#include "lwip/dhcp.h"
+#include "../SDCARD/bmp.h"
+#include "string.h"
+#include "../VDMA/vdma.h"
+#include "../MENU/menu_calls.h"
+#include "../SENSORS_CONFIG/init_camera.h"
+#define UDP_BUFF_SIZE 1400
+/* Pace raw BMP packets to give the receiver time to drain its UDP queue. */
+#define DEFAULT_BMP_PACKET_DELAY_US 60
+u8 bmpbufs[VIDEO2_MAX_FRAME] __attribute__ ((aligned(256)));
+extern u32 *pFrames1[NUM_FRAMES];
+#define DEFAULT_IP_ADDRESS	"192.168.0.10"
+#define DEFAULT_IP_MASK		"255.255.255.0"
+#define DEFAULT_GW_ADDRESS	"192.168.0.1"
+void platform_enable_interrupts(void);
+int WriteOneFrameEnd[2]={-1,-1};
+static struct udp_pcb *udp8080_pcb = NULL;
+ip_addr_t target_addr;
+unsigned char ip_export[4];
+unsigned char mac_export[6];
+int start_udp(unsigned int port);
+int tx_bmp(const char *bmp, int bmp_length, int sn);
+void lwip_init();
+extern volatile int dhcp_timoutcntr;
+err_t dhcp_start(struct netif *netif);
+static struct netif server_netif;
+struct netif *netif;
+int stream_it;
+int delay;
+void print_ip(char *msg, ip_addr_t *ip)
+{
+	print(msg);
+	xil_printf("%d.%d.%d.%d\n\r", ip4_addr1(ip), ip4_addr2(ip),ip4_addr3(ip), ip4_addr4(ip));
+}
+void print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
+{
+	print_ip("Board IP: ", ip);
+	print_ip("Netmask : ", mask);
+	print_ip("Gateway : ", gw);
+}
+static void assign_default_ip(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
+{
+	int err;
+	xil_printf("Configuring default IP %s \r\n", DEFAULT_IP_ADDRESS);
+	err = inet_aton(DEFAULT_IP_ADDRESS, ip);
+	if (!err)
+		xil_printf("Invalid default IP address: %d\r\n", err);
+	err = inet_aton(DEFAULT_IP_MASK, mask);
+	if (!err)
+		xil_printf("Invalid default IP MASK: %d\r\n", err);
+	err = inet_aton(DEFAULT_GW_ADDRESS, gw);
+	if (!err)
+		xil_printf("Invalid default gateway address: %d\r\n", err);
+}
+/* VFP o1video packs {G, B, R}; VDMA stores R, B, G at ascending
+ * byte addresses. BMP requires B, G, R at ascending addresses. */
+static void copy_bmp_pixels(u8 *bmp, const u8 *capture, int bytes)
+{
+    for (int i = 0; i < bytes; i += 3) {
+        bmp[i] = capture[i + 1];
+        bmp[i + 1] = capture[i + 2];
+        bmp[i + 2] = capture[i];
+    }
+}
+
+static void bmp_write_le32(char field[4], u32 value)
+{
+    for (unsigned int byte = 0; byte < 4; ++byte)
+        field[byte] = (char)((value >> (8 * byte)) & 0xffU);
+}
+
+static void stream_bmp_frame(const char *pixels, int pixel_bytes,
+                             const BmpMode *template, unsigned int packet_delay)
+{
+    BmpMode header = *template;
+
+    bmp_write_le32(header.bm_len, sizeof(header) + pixel_bytes);
+    bmp_write_le32(header.bm_bytes, pixel_bytes);
+    if (tx_bmp((const char *)&header, sizeof(header), 0) != 0)
+        return;
+
+    for (int offset = 0; offset < pixel_bytes; offset += UDP_BUFF_SIZE) {
+        int chunk_bytes = pixel_bytes - offset;
+
+        if (chunk_bytes > UDP_BUFF_SIZE)
+            chunk_bytes = UDP_BUFF_SIZE;
+        if (tx_bmp(pixels + offset, chunk_bytes, offset / UDP_BUFF_SIZE + 1) != 0)
+            return;
+        usleep(packet_delay);
+    }
+}
+
+int lwip_loop()
+{
+
+	stream_it = 1;
+	delay     = DEFAULT_BMP_PACKET_DELAY_US;
+	WriteOneFrameEnd[0] = -1;
+	struct netif *netif;
+	ip_addr_t ipaddr, netmask, gw;
+	unsigned char mac_ethernet_address[] = {0x00,0x0a,0x35,0x00,0x01,0x02};
+	netif = &server_netif;
+	init_platform();
+	ipaddr.addr  = 0;
+	gw.addr      = 0;
+	netmask.addr = 0;
+	//xil_printf("\r\n\r\n");
+	lwip_init();
+	if (!xemac_add(netif, NULL, NULL, NULL, mac_ethernet_address,PLATFORM_EMAC_BASEADDR)) {
+		xil_printf("Error adding N/W interface\r\n");
+		return -1;
+	}
+	netif_set_default(netif);
+	platform_enable_interrupts();
+	netif_set_up(netif);
+	dhcp_start(netif);
+	dhcp_timoutcntr = 24;
+	while(((netif->ip_addr.addr) == 0) && (dhcp_timoutcntr > 0))
+		xemacif_input(netif);
+        if (dhcp_timoutcntr <= 0) {
+            if ((netif->ip_addr.addr) == 0) {
+                //xil_printf("DHCP Timeout\r\n");
+                //xil_printf("Configuring default IP of 192.168.1.10\r\n");
+                IP4_ADDR(&(netif->ip_addr),  192, 168,   0, 10);
+                IP4_ADDR(&(netif->netmask),  255, 255, 255,  0);
+                IP4_ADDR(&(netif->gw),       192, 168,   0,  1);
+            }
+        }
+	ipaddr.addr  = netif->ip_addr.addr;
+	gw.addr      = netif->gw.addr;
+	netmask.addr = netif->netmask.addr;
+	print_ip_settings(&ipaddr, &netmask, &gw);
+	memcpy(ip_export,&ipaddr, 4);
+	memcpy(mac_export,&mac_ethernet_address, 6);
+	start_udp(8080);
+	while (1) {
+		xemacif_input(netif);
+        if (WriteOneFrameEnd[0] >= 0) {
+#if P540 == 1
+            copy_bmp_pixels(bmpbufs, (const u8 *)pFrames1[0], VIDEO2_MAX_FRAME / 2);
+            stream_bmp_frame((const char *)bmpbufs, VIDEO2_MAX_FRAME / 2,
+                             &BMODE_1920x540, 40);
+#else
+            copy_bmp_pixels(bmpbufs, (const u8 *)pFrames1[0], VIDEO2_MAX_FRAME);
+            stream_bmp_frame((const char *)bmpbufs, VIDEO2_MAX_FRAME,
+                             &BMODE_1920x1080, delay);
+#endif
+        }
+		WriteOneFrameEnd[0] = stream_it;
+	}
+	cleanup_platform();
+	return 0;
+}
+int tx_bmp(const char *bmp, int bmp_length, int sn)
+{
+    struct pbuf *packet = pbuf_alloc(PBUF_TRANSPORT, bmp_length, PBUF_RAM);
+    err_t status;
+
+    if (packet == NULL) {
+        xil_printf("BMP UDP allocation failed for packet %d\r\n", sn);
+        return ERR_MEM;
+    }
+
+    status = pbuf_take(packet, bmp, bmp_length);
+    if (status == ERR_OK)
+        status = udp_sendto(udp8080_pcb, packet, &target_addr, 8080);
+    pbuf_free(packet);
+    if (status != ERR_OK)
+        xil_printf("BMP UDP send failed for packet %d, error %d\r\n", sn, (int)status);
+
+    return status;
+}
+void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr_t *addr, u16_t port) {
+    u16 *pData;
+    int a0=0;
+    if(p_rx != NULL)
+    {
+    pData = (u16 *)p_rx->payload;
+    if(p_rx->len >= 1){
+    	stream_it = -1;
+    	WriteOneFrameEnd[0] = -1;
+    	a0 = (int)pData[0];
+//        if(a0==1){
+//        	delay = (int)pData[10];
+//            xil_printf("delay= %d\n\r",delay);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = -1;
+//        }else
+        	if(a0==2){
+            delay = (int)pData[10];
+            xil_printf("delay= %d\n\r",delay);
+        	per_write_reg(VFP_DARK_CCM_PRESET_SELECT,(int)pData[1]);
+        	per_write_reg(VFP_LIGHT_CCM_PRESET_SELECT,(int)pData[2]);
+        	per_write_reg(VFP_BALANCE_CCM_PRESET_SELECT,(int)pData[3]);
+        	per_write_reg(VFP_RGB_CHANNEL_SELECT,(int)pData[4]);
+        	per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,(int)pData[5]);
+        	per_write_reg(VFP_OUTPUT_CHANNEL_SELECT,(int)pData[6]);
+        	per_write_reg(VFP_SOBEL_CLUSTER_INPUT_SELECT,(int)pData[7]);
+        	per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD,(int)pData[8]);
+        	//per_write_reg(VFP_CENTROID_LUT_DATA,((0x0000ff& pData[9])<<16) | (VFP_CENTROID_LUT_DATA,((0x0000ff& pData[11])<<8))| ((0x0000ff& pData[12])));
+        	//per_read_rgb1_reg();
+        	//per_read_rgb2_reg();
+        	//per_write_reg(VFP_CENTROID_LUT_READ_INDEX,(int)pData[9]);
+            //xil_printf("VFP_DARK_CCM_PRESET_SELECT= %d VFP_LIGHT_CCM_PRESET_SELECT= %d VFP_BALANCE_CCM_PRESET_SELECT= %d VFP_RGB_CHANNEL_SELECT= %d VFP_CENTROID_LUT_WRITE_INDEX= %d VFP_OUTPUT_CHANNEL_SELECT= %d VFP_SOBEL_CLUSTER_INPUT_SELECT= %d\n\r",(int)pData[11],(int)pData[12],(int)pData[13],(int)pData[14],(int)pData[15],(int)pData[16],(int)pData[17]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 1;
+        }else if(a0==3){
+        	read_imx477_reg((int)pData[1]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 1;
+        }else if(a0==4){
+            xil_printf("IMX 477: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+        	write_imx477_reg((int)pData[19],(int)pData[20]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+        }else if(a0==5){
+        	per_write_reg(VFP_LIGHT_CCM_K1,(int)pData[1]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+//        }else if(a0==5){
+//        	read_imx682_reg((int)pData[18]);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = 0;
+//        }else if(a0==6){
+//            xil_printf("IMX 682: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+//            write_imx682_reg((int)pData[19],(int)pData[20]);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = 0;
+//        }else if(a0==7){
+//            xil_printf("IMX 219: Addr= %d Data= %d\n\r",(int)pData[19],(int)pData[20]);
+//            write_imx219_reg((int)pData[19],(int)pData[20]);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = 0;
+        }else if(a0==8){
+        	per_write_reg(VFP_CENTROID_LUT_SELECT,(int)pData[21]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+//        }else if(a0==9){
+//        	per_write_rdeg(VFP_FRAME_DIMENSIONS,(int)pData[21]);
+//        	WriteOneFrameEnd[0] = 1;
+//        	stream_it = 0;
+        }else if(a0==10){
+        	per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,(int)pData[1]);
+        	per_write_reg(VFP_CENTROID_LUT_DATA,((0x0000ff& pData[2])<<16) | (VFP_CENTROID_LUT_DATA,((0x0000ff& pData[3])<<8))| ((0x0000ff& pData[4])));
+        	//if(pData[1]<31){
+        	per_read_rgb_reg((int)pData[1]);
+        	//}
+//        	}else if(pData[1]>30 & pData[1]<61){
+//        	per_read_rgb2_reg();
+//        	}else if(pData[1]>60){
+//        	per_read_rgb3_reg();
+//        	}
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+        }else if(a0==11){
+            per_write_reg(VFP_DARK_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_DARK_CCM_K2,((int)pData[2])+1);
+            per_write_reg(VFP_DARK_CCM_K3,((int)pData[3])+1);
+            per_write_reg(VFP_DARK_CCM_K4,((int)pData[4])+1);
+            per_write_reg(VFP_DARK_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_DARK_CCM_K6,((int)pData[6])+1);
+            per_write_reg(VFP_DARK_CCM_K7,((int)pData[7])+1);
+            per_write_reg(VFP_DARK_CCM_K8,((int)pData[8])+1);
+            per_write_reg(VFP_DARK_CCM_K9,(int)pData[9]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 1;
+        }else if(a0==12){
+            per_write_reg(VFP_LIGHT_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_LIGHT_CCM_K2,((int)pData[2])+1);
+            per_write_reg(VFP_LIGHT_CCM_K3,((int)pData[3])+1);
+            per_write_reg(VFP_LIGHT_CCM_K4,((int)pData[4])+1);
+            per_write_reg(VFP_LIGHT_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_LIGHT_CCM_K6,((int)pData[6])+1);
+            per_write_reg(VFP_LIGHT_CCM_K7,((int)pData[7])+1);
+            per_write_reg(VFP_LIGHT_CCM_K8,((int)pData[8])+1);
+            per_write_reg(VFP_LIGHT_CCM_K9,(int)pData[9]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 1;
+        }else if(a0==13){
+            per_write_reg(VFP_BALANCE_CCM_K1,(int)pData[1]);
+            per_write_reg(VFP_BALANCE_CCM_K2,(~(int)pData[2])+1);
+            per_write_reg(VFP_BALANCE_CCM_K3,(~(int)pData[3])+1);
+            per_write_reg(VFP_BALANCE_CCM_K4,(~(int)pData[4])+1);
+            per_write_reg(VFP_BALANCE_CCM_K5,(int)pData[5]);
+            per_write_reg(VFP_BALANCE_CCM_K6,(~(int)pData[6])+1);
+            per_write_reg(VFP_BALANCE_CCM_K7,(~(int)pData[7])+1);
+            per_write_reg(VFP_BALANCE_CCM_K8,(~(int)pData[8])+1);
+            per_write_reg(VFP_BALANCE_CCM_K9,(int)pData[9]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 1;
+        }else if(a0==14){
+        	per_write_reg(VFP_FRAME_DIMENSIONS,(int)pData[21]);
+        	WriteOneFrameEnd[0] = 1;
+        	stream_it = 0;
+        }
+
+            memcpy(&target_addr, addr, sizeof(target_addr));
+    }
+    pbuf_free(p_rx);
+    }
+}
+int start_udp(unsigned int port) {
+	err_t err;
+	udp8080_pcb = udp_new();
+	if (!udp8080_pcb) {
+		xil_printf("Error creating PCB. Out of Memory\n\r");
+		return -1;
+	}
+	err = udp_bind(udp8080_pcb, IP_ADDR_ANY, port);
+	if (err != ERR_OK) {
+		xil_printf("Unable to bind to port %d: err = %d\n\r", port, err);
+		return -2;
+	}
+	udp_recv(udp8080_pcb, udp_recive, 0);
+	IP4_ADDR(&target_addr, 192,168,0,42);
+	return 0;
+}

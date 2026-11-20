@@ -92,7 +92,7 @@ set_property ip_output_repo r:/KV260/vivado/KV260.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet r:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0.xci
+read_ip -quiet R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/kv260_video_mipi_csi2_rx_subsyst_1_0.xci
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_0/bd_c4a8_r_sync_0_board.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_0/bd_c4a8_r_sync_0.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_0/bd_c4a8_r_sync_0_ooc.xdc]
@@ -102,10 +102,10 @@ set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_2/bd_c4a8_rx_0.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_2/bd_c4a8_rx_0_fixed_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_2/bd_c4a8_rx_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.xdc]
-set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_1/bd_c4a8_phy_0_hssio_rx_ooc.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/ip_0/bd_c4a8_phy_0_clock_module_rx_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/ip/ip_3/bd_c4a8_phy_0_ooc.xdc]

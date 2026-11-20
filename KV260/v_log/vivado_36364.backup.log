@@ -1,0 +1,578 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 20 08:39:17 2026
+# Process ID: 36364
+# Current directory: R:/KV260/v_log
+# Command line: vivado.exe -source ../scripts/script_main.tcl -mode batch -notrace -tclargs --run 1 --gui 0 --clean 2 --boardpart 1
+# Log file: R:/KV260/v_log/vivado.log
+# Journal file: R:/KV260/v_log\vivado.jou
+# Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
+#-----------------------------------------------------------
+source ../scripts/script_main.tcl -notrace
+-----------------------------------------------------------------------
+INFO:(TE) Load Settings Script finished
+INFO:(TE) Load environment script finished
+INFO:(TE) Load Vivado script finished
+INFO:(TE) Load Utilities script finished
+INFO:(TE) Load Vivado script finished
+INFO:(TE) Load Vivado script finished
+INFO:(TE) Load Designs script finished
+INFO:(TE) Load User Command scripts finished
+INFO:(TE) Load SDSoC script finished
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+INFO: [TE_INIT-3] Initial project names and paths:
+  TE::VPROJ_NAME:           KV260 
+  TE::VPROJ_PATH:           R:/KV260/vivado 
+  TE::VLABPROJ_PATH:        R:/KV260/vivado_lab 
+  TE::BOARDDEF_PATH:        R:/KV260/board_files 
+  TE::FIRMWARE_PATH:        R:/KV260/firmware 
+  TE::IP_PATH:              R:/KV260/ip_lib 
+  TE::BD_PATH:              R:/KV260/block_design 
+  TE::XDC_PATH:             R:/KV260/constraints 
+  TE::HDL_PATH:             R:/KV260/hdl 
+  TE::SET_PATH:             R:/KV260/settings 
+  TE::PETALINUX_PATH:				R:/KV260/os/petalinux 
+  TE::WORKSPACE_HSI_PATH:   R:/KV260/workspace/hsi 
+  TE::WORKSPACE_SDK_PATH:   R:/KV260/workspace/sdk 
+  TE::LIB_PATH:             R:/KV260/sw_lib 
+  TE::SCRIPT_PATH:          R:/KV260/scripts 
+  TE::DOC_PATH:             R:/KV260/doc 
+  TE::PREBUILT_BI_PATH:     R:/KV260/prebuilt/boot_images 
+  TE::PREBUILT_HW_PATH:     R:/KV260/prebuilt/hardware 
+  TE::PREBUILT_SW_PATH:     R:/KV260/prebuilt/software 
+  TE::PREBUILT_OS_PATH:     R:/KV260/prebuilt/os 
+  TE::PREBUILT_EXPORT_PATH: R:/KV260/../export 
+  TE::LOG_PATH:             R:/KV260/v_log 
+  TE::BACKUP_PATH:          R:/KV260/backup 
+  TE::ZIP_PATH:             C:/Program Files/7-Zip/7z.exe 
+  TE::XRT_PATH:             R:/KV260/xrt 
+  TE::XRT_USED:             false 
+  TE::SDSOC_PATH:           R:/KV260/../SDSoC_PFM 
+  TE::ADD_SD_PATH:          R:/KV260/misc/sd 
+  TE::TMP_PATH:             R:/KV260/tmp 
+  TE::XILINXGIT_DEVICETREE: B:/xilinx_git/device-tree-xlnx 
+  TE::XILINXGIT_UBOOT:       
+  TE::XILINXGIT_LINUX:       
+  ------
+-----------------------------------------------------------------------
+INFO:(TE) Parameter Index: 0
+INFO:(TE) Parameter Option: --run
+INFO:(TE) Parameter Option Value: 1
+INFO:(TE) Parameter Index: 2
+INFO:(TE) Parameter Option: --gui
+INFO:(TE) Parameter Option Value: 0
+INFO:(TE) Parameter Index: 4
+INFO:(TE) Parameter Option: --clean
+INFO:(TE) Parameter Option Value: 2
+INFO:(TE) Parameter Index: 6
+INFO:(TE) Parameter Option: --boardpart
+INFO:(TE) Parameter Option Value: 1
+-----------------------------------------------------------------------
+INFO: [TE_INIT-129] Run TE::INIT::run_project 1 1 0 2
+INFO: [TE_INIT-0] Script Info:
+  Xilinx Directory:                           C:/Xilinx
+  Vivado Version:                             Vivado v2022.1 (64-bit)
+  TE Script Version:                          2020.2.9
+  Board Part (Definition Files) CSV Version:  1.4
+  Software IP CSV Version:                    2.4
+  Board Design Modify CSV Version:            1.1
+  ZIP ignore CSV Version:                     1.0
+  ---
+  Start project with:                         CREATE_PROJECT_BM
+  ------
+INFO: [TE_INIT-1] Script Environment:
+  TIMEOUT Setting:        	120 
+  RUNNING_JOBS Setting:    	16 
+  Vivado Setting:       		1 
+  LabTools Setting:     		0 
+  VITIS Setting:        		1 
+  SDSOC Setting(obsolete):	0 
+  ------
+INFO: [TE_INIT-3] Initial project names and paths:
+  TE::VPROJ_NAME:           KV260 
+  TE::VPROJ_PATH:           R:/KV260/vivado 
+  TE::VLABPROJ_PATH:        R:/KV260/vivado_lab 
+  TE::BOARDDEF_PATH:        R:/KV260/board_files 
+  TE::FIRMWARE_PATH:        R:/KV260/firmware 
+  TE::IP_PATH:              R:/KV260/ip_lib 
+  TE::BD_PATH:              R:/KV260/block_design 
+  TE::XDC_PATH:             R:/KV260/constraints 
+  TE::HDL_PATH:             R:/KV260/hdl 
+  TE::SET_PATH:             R:/KV260/settings 
+  TE::PETALINUX_PATH:				R:/KV260/os/petalinux 
+  TE::WORKSPACE_HSI_PATH:   R:/KV260/workspace/hsi 
+  TE::WORKSPACE_SDK_PATH:   R:/KV260/workspace/sdk 
+  TE::LIB_PATH:             R:/KV260/sw_lib 
+  TE::SCRIPT_PATH:          R:/KV260/scripts 
+  TE::DOC_PATH:             R:/KV260/doc 
+  TE::PREBUILT_BI_PATH:     R:/KV260/prebuilt/boot_images 
+  TE::PREBUILT_HW_PATH:     R:/KV260/prebuilt/hardware 
+  TE::PREBUILT_SW_PATH:     R:/KV260/prebuilt/software 
+  TE::PREBUILT_OS_PATH:     R:/KV260/prebuilt/os 
+  TE::PREBUILT_EXPORT_PATH: R:/KV260/../export 
+  TE::LOG_PATH:             R:/KV260/v_log 
+  TE::BACKUP_PATH:          R:/KV260/backup 
+  TE::ZIP_PATH:             C:/Program Files/7-Zip/7z.exe 
+  TE::XRT_PATH:             R:/KV260/xrt 
+  TE::XRT_USED:             false 
+  TE::SDSOC_PATH:           R:/KV260/../SDSoC_PFM 
+  TE::ADD_SD_PATH:          R:/KV260/misc/sd 
+  TE::TMP_PATH:             R:/KV260/tmp 
+  TE::XILINXGIT_DEVICETREE: B:/xilinx_git/device-tree-xlnx 
+  TE::XILINXGIT_UBOOT:       
+  TE::XILINXGIT_LINUX:       
+  ------
+INFO: [TE_INIT-16] Read board part definition list (File R:/KV260/board_files/board_files.csv).
+INFO: [TE_INIT-21] No software apps_list used.
+INFO: [TE_INIT-24] No Zip ignore list used.
+Found ID: 1
+Board part csv name check:  1 is unique on position 0.
+INFO: [TE_INIT-4] Board Part definition:
+  TE::ID:             1 
+  TE::PRODID:         KriaKV260 
+  TE::PARTNAME:       xck26-sfvc784-2LV-c 
+  TE::BOARDPART:      xilinx.com:kv260_som:part0:1.3 
+  TE::SHORTDIR:       kv260_som 
+  TE::ZYNQFLASHTYP:   qspi-x8-dual_parallel 
+  TE::FPGAFLASHTYP:   mt25qu512-qspi-x8-dual_parallel 
+  TE::PCB_REV:        REV01 
+  TE::DDR_SIZE:       2GB 
+  TE::FLASH_SIZE:     128MB 
+  TE::EMMC_SIZE:      NA 
+  TE::OTHERS:         NA 
+  TE::NOTES:          NA 
+  ------
+Generate new project (Path: R:/KV260/vivado).
+INFO: [TE_INIT-69] Set Board Definition path: R:/KV260/board_files
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1373.102 ; gain = 0.000
+INFO: [TE_INIT-70] Set IP path : R:/KV260/ip_lib
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
+WARNING: [Runs 36-551] Changing part from xcvc1502 to xck26 will replace the write_device_image step with write_bitstream and write_device_image step configuration will be lost
+Start import design
+INFO: [TE_UTIL-8] Following xdc files were found: 
+   R:/KV260/constraints/vivado_target.xdc 
+  ------
+Set processing order normal for R:/KV260/constraints/vivado_target.xdc
+Set use for synthesis and implementation for R:/KV260/constraints/vivado_target.xdc
+INFO: [TE_UTIL-2] Following block designs were found: 
+   R:/KV260/block_design/zusys_bd.tcl 
+  ------
+INFO: [TE_INIT-8] Found BD-Design:
+  TE::BD_TCLNAME:       zusys_bd 
+  TE::PR_TOPLEVELNAME: zusys_wrapper 
+  ------
+  TE::IS_ZUSYS:        true
+INFO: [TE_UTIL-2] Following block designs were found: 
+   R:/KV260/block_design/zusys_bd.tcl 
+  ------
+INFO: [BD::TCL 103-2003] Currently there is no design <kv260_video> in project, so creating one...
+Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd> 
+INFO: [BD::TCL 103-2004] Making design <kv260_video> as current_bd_design.
+INFO: [BD::TCL 103-2005] Currently the variable <design_name> is equal to "kv260_video".
+INFO: [BD::TCL 103-2011] Checking if the following IPs exist in the project's IP catalog:  
+xilinx.com:ip:ila:6.2 xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 xilinx.com:ip:v_demosaic:1.1 xilinx.com:user:vfp:2.0 xilinx.com:ip:axi_gpio:2.0 xilinx.com:ip:clk_wiz:6.0 xilinx.com:ip:proc_sys_reset:5.0 xilinx.com:ip:zynq_ultra_ps_e:3.4 xilinx.com:ip:v_axi4s_vid_out:4.0 xilinx.com:ip:v_tc:6.2 xilinx.com:ip:xlconstant:1.1 xilinx.com:ip:smartconnect:1.0 xilinx.com:ip:axi_vdma:6.3  .
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/RX_VIDEO/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+create_bd_cell: Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 1650.762 ; gain = 277.660
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+xit::create_sub_core: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2122.949 ; gain = 470.199
+create_bd_cell: Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2129.152 ; gain = 476.402
+WARNING: [BD 41-1306] The connection to interface pin </rx/dl0_rxskewcalhs> is being overridden by the user with net <phy_dl0_rxskewcalhs>. This pin will not be connected as a part of interface connection <rx_mipi_ppi_if>.
+WARNING: [BD 41-1306] The connection to interface pin </rx/dl1_rxskewcalhs> is being overridden by the user with net <phy_dl1_rxskewcalhs>. This pin will not be connected as a part of interface connection <rx_mipi_ppi_if>.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+create_bd_cell: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2161.898 ; gain = 12.848
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'CLKOUT2_REQUESTED_OUT_FREQ' from '100.000' to '300.000' has been ignored for IP 'PS_VIDEO/TO_PS/clk_wiz_0'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'MMCM_DIVCLK_DIVIDE' from '10' to '4' has been ignored for IP 'PS_VIDEO/TO_PS/clk_wiz_0'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'MMCM_CLKFBOUT_MULT_F' from '111.375' to '37.125' has been ignored for IP 'PS_VIDEO/TO_PS/clk_wiz_0'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'MMCM_CLKOUT0_DIVIDE_F' from '3.750' to '3.125' has been ignored for IP 'PS_VIDEO/TO_PS/clk_wiz_0'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'AUTO_PRIMITIVE' from 'MMCM' to 'PLL' has been ignored for IP 'PS_VIDEO/TO_PS/clk_wiz_0'
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/TO_PS/clk_wiz_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+create_bd_cell: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2416.582 ; gain = 167.090
+INFO: [PSU-1]  DP_AUDIO clock source: RPLL is also being used by other peripheral clocks. Their outputs may get impacted if any driver changes DP_AUDIO PLL source to support runtime audio change 
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_1: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+WARNING: [BD 41-1306] The connection to interface pin </PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0/vid_active_video> is being overridden by the user with net <v_axi4s_vid_out_0_vid_active_video>. This pin will not be connected as a part of interface connection <vid_io_out>.
+WARNING: [BD 41-1306] The connection to interface pin </PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0/vid_data> is being overridden by the user with net <v_axi4s_vid_out_0_vid_data>. This pin will not be connected as a part of interface connection <vid_io_out>.
+WARNING: [BD 41-1306] The connection to interface pin </PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0/vid_hsync> is being overridden by the user with net <v_axi4s_vid_out_0_vid_hsync>. This pin will not be connected as a part of interface connection <vid_io_out>.
+WARNING: [BD 41-1306] The connection to interface pin </PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0/vid_vsync> is being overridden by the user with net <v_axi4s_vid_out_0_vid_vsync>. This pin will not be connected as a part of interface connection <vid_io_out>.
+Slave segment '/PS_VIDEO/TO_PS/axi_gpio/S_AXI/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA004_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/V_DMA/axi_vdma_0/S_AXI_LITE/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA006_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/V_DMA/axi_vdma_1/S_AXI_LITE/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA007_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/TO_PS/clk_wiz_0/s_axi_lite/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA008_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/csirxss_s_axi/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA000_0000 [ 4K ]>.
+Slave segment '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/csirxss_s_axi/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA000_1000 [ 4K ]>.
+Slave segment '/PS_VIDEO/RX_VIDEO/v_demosaic_0/s_axi_CTRL/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA001_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/RX_VIDEO/v_demosaic_1/s_axi_CTRL/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA002_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/VIDEO_PIPELINE/v_tc_0/ctrl/Reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA005_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/RX_VIDEO/vfp_0/vfpconfig/vfpconfig_reg' is being assigned into address space '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/Data' at <0xA003_0000 [ 64K ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S' at <0x0000_0000 [ 2G ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S' at <0xC000_0000 [ 512M ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM' at <0x0000_0000 [ 2G ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM' at <0xC000_0000 [ 512M ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_LOW' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM' at <0x0000_0000 [ 2G ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_QSPI' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM' at <0xC000_0000 [ 512M ]>.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S' at <0x8_0000_0000 [ 4G ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM' at <0x8_0000_0000 [ 4G ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+WARNING: [BD 41-1627] Requested range of <32G> for slave segments </PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH> exceeds the range of the largest address space in assignment request </PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM>. Shrinking the initial requested range to <4G>
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM' at <0x8_0000_0000 [ 4G ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Slave segment '/PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM' is being assigned into address space '/PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM' at <0xFF00_0000 [ 16M ]>.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+WARNING: [BD 41-1629] Slave segment </PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM> is excluded from all addressing paths.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+INFO: [PSU-1]  DP_AUDIO clock source: RPLL is also being used by other peripheral clocks. Their outputs may get impacted if any driver changes DP_AUDIO PLL source to support runtime audio change 
+INFO: [xilinx.com:ip:smartconnect:1.0-1] kv260_video_axi_smc_0: SmartConnect kv260_video_axi_smc_0 is in High-performance Mode.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM1_FPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM1_FPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/S_AXI_HPC0_FPD(1) and /PS_VIDEO/V_DMA/axi_smc/M00_AXI(0)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/S_AXI_HPC0_FPD(1) and /PS_VIDEO/V_DMA/axi_smc/M00_AXI(0)
+validate_bd_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2530.129 ; gain = 89.961
+Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd> 
+Reading block design file <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd>...
+Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/RX_VIDEO/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_0
+Adding component instance block -- xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 - mipi_csi2_rx_subsyst_1
+Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_0
+Adding component instance block -- xilinx.com:ip:v_demosaic:1.1 - v_demosaic_1
+Adding component instance block -- xilinx.com:user:vfp:2.0 - vfp_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_0
+Adding component instance block -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_1
+Adding component instance block -- xilinx.com:ip:ila:6.2 - clk_wiz_ila
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/TO_PS/clk_wiz_ila: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps8_0_axi_periph
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_dwidth_converter:2.1 - auto_ds
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:axi_dwidth_converter:2.1 - auto_ds
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps8_0_249M
+Adding component instance block -- xilinx.com:ip:zynq_ultra_ps_e:3.4 - zynq_ultra_ps_e_0
+Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_0
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_0: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding component instance block -- xilinx.com:ip:ila:6.2 - ila_1
+INFO: [xilinx.com:ip:ila:6.2-6] /PS_VIDEO/VIDEO_PIPELINE/ila_1: Xilinx recommends using the System ILA IP in IP Integrator. The System ILA IP is functionally equivalent to an ILA and offers additional benefits in debugging interfaces both within IP Integrator and the Hardware Manager. Consult the Programming and Debug User Guide UG908 for further details.
+Adding component instance block -- xilinx.com:ip:v_axi4s_vid_out:4.0 - v_axi4s_vid_out_0
+Adding component instance block -- xilinx.com:ip:v_tc:6.2 - v_tc_0
+Adding component instance block -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0
+Adding component instance block -- xilinx.com:ip:smartconnect:1.0 - axi_smc
+Adding component instance block -- xilinx.com:ip:axi_vdma:6.3 - axi_vdma_0
+Adding component instance block -- xilinx.com:ip:axi_vdma:6.3 - axi_vdma_1
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Successfully read diagram <kv260_video> from block design file <R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd>
+WARNING: [BD 41-1629] Slave segment </PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM> is excluded from all addressing paths.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] kv260_video_axi_smc_0: SmartConnect kv260_video_axi_smc_0 is in High-performance Mode.
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_DDR_HIGH from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_MM2S.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_0/Data_S2MM.
+Excluding slave segment /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/SAXIGP0/HPC0_LPS_OCM from address space /PS_VIDEO/V_DMA/axi_vdma_1/Data_S2MM.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_1 clk_wiz propagate
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /PS_VIDEO/TO_PS/clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM1_FPD(16)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds/S_AXI(0) and /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/M_AXI_HPM1_FPD(16)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/S_AXI_HPC0_FPD(1) and /PS_VIDEO/V_DMA/axi_smc/M00_AXI(0)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /PS_VIDEO/TO_PS/zynq_ultra_ps_e_0/S_AXI_HPC0_FPD(1) and /PS_VIDEO/V_DMA/axi_smc/M00_AXI(0)
+validate_bd_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2545.488 ; gain = 12.340
+INFO: [BD 41-1662] The design 'kv260_video.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <R:\KV260\vivado\KV260.srcs\sources_1\bd\kv260_video\kv260_video.bd> 
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/PS_VIDEO/RX_VIDEO/v_demosaic_0/s_axis_video_TDEST'(1) to pin: '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/video_out_tdest'(10) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/PS_VIDEO/RX_VIDEO/v_demosaic_1/s_axis_video_TDEST'(1) to pin: '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/video_out_tdest'(10) - Only lower order bits will be connected.
+VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.vhd
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/PS_VIDEO/RX_VIDEO/v_demosaic_0/s_axis_video_TDEST'(1) to pin: '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0/video_out_tdest'(10) - Only lower order bits will be connected.
+WARNING: [BD 41-2384] Width mismatch when connecting pin: '/PS_VIDEO/RX_VIDEO/v_demosaic_1/s_axis_video_TDEST'(1) to pin: '/PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1/video_out_tdest'(10) - Only lower order bits will be connected.
+VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/sim/kv260_video.vhd
+VHDL Output written to : r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_0_0/kv260_video_ila_0_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/ila_0 .
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S00_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M00_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M01_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M02_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M03_AXIS'. A default connection has been created.
+Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_0_0/bd_0/hw_handoff/kv260_video_mipi_csi2_rx_subsyst_0_0.hwh
+Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_0_0/bd_0/synth/kv260_video_mipi_csi2_rx_subsyst_0_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_0 .
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S00_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M00_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M00_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M01_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M01_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M02_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M02_AXIS'. A default connection has been created.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TDATA_NUM_BYTES'. Logical port width '8' and physical port width '32' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TUSER_WIDTH'. Logical port width '96' and physical port width '384' do not match.
+WARNING: [IP_Flow 19-5378] Port width mismatch for bus parameter 'M03_AXIS.TDEST_WIDTH'. Logical port width '4' and physical port width '16' do not match.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M03_AXIS'. A default connection has been created.
+Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/hw_handoff/kv260_video_mipi_csi2_rx_subsyst_1_0.hwh
+Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_mipi_csi2_rx_subsyst_1_0/bd_0/synth/kv260_video_mipi_csi2_rx_subsyst_1_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/mipi_csi2_rx_subsyst_1 .
+WARNING: [IP_Flow 19-1971] File named "sim/kv260_video_v_demosaic_0_0.v" already exists in file group "xilinx_verilogsimulationwrapper", cannot add it again.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/v_demosaic_0 .
+WARNING: [IP_Flow 19-1971] File named "sim/kv260_video_v_demosaic_1_0.v" already exists in file group "xilinx_verilogsimulationwrapper", cannot add it again.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/v_demosaic_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/RX_VIDEO/vfp_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/axi_gpio .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/clk_wiz_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_clk_wiz_ila_0/kv260_video_clk_wiz_ila_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/clk_wiz_ila .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/rst_ps8_0_249M .
+INFO: [xilinx.com:ip:zynq_ultra_ps_e:3.4-0] kv260_video_zynq_ultra_ps_e_0_0: 
+Changes in your design (including the PCW configuration settings) are not automatically exported from Vivado to Xilinx's SDK, Petalinux or Yocto.
+This is by design to avoid disrupting existing embedded development efforts. To have any changes of your design taking effect in the embedded software flow please export your
+design by going through Vivado's main menu, click on File, then Export finally select Export Hardware, please ensure you click on the Include BitStream option.
+The auto-generated HDF file is all you need to import in Xilinx's SDK, Petalinux or Yocto for your changes to be reflected in the Embedded Software Flow.
+For more information, please consult PG201, section: Exporting PCW Settings to Embedded Software Flows
+INFO: [PSU-0] Address Range of DDR (0x7ff00000 to 0x7fffffff) is reserved by PMU for internal purpose.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM0_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_HPM1_FPD'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI_HPC0_FPD'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/zynq_ultra_ps_e_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_0_1/kv260_video_ila_0_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/VIDEO_PIPELINE/ila_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_1_0/kv260_video_ila_1_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/VIDEO_PIPELINE/ila_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/VIDEO_PIPELINE/v_axi4s_vid_out_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/VIDEO_PIPELINE/v_tc_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/VIDEO_PIPELINE/xlconstant_0 .
+Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/hw_handoff/kv260_video_axi_smc_0.hwh
+Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_smc_0/bd_0/synth/kv260_video_axi_smc_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/V_DMA/axi_smc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/V_DMA/axi_vdma_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_1_0/kv260_video_axi_vdma_1_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/V_DMA/axi_vdma_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_ds .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_0/kv260_video_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s00_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_1/kv260_video_auto_ds_1_ooc.xdc'
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'S_AXI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_ds .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_pc_1/kv260_video_auto_pc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block PS_VIDEO/TO_PS/ps8_0_axi_periph/s01_couplers/auto_pc .
+Exporting to file r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hw_handoff/kv260_video.hwh
+Generated Hardware Definition File r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/synth/kv260_video.hwdef
+generate_target: Time (s): cpu = 00:01:26 ; elapsed = 00:01:42 . Memory (MB): peak = 2679.562 ; gain = 134.074
+INFO: [TE_HW-34] Generate top level wrapper
+INFO: [Project 1-1716] Could not find the wrapper file R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd, checking in project .gen location instead.
+INFO: [Vivado 12-12390] Found file R:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/hdl/kv260_video_wrapper.vhd, adding it to Project
+INFO: [TE_INIT-139] Run project finished without Error. 
+  ------
+-----------------------------------------------------------------------
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 08:42:51 2026...

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="kv260_video_axi_vdma_0_0_synth_1" LaunchPart="xck26-sfvc784-2LV-c" LaunchTime="1794792390">
+<GenRun Id="kv260_video_axi_vdma_0_0_synth_1" LaunchPart="xck26-sfvc784-2LV-c" LaunchTime="1795184001">
   <File Type="PA-TCL" Name="kv260_video_axi_vdma_0_0.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="kv260_video_axi_vdma_0_0_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="kv260_video_axi_vdma_0_0_reports.tcl"/>
   <File Type="RDS-RDS" Name="kv260_video_axi_vdma_0_0.vds"/>
   <File Type="RDS-UTIL" Name="kv260_video_axi_vdma_0_0_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="kv260_video_axi_vdma_0_0_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="kv260_video_axi_vdma_0_0.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="kv260_video_axi_vdma_0_0_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="kv260_video_axi_vdma_0_0_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/kv260_video_axi_vdma_0_0">
     <File Path="$PSRCDIR/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0.xci">
       <FileInfo>
@@ -36,20 +39,14 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
     <Filter Type="Utils"/>
-    <File Path="$PSRCDIR/utils_1/imports/synth_1/kv260_video_wrapper.dcp">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedInSteps" Val="synth_1"/>
-        <Attr Name="AutoDcp" Val="1"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

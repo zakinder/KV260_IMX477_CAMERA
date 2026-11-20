@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="mipi" location="R:/KV260/vitis/mipi" platform="R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm" platformUID="xilinx:kv260_som::0.0(custom)" systemProject="mipi_system" sysConfig="kv260_video_wrapper" runtime="C/C++" cpu="standalone_domain" cpuInstance="psu_cortexa53_0" os="standalone" mssSignature="d8ab8a179e20cf49cec610b3649232a6">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.1621590922">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.317979109" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

@@ -854,7 +854,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6bdefc8f</spirit:value>
+            <spirit:value>cc8e8227</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -870,7 +870,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>aa7349d0</spirit:value>
+            <spirit:value>0d233778</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2492,8 +2492,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>V_demosaic</xilinx:displayName>
       <xilinx:definitionSource>HLS</xilinx:definitionSource>
-      <xilinx:coreRevision>2114873826</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-11-15T00:06:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2114881880</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2026-11-20T14:21:50Z</xilinx:coreCreationDateTime>
       <xilinx:sdxKernelAttributes>
         <xilinx:sdx_kernel>true</xilinx:sdx_kernel>
         <xilinx:sdx_kernel_type>hls</xilinx:sdx_kernel_type>
@@ -2503,7 +2503,7 @@
       <xilinx:xilinxVersion>2022.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="f4ab0c3c"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="5e8a29ea"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5d3b00d8"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b9642279"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="8354cd97"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="9f3463c0"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="44b28425"/>

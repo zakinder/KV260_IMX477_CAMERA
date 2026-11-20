@@ -1,7 +1,7 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-// Date        : Sun Nov 15 00:35:38 2026
+// Date        : Fri Nov 20 09:20:33 2026
 // Host        : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_ila_0_1/kv260_video_ila_0_1_stub.v

@@ -6487,11 +6487,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Nov 14 23:53:19 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 13:42:48 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bc2e8825</spirit:value>
+            <spirit:value>9:68721c52</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6505,11 +6505,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Nov 16 01:25:10 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 13:42:48 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bc2e8825</spirit:value>
+            <spirit:value>9:68721c52</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6525,11 +6525,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Nov 16 01:25:10 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 13:42:48 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bc2e8825</spirit:value>
+            <spirit:value>9:68721c52</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6568,11 +6568,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Nov 14 23:53:19 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 13:42:48 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b90a4b16</spirit:value>
+            <spirit:value>9:5c77d3f7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6588,11 +6588,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Nov 16 01:25:10 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 13:42:48 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b90a4b16</spirit:value>
+            <spirit:value>9:5c77d3f7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6606,11 +6606,11 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Nov 16 01:29:11 UTC 2026</spirit:value>
+            <spirit:value>Fri Nov 20 14:34:40 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:bc2e8825</spirit:value>
+            <spirit:value>9:68721c52</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -8763,7 +8763,7 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_MM2S_GENLOCK_MODE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MM2S_GENLOCK_MODE" spirit:minimum="0" spirit:maximum="3" spirit:rangeType="long">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_MM2S_GENLOCK_MODE" spirit:minimum="0" spirit:maximum="3" spirit:rangeType="long">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_MM2S_GENLOCK_NUM_MASTERS</spirit:name>
@@ -8819,7 +8819,7 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S2MM_GENLOCK_MODE</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S2MM_GENLOCK_MODE" spirit:minimum="0" spirit:maximum="3" spirit:rangeType="long">2</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S2MM_GENLOCK_MODE" spirit:minimum="0" spirit:maximum="3" spirit:rangeType="long">0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S2MM_GENLOCK_NUM_MASTERS</spirit:name>
@@ -9834,7 +9834,7 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
     <spirit:parameter>
       <spirit:name>c_mm2s_genlock_mode</spirit:name>
       <spirit:displayName>GenLock Mode</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.c_mm2s_genlock_mode" spirit:choiceRef="choice_pairs_40223f55" spirit:order="180" spirit:configGroups="0 NoDisplay">3</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.c_mm2s_genlock_mode" spirit:choiceRef="choice_pairs_40223f55" spirit:order="180" spirit:configGroups="0 NoDisplay">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -9858,7 +9858,7 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
     <spirit:parameter>
       <spirit:name>c_s2mm_genlock_mode</spirit:name>
       <spirit:displayName>GenLock Mode</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.c_s2mm_genlock_mode" spirit:choiceRef="choice_pairs_40223f55" spirit:order="280" spirit:configGroups="0 NoDisplay">2</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.c_s2mm_genlock_mode" spirit:choiceRef="choice_pairs_40223f55" spirit:order="280" spirit:configGroups="0 NoDisplay">0</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -9874,7 +9874,7 @@ Note: Frame Delay must be less than or equal to Frame Buffers or an undefined re
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.c_s2mm_genlock_num_masters">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PARAM_ENABLEMENT.c_s2mm_genlock_num_masters">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:parameterInfo>
       </spirit:vendorExtensions>

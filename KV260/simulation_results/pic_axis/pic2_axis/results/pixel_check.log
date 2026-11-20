@@ -1,0 +1,3 @@
+JPEG decoder vs Pillow/libjpeg: mean |channel error|=0.04207, max=3 / 255
+Independent raster model: 0 mismatched pixels / 2,359,296
+PASS: every RGB byte matched.

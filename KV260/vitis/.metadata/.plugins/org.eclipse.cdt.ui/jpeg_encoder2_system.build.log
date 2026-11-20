@@ -1,0 +1,10 @@
+15:15:45 **** Incremental Build of configuration Debug for project jpeg_encoder2_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 58473 R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm jpeg_worker2 R:/KV260/vitis/jpeg_encoder2_system/Debug/system.bif
+sdcard_gen --xpfm R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm --sys_config kv260_video_wrapper --bif R:/KV260/vitis/jpeg_encoder2_system/Debug/system.bif --bitstream R:/KV260/vitis/jpeg_encoder2/_ide/bitstream/kv260_video_wrapper.bit --elf R:/KV260/vitis/jpeg_encoder2/Debug/jpeg_encoder2.elf,psu_cortexa53_2
+creating BOOT.BIN using R:/KV260/vitis/jpeg_encoder2/_ide/bitstream/kv260_video_wrapper.bit
+Running C:/Xilinx/Vitis/2022.1/bin/bootgen -arch zynqmp -image R:/KV260/vitis/jpeg_encoder2_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+15:15:54 Build Finished (took 8s.867ms)
+

@@ -1,0 +1,10 @@
+#include <stdint.h>
+
+volatile uint32_t worker_heartbeat = 0;
+
+int main(void)
+{
+    while (1) {
+        worker_heartbeat++;
+    }
+}

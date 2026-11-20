@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Wed Nov 18 17:19:16 2026
-# Process ID: 8840
+# Start of session at: Fri Nov 20 09:06:39 2026
+# Process ID: 20228
 # Current directory: R:/KV260/v_log
 # Command line: vivado.exe -source ../scripts/script_main.tcl -mode batch -notrace -tclargs --gui 1
 # Log file: R:/KV260/v_log/vivado.log
@@ -12,3 +12,10 @@
 #-----------------------------------------------------------
 source ../scripts/script_main.tcl -notrace
 update_compile_order -fileset sources_1
+open_bd_design {R:/KV260/vivado/KV260.srcs/sources_1/bd/kv260_video/kv260_video.bd}
+validate_bd_design -force
+save_bd_design
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1

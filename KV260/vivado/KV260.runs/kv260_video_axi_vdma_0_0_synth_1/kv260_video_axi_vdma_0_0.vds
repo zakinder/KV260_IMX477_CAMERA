@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sun Nov 15 20:26:37 2026
-# Process ID: 68312
+# Start of session at: Fri Nov 20 09:27:15 2026
+# Process ID: 15764
 # Current directory: R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_0_0_synth_1
 # Command line: vivado.exe -log kv260_video_axi_vdma_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kv260_video_axi_vdma_0_0.tcl
 # Log file: R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_0_0_synth_1/kv260_video_axi_vdma_0_0.vds
@@ -11,7 +11,7 @@
 # Running On: LAPTOP-I3ECBFK4, OS: Windows, CPU Frequency: 2795 MHz, CPU Physical cores: 8, Host memory: 16363 MB
 #-----------------------------------------------------------
 source kv260_video_axi_vdma_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1369.949 ; gain = 0.000
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1386.805 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'r:/KV260/ip_lib'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
@@ -22,10 +22,10 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
 INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 66840
+INFO: [Synth 8-7075] Helper process launched with PID 16020
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1842.199 ; gain = 319.152
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:21 . Memory (MB): peak = 1841.008 ; gain = 316.660
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_0_0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/synth/kv260_video_axi_vdma_0_0.vhd:131]
 	Parameter C_S_AXI_LITE_ADDR_WIDTH bound to: 9 - type: integer 
@@ -44,7 +44,7 @@ INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_0_0' [r:/KV260/viv
 	Parameter C_M_AXI_SG_ADDR_WIDTH bound to: 32 - type: integer 
 	Parameter C_M_AXI_SG_DATA_WIDTH bound to: 32 - type: integer 
 	Parameter C_INCLUDE_MM2S bound to: 1 - type: integer 
-	Parameter C_MM2S_GENLOCK_MODE bound to: 3 - type: integer 
+	Parameter C_MM2S_GENLOCK_MODE bound to: 1 - type: integer 
 	Parameter C_MM2S_GENLOCK_NUM_MASTERS bound to: 1 - type: integer 
 	Parameter C_MM2S_GENLOCK_REPEAT_EN bound to: 0 - type: integer 
 	Parameter C_MM2S_SOF_ENABLE bound to: 1 - type: integer 
@@ -58,7 +58,7 @@ INFO: [Synth 8-638] synthesizing module 'kv260_video_axi_vdma_0_0' [r:/KV260/viv
 	Parameter C_M_AXIS_MM2S_TDATA_WIDTH bound to: 24 - type: integer 
 	Parameter C_M_AXIS_MM2S_TUSER_BITS bound to: 1 - type: integer 
 	Parameter C_INCLUDE_S2MM bound to: 1 - type: integer 
-	Parameter C_S2MM_GENLOCK_MODE bound to: 2 - type: integer 
+	Parameter C_S2MM_GENLOCK_MODE bound to: 0 - type: integer 
 	Parameter C_S2MM_GENLOCK_NUM_MASTERS bound to: 1 - type: integer 
 	Parameter C_S2MM_GENLOCK_REPEAT_EN bound to: 1 - type: integer 
 	Parameter C_S2MM_SOF_ENABLE bound to: 1 - type: integer 
@@ -258,10 +258,10 @@ INFO: [Synth 8-638] synthesizing module 'axi_vdma_vaddrreg_mux' [r:/KV260/vivado
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vaddrreg_mux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:55564]
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma_vidreg_module' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:56087]
 INFO: [Synth 8-638] synthesizing module 'axi_vdma_genlock_mngr' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58630]
-INFO: [Synth 8-638] synthesizing module 'axi_vdma_genlock_mux' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:57368]
-INFO: [Synth 8-256] done synthesizing module 'axi_vdma_genlock_mux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:57368]
 INFO: [Synth 8-638] synthesizing module 'axi_vdma_greycoder' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58343]
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma_greycoder' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58343]
+INFO: [Synth 8-638] synthesizing module 'axi_vdma_genlock_mux' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:57368]
+INFO: [Synth 8-256] done synthesizing module 'axi_vdma_genlock_mux' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:57368]
 INFO: [Synth 8-638] synthesizing module 'axi_vdma_greycoder__parameterized0' [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58343]
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma_greycoder__parameterized0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58343]
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma_genlock_mngr' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:58630]
@@ -667,16 +667,14 @@ INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_full_wrap' (0#1
 INFO: [Synth 8-256] done synthesizing module 'axi_datamover' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/1bb8/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
 INFO: [Synth 8-256] done synthesizing module 'axi_vdma' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:69927]
 INFO: [Synth 8-256] done synthesizing module 'kv260_video_axi_vdma_0_0' (0#1) [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/synth/kv260_video_axi_vdma_0_0.vhd:131]
-INFO: [Synth 8-3936] Found unconnected internal register 'DYNAMIC_GENLOCK_FOR_SLAVE.grey_frmstr_adjusted_reg' and it is trimmed from '6' to '2' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:60583]
-WARNING: [Synth 8-6014] Unused sequential element DYNAMIC_SLAVE_MODE_FRAME_CNT.frame_sync_d1_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64697]
-WARNING: [Synth 8-6014] Unused sequential element DYNAMIC_SLAVE_MODE_FRAME_CNT.frame_sync_d2_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64698]
-WARNING: [Synth 8-6014] Unused sequential element DYNAMIC_SLAVE_MODE_FRAME_CNT.genlock_pair_frame_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64778]
+INFO: [Synth 8-3936] Found unconnected internal register 'GENLOCK_FOR_SLAVE.grey_frmstr_adjusted_reg' and it is trimmed from '6' to '2' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:59159]
+WARNING: [Synth 8-6014] Unused sequential element SLAVE_MODE_FRAME_CNT.frame_sync_d1_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64991]
+WARNING: [Synth 8-6014] Unused sequential element SLAVE_MODE_FRAME_CNT.frame_sync_d2_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64992]
 WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
 WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
 WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1390]
 WARNING: [Synth 8-6014] Unused sequential element GEN_LINEBUF_NO_SOF.m_skid_reset_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:47466]
 WARNING: [Synth 8-6014] Unused sequential element GEN_LINEBUF_NO_SOF.s_axis_fifo_ainit_nosync_reg_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:47506]
-INFO: [Synth 8-3936] Found unconnected internal register 'DYNAMIC_GENLOCK_FOR_MASTER.grey_frmstr_adjusted_reg' and it is trimmed from '6' to '2' bits. [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:59878]
 WARNING: [Synth 8-6014] Unused sequential element GEN_FRMSTORE_EXTFSYNC.all_idle_d1_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64434]
 WARNING: [Synth 8-6014] Unused sequential element GEN_FRMSTORE_EXTFSYNC.late_idle_reg was removed.  [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ipshared/fc4b/hdl/axi_vdma_v6_3_rfs.vhd:64450]
 WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
@@ -832,18 +830,18 @@ WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base__parameterized2 is
 WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base__parameterized2 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2189.129 ; gain = 666.082
+Finished RTL Elaboration : Time (s): cpu = 00:00:42 ; elapsed = 00:01:17 . Memory (MB): peak = 2189.734 ; gain = 665.387
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2189.129 ; gain = 666.082
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:01:18 . Memory (MB): peak = 2209.621 ; gain = 685.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2189.129 ; gain = 666.082
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:43 ; elapsed = 00:01:19 . Memory (MB): peak = 2209.621 ; gain = 685.273
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.274 . Memory (MB): peak = 2189.129 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.902 . Memory (MB): peak = 2221.617 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 258 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -851,6 +849,7 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0_ooc.xdc] for cell 'U0'
+create_clock: Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 2330.930 ; gain = 0.035
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0_ooc.xdc] for cell 'U0'
 Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0.xdc] for cell 'U0'
 Finished Parsing XDC File [r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_axi_vdma_0_0/kv260_video_axi_vdma_0_0.xdc] for cell 'U0'
@@ -865,15 +864,15 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/kv260_video_
 INFO: [Project 1-1714] 5 XPM XDC files have been applied to the design.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2234.754 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2330.930 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 258 instances were transformed.
   FDR => FDRE: 258 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.177 . Memory (MB): peak = 2234.930 ; gain = 0.176
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.457 . Memory (MB): peak = 2330.930 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 2234.930 ; gain = 711.883
+Finished Constraint Validation : Time (s): cpu = 00:01:12 ; elapsed = 00:02:10 . Memory (MB): peak = 2330.930 ; gain = 806.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -881,7 +880,7 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 2234.930 ; gain = 711.883
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:12 ; elapsed = 00:02:10 . Memory (MB): peak = 2330.930 ; gain = 806.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -893,7 +892,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for U0/I_PRMRY_DATAMOVER/\GEN_MM2S_FU
 Applied set_property KEEP_HIERARCHY = SOFT for U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_DATA_FIFO/\BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER /\GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT /I_XD_FIFO/\NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO /\xpm_fifo_instance.xpm_fifo_sync_inst . (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 2234.930 ; gain = 711.883
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:12 ; elapsed = 00:02:10 . Memory (MB): peak = 2330.930 ; gain = 806.582
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'axi_vdma_v6_3_14_axis_dwidth_converter_v1_0_axisc_upsizer'
 INFO: [Synth 8-802] inferred FSM for state register 'dmacntrl_cs_reg' in module 'axi_vdma_sm'
@@ -1055,7 +1054,7 @@ INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized3'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:46 ; elapsed = 00:00:51 . Memory (MB): peak = 2234.930 ; gain = 711.883
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:24 ; elapsed = 00:02:29 . Memory (MB): peak = 2330.930 ; gain = 806.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -1078,8 +1077,10 @@ Detailed RTL Component Info :
 	   3 Input    9 Bit       Adders := 1     
 	   2 Input    8 Bit       Adders := 9     
 	   2 Input    7 Bit       Adders := 2     
-	   3 Input    5 Bit       Adders := 5     
-	   2 Input    5 Bit       Adders := 9     
+	   4 Input    7 Bit       Adders := 1     
+	   3 Input    7 Bit       Adders := 1     
+	   3 Input    5 Bit       Adders := 4     
+	   2 Input    5 Bit       Adders := 7     
 	   4 Input    5 Bit       Adders := 4     
 	   2 Input    4 Bit       Adders := 12    
 	   3 Input    4 Bit       Adders := 5     
@@ -1090,7 +1091,7 @@ Detailed RTL Component Info :
 	   4 Input    2 Bit       Adders := 5     
 	   2 Input    1 Bit       Adders := 3     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 40    
+	   2 Input      1 Bit         XORs := 38    
 +---Registers : 
 	               96 Bit    Registers := 2     
 	               75 Bit    Registers := 2     
@@ -1109,13 +1110,13 @@ Detailed RTL Component Info :
 	               10 Bit    Registers := 27    
 	                9 Bit    Registers := 10    
 	                8 Bit    Registers := 20    
-	                7 Bit    Registers := 2     
-	                6 Bit    Registers := 12    
-	                5 Bit    Registers := 43    
+	                7 Bit    Registers := 4     
+	                6 Bit    Registers := 11    
+	                5 Bit    Registers := 39    
 	                4 Bit    Registers := 71    
 	                3 Bit    Registers := 50    
 	                2 Bit    Registers := 31    
-	                1 Bit    Registers := 702   
+	                1 Bit    Registers := 697   
 +---RAMs : 
 	             150K Bit	(2048 X 75 bit)          RAMs := 1     
 	             148K Bit	(4096 X 37 bit)          RAMs := 1     
@@ -1130,24 +1131,25 @@ Detailed RTL Component Info :
 	   3 Input   32 Bit        Muxes := 2     
 	  13 Input   32 Bit        Muxes := 1     
 	   2 Input   24 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 13    
+	   2 Input   16 Bit        Muxes := 12    
 	   4 Input   16 Bit        Muxes := 2     
 	   3 Input   16 Bit        Muxes := 1     
 	   2 Input   13 Bit        Muxes := 10    
 	   2 Input   12 Bit        Muxes := 7     
 	   3 Input   12 Bit        Muxes := 1     
-	   2 Input   11 Bit        Muxes := 2     
+	   2 Input   11 Bit        Muxes := 3     
 	   2 Input   10 Bit        Muxes := 10    
 	   4 Input   10 Bit        Muxes := 6     
 	   2 Input    9 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 31    
+	   2 Input    8 Bit        Muxes := 34    
 	   8 Input    8 Bit        Muxes := 7     
+	   3 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 8     
 	   7 Input    7 Bit        Muxes := 1     
-	   2 Input    7 Bit        Muxes := 6     
 	   3 Input    6 Bit        Muxes := 2     
 	   2 Input    6 Bit        Muxes := 2     
-	   5 Input    5 Bit        Muxes := 4     
-	   2 Input    5 Bit        Muxes := 35    
+	   5 Input    5 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 37    
 	   2 Input    4 Bit        Muxes := 15    
 	  13 Input    4 Bit        Muxes := 1     
 	   3 Input    4 Bit        Muxes := 1     
@@ -1159,18 +1161,18 @@ Detailed RTL Component Info :
 	   6 Input    3 Bit        Muxes := 4     
 	   5 Input    3 Bit        Muxes := 3     
 	   3 Input    3 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 178   
+	   2 Input    2 Bit        Muxes := 177   
 	   3 Input    2 Bit        Muxes := 5     
-	   5 Input    2 Bit        Muxes := 2     
+	   5 Input    2 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 35    
 	  16 Input    2 Bit        Muxes := 2     
 	   6 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 421   
+	   2 Input    1 Bit        Muxes := 424   
 	  11 Input    1 Bit        Muxes := 1     
-	   6 Input    1 Bit        Muxes := 19    
+	   6 Input    1 Bit        Muxes := 18    
 	   4 Input    1 Bit        Muxes := 16    
 	  13 Input    1 Bit        Muxes := 1     
-	   8 Input    1 Bit        Muxes := 4     
+	   8 Input    1 Bit        Muxes := 3     
 	   3 Input    1 Bit        Muxes := 3     
 	   7 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
@@ -1286,7 +1288,7 @@ INFO: [Synth 8-3332] Sequential element (GEN_S2MM_LITE_CROSSINGS.GEN_S2MM_CROSSI
 INFO: [Synth 8-3332] Sequential element (GEN_S2MM_LITE_CROSSINGS.GEN_S2MM_CROSSINGS_ASYNC.S2MM_INTRPT_CROSSING_I/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6) is unused and will be removed from module axi_vdma_reg_if.
 INFO: [Synth 8-3332] Sequential element (GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_INCLUDE_IBTTCC.I_S2MM_MSTR_IBTTCC/FSM_onehot_sig_csm_state_reg[3]) is unused and will be removed from module axi_datamover.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:09 ; elapsed = 00:01:14 . Memory (MB): peak = 2234.930 ; gain = 711.883
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:11 ; elapsed = 00:03:52 . Memory (MB): peak = 2330.930 ; gain = 806.582
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
 INFO: [Synth 8-5775] Found 'rw_addr_collision' attribute set to 'no' on SDP RAM gen_wr_a.gen_word_narrow.mem_reg. Setting write mode to NO_CHANGE 
@@ -1332,7 +1334,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:21 ; elapsed = 00:01:29 . Memory (MB): peak = 2579.246 ; gain = 1056.199
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:33 ; elapsed = 00:04:40 . Memory (MB): peak = 2570.391 ; gain = 1046.043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -1356,7 +1358,7 @@ INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 3
 INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 2 for RAM "U0/I_PRMRY_DATAMOVER/\GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst /gen_wr_a.gen_word_narrow.mem_reg"
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:34 . Memory (MB): peak = 2676.617 ; gain = 1153.570
+Finished Timing Optimization : Time (s): cpu = 00:02:45 ; elapsed = 00:05:06 . Memory (MB): peak = 2669.934 ; gain = 1145.586
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "gen_wr_a.gen_word_narrow.mem_reg" defined in module: "U0/\GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I /\GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst /xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst " implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
@@ -1396,7 +1398,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance U0/GEN_SPRT_FOR_S2MM.S2MM_LINEBUFFER_I/GEN_S2MM_FLUSH_SOF_LOGIC.GEN_LINEBUFFER_FLUSH_SOF.GEN_SYNC_FIFO_FLUSH_SOF.I_LINEBUFFER_FIFO/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:30 ; elapsed = 00:01:38 . Memory (MB): peak = 2692.137 ; gain = 1169.090
+Finished Technology Mapping : Time (s): cpu = 00:02:53 ; elapsed = 00:05:24 . Memory (MB): peak = 2684.613 ; gain = 1160.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1414,37 +1416,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:36 ; elapsed = 00:01:44 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished IO Insertion : Time (s): cpu = 00:03:09 ; elapsed = 00:05:49 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:36 ; elapsed = 00:01:44 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:09 ; elapsed = 00:05:49 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:11 ; elapsed = 00:05:52 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:11 ; elapsed = 00:05:52 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:12 ; elapsed = 00:05:52 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:12 ; elapsed = 00:05:52 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1494,12 +1496,12 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |CARRY8   |    35|
-|2     |LUT1     |   253|
-|3     |LUT2     |   448|
-|4     |LUT3     |   646|
-|5     |LUT4     |   560|
-|6     |LUT5     |   728|
-|7     |LUT6     |   853|
+|2     |LUT1     |   256|
+|3     |LUT2     |   460|
+|4     |LUT3     |   638|
+|5     |LUT4     |   566|
+|6     |LUT5     |   710|
+|7     |LUT6     |   878|
 |8     |MUXF7    |     7|
 |9     |RAM32M16 |     1|
 |10    |RAMB18E2 |     2|
@@ -1507,37 +1509,35 @@ Report Cell Usage:
 |14    |SRL16E   |   312|
 |15    |URAM288  |     1|
 |16    |FDR      |   188|
-|17    |FDRE     |  4214|
-|18    |FDSE     |   137|
+|17    |FDRE     |  4210|
+|18    |FDSE     |   138|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:12 ; elapsed = 00:05:53 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 800 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:04 ; elapsed = 00:01:35 . Memory (MB): peak = 2704.895 ; gain = 1136.047
-Synthesis Optimization Complete : Time (s): cpu = 00:01:37 ; elapsed = 00:01:45 . Memory (MB): peak = 2704.895 ; gain = 1181.848
+Synthesis finished with 0 errors, 0 critical warnings and 802 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:12 ; elapsed = 00:05:23 . Memory (MB): peak = 2698.375 ; gain = 1052.719
+Synthesis Optimization Complete : Time (s): cpu = 00:03:12 ; elapsed = 00:05:53 . Memory (MB): peak = 2698.375 ; gain = 1174.027
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.166 . Memory (MB): peak = 2713.965 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.422 . Memory (MB): peak = 2706.441 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 231 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2735.848 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2730.277 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 189 instances were transformed.
   FDR => FDRE: 188 instances
   RAM32M16 => RAM32M16 (RAMD32(x14), RAMS32(x2)): 1 instance 
 
-Synth Design complete, checksum: 9c36523d
+Synth Design complete, checksum: 92095101
 INFO: [Common 17-83] Releasing license: Synthesis
-624 Infos, 165 Warnings, 0 Critical Warnings and 0 Errors encountered.
+623 Infos, 164 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:47 ; elapsed = 00:02:08 . Memory (MB): peak = 2735.848 ; gain = 1365.898
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.collectionResultDisplayLimit
+synth_design: Time (s): cpu = 00:03:29 ; elapsed = 00:06:28 . Memory (MB): peak = 2730.277 ; gain = 1343.473
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_0_0_synth_1/kv260_video_axi_vdma_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_axi_vdma_0_0, cache-ID = 7749382ecae4bdbf
-INFO: [Coretcl 2-1174] Renamed 221 cell refs.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP kv260_video_axi_vdma_0_0, cache-ID = e66c7fc60204fb4d
+INFO: [Coretcl 2-1174] Renamed 220 cell refs.
 INFO: [Common 17-1381] The checkpoint 'R:/KV260/vivado/KV260.runs/kv260_video_axi_vdma_0_0_synth_1/kv260_video_axi_vdma_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file kv260_video_axi_vdma_0_0_utilization_synth.rpt -pb kv260_video_axi_vdma_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 15 20:29:11 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 20 09:34:40 2026...

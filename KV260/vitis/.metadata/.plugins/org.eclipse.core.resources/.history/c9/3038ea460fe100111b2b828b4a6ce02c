@@ -1,0 +1,212 @@
+#include "jpeg_snapshot.h"
+#include "../config.h"
+#include "xil_cache.h"
+#include "xil_io.h"
+#include "xparameters.h"
+#include "xaxivdma.h"
+#include "xtime_l.h"
+#include <stdio.h>
+#include <string.h>
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_STATIC
+#define STBI_WRITE_NO_STDIO
+#include "stb_image_write.h"
+
+#define JPEG_CAPACITY (8U * 1024U * 1024U)
+#define JPEG_QUALITY 75
+/* VFP ovideo packs B:R:G from MSB to LSB, so DDR byte order is G,R,B.
+ * Adjust these indices if the deployed bitstream uses a different packing. */
+#define JPEG_RED_BYTE 1
+#define JPEG_GREEN_BYTE 0
+#define JPEG_BLUE_BYTE 2
+#define JPEG_FLIP_VERTICAL 1
+
+#define PARK_PTR 0x28U
+#define S2MM_CONTROL 0x30U
+#define S2MM_STATUS 0x34U
+#define S2MM_FRAME_IRQ (1U << 12)
+#define S2MM_ERROR_BITS 0xC9F0U
+#define S2MM_CLEARABLE_ERRORS 0xC990U
+#define S2MM_EOL_EARLY (1U << 8)
+#define S2MM_VSIZE 0xA0U
+#define S2MM_HSIZE 0xA4U
+#define S2MM_STRIDE 0xA8U
+#define WRITE_REFERENCE_MASK (31U << 8)
+#define WRITE_STORE(value) (((value) >> 24) & 31U)
+
+extern u32 *pFrames[DISPLAY_NUM_FRAMES];
+static unsigned char pixels[VIDEO1_MAX_FRAME];
+static unsigned char jpeg[JPEG_CAPACITY];
+
+struct jpeg_output {
+    size_t size;
+    int overflow;
+};
+
+static void collect_jpeg(void *context, void *data, int length)
+{
+    struct jpeg_output *out = context;
+    if (out->overflow || length < 0 || (size_t)length > sizeof(jpeg) - out->size) {
+        out->overflow = 1;
+        return;
+    }
+    memcpy(jpeg + out->size, data, (size_t)length);
+    out->size += (size_t)length;
+}
+
+static int wait_register(UINTPTR address, u32 mask, u32 value)
+{
+    XTime started, now;
+    XTime_GetTime(&started);
+    do {
+        if ((Xil_In32(address) & mask) == value)
+            return 1;
+        XTime_GetTime(&now);
+    } while (now - started < COUNTS_PER_SECOND);
+    return 0;
+}
+
+static void park_write(UINTPTR base, unsigned int store)
+{
+    u32 park = Xil_In32(base + PARK_PTR);
+    Xil_Out32(base + PARK_PTR, (park & ~WRITE_REFERENCE_MASK) | (store << 8));
+}
+
+/* Receiver 0 AXI-Lite base from the KV260 zusys block design. */
+#define CSI_RX_BASE 0xA0000000U
+
+static void print_csi_status(const char *label)
+{
+    unsigned int vc;
+    u32 core = Xil_In32(CSI_RX_BASE + 0x10U);
+    u32 isr = Xil_In32(CSI_RX_BASE + 0x24U);
+
+    printf("JPEG CSI %s: packets=%u ISR=%08lX (sticky)\r\n",
+           label, (unsigned)(core >> 16), (unsigned long)isr);
+    for (vc = 0; vc < 4; ++vc) {
+        u32 info = Xil_In32(CSI_RX_BASE + 0x60U + vc * 8U);
+        u32 type = Xil_In32(CSI_RX_BASE + 0x64U + vc * 8U) & 0x3fU;
+        printf("  VC%u: packets=%u bytes=%u type=0x%02X\r\n",
+               vc, (unsigned)(info >> 16), (unsigned)(info & 0xffffU),
+               (unsigned)type);
+    }
+}
+
+static int snapshot_store(UINTPTR base, unsigned int *store)
+{
+    u32 park = Xil_In32(base + PARK_PTR);
+    unsigned int original = (park >> 8) & 31U;
+    unsigned int video_read = park & 31U;
+    unsigned int spare;
+    u32 status;
+
+    /* This firmware parks both VDMA channels. Don't borrow the DP graphics
+     * buffer (store 1), or the active video read/write stores. */
+    if ((Xil_In32(base + S2MM_CONTROL) & 3U) != 1U ||
+        (Xil_In32(base) & 3U) != 1U ||
+        original >= DISPLAY_NUM_FRAMES || WRITE_STORE(park) != original)
+        return 0;
+    for (spare = 0; spare < DISPLAY_NUM_FRAMES; ++spare)
+        if (spare != original && spare != video_read && spare != 1)
+            break;
+    if (spare == DISPLAY_NUM_FRAMES)
+        return 0;
+
+    /* Clear only documented W1C frame/error bits to observe this capture. */
+    Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ | S2MM_CLEARABLE_ERRORS);
+    Xil_DCacheFlushRange((UINTPTR)pFrames[spare], VIDEO1_MAX_FRAME);
+    Xil_Out32(0xA0000024U, 0x00040000U);  /* Clear CSI-2 ISR bit 18 only */
+    print_csi_status("before capture");
+    park_write(base, spare);
+    int switched = wait_register(base + PARK_PTR, 31U << 24, spare << 24);
+    int completed = 0;
+    unsigned int clean = 0;
+    unsigned int attempts = 0;
+    if (switched) {
+        /* Discard the transition interval. Require two fresh, clean
+         * frame events so at least one full interval is in the spare store. */
+        Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ);
+        if (wait_register(base + S2MM_STATUS, S2MM_FRAME_IRQ, S2MM_FRAME_IRQ)) {
+            for (attempts = 0; attempts < 6 && clean < 2; ++attempts) {
+                Xil_Out32(base + S2MM_STATUS, S2MM_FRAME_IRQ | S2MM_CLEARABLE_ERRORS);
+                if (!wait_register(base + S2MM_STATUS, S2MM_FRAME_IRQ, S2MM_FRAME_IRQ))
+                    break;
+                if (Xil_In32(base + S2MM_STATUS) & S2MM_ERROR_BITS)
+                    clean = 0;
+                else
+                    ++clean;
+            }
+        }
+        completed = clean == 2;
+    }
+    /* A latched error can freeze WrFrmStore. Preserve the capture status,
+     * but clear W1C errors before waiting for the original park reference. */
+    status = Xil_In32(base + S2MM_STATUS);
+    park_write(base, original);
+    Xil_Out32(base + S2MM_STATUS, status & S2MM_CLEARABLE_ERRORS);
+    int restored = wait_register(base + PARK_PTR, 31U << 24, original << 24);
+    u32 restore_status = Xil_In32(base + S2MM_STATUS);
+    if (!restored && (restore_status & S2MM_CLEARABLE_ERRORS)) {
+        Xil_Out32(base + S2MM_STATUS, restore_status & S2MM_CLEARABLE_ERRORS);
+        restored = wait_register(base + PARK_PTR, 31U << 24, original << 24);
+        restore_status = Xil_In32(base + S2MM_STATUS);
+    }
+
+    if (!completed || !restored || ((status | restore_status) & S2MM_ERROR_BITS)) {
+        printf("JPEG VDMA: switched=%d complete=%d restored=%d capture=%08lX restore=%08lX PARK=%08lX clean=%u attempts=%u\r\n",
+               switched, completed, restored, (unsigned long)status,
+               (unsigned long)restore_status, (unsigned long)Xil_In32(base + PARK_PTR), clean, attempts);
+        printf("JPEG VDMA S2MM: HSIZE=%lu bytes VSIZE=%lu lines STRIDE=%lu bytes\r\n",
+               (unsigned long)(Xil_In32(base + S2MM_HSIZE) & 0xFFFFU),
+               (unsigned long)(Xil_In32(base + S2MM_VSIZE) & 0x1FFFU),
+               (unsigned long)(Xil_In32(base + S2MM_STRIDE) & 0xFFFFU));
+        if ((status | restore_status) & S2MM_EOL_EARLY)
+            printf("VDMA saw TLAST before the programmed line width.\r\n");
+        print_csi_status("after capture failure");
+        return 0;
+    }
+    *store = spare;
+    return 1;
+}
+
+size_t jpeg_snapshot_capture(const unsigned char **data)
+{
+    struct jpeg_output out = {0, 0};
+    XAxiVdma_Config *config = XAxiVdma_LookupConfig(XPAR_AXIVDMA_0_DEVICE_ID);
+    unsigned int store;
+    XTime start, end;
+
+    if (VIDEO1_COLUMNS != 3840 || VIDEO1_ROWS != 2160 ||
+        !config || !snapshot_store(config->BaseAddress, &store)) {
+        printf("JPEG requires the working 4K parked VDMA configuration.\r\n");
+        return 0;
+    }
+    Xil_DCacheInvalidateRange((UINTPTR)pFrames[store], VIDEO1_MAX_FRAME);
+    const unsigned char *frame = (const unsigned char *)pFrames[store];
+    for (unsigned int y = 0; y < VIDEO1_ROWS; ++y) {
+        unsigned int source_y = JPEG_FLIP_VERTICAL ? VIDEO1_ROWS - 1U - y : y;
+        const unsigned char *source = frame + source_y * VIDEO1_STRIDE;
+        unsigned char *destination = pixels + y * VIDEO1_STRIDE;
+        for (unsigned int x = 0; x < VIDEO1_COLUMNS; ++x) {
+            destination[0] = source[JPEG_RED_BYTE];
+            destination[1] = source[JPEG_GREEN_BYTE];
+            destination[2] = source[JPEG_BLUE_BYTE];
+            source += 3;
+            destination += 3;
+        }
+    }
+
+    XTime_GetTime(&start);
+    if (!stbi_write_jpg_to_func(collect_jpeg, &out, VIDEO1_COLUMNS, VIDEO1_ROWS,
+                               3, pixels, JPEG_QUALITY) || out.overflow) {
+        printf("JPEG encoding failed or exceeded the output buffer.\r\n");
+        return 0;
+    }
+    XTime_GetTime(&end);
+    printf("JPEG 3840x2160: %lu bytes, encode %lu ms\r\n",
+           (unsigned long)out.size,
+           (unsigned long)((end - start) * 1000U / COUNTS_PER_SECOND));
+    *data = jpeg;
+    return out.size;
+}

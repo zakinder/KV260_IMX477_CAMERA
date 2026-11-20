@@ -1,0 +1,22 @@
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/jpeg_reader_pkg.vhd:327:5:@40ns:(report note): JPEG decoded: /tmp/tmpcgl8i2j4/color.jpg (43 x 27)
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:72:7:@15245ns:(report note): Input frame 1 accepted: 1161 pixels
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/jpeg_reader_pkg.vhd:327:5:@15245ns:(report note): JPEG decoded: /tmp/tmpcgl8i2j4/gray.jpg (43 x 27)
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:123:11:@38315ns:(report note): Output frame 1: 1161 pixels, 27 EOL, 1 SOF; first/last cycles 1981/3828
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:72:7:@40425ns:(report note): Input frame 2 accepted: 1161 pixels
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:123:11:@63405ns:(report note): Output frame 2: 1161 pixels, 27 EOL, 1 SOF; first/last cycles 4500/6337
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:136:11:@63795ns:(report note): PASS: 2 frame(s), 2322 accepted output pixels, 964 stalled output cycles
+simulation finished @63795ns
+RTL output: /tmp/tmpcgl8i2j4/color.bmp
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/jpeg_reader_pkg.vhd:327:5:@40ns:(report note): JPEG decoded: /tmp/tmpcgl8i2j4/gray.jpg (43 x 27)
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:72:7:@14205ns:(report note): Input frame 1 accepted: 1161 pixels
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:123:11:@33325ns:(report note): Output frame 1: 1161 pixels, 27 EOL, 1 SOF; first/last cycles 1877/3329
+/workspace/scratch/e9aef5c90f3f/pic2_axis/tb/tb_pic2.vhd:136:11:@33715ns:(report note): PASS: 1 frame(s), 1161 accepted output pixels, 0 stalled output cycles
+simulation finished @33715ns
+RTL output: /tmp/tmpcgl8i2j4/gray_alone.bmp
+PASS: all 1161 grayscale pixels remained neutral.
+JPEG decoder vs Pillow/libjpeg: mean |channel error|=0.04565, max=3 / 255
+Independent raster model: 0 mismatched pixels / 1,161
+PASS: every RGB byte matched.
+JPEG decoder vs Pillow/libjpeg: mean |channel error|=0.00861, max=1 / 255
+Independent raster model: 0 mismatched pixels / 1,161
+PASS: every RGB byte matched.

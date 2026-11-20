@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="jpeg_encoder1" location="R:/KV260/vitis/jpeg_encoder1" platform="R:/KV260/vitis/kv260_video_wrapper/export/kv260_video_wrapper/kv260_video_wrapper.xpfm" platformUID="xilinx:kv260_som::0.0(custom)" systemProject="jpeg_encoder1_system" sysConfig="kv260_video_wrapper" runtime="C/C++" cpu="jpeg_worker1" cpuInstance="psu_cortexa53_1" os="standalone" mssSignature="b8cf55a3a719f724f227df42f26f4289">
+  <configuration name="Debug" id="xilinx.gnu.arm.a53.exe.debug.306609053">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.a53.exe.release.550608075" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>
