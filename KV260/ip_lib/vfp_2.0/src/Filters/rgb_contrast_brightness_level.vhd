@@ -60,7 +60,12 @@ architecture Behavioral of rgb_contrast_brightness_level is
   constant mid_table : coefficient_table := make_table(32768,false);
   constant hi_table : coefficient_table := make_table(8388608,true);
   signal lo, mid, hi : coefficient_part;
+  signal q_lo_mid : unsigned(17 downto 0);
+  signal rem_lo_mid : natural range 0 to 12;
+  signal q_hi_stage : unsigned(16 downto 0);
+  signal rem_hi_stage : natural range 0 to 4;
   signal rounding : natural range 0 to 4;
+  signal rgb2_delay : contrast1_channel;
   signal contrast_val_sign      : signed(16 downto 0);
   signal contrast_constant_val1 : signed(15 downto 0):= x"8000";--32768=256*128
   signal contrast_constant_val2 : signed(15 downto 0):= x"0080";--128
@@ -101,7 +106,7 @@ end process;
 -- red = alpha(red-128)+128+b
 process(clk)
     variable bits : signed(23 downto 0);
-    variable carry : natural range 0 to 3;
+    variable carry : natural range 0 to 4;
 begin
     if rising_edge(clk) then
         -- The original integer product contrast*256 fits for signed 24-bit inputs.
@@ -110,9 +115,17 @@ begin
         mid <= mid_table(to_integer(unsigned(bits(15 downto 8))));
         hi <= hi_table(to_integer(unsigned(bits(23 downto 16))));
         if bits(23)='1' then rounding<=4; else rounding<=0; end if;
-        -- Adding four for negative numerators implements truncation toward zero.
-        carry := (lo.r+mid.r+hi.r+rounding)/5;
-        contrast_val_sign <= signed(lo.q+mid.q+hi.q+to_unsigned(carry,17));
+
+        -- Register the low and middle table sums before combining the high byte.
+        q_lo_mid <= resize(lo.q,18) + resize(mid.q,18);
+        rem_lo_mid <= lo.r + mid.r + rounding;
+        q_hi_stage <= hi.q;
+        rem_hi_stage <= hi.r;
+
+        -- The quotient remains modulo 2^17, matching the original coefficient.
+        carry := (rem_lo_mid + rem_hi_stage) / 5;
+        contrast_val_sign <= signed(
+            q_lo_mid(16 downto 0) + q_hi_stage + to_unsigned(carry,17));
     end if;
 end process;
 process (clk)begin
@@ -127,13 +140,14 @@ process (clk)begin
         rgb2_crt.red    <= (rgb1_crt.red + contrast_constant_val1);
         rgb2_crt.green  <= (rgb1_crt.green + contrast_constant_val1);
         rgb2_crt.blue   <= (rgb1_crt.blue + contrast_constant_val1);
+        rgb2_delay      <= rgb2_crt;
     end if;
 end process;
 process (clk)begin
     if rising_edge(clk) then
-        rgb3_crt.red    <= (rgb2_crt.red * contrast_val_sign) + contrast_constant_val1;
-        rgb3_crt.green  <= (rgb2_crt.green * contrast_val_sign) + contrast_constant_val1;
-        rgb3_crt.blue   <= (rgb2_crt.blue * contrast_val_sign) + contrast_constant_val1;
+        rgb3_crt.red    <= (rgb2_delay.red * contrast_val_sign) + contrast_constant_val1;
+        rgb3_crt.green  <= (rgb2_delay.green * contrast_val_sign) + contrast_constant_val1;
+        rgb3_crt.blue   <= (rgb2_delay.blue * contrast_val_sign) + contrast_constant_val1;
     end if;
 end process;
 process (clk)begin
@@ -145,9 +159,9 @@ process (clk)begin
 end process;
 process (clk)begin
     if rising_edge(clk) then
-        rgb5_crt.red    <= rgb4_crt.red + contrast_constant_val2;
-        rgb5_crt.green  <= rgb4_crt.green + contrast_constant_val2;
-        rgb5_crt.blue   <= rgb4_crt.blue + contrast_constant_val2;
+        rgb5_crt.red    <= shift_right(rgb4_crt.red,1) + contrast_constant_val2;
+        rgb5_crt.green  <= shift_right(rgb4_crt.green,1) + contrast_constant_val2;
+        rgb5_crt.blue   <= shift_right(rgb4_crt.blue,1) + contrast_constant_val2;
     end if;
 end process;
 process (clk)begin
@@ -177,10 +191,10 @@ process (clk)begin
 end process;
 process (clk)begin
     if rising_edge(clk) then
-        oRgb.eol     <= rgbSyncEol(7);
-        oRgb.sof     <= rgbSyncSof(7);
-        oRgb.eof     <= rgbSyncEof(7);
-        oRgb.valid   <= rgbSyncValid(7);
+        oRgb.eol     <= rgbSyncEol(8);
+        oRgb.sof     <= rgbSyncSof(8);
+        oRgb.eof     <= rgbSyncEof(8);
+        oRgb.valid   <= rgbSyncValid(8);
     end if;
 end process;
 end Behavioral;

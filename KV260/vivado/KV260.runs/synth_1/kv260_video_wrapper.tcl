@@ -70,6 +70,11 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param power.BramSDPPropagationFix 1
+set_param chipscope.maxJobs 2
+set_param power.enableUnconnectedCarry8PinPower 1
+set_param power.enableCarry8RouteBelPower 1
+set_param power.enableLutRouteBelPower 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
 
@@ -215,6 +220,9 @@ set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_system_ila_0_0/bd_0/ip/ip_0/bd_2417_ila_lib_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_system_ila_0_0/bd_0/bd_2417_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_system_ila_0_0/kv260_video_system_ila_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_board.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0.xdc]
+set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_ooc.xdc]
 set_property used_in_synthesis false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_ds_0/kv260_video_auto_ds_0_ooc.xdc]
@@ -226,9 +234,6 @@ set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.
 set_property used_in_synthesis false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_clocks.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_board.xdc]
-set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0.xdc]
-set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/kv260_video_rst_clk_wiz_ctrl_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/kv260_video_ooc.xdc]
 
 OPTRACE "Adding files" END { }

@@ -76,6 +76,8 @@ architecture behavioral of rgb_saturation_exposer is
     signal rgbSyncEol           : std_logic_vector(15 downto 0) := x"0000";
     signal rgbSyncSof           : std_logic_vector(15 downto 0) := x"0000";
     signal rgbSyncEof           : std_logic_vector(15 downto 0) := x"0000";
+    signal negative_gain_7 : integer;
+    signal normalization_8 : integer;
     signal rgbColors            : type_inteChannel(0 to 12);
     signal rgbMath              : type_inteChannel(0 to 12);
     signal rgbValue             : type_inteChannel(0 to 12);
@@ -331,15 +333,16 @@ end process;
 
 process (clk) begin
    if rising_edge(clk) then
+    negative_gain_7 <= N_SAT;
     if (CONTRAST_EN = 0) then
-       rgbColors(7).red    <= abs(N_SAT_VAL-rgbColors(6).red)*N_SAT;
-       rgbColors(7).green  <= abs(N_SAT_VAL-rgbColors(6).green)*N_SAT;
-       rgbColors(7).blue   <= abs(N_SAT_VAL-rgbColors(6).blue)*N_SAT;
+       rgbColors(7).red    <= abs(N_SAT_VAL-rgbColors(6).red);
+       rgbColors(7).green  <= abs(N_SAT_VAL-rgbColors(6).green);
+       rgbColors(7).blue   <= abs(N_SAT_VAL-rgbColors(6).blue);
        rgbColors(7).valid  <= rgbColors(6).valid;
     else
-       rgbColors(7).red    <= (N_SAT_VAL-rgbColors(6).red)*N_SAT;
-       rgbColors(7).green  <= (N_SAT_VAL-rgbColors(6).green)*N_SAT;
-       rgbColors(7).blue   <= (N_SAT_VAL-rgbColors(6).blue)*N_SAT;
+       rgbColors(7).red    <= (N_SAT_VAL-rgbColors(6).red);
+       rgbColors(7).green  <= (N_SAT_VAL-rgbColors(6).green);
+       rgbColors(7).blue   <= (N_SAT_VAL-rgbColors(6).blue);
        rgbColors(7).valid  <= rgbColors(6).valid;
     end if;
    end if;
@@ -353,45 +356,38 @@ process (clk) begin
    end if;
 end process;
 
-process (clk) begin
-   if rising_edge(clk) then
-
-   end if;
-end process;
-
-process (clk) begin
-   if rising_edge(clk) then
-    if (N_VAL = 0) then
-       rgbColors(8).red    <= abs(rgbMath(7).red + rgbColors(7).red + rgbValue(7).red);
-       rgbColors(8).green  <= abs(rgbMath(7).green + rgbColors(7).green + rgbValue(7).green);
-       rgbColors(8).blue   <= abs(rgbMath(7).blue + rgbColors(7).blue + rgbValue(7).blue);
-       rgbColors(8).valid  <= rgbColors(7).valid;
-    elsif(N_VAL = 1)then
-       rgbColors(8).red    <= abs(rgbMath(7).red + rgbColors(7).red + rgbValue(7).red)/2;
-       rgbColors(8).green  <= abs(rgbMath(7).green + rgbColors(7).green + rgbValue(7).green)/2;
-       rgbColors(8).blue   <= abs(rgbMath(7).blue + rgbColors(7).blue + rgbValue(7).blue)/2;
-       rgbColors(8).valid  <= rgbColors(7).valid;
-    else
-       rgbColors(8).red    <= abs(rgbMath(7).red + rgbColors(7).red + rgbValue(7).red)/4;
-       rgbColors(8).green  <= abs(rgbMath(7).green + rgbColors(7).green + rgbValue(7).green)/4;
-       rgbColors(8).blue   <= abs(rgbMath(7).blue + rgbColors(7).blue + rgbValue(7).blue)/4;
-       rgbColors(8).valid  <= rgbColors(7).valid;
-    end if;
-   end if;
-end process;
-
-
-
-
-
-
-
-
-
+-- Sample the gain with its pixel and the normalization mode on its original cycle.
 process (clk) begin
     if rising_edge(clk) then
-        rgbColors(9)     <= rgbColors(8);
+        rgbColors(8).red   <= rgbColors(7).red * negative_gain_7;
+        rgbColors(8).green <= rgbColors(7).green * negative_gain_7;
+        rgbColors(8).blue  <= rgbColors(7).blue * negative_gain_7;
+        rgbColors(8).valid <= rgbColors(7).valid;
+        rgbMath(8)  <= rgbMath(7);
+        rgbValue(8) <= rgbValue(7);
+        normalization_8 <= N_VAL;
     end if;
+end process;
+
+process (clk) begin
+   if rising_edge(clk) then
+    if (normalization_8 = 0) then
+       rgbColors(9).red    <= abs(rgbMath(8).red + rgbColors(8).red + rgbValue(8).red);
+       rgbColors(9).green  <= abs(rgbMath(8).green + rgbColors(8).green + rgbValue(8).green);
+       rgbColors(9).blue   <= abs(rgbMath(8).blue + rgbColors(8).blue + rgbValue(8).blue);
+       rgbColors(9).valid  <= rgbColors(8).valid;
+    elsif(normalization_8 = 1)then
+       rgbColors(9).red    <= abs(rgbMath(8).red + rgbColors(8).red + rgbValue(8).red)/2;
+       rgbColors(9).green  <= abs(rgbMath(8).green + rgbColors(8).green + rgbValue(8).green)/2;
+       rgbColors(9).blue   <= abs(rgbMath(8).blue + rgbColors(8).blue + rgbValue(8).blue)/2;
+       rgbColors(9).valid  <= rgbColors(8).valid;
+    else
+       rgbColors(9).red    <= abs(rgbMath(8).red + rgbColors(8).red + rgbValue(8).red)/4;
+       rgbColors(9).green  <= abs(rgbMath(8).green + rgbColors(8).green + rgbValue(8).green)/4;
+       rgbColors(9).blue   <= abs(rgbMath(8).blue + rgbColors(8).blue + rgbValue(8).blue)/4;
+       rgbColors(9).valid  <= rgbColors(8).valid;
+    end if;
+   end if;
 end process;
 process (clk)begin
     if rising_edge(clk) then

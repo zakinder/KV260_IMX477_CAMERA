@@ -1,10 +1,10 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
--- Date        : Wed Nov 18 23:27:23 2026
+-- Date        : Wed Nov 18 23:27:22 2026
 -- Host        : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               r:/KV260/vivado/KV260.gen/sources_1/bd/kv260_video/ip/kv260_video_auto_cc_0/kv260_video_auto_cc_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top kv260_video_auto_cc_0 -prefix
+--               kv260_video_auto_cc_0_ kv260_video_auto_cc_0_sim_netlist.vhdl
 -- Design      : kv260_video_auto_cc_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,8 +25,6 @@ entity kv260_video_auto_cc_0_xpm_cdc_single is
   attribute DEST_SYNC_FF of kv260_video_auto_cc_0_xpm_cdc_single : entity is 3;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of kv260_video_auto_cc_0_xpm_cdc_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_cc_0_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of kv260_video_auto_cc_0_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -791,8 +789,6 @@ entity kv260_video_auto_cc_0_xpm_cdc_handshake is
   attribute DEST_SYNC_FF of kv260_video_auto_cc_0_xpm_cdc_handshake : entity is 3;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of kv260_video_auto_cc_0_xpm_cdc_handshake : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_cc_0_xpm_cdc_handshake : entity is "xpm_cdc_handshake";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of kv260_video_auto_cc_0_xpm_cdc_handshake : entity is 0;
   attribute SRC_SYNC_FF : integer;
@@ -3182,8 +3178,6 @@ entity kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_lite_async is
     m_axi_arready : in STD_LOGIC;
     s_axi_arvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_lite_async : entity is "axi_clock_converter_v2_1_25_lite_async";
 end kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_lite_async;
 
 architecture STRUCTURE of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_lite_async is
@@ -5049,8 +5043,6 @@ entity kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_axi_clock_converter is
   attribute C_W_WIDTH of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_axi_clock_converter : entity is 36;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_axi_clock_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_axi_clock_converter : entity is "axi_clock_converter_v2_1_25_axi_clock_converter";
   attribute P_ACLK_RATIO : integer;
   attribute P_ACLK_RATIO of kv260_video_auto_cc_0_axi_clock_converter_v2_1_25_axi_clock_converter : entity is 2;
   attribute P_AXI3 : integer;

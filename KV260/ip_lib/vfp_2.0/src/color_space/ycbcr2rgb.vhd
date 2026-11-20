@@ -23,17 +23,21 @@ architecture behavioral of ycbcr2rgb is
     signal product_gre1   : signed(17 downto 0);
     signal product_gre2   : signed(17 downto 0);
     signal sum_red        : signed(17 downto 0);
+    signal sum_red_d      : signed(17 downto 0);
+    signal sum_gre_part   : signed(17 downto 0);
     signal sum_gre        : signed(17 downto 0);
+    signal product_gre1_d : signed(17 downto 0);
     signal sum_blu        : signed(17 downto 0);
-    signal rgbSyncEol     : std_logic_vector(3 downto 0) := x"0";
-    signal rgbSyncSof     : std_logic_vector(3 downto 0) := x"0";
-    signal rgbSyncEof     : std_logic_vector(3 downto 0) := x"0";
-    signal rgbSyncValid   : std_logic_vector(3 downto 0) := x"0";
+    signal sum_blu_d      : signed(17 downto 0);
+    signal rgbSyncEol     : std_logic_vector(4 downto 0) := (others => '0');
+    signal rgbSyncSof     : std_logic_vector(4 downto 0) := (others => '0');
+    signal rgbSyncEof     : std_logic_vector(4 downto 0) := (others => '0');
+    signal rgbSyncValid   : std_logic_vector(4 downto 0) := (others => '0');
 begin
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncValid(0)  <= iRgb.valid;
-        for i in 0 to 2 loop
+        for i in 0 to 3 loop
           rgbSyncValid(i+1)  <= rgbSyncValid(i);
         end loop;
     end if;
@@ -41,7 +45,7 @@ end process;
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncEol(0)  <= iRgb.eol;
-        for i in 0 to 2 loop
+        for i in 0 to 3 loop
           rgbSyncEol(i+1)  <= rgbSyncEol(i);
         end loop;
     end if;
@@ -49,7 +53,7 @@ end process;
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncSof(0)  <= iRgb.sof;
-        for i in 0 to 2 loop
+        for i in 0 to 3 loop
           rgbSyncSof(i+1)  <= rgbSyncSof(i);
         end loop;
     end if;
@@ -57,7 +61,7 @@ end process;
 process (clk) begin
     if rising_edge(clk) then
         rgbSyncEof(0)  <= iRgb.eof;
-        for i in 0 to 2 loop
+        for i in 0 to 3 loop
           rgbSyncEof(i+1)  <= rgbSyncEof(i);
         end loop;
     end if;
@@ -84,19 +88,27 @@ end process;
 --sum_blue  <= (1.164 * 128 * red) + (rgb_pixel.green(8) & rgb_pixel.green(8 downto 0) & "00000000") + (rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(8) & rgb_pixel.green(7 downto 0) & '0') ;
 process (clk) begin
     if rising_edge(clk) then
-        sum_red    <= product_red + product_blu1;
-        sum_gre    <= product_red + product_blu2 + product_gre1;
-        sum_blu    <= product_red + product_gre2;
+        sum_red       <= product_red + product_blu1;
+        sum_gre_part  <= product_red + product_blu2;
+        product_gre1_d <= product_gre1;
+        sum_blu       <= product_red + product_gre2;
     end if;
 end process;
 process (clk) begin
     if rising_edge(clk) then
-        if (sum_red(17) = '1') then
+        sum_gre <= sum_gre_part + product_gre1_d;
+        sum_red_d <= sum_red;
+        sum_blu_d <= sum_blu;
+    end if;
+end process;
+process (clk) begin
+    if rising_edge(clk) then
+        if (sum_red_d(17) = '1') then
             oRgb.red     <= (others =>'0');
-        elsif(sum_red(15)= '1' or sum_red(16)= '1') then
+        elsif(sum_red_d(15)= '1' or sum_red_d(16)= '1') then
             oRgb.red     <= (others =>'1');
         else
-            oRgb.red     <= std_logic_vector(sum_red(14 downto 7)) & "00";
+            oRgb.red     <= std_logic_vector(sum_red_d(14 downto 7)) & "00";
         end if;
         if (sum_gre(17) = '1') then
             oRgb.green     <= (others =>'0');
@@ -105,17 +117,17 @@ process (clk) begin
         else
             oRgb.green     <= std_logic_vector(sum_gre(14 downto 7)) & "00";
         end if;
-        if (sum_blu(17) = '1') then
+        if (sum_blu_d(17) = '1') then
             oRgb.blue     <= (others =>'0');
-        elsif(sum_blu(15)= '1' or sum_blu(16)= '1') then
+        elsif(sum_blu_d(15)= '1' or sum_blu_d(16)= '1') then
             oRgb.blue     <= (others =>'1');
         else
-            oRgb.blue     <= std_logic_vector(sum_blu(14 downto 7)) & "00";
+            oRgb.blue     <= std_logic_vector(sum_blu_d(14 downto 7)) & "00";
         end if;
-        oRgb.valid   <= rgbSyncValid(3);
-        oRgb.eol     <= rgbSyncEol(3);
-        oRgb.sof     <= rgbSyncSof(3);
-        oRgb.eof     <= rgbSyncEof(3);
+        oRgb.valid   <= rgbSyncValid(4);
+        oRgb.eol     <= rgbSyncEol(4);
+        oRgb.sof     <= rgbSyncSof(4);
+        oRgb.eof     <= rgbSyncEof(4);
     end if;
 end process;
 end behavioral;

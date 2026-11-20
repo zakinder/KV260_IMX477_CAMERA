@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Wed Nov 18 23:42:56 2026
+| Date         : Thu Nov 19 12:26:04 2026
 | Host         : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command      : report_drc -file kv260_video_wrapper_drc_opted.rpt -pb kv260_video_wrapper_drc_opted.pb -rpx kv260_video_wrapper_drc_opted.rpx
 | Design       : kv260_video_wrapper
@@ -24,13 +24,13 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 614
+             Violations found: 578
 +--------+----------+------------------------+------------+
 | Rule   | Severity | Description            | Violations |
 +--------+----------+------------------------+------------+
-| DPIP-2 | Warning  | Input pipelining       | 92         |
-| DPOP-3 | Warning  | PREG Output pipelining | 135        |
-| DPOP-4 | Warning  | MREG Output pipelining | 387        |
+| DPIP-2 | Warning  | Input pipelining       | 74         |
+| DPOP-3 | Warning  | PREG Output pipelining | 126        |
+| DPOP-4 | Warning  | MREG Output pipelining | 378        |
 +--------+----------+------------------------+------------+
 
 2. REPORT DETAILS
@@ -342,155 +342,65 @@ Related violations: <none>
 
 DPIP-2#62 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#63 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#64 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#65 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#66 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#67 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#68 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#69 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#70 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#71 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#72 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-2#73 Warning
 Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#74 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#75 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#76 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#77 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#78 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#79 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#80 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#81 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#82 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#83 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#84 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#85 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#86 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red] input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#87 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#88 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#89 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#90 Warning
-Input pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-2#91 Warning
-Input pipelining  
 DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
-DPIP-2#92 Warning
+DPIP-2#74 Warning
 Input pipelining  
 DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0 input kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
@@ -1037,17 +947,17 @@ Related violations: <none>
 
 DPOP-3#109 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#110 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#111 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#112 Warning
@@ -1067,107 +977,62 @@ Related violations: <none>
 
 DPOP-3#115 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][blue]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#116 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#117 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#118 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#119 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#120 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#121 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#122 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#123 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#124 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#125 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-3#126 Warning
 PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#127 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#128 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#129 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#130 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#131 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#132 Warning
-PREG Output pipelining  
 DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#133 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#134 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-3#135 Warning
-PREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]0 output kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
 DPOP-4#1 Warning
@@ -2737,47 +2602,47 @@ Related violations: <none>
 
 DPOP-4#314 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#315 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#316 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#317 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#318 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#319 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#320 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#321 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#322 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#323 Warning
@@ -2832,275 +2697,230 @@ Related violations: <none>
 
 DPOP-4#333 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#334 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#335 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#336 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#337 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer1_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#338 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#339 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#340 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#341 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#342 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#343 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#344 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#345 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#346 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#347 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#348 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#349 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#350 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#351 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#352 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#353 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#354 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#355 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#356 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#357 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#358 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#359 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#360 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#361 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer2_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#362 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#363 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#364 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[8][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#365 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#366 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#367 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#368 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#369 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#370 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbColors_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#371 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#372 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#373 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][blue]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#374 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#375 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#376 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][green]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 DPOP-4#377 Warning
 MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#378 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#379 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbMath_reg[7][red]0__0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#380 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#381 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][blue]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#382 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#383 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][green]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#384 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red] multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#385 Warning
-MREG Output pipelining  
-DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/rgb_saturation_exposer3_inst/rgbValue_reg[7][red]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-Related violations: <none>
-
-DPOP-4#386 Warning
-MREG Output pipelining  
 DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[mx]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
-DPOP-4#387 Warning
+DPOP-4#378 Warning
 MREG Output pipelining  
 DSP kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0 multiplier stage kv260_video_i/PS_VIDEO/RX_VIDEO/vfp_0/U0/sobel_inst/sobel_reg[my]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>

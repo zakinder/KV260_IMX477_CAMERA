@@ -199,6 +199,7 @@ verilog xil_defaultlib --include "C:/Xilinx/Vivado/2022.1/data/xilinx_vip/includ
 "../../../bd/kv260_video/ip/kv260_video_auto_pc_0/sim/kv260_video_auto_pc_0.v" \
 "../../../bd/kv260_video/ip/kv260_video_auto_ds_1/sim/kv260_video_auto_ds_1.v" \
 "../../../bd/kv260_video/ip/kv260_video_auto_pc_1/sim/kv260_video_auto_pc_1.v" \
+"../../../bd/kv260_video/ip/kv260_video_auto_cc_0/sim/kv260_video_auto_cc_0.v" \
 
 verilog xil_defaultlib "glbl.v"
 

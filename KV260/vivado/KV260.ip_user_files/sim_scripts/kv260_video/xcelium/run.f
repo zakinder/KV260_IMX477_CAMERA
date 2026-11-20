@@ -269,36 +269,36 @@
   "../../../bd/kv260_video/ip/kv260_video_vfp_0_0/src/xil_fixed_val_mul/sim/xil_fixed_val_mul.vhd" \
   "../../../bd/kv260_video/ip/kv260_video_vfp_0_0/src/xil_div/sim/xil_div.vhd" \
   "../../../bd/kv260_video/ip/kv260_video_vfp_0_0/src/xil_mul/sim/xil_mul.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/include/constants_package.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/float_and_fixed_pkg/fixed_float_types_c.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/float_and_fixed_pkg/fixed_pkg_c.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/float_and_fixed_pkg/float_pkg_c.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/include/vpf_records.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/include/ports_package.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/process/TestPattern.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/hdl/ccm.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_segments/clustering.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/include/vfp_pkg.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/cmyk2rgb.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_segments/color_k5_clustering.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Control/div16_8_8.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/process/frame_testpattern.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/hsv2rgb.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/rgb2cmyk.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/rgb2hsv.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/rgb2ycbcr.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Control/rgb_3taps.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Filters/rgb_contrast_brightness_level.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Filters/rgb_saturation_exposer.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/rgb_to_ryb.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Filters/sobel.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Control/square_root.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Control/sync_frames.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/Control/tap4Line.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/hdl/vfp_axi_stream.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/hdl/vfp_config.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/src/color_space/ycbcr2rgb.vhd" \
-  "../../../bd/kv260_video/ipshared/4c1a/hdl/vfp_v1_0.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/include/constants_package.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/float_and_fixed_pkg/fixed_float_types_c.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/float_and_fixed_pkg/fixed_pkg_c.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/float_and_fixed_pkg/float_pkg_c.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/include/vpf_records.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/include/ports_package.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/process/TestPattern.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/hdl/ccm.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_segments/clustering.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/include/vfp_pkg.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/cmyk2rgb.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_segments/color_k5_clustering.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Control/div16_8_8.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/process/frame_testpattern.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/hsv2rgb.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/rgb2cmyk.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/rgb2hsv.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/rgb2ycbcr.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Control/rgb_3taps.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Filters/rgb_contrast_brightness_level.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Filters/rgb_saturation_exposer.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/rgb_to_ryb.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Filters/sobel.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Control/square_root.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Control/sync_frames.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/Control/tap4Line.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/hdl/vfp_axi_stream.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/hdl/vfp_config.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/src/color_space/ycbcr2rgb.vhd" \
+  "../../../bd/kv260_video/ipshared/53fa/hdl/vfp_v1_0.vhd" \
   "../../../bd/kv260_video/ip/kv260_video_vfp_0_0/sim/kv260_video_vfp_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_lite_ipif_v3_0_4 \
@@ -526,6 +526,7 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/kv260_video/ip/kv260_video_system_ila_0_0/sim/kv260_video_system_ila_0_0.vhd" \
+  "../../../bd/kv260_video/ip/kv260_video_rst_clk_wiz_ctrl_0/sim/kv260_video_rst_clk_wiz_ctrl_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_26 \
   "../../../../KV260.gen/sources_1/bd/kv260_video/ipshared/90c8/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -541,6 +542,7 @@
   "../../../bd/kv260_video/ip/kv260_video_auto_pc_0/sim/kv260_video_auto_pc_0.v" \
   "../../../bd/kv260_video/ip/kv260_video_auto_ds_1/sim/kv260_video_auto_ds_1.v" \
   "../../../bd/kv260_video/ip/kv260_video_auto_pc_1/sim/kv260_video_auto_pc_1.v" \
+  "../../../bd/kv260_video/ip/kv260_video_auto_cc_0/sim/kv260_video_auto_cc_0.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/kv260_video/sim/kv260_video.vhd" \

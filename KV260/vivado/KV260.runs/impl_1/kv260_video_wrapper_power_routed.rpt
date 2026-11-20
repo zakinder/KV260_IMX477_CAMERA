@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date             : Thu Nov 19 00:53:15 2026
+| Date             : Thu Nov 19 14:01:14 2026
 | Host             : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command          : report_power -file kv260_video_wrapper_power_routed.rpt -pb kv260_video_wrapper_power_summary_routed.pb -rpx kv260_video_wrapper_power_routed.rpx
 | Design           : kv260_video_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 5.229        |
+| Total On-Chip Power (W)  | 5.340        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 4.886        |
-| Device Static (W)        | 0.343        |
+| Dynamic (W)              | 4.996        |
+| Device Static (W)        | 0.344        |
 | Effective TJA (C/W)      | 2.3          |
-| Max Ambient (C)          | 72.9         |
-| Junction Temperature (C) | 37.1         |
+| Max Ambient (C)          | 72.6         |
+| Junction Temperature (C) | 37.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,28 +52,28 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.562 |       20 |       --- |             --- |
-| CLB Logic                |     0.401 |   217945 |       --- |             --- |
-|   LUT as Logic           |     0.231 |    83487 |    117120 |           71.28 |
-|   LUT as Shift Register  |     0.061 |     5234 |     57600 |            9.09 |
+| Clocks                   |     0.560 |       20 |       --- |             --- |
+| CLB Logic                |     0.466 |   218924 |       --- |             --- |
+|   LUT as Logic           |     0.268 |    83771 |    117120 |           71.53 |
+|   LUT as Shift Register  |     0.074 |     5234 |     57600 |            9.09 |
 |   LUT as Distributed RAM |     0.052 |     1080 |     57600 |            1.88 |
-|   Register               |     0.037 |    93654 |    234240 |           39.98 |
-|   CARRY8                 |     0.020 |     4792 |     14640 |           32.73 |
+|   Register               |     0.048 |    96558 |    234240 |           41.22 |
+|   CARRY8                 |     0.024 |     4703 |     14640 |           32.12 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
-|   Others                 |     0.000 |     8608 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |     2295 |    117120 |            1.96 |
-| Signals                  |     0.421 |   177996 |       --- |             --- |
-| Block RAM                |     0.150 |    128.5 |       144 |           89.24 |
+|   Others                 |     0.000 |     8610 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |     2109 |    117120 |            1.80 |
+| Signals                  |     0.459 |   179544 |       --- |             --- |
+| Block RAM                |     0.158 |      131 |       144 |           90.97 |
 | URAM                     |     0.145 |       30 |        64 |           46.88 |
 | MMCM                     |     0.413 |        0 |       --- |             --- |
 | PLL                      |     0.112 |        2 |       --- |             --- |
-| DSPs                     |     0.141 |      403 |      1248 |           32.29 |
+| DSPs                     |     0.143 |      403 |      1248 |           32.29 |
 | I/O                      |     0.069 |       21 |       189 |           11.11 |
 | PS8                      |     2.471 |        1 |       --- |             --- |
-| Static Power             |     0.343 |          |           |                 |
+| Static Power             |     0.344 |          |           |                 |
 |   PS Static              |     0.000 |          |           |                 |
-|   PL Static              |     0.343 |          |           |                 |
-| Total                    |     5.229 |          |           |                 |
+|   PL Static              |     0.344 |          |           |                 |
+| Total                    |     5.340 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -83,9 +83,9 @@ Table of Contents
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source          | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint          |       0.720 |     2.620 |       2.506 |      0.115 |       NA    | Unspecified | NA         |
+| Vccint          |       0.720 |     2.773 |       2.658 |      0.116 |       NA    | Unspecified | NA         |
 | Vccint_io       |       0.850 |     0.068 |       0.030 |      0.038 |       NA    | Unspecified | NA         |
-| Vccbram         |       0.850 |     0.026 |       0.024 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram         |       0.850 |     0.027 |       0.025 |      0.002 |       NA    | Unspecified | NA         |
 | Vccaux          |       1.800 |     0.363 |       0.289 |      0.074 |       NA    | Unspecified | NA         |
 | Vccaux_io       |       1.800 |     0.043 |       0.011 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33          |       3.300 |     0.013 |       0.006 |      0.007 |       NA    | Unspecified | NA         |
@@ -187,18 +187,18 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| kv260_video_wrapper      |     4.886 |
+| kv260_video_wrapper      |     4.996 |
 |   dbg_hub                |     0.005 |
 |     inst                 |     0.005 |
 |       BSCANID.u_xsdbm_id |     0.005 |
 |   iic_scl_iobuf          |     0.013 |
 |   iic_sda_iobuf          |     0.013 |
-|   kv260_video_i          |     4.855 |
-|     PS_VIDEO             |     4.830 |
-|       RX_VIDEO           |     1.780 |
-|       TO_PS              |     2.745 |
-|       VIDEO_PIPELINE     |     0.101 |
-|       V_DMA              |     0.204 |
+|   kv260_video_i          |     4.965 |
+|     PS_VIDEO             |     4.940 |
+|       RX_VIDEO           |     1.911 |
+|       TO_PS              |     2.741 |
+|       VIDEO_PIPELINE     |     0.088 |
+|       V_DMA              |     0.200 |
 |     system_ila_0         |     0.025 |
 |       U0                 |     0.025 |
 +--------------------------+-----------+

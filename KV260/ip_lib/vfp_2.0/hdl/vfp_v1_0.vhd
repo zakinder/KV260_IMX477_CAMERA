@@ -94,6 +94,10 @@ entity vfp_v1_0 is
         video2_tvalid             : in std_logic);
 end vfp_v1_0;
 architecture arch_imp of vfp_v1_0 is
+    signal primary_pixels : std_logic_vector(C_iVideo_TDATA_WIDTH-1 downto 0);
+    signal primary_valid, primary_ready, primary_sof, primary_eol : std_logic;
+    signal primary_filtered : std_logic;
+    signal primary_keep, primary_strb : std_logic_vector(2 downto 0);
     signal wr_regs             : mRegs;
     signal rd_regs             : mRegs;
     signal cord_x              : std_logic_vector(15 downto 0);
@@ -248,6 +252,19 @@ port map(
 ------------------------------------------------------------
 --                                           VFP_AXI_STREAM1
 ------------------------------------------------------------
+-- On this BD AXI-Lite, demosaic and VFP use the same PL clock.
+rd_regs.cfigReg18 <= wr_regs.cfigReg18;
+surface_contour : entity work.surface_contour_select
+generic map (FRAME_WIDTH, FRAME_HEIGHT, C_iVideo_TDATA_WIDTH)
+port map (
+    clk => ivideo_aclk, rst_n => ivideo_aresetn,
+    enable => wr_regs.cfigReg18(0), dimensions => wr_regs.cfigReg19,
+    s_data => ivideo_tdata, s_valid => ivideo_tvalid, s_ready => ivideo_tready,
+    s_sof => ivideo_tuser, s_eol => ivideo_tlast,
+    m_data => primary_pixels, m_valid => primary_valid, m_ready => primary_ready,
+    m_sof => primary_sof, m_eol => primary_eol, filtered => primary_filtered);
+primary_keep <= "111" when primary_filtered='1' else ivideo_tkeep(2 downto 0);
+primary_strb <= "111" when primary_filtered='1' else ivideo_tstrb(2 downto 0);
 VFP_AXI_STREAM1_INST : vfp_axi_stream 
 generic map(
     TDATA_WIDTH                     => C_iVideo_TDATA_WIDTH,
@@ -257,11 +274,11 @@ generic map(
 port map (
     s_axis_aclk                     => ivideo_aclk,
     s_axis_aresetn                  => ivideo_aresetn,
-    s_axis_tready                   => ivideo_tready,
-    s_axis_tdata                    => ivideo_tdata,
-    s_axis_tlast                    => ivideo_tlast,
-    s_axis_tuser                    => ivideo_tuser,
-    s_axis_tvalid                   => ivideo_tvalid,
+    s_axis_tready                   => primary_ready,
+    s_axis_tdata                    => primary_pixels,
+    s_axis_tlast                    => primary_eol,
+    s_axis_tuser                    => primary_sof,
+    s_axis_tvalid                   => primary_valid,
     config_number_19                => 4,
     config_frame_width              => config_frame_width,
     config_frame_height             => config_frame_height,
@@ -979,7 +996,7 @@ end process;
    ovideo_fifo_resetn <= ivideo_aresetn and ovideo_aresetn;
    ovideo_fifo_in <= ccc11.red(9 downto 2) & ccc11.green(9 downto 2) &
                      ccc11.blue(9 downto 2) & ccc11.sof & ccc11.eol &
-                     ivideo_tkeep(2 downto 0) & ivideo_tstrb(2 downto 0);
+                     primary_keep & primary_strb;
 
    ovideo_fifo_push <= '1' when ovideo_fifo_resetn = '1' and ccc11.valid = '1'
                                and ovideo_fifo_used < OVIDEO_FIFO_DEPTH else '0';
@@ -1039,8 +1056,8 @@ end process;
    ovideo_tlast  <= ovideo_pending(6);
    ovideo_tkeep  <= ovideo_pending(5 downto 3);
    ovideo_tstrb  <= ovideo_pending(2 downto 0);
-   o1video_tstrb          <= ivideo_tstrb(2 downto 0);
-   o1video_tkeep          <= ivideo_tkeep(2 downto 0);
+   o1video_tstrb          <= primary_strb;
+   o1video_tkeep          <= primary_keep;
    o1video_tdata          <= ccc11.green(9 downto 2) & ccc11.blue(9 downto 2) & ccc11.red(9 downto 2);
    o1video_tvalid         <= ccc11.valid;
    o1video_tuser          <= ccc11.sof;
