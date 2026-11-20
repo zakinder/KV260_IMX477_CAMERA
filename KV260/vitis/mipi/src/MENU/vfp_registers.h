@@ -23,7 +23,8 @@
 #define VFP_CENTROID_LUT_WRITE_INDEX             0x3C
 #define VFP_OUTPUT_CHANNEL_SELECT                0x40
 #define VFP_SOBEL_CLUSTER_INPUT_SELECT           0x44
-#define VFP_UNUSED_18                            0x48
+#define VFP_SURFACE_CONTOUR_ENABLE               0x48  /* bit 0, applied at next frame */
+#define VFP_UNUSED_18                            VFP_SURFACE_CONTOUR_ENABLE /* legacy alias */
 #define VFP_FRAME_DIMENSIONS                     0x4C  /* Height [31:16], width [15:0]. */
 #define VFP_CENTROID_LUT_READ_INDEX              0x50
 #define VFP_IMAGE_ADJUST_SELECTOR_VALUE          0x54  /* Adjustment selector [31:16], value [15:0]. */

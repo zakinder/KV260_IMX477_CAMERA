@@ -44,14 +44,16 @@ static const struct filter_settings startup_filters = {
 static const struct {
     const char *name;
     unsigned int output;
+    unsigned int surface_contour;
 } filter_previews[] = {
-    {"Bypass (demosaiced camera)", FILTER_BYPASS},
-    {"Dark color correction", FILTER_DARK_CCM},
-    {"RGB contrast", FILTER_CONTRAST},
-    {"Color clustering", FILTER_COLOR_CLUSTER},
-    {"Sobel edges", FILTER_SOBEL},
-    {"Color clustering with edges", FILTER_CLUSTER_WITH_EDGES},
-    {"Test pattern", FILTER_TEST_PATTERN}
+    {"Bypass (demosaiced camera)", FILTER_BYPASS, 0U},
+    {"Dark color correction", FILTER_DARK_CCM, 0U},
+    {"RGB contrast", FILTER_CONTRAST, 0U},
+    {"Color clustering", FILTER_COLOR_CLUSTER, 0U},
+    {"Sobel edges", FILTER_SOBEL, 0U},
+    {"Color clustering with edges", FILTER_CLUSTER_WITH_EDGES, 0U},
+    {"Test pattern", FILTER_TEST_PATTERN, 0U},
+    {"Edge-aware surface contour filter", FILTER_BYPASS, 1U}
 };
 
 #define FILTER_PREVIEW_COUNT (sizeof(filter_previews) / sizeof(filter_previews[0]))
@@ -76,6 +78,7 @@ static void filter_apply(const struct filter_settings *settings)
     else if (output == FILTER_SOBEL || output == FILTER_CLUSTER_WITH_EDGES)
         per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD, settings->threshold);
     per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, output);
+    per_write_reg(VFP_SURFACE_CONTOUR_ENABLE, filter_previews[settings->preview].surface_contour);
 }
 
 static void filter_menu(struct filter_settings *settings, unsigned int startup_preview)
@@ -136,7 +139,8 @@ static void filter_menu(struct filter_settings *settings, unsigned int startup_p
                 continue;
             }
         } else {
-            printf("Use 1-7, the arrow keys, W/A/S/D, R, or Q.\r\n");
+            printf("Use 1-%u, the arrow keys, W/A/S/D, R, or Q.\r\n",
+                   (unsigned int)FILTER_PREVIEW_COUNT);
             continue;
         }
         filter_apply(settings);
@@ -351,7 +355,7 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
     	per_write_reg(VFP_LIGHT_CCM_PRESET_SELECT,15);
     	per_write_reg(VFP_BALANCE_CCM_PRESET_SELECT,3);
         per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,221);
-        per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, filter_previews[startup_preview].output);
+        filter_apply(&filters);
         per_write_reg(VFP_SOBEL_CLUSTER_INPUT_SELECT,23);
         //per_write_reg(VFP_FRAME_DIMENSIONS,0);
         per_write_reg(VFP_CENTROID_LUT_SELECT, FILTER_DEFAULT_LUT);
