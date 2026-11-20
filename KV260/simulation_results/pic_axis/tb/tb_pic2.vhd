@@ -36,7 +36,8 @@ begin
   rst_n <= '1' after 40 ns;
   dut : entity work.pic2_filter_axis
     generic map (G_WIDTH,G_HEIGHT,G_MEDIUM_STEP,G_COARSE_STEP,G_CONTOUR_STEP,G_CHROMA_Q8)
-    port map (clk,rst_n,sd,sv,sr,ss,sl,md,mv,mr,ms,ml);
+    port map (clk,rst_n,std_logic_vector(to_unsigned(G_WIDTH,16)),
+              std_logic_vector(to_unsigned(G_HEIGHT,16)),sd,sv,sr,ss,sl,md,mv,mr,ms,ml);
 
   drive : process
     variable image : frame_ptr;

@@ -2,7 +2,7 @@
 -- Module      : axis_tone_contour
 -- Description : Stage 4 tone-mapping, contour detection, and RGB color
 --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
---               window at spacing s=6 (25x25 footprint) across a 4-cycle
+--               window at spacing s=6 (25x25 footprint) across a 6-cycle
 --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
 --               expand chroma saturation.
 -- =============================================================================
@@ -104,6 +104,19 @@ architecture rtl of axis_tone_contour is
     s   := clamp_int(8 * ((t + 4) / 8), 0, 255);
     return (3 * t + s + 2) / 4;
   end function tone;
+  type curve_t is array (0 to 255) of integer range 0 to 255;
+  function build_curve return curve_t is
+    variable curve : curve_t;
+  begin
+    for i in curve'range loop curve(i) := tone(i); end loop;
+    return curve;
+  end function;
+  constant CURVE : curve_t := build_curve;
+  signal y_tap : tap_luma_array_t;
+  signal center0, center_delay : rgb8_t;
+  signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
+  signal gain_delay : integer range 256 to 384;
+
 
   -- ---------------------------------------------------------------------------
   -- Window Generator & Pipeline Register Signals
@@ -117,9 +130,9 @@ architecture rtl of axis_tone_contour is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 4) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 4) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 4) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 6) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 6) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 6) := (others => '0');
 
   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
   signal s1_center     : rgb8_t;
@@ -176,13 +189,13 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable
-  advance       <= (not v_pipe(4)) or m_axis_tready;
+  advance       <= (not v_pipe(6)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(4);
-  m_axis_tuser  <= sof_pipe(4);
-  m_axis_tlast  <= eol_pipe(4);
+  m_axis_tvalid <= v_pipe(6);
+  m_axis_tuser  <= sof_pipe(6);
+  m_axis_tlast  <= eol_pipe(6);
 
   -- ---------------------------------------------------------------------------
   -- Process     : render
@@ -191,7 +204,6 @@ begin
   --               Q8 chroma difference scaling, and luma offset reconstruction.
   -- ---------------------------------------------------------------------------
   render : process (aclk)
-    variable y_tap       : tap_luma_array_t;
     variable yc          : integer;
     variable gx, gy      : integer;
     variable axial_sum   : integer;
@@ -219,19 +231,20 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 4 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 3);
-        sof_pipe <= win_sof   & sof_pipe(1 to 3);
-        eol_pipe <= win_eol   & eol_pipe(1 to 3);
+        -- Shift valid and frame/line sidebands across all 6 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 5);
+        sof_pipe <= win_sof   & sof_pipe(1 to 5);
+        eol_pipe <= win_eol   & eol_pipe(1 to 5);
 
         -- ---------------------------------------------------------------------
-        -- STAGE 1: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
+        -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
         --          measure d, and 4 outer opposing-pair ridge/light measures
         -- ---------------------------------------------------------------------
         for i in 0 to 24 loop
-          y_tap(i) := luma_y(win_taps(i));
+          y_tap(i) <= luma_y(win_taps(i));
         end loop;
 
+        center0 <= win_taps(12);
         yc := y_tap(12);
 
         -- Inner 3x3 Sobel operators (taps 6,7,8 / 11,12,13 / 16,17,18)
@@ -275,16 +288,16 @@ begin
         if p_min > max_p_min then max_p_min := p_min; end if;
         if p_max < min_p_max then min_p_max := p_max; end if;
 
-        s1_center   <= win_taps(12);
+        s1_center   <= center0;
         s1_y_center <= yc;
         s1_grad     <= abs(gx) + abs(gy);
         s1_rd       <= max_p_min - yc;
         s1_rl       <= yc - min_p_max;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 2: Compute tone target luma and center channel span / Q8 gain
+        -- STAGE 3: Compute tone target luma and center channel span / Q8 gain
         -- ---------------------------------------------------------------------
-        v_soft := tone(s1_y_center);
+        soft_delay <= CURVE(s1_y_center);
 
         if s1_dark_d <= 1 then
           v_ink := 0;
@@ -296,11 +309,12 @@ begin
         v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
 
         if v_ink >= v_ridge then
-          s2_target <= clamp_int(v_soft - v_ink + v_light, 0, 255);
+          ink_delay <= v_ink;
         else
-          s2_target <= clamp_int(v_soft - v_ridge + v_light, 0, 255);
+          ink_delay <= v_ridge;
         end if;
 
+        light_delay <= v_light;
         -- Find center RGB min, max, and chroma span
         v_c_min := s1_center.r;
         v_c_max := s1_center.r;
@@ -310,20 +324,23 @@ begin
         if s1_center.b > v_c_max then v_c_max := s1_center.b; end if;
 
         v_span     := v_c_max - v_c_min;
-        s2_center  <= s1_center;
-        s2_c_min   <= v_c_min;
-        s2_gain_q8 <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
+        center_delay <= s1_center;
+        min_delay <= v_c_min;
+        gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
 
         -- ---------------------------------------------------------------------
-        -- STAGE 3: Scale channel differences by Q8 chroma gain
+        -- STAGES 4-5: Register target and scale channel differences by Q8 chroma gain
         -- ---------------------------------------------------------------------
+        s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
+        s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
+
         s3_rel_rgb.r <= ((s2_center.r - s2_c_min) * s2_gain_q8 + 128) / 256;
         s3_rel_rgb.g <= ((s2_center.g - s2_c_min) * s2_gain_q8 + 128) / 256;
         s3_rel_rgb.b <= ((s2_center.b - s2_c_min) * s2_gain_q8 + 128) / 256;
         s3_target    <= s2_target;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 4: Compute common luma offset, add to relative RGB, and pack
+        -- STAGE 6: Compute common luma offset, add to relative RGB, and pack
         -- ---------------------------------------------------------------------
         v_rel_max := s3_rel_rgb.r;
         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;

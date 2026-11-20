@@ -1,126 +1,361 @@
--- The tone curve returns one brightness value. Pixel hue comes exclusively
--- from the camera RGB. There is no RGB palette, color classification or tint.
+-- =============================================================================
+-- Module      : axis_tone_contour
+-- Description : Stage 4 tone-mapping, contour detection, and RGB color
+--               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
+--               window at spacing s=6 (25x25 footprint) across a 6-cycle
+--               stalled-ready pipeline to lift shadows, ink edges/ridges, and
+--               expand chroma saturation.
+-- =============================================================================
+
 library ieee;
 use ieee.std_logic_1164.all;
-use work.pic2_types.all;
+use ieee.numeric_std.all;
 
 entity axis_tone_contour is
   generic (
-    G_WIDTH : positive; G_HEIGHT : positive; G_SPACING : positive;
-    G_CHROMA_Q8 : natural range 256 to 384 := 384
+    G_WIDTH     : positive := 2048; -- Maximum hardware frame width
+    G_HEIGHT    : positive := 1152; -- Maximum hardware frame height
+    G_SPACING   : positive := 6;    -- Tap spacing s (6 = 25x25 footprint)
+    G_CHROMA_Q8 : integer  := 384   -- Q8 chroma boost gain (384/256 = 1.5x)
   );
   port (
-    clk, rst_n : in std_logic;
-    s_valid : in std_logic; s_ready : out std_logic;
-    s_pixel : in pixel_t; s_sof, s_eol : in std_logic;
-    m_valid : out std_logic; m_ready : in std_logic;
-    m_pixel : out pixel_t; m_sof, m_eol : out std_logic;
-    active_width : in positive range 1 to G_WIDTH := G_WIDTH;
-    active_height : in positive range 1 to G_HEIGHT := G_HEIGHT
+    -- Clock, Reset, and Active Frame Geometry
+    aclk          : in  std_logic;                     -- AXI4-Stream system clock
+    aresetn       : in  std_logic;                     -- Synchronous active-low reset
+    active_width  : in  std_logic_vector(15 downto 0); -- Active frame width
+    active_height : in  std_logic_vector(15 downto 0); -- Active frame height
+
+    -- AXI4-Stream Input Interface
+    s_axis_tdata  : in  std_logic_vector(23 downto 0); -- Input RGB888 [23:16]=R, [15:8]=G, [7:0]=B
+    s_axis_tvalid : in  std_logic;                     -- Input data valid
+    s_axis_tready : out std_logic;                     -- Input backpressure ready
+    s_axis_tuser  : in  std_logic;                     -- Start-of-Frame (SOF) marker
+    s_axis_tlast  : in  std_logic;                     -- End-of-Line (EOL) marker
+
+    -- AXI4-Stream Output Interface
+    m_axis_tdata  : out std_logic_vector(23 downto 0); -- Reconstructed RGB888 output
+    m_axis_tvalid : out std_logic;                     -- Output data valid
+    m_axis_tready : in  std_logic;                     -- Downstream ready
+    m_axis_tuser  : out std_logic;                     -- Output SOF marker
+    m_axis_tlast  : out std_logic                      -- Output EOL marker
   );
-end entity;
+end entity axis_tone_contour;
 
 architecture rtl of axis_tone_contour is
-  type anchors_t is array (0 to 16) of natural range 0 to 256;
-  constant ANCHORS : anchors_t := (0,56,81,104,122,137,149,158,168,180,191,201,212,223,234,245,256);
-  function tone(y : byte_t) return byte_t is
-    variable i : natural range 0 to 15 := y/16;
+
+  -- ---------------------------------------------------------------------------
+  -- Tone Curve Anchor Table & Arithmetic Helper Functions
+  -- ---------------------------------------------------------------------------
+  type anchor_array_t is array (0 to 16) of integer range 0 to 256;
+  constant ANCHORS : anchor_array_t := (
+      0,  56,  81, 104, 122, 137, 149, 158, 168,
+    180, 191, 201, 212, 223, 234, 245, 256
+  );
+
+  type rgb8_t is record
+    r : integer range 0 to 255;
+    g : integer range 0 to 255;
+    b : integer range 0 to 255;
+  end record rgb8_t;
+
+  type tap_rgb_array_t  is array (0 to 24) of rgb8_t;
+  type tap_luma_array_t is array (0 to 24) of integer range 0 to 255;
+
+  -- Unpack 24-bit vector into RGB integer record
+  function to_rgb8(v : std_logic_vector(23 downto 0)) return rgb8_t is
   begin
-    return smallest(255,ANCHORS(i)+((y mod 16)*(ANCHORS(i+1)-ANCHORS(i))+8)/16);
-  end;
-  -- Evaluate the fixed luminance curve at elaboration.
-  type curve_t is array (0 to 255) of byte_t;
+    return (
+      r => to_integer(unsigned(v(23 downto 16))),
+      g => to_integer(unsigned(v(15 downto 8))),
+      b => to_integer(unsigned(v(7 downto 0)))
+    );
+  end function to_rgb8;
+
+  -- Rounded 8-bit luma approximation: Y = (5R + 9G + 2B + 8) div 16
+  function luma_y(c : rgb8_t) return integer is
+  begin
+    return (5 * c.r + 9 * c.g + 2 * c.b + 8) / 16;
+  end function luma_y;
+
+  -- Clamp integer value into [lo, hi]
+  function clamp_int(val, lo, hi : integer) return integer is
+  begin
+    if val < lo then
+      return lo;
+    elsif val > hi then
+      return hi;
+    else
+      return val;
+    end if;
+  end function clamp_int;
+
+  -- Function: tone
+  -- Interpolates the 17-anchor shadow-lifting curve and blends 3 parts linear
+  -- curve (T) with 1 part 8-step quantized level (S)
+  function tone(y_in : integer) return integer is
+    variable idx : integer range 0 to 15;
+    variable frc : integer range 0 to 15;
+    variable t   : integer;
+    variable s   : integer;
+  begin
+    idx := y_in / 16;
+    frc := y_in mod 16;
+    t   := clamp_int(ANCHORS(idx) + ((frc * (ANCHORS(idx + 1) - ANCHORS(idx)) + 8) / 16), 0, 255);
+    s   := clamp_int(8 * ((t + 4) / 8), 0, 255);
+    return (3 * t + s + 2) / 4;
+  end function tone;
+  type curve_t is array (0 to 255) of integer range 0 to 255;
   function build_curve return curve_t is
     variable curve : curve_t;
-    variable v : byte_t;
   begin
-    for i in curve'range loop
-      v := tone(i);
-      curve(i) := (3*v + smallest(255,8*((v+4)/8)) + 2)/4;
-    end loop;
+    for i in curve'range loop curve(i) := tone(i); end loop;
     return curve;
-  end;
+  end function;
   constant CURVE : curve_t := build_curve;
-  type lights_t is array (0 to 24) of byte_t;
-  signal y : lights_t;
-  signal center0, center_delay : rgb_t;
-  signal level, ink_delay, highlight_delay, min_delay : byte_t;
-  signal gain_delay : natural range 256 to 384;
-  signal win : window_t;
-  signal wvalid, wsof, weol, advance : std_logic;
-  signal valid, sof, eol : std_logic_vector(0 to 5) := (others=>'0');
-  signal gradient1 : natural range 0 to 2040;
-  signal dark_side1, dark_ridge1, light_ridge1 : integer range -255 to 255;
-  signal center1, center2, relative3 : rgb_t;
-  signal y1, target2, target3 : byte_t;
-  signal gain2 : natural range 256 to 384;
-  signal minimum2 : byte_t;
-begin
-  window_source : entity work.axis_window5
-    generic map (G_WIDTH,G_HEIGHT,G_SPACING)
-    port map (clk,rst_n,s_valid,s_ready,s_pixel,s_sof,s_eol,wvalid,advance,win,wsof,weol,active_width,active_height);
-  advance <= (not valid(5)) or m_ready;
-  m_valid <= valid(5); m_sof <= sof(5); m_eol <= eol(5);
+  signal y_tap : tap_luma_array_t;
+  signal center0, center_delay : rgb8_t;
+  signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
+  signal gain_delay : integer range 256 to 384;
 
-  render : process(clk)
-    variable gx, gy : integer range -1020 to 1020;
-    variable ink, ridge_ink, highlight, mn, mx, offset : integer;
-    variable result : rgb_t;
+
+  -- ---------------------------------------------------------------------------
+  -- Window Generator & Pipeline Register Signals
+  -- ---------------------------------------------------------------------------
+  signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
+  signal win_taps      : tap_rgb_array_t;
+  signal win_valid     : std_logic;
+  signal win_ready     : std_logic;
+  signal win_sof       : std_logic;
+  signal win_eol       : std_logic;
+
+  -- Pipeline Flow Control
+  signal advance       : std_logic;
+  signal v_pipe        : std_logic_vector(1 to 6) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 6) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 6) := (others => '0');
+
+  -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
+  signal s1_center     : rgb8_t;
+  signal s1_y_center   : integer range 0 to 255;
+  signal s1_grad       : integer range 0 to 2040;
+  signal s1_dark_d     : integer range -255 to 255;
+  signal s1_rd         : integer range -255 to 255;
+  signal s1_rl         : integer range -255 to 255;
+
+  -- Stage 2 Registers: Center RGB, target luma, channel min, and Q8 gain
+  signal s2_center     : rgb8_t;
+  signal s2_target     : integer range 0 to 255;
+  signal s2_c_min      : integer range 0 to 255;
+  signal s2_gain_q8    : integer range 256 to 512;
+
+  -- Stage 3 Registers: Scaled relative RGB channels and delayed target luma
+  signal s3_rel_rgb    : rgb8_t;
+  signal s3_target     : integer range 0 to 255;
+
+  -- Stage 4 Register: Final packed RGB888 output
+  signal s4_tdata      : std_logic_vector(23 downto 0) := (others => '0');
+
+begin
+
+  -- ---------------------------------------------------------------------------
+  -- 5x5 Line-Buffer Window Generator Instantiation (Spacing s = 6)
+  -- ---------------------------------------------------------------------------
+  u_win : entity work.axis_window5
+    generic map (
+      G_WIDTH       => G_WIDTH,
+      G_HEIGHT      => G_HEIGHT,
+      G_SPACING     => G_SPACING
+    )
+    port map (
+      aclk          => aclk,
+      aresetn       => aresetn,
+      active_width  => active_width,
+      active_height => active_height,
+      s_axis_tdata  => s_axis_tdata,
+      s_axis_tvalid => s_axis_tvalid,
+      s_axis_tready => s_axis_tready,
+      s_axis_tuser  => s_axis_tuser,
+      s_axis_tlast  => s_axis_tlast,
+      m_window_data => win_taps_flat,
+      m_valid       => win_valid,
+      m_ready       => win_ready,
+      m_sof         => win_sof,
+      m_eol         => win_eol
+    );
+
+  -- Unpack 25 flattened RGB888 taps (row-major 0..24, center = 12)
+  gen_unpack : for i in 0 to 24 generate
+    win_taps(i) <= to_rgb8(win_taps_flat((i + 1) * 24 - 1 downto i * 24));
+  end generate gen_unpack;
+
+  -- Backpressure advance enable
+  advance       <= (not v_pipe(6)) or m_axis_tready;
+  win_ready     <= advance;
+
+  m_axis_tdata  <= s4_tdata;
+  m_axis_tvalid <= v_pipe(6);
+  m_axis_tuser  <= sof_pipe(6);
+  m_axis_tlast  <= eol_pipe(6);
+
+  -- ---------------------------------------------------------------------------
+  -- Process     : render
+  -- Description : 4-stage synchronous arithmetic pipeline executing Sobel and
+  --               opposing-pair contour detection, shadow tone-curve mapping,
+  --               Q8 chroma difference scaling, and luma offset reconstruction.
+  -- ---------------------------------------------------------------------------
+  render : process (aclk)
+    variable yc          : integer;
+    variable gx, gy      : integer;
+    variable axial_sum   : integer;
+    variable p_min, p_max: integer;
+    variable max_p_min   : integer;
+    variable min_p_max   : integer;
+
+    variable v_soft      : integer;
+    variable v_ink       : integer;
+    variable v_ridge     : integer;
+    variable v_light     : integer;
+    variable v_c_min     : integer;
+    variable v_c_max     : integer;
+    variable v_span      : integer;
+
+    variable v_rel_max   : integer;
+    variable v_offset    : integer;
+    variable v_out_rgb   : rgb8_t;
   begin
-    if rising_edge(clk) then
-      if rst_n='0' then
-        valid <= (others=>'0'); sof <= (others=>'0'); eol <= (others=>'0');
-      elsif advance='1' then
-        valid <= wvalid & valid(0 to 4); sof <= wsof & sof(0 to 4); eol <= weol & eol(0 to 4);
-        if wvalid='1' then
-          for i in 0 to 24 loop y(i) <= luma(unpack(win(i))); end loop;
-          center0 <= unpack(win(12));
+    if rising_edge(aclk) then
+      if aresetn = '0' then
+        v_pipe   <= (others => '0');
+        sof_pipe <= (others => '0');
+        eol_pipe <= (others => '0');
+        s4_tdata <= (others => '0');
+
+      elsif advance = '1' then
+        -- Shift valid and frame/line sidebands across all 6 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 5);
+        sof_pipe <= win_sof   & sof_pipe(1 to 5);
+        eol_pipe <= win_eol   & eol_pipe(1 to 5);
+
+        -- ---------------------------------------------------------------------
+        -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
+        --          measure d, and 4 outer opposing-pair ridge/light measures
+        -- ---------------------------------------------------------------------
+        for i in 0 to 24 loop
+          y_tap(i) <= luma_y(win_taps(i));
+        end loop;
+
+        center0 <= win_taps(12);
+        yc := y_tap(12);
+
+        -- Inner 3x3 Sobel operators (taps 6,7,8 / 11,12,13 / 16,17,18)
+        gx := (y_tap(8)  + 2 * y_tap(13) + y_tap(18)) -
+              (y_tap(6)  + 2 * y_tap(11) + y_tap(16));
+        gy := (y_tap(16) + 2 * y_tap(17) + y_tap(18)) -
+              (y_tap(6)  + 2 * y_tap(7)  + y_tap(8));
+
+        -- Rounded mean of 8 axial neighbors at +/-1 and +/-2 tap spacings minus Yc
+        axial_sum := y_tap(2)  + y_tap(7)  + y_tap(17) + y_tap(22) +
+                     y_tap(10) + y_tap(11) + y_tap(13) + y_tap(14);
+        s1_dark_d <= ((axial_sum + 4) / 8) - yc;
+
+        -- Four outer opposing pairs spanning center tap 12:
+        -- Pair 0: Vertical (2, 22)   | Pair 1: Horizontal (10, 14)
+        -- Pair 2: Main Diag (0, 24)  | Pair 3: Anti-Diag (4, 20)
+        max_p_min := -1;
+        min_p_max := 256;
+
+        -- Pair 0: (2, 22)
+        if y_tap(2) < y_tap(22) then p_min := y_tap(2); p_max := y_tap(22);
+        else                         p_min := y_tap(22); p_max := y_tap(2); end if;
+        if p_min > max_p_min then max_p_min := p_min; end if;
+        if p_max < min_p_max then min_p_max := p_max; end if;
+
+        -- Pair 1: (10, 14)
+        if y_tap(10) < y_tap(14) then p_min := y_tap(10); p_max := y_tap(14);
+        else                          p_min := y_tap(14); p_max := y_tap(10); end if;
+        if p_min > max_p_min then max_p_min := p_min; end if;
+        if p_max < min_p_max then min_p_max := p_max; end if;
+
+        -- Pair 2: (0, 24)
+        if y_tap(0) < y_tap(24) then p_min := y_tap(0); p_max := y_tap(24);
+        else                         p_min := y_tap(24); p_max := y_tap(0); end if;
+        if p_min > max_p_min then max_p_min := p_min; end if;
+        if p_max < min_p_max then min_p_max := p_max; end if;
+
+        -- Pair 3: (4, 20)
+        if y_tap(4) < y_tap(20) then p_min := y_tap(4); p_max := y_tap(20);
+        else                         p_min := y_tap(20); p_max := y_tap(4); end if;
+        if p_min > max_p_min then max_p_min := p_min; end if;
+        if p_max < min_p_max then min_p_max := p_max; end if;
+
+        s1_center   <= center0;
+        s1_y_center <= yc;
+        s1_grad     <= abs(gx) + abs(gy);
+        s1_rd       <= max_p_min - yc;
+        s1_rl       <= yc - min_p_max;
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 3: Compute tone target luma and center channel span / Q8 gain
+        -- ---------------------------------------------------------------------
+        soft_delay <= CURVE(s1_y_center);
+
+        if s1_dark_d <= 1 then
+          v_ink := 0;
+        else
+          v_ink := clamp_int((clamp_int((s1_grad / 4) - 5, 0, 2040) / 4) + (s1_dark_d / 4), 0, 12);
         end if;
-        if valid(0)='1' then
-          center1 <= center0; y1 <= y(12);
-          gx := y(8)+2*y(13)+y(18) - y(6)-2*y(11)-y(16);
-          gy := y(16)+2*y(17)+y(18) - y(6)-2*y(7)-y(8);
-          gradient1 <= magnitude(gx)+magnitude(gy);
-          -- A narrow dark stroke has brighter pixels on BOTH sides, even when
-          -- its center has zero Sobel gradient. Check four line orientations.
-          dark_ridge1 <= largest(largest(smallest(y(10),y(14)),smallest(y(2),y(22))),
-                                 largest(smallest(y(0),y(24)),smallest(y(4),y(20)))) - y(12);
-          light_ridge1 <= y(12) - smallest(smallest(largest(y(10),y(14)),largest(y(2),y(22))),
-                                          smallest(largest(y(0),y(24)),largest(y(4),y(20))));
-          dark_side1 <= (y(7)+y(11)+y(13)+y(17)+y(2)+y(10)+y(14)+y(22)+4)/8 - y(12);
+
+        v_ridge := clamp_int((3 * clamp_int(s1_rd - 2, 0, 255)) / 2, 0, 42);
+        v_light := clamp_int((3 * clamp_int(s1_rl - 3, 0, 255)) / 4, 0, 14);
+
+        if v_ink >= v_ridge then
+          ink_delay <= v_ink;
+        else
+          ink_delay <= v_ridge;
         end if;
-        if valid(1)='1' then
-          level <= CURVE(y1);
-          ink := 0;
-          if dark_side1>1 then
-            ink := smallest(12,largest(gradient1/4-5,0)/4 + dark_side1/4);
-          end if;
-          ridge_ink := smallest(42,3*largest(dark_ridge1-2,0)/2);
-          highlight := smallest(14,3*largest(light_ridge1-3,0)/4);
-          ink_delay <= largest(ink,ridge_ink);
-          highlight_delay <= highlight;
-          center_delay <= center1;
-          mn := smallest(center1(0),smallest(center1(1),center1(2)));
-          mx := largest(center1(0),largest(center1(1),center1(2)));
-          min_delay <= mn;
-          -- One gain for all channels. Taper the gain near the gamut boundary.
-          gain_delay <= 256+smallest(G_CHROMA_Q8-256,255-(mx-mn));
-        end if;
-        if valid(2)='1' then
-          target2 <= clamp(level-ink_delay+highlight_delay,0,255);
-          center2 <= center_delay; minimum2 <= min_delay; gain2 <= gain_delay;
-        end if;
-        if valid(3)='1' then
-          for ch in 0 to 2 loop relative3(ch) <= ((center2(ch)-minimum2)*gain2+128)/256; end loop;
-          target3 <= target2;
-        end if;
-        if valid(4)='1' then
-          mx := largest(relative3(0),largest(relative3(1),relative3(2)));
-          offset := clamp(target3-luma(relative3),0,255-mx);
-          for ch in 0 to 2 loop result(ch) := relative3(ch)+offset; end loop;
-          m_pixel <= pack(result);
-        end if;
+
+        light_delay <= v_light;
+        -- Find center RGB min, max, and chroma span
+        v_c_min := s1_center.r;
+        v_c_max := s1_center.r;
+        if s1_center.g < v_c_min then v_c_min := s1_center.g; end if;
+        if s1_center.b < v_c_min then v_c_min := s1_center.b; end if;
+        if s1_center.g > v_c_max then v_c_max := s1_center.g; end if;
+        if s1_center.b > v_c_max then v_c_max := s1_center.b; end if;
+
+        v_span     := v_c_max - v_c_min;
+        center_delay <= s1_center;
+        min_delay <= v_c_min;
+        gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
+
+        -- ---------------------------------------------------------------------
+        -- STAGES 4-5: Register target and scale channel differences by Q8 chroma gain
+        -- ---------------------------------------------------------------------
+        s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
+        s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
+
+        s3_rel_rgb.r <= ((s2_center.r - s2_c_min) * s2_gain_q8 + 128) / 256;
+        s3_rel_rgb.g <= ((s2_center.g - s2_c_min) * s2_gain_q8 + 128) / 256;
+        s3_rel_rgb.b <= ((s2_center.b - s2_c_min) * s2_gain_q8 + 128) / 256;
+        s3_target    <= s2_target;
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 6: Compute common luma offset, add to relative RGB, and pack
+        -- ---------------------------------------------------------------------
+        v_rel_max := s3_rel_rgb.r;
+        if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;
+        if s3_rel_rgb.b > v_rel_max then v_rel_max := s3_rel_rgb.b; end if;
+
+        v_offset    := clamp_int(s3_target - luma_y(s3_rel_rgb), 0, 255 - v_rel_max);
+        v_out_rgb.r := clamp_int(s3_rel_rgb.r + v_offset, 0, 255);
+        v_out_rgb.g := clamp_int(s3_rel_rgb.g + v_offset, 0, 255);
+        v_out_rgb.b := clamp_int(s3_rel_rgb.b + v_offset, 0, 255);
+
+        s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
+                    std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &
+                    std_logic_vector(to_unsigned(v_out_rgb.b, 8));
       end if;
     end if;
-  end process;
-end architecture;
+  end process render;
+
+end architecture rtl;

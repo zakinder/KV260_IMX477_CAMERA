@@ -18,7 +18,11 @@ use ieee.numeric_std.all;
 entity pic2_filter_axis is
   generic (
     G_WIDTH  : positive := 2048; -- Maximum hardware line-buffer width
-    G_HEIGHT : positive := 1152  -- Maximum hardware frame height
+    G_HEIGHT : positive := 1152; -- Maximum hardware frame height
+    G_MEDIUM_STEP : positive := 3;
+    G_COARSE_STEP : positive := 6;
+    G_CONTOUR_STEP : positive := 6;
+    G_CHROMA_Q8 : natural range 256 to 384 := 384
   );
   port (
     -- Clock, Synchronous Active-Low Reset, and Active Frame Geometry
@@ -49,7 +53,7 @@ architecture rtl of pic2_filter_axis is
   -- Stage Configuration Constants & Inter-Stage Bus Types
   -- ---------------------------------------------------------------------------
   type int3_array_t is array (0 to 2) of integer;
-  constant C_SPACING   : int3_array_t := (1,  3,  6);  -- Multiscale tap spacings s
+  constant C_SPACING   : int3_array_t := (1, G_MEDIUM_STEP, G_COARSE_STEP);  -- Multiscale tap spacings s
   constant C_TOLERANCE : int3_array_t := (20, 14, 10); -- Surface score cutoffs
 
   type pixel_bus_t is array (0 to 5) of std_logic_vector(23 downto 0);
@@ -120,7 +124,8 @@ begin
     generic map (
       G_WIDTH       => G_WIDTH,
       G_HEIGHT      => G_HEIGHT,
-      G_SPACING     => 6
+      G_SPACING     => G_CONTOUR_STEP,
+      G_CHROMA_Q8   => G_CHROMA_Q8
     )
     port map (
       aclk          => aclk,

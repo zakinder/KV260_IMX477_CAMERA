@@ -11,6 +11,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+use work.pic2_types.all;
+
 entity axis_window5 is
   generic (
     G_WIDTH   : positive := 2048; -- Maximum supported horizontal frame width
@@ -41,154 +43,124 @@ entity axis_window5 is
 end entity axis_window5;
 
 architecture rtl of axis_window5 is
-
-  -- ---------------------------------------------------------------------------
-  -- UltraRAM Column History Constants & Bank Geometry (72-Bit Wide Banks)
-  -- ---------------------------------------------------------------------------
-  constant C_HIST_ROWS  : positive := 4 * G_SPACING;           -- 4s stored RGB888 rows
-  constant C_HIST_BITS  : positive := C_HIST_ROWS * 24;        -- Total history bits/col
-  constant C_BANK_WIDTH : positive := 72;                      -- UltraRAM native bank width
-  constant C_NUM_BANKS  : positive := (C_HIST_BITS + 71) / 72; -- Number of 72-bit banks
-  constant C_PAD_BITS   : positive := C_NUM_BANKS * C_BANK_WIDTH;
-
-  type bank_ram_t is array (0 to G_WIDTH - 1) of std_logic_vector(C_BANK_WIDTH - 1 downto 0);
-  type bank_bus_t is array (0 to C_NUM_BANKS - 1) of std_logic_vector(C_BANK_WIDTH - 1 downto 0);
-
-  -- 5x5 RGB888 Tap Grid: 5 vertical rows (0..4) x 5 horizontal columns (0..4)
-  type col5_rgb_t is array (0 to 4) of std_logic_vector(23 downto 0);
-  type win5_rgb_t is array (0 to 4) of col5_rgb_t;
-
-  -- Column History RAM Read/Write Buses
-  signal x_req          : integer range 0 to G_WIDTH - 1              := 0;
-  signal x_pipe         : integer range 0 to G_WIDTH + 2 * G_SPACING  := 0;
-  signal y_pipe         : integer range 0 to G_HEIGHT + 2 * G_SPACING := 0;
-  signal ram_rd_banks   : bank_bus_t := (others => (others => '0'));
-  signal ram_wr_banks   : bank_bus_t := (others => (others => '0'));
-  signal ram_rd_word    : std_logic_vector(C_PAD_BITS - 1 downto 0);
-  signal ram_wr_word    : std_logic_vector(C_PAD_BITS - 1 downto 0)   := (others => '0');
-  signal ram_wr_en      : std_logic := '0';
-
-  -- Raster State & Virtual Border Padding Signals
-  signal x_in           : integer range 0 to G_WIDTH + 2 * G_SPACING  := 0;
-  signal y_in           : integer range 0 to G_HEIGHT + 2 * G_SPACING := 0;
-  signal v_pad_active   : std_logic := '0'; -- Asserted during bottom 2s virtual rows
-  signal h_pad_active   : std_logic := '0'; -- Asserted during right 2s virtual cols
-  signal pending_valid  : std_logic := '0';
-  signal pending_pixel  : std_logic_vector(23 downto 0) := (others => '0');
-  signal last_col_pixel : std_logic_vector(23 downto 0) := (others => '0');
-
-  -- 5x5 Window Shift Register & Output Hold Registers
-  signal h_taps         : win5_rgb_t := (others => (others => (others => '0')));
-  signal out_valid_reg  : std_logic  := '0';
-  signal out_sof_reg    : std_logic  := '0';
-  signal out_eol_reg    : std_logic  := '0';
-
-  -- Active Frame Bounds & Handshake Controls
-  signal w_act          : integer range 0 to G_WIDTH;
-  signal h_act          : integer range 0 to G_HEIGHT;
-  signal pipe_advance   : std_logic;
-  signal step_en        : std_logic;
-
+  signal w_act, h_act : natural range 0 to 65535;
+  constant RADIUS : positive := 2*G_SPACING;
+  constant DEPTH  : positive := 4*G_SPACING;
+  constant PIXEL_BITS : positive := 24;
+  constant BANK_BITS : positive := 72; -- one UltraRAM port
+  constant HISTORY_BITS : positive := DEPTH * PIXEL_BITS;
+  type taps_t is array (0 to 4, 0 to DEPTH) of pixel_t;
+  signal read_history, write_history : std_logic_vector(HISTORY_BITS-1 downto 0);
+  signal read_enable, write_enable : std_logic;
+  signal taps : taps_t;
+  signal x_req, x_pipe : natural range 0 to G_WIDTH+RADIUS-1 := 0;
+  signal y_req, y_pipe : natural range 0 to G_HEIGHT+RADIUS-1 := 0;
+  signal active_pixel, issue, advance, pending, valid_q : std_logic := '0';
+  signal pixel_pipe : pixel_t;
+  signal current_bits : std_logic_vector(PIXEL_BITS-1 downto 0);
 begin
+  w_act <= to_integer(unsigned(active_width));
+  h_act <= to_integer(unsigned(active_height));
+  advance <= (not valid_q) or m_ready;
+  active_pixel <= '1' when x_req < w_act and y_req < h_act else '0';
+  s_axis_tready <= aresetn and advance and active_pixel;
+  issue <= (not active_pixel) or s_axis_tvalid;
+  current_bits <= std_logic_vector(to_unsigned(pixel_pipe, PIXEL_BITS)) when y_pipe < h_act
+                  else read_history(PIXEL_BITS-1 downto 0);
+  write_history(PIXEL_BITS-1 downto 0) <= current_bits;
+  gen_prior : for k in 1 to DEPTH-1 generate
+    write_history((k+1)*PIXEL_BITS-1 downto k*PIXEL_BITS) <= current_bits when y_pipe=0
+      else read_history(k*PIXEL_BITS-1 downto (k-1)*PIXEL_BITS);
+  end generate;
 
-  w_act        <= to_integer(unsigned(active_width));
-  h_act        <= to_integer(unsigned(active_height));
+  read_enable <= aresetn and advance and issue when x_req < w_act else '0';
+  write_enable <= aresetn and advance and pending when x_pipe < w_act else '0';
 
-  -- Downstream advance condition: output register is empty or accepted
-  pipe_advance <= (not out_valid_reg) or m_ready;
-
-  -- Accept new input pixels only when not in virtual padding and pipeline can advance
-  s_axis_tready <= '1' when (v_pad_active = '0' and h_pad_active = '0' and
-                             (pending_valid = '0' or pipe_advance = '1')) else '0';
-
-  -- Step occurs on an active input transfer or a virtual border padding cycle
-  step_en      <= '1' when ((s_axis_tvalid = '1' and v_pad_active = '0' and h_pad_active = '0' and
-                             (pending_valid = '0' or pipe_advance = '1')) or
-                            ((v_pad_active = '1' or h_pad_active = '1') and pipe_advance = '1')) else '0';
-
-  -- Physical column address clamps virtual right-padding columns to (w_act - 1)
-  x_req        <= x_in when (x_in < w_act) else (w_act - 1);
-
-  -- ---------------------------------------------------------------------------
-  -- Generate    : banks
-  -- Description : Splits wide column history words into parallel banks up to
-  --               72 bits wide with ram_style = "ultra" for UltraRAM inference.
-  -- ---------------------------------------------------------------------------
-  banks : for b in 0 to C_NUM_BANKS - 1 generate
-    signal mem_bank         : bank_ram_t := (others => (others => '0'));
-    attribute ram_style     : string;
-    attribute ram_style of mem_bank : signal is "ultra";
+  -- A bank is an array of packed vector words. A synchronous read issues
+  -- one cycle before writeback. The first row seeds the history without a RAM reset.
+  banks : for b in 0 to (HISTORY_BITS-1)/BANK_BITS generate
+    constant LO : natural := b*BANK_BITS;
+    constant HI : natural := smallest(LO+BANK_BITS,HISTORY_BITS)-1;
+    subtype word_t is std_logic_vector(HI-LO downto 0);
+    type ram_t is array (0 to G_WIDTH-1) of word_t;
+    signal ram : ram_t;
+    signal dout : word_t;
+    attribute ram_style : string;
+    attribute ram_style of ram : signal is "ultra";
   begin
-    ram_wr_banks(b) <= ram_wr_word((b + 1) * C_BANK_WIDTH - 1 downto b * C_BANK_WIDTH);
-    ram_rd_word((b + 1) * C_BANK_WIDTH - 1 downto b * C_BANK_WIDTH) <= ram_rd_banks(b);
-
-    p_bank_ram : process (aclk)
+    process(aclk)
     begin
       if rising_edge(aclk) then
-        if ram_wr_en = '1' then
-          mem_bank(x_pipe) <= ram_wr_banks(b);
+        if write_enable='1' then
+          ram(x_pipe) <= write_history(HI downto LO);
         end if;
-        if step_en = '1' then
-          ram_rd_banks(b) <= mem_bank(x_req);
+        if read_enable='1' then
+          dout <= ram(x_req);
         end if;
       end if;
-    end process p_bank_ram;
-  end generate banks;
+    end process;
+    read_history(HI downto LO) <= dout;
+  end generate;
 
-  -- ---------------------------------------------------------------------------
-  -- Process     : raster
-  -- Description : Coordinates pixel intake, virtual right/bottom border
-  --               replication, 5-tap horizontal shift register updates, and
-  --               center-aligned valid/SOF/EOL generation.
-  -- ---------------------------------------------------------------------------
-  raster : process (aclk)
-    variable cur_px    : std_logic_vector(23 downto 0);
-    variable col_5rows : col5_rgb_t;
-    variable next_hist : std_logic_vector(C_HIST_BITS - 1 downto 0);
+  raster : process(aclk)
+    variable col_sample : pixel_t;
   begin
     if rising_edge(aclk) then
-      if aresetn = '0' then
-        x_in           <= 0;
-        y_in           <= 0;
-        x_pipe         <= 0;
-        y_pipe         <= 0;
-        v_pad_active   <= '0';
-        h_pad_active   <= '0';
-        pending_valid  <= '0';
-        pending_pixel  <= (others => '0');
-        last_col_pixel <= (others => '0');
-        out_valid_reg  <= '0';
-        out_sof_reg    <= '0';
-        out_eol_reg    <= '0';
-        ram_wr_en      <= '0';
-        ram_wr_word    <= (others => '0');
-
-      else
-        ram_wr_en <= '0';
-
-        -- Clear output valid once accepted by downstream stage if no new step
-        if pipe_advance = '1' then
-          out_valid_reg <= '0';
-          out_sof_reg   <= '0';
-          out_eol_reg   <= '0';
+      if aresetn='0' then
+        x_req <= 0; y_req <= 0; pending <= '0'; valid_q <= '0';
+        m_sof <= '0'; m_eol <= '0';
+      elsif advance='1' then
+        valid_q <= '0'; m_sof <= '0'; m_eol <= '0';
+        if pending='1' then
+          for r in 0 to 4 loop
+            if x_pipe >= w_act then
+              col_sample := taps(r,0); -- virtual right column, repeat last sample
+            elsif r=4 or y_pipe=0 then
+              col_sample := to_integer(unsigned(current_bits));
+            else
+              col_sample := to_integer(unsigned(read_history((4-r)*G_SPACING*PIXEL_BITS-1 downto
+                                                            ((4-r)*G_SPACING-1)*PIXEL_BITS)));
+            end if;
+            taps(r,0) <= col_sample;
+            for k in 1 to DEPTH loop
+              if x_pipe=0 then taps(r,k) <= col_sample;
+              else taps(r,k) <= taps(r,k-1);
+              end if;
+            end loop;
+          end loop;
+          if x_pipe>=RADIUS and y_pipe>=RADIUS then
+            valid_q <= '1';
+            if x_pipe=RADIUS and y_pipe=RADIUS then m_sof <= '1'; end if;
+            if x_pipe=w_act+RADIUS-1 then m_eol <= '1'; end if;
+          end if;
         end if;
-
-        -- 1. Advance pending RAM read into 5x5 horizontal shift taps
-        if pending_valid = '1' and pipe_advance = '1' then
-          cur_px := pending_pixel;
-
-          -- Extract 5 vertical row samples spaced by G_SPACING rows:
-          -- Row 4 (newest) = cur_px; Rows 3..0 = history offsets s, 2s, 3s, 4s
-          col_5rows(4) := cur_px;
-          if y_pipe = 0 then
-            -- First active row seeds all 4*s vertical history rows with cur_px
-            for r in 0 to 3 loop
-              col_5rows(r) := cur_px;
-            end loop;
-            for h in 0 to C_HIST_ROWS - 1 loop
-              next_hist((h + 1) * 24 - 1 downto h * 24) := cur_px;
-            end loop;
+        pending <= issue;
+        if issue='1' then
+          x_pipe <= x_req; y_pipe <= y_req; pixel_pipe <= to_integer(unsigned(s_axis_tdata));
+          -- synthesis translate_off
+          if active_pixel='1' then
+            assert (s_axis_tuser='1') = (x_req=0 and y_req=0) report "Unexpected input SOF" severity failure;
+            assert (s_axis_tlast='1') = (x_req=w_act-1) report "Unexpected input EOL" severity failure;
+          end if;
+          -- synthesis translate_on
+          if x_req=w_act+RADIUS-1 then
+            x_req <= 0;
+            if y_req=h_act+RADIUS-1 then y_req <= 0;
+            else y_req <= y_req+1;
+            end if;
           else
-            for r in 0 to 3 loop
-              col_5rows(r) := ram_rd_word(((4 - r) * G_SPACING) * 24 - 1 downto
-                                          ((4 - r) *
+            x_req <= x_req+1;
+          end if;
+        end if;
+      end if;
+    end if;
+  end process;
+
+  m_valid <= valid_q;
+  gen_row : for r in 0 to 4 generate
+    gen_column : for c in 0 to 4 generate
+      m_window_data((5*r+c+1)*24-1 downto (5*r+c)*24) <=
+        std_logic_vector(to_unsigned(taps(r,(4-c)*G_SPACING),24));
+    end generate;
+  end generate;
+end architecture;

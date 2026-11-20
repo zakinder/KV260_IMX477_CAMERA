@@ -1,152 +1,340 @@
--- Range-based Kuwahara variant. Four overlapping 3x3 regions compete to
--- represent the center. Similar-scoring regions share the result. No color table.
+-- =============================================================================
+-- Module      : axis_surface_pass
+-- Description : Edge-aware 5x5 surface smoothing stage for pic2_filter_axis.
+--               Evaluates four overlapping 3x3 sub-regions anchored at center
+--               tap 12, selects regions within a homogeneity tolerance of the
+--               best-matching surface, and blends the resulting surface mean
+--               with the center pixel across a 8-cycle stalled-ready pipeline.
+-- =============================================================================
+
 library ieee;
 use ieee.std_logic_1164.all;
-use work.pic2_types.all;
+use ieee.numeric_std.all;
 
 entity axis_surface_pass is
   generic (
-    G_WIDTH : positive; G_HEIGHT : positive;
-    G_SPACING : positive; G_TOLERANCE : natural
+    G_WIDTH     : positive := 2048; -- Maximum frame width for UltraRAM line buffers
+    G_HEIGHT    : positive := 1152; -- Maximum frame height
+    G_SPACING   : positive := 1;    -- Tap spacing s (1 = 5x5, 3 = 13x13, 6 = 25x25)
+    G_TOLERANCE : natural  := 20    -- Score cutoff offset (20, 14, or 10)
   );
   port (
-    clk, rst_n : in std_logic;
-    s_valid : in std_logic; s_ready : out std_logic;
-    s_pixel : in pixel_t; s_sof, s_eol : in std_logic;
-    m_valid : out std_logic; m_ready : in std_logic;
-    m_pixel : out pixel_t; m_sof, m_eol : out std_logic;
-    active_width : in positive range 1 to G_WIDTH := G_WIDTH;
-    active_height : in positive range 1 to G_HEIGHT := G_HEIGHT
+    -- Clock, Reset, and Frame Geometry
+    aclk          : in  std_logic;                     -- AXI4-Stream system clock
+    aresetn       : in  std_logic;                     -- Synchronous active-low reset
+    active_width  : in  std_logic_vector(15 downto 0); -- Active frame width
+    active_height : in  std_logic_vector(15 downto 0); -- Active frame height
+
+    -- AXI4-Stream Input Interface
+    s_axis_tdata  : in  std_logic_vector(23 downto 0); -- Input RGB888 [23:16]=R, [15:8]=G, [7:0]=B
+    s_axis_tvalid : in  std_logic;                     -- Input data valid
+    s_axis_tready : out std_logic;                     -- Input ready backpressure
+    s_axis_tuser  : in  std_logic;                     -- Start-of-Frame (SOF) marker
+    s_axis_tlast  : in  std_logic;                     -- End-of-Line (EOL) marker
+
+    -- AXI4-Stream Output Interface
+    m_axis_tdata  : out std_logic_vector(23 downto 0); -- Filtered RGB888 output
+    m_axis_tvalid : out std_logic;                     -- Output data valid
+    m_axis_tready : in  std_logic;                     -- Downstream ready
+    m_axis_tuser  : out std_logic;                     -- Output SOF marker
+    m_axis_tlast  : out std_logic                      -- Output EOL marker
   );
-end entity;
+end entity axis_surface_pass;
 
 architecture rtl of axis_surface_pass is
-  type sum3_t is array (0 to 2) of natural range 0 to 765;
+
+  -- ---------------------------------------------------------------------------
+  -- Data Types & Pure Arithmetic Functions
+  -- ---------------------------------------------------------------------------
+  type rgb8_t is record
+    r : integer range 0 to 255;
+    g : integer range 0 to 255;
+    b : integer range 0 to 255;
+  end record rgb8_t;
+
+  type tap_array_t  is array (0 to 24) of rgb8_t;
+  type rgb4_array_t is array (0 to 3)  of rgb8_t;
+  type int4_array_t is array (0 to 3)  of integer range 0 to 2047;
+
+  -- 3-tap horizontal row strip summary
   type strip_t is record
-    total : sum3_t;
-    lo, hi : byte_t;
-  end record;
-  type strips_t is array (0 to 9) of strip_t;
-  type candidate_t is record
-    color : rgb_t;
-    score : natural range 0 to 1275;
-  end record;
-  type candidates_t is array (0 to 3) of candidate_t;
+    r_sum : integer range 0 to 765;
+    g_sum : integer range 0 to 765;
+    b_sum : integer range 0 to 765;
+    y_min : integer range 0 to 255;
+    y_max : integer range 0 to 255;
+  end record strip_t;
 
-  function strip(a, b, c : rgb_t; ya, yb, yc : byte_t) return strip_t is
-    variable result : strip_t;
+  type strip10_array_t is array (0 to 9) of strip_t;
+
+  -- Unpack 24-bit vector into RGB integer record
+  function to_rgb8(v : std_logic_vector(23 downto 0)) return rgb8_t is
   begin
-    for ch in 0 to 2 loop result.total(ch) := a(ch)+b(ch)+c(ch); end loop;
-    result.lo := smallest(ya,smallest(yb,yc));
-    result.hi := largest(ya,largest(yb,yc));
-    return result;
-  end;
-  type totals_t is array (0 to 3,0 to 2) of natural range 0 to 2299;
-  type spans_t is array (0 to 3) of byte_t;
-  type colors_t is array (0 to 3) of rgb_t;
+    return (
+      r => to_integer(unsigned(v(23 downto 16))),
+      g => to_integer(unsigned(v(15 downto 8))),
+      b => to_integer(unsigned(v(7 downto 0)))
+    );
+  end function to_rgb8;
+
+  -- Rounded 8-bit luma approximation: Y = (5R + 9G + 2B + 8) div 16
+  function luma_y(c : rgb8_t) return integer is
+  begin
+    return (5 * c.r + 9 * c.g + 2 * c.b + 8) / 16;
+  end function luma_y;
+
+  -- Maximum channel difference: D(A,B) = max(|Ar-Br|, |Ag-Bg|, |Ab-Bb|)
+  function chan_dist(a, b : rgb8_t) return integer is
+    variable dr, dg, db, m : integer;
+  begin
+    dr := abs(a.r - b.r);
+    dg := abs(a.g - b.g);
+    db := abs(a.b - b.b);
+    m  := dr;
+    if dg > m then m := dg; end if;
+    if db > m then m := db; end if;
+    return m;
+  end function chan_dist;
+
+  -- Function: strip
+  -- Reduces 3 horizontal taps into RGB sums and luma min/max extrema
+  function strip(t0, t1, t2 : rgb8_t) return strip_t is
+    variable y0, y1, y2, ymin, ymax : integer;
+  begin
+    y0   := luma_y(t0);
+    y1   := luma_y(t1);
+    y2   := luma_y(t2);
+    ymin := y0;
+    ymax := y0;
+    if y1 < ymin then ymin := y1; end if;
+    if y2 < ymin then ymin := y2; end if;
+    if y1 > ymax then ymax := y1; end if;
+    if y2 > ymax then ymax := y2; end if;
+
+    return (
+      r_sum => t0.r + t1.r + t2.r,
+      g_sum => t0.g + t1.g + t2.g,
+      b_sum => t0.b + t1.b + t2.b,
+      y_min => ymin,
+      y_max => ymax
+    );
+  end function strip;
+
+  -- Function: candidate
+  -- Combines 3 vertical row strips into a 3x3 region mean RGB and score
+  type totals_t is array (0 to 3, 0 to 2) of integer range 0 to 2299;
   signal totals : totals_t;
-  signal spans, mean_spans, score_spans, distances : spans_t;
-  signal means, score_colors : colors_t;
-  signal sum_center, mean_center, score_center, blend_center, blend_mean : rgb_t;
-  signal win : window_t;
-  signal wvalid, wsof, weol, advance : std_logic;
-  signal valid, sof, eol : std_logic_vector(0 to 7) := (others=>'0');
-  signal strips : strips_t;
-  signal regions2, regions3 : candidates_t;
-  signal winner3 : candidate_t;
-  signal center1, center2, center3 : rgb_t;
-begin
-  window_source : entity work.axis_window5
-    generic map (G_WIDTH, G_HEIGHT, G_SPACING)
-    port map (clk,rst_n,s_valid,s_ready,s_pixel,s_sof,s_eol,wvalid,advance,win,wsof,weol,active_width,active_height);
-  advance <= (not valid(7)) or m_ready;
-  m_valid <= valid(7); m_sof <= sof(7); m_eol <= eol(7);
+  signal spans, mean_spans, score_spans, distances : int4_array_t;
+  signal means, score_colors : rgb4_array_t;
+  signal sum_center, mean_center, score_center, blend_center, blend_mean : rgb8_t;
 
-  compute : process(clk)
-    type color_row_t is array (0 to 4) of rgb_t;
-    type light_row_t is array (0 to 4) of byte_t;
-    variable colors : color_row_t;
-    variable light : light_row_t;
-    variable start : natural range 0 to 5;
-    variable winner : candidate_t;
-    type sum4_t is array (0 to 2) of natural range 0 to 1020;
-    variable region_sum : sum4_t;
-    variable selected, mean_color, result : rgb_t;
+
+  -- ---------------------------------------------------------------------------
+  -- Window Generator & Pipeline Register Signals
+  -- ---------------------------------------------------------------------------
+  signal win_taps_flat : std_logic_vector(25 * 24 - 1 downto 0);
+  signal win_taps      : tap_array_t;
+  signal win_valid     : std_logic;
+  signal win_ready     : std_logic;
+  signal win_sof       : std_logic;
+  signal win_eol       : std_logic;
+
+  -- Pipeline Flow Control
+  signal advance       : std_logic;
+  signal v_pipe        : std_logic_vector(1 to 8) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 8) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 8) := (others => '0');
+
+  -- Stage 1 Registers: Center pixel and 10 row strips
+  signal s1_center     : rgb8_t;
+  signal s1_strips     : strip10_array_t;
+
+  -- Stage 2 Registers: Center pixel, 4 region means, and 4 scores
+  signal s2_center     : rgb8_t;
+  signal s2_means      : rgb4_array_t;
+  signal s2_scores     : int4_array_t;
+
+  -- Stage 3 Registers: Center pixel, winning mean, and 4 slot selections
+  signal s3_center     : rgb8_t;
+  signal s3_win_mean   : rgb8_t;
+  signal s3_means      : rgb4_array_t;
+  signal s3_scores     : int4_array_t;
+  signal s3_best_score : integer range 0 to 1275;
+
+  -- Stage 4 Register: Packed output RGB888 pixel
+  signal s4_tdata      : std_logic_vector(23 downto 0) := (others => '0');
+
+begin
+
+  -- ---------------------------------------------------------------------------
+  -- 5x5 Line-Buffer Window Generator Instantiation
+  -- ---------------------------------------------------------------------------
+  u_win : entity work.axis_window5
+    generic map (
+      G_WIDTH       => G_WIDTH,
+      G_HEIGHT      => G_HEIGHT,
+      G_SPACING     => G_SPACING
+    )
+    port map (
+      aclk          => aclk,
+      aresetn       => aresetn,
+      active_width  => active_width,
+      active_height => active_height,
+      s_axis_tdata  => s_axis_tdata,
+      s_axis_tvalid => s_axis_tvalid,
+      s_axis_tready => s_axis_tready,
+      s_axis_tuser  => s_axis_tuser,
+      s_axis_tlast  => s_axis_tlast,
+      m_window_data => win_taps_flat,
+      m_valid       => win_valid,
+      m_ready       => win_ready,
+      m_sof         => win_sof,
+      m_eol         => win_eol
+    );
+
+  -- Unpack 25 flattened RGB888 taps (row-major 0..24, center = 12)
+  gen_unpack : for i in 0 to 24 generate
+    win_taps(i) <= to_rgb8(win_taps_flat((i + 1) * 24 - 1 downto i * 24));
+  end generate gen_unpack;
+
+  -- Backpressure advance enable: advances whenever output is empty or accepted
+  advance       <= (not v_pipe(8)) or m_axis_tready;
+  win_ready     <= advance;
+
+  m_axis_tdata  <= s4_tdata;
+  m_axis_tvalid <= v_pipe(8);
+  m_axis_tuser  <= sof_pipe(8);
+  m_axis_tlast  <= eol_pipe(8);
+
+  -- ---------------------------------------------------------------------------
+  -- Process     : compute
+  -- Description : 8-stage synchronous arithmetic pipeline executing strip
+  --               reduction, 3x3 candidate scoring, tolerance gating, and
+  --               center-preserving surface blending.
+  -- ---------------------------------------------------------------------------
+  compute : process (aclk)
+    variable idx : natural range 0 to 5;
+    variable a,b,c : strip_t;
+    variable v_min_score : integer;
+    variable v_win_idx   : integer range 0 to 3;
+    variable slots       : rgb4_array_t;
+    variable v_cutoff    : integer;
+    variable v_m_avg     : rgb8_t;
+    variable v_out_rgb   : rgb8_t;
   begin
-    if rising_edge(clk) then
-      if rst_n='0' then
-        valid <= (others=>'0'); sof <= (others=>'0'); eol <= (others=>'0');
-      elsif advance='1' then
-        valid <= wvalid & valid(0 to 6); sof <= wsof & sof(0 to 6); eol <= weol & eol(0 to 6);
-        if wvalid='1' then
-          center1 <= unpack(win(12));
-          for r in 0 to 4 loop
-            for c in 0 to 4 loop
-              colors(c) := unpack(win(5*r+c)); light(c) := luma(colors(c));
-            end loop;
-            strips(2*r)   <= strip(colors(0),colors(1),colors(2),light(0),light(1),light(2));
-            strips(2*r+1) <= strip(colors(2),colors(3),colors(4),light(2),light(3),light(4));
-          end loop;
-        end if;
-        if valid(0)='1' then
-          sum_center <= center1;
-          for q in 0 to 3 loop
-            start := 4*(q/2) + (q mod 2);
-            for ch in 0 to 2 loop
-              totals(q,ch) <= strips(start).total(ch)+strips(start+2).total(ch)+strips(start+4).total(ch)+4;
-            end loop;
-            spans(q) <= largest(strips(start).hi,largest(strips(start+2).hi,strips(start+4).hi))
-                       -smallest(strips(start).lo,smallest(strips(start+2).lo,strips(start+4).lo));
-          end loop;
-        end if;
-        if valid(1)='1' then
-          mean_center <= sum_center; mean_spans <= spans;
-          for q in 0 to 3 loop
-            for ch in 0 to 2 loop
-              -- Exact floor(n/9) over the bounded numerator range 0..2299.
-              means(q)(ch) <= (totals(q,ch)*3641)/32768;
-            end loop;
-          end loop;
-        end if;
-        if valid(2)='1' then
-          score_center <= mean_center; score_colors <= means; score_spans <= mean_spans;
-          for q in 0 to 3 loop distances(q) <= distance(means(q),mean_center); end loop;
-        end if;
-        if valid(3)='1' then
-          center2 <= score_center;
-          for q in 0 to 3 loop
-            regions2(q).color <= score_colors(q);
-            regions2(q).score <= 2*score_spans(q)+3*distances(q);
-          end loop;
-        end if;
-        if valid(4)='1' then
-          center3 <= center2; regions3 <= regions2;
-          winner := regions2(0);
-          for q in 1 to 3 loop
-            if regions2(q).score < winner.score then winner := regions2(q); end if;
-          end loop;
-          winner3 <= winner;
-        end if;
-        if valid(5)='1' then
-          region_sum := (others=>0);
-          for q in 0 to 3 loop
-            selected := winner3.color;
-            if regions3(q).score <= winner3.score+G_TOLERANCE then selected := regions3(q).color; end if;
-            for ch in 0 to 2 loop region_sum(ch) := region_sum(ch)+selected(ch); end loop;
-          end loop;
-          for ch in 0 to 2 loop mean_color(ch) := (region_sum(ch)+2)/4; end loop;
-          blend_mean <= mean_color; blend_center <= center3;
-        end if;
-        if valid(6)='1' then
-          -- Retain more of an isolated, high-contrast center (e.g. an eyelid).
-          if distance(blend_mean,blend_center)>24 then
-            for ch in 0 to 2 loop result(ch) := (blend_mean(ch)+blend_center(ch)+1)/2; end loop;
-          else
-            for ch in 0 to 2 loop result(ch) := (7*blend_mean(ch)+blend_center(ch)+4)/8; end loop;
+    if rising_edge(aclk) then
+      if aresetn = '0' then
+        v_pipe   <= (others => '0');
+        sof_pipe <= (others => '0');
+        eol_pipe <= (others => '0');
+        s4_tdata <= (others => '0');
+
+      elsif advance = '1' then
+        -- Shift valid and frame/line sidebands across all 8 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 7);
+        sof_pipe <= win_sof   & sof_pipe(1 to 7);
+        eol_pipe <= win_eol   & eol_pipe(1 to 7);
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
+        --          covering TL (0..2,5..7,10..12), TR (2..4,7..9,12..14),
+        --          BL (10..12,15..17,20..22), and BR (12..14,17..19,22..24)
+        -- ---------------------------------------------------------------------
+        s1_center    <= win_taps(12);
+        s1_strips(0) <= strip(win_taps(0),  win_taps(1),  win_taps(2));  -- Row 0 Left
+        s1_strips(1) <= strip(win_taps(2),  win_taps(3),  win_taps(4));  -- Row 0 Right
+        s1_strips(2) <= strip(win_taps(5),  win_taps(6),  win_taps(7));  -- Row 1 Left
+        s1_strips(3) <= strip(win_taps(7),  win_taps(8),  win_taps(9));  -- Row 1 Right
+        s1_strips(4) <= strip(win_taps(10), win_taps(11), win_taps(12)); -- Row 2 Left
+        s1_strips(5) <= strip(win_taps(12), win_taps(13), win_taps(14)); -- Row 2 Right
+        s1_strips(6) <= strip(win_taps(15), win_taps(16), win_taps(17)); -- Row 3 Left
+        s1_strips(7) <= strip(win_taps(17), win_taps(18), win_taps(19)); -- Row 3 Right
+        s1_strips(8) <= strip(win_taps(20), win_taps(21), win_taps(22)); -- Row 4 Left
+        s1_strips(9) <= strip(win_taps(22), win_taps(23), win_taps(24)); -- Row 4 Right
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 2: Form 4 overlapping 3x3 region means and homogeneity scores
+        -- ---------------------------------------------------------------------
+        sum_center <= s1_center;
+        for q in 0 to 3 loop
+          idx := 4*(q/2) + q mod 2;
+          a := s1_strips(idx); b := s1_strips(idx+2); c := s1_strips(idx+4);
+          totals(q,0) <= a.r_sum + b.r_sum + c.r_sum + 4;
+          totals(q,1) <= a.g_sum + b.g_sum + c.g_sum + 4;
+          totals(q,2) <= a.b_sum + b.b_sum + c.b_sum + 4;
+          spans(q) <= work.pic2_types.largest(a.y_max,work.pic2_types.largest(b.y_max,c.y_max))
+                    - work.pic2_types.smallest(a.y_min,work.pic2_types.smallest(b.y_min,c.y_min));
+        end loop;
+
+        -- Stages 3-5: rounded mean, channel distance, then final score.
+        mean_center <= sum_center; mean_spans <= spans;
+        score_center <= mean_center; score_colors <= means; score_spans <= mean_spans;
+        s2_center <= score_center;
+        for q in 0 to 3 loop
+          means(q).r <= (totals(q,0) * 3641) / 32768;
+          means(q).g <= (totals(q,1) * 3641) / 32768;
+          means(q).b <= (totals(q,2) * 3641) / 32768;
+          distances(q) <= chan_dist(means(q),mean_center);
+          s2_means(q) <= score_colors(q);
+          s2_scores(q) <= 2*score_spans(q)+3*distances(q);
+        end loop;
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 6: Select winning region (strict '<' favors earlier index)
+        --          and gate all 4 slots against min_score + G_TOLERANCE
+        -- ---------------------------------------------------------------------
+        v_min_score := s2_scores(0);
+        v_win_idx   := 0;
+        for i in 1 to 3 loop
+          if s2_scores(i) < v_min_score then
+            v_min_score := s2_scores(i);
+            v_win_idx   := i;
           end if;
-          m_pixel <= pack(result);
+        end loop;
+
+        s3_best_score <= v_min_score;
+        s3_scores <= s2_scores;
+        s3_means <= s2_means;
+        s3_center   <= s2_center;
+        s3_win_mean <= s2_means(v_win_idx);
+
+        v_cutoff := s3_best_score + G_TOLERANCE;
+        for i in 0 to 3 loop
+          if s3_scores(i) <= v_cutoff then
+            slots(i) := s3_means(i);
+          else
+            slots(i) := s3_win_mean;
+          end if;
+        end loop;
+
+        -- ---------------------------------------------------------------------
+        -- STAGE 7: Average 4 selected slots, apply isolated-center protection,
+        --          and pack final 24-bit RGB888 output
+        -- ---------------------------------------------------------------------
+        v_m_avg.r := (slots(0).r + slots(1).r + slots(2).r + slots(3).r + 2) / 4;
+        v_m_avg.g := (slots(0).g + slots(1).g + slots(2).g + slots(3).g + 2) / 4;
+        v_m_avg.b := (slots(0).b + slots(1).b + slots(2).b + slots(3).b + 2) / 4;
+
+        blend_mean <= v_m_avg; blend_center <= s3_center;
+
+        -- Stage 8: edge-preserving blend.
+        if chan_dist(blend_mean, blend_center) > 24 then
+          -- Half-center branch: preserves isolated single-pixel details
+          v_out_rgb.r := (blend_mean.r + blend_center.r + 1) / 2;
+          v_out_rgb.g := (blend_mean.g + blend_center.g + 1) / 2;
+          v_out_rgb.b := (blend_mean.b + blend_center.b + 1) / 2;
+        else
+          -- Surface branch: 7/8 surface mean + 1/8 original center
+          v_out_rgb.r := (7 * blend_mean.r + blend_center.r + 4) / 8;
+          v_out_rgb.g := (7 * blend_mean.g + blend_center.g + 4) / 8;
+          v_out_rgb.b := (7 * blend_mean.b + blend_center.b + 4) / 8;
         end if;
+
+        s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &
+                    std_logic_vector(to_unsigned(v_out_rgb.g, 8)) &
+                    std_logic_vector(to_unsigned(v_out_rgb.b, 8));
       end if;
     end if;
-  end process;
-end architecture;
+  end process compute;
+
+end architecture rtl;

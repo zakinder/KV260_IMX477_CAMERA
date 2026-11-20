@@ -4,7 +4,7 @@
 --               Evaluates four overlapping 3x3 sub-regions anchored at center
 --               tap 12, selects regions within a homogeneity tolerance of the
 --               best-matching surface, and blends the resulting surface mean
---               with the center pixel across a 4-cycle stalled-ready pipeline.
+--               with the center pixel across a 8-cycle stalled-ready pipeline.
 -- =============================================================================
 
 library ieee;
@@ -122,35 +122,12 @@ architecture rtl of axis_surface_pass is
 
   -- Function: candidate
   -- Combines 3 vertical row strips into a 3x3 region mean RGB and score
-  procedure candidate(
-    constant s0, s1, s2 : in  strip_t;
-    constant center     : in  rgb8_t;
-    variable reg_mean   : out rgb8_t;
-    variable reg_score  : out integer
-  ) is
-    variable m        : rgb8_t;
-    variable ymin     : integer;
-    variable ymax     : integer;
-    variable span     : integer;
-    variable dist     : integer;
-  begin
-    -- Rounded 9-pixel mean: (sum + 4) div 9
-    m.r := (s0.r_sum + s1.r_sum + s2.r_sum + 4) / 9;
-    m.g := (s0.g_sum + s1.g_sum + s2.g_sum + 4) / 9;
-    m.b := (s0.b_sum + s1.b_sum + s2.b_sum + 4) / 9;
+  type totals_t is array (0 to 3, 0 to 2) of integer range 0 to 2299;
+  signal totals : totals_t;
+  signal spans, mean_spans, score_spans, distances : int4_array_t;
+  signal means, score_colors : rgb4_array_t;
+  signal sum_center, mean_center, score_center, blend_center, blend_mean : rgb8_t;
 
-    ymin := s0.y_min;
-    ymax := s0.y_max;
-    if s1.y_min < ymin then ymin := s1.y_min; end if;
-    if s2.y_min < ymin then ymin := s2.y_min; end if;
-    if s1.y_max > ymax then ymax := s1.y_max; end if;
-    if s2.y_max > ymax then ymax := s2.y_max; end if;
-
-    span      := ymax - ymin;
-    dist      := chan_dist(m, center);
-    reg_mean  := m;
-    reg_score := (2 * span) + (3 * dist);
-  end procedure candidate;
 
   -- ---------------------------------------------------------------------------
   -- Window Generator & Pipeline Register Signals
@@ -164,9 +141,9 @@ architecture rtl of axis_surface_pass is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 4) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 4) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 4) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 8) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 8) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 8) := (others => '0');
 
   -- Stage 1 Registers: Center pixel and 10 row strips
   signal s1_center     : rgb8_t;
@@ -180,7 +157,9 @@ architecture rtl of axis_surface_pass is
   -- Stage 3 Registers: Center pixel, winning mean, and 4 slot selections
   signal s3_center     : rgb8_t;
   signal s3_win_mean   : rgb8_t;
-  signal s3_slots      : rgb4_array_t;
+  signal s3_means      : rgb4_array_t;
+  signal s3_scores     : int4_array_t;
+  signal s3_best_score : integer range 0 to 1275;
 
   -- Stage 4 Register: Packed output RGB888 pixel
   signal s4_tdata      : std_logic_vector(23 downto 0) := (others => '0');
@@ -219,25 +198,26 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable: advances whenever output is empty or accepted
-  advance       <= (not v_pipe(4)) or m_axis_tready;
+  advance       <= (not v_pipe(8)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(4);
-  m_axis_tuser  <= sof_pipe(4);
-  m_axis_tlast  <= eol_pipe(4);
+  m_axis_tvalid <= v_pipe(8);
+  m_axis_tuser  <= sof_pipe(8);
+  m_axis_tlast  <= eol_pipe(8);
 
   -- ---------------------------------------------------------------------------
   -- Process     : compute
-  -- Description : 4-stage synchronous arithmetic pipeline executing strip
+  -- Description : 8-stage synchronous arithmetic pipeline executing strip
   --               reduction, 3x3 candidate scoring, tolerance gating, and
   --               center-preserving surface blending.
   -- ---------------------------------------------------------------------------
   compute : process (aclk)
-    variable v_means     : rgb4_array_t;
-    variable v_scores    : int4_array_t;
+    variable idx : natural range 0 to 5;
+    variable a,b,c : strip_t;
     variable v_min_score : integer;
     variable v_win_idx   : integer range 0 to 3;
+    variable slots       : rgb4_array_t;
     variable v_cutoff    : integer;
     variable v_m_avg     : rgb8_t;
     variable v_out_rgb   : rgb8_t;
@@ -250,10 +230,10 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 4 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 3);
-        sof_pipe <= win_sof   & sof_pipe(1 to 3);
-        eol_pipe <= win_eol   & eol_pipe(1 to 3);
+        -- Shift valid and frame/line sidebands across all 8 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 7);
+        sof_pipe <= win_sof   & sof_pipe(1 to 7);
+        eol_pipe <= win_eol   & eol_pipe(1 to 7);
 
         -- ---------------------------------------------------------------------
         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
@@ -275,17 +255,32 @@ begin
         -- ---------------------------------------------------------------------
         -- STAGE 2: Form 4 overlapping 3x3 region means and homogeneity scores
         -- ---------------------------------------------------------------------
-        candidate(s1_strips(0), s1_strips(2), s1_strips(4), s1_center, v_means(0), v_scores(0)); -- Top-Left
-        candidate(s1_strips(1), s1_strips(3), s1_strips(5), s1_center, v_means(1), v_scores(1)); -- Top-Right
-        candidate(s1_strips(4), s1_strips(6), s1_strips(8), s1_center, v_means(2), v_scores(2)); -- Bottom-Left
-        candidate(s1_strips(5), s1_strips(7), s1_strips(9), s1_center, v_means(3), v_scores(3)); -- Bottom-Right
+        sum_center <= s1_center;
+        for q in 0 to 3 loop
+          idx := 4*(q/2) + q mod 2;
+          a := s1_strips(idx); b := s1_strips(idx+2); c := s1_strips(idx+4);
+          totals(q,0) <= a.r_sum + b.r_sum + c.r_sum + 4;
+          totals(q,1) <= a.g_sum + b.g_sum + c.g_sum + 4;
+          totals(q,2) <= a.b_sum + b.b_sum + c.b_sum + 4;
+          spans(q) <= work.pic2_types.largest(a.y_max,work.pic2_types.largest(b.y_max,c.y_max))
+                    - work.pic2_types.smallest(a.y_min,work.pic2_types.smallest(b.y_min,c.y_min));
+        end loop;
 
-        s2_center <= s1_center;
-        s2_means  <= v_means;
-        s2_scores <= v_scores;
+        -- Stages 3-5: rounded mean, channel distance, then final score.
+        mean_center <= sum_center; mean_spans <= spans;
+        score_center <= mean_center; score_colors <= means; score_spans <= mean_spans;
+        s2_center <= score_center;
+        for q in 0 to 3 loop
+          means(q).r <= (totals(q,0) * 3641) / 32768;
+          means(q).g <= (totals(q,1) * 3641) / 32768;
+          means(q).b <= (totals(q,2) * 3641) / 32768;
+          distances(q) <= chan_dist(means(q),mean_center);
+          s2_means(q) <= score_colors(q);
+          s2_scores(q) <= 2*score_spans(q)+3*distances(q);
+        end loop;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 3: Select winning region (strict '<' favors earlier index)
+        -- STAGE 6: Select winning region (strict '<' favors earlier index)
         --          and gate all 4 slots against min_score + G_TOLERANCE
         -- ---------------------------------------------------------------------
         v_min_score := s2_scores(0);
@@ -297,36 +292,42 @@ begin
           end if;
         end loop;
 
-        v_cutoff    := v_min_score + G_TOLERANCE;
+        s3_best_score <= v_min_score;
+        s3_scores <= s2_scores;
+        s3_means <= s2_means;
         s3_center   <= s2_center;
         s3_win_mean <= s2_means(v_win_idx);
 
+        v_cutoff := s3_best_score + G_TOLERANCE;
         for i in 0 to 3 loop
-          if s2_scores(i) <= v_cutoff then
-            s3_slots(i) <= s2_means(i);
+          if s3_scores(i) <= v_cutoff then
+            slots(i) := s3_means(i);
           else
-            s3_slots(i) <= s2_means(v_win_idx);
+            slots(i) := s3_win_mean;
           end if;
         end loop;
 
         -- ---------------------------------------------------------------------
-        -- STAGE 4: Average 4 selected slots, apply isolated-center protection,
+        -- STAGE 7: Average 4 selected slots, apply isolated-center protection,
         --          and pack final 24-bit RGB888 output
         -- ---------------------------------------------------------------------
-        v_m_avg.r := (s3_slots(0).r + s3_slots(1).r + s3_slots(2).r + s3_slots(3).r + 2) / 4;
-        v_m_avg.g := (s3_slots(0).g + s3_slots(1).g + s3_slots(2).g + s3_slots(3).g + 2) / 4;
-        v_m_avg.b := (s3_slots(0).b + s3_slots(1).b + s3_slots(2).b + s3_slots(3).b + 2) / 4;
+        v_m_avg.r := (slots(0).r + slots(1).r + slots(2).r + slots(3).r + 2) / 4;
+        v_m_avg.g := (slots(0).g + slots(1).g + slots(2).g + slots(3).g + 2) / 4;
+        v_m_avg.b := (slots(0).b + slots(1).b + slots(2).b + slots(3).b + 2) / 4;
 
-        if chan_dist(v_m_avg, s3_center) > 24 then
+        blend_mean <= v_m_avg; blend_center <= s3_center;
+
+        -- Stage 8: edge-preserving blend.
+        if chan_dist(blend_mean, blend_center) > 24 then
           -- Half-center branch: preserves isolated single-pixel details
-          v_out_rgb.r := (v_m_avg.r + s3_center.r + 1) / 2;
-          v_out_rgb.g := (v_m_avg.g + s3_center.g + 1) / 2;
-          v_out_rgb.b := (v_m_avg.b + s3_center.b + 1) / 2;
+          v_out_rgb.r := (blend_mean.r + blend_center.r + 1) / 2;
+          v_out_rgb.g := (blend_mean.g + blend_center.g + 1) / 2;
+          v_out_rgb.b := (blend_mean.b + blend_center.b + 1) / 2;
         else
           -- Surface branch: 7/8 surface mean + 1/8 original center
-          v_out_rgb.r := (7 * v_m_avg.r + s3_center.r + 4) / 8;
-          v_out_rgb.g := (7 * v_m_avg.g + s3_center.g + 4) / 8;
-          v_out_rgb.b := (7 * v_m_avg.b + s3_center.b + 4) / 8;
+          v_out_rgb.r := (7 * blend_mean.r + blend_center.r + 4) / 8;
+          v_out_rgb.g := (7 * blend_mean.g + blend_center.g + 4) / 8;
+          v_out_rgb.b := (7 * blend_mean.b + blend_center.b + 4) / 8;
         end if;
 
         s4_tdata <= std_logic_vector(to_unsigned(v_out_rgb.r, 8)) &

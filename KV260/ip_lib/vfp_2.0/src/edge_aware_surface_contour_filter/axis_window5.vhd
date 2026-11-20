@@ -1,25 +1,49 @@
--- Centered 5x5 window, closed on all four borders by edge replication.
--- One address per physical column. A word holds the previous 4*G_SPACING rows.
--- Synchronous RAM read, then one cycle later write the updated column history.
+-- =============================================================================
+-- Module      : axis_window5
+-- Description : Parameterized 5x5 sliding-window generator for AXI4-Stream
+--               RGB888 video. Uses banked 72-bit UltraRAM column history (4*s
+--               rows deep) and 5-tap horizontal shift registers to emit 25 taps
+--               spaced s pixels horizontally and s rows vertically, with full
+--               border replication so output frame size matches input 1:1.
+-- =============================================================================
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
 use work.pic2_types.all;
 
 entity axis_window5 is
-  generic (G_WIDTH : positive; G_HEIGHT : positive; G_SPACING : positive := 1);
-  port (
-    clk, rst_n : in std_logic;
-    s_valid : in std_logic; s_ready : out std_logic;
-    s_pixel : in pixel_t; s_sof, s_eol : in std_logic;
-    m_valid : out std_logic; m_ready : in std_logic;
-    m_window : out window_t; m_sof, m_eol : out std_logic;
-    active_width : in positive range 1 to G_WIDTH := G_WIDTH;
-    active_height : in positive range 1 to G_HEIGHT := G_HEIGHT
+  generic (
+    G_WIDTH   : positive := 2048; -- Maximum supported horizontal frame width
+    G_HEIGHT  : positive := 1152; -- Maximum supported vertical frame height
+    G_SPACING : positive := 1     -- Tap spacing s (1, 3, or 6)
   );
-end entity;
+  port (
+    -- Clock, Synchronous Active-Low Reset, and Active Frame Dimensions
+    aclk          : in  std_logic;                      -- AXI4-Stream system clock
+    aresetn       : in  std_logic;                      -- Synchronous active-low reset
+    active_width  : in  std_logic_vector(15 downto 0);  -- Active frame width in pixels
+    active_height : in  std_logic_vector(15 downto 0);  -- Active frame height in lines
+
+    -- AXI4-Stream Pixel Input Interface
+    s_axis_tdata  : in  std_logic_vector(23 downto 0);  -- Input RGB888 pixel
+    s_axis_tvalid : in  std_logic;                      -- Input pixel valid
+    s_axis_tready : out std_logic;                      -- Input ready backpressure
+    s_axis_tuser  : in  std_logic;                      -- Start-of-Frame (SOF) marker
+    s_axis_tlast  : in  std_logic;                      -- End-of-Line (EOL) marker
+
+    -- 25-Tap Window Output Interface (Row-Major 0..24, Center = Tap 12)
+    m_window_data : out std_logic_vector(600 - 1 downto 0); -- 25 x 24-bit RGB888 taps
+    m_valid       : out std_logic;                          -- Window valid
+    m_ready       : in  std_logic;                          -- Downstream pipeline ready
+    m_sof         : out std_logic;                          -- Output SOF at center (0,0)
+    m_eol         : out std_logic                           -- Output EOL at last column
+  );
+end entity axis_window5;
 
 architecture rtl of axis_window5 is
+  signal w_act, h_act : natural range 0 to 65535;
   constant RADIUS : positive := 2*G_SPACING;
   constant DEPTH  : positive := 4*G_SPACING;
   constant PIXEL_BITS : positive := 24;
@@ -35,11 +59,13 @@ architecture rtl of axis_window5 is
   signal pixel_pipe : pixel_t;
   signal current_bits : std_logic_vector(PIXEL_BITS-1 downto 0);
 begin
+  w_act <= to_integer(unsigned(active_width));
+  h_act <= to_integer(unsigned(active_height));
   advance <= (not valid_q) or m_ready;
-  active_pixel <= '1' when x_req < active_width and y_req < active_height else '0';
-  s_ready <= rst_n and advance and active_pixel;
-  issue <= (not active_pixel) or s_valid;
-  current_bits <= std_logic_vector(to_unsigned(pixel_pipe, PIXEL_BITS)) when y_pipe < active_height
+  active_pixel <= '1' when x_req < w_act and y_req < h_act else '0';
+  s_axis_tready <= aresetn and advance and active_pixel;
+  issue <= (not active_pixel) or s_axis_tvalid;
+  current_bits <= std_logic_vector(to_unsigned(pixel_pipe, PIXEL_BITS)) when y_pipe < h_act
                   else read_history(PIXEL_BITS-1 downto 0);
   write_history(PIXEL_BITS-1 downto 0) <= current_bits;
   gen_prior : for k in 1 to DEPTH-1 generate
@@ -47,8 +73,8 @@ begin
       else read_history(k*PIXEL_BITS-1 downto (k-1)*PIXEL_BITS);
   end generate;
 
-  read_enable <= rst_n and advance and issue when x_req < active_width else '0';
-  write_enable <= rst_n and advance and pending when x_pipe < active_width else '0';
+  read_enable <= aresetn and advance and issue when x_req < w_act else '0';
+  write_enable <= aresetn and advance and pending when x_pipe < w_act else '0';
 
   -- A bank is an array of packed vector words. A synchronous read issues
   -- one cycle before writeback. The first row seeds the history without a RAM reset.
@@ -62,9 +88,9 @@ begin
     attribute ram_style : string;
     attribute ram_style of ram : signal is "ultra";
   begin
-    process(clk)
+    process(aclk)
     begin
-      if rising_edge(clk) then
+      if rising_edge(aclk) then
         if write_enable='1' then
           ram(x_pipe) <= write_history(HI downto LO);
         end if;
@@ -76,18 +102,18 @@ begin
     read_history(HI downto LO) <= dout;
   end generate;
 
-  raster : process(clk)
+  raster : process(aclk)
     variable col_sample : pixel_t;
   begin
-    if rising_edge(clk) then
-      if rst_n='0' then
+    if rising_edge(aclk) then
+      if aresetn='0' then
         x_req <= 0; y_req <= 0; pending <= '0'; valid_q <= '0';
         m_sof <= '0'; m_eol <= '0';
       elsif advance='1' then
         valid_q <= '0'; m_sof <= '0'; m_eol <= '0';
         if pending='1' then
           for r in 0 to 4 loop
-            if x_pipe >= active_width then
+            if x_pipe >= w_act then
               col_sample := taps(r,0); -- virtual right column, repeat last sample
             elsif r=4 or y_pipe=0 then
               col_sample := to_integer(unsigned(current_bits));
@@ -105,21 +131,21 @@ begin
           if x_pipe>=RADIUS and y_pipe>=RADIUS then
             valid_q <= '1';
             if x_pipe=RADIUS and y_pipe=RADIUS then m_sof <= '1'; end if;
-            if x_pipe=active_width+RADIUS-1 then m_eol <= '1'; end if;
+            if x_pipe=w_act+RADIUS-1 then m_eol <= '1'; end if;
           end if;
         end if;
         pending <= issue;
         if issue='1' then
-          x_pipe <= x_req; y_pipe <= y_req; pixel_pipe <= s_pixel;
+          x_pipe <= x_req; y_pipe <= y_req; pixel_pipe <= to_integer(unsigned(s_axis_tdata));
           -- synthesis translate_off
           if active_pixel='1' then
-            assert (s_sof='1') = (x_req=0 and y_req=0) report "Unexpected input SOF" severity failure;
-            assert (s_eol='1') = (x_req=active_width-1) report "Unexpected input EOL" severity failure;
+            assert (s_axis_tuser='1') = (x_req=0 and y_req=0) report "Unexpected input SOF" severity failure;
+            assert (s_axis_tlast='1') = (x_req=w_act-1) report "Unexpected input EOL" severity failure;
           end if;
           -- synthesis translate_on
-          if x_req=active_width+RADIUS-1 then
+          if x_req=w_act+RADIUS-1 then
             x_req <= 0;
-            if y_req=active_height+RADIUS-1 then y_req <= 0;
+            if y_req=h_act+RADIUS-1 then y_req <= 0;
             else y_req <= y_req+1;
             end if;
           else
@@ -133,7 +159,8 @@ begin
   m_valid <= valid_q;
   gen_row : for r in 0 to 4 generate
     gen_column : for c in 0 to 4 generate
-      m_window(5*r+c) <= taps(r,(4-c)*G_SPACING);
+      m_window_data((5*r+c+1)*24-1 downto (5*r+c)*24) <=
+        std_logic_vector(to_unsigned(taps(r,(4-c)*G_SPACING),24));
     end generate;
   end generate;
 end architecture;

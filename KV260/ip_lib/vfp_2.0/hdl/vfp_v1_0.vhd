@@ -141,14 +141,14 @@ port map(
     S_AXI_RREADY         => vfpconfig_rready);
 
     surface_contour : entity work.surface_contour_select
-        generic map (MAX_WIDTH => FRAME_WIDTH, MAX_HEIGHT => FRAME_HEIGHT,
+        generic map (G_MAX_WIDTH => FRAME_WIDTH, G_MAX_HEIGHT => FRAME_HEIGHT,
                      DATA_WIDTH => C_iVideo_TDATA_WIDTH)
-        port map (clk => ivideo_aclk, rst_n => resetn,
+        port map (aclk => ivideo_aclk, aresetn => resetn,
                   enable => wr_regs.cfigReg18(0), dimensions => wr_regs.cfigReg19,
-                  s_data => ivideo_tdata, s_valid => ivideo_tvalid, s_ready => input_ready,
-                  s_sof => ivideo_tuser, s_eol => ivideo_tlast,
-                  m_data => pixels, m_valid => valid, m_ready => ready,
-                  m_sof => sof, m_eol => eol, filtered => filtered);
+                  s_axis_tdata => ivideo_tdata, s_axis_tvalid => ivideo_tvalid, s_axis_tready => input_ready,
+                  s_axis_tuser => ivideo_tuser, s_axis_tlast => ivideo_tlast,
+                  m_axis_tdata => pixels, m_axis_tvalid => valid, m_axis_tready => ready,
+                  m_axis_tuser => sof, m_axis_tlast => eol, filtered => filtered);
 
     ivideo_tready <= input_ready;
     -- The filter may take several lines to produce its first output.

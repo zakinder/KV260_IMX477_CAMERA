@@ -14,7 +14,8 @@ use ieee.numeric_std.all;
 entity surface_contour_select is
   generic (
     G_MAX_WIDTH  : positive := 2048; -- Maximum supported horizontal frame width
-    G_MAX_HEIGHT : positive := 1152  -- Maximum supported vertical frame height
+    G_MAX_HEIGHT : positive := 1152; -- Maximum supported vertical frame height
+    DATA_WIDTH : positive := 32
   );
   port (
     -- Clock, Reset, and Frame Control
@@ -24,17 +25,18 @@ entity surface_contour_select is
     dimensions    : in  std_logic_vector(31 downto 0); -- [15:0] = frame width, [31:16] = frame height
 
     -- RGB10 AXI4-Stream Slave Input Interface
-    s_axis_tdata  : in  std_logic_vector(31 downto 0); -- [29:20]=R10, [19:10]=G10, [9:0]=B10
+    s_axis_tdata  : in  std_logic_vector(DATA_WIDTH-1 downto 0); -- [29:20]=R10, [19:10]=G10, [9:0]=B10
     s_axis_tvalid : in  std_logic;                     -- Input data valid
     s_axis_tready : out std_logic;                     -- Input backpressure ready
     s_axis_tuser  : in  std_logic;                     -- Start-of-Frame (SOF) marker
     s_axis_tlast  : in  std_logic;                     -- End-of-Line (EOL) marker
 
     -- RGB10 AXI4-Stream Master Output Interface
-    m_axis_tdata  : out std_logic_vector(31 downto 0); -- [29:20]=R10, [19:10]=G10, [9:0]=B10
+    m_axis_tdata  : out std_logic_vector(DATA_WIDTH-1 downto 0); -- [29:20]=R10, [19:10]=G10, [9:0]=B10
     m_axis_tvalid : out std_logic;                     -- Output data valid
     m_axis_tready : in  std_logic;                     -- Downstream ready
     m_axis_tuser  : out std_logic;                     -- Output Start-of-Frame (SOF) marker
+    filtered      : out std_logic;
     m_axis_tlast  : out std_logic                      -- Output End-of-Line (EOL) marker
   );
 end entity surface_contour_select;
@@ -64,6 +66,7 @@ architecture rtl of surface_contour_select is
   signal core_m_tlast  : std_logic;
 
   -- Combinational Dimension Decoding & Validation
+  signal run_core, bypass_held : std_logic;
   signal dim_w         : unsigned(15 downto 0);
   signal dim_h         : unsigned(15 downto 0);
   signal dims_valid    : boolean;
@@ -81,7 +84,7 @@ begin
                 (dim_h > 0 and dim_h <= G_MAX_HEIGHT);
 
   -- Trigger condition to arm filtering on an incoming Start-of-Frame beat
-  arm_filter <= (s_axis_tvalid = '1') and
+  arm_filter <= bypass_held = '0' and (s_axis_tvalid = '1') and
                 (s_axis_tuser  = '1') and
                 (enable        = '1') and
                 dims_valid;
@@ -94,14 +97,16 @@ begin
   -- ---------------------------------------------------------------------------
   -- Core RGB888 Filter Instantiation (5-Stage Streaming Pipeline)
   -- ---------------------------------------------------------------------------
-  u_core : entity work.pic2_filter_axis
+  run_core <= aresetn when state /= ST_BYPASS else '0';
+  filtered <= run_core;
+  core : entity work.pic2_filter_axis
     generic map (
       G_WIDTH       => G_MAX_WIDTH,
       G_HEIGHT      => G_MAX_HEIGHT
     )
     port map (
       aclk          => aclk,
-      aresetn       => aresetn,
+      aresetn       => run_core,
       active_width  => std_logic_vector(active_width),
       active_height => std_logic_vector(active_height),
       s_axis_tdata  => core_s_tdata,
@@ -129,10 +134,10 @@ begin
                    m_axis_tready;
 
   -- Expand filtered 8-bit channels back to 10-bit lanes by appending "00" LSBs
-  m_axis_tdata  <= "00" &
+  m_axis_tdata  <= std_logic_vector(resize(unsigned('0' &
                    core_m_tdata(23 downto 16) & "00" & -- R10
                    core_m_tdata(15 downto 8)  & "00" & -- G10
-                   core_m_tdata(7 downto 0)   & "00"   -- B10
+                   core_m_tdata(7 downto 0)   & "00"),DATA_WIDTH)) -- B10
                    when (state = ST_FEED or state = ST_DRAIN) else
                    s_axis_tdata;
 
@@ -154,12 +159,18 @@ begin
   begin
     if rising_edge(aclk) then
       if aresetn = '0' then
+        bypass_held <= '0';
         state         <= ST_BYPASS;
         active_width  <= (others => '0');
         active_height <= (others => '0');
         in_eol_cnt    <= (others => '0');
         out_eol_cnt   <= (others => '0');
       else
+        if state = ST_BYPASS and not arm_filter and s_axis_tvalid='1' and m_axis_tready='0' then
+          bypass_held <= '1';
+        else
+          bypass_held <= '0';
+        end if;
         case state is
 
           -- 1. BYPASS: Pass stream directly until an eligible SOF arms the filter
