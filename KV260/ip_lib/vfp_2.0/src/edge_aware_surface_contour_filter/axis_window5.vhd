@@ -3,6 +3,7 @@
 -- Synchronous RAM read, then one cycle later write the updated column history.
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 use work.pic2_types.all;
 
 entity axis_window5 is
@@ -21,43 +22,59 @@ end entity;
 architecture rtl of axis_window5 is
   constant RADIUS : positive := 2*G_SPACING;
   constant DEPTH  : positive := 4*G_SPACING;
-  type column_history_t is array (0 to DEPTH-1) of pixel_t;
-  type line_ram_t is array (0 to G_WIDTH-1) of column_history_t;
+  constant PIXEL_BITS : positive := 24;
+  constant BANK_BITS : positive := 72; -- one UltraRAM port
+  constant HISTORY_BITS : positive := DEPTH * PIXEL_BITS;
   type taps_t is array (0 to 4, 0 to DEPTH) of pixel_t;
-  signal line_ram : line_ram_t;
-  attribute ram_style : string;
-  attribute ram_style of line_ram : signal is "ultra";
-  signal old_rows, updated_rows : column_history_t;
+  signal read_history, write_history : std_logic_vector(HISTORY_BITS-1 downto 0);
+  signal read_enable, write_enable : std_logic;
   signal taps : taps_t;
   signal x_req, x_pipe : natural range 0 to G_WIDTH+RADIUS-1 := 0;
   signal y_req, y_pipe : natural range 0 to G_HEIGHT+RADIUS-1 := 0;
   signal active_pixel, issue, advance, pending, valid_q : std_logic := '0';
-  signal pixel_pipe, current_pixel : pixel_t;
+  signal pixel_pipe : pixel_t;
+  signal current_bits : std_logic_vector(PIXEL_BITS-1 downto 0);
 begin
   advance <= (not valid_q) or m_ready;
   active_pixel <= '1' when x_req < active_width and y_req < active_height else '0';
   s_ready <= rst_n and advance and active_pixel;
   issue <= (not active_pixel) or s_valid;
-  current_pixel <= pixel_pipe when y_pipe < active_height else old_rows(0);
-  updated_rows(0) <= current_pixel;
+  current_bits <= std_logic_vector(to_unsigned(pixel_pipe, PIXEL_BITS)) when y_pipe < active_height
+                  else read_history(PIXEL_BITS-1 downto 0);
+  write_history(PIXEL_BITS-1 downto 0) <= current_bits;
   gen_prior : for k in 1 to DEPTH-1 generate
-    updated_rows(k) <= current_pixel when y_pipe=0 else old_rows(k-1);
+    write_history((k+1)*PIXEL_BITS-1 downto k*PIXEL_BITS) <= current_bits when y_pipe=0
+      else read_history(k*PIXEL_BITS-1 downto (k-1)*PIXEL_BITS);
   end generate;
 
-  -- No RAM reset. The first physical row seeds every vertical history tap.
-  memory : process(clk)
+  read_enable <= rst_n and advance and issue when x_req < active_width else '0';
+  write_enable <= rst_n and advance and pending when x_pipe < active_width else '0';
+
+  -- A bank is an array of packed vector words. A synchronous read issues
+  -- one cycle before writeback. The first row seeds the history without a RAM reset.
+  banks : for b in 0 to (HISTORY_BITS-1)/BANK_BITS generate
+    constant LO : natural := b*BANK_BITS;
+    constant HI : natural := smallest(LO+BANK_BITS,HISTORY_BITS)-1;
+    subtype word_t is std_logic_vector(HI-LO downto 0);
+    type ram_t is array (0 to G_WIDTH-1) of word_t;
+    signal ram : ram_t;
+    signal dout : word_t;
+    attribute ram_style : string;
+    attribute ram_style of ram : signal is "ultra";
   begin
-    if rising_edge(clk) then
-      if rst_n='1' and advance='1' then
-        if issue='1' and x_req < active_width then
-          old_rows <= line_ram(x_req);
+    process(clk)
+    begin
+      if rising_edge(clk) then
+        if write_enable='1' then
+          ram(x_pipe) <= write_history(HI downto LO);
         end if;
-        if pending='1' and x_pipe < active_width then
-          line_ram(x_pipe) <= updated_rows;
+        if read_enable='1' then
+          dout <= ram(x_req);
         end if;
       end if;
-    end if;
-  end process;
+    end process;
+    read_history(HI downto LO) <= dout;
+  end generate;
 
   raster : process(clk)
     variable col_sample : pixel_t;
@@ -73,9 +90,10 @@ begin
             if x_pipe >= active_width then
               col_sample := taps(r,0); -- virtual right column, repeat last sample
             elsif r=4 or y_pipe=0 then
-              col_sample := current_pixel;
+              col_sample := to_integer(unsigned(current_bits));
             else
-              col_sample := old_rows((4-r)*G_SPACING-1);
+              col_sample := to_integer(unsigned(read_history((4-r)*G_SPACING*PIXEL_BITS-1 downto
+                                                            ((4-r)*G_SPACING-1)*PIXEL_BITS)));
             end if;
             taps(r,0) <= col_sample;
             for k in 1 to DEPTH loop
