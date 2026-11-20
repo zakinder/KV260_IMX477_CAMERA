@@ -257,14 +257,25 @@ rd_regs.cfigReg18 <= wr_regs.cfigReg18;
 surface_contour : entity work.surface_contour_select
 generic map (FRAME_WIDTH, FRAME_HEIGHT, C_iVideo_TDATA_WIDTH)
 port map (
-    clk => ivideo_aclk, rst_n => ivideo_aresetn,
-    enable => wr_regs.cfigReg18(0), dimensions => wr_regs.cfigReg19,
-    s_data => ivideo_tdata, s_valid => ivideo_tvalid, s_ready => ivideo_tready,
-    s_sof => ivideo_tuser, s_eol => ivideo_tlast,
-    m_data => primary_pixels, m_valid => primary_valid, m_ready => primary_ready,
-    m_sof => primary_sof, m_eol => primary_eol, filtered => primary_filtered);
+    clk        => ivideo_aclk, 
+	rst_n      => ivideo_aresetn,
+    enable     => wr_regs.cfigReg18(0), 
+	dimensions => wr_regs.cfigReg19,
+    s_data     => ivideo_tdata, 
+	s_valid    => ivideo_tvalid, 
+	s_ready    => ivideo_tready,
+    s_sof      => ivideo_tuser, 
+	s_eol      => ivideo_tlast,
+    m_data     => primary_pixels, 
+	m_valid    => primary_valid, 
+	m_ready    => primary_ready,
+    m_sof      => primary_sof, 
+	m_eol      => primary_eol, 
+	filtered   => primary_filtered);
+	
 primary_keep <= "111" when primary_filtered='1' else ivideo_tkeep(2 downto 0);
 primary_strb <= "111" when primary_filtered='1' else ivideo_tstrb(2 downto 0);
+
 VFP_AXI_STREAM1_INST : vfp_axi_stream 
 generic map(
     TDATA_WIDTH                     => C_iVideo_TDATA_WIDTH,
