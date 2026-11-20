@@ -676,7 +676,6 @@ void udp_recive(void *arg, struct udp_pcb *pcb, struct pbuf *p_rx, const ip_addr
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 1;
         }else if(a0==14){
-        	per_write_reg(VFP_FRAME_DIMENSIONS,(int)pData[21]);
         	WriteOneFrameEnd[0] = 1;
         	stream_it = 0;
         }

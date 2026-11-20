@@ -16,134 +16,27 @@ static FIL fil;
 static FATFS fatfs;
 static char *SD_File;
 u8 photobufs[VIDEO2_MAX_FRAME];
-/* Values from the output selector in vfp_v1_0.vhd. */
-enum {
-    FILTER_BYPASS = VFP_PREVIEW_BYPASS,
-    FILTER_TEST_PATTERN = 1,
-    FILTER_DARK_CCM = 6,
-    FILTER_COLOR_CLUSTER = 9,
-    FILTER_CONTRAST = 13,
-    FILTER_SOBEL = 15,
-    FILTER_CLUSTER_WITH_EDGES = 16
-};
-
-#define FILTER_DEFAULT_LUT 5
-#define FILTER_DEFAULT_THRESHOLD 100
-
-struct filter_settings {
-    unsigned int preview;
-    unsigned int lut;
-    unsigned int threshold;
-    unsigned int pattern;
-};
-
-static const struct filter_settings startup_filters = {
-    1, FILTER_DEFAULT_LUT, FILTER_DEFAULT_THRESHOLD, 0
-};
-
-static const struct {
-    const char *name;
-    unsigned int output;
-    unsigned int surface_contour;
-} filter_previews[] = {
-    {"Bypass (demosaiced camera)", FILTER_BYPASS, 0U},
-    {"Dark color correction", FILTER_DARK_CCM, 0U},
-    {"RGB contrast", FILTER_CONTRAST, 0U},
-    {"Color clustering", FILTER_COLOR_CLUSTER, 0U},
-    {"Sobel edges", FILTER_SOBEL, 0U},
-    {"Color clustering with edges", FILTER_CLUSTER_WITH_EDGES, 0U},
-    {"Test pattern", FILTER_TEST_PATTERN, 0U},
-    {"Edge-aware surface contour filter", FILTER_BYPASS, 1U}
-};
-
-#define FILTER_PREVIEW_COUNT (sizeof(filter_previews) / sizeof(filter_previews[0]))
-
-static unsigned int filter_adjust(unsigned int value, unsigned int max,
-                                  unsigned int step, int increase)
+static void filter_menu(unsigned int *enabled)
 {
-    if (increase)
-        return max - value < step ? max : value + step;
-    return value < step ? 0 : value - step;
-}
-
-static void filter_apply(const struct filter_settings *settings)
-{
-    unsigned int output = filter_previews[settings->preview].output;
-
-    if (output == FILTER_COLOR_CLUSTER || output == FILTER_CLUSTER_WITH_EDGES)
-        per_write_reg(VFP_CENTROID_LUT_SELECT, settings->lut);
-    /* The pattern selector and Sobel threshold share this PL register. */
-    if (output == FILTER_TEST_PATTERN)
-        per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD, settings->pattern);
-    else if (output == FILTER_SOBEL || output == FILTER_CLUSTER_WITH_EDGES)
-        per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD, settings->threshold);
-    per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, output);
-    per_write_reg(VFP_SURFACE_CONTOUR_ENABLE, filter_previews[settings->preview].surface_contour);
-}
-
-static void filter_menu(struct filter_settings *settings, unsigned int startup_preview)
-{
-    printf("\r\nLive VFP filters\r\n");
-    for (unsigned int i = 0; i < FILTER_PREVIEW_COUNT; ++i)
-        printf("  %u  %s\r\n", i + 1, filter_previews[i].name);
-    printf("Left/Right or A/D  Browse previews\r\n"
-           "Up/Down or W/S     Adjust the selected filter\r\n"
-           "R                  Restore startup filter settings\r\n"
-           "Q                  Return to main menu and keep preview\r\n");
+    printf("\r\n1  Camera bypass\r\n"
+           "8  Edge-aware surface contour filter\r\n"
+           "A/D or Left/Right  Toggle   R  Restore bypass   Q  Return\r\n");
     for (;;) {
-        unsigned int output = filter_previews[settings->preview].output;
-        unsigned int key;
-
-        printf("\r\nSelected preview: %s", filter_previews[settings->preview].name);
-        if (output == FILTER_COLOR_CLUSTER || output == FILTER_CLUSTER_WITH_EDGES)
-            printf(" | centroid LUT %u%s", settings->lut,
-                   output == FILTER_COLOR_CLUSTER ? " (0-7, 9)" : " (adjust in preview 4)");
-        if (output == FILTER_SOBEL || output == FILTER_CLUSTER_WITH_EDGES)
-            printf(" | Sobel threshold %u (step 10)", settings->threshold);
-        if (output == FILTER_TEST_PATTERN)
-            printf(" | pattern %u", settings->pattern);
-        printf("\r\n> ");
+        printf("Selected: %s\r\n> ", *enabled ? "Surface contour" : "Camera bypass");
         fflush(stdout);
-
-        key = keypress_to_uart(UART_BASEADDR);
+        unsigned int key = keypress_to_uart(UART_BASEADDR);
         if (key == 'Q')
             return;
-        if (key == '\r' || key == '\n')
+        if (key == 1 || key == 'R')
+            *enabled = 0;
+        else if (key == 8)
+            *enabled = 1;
+        else if (key == 'A' || key == 'D' || key == KEYPRESS_ARROW_LEFT - 10 ||
+                 key == KEYPRESS_ARROW_RIGHT - 10)
+            *enabled = !*enabled;
+        else
             continue;
-        if (key == 'R') {
-            *settings = startup_filters;
-            settings->preview = startup_preview;
-            per_write_reg(VFP_CENTROID_LUT_SELECT, settings->lut);
-            per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD, settings->threshold);
-        } else if (key >= 1 && key <= FILTER_PREVIEW_COUNT) {
-            settings->preview = key - 1;
-        } else if (key == 'A' || key == KEYPRESS_ARROW_LEFT - 10) {
-            settings->preview = (settings->preview + FILTER_PREVIEW_COUNT - 1)
-                              % FILTER_PREVIEW_COUNT;
-        } else if (key == 'D' || key == KEYPRESS_ARROW_RIGHT - 10) {
-            settings->preview = (settings->preview + 1) % FILTER_PREVIEW_COUNT;
-        } else if (key == 'W' || key == 'S' || key == KEYPRESS_ARROW_UP - 10
-                   || key == KEYPRESS_ARROW_DOWN - 10) {
-            int increase = key == 'W' || key == KEYPRESS_ARROW_UP - 10;
-
-            if (output == FILTER_COLOR_CLUSTER) {
-                settings->lut = filter_adjust(settings->lut, 9, 1, increase);
-                if (settings->lut == 8)
-                    settings->lut = increase ? 9 : 7;
-            } else if (output == FILTER_SOBEL || output == FILTER_CLUSTER_WITH_EDGES) {
-                settings->threshold = filter_adjust(settings->threshold, 65535, 10, increase);
-            } else if (output == FILTER_TEST_PATTERN) {
-                settings->pattern = filter_adjust(settings->pattern, 21, 1, increase);
-            } else {
-                printf("This preview has no adjustable value.\r\n");
-                continue;
-            }
-        } else {
-            printf("Use 1-%u, the arrow keys, W/A/S/D, R, or Q.\r\n",
-                   (unsigned int)FILTER_PREVIEW_COUNT);
-            continue;
-        }
-        filter_apply(settings);
+        per_write_reg(VFP_SURFACE_CONTOUR_ENABLE, *enabled);
     }
 }
 
@@ -339,96 +232,15 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
     int menu_calls_enable = ON_OFF;
     unsigned int uart_io;
     u32 current_state = mainmenu;
-    unsigned int startup_preview = connected_camera == 477 ? 0 : startup_filters.preview;
-    struct filter_settings filters = startup_filters;
-    filters.preview = startup_preview;
+    unsigned int contour_enabled = 0;
     u32 k_number;
     u32 k_number_value;
 
 	FRESULT rc;
 	char PhotoName[40];
-        //per_write_reg(VFP_OUTPUT_CHANNEL_SELECT,0);
-        //per_write_reg(VFP_DARK_CCM_PRESET_SELECT,0);
-        //per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,2);
-
-    	per_write_reg(VFP_DARK_CCM_PRESET_SELECT,3);
-    	per_write_reg(VFP_LIGHT_CCM_PRESET_SELECT,15);
-    	per_write_reg(VFP_BALANCE_CCM_PRESET_SELECT,3);
-        per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,221);
-        filter_apply(&filters);
-        per_write_reg(VFP_SOBEL_CLUSTER_INPUT_SELECT,23);
-        //per_write_reg(VFP_FRAME_DIMENSIONS,0);
-        per_write_reg(VFP_CENTROID_LUT_SELECT, FILTER_DEFAULT_LUT);
-        per_write_reg(VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD, FILTER_DEFAULT_THRESHOLD);
-//        per_write_reg(VFP_UNUSED_31,0);
-//        per_write_reg(VFP_UNUSED_32,0);
-//        per_write_reg(VFP_UNUSED_33,170);
-//        per_write_reg(VFP_UNUSED_34,341);
-//        per_write_reg(VFP_UNUSED_35,512);
-//        per_write_reg(VFP_UNUSED_36,341);
-//        per_write_reg(VFP_UNUSED_37,170);
-//        per_write_reg(VFP_UNUSED_38,341);
-//        per_write_reg(VFP_UNUSED_39,853);
-//        per_write_reg(VFP_UNUSED_40,682);
-//        per_write_reg(VFP_UNUSED_41,170);
-//        per_write_reg(VFP_UNUSED_42,341);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,1,240,200,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,2,240,180,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,3,230,180,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,4,230,170,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,5,230,160,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,6,230,180,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,7,200,160,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,8,200,150,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,9,200,140,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,10,200,130,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,11,200,200,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,12,160,160,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,13,140,140,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,14,120,120,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,15,100,100,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,16,160,120,70);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,17,160,110,50);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,18,160,100,40);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,19,160,90,30);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,20,160,80,20);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,21,160,70,10);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,22,140,100,40);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,23,140,100,30);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,24,140,100,20);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,25,140,100,10);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,26,120,80,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,27,120,70,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,28,100,90,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,29,100,80,0);
-//        per_write_reg_3values(VFP_CENTROID_LUT_DATA,30,100,70,0);
-    if(connected_camera == 219){
-        per_write_reg(VFP_FRAME_DIMENSIONS,5);
+    per_write_reg(VFP_SURFACE_CONTOUR_ENABLE, contour_enabled);
+    if (connected_camera == 219 || connected_camera == 519 || connected_camera == 682)
         current_state = lwip;
-    }
-    if(connected_camera == 519){
-        per_write_reg(VFP_FRAME_DIMENSIONS,0);
-        current_state = lwip;
-    }
-    if(connected_camera == 477){
-
-        current_state = imx477s1;
-    }
-    if(connected_camera == 682){
-        per_write_reg(VFP_FRAME_DIMENSIONS,4);
-        per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,8);
-        per_write_reg(VFP_DARK_CCM_K1,5000);
-        per_write_reg(VFP_DARK_CCM_K2,0);
-        per_write_reg(VFP_DARK_CCM_K3,0);
-        per_write_reg(VFP_DARK_CCM_K4,0);
-        per_write_reg(VFP_DARK_CCM_K5,5000);
-        per_write_reg(VFP_DARK_CCM_K6,0);
-        per_write_reg(VFP_DARK_CCM_K7,0);
-        per_write_reg(VFP_DARK_CCM_K8,0);
-        per_write_reg(VFP_DARK_CCM_K9,2500);
-        per_write_reg(VFP_DARK_CCM_PRESET_SELECT,15);
-        current_state = lwip;
-    }
     while (menu_calls_enable == TRUE)
     {
         lwip_stream_poll();
@@ -468,220 +280,11 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             break;
         case 'f':
         case 'F':
-            filter_menu(&filters, startup_preview);
+            filter_menu(&contour_enabled);
             current_state = mainmenu;
             break;
         case clear:
             menu_cls();
-            current_state = mainmenu;break;
-        case kernal:
-            printf("Enter k_number\n");
-            menu_print_prompt();
-            k_number = uart_prompt_io()*4;
-            if (k_number == VFP_UNUSED_00)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,k_number_value);
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))+1) & 0x0000ffff);
-                printf("K3 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))+1) & 0x0000ffff);
-                printf("K4 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))+1) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))+1) & 0x0000ffff);
-                printf("K7 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))+1) & 0x0000ffff);
-                printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))+1) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal;break;
-            }
-            else if (k_number == VFP_DARK_CCM_K1 ||
-                     k_number == VFP_DARK_CCM_K5 ||
-                     k_number == VFP_DARK_CCM_K9 ||
-                     k_number == VFP_UNUSED_10 ||
-                     k_number == VFP_DARK_CCM_PRESET_SELECT ||
-                     k_number == VFP_LIGHT_CCM_PRESET_SELECT ||
-                     k_number == VFP_BALANCE_CCM_PRESET_SELECT ||
-                     k_number == VFP_RGB_CHANNEL_SELECT ||
-                     k_number == VFP_CENTROID_LUT_WRITE_INDEX ||
-                     k_number == VFP_OUTPUT_CHANNEL_SELECT ||
-                     k_number == VFP_SOBEL_CLUSTER_INPUT_SELECT ||
-                     k_number == VFP_UNUSED_18 ||
-                     k_number == VFP_FRAME_DIMENSIONS)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,k_number_value);
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))+1) & 0x0000ffff);
-                printf("K3 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))+1) & 0x0000ffff);
-                printf("K4 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))+1) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))+1) & 0x0000ffff);
-                printf("K7 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))+1) & 0x0000ffff);
-                printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))+1) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal;break;
-            }
-            else if (k_number == VFP_DARK_CCM_K2 ||
-                     k_number == VFP_DARK_CCM_K3 ||
-                     k_number == VFP_DARK_CCM_K4 ||
-                     k_number == VFP_DARK_CCM_K6 ||
-                     k_number == VFP_DARK_CCM_K7 ||
-                     k_number == VFP_DARK_CCM_K8)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,(~k_number_value)+1);
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))+1) & 0x0000ffff);
-                printf("K3 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))+1) & 0x0000ffff);
-                printf("K4 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))+1) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))+1) & 0x0000ffff);
-                printf("K7 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))+1) & 0x0000ffff);
-                printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))+1) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal;break;
-            }
-            else if (k_number/4 == quit)
-            {
-                printf("Entered Quit\n");
-                current_state = mainmenu;break;
-            }
-            else
-            {
-                printf("Enter Wrong Register Value\n");
-            	current_state = kernal;break;
-            }
-        case kernal12:
-            printf("Enter k_number\n");
-            menu_print_prompt();
-            k_number = uart_prompt_io()*4;
-            if (k_number == VFP_UNUSED_00)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,k_number_value);
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))) & 0x0000ffff);
-                printf("K3 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))) & 0x0000ffff);
-                printf("K4 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))) & 0x0000ffff);
-                printf("K7 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))) & 0x0000ffff);
-                printf("K8 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal12;break;
-            }
-            else if (k_number == VFP_DARK_CCM_K1 ||
-                     k_number == VFP_DARK_CCM_K5 ||
-                     k_number == VFP_DARK_CCM_K9 ||
-                     k_number == VFP_UNUSED_10 ||
-                     k_number == VFP_DARK_CCM_PRESET_SELECT ||
-                     k_number == VFP_LIGHT_CCM_PRESET_SELECT ||
-                     k_number == VFP_BALANCE_CCM_PRESET_SELECT ||
-                     k_number == VFP_RGB_CHANNEL_SELECT ||
-                     k_number == VFP_CENTROID_LUT_WRITE_INDEX ||
-                     k_number == VFP_OUTPUT_CHANNEL_SELECT ||
-                     k_number == VFP_SOBEL_CLUSTER_INPUT_SELECT ||
-                     k_number == VFP_UNUSED_18 ||
-                     k_number == VFP_FRAME_DIMENSIONS ||
-                     k_number == VFP_CENTROID_LUT_READ_INDEX ||
-                     k_number == VFP_IMAGE_ADJUST_SELECTOR_VALUE ||
-                     k_number == VFP_UNUSED_22 ||
-                     k_number == VFP_UNUSED_23 ||
-                     k_number == VFP_UNUSED_24 ||
-                     k_number == VFP_UNUSED_25 ||
-                     k_number == VFP_UNUSED_26 ||
-                     k_number == VFP_UNUSED_27 ||
-                     k_number == VFP_UNUSED_28 ||
-                     k_number == VFP_UNUSED_29 ||
-                     k_number == VFP_UNUSED_30 ||
-                     k_number == VFP_UNUSED_31 ||
-                     k_number == VFP_UNUSED_32 ||
-                     k_number == VFP_UNUSED_33 ||
-                     k_number == VFP_UNUSED_34 ||
-                     k_number == VFP_UNUSED_35 ||
-                     k_number == VFP_UNUSED_36 ||
-                     k_number == VFP_UNUSED_37 ||
-                     k_number == VFP_UNUSED_38 ||
-                     k_number == VFP_UNUSED_39 ||
-                     k_number == VFP_UNUSED_40 ||
-                     k_number == VFP_UNUSED_41 ||
-                     k_number == VFP_UNUSED_42 ||
-                     k_number == VFP_CENTROID_LUT_SELECT ||
-                     k_number == VFP_TEST_PATTERN_SELECT_SOBEL_THRESHOLD)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,k_number_value);
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))+1) & 0x0000ffff);
-                printf("K3 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))+1) & 0x0000ffff);
-                printf("K4 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))+1) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))+1) & 0x0000ffff);
-                printf("K7 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))+1) & 0x0000ffff);
-                printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))+1) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal12;break;
-            }
-            else if (k_number == VFP_DARK_CCM_K2 ||
-                     k_number == VFP_DARK_CCM_K3 ||
-                     k_number == VFP_DARK_CCM_K4 ||
-                     k_number == VFP_DARK_CCM_K6 ||
-                     k_number == VFP_DARK_CCM_K7 ||
-                     k_number == VFP_DARK_CCM_K8)
-            {
-                printf("Enter K Number Value\n");
-                menu_print_prompt();
-                k_number_value = uart_prompt_io();
-                per_write_reg(k_number,(k_number_value));
-                printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-                printf("K2 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))) & 0x0000ffff);
-                printf("K3 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))) & 0x0000ffff);
-                printf("K4 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))) & 0x0000ffff);
-                printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-                printf("K6 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))) & 0x0000ffff);
-                printf("K7 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))) & 0x0000ffff);
-                printf("K8 = -%i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))) & 0x0000ffff);
-                printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
-                current_state = kernal12;break;
-            }
-            else if (k_number/4 == quit)
-            {
-                printf("Entered Quit\n");
-                current_state = mainmenu;break;
-            }
-            else
-            {
-                printf("Enter Wrong Register Value\n");
-            	current_state = kernal12;break;
-            }
-        case imx477c1:
-            per_write_reg(VFP_DARK_CCM_K1,5000);       // 5000
-            per_write_reg(VFP_DARK_CCM_K2,~500+1);     // -500
-            per_write_reg(VFP_DARK_CCM_K3,~500+1);     // -500
-            per_write_reg(VFP_DARK_CCM_K4,~500+1);     // -500
-            per_write_reg(VFP_DARK_CCM_K5,8000);       // 8000
-            per_write_reg(VFP_DARK_CCM_K6,~500+1);     // -500
-            per_write_reg(VFP_DARK_CCM_K7,0);          // 0
-            per_write_reg(VFP_DARK_CCM_K8,0);          // 0
-            per_write_reg(VFP_DARK_CCM_K9,2000);       // 2000
-            printf("K1 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K1))) & 0x0000ffff);
-            printf("K2 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K2))+1) & 0x0000ffff);
-            printf("K3 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K3))+1) & 0x0000ffff);
-            printf("K4 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K4))+1) & 0x0000ffff);
-            printf("K5 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K5))) & 0x0000ffff);
-            printf("K6 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K6))+1) & 0x0000ffff);
-            printf("K7 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K7))+1) & 0x0000ffff);
-            printf("K8 = -%i \n", (~(D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K8))+1) & 0x0000ffff);
-            printf("K9 =  %i \n", ((D5M_mReadReg(XPAR_PS_VIDEO_RX_VIDEO_VFP_0_VFPCONFIG_BASEADDR,VFP_DARK_CCM_K9))) & 0x0000ffff);
             current_state = mainmenu;break;
         case readpixels:
         	fetch_rgb_data();
@@ -855,23 +458,6 @@ void menu_calls(int ON_OFF,char *head_buf, char *data_buf, u32 stride,int connec
             	read_imx682_reg(k_number);
             	current_state = imx682rd;break;
             }
-        case imx477s1:
-//            printf("Settings For IMX477 Senesor\n");
-            per_write_reg(VFP_LIGHT_CCM_K1,1000);
-            per_write_reg(VFP_LIGHT_CCM_K2,0);
-            per_write_reg(VFP_LIGHT_CCM_K3,0);
-            per_write_reg(VFP_LIGHT_CCM_K4,0);
-            per_write_reg(VFP_LIGHT_CCM_K5,1500);
-            per_write_reg(VFP_LIGHT_CCM_K6,0);
-            per_write_reg(VFP_LIGHT_CCM_K7,0);
-            per_write_reg(VFP_LIGHT_CCM_K8,0);
-            per_write_reg(VFP_LIGHT_CCM_K9,900);
-//            per_write_reg(VFP_DARK_CCM_PRESET_SELECT,15);
-//            per_write_reg(VFP_CENTROID_LUT_WRITE_INDEX,8);
-//            per_write_reg(VFP_FRAME_DIMENSIONS,4);
-            //k_number = 3;
-            //read_imx477_reg(k_number);
-            current_state = mainmenu;break;
         case quit:
             menu_calls_enable = FALSE;
             break;

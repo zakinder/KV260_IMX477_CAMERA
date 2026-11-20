@@ -120,12 +120,14 @@ int main()
 	xil_printf("********************************************\r\n");
 	pFrames1[0] = frameBuf1[0];
     memset(pFrames1[0], 0, VIDEO2_MAX_FRAME);
-    vdma_write(XPAR_AXIVDMA_1_DEVICE_ID,VIDEO2_STRIDE,VIDEO2_ROWS,VIDEO2_STRIDE,(unsigned int)pFrames1[0]);
+    if (vdma_write(XPAR_AXIVDMA_1_DEVICE_ID, VIDEO2_STRIDE, VIDEO2_ROWS,
+                   VIDEO2_STRIDE, (unsigned int)pFrames1[0]) != XST_SUCCESS) {
+        xil_printf("Preview VDMA could not start.\r\n");
+        return 1;
+    }
     gpio_init();
 	int i,connected_camera;
     connected_camera=init_camera();
-    if (connected_camera == 477)
-        per_write_reg(VFP_OUTPUT_CHANNEL_SELECT, VFP_PREVIEW_BYPASS);
     printf("Connected Camera = %i \n\r",connected_camera);
     demosaic2_init();
     demosaic1_init();
