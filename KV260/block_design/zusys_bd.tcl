@@ -1769,6 +1769,7 @@ proc create_root_design { parentCell } {
   # Restore current instance
   current_bd_instance $oldCurInst
 
+  source [file join [file dirname [info script]] contour_control_clock.tcl]
   validate_bd_design
   save_bd_design
 }

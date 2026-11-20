@@ -41,21 +41,16 @@ architecture rtl of axis_surface_pass is
     result.hi := largest(ya,largest(yb,yc));
     return result;
   end;
-  function candidate(a, b, c : strip_t; center : rgb_t) return candidate_t is
-    variable result : candidate_t;
-    variable span : byte_t;
-  begin
-    for ch in 0 to 2 loop
-      result.color(ch) := (a.total(ch)+b.total(ch)+c.total(ch)+4)/9;
-    end loop;
-    span := largest(a.hi,largest(b.hi,c.hi)) - smallest(a.lo,smallest(b.lo,c.lo));
-    result.score := 2*span + 3*distance(result.color,center);
-    return result;
-  end;
-
+  type totals_t is array (0 to 3,0 to 2) of natural range 0 to 2299;
+  type spans_t is array (0 to 3) of byte_t;
+  type colors_t is array (0 to 3) of rgb_t;
+  signal totals : totals_t;
+  signal spans, mean_spans, score_spans, distances : spans_t;
+  signal means, score_colors : colors_t;
+  signal sum_center, mean_center, score_center, blend_center, blend_mean : rgb_t;
   signal win : window_t;
   signal wvalid, wsof, weol, advance : std_logic;
-  signal valid, sof, eol : std_logic_vector(0 to 3) := (others=>'0');
+  signal valid, sof, eol : std_logic_vector(0 to 7) := (others=>'0');
   signal strips : strips_t;
   signal regions2, regions3 : candidates_t;
   signal winner3 : candidate_t;
@@ -64,8 +59,8 @@ begin
   window_source : entity work.axis_window5
     generic map (G_WIDTH, G_HEIGHT, G_SPACING)
     port map (clk,rst_n,s_valid,s_ready,s_pixel,s_sof,s_eol,wvalid,advance,win,wsof,weol,active_width,active_height);
-  advance <= (not valid(3)) or m_ready;
-  m_valid <= valid(3); m_sof <= sof(3); m_eol <= eol(3);
+  advance <= (not valid(7)) or m_ready;
+  m_valid <= valid(7); m_sof <= sof(7); m_eol <= eol(7);
 
   compute : process(clk)
     type color_row_t is array (0 to 4) of rgb_t;
@@ -82,7 +77,7 @@ begin
       if rst_n='0' then
         valid <= (others=>'0'); sof <= (others=>'0'); eol <= (others=>'0');
       elsif advance='1' then
-        valid <= wvalid & valid(0 to 2); sof <= wsof & sof(0 to 2); eol <= weol & eol(0 to 2);
+        valid <= wvalid & valid(0 to 6); sof <= wsof & sof(0 to 6); eol <= weol & eol(0 to 6);
         if wvalid='1' then
           center1 <= unpack(win(12));
           for r in 0 to 4 loop
@@ -94,13 +89,37 @@ begin
           end loop;
         end if;
         if valid(0)='1' then
-          center2 <= center1;
+          sum_center <= center1;
           for q in 0 to 3 loop
             start := 4*(q/2) + (q mod 2);
-            regions2(q) <= candidate(strips(start),strips(start+2),strips(start+4),center1);
+            for ch in 0 to 2 loop
+              totals(q,ch) <= strips(start).total(ch)+strips(start+2).total(ch)+strips(start+4).total(ch)+4;
+            end loop;
+            spans(q) <= largest(strips(start).hi,largest(strips(start+2).hi,strips(start+4).hi))
+                       -smallest(strips(start).lo,smallest(strips(start+2).lo,strips(start+4).lo));
           end loop;
         end if;
         if valid(1)='1' then
+          mean_center <= sum_center; mean_spans <= spans;
+          for q in 0 to 3 loop
+            for ch in 0 to 2 loop
+              -- Exact floor(n/9) over the bounded numerator range 0..2299.
+              means(q)(ch) <= (totals(q,ch)*3641)/32768;
+            end loop;
+          end loop;
+        end if;
+        if valid(2)='1' then
+          score_center <= mean_center; score_colors <= means; score_spans <= mean_spans;
+          for q in 0 to 3 loop distances(q) <= distance(means(q),mean_center); end loop;
+        end if;
+        if valid(3)='1' then
+          center2 <= score_center;
+          for q in 0 to 3 loop
+            regions2(q).color <= score_colors(q);
+            regions2(q).score <= 2*score_spans(q)+3*distances(q);
+          end loop;
+        end if;
+        if valid(4)='1' then
           center3 <= center2; regions3 <= regions2;
           winner := regions2(0);
           for q in 1 to 3 loop
@@ -108,7 +127,7 @@ begin
           end loop;
           winner3 <= winner;
         end if;
-        if valid(2)='1' then
+        if valid(5)='1' then
           region_sum := (others=>0);
           for q in 0 to 3 loop
             selected := winner3.color;
@@ -116,11 +135,14 @@ begin
             for ch in 0 to 2 loop region_sum(ch) := region_sum(ch)+selected(ch); end loop;
           end loop;
           for ch in 0 to 2 loop mean_color(ch) := (region_sum(ch)+2)/4; end loop;
+          blend_mean <= mean_color; blend_center <= center3;
+        end if;
+        if valid(6)='1' then
           -- Retain more of an isolated, high-contrast center (e.g. an eyelid).
-          if distance(mean_color,center3)>24 then
-            for ch in 0 to 2 loop result(ch) := (mean_color(ch)+center3(ch)+1)/2; end loop;
+          if distance(blend_mean,blend_center)>24 then
+            for ch in 0 to 2 loop result(ch) := (blend_mean(ch)+blend_center(ch)+1)/2; end loop;
           else
-            for ch in 0 to 2 loop result(ch) := (7*mean_color(ch)+center3(ch)+4)/8; end loop;
+            for ch in 0 to 2 loop result(ch) := (7*blend_mean(ch)+blend_center(ch)+4)/8; end loop;
           end if;
           m_pixel <= pack(result);
         end if;

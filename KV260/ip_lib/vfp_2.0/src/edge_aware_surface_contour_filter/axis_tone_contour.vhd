@@ -28,9 +28,27 @@ architecture rtl of axis_tone_contour is
   begin
     return smallest(255,ANCHORS(i)+((y mod 16)*(ANCHORS(i+1)-ANCHORS(i))+8)/16);
   end;
+  -- Evaluate the fixed luminance curve at elaboration.
+  type curve_t is array (0 to 255) of byte_t;
+  function build_curve return curve_t is
+    variable curve : curve_t;
+    variable v : byte_t;
+  begin
+    for i in curve'range loop
+      v := tone(i);
+      curve(i) := (3*v + smallest(255,8*((v+4)/8)) + 2)/4;
+    end loop;
+    return curve;
+  end;
+  constant CURVE : curve_t := build_curve;
+  type lights_t is array (0 to 24) of byte_t;
+  signal y : lights_t;
+  signal center0, center_delay : rgb_t;
+  signal level, ink_delay, highlight_delay, min_delay : byte_t;
+  signal gain_delay : natural range 256 to 384;
   signal win : window_t;
   signal wvalid, wsof, weol, advance : std_logic;
-  signal valid, sof, eol : std_logic_vector(0 to 3) := (others=>'0');
+  signal valid, sof, eol : std_logic_vector(0 to 5) := (others=>'0');
   signal gradient1 : natural range 0 to 2040;
   signal dark_side1, dark_ridge1, light_ridge1 : integer range -255 to 255;
   signal center1, center2, relative3 : rgb_t;
@@ -41,24 +59,25 @@ begin
   window_source : entity work.axis_window5
     generic map (G_WIDTH,G_HEIGHT,G_SPACING)
     port map (clk,rst_n,s_valid,s_ready,s_pixel,s_sof,s_eol,wvalid,advance,win,wsof,weol,active_width,active_height);
-  advance <= (not valid(3)) or m_ready;
-  m_valid <= valid(3); m_sof <= sof(3); m_eol <= eol(3);
+  advance <= (not valid(5)) or m_ready;
+  m_valid <= valid(5); m_sof <= sof(5); m_eol <= eol(5);
 
   render : process(clk)
-    type lights_t is array (0 to 24) of byte_t;
-    variable y : lights_t;
     variable gx, gy : integer range -1020 to 1020;
-    variable luminance, soft_level, ink, ridge_ink, highlight, mn, mx, offset : integer;
+    variable ink, ridge_ink, highlight, mn, mx, offset : integer;
     variable result : rgb_t;
   begin
     if rising_edge(clk) then
       if rst_n='0' then
         valid <= (others=>'0'); sof <= (others=>'0'); eol <= (others=>'0');
       elsif advance='1' then
-        valid <= wvalid & valid(0 to 2); sof <= wsof & sof(0 to 2); eol <= weol & eol(0 to 2);
+        valid <= wvalid & valid(0 to 4); sof <= wsof & sof(0 to 4); eol <= weol & eol(0 to 4);
         if wvalid='1' then
-          for i in 0 to 24 loop y(i) := luma(unpack(win(i))); end loop;
-          center1 <= unpack(win(12)); y1 <= y(12);
+          for i in 0 to 24 loop y(i) <= luma(unpack(win(i))); end loop;
+          center0 <= unpack(win(12));
+        end if;
+        if valid(0)='1' then
+          center1 <= center0; y1 <= y(12);
           gx := y(8)+2*y(13)+y(18) - y(6)-2*y(11)-y(16);
           gy := y(16)+2*y(17)+y(18) - y(6)-2*y(7)-y(8);
           gradient1 <= magnitude(gx)+magnitude(gy);
@@ -70,29 +89,32 @@ begin
                                           smallest(largest(y(0),y(24)),largest(y(4),y(20))));
           dark_side1 <= (y(7)+y(11)+y(13)+y(17)+y(2)+y(10)+y(14)+y(22)+4)/8 - y(12);
         end if;
-        if valid(0)='1' then
-          luminance := tone(y1);
-          -- Gentle luminance stepping keeps broad ramps from forming hard bands.
-          soft_level := (3*luminance+smallest(255,8*((luminance+4)/8))+2)/4;
+        if valid(1)='1' then
+          level <= CURVE(y1);
           ink := 0;
           if dark_side1>1 then
             ink := smallest(12,largest(gradient1/4-5,0)/4 + dark_side1/4);
           end if;
           ridge_ink := smallest(42,3*largest(dark_ridge1-2,0)/2);
           highlight := smallest(14,3*largest(light_ridge1-3,0)/4);
-          target2 <= clamp(soft_level-largest(ink,ridge_ink)+highlight,0,255);
-          center2 <= center1;
+          ink_delay <= largest(ink,ridge_ink);
+          highlight_delay <= highlight;
+          center_delay <= center1;
           mn := smallest(center1(0),smallest(center1(1),center1(2)));
           mx := largest(center1(0),largest(center1(1),center1(2)));
-          minimum2 <= mn;
+          min_delay <= mn;
           -- One gain for all channels. Taper the gain near the gamut boundary.
-          gain2 <= 256+smallest(G_CHROMA_Q8-256,255-(mx-mn));
+          gain_delay <= 256+smallest(G_CHROMA_Q8-256,255-(mx-mn));
         end if;
-        if valid(1)='1' then
+        if valid(2)='1' then
+          target2 <= clamp(level-ink_delay+highlight_delay,0,255);
+          center2 <= center_delay; minimum2 <= min_delay; gain2 <= gain_delay;
+        end if;
+        if valid(3)='1' then
           for ch in 0 to 2 loop relative3(ch) <= ((center2(ch)-minimum2)*gain2+128)/256; end loop;
           target3 <= target2;
         end if;
-        if valid(2)='1' then
+        if valid(4)='1' then
           mx := largest(relative3(0),largest(relative3(1),relative3(2)));
           offset := clamp(target3-luma(relative3),0,255-mx);
           for ch in 0 to 2 loop result(ch) := relative3(ch)+offset; end loop;
