@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Fri Nov 20 12:50:01 2026
+| Date         : Fri Nov 20 13:13:43 2026
 | Host         : LAPTOP-I3ECBFK4 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file kv260_video_vfp_0_0_utilization_synth.rpt -pb kv260_video_vfp_0_0_utilization_synth.pb
 | Design       : kv260_video_vfp_0_0
@@ -32,15 +32,15 @@ Table of Contents
 +----------------------------+-------+-------+------------+-----------+-------+
 |          Site Type         |  Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+-------+-------+------------+-----------+-------+
-| CLB LUTs*                  | 22461 |     0 |          0 |    117120 | 19.18 |
-|   LUT as Logic             | 21886 |     0 |          0 |    117120 | 18.69 |
-|   LUT as Memory            |   575 |     0 |          0 |     57600 |  1.00 |
+| CLB LUTs*                  | 22501 |     0 |          0 |    117120 | 19.21 |
+|   LUT as Logic             | 21894 |     0 |          0 |    117120 | 18.69 |
+|   LUT as Memory            |   607 |     0 |          0 |     57600 |  1.05 |
 |     LUT as Distributed RAM |     0 |     0 |            |           |       |
-|     LUT as Shift Register  |   575 |     0 |            |           |       |
-| CLB Registers              | 18659 |     0 |          0 |    234240 |  7.97 |
-|   Register as Flip Flop    | 18659 |     0 |          0 |    234240 |  7.97 |
+|     LUT as Shift Register  |   607 |     0 |            |           |       |
+| CLB Registers              | 19409 |     0 |          0 |    234240 |  8.29 |
+|   Register as Flip Flop    | 19409 |     0 |          0 |    234240 |  8.29 |
 |   Register as Latch        |     0 |     0 |          0 |    234240 |  0.00 |
-| CARRY8                     |  1349 |     0 |          0 |     14640 |  9.21 |
+| CARRY8                     |  1351 |     0 |          0 |     14640 |  9.23 |
 | F7 Muxes                   |     2 |     0 |          0 |     58560 | <0.01 |
 | F8 Muxes                   |     0 |     0 |          0 |     29280 |  0.00 |
 | F9 Muxes                   |     0 |     0 |          0 |     14640 |  0.00 |
@@ -63,7 +63,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 13    |          Yes |         Set |            - |
-| 18646 |          Yes |       Reset |            - |
+| 19396 |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -160,14 +160,14 @@ Table of Contents
 +----------+-------+---------------------+
 | Ref Name |  Used | Functional Category |
 +----------+-------+---------------------+
-| FDRE     | 18646 |            Register |
-| LUT5     | 11013 |                 CLB |
-| LUT3     |  4825 |                 CLB |
-| LUT6     |  4769 |                 CLB |
-| LUT4     |  3192 |                 CLB |
-| LUT2     |  2128 |                 CLB |
-| CARRY8   |  1349 |                 CLB |
-| SRL16E   |   575 |                 CLB |
+| FDRE     | 19396 |            Register |
+| LUT5     | 10995 |                 CLB |
+| LUT3     |  5118 |                 CLB |
+| LUT6     |  4581 |                 CLB |
+| LUT4     |  3272 |                 CLB |
+| LUT2     |  2169 |                 CLB |
+| CARRY8   |  1351 |                 CLB |
+| SRL16E   |   607 |                 CLB |
 | LUT1     |    71 |                 CLB |
 | DSP48E2  |    39 |          Arithmetic |
 | URAM288  |    24 |            BLOCKRAM |

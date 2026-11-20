@@ -233,21 +233,21 @@ vlog -work xil_defaultlib  -incr -mfcu "+incdir+../../../../KV260.gen/sources_1/
 "../../../bd/kv260_video/ip/kv260_video_v_demosaic_1_0/sim/kv260_video_v_demosaic_1_0.v" \
 
 vcom -work xil_defaultlib  -93 \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/pic2_types.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_window5.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/Include/constants_package.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/float_and_fixed_pkg/fixed_float_types_c.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/float_and_fixed_pkg/fixed_pkg_c.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/float_and_fixed_pkg/float_pkg_c.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/Include/vpf_records.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/Include/ports_package.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/src/edge_aware_surface_contour_filter/surface_contour_select.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/hdl/vfp_config.vhd" \
-"../../../bd/kv260_video/ipshared/3e4a/hdl/vfp_v1_0.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_types.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_window5.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_contour_finish.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_surface_pass.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/axis_tone_contour.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/Include/constants_package.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/float_and_fixed_pkg/fixed_float_types_c.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/float_and_fixed_pkg/fixed_pkg_c.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/float_and_fixed_pkg/float_pkg_c.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/pic2_filter_axis.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/Include/vpf_records.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/Include/ports_package.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/src/edge_aware_surface_contour_filter/surface_contour_select.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/hdl/vfp_config.vhd" \
+"../../../bd/kv260_video/ipshared/fb1b/hdl/vfp_v1_0.vhd" \
 "../../../bd/kv260_video/ip/kv260_video_vfp_0_0/sim/kv260_video_vfp_0_0.vhd" \
 
 vcom -work axi_lite_ipif_v3_0_4  -93 \

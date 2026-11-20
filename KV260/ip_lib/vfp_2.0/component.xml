@@ -2137,7 +2137,7 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>vfp_v2.0</xilinx:displayName>
-      <xilinx:coreRevision>166</xilinx:coreRevision>
+      <xilinx:coreRevision>167</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:vfp:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>

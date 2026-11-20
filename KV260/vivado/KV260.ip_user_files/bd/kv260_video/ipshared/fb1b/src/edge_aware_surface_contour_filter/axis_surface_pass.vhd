@@ -4,7 +4,7 @@
 --               Evaluates four overlapping 3x3 sub-regions anchored at center
 --               tap 12, selects regions within a homogeneity tolerance of the
 --               best-matching surface, and blends the resulting surface mean
---               with the center pixel across a 10-cycle stalled-ready pipeline.
+--               with the center pixel across a 11-cycle stalled-ready pipeline.
 -- =============================================================================
 
 library ieee;
@@ -144,9 +144,9 @@ architecture rtl of axis_surface_pass is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 10) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 10) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 10) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 11) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 11) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 11) := (others => '0');
 
   -- Stage 1 Registers: Center pixel and 10 row strips
   signal s1_center     : rgb8_t;
@@ -162,6 +162,13 @@ architecture rtl of axis_surface_pass is
   signal s3_win_mean   : rgb8_t;
   signal s3_means      : rgb4_array_t;
   signal s3_scores     : int4_array_t;
+  type pair_scores_t is array (0 to 1) of integer range 0 to 1275;
+  type pair_colors_t is array (0 to 1) of rgb8_t;
+  signal pair_scores : pair_scores_t;
+  signal pair_colors : pair_colors_t;
+  signal aligned_scores : int4_array_t;
+  signal aligned_means : rgb4_array_t;
+  signal aligned_center : rgb8_t;
   signal s3_best_score : integer range 0 to 1275;
 
   -- Stage 4 Register: Packed output RGB888 pixel
@@ -201,25 +208,23 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable: advances whenever output is empty or accepted
-  advance       <= (not v_pipe(10)) or m_axis_tready;
+  advance       <= (not v_pipe(11)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(10);
-  m_axis_tuser  <= sof_pipe(10);
-  m_axis_tlast  <= eol_pipe(10);
+  m_axis_tvalid <= v_pipe(11);
+  m_axis_tuser  <= sof_pipe(11);
+  m_axis_tlast  <= eol_pipe(11);
 
   -- ---------------------------------------------------------------------------
   -- Process     : compute
-  -- Description : 10-stage synchronous arithmetic pipeline executing strip
+  -- Description : 11-stage synchronous arithmetic pipeline executing strip
   --               reduction, 3x3 candidate scoring, tolerance gating, and
   --               center-preserving surface blending.
   -- ---------------------------------------------------------------------------
   compute : process (aclk)
     variable idx : natural range 0 to 5;
     variable a,b,c : strip_t;
-    variable v_min_score : integer;
-    variable v_win_idx   : integer range 0 to 3;
     variable slots       : rgb4_array_t;
     variable v_cutoff    : integer;
     variable v_m_avg     : rgb8_t;
@@ -233,10 +238,10 @@ begin
         s4_tdata <= (others => '0');
 
       elsif advance = '1' then
-        -- Shift valid and frame/line sidebands across all 10 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 9);
-        sof_pipe <= win_sof   & sof_pipe(1 to 9);
-        eol_pipe <= win_eol   & eol_pipe(1 to 9);
+        -- Shift valid and frame/line sidebands across all 11 pipeline stages
+        v_pipe   <= win_valid & v_pipe(1 to 10);
+        sof_pipe <= win_sof   & sof_pipe(1 to 10);
+        eol_pipe <= win_eol   & eol_pipe(1 to 10);
 
         -- ---------------------------------------------------------------------
         -- STAGE 1: Latch center tap (12) and compute 10 overlapping row strips
@@ -299,20 +304,31 @@ begin
         -- STAGE 6: Select winning region (strict '<' favors earlier index)
         --          and gate all 4 slots against min_score + G_TOLERANCE
         -- ---------------------------------------------------------------------
-        v_min_score := s2_scores(0);
-        v_win_idx   := 0;
-        for i in 1 to 3 loop
-          if s2_scores(i) < v_min_score then
-            v_min_score := s2_scores(i);
-            v_win_idx   := i;
+        -- Compare adjacent candidates first. The lower index wins ties
+        -- at both levels, exactly as in the sequential four-way search.
+        for pair_idx in 0 to 1 loop
+          if s2_scores(2*pair_idx+1) < s2_scores(2*pair_idx) then
+            pair_scores(pair_idx) <= s2_scores(2*pair_idx+1);
+            pair_colors(pair_idx) <= s2_means(2*pair_idx+1);
+          else
+            pair_scores(pair_idx) <= s2_scores(2*pair_idx);
+            pair_colors(pair_idx) <= s2_means(2*pair_idx);
           end if;
         end loop;
+        aligned_scores <= s2_scores;
+        aligned_means <= s2_means;
+        aligned_center <= s2_center;
 
-        s3_best_score <= v_min_score;
-        s3_scores <= s2_scores;
-        s3_means <= s2_means;
-        s3_center   <= s2_center;
-        s3_win_mean <= s2_means(v_win_idx);
+        if pair_scores(1) < pair_scores(0) then
+          s3_best_score <= pair_scores(1);
+          s3_win_mean <= pair_colors(1);
+        else
+          s3_best_score <= pair_scores(0);
+          s3_win_mean <= pair_colors(0);
+        end if;
+        s3_scores <= aligned_scores;
+        s3_means <= aligned_means;
+        s3_center <= aligned_center;
 
         v_cutoff := s3_best_score + G_TOLERANCE;
         for i in 0 to 3 loop

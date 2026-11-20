@@ -2,7 +2,7 @@
 -- Module      : axis_tone_contour
 -- Description : Stage 4 tone-mapping, contour detection, and RGB color
 --               reconstruction stage for pic2_filter_axis. Evaluates a 5x5
---               window at spacing s=6 (25x25 footprint) across a 11-cycle
+--               window at spacing s=6 (25x25 footprint) across a 13-cycle
 --               stalled-ready pipeline to lift shadows, ink edges/ridges, and
 --               expand chroma saturation.
 -- =============================================================================
@@ -113,6 +113,14 @@ architecture rtl of axis_tone_contour is
   end function;
   constant CURVE : curve_t := build_curve;
   signal y_tap : tap_luma_array_t;
+  type pair_lumas_t is array (0 to 3) of integer range 0 to 255;
+  signal min_lumas, max_lumas : pair_lumas_t;
+  signal axial_v, axial_h : integer range 0 to 1020;
+  signal axial_mean, ridge_luma, light_luma : integer range 0 to 255;
+  signal center1, center2 : rgb8_t;
+  signal yc1, yc2 : integer range 0 to 255;
+  signal gx1, gy1 : integer range -1020 to 1020;
+  signal grad2 : integer range 0 to 2040;
   signal center0, center_delay : rgb8_t;
   signal soft_delay, ink_delay, light_delay, min_delay : integer range 0 to 255;
   signal ink_part, ridge_part : integer range 0 to 255;
@@ -135,9 +143,9 @@ architecture rtl of axis_tone_contour is
 
   -- Pipeline Flow Control
   signal advance       : std_logic;
-  signal v_pipe        : std_logic_vector(1 to 11) := (others => '0');
-  signal sof_pipe      : std_logic_vector(1 to 11) := (others => '0');
-  signal eol_pipe      : std_logic_vector(1 to 11) := (others => '0');
+  signal v_pipe        : std_logic_vector(1 to 13) := (others => '0');
+  signal sof_pipe      : std_logic_vector(1 to 13) := (others => '0');
+  signal eol_pipe      : std_logic_vector(1 to 13) := (others => '0');
 
   -- Stage 1 Registers: Center RGB/Y, Sobel gradient, and ridge/light metrics
   signal s1_center     : rgb8_t;
@@ -201,13 +209,13 @@ begin
   end generate gen_unpack;
 
   -- Backpressure advance enable
-  advance       <= (not v_pipe(11)) or m_axis_tready;
+  advance       <= (not v_pipe(13)) or m_axis_tready;
   win_ready     <= advance;
 
   m_axis_tdata  <= s4_tdata;
-  m_axis_tvalid <= v_pipe(11);
-  m_axis_tuser  <= sof_pipe(11);
-  m_axis_tlast  <= eol_pipe(11);
+  m_axis_tvalid <= v_pipe(13);
+  m_axis_tuser  <= sof_pipe(13);
+  m_axis_tlast  <= eol_pipe(13);
 
   -- ---------------------------------------------------------------------------
   -- Process     : render
@@ -218,10 +226,6 @@ begin
   render : process (aclk)
     variable yc          : integer;
     variable gx, gy      : integer;
-    variable axial_sum   : integer;
-    variable p_min, p_max: integer;
-    variable max_p_min   : integer;
-    variable min_p_max   : integer;
 
     variable v_soft      : integer;
     variable v_ink       : integer;
@@ -242,12 +246,12 @@ begin
 
       elsif advance = '1' then
         -- Shift valid and frame/line sidebands across all 6 pipeline stages
-        v_pipe   <= win_valid & v_pipe(1 to 10);
-        sof_pipe <= win_sof   & sof_pipe(1 to 10);
-        eol_pipe <= win_eol   & eol_pipe(1 to 10);
+        v_pipe   <= win_valid & v_pipe(1 to 12);
+        sof_pipe <= win_sof   & sof_pipe(1 to 12);
+        eol_pipe <= win_eol   & eol_pipe(1 to 12);
 
         -- ---------------------------------------------------------------------
-        -- STAGES 1-2: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
+        -- STAGES 1-4: Compute tap lumas, inner 3x3 Sobel gradient, axial dark-side
         --          measure d, and 4 outer opposing-pair ridge/light measures
         -- ---------------------------------------------------------------------
         for i in 0 to 24 loop
@@ -264,48 +268,41 @@ begin
               (y_tap(6)  + 2 * y_tap(7)  + y_tap(8));
 
         -- Rounded mean of 8 axial neighbors at +/-1 and +/-2 tap spacings minus Yc
-        axial_sum := y_tap(2)  + y_tap(7)  + y_tap(17) + y_tap(22) +
-                     y_tap(10) + y_tap(11) + y_tap(13) + y_tap(14);
-        s1_dark_d <= ((axial_sum + 4) / 8) - yc;
+        axial_v <= y_tap(2) + y_tap(7) + y_tap(17) + y_tap(22);
+        axial_h <= y_tap(10) + y_tap(11) + y_tap(13) + y_tap(14);
+        gx1 <= gx;
+        gy1 <= gy;
+        center1 <= center0;
+        yc1 <= yc;
+        min_lumas(0) <= work.pic2_types.smallest(y_tap(2), y_tap(22));
+        max_lumas(0) <= work.pic2_types.largest(y_tap(2), y_tap(22));
+        min_lumas(1) <= work.pic2_types.smallest(y_tap(10), y_tap(14));
+        max_lumas(1) <= work.pic2_types.largest(y_tap(10), y_tap(14));
+        min_lumas(2) <= work.pic2_types.smallest(y_tap(0), y_tap(24));
+        max_lumas(2) <= work.pic2_types.largest(y_tap(0), y_tap(24));
+        min_lumas(3) <= work.pic2_types.smallest(y_tap(4), y_tap(20));
+        max_lumas(3) <= work.pic2_types.largest(y_tap(4), y_tap(20));
 
-        -- Four outer opposing pairs spanning center tap 12:
-        -- Pair 0: Vertical (2, 22)   | Pair 1: Horizontal (10, 14)
-        -- Pair 2: Main Diag (0, 24)  | Pair 3: Anti-Diag (4, 20)
-        max_p_min := -1;
-        min_p_max := 256;
+        axial_mean <= (axial_v + axial_h + 4) / 8;
+        ridge_luma <= work.pic2_types.largest(
+          work.pic2_types.largest(min_lumas(0), min_lumas(1)),
+          work.pic2_types.largest(min_lumas(2), min_lumas(3)));
+        light_luma <= work.pic2_types.smallest(
+          work.pic2_types.smallest(max_lumas(0), max_lumas(1)),
+          work.pic2_types.smallest(max_lumas(2), max_lumas(3)));
+        grad2 <= abs(gx1) + abs(gy1);
+        center2 <= center1;
+        yc2 <= yc1;
 
-        -- Pair 0: (2, 22)
-        if y_tap(2) < y_tap(22) then p_min := y_tap(2); p_max := y_tap(22);
-        else                         p_min := y_tap(22); p_max := y_tap(2); end if;
-        if p_min > max_p_min then max_p_min := p_min; end if;
-        if p_max < min_p_max then min_p_max := p_max; end if;
-
-        -- Pair 1: (10, 14)
-        if y_tap(10) < y_tap(14) then p_min := y_tap(10); p_max := y_tap(14);
-        else                          p_min := y_tap(14); p_max := y_tap(10); end if;
-        if p_min > max_p_min then max_p_min := p_min; end if;
-        if p_max < min_p_max then min_p_max := p_max; end if;
-
-        -- Pair 2: (0, 24)
-        if y_tap(0) < y_tap(24) then p_min := y_tap(0); p_max := y_tap(24);
-        else                         p_min := y_tap(24); p_max := y_tap(0); end if;
-        if p_min > max_p_min then max_p_min := p_min; end if;
-        if p_max < min_p_max then min_p_max := p_max; end if;
-
-        -- Pair 3: (4, 20)
-        if y_tap(4) < y_tap(20) then p_min := y_tap(4); p_max := y_tap(20);
-        else                         p_min := y_tap(20); p_max := y_tap(4); end if;
-        if p_min > max_p_min then max_p_min := p_min; end if;
-        if p_max < min_p_max then min_p_max := p_max; end if;
-
-        s1_center   <= center0;
-        s1_y_center <= yc;
-        s1_grad     <= abs(gx) + abs(gy);
-        s1_rd       <= max_p_min - yc;
-        s1_rl       <= yc - min_p_max;
+        s1_center <= center2;
+        s1_y_center <= yc2;
+        s1_grad <= grad2;
+        s1_dark_d <= axial_mean - yc2;
+        s1_rd <= ridge_luma - yc2;
+        s1_rl <= yc2 - light_luma;
 
         -- ---------------------------------------------------------------------
-        -- STAGES 3-4: Compute tone target luma and center channel span / Q8 gain
+        -- STAGES 5-6: Compute tone target luma and center channel span / Q8 gain
         -- ---------------------------------------------------------------------
         curve_part <= CURVE(s1_y_center);
         soft_delay <= curve_part;
@@ -347,7 +344,7 @@ begin
         gain_delay <= 256 + clamp_int(255 - v_span, 0, G_CHROMA_Q8 - 256);
 
         -- ---------------------------------------------------------------------
-        -- STAGES 5-8: Register target and scale channel differences by Q8 chroma gain
+        -- STAGES 7-10: Register target and scale channel differences by Q8 chroma gain
         -- ---------------------------------------------------------------------
         s2_center <= center_delay; s2_c_min <= min_delay; s2_gain_q8 <= gain_delay;
         s2_target <= clamp_int(soft_delay - ink_delay + light_delay, 0, 255);
@@ -369,7 +366,7 @@ begin
 
 
         -- ---------------------------------------------------------------------
-        -- STAGES 9-11: Compute common luma offset, add to relative RGB, and pack
+        -- STAGES 11-13: Compute common luma offset, add to relative RGB, and pack
         -- ---------------------------------------------------------------------
         v_rel_max := s3_rel_rgb.r;
         if s3_rel_rgb.g > v_rel_max then v_rel_max := s3_rel_rgb.g; end if;
